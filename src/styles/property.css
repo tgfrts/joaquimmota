@@ -67,3 +67,40 @@
 
 @media(min-width:768px){.property-page__body{padding-top:64px}.property-page--reserved .property-page__body{padding-top:16px}}
 @media(max-width:767px){.property-page__location strong,.property-page__location span{display:inline-block;padding-right:24px}.property-page__parking{display:none!important}}
+
+/* The original switches the floating header and navigation at the tablet breakpoint. */
+@media(max-width:991px){
+.property-page__cover,.property-page--reserved .property-page__cover{height:50vw}
+.property-page__header,.property-page--reserved .property-page__header{width:90vw;margin-top:-15vw;min-height:0;padding:5vw;opacity:1}
+.property-page__parking,.property-page__reference,.property-page__reserved{display:none!important}
+.property-page--reserved .property-page__price{display:flex;color:#db1430}
+.property-page__location strong,.property-page__location span{display:inline-block;padding-right:24px}
+}
+@media(min-width:768px) and (max-width:991px){
+.property-page__header h1{font-size:44px;line-height:1.2;font-weight:700;letter-spacing:0;margin-bottom:16px}
+.property-page__price{margin-bottom:16px}
+.property-page__location{display:block;margin:0 0 12px;font-size:16px;line-height:24px}
+.property-page__facts{margin-top:0;padding-top:calc(4vw + 1px);gap:12px}
+.property-page__facts:before{top:2vw}
+.property-page__body,.property-page--reserved .property-page__body{padding-top:5vw;padding-bottom:5vw}
+.property-page__card{padding:5vw}
+.property-page__body>.cms-copy>h2,.property-page__body>section>h2{padding-bottom:2vw;margin-bottom:2vw}
+.property-page__body>#descricao{margin-bottom:96px!important}
+.property-page__body>#caracteristicas{margin-bottom:48px!important}
+.property-page__characteristics ul{margin-bottom:48px}
+.property-page__body>#localizacao{margin-bottom:calc(48px + 5vw)!important}
+.property-page__body>#galeria{padding:5vw 5%}
+.property-page #galeria .cms-gallery__grid{gap:2.5vw}
+}
+@media(max-width:767px){.property-page__header,.property-page--reserved .property-page__header{padding-bottom:calc(64px + 5vw)}}
+
+@media(min-width:768px) and (max-width:991px){
+.property-page__inquiry .property-inquiry{padding:5vw}
+.property-inquiry hr{margin:calc(1vw + 15px) 0 2vw}
+.property-page__inquiry{margin-bottom:5vw}
+.property-closing{margin-bottom:-10vw;padding:5vw}
+.property-closing__card{grid-template-columns:1fr;padding:5vw;gap:5vw}
+.property-closing h2{font-size:44px;letter-spacing:0}
+.property-closing__portrait{margin:-5vw}
+.property-closing__portrait img{margin-top:-5vw}
+}

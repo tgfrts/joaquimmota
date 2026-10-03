@@ -31,7 +31,11 @@ const amenities = Object.entries(amenityLabels).filter(([key]) => record.ameniti
   import { bindSourceScrollMotion, interpolate } from '../../scripts/source-scroll-motion';
   const header = document.querySelector<HTMLElement>('.property-page__header');
   if (header) bindSourceScrollMotion(header, (progress, reduced) => {
-    header.style.opacity = reduced || innerWidth <= 767 ? '1' : String(interpolate(progress, [[.35, 0], [.65, 1]]));
+    header.style.opacity = reduced || innerWidth <= 991 ? '1' : String(interpolate(progress, [[.35, 0], [.65, 1]]));
+  });
+  const inquiry = document.querySelector<HTMLElement>('.property-page__inquiry');
+  if (inquiry) bindSourceScrollMotion(inquiry, (progress, reduced) => {
+    inquiry.style.opacity = reduced ? '1' : String(interpolate(progress, [[0, 0], [.35, 1], [.65, 1], [1, 0]]));
   });
   const closing = document.querySelector<HTMLElement>('.property-closing__card');
   if (closing) bindSourceScrollMotion(closing, (progress, reduced) => {

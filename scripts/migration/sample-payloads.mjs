@@ -170,12 +170,41 @@ function imageArray(assetMap, sourceAssets, label) {
   }));
 }
 
+const ARTICLE_ALLOWED_TAGS = new Set(['p', 'br', 'h2', 'h3', 'h4', 'h5', 'strong', 'em', 'a', 'ul', 'li']);
+const SAFE_LINK_HREF = /^(https?:|mailto:|tel:|\/)/;
+
+function articleHtmlContract(html, label) {
+  const document = new JSDOM(html).window.document;
+  const links = [];
+  for (const element of document.body.querySelectorAll('*')) {
+    const tag = element.tagName.toLowerCase();
+    if (!ARTICLE_ALLOWED_TAGS.has(tag)) throw new Error(`${label} contains unsupported <${tag}> content.`);
+    if (tag === 'ul' && element.querySelector('ul, ol')) throw new Error(`${label} contains a nested list.`);
+    if (tag === 'li' && element.parentElement?.tagName.toLowerCase() !== 'ul') throw new Error(`${label} contains a list item outside a bullet list.`);
+    if (tag !== 'a') continue;
+    const href = element.getAttribute('href');
+    if (!href || !SAFE_LINK_HREF.test(href)) throw new Error(`${label} contains an unsupported link href.`);
+    const target = element.getAttribute('target');
+    if (target && target !== '_blank') throw new Error(`${label} contains unsupported link target ${target}.`);
+    links.push({ href, openInNewTab: target === '_blank' });
+  }
+  return links;
+}
+
 function portableText(html, label) {
   const value = requiredString(html, `${label} HTML`);
+  const expectedLinks = articleHtmlContract(value, label);
   const blocks = htmlToBlocks(value, PORTABLE_TEXT_SCHEMA, {
     parseHtml: (input) => new JSDOM(input).window.document,
   });
   if (!Array.isArray(blocks) || blocks.length === 0) throw new Error(`${label} did not produce Portable Text blocks.`);
+  const convertedLinks = blocks.flatMap((block) => (block.markDefs ?? []).filter((definition) => definition?._type === 'link'));
+  if (convertedLinks.length !== expectedLinks.length) throw new Error(`${label} lost link annotations during Portable Text conversion.`);
+  expectedLinks.forEach((expected, index) => {
+    const converted = convertedLinks[index];
+    if (converted?.href !== expected.href) throw new Error(`${label} changed link order or href during Portable Text conversion.`);
+    if (expected.openInNewTab) converted.openInNewTab = true;
+  });
   return blocks.map((block, index) => ({ ...block, _key: block._key ?? `source-${index}` }));
 }
 
@@ -358,4 +387,4 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   }
 }
 
-export { assetRef, buildPayload, eligibleItem, imageArray, mapArticle, mapPreListing, mapProcessStep, portableText };
+export { articleHtmlContract, assetRef, buildPayload, eligibleItem, imageArray, mapArticle, mapPreListing, mapProcessStep, portableText };

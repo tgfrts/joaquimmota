@@ -11,7 +11,10 @@ const inline = (block: any) => (block.children ?? []).map((child: any) => {
     else if (mark === 'code') value = `<code>${value}</code>`;
     else {
       const href = definitions[mark]?.href;
-      if (typeof href === 'string' && /^(https?:|mailto:|tel:|\/)/.test(href)) value = `<a href="${escapeHtml(href)}">${value}</a>`;
+      if (typeof href === 'string' && /^(https?:|mailto:|tel:|\/)/.test(href)) {
+        const target = definitions[mark]?.openInNewTab === true ? ' target="_blank" rel="noopener noreferrer"' : '';
+        value = `<a href="${escapeHtml(href)}"${target}>${value}</a>`;
+      }
     }
   }
   return value;
@@ -27,4 +30,4 @@ for (const block of blocks) {
 }
 ---
 
-{groups.map((group) => group.kind === 'list' ? (group.style === 'number' ? <ol>{group.blocks.map((block) => <li set:html={inline(block)} />)}</ol> : <ul>{group.blocks.map((block) => <li set:html={inline(block)} />)}</ul>) : group.blocks.map((block) => block.style === 'h2' ? <h2 set:html={inline(block)} /> : block.style === 'h3' ? <h3 set:html={inline(block)} /> : block.style === 'h4' ? <h4 set:html={inline(block)} /> : block.style === 'blockquote' ? <blockquote set:html={inline(block)} /> : <p set:html={inline(block)} />))}
+{groups.map((group) => group.kind === 'list' ? (group.style === 'number' ? <ol>{group.blocks.map((block) => <li set:html={inline(block)} />)}</ol> : <ul>{group.blocks.map((block) => <li set:html={inline(block)} />)}</ul>) : group.blocks.map((block) => block.style === 'h2' ? <h2 set:html={inline(block)} /> : block.style === 'h3' ? <h3 set:html={inline(block)} /> : block.style === 'h4' ? <h4 set:html={inline(block)} /> : block.style === 'h5' ? <h5 set:html={inline(block)} /> : block.style === 'blockquote' ? <blockquote set:html={inline(block)} /> : <p set:html={inline(block)} />))}

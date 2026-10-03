@@ -1,0 +1,48 @@
+---
+import '../../styles/global.css';
+import '../../styles/reports.css';
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Relatórios de Atividades</title>
+  </head>
+  <body>
+    <main class="doop-report-page">
+      <header class="doop-report-intro">
+        <h1>Relatórios de Atividades</h1>
+        <p>Preenche o formulário abaixo.<br /><a href="https://docs.google.com/spreadsheets/d/1pUm6h4jg-5Efa1nYLMLm9lI-AFguRHyHVaxxY73osLA/edit#gid=0#" target="_blank" rel="noreferrer">Clica aqui</a> para ver todos os registos de atividade <a href="#" target="_blank" rel="noopener noreferrer">clica aqui</a>.</p>
+      </header>
+      <section class="doop-report-card" aria-label="Relatório de atividade">
+        <form class="doop-report-form" data-preview-form>
+          <div class="doop-report-field"><label for="activity">Atividade</label><input id="activity" name="Atividade" type="text" maxlength="256" placeholder="Nome da atividade" required /></div>
+          <div class="doop-report-field"><label for="activity-type">Tipo de Atividade</label><select id="activity-type" name="Tipo-atividade" required><option value="">Escolha uma opção</option><option value="marketing">Marketing</option><option value="visita">Visita</option><option value="proposta">Proposta</option><option value="contacto">Contacto</option></select></div>
+          <div class="doop-report-field"><label for="activity-date">Data</label><input id="activity-date" name="Data" type="text" maxlength="256" placeholder="Escolhe uma data" autocomplete="off" required /></div>
+          <div class="doop-report-field"><label for="property-id">Imóvel</label><input id="property-id" name="Im-vel" type="text" maxlength="256" placeholder="Insere o ID do imóvel" required /></div>
+          <div class="doop-report-field"><label for="activity-notes">Observações</label><textarea id="activity-notes" name="message" maxlength="5000" placeholder="Escreve aqui alguma observação"></textarea></div>
+          <div class="doop-report-field"><label for="owner-name">Proprietário</label><input id="owner-name" name="Propriet-rio" type="text" maxlength="256" placeholder="Nome do proprietário" /></div>
+          <div class="doop-report-field"><label for="owner-email">Email Proprietário</label><input id="owner-email" name="Email-Propriet-rio" type="text" maxlength="256" placeholder="Email do proprietário" /></div>
+          <button class="doop-report-submit" type="button" data-preview-submit>Registar atividade</button>
+          <p class="doop-report-preview">Pré-visualização: os registos não são enviados.</p>
+          <p class="doop-report-status" role="status" aria-live="polite" hidden data-preview-status></p>
+        </form>
+      </section>
+    </main>
+    <script>
+      const form = document.querySelector<HTMLFormElement>('[data-preview-form]');
+      const status = document.querySelector<HTMLElement>('[data-preview-status]');
+      form?.querySelector('[data-preview-submit]')?.addEventListener('click', () => {
+        if (!form.reportValidity()) return;
+        if (status) {
+          status.textContent = 'Pré-visualização: não é possível registar esta atividade.';
+          status.hidden = false;
+        }
+      });
+      form?.addEventListener('submit', event => event.preventDefault());
+    </script>
+  </body>
+</html>

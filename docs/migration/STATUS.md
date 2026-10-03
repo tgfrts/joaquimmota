@@ -1,5 +1,16 @@
 # Status
 
+## Estado atual
+
+- Projeto independente e contas próprias confirmadas; PM sem alterações tracked.
+- 11 amostras em drafts Sanity, 52 assets; dados das amostras conferidos. Bulk ainda dependente da aceitação visual/comportamental completa.
+- Check: 76 ficheiros sem diagnósticos; testes: 43/43; build: 117 páginas. Gate: 137 rotas CMS exigidas ausentes, zero rotas proibidas.
+- Reports DOOP e dashboard têm UI de preview; reports não enviam dados. HTTP 401 e integração real dos reports continuam pendentes.
+- Artigos/pre-listings corrigidos em tablet e galerias conferidas em interações básicas. Conversão estrita dos 59 artigos preserva H5 e links em nova janela; estruturas não suportadas falham antes da importação.
+- Produção, DNS e cutover continuam sem autorização.
+
+## Registo de evolução
+
 2026-10-03: inventário/plano aceite pelo Owner com exclusão de todos os rascunhos de origem. Checkout independente tgfrts/joaquimmota, branch codex/migration-foundation; nenhuma alteração tracked no checkout PM.
 
 Sanity próprio: Joaquim Mota / kaq1vd9b / production, inicialmente 0 documentos e 0 imagens. Resend próprio: mail.joaquimmota.pt verificado, eu-west-1. Nenhum email ou formulário submetido.
@@ -61,3 +72,9 @@ Correções funcionais/SEO posteriores: consentimento obrigatório segue no pedi
 Nos dois exemplos property, todas as dimensões das secções descrição/características/mapa/galeria/inquérito coincidem nos viewports desktop/mobile; desktop posições exatas, mobile desvio constante 0.5px. Grelhas preservam 19/25 imagens e ordem; badges mobile, localização inline, âncora características, alturas/proporções de galeria e mapa corrigidos. CTA e footer comparados só após carregar as imagens lazy originais: CTA mobile source400.094/target400.086; footer mobile source1150.539/target1150.547, newsletter294 e nota72px exatas. Ainda faltam verificação independente de movimento/tablet, restante site e entrega real; estes avanços não abrem bulk.
 
 Checkpoint de continuidade: revisão independente de scope/segredos/diff/draft gate passou; check72/0 diagnósticos, build114 e testes41/41 após consentimento. PM continua sem alterações tracked. Guardar este checkpoint não constitui aceitação da migração; a execução prossegue nas verificações ainda pendentes.
+
+## Responsive follow-up
+- Property tablet 834×1112: measured header, description, characteristics, map, inquiry, closing and fully loaded footer dimensions match the original (gallery rounding <0.05px). Collapsed light-navigation menu matches 200×410 at y72.
+- Inquiry opacity curve confirmed against actual public browser observation and reviewed independently.
+- Article tablet stack, main-image ratio, header typography and newsletter measured; exact original CTA portrait imported with matching SHA-256. Further sample visual checks remain before bulk acceptance.
+- No additional Sanity content writes or real form submissions in this follow-up.

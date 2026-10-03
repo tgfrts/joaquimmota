@@ -87,3 +87,13 @@ test('pre-listing imports the active hero only and fails closed on a changed res
   assert.throws(() => mapPreListing(item, { byFileId: {} }), /no Sanity image ref/);
   assert.throws(() => mapPreListing({ ...item, fieldData: { ...item.fieldData, 'galeria-2': [{ fileId: 'residual' }] } }, {}), /refresh public visibility inventory/);
 });
+
+test('Portable Text preserves H5 and source _blank behavior while rejecting unsupported body constructs', () => {
+  const blocks = portableText('<h5>Source subheading</h5><p><a href="https://example.test" target="_blank">External source link</a></p>', 'fixture article');
+  assert.equal(blocks[0].style, 'h5');
+  const link = blocks[1].markDefs.find((definition) => definition._type === 'link');
+  assert.equal(link.href, 'https://example.test');
+  assert.equal(link.openInNewTab, true);
+  assert.throws(() => portableText('<p>Copy</p><img src="https://example.test/image.jpg" />', 'fixture article'), /unsupported <img>/);
+  assert.throws(() => portableText('<p><a href="https://example.test" target="frame">Link</a></p>', 'fixture article'), /unsupported link target/);
+});

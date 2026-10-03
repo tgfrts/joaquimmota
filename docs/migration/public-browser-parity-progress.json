@@ -101,5 +101,157 @@
       "motion and tablet behavior independent verification",
       "complete SEO/links and lightbox interaction recheck after body layout changes"
     ]
+  },
+  "tabletFollowup": {
+    "viewport": [
+      834,
+      1112
+    ],
+    "status": "partial-observed-not-full-acceptance",
+    "property": {
+      "slug": "kwpt032055",
+      "source": {
+        "headerHeight": 72,
+        "floatingHeaderHeight": 358.3515625,
+        "descriptionHeight": 1121.75,
+        "characteristicsHeight": 258.7578125,
+        "mapHeight": 602.25,
+        "galleryHeight": 1292.4765625,
+        "inquiryHeight": 636.90625,
+        "closingHeight": 479.0703125,
+        "footerHeight": 1007.015625
+      },
+      "target": {
+        "headerHeight": 72,
+        "floatingHeaderHeight": 358.3515625,
+        "descriptionHeight": 1121.75,
+        "characteristicsHeight": 258.7578125,
+        "mapHeight": 602.25,
+        "galleryHeight": 1292.4296875,
+        "inquiryHeight": 636.90625,
+        "closingHeight": 479.0703125,
+        "footerHeight": 1007.0234375
+      },
+      "menu": {
+        "sourceAndTarget": {
+          "width": 200,
+          "height": 410,
+          "top": 72
+        }
+      },
+      "inquiryMotion": {
+        "observedSourceMobileOpacity": 0.53983,
+        "sensorTop": -291.2578125,
+        "sensorHeight": 555.890625,
+        "viewportHeight": 844,
+        "keyframes": [
+          [
+            0,
+            0
+          ],
+          [
+            0.35,
+            1
+          ],
+          [
+            0.65,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "independentGeometryReview": "pass; temporal smoothing still observationally limited"
+      }
+    },
+    "article": {
+      "slug": "a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "headerHeightSourceAndTarget": 226.9921875,
+      "mainImageSourceHeight": 422.2109375,
+      "mainImageTargetHeight": 422.203125,
+      "contentTopSourceAndTarget": 1014.2890625,
+      "newsletterHeightSourceAndTarget": 455.390625,
+      "remaining": "confirm list spacing correction and CTA wrapper geometry; second sample and other viewports still require final checks",
+      "ctaPortraitSourceAndTargetSha256": "64d39add739ae45e6a5386595c774c2531e064fdc18207dc1ae4f06e30bf3395"
+    }
+  },
+  "articleResponsiveFollowup": {
+    "status": "measured-partial-not-full-acceptance",
+    "firstSample": {
+      "slug": "a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "tabletBodyHeightSourceAndTarget": 3505.5390625,
+      "tabletNewsletterHeightSourceAndTarget": 455.390625,
+      "mobileBodyHeightSourceAndTarget": 6073.5625,
+      "mobileCtaHeightSource": 650.5859375,
+      "mobileCtaHeightTarget": 650.609375
+    },
+    "secondSample": {
+      "slug": "os-segredos-que-as-casas-nao-contam-2",
+      "mobileBodyHeightSourceAndTarget": 3983.9765625,
+      "mobileNewsletterFormHeightSourceAndTarget": 270,
+      "desktopBodyHeightSourceAndTarget": 2399.984375,
+      "desktopNewsletterFormHeightSourceAndTarget": 308,
+      "desktopHeaderHeightSource": 181.7890625,
+      "desktopHeaderHeightTarget": 181.8046875,
+      "tabletBodyHeightSourceAndTarget": 2375.953125,
+      "tabletHeaderHeightSourceAndTarget": 174.1953125,
+      "tabletNewsletterHeightSourceAndTarget": 455.390625
+    },
+    "sourceReadOnly": true,
+    "realFormSubmissions": 0,
+    "remaining": [
+      "second sample tablet and CTA",
+      "interaction and all responsive breakpoints",
+      "aggregate article rich-content coverage audit"
+    ]
+  },
+  "prelistingTabletFollowup": {
+    "viewport": [
+      834,
+      1112
+    ],
+    "slug": "sc-t4-arcozelo-20260416",
+    "sourceHeights": {
+      "hero": 1112,
+      "intro": 834.1875,
+      "sold": 572.328125,
+      "process": 1000.5859375,
+      "statsCombined": 612.5625,
+      "testimonials": 1910.2734375,
+      "ctaCardAfterLazyLoad": 621.25
+    },
+    "targetHeights": {
+      "hero": 1112,
+      "intro": 834.1875,
+      "sold": 572.3359375,
+      "process": 1000.5859375,
+      "statsCombined": 612.578125,
+      "testimonials": 1910.28125,
+      "ctaCardAfterLazyLoad": 621.25
+    },
+    "status": "geometry-observed; complete visual and motion acceptance still pending"
+  },
+  "propertyGalleryInteractionFollowup": {
+    "slug": "kwpt032055",
+    "sourceAndTargetGalleryLength": 19,
+    "targetVerified": [
+      "open first image",
+      "next selects image 2",
+      "last thumbnail selects image 19",
+      "next disabled at last",
+      "Escape closes",
+      "scroll lock cleared",
+      "focus returned to opener"
+    ],
+    "sourceVerified": [
+      "open first image",
+      "next navigation",
+      "last thumbnail selected",
+      "next inactive at last",
+      "Escape closes"
+    ],
+    "closeIcon": "original public SVG preserved; control geometry corrected",
+    "realSubmissions": 0
   }
 }
