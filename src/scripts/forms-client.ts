@@ -1,0 +1,24 @@
+type FormPayload = { formType: string; route: string; fields: Record<string, unknown> };
+const attempts = new WeakMap<HTMLFormElement, { payload: string; key: string; pending: boolean }>();
+
+/** Keep the same provider idempotency key when a visitor retries an unchanged submission. */
+export async function submitFormAccepted(form: HTMLFormElement, payload: FormPayload) {
+  const serialized = JSON.stringify(payload);
+  const previous = attempts.get(form);
+  if (previous?.pending) throw new Error('Submission already pending.');
+  const attempt = previous?.payload === serialized
+    ? previous
+    : { payload: serialized, key: crypto.randomUUID(), pending: false };
+  attempts.set(form, attempt);
+  attempt.pending = true;
+  try {
+    const response = await fetch('/api/forms', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'idempotency-key': attempt.key },
+      body: serialized,
+    });
+    if (response.status !== 202) throw new Error('Submission was not accepted.');
+  } finally {
+    attempt.pending = false;
+  }
+}

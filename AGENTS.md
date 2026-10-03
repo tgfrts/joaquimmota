@@ -11,4 +11,3 @@ Production, DNS and source decommission require explicit Owner authorization.
 Prefer simple Astro and static output. No shared/multisite abstractions. Do not introduce future infrastructure.
 Delegate bounded execution. GPT-5.6 Terra preferred investigator/executor/auditor; GPT-6 Luna for deterministic/mechanical work (Owner correction). Independent verification required for important candidates; executor cannot be sole certifier.
 Preserve other agents' changes. Report scope, evidence/tests, unresolved issues; keep STATUS current.
-

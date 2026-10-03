@@ -1,0 +1,13 @@
+---
+interface Props { value?: any; alt: string; class?: string; loading?: 'eager' | 'lazy'; }
+const { value, class: className, loading = 'lazy' } = Astro.props;
+const asset = value?.asset ?? value;
+const ref = asset?._ref;
+const sanityUrl = typeof ref === 'string' && ref.startsWith('image-')
+  ? (() => { const [, id, dimensions, format] = ref.match(/^image-(.+)-(\d+x\d+)-([a-z0-9]+)$/) ?? []; return id && dimensions && format ? `https://cdn.sanity.io/images/kaq1vd9b/production/${id}-${dimensions}.${format}` : undefined; })()
+  : undefined;
+const src = typeof value === 'string' ? value : asset?.url ?? asset?.src ?? value?.url ?? sanityUrl;
+const sourceAlt = value?.alt ?? asset?.alt ?? '';
+---
+
+{src && <img src={src} alt={sourceAlt} class={className} loading={loading} />}

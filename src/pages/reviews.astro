@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import sampleContent from '../data/sample-content.json';
+import '../styles/sample-context.css';
+const records: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? [];
+const testimonials = records.filter((record) => record._type === 'testimonial');
+const bySlug = new Map(testimonials.map((testimonial) => [testimonial.slug?.current ?? testimonial.sourceSlug, testimonial]));
+const sourceReviews = [
+  { slug: 'joao-carlos-de-almeida-55c95', clientName: 'João Carlos de Almeida', quote: 'Excelente profissional.' },
+  { clientName: 'Bruno Oliveira', quote: 'Quero-lhe agradecer a amabilidade e profissionalismo com que tratou da venda da minha casa. Ficou com mais um amigo. Muito sucesso e quando voltar a comprar casa certamente será consigo. Muito obrigado e um abraço!' },
+  { clientName: 'sonia teixeira', quote: 'Muita eficácia e profissionalismo... Recomendo.' },
+  { clientName: 'Vera Silva', quote: 'O Sr. Joaquim foi super prestativo. Ajudou-nos completamente em todo o processo, foi super tranquilo. Graças à sua estratégia, a casa foi vendida em menos de uma semana. Muito obrigado.' },
+  { slug: 'joao-carlos-de-almeida-55c95', clientName: 'João Carlos de Almeida', quote: 'Excelente profissional.' },
+  { clientName: 'Paulo Pereira', quote: 'Uma excelente pessoa. Um excelente vendedor. Felicidades.' },
+  { slug: 'carlos-dourado', clientName: 'Carlos Dourado', quote: 'Registo, o profissionalismo do Sr. Joaquim Mota, durante o período que ambos partilhamos, o que permitiu a consumação do contrato relativo ao apartamento, sito em Macedo de Cavaleiros.' },
+  { clientName: 'Ivone Baldaia', quote: 'Consultoria imobiliária de excelência, apoio em todo o processo de compra e pós compra. Obrigada Sr. Mota pelo profissionalismo, seriedade e disponibilidade.' },
+  { clientName: 'Bruno Santos', quote: 'Consultor de confiança, ajudou bastante no nosso processo e ficamos super satisfeitos.' },
+  { clientName: 'Bruna Augusto', quote: 'Excelente profissional muito acessível e simpático gosta do que faz e prima por ser uma pessoa genuína .Obrigado por tudo.' },
+].map((review) => review.slug ? bySlug.get(review.slug) ?? review : review);
+---
+<BaseLayout title="Avaliações" description=""><Header variant="light" pageNavigation contactHref="/vamos-comecar" /><main class="reviews-page"><header class="reviews-page__hero"><p>Testemunhos</p><h1>Somos alimentados pelo seu sucesso</h1><p>Dedicamo-nos para entregar um serviço de primeira classe para os nossos clientes. Se ainda não o deixamos claro, esperamos que estas avaliações ajudem a comprovar o nosso compromisso.</p></header><section class="reviews-page__feature"><div><h2>A família Silva</h2><p>Working with the Altenburg's on their purchase a while back was not just a fun experience because they are good friends of mine, it was extremely rewarding because we knew right away that this home was exactly what they wanted, and we were able to make it happen.</p></div></section><section class="reviews-page__list"><header><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></header><div class="sample-testimonials">{sourceReviews.map((testimonial) => <figure><div aria-label="5 estrelas">★★★★★</div><blockquote>{testimonial.quote}</blockquote><figcaption>{testimonial.clientName}</figcaption></figure>)}</div></section><section class="reviews-page__cta"><h2>Ainda à procura de uma parceria de confiança?</h2><p>Na opinião dos nossos clientes somos a melhor opção.</p><a href="/vamos-comecar">Vamos começar</a></section></main><Footer /></BaseLayout>

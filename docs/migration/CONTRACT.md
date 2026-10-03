@@ -9,4 +9,3 @@ Owner accepted the inventory/plan on 2026-10-03 with source-draft exclusion over
 - Import tests: one/two fully faithful eligible samples per CMS; then remaining content in bulk after parity and aggregate item/photo counts only.
 - Target drafts are safe validation artifacts, not source-draft imports. No target publication, real emails/submissions, DNS/cutover or source modification in this foundation phase.
 - Verify build, routes, migration invariants and independent review; no acceptance claims from build alone.
-

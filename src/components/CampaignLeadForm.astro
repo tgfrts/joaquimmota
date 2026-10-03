@@ -1,0 +1,29 @@
+---
+interface Props { route: string; submitLabel: string; downloadUrl: string; showSubject?: boolean; showReferralQuestions?: boolean; }
+const { route, submitLabel, downloadUrl, showSubject = false, showReferralQuestions = false } = Astro.props;
+---
+<form class="campaign-form" data-campaign-form data-route={route} data-download={downloadUrl}>
+  <div class="campaign-form__names"><input name="firstName" placeholder="Nome" required /><input name="lastName" placeholder="Apelido" required /></div>
+  <input name="email" type="email" placeholder="O seu email" required />
+  <input name="phone" type="tel" placeholder="Telefone" required />
+  {showReferralQuestions && <><label class="campaign-form__question">Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label><label class="campaign-form__question">Está a pensar vender ou a comprar casa?<select name="intent" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label></>}
+  {showSubject && <textarea name="message" placeholder="Assunto"></textarea>}
+  <label class="campaign-form__consent"><input type="checkbox" required checked /> <span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
+  <button type="submit">{submitLabel}</button>
+  <p class="campaign-form__status" aria-live="polite"></p>
+</form>
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+  document.querySelectorAll<HTMLFormElement>('[data-campaign-form]').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const status = form.querySelector<HTMLElement>('.campaign-form__status')!;
+    const data = new FormData(form);
+    const message = [data.get('message'), data.get('referral') ? `Conhece alguém: ${data.get('referral')}` : '', data.get('intent') ? `Está a pensar: ${data.get('intent')}` : ''].filter(Boolean).join('\n');
+    const fields = { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), ...(message ? { message } : {}) };
+    try {
+      await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route!, fields });
+      status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
+      window.location.assign(form.dataset.download!);
+    } catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; }
+  }));
+</script>

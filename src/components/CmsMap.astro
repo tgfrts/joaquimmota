@@ -1,0 +1,7 @@
+---
+interface Props { embed?: string; title: string; }
+const { embed, title } = Astro.props;
+const source = typeof embed === 'string' ? embed.match(/src=["']([^"']+)["']/i)?.[1] ?? (embed.startsWith('https://') ? embed : undefined) : undefined;
+---
+
+{source && <iframe class="cms-map" title={title} src={source} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>}

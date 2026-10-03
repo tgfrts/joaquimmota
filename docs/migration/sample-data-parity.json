@@ -1,0 +1,577 @@
+{
+  "generatedAt": "2026-10-03T15:03:30.321Z",
+  "scope": "11 authorized CMS samples only; data parity only; no bulk/import authorization",
+  "identityKey": [
+    "_type",
+    "legacyId",
+    "locale"
+  ],
+  "serverMetadataIgnored": [
+    "_createdAt",
+    "_id",
+    "_rev",
+    "_updatedAt"
+  ],
+  "documentCount": {
+    "payload": 11,
+    "target": 11,
+    "identityMatches": 11,
+    "exactStructuredMismatches": [],
+    "targetOnlyCount": 0
+  },
+  "sourceSlug": {
+    "checked": 11,
+    "mismatches": []
+  },
+  "routeArrayExactMatch": true,
+  "samples": [
+    {
+      "identity": {
+        "type": "property",
+        "legacyId": "6a54f0b08ea6f4acb252d675",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "kwpt036155",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 26,
+        "targetPhotoSlots": 26,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "fotografia-de-destaque",
+            "targetField": "featuredImage",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "outras-fotografias",
+            "targetField": "gallery",
+            "sourceSlots": 25,
+            "targetSlots": 25,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "property",
+        "legacyId": "69f85f2cd504290f91170cad",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "kwpt032055",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 20,
+        "targetPhotoSlots": 20,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "fotografia-de-destaque",
+            "targetField": "featuredImage",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "outras-fotografias",
+            "targetField": "gallery",
+            "sourceSlots": 19,
+            "targetSlots": 19,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "article",
+        "legacyId": "69a2dce4b48d3344ed295952",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 3,
+        "targetPhotoSlots": 3,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "imagem-principal",
+            "targetField": "mainImage",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "imagem-miniatura",
+            "targetField": "thumbnailImage",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "opengraph-image",
+            "targetField": "openGraphImage",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "galeria",
+            "targetField": "gallery",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "article",
+        "legacyId": "698af82db57942d2c5d10a3e",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "os-segredos-que-as-casas-nao-contam-2",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 3,
+        "targetPhotoSlots": 3,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "imagem-principal",
+            "targetField": "mainImage",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "imagem-miniatura",
+            "targetField": "thumbnailImage",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "opengraph-image",
+            "targetField": "openGraphImage",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "galeria",
+            "targetField": "gallery",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "testimonial",
+        "legacyId": "67b454c5e23698381d4b5a8b",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "joao-carlos-de-almeida-55c95",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 0,
+        "targetPhotoSlots": 0,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "foto-de-perfil",
+            "targetField": "image",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "testimonial",
+        "legacyId": "67b454c48728d3d81a387c44",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "carlos-dourado",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 0,
+        "targetPhotoSlots": 0,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "foto-de-perfil",
+            "targetField": "image",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "offer",
+        "legacyId": "64d744240d28836501ab496f",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "vinho-e-fado",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 1,
+        "targetPhotoSlots": 1,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "imagem",
+            "targetField": "image",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "preListing",
+        "legacyId": "6aaa6c0742b7f0b0b572f137",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "te-t2-gulpilhares-20260916-39528",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 0,
+        "targetPhotoSlots": 0,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "hero-image-2",
+            "targetField": "featuredImage",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "galeria-2",
+            "targetField": "gallery",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "preListing",
+        "legacyId": "6aaa6c05e5531aa86e7ef8a1",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "te-t2-gulpilhares-20260916-ff2b3",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 0,
+        "targetPhotoSlots": 0,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "hero-image-2",
+            "targetField": "featuredImage",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "galeria-2",
+            "targetField": "gallery",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "processStep",
+        "legacyId": "64d73faf12672d652ab57824",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "01-obtenha-a-pre-aprovacao",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 0,
+        "targetPhotoSlots": 0,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "image",
+            "targetField": "image",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "thumbnail",
+            "targetField": "thumbnail",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "processStep",
+        "legacyId": "64d73faf12672d652ab57839",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "estrategia-de-marketing",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 1,
+        "targetPhotoSlots": 1,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "image",
+            "targetField": "image",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          },
+          {
+            "sourceField": "thumbnail",
+            "targetField": "thumbnail",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    }
+  ],
+  "portableText": [
+    {
+      "identity": {
+        "type": "property",
+        "legacyId": "6a54f0b08ea6f4acb252d675",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "semanticMatch": true,
+      "htmlBlockCount": 7,
+      "portableTextBlockCount": 7,
+      "htmlDigest": "c7e421c720eb98baf1f2eabf38d77fd92f9a59ba49b97b0fdea04c08c2475470",
+      "portableTextDigest": "c7e421c720eb98baf1f2eabf38d77fd92f9a59ba49b97b0fdea04c08c2475470",
+      "htmlKinds": {
+        "paragraph": 7
+      },
+      "portableTextKinds": {
+        "paragraph": 7
+      },
+      "sourceHTMLStructure": {
+        "paragraphs": 7,
+        "headings": {},
+        "strongElements": 11,
+        "listItems": 0,
+        "lineBreaks": 8
+      },
+      "portableTextStructure": {
+        "styles": {
+          "normal": 7
+        },
+        "listKinds": {},
+        "strongSpans": 11,
+        "lineBreaks": 8
+      }
+    },
+    {
+      "identity": {
+        "type": "property",
+        "legacyId": "69f85f2cd504290f91170cad",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "semanticMatch": true,
+      "htmlBlockCount": 16,
+      "portableTextBlockCount": 16,
+      "htmlDigest": "950fc08d5c1adf31ce744ed71650f232a655ea471bea9413dd1c99f9b9dc7f71",
+      "portableTextDigest": "950fc08d5c1adf31ce744ed71650f232a655ea471bea9413dd1c99f9b9dc7f71",
+      "htmlKinds": {
+        "paragraph": 16
+      },
+      "portableTextKinds": {
+        "paragraph": 16
+      },
+      "sourceHTMLStructure": {
+        "paragraphs": 16,
+        "headings": {},
+        "strongElements": 0,
+        "listItems": 0,
+        "lineBreaks": 0
+      },
+      "portableTextStructure": {
+        "styles": {
+          "normal": 16
+        },
+        "listKinds": {},
+        "strongSpans": 0,
+        "lineBreaks": 0
+      }
+    },
+    {
+      "identity": {
+        "type": "article",
+        "legacyId": "69a2dce4b48d3344ed295952",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "semanticMatch": true,
+      "htmlBlockCount": 46,
+      "portableTextBlockCount": 46,
+      "htmlDigest": "e6da0e86f210d806bf0763c14ea92fbeda1f9dc3ae8d6099411d20fef2190485",
+      "portableTextDigest": "e6da0e86f210d806bf0763c14ea92fbeda1f9dc3ae8d6099411d20fef2190485",
+      "htmlKinds": {
+        "paragraph": 30,
+        "heading": 9,
+        "listItem": 7
+      },
+      "portableTextKinds": {
+        "paragraph": 30,
+        "heading": 9,
+        "listItem": 7
+      },
+      "sourceHTMLStructure": {
+        "paragraphs": 30,
+        "headings": {
+          "h3": 9
+        },
+        "strongElements": 9,
+        "listItems": 7,
+        "lineBreaks": 21
+      },
+      "portableTextStructure": {
+        "styles": {
+          "normal": 37,
+          "h3": 9
+        },
+        "listKinds": {
+          "bullet": 7
+        },
+        "strongSpans": 9,
+        "lineBreaks": 21
+      }
+    },
+    {
+      "identity": {
+        "type": "article",
+        "legacyId": "698af82db57942d2c5d10a3e",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "semanticMatch": true,
+      "htmlBlockCount": 25,
+      "portableTextBlockCount": 25,
+      "htmlDigest": "fa2c57e0fe93ea20290d4647267853e3ef3f76b7be29aff316ba40f13f9cd1a2",
+      "portableTextDigest": "fa2c57e0fe93ea20290d4647267853e3ef3f76b7be29aff316ba40f13f9cd1a2",
+      "htmlKinds": {
+        "paragraph": 17,
+        "heading": 8
+      },
+      "portableTextKinds": {
+        "paragraph": 17,
+        "heading": 8
+      },
+      "sourceHTMLStructure": {
+        "paragraphs": 17,
+        "headings": {
+          "h3": 8
+        },
+        "strongElements": 8,
+        "listItems": 0,
+        "lineBreaks": 24
+      },
+      "portableTextStructure": {
+        "styles": {
+          "normal": 17,
+          "h3": 8
+        },
+        "listKinds": {},
+        "strongSpans": 8,
+        "lineBreaks": 24
+      }
+    }
+  ],
+  "totals": {
+    "sourceImageSlots": 54,
+    "targetImageSlots": 54,
+    "imageSlotComparisonsPass": true
+  },
+  "overall": {
+    "all11IdentityMatched": true,
+    "structuredContentExact": true,
+    "sourceSlugPreserved": true,
+    "routesExact": true,
+    "allSampleDocsTargetDraft": true,
+    "imagesPass": true,
+    "semanticPortableTextPass": true
+  },
+  "sampleTargetDraftsByType": {
+    "property": {
+      "count": 2,
+      "drafts": 2
+    },
+    "article": {
+      "count": 2,
+      "drafts": 2
+    },
+    "testimonial": {
+      "count": 2,
+      "drafts": 2
+    },
+    "offer": {
+      "count": 1,
+      "drafts": 1
+    },
+    "preListing": {
+      "count": 2,
+      "drafts": 2
+    },
+    "processStep": {
+      "count": 2,
+      "drafts": 2
+    }
+  }
+}

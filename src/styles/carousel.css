@@ -1,0 +1,6 @@
+.property-rail { scroll-behavior: smooth; }
+.testimonial-rail { display: block; columns: 3; column-gap: 2rem; overflow: visible; padding: 0; }
+.testimonial-rail figure { display: inline-flex; flex-direction: column; width: 100%; min-height: 0; margin: 0 0 2rem; break-inside: avoid; }
+@media (max-width: 900px) { .testimonial-rail { columns: 2; } }
+@media (max-width: 640px) { .testimonial-rail { columns: 1; } }
+@media (prefers-reduced-motion: reduce) { .property-rail { scroll-behavior: auto; } }

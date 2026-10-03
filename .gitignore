@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+*.local
+.DS_Store
+exports/
+evidence/raw/
+src/data/sample-content.json

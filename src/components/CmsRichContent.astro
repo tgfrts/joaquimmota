@@ -1,0 +1,30 @@
+---
+interface Props { blocks?: any[]; }
+const { blocks = [] } = Astro.props;
+const escapeHtml = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+const inline = (block: any) => (block.children ?? []).map((child: any) => {
+  let value = escapeHtml(child.text ?? '');
+  const definitions = Object.fromEntries((block.markDefs ?? []).map((definition: any) => [definition._key, definition]));
+  for (const mark of child.marks ?? []) {
+    if (mark === 'strong') value = `<strong>${value}</strong>`;
+    else if (mark === 'em') value = `<em>${value}</em>`;
+    else if (mark === 'code') value = `<code>${value}</code>`;
+    else {
+      const href = definitions[mark]?.href;
+      if (typeof href === 'string' && /^(https?:|mailto:|tel:|\/)/.test(href)) value = `<a href="${escapeHtml(href)}">${value}</a>`;
+    }
+  }
+  return value;
+}).join('');
+const groups: Array<{ kind: 'block' | 'list'; style?: string; blocks: any[] }> = [];
+for (const block of blocks) {
+  if (block?._type !== 'block') continue;
+  if (block.listItem) {
+    const last = groups.at(-1);
+    if (last?.kind === 'list' && last.style === block.listItem) last.blocks.push(block);
+    else groups.push({ kind: 'list', style: block.listItem, blocks: [block] });
+  } else groups.push({ kind: 'block', blocks: [block] });
+}
+---
+
+{groups.map((group) => group.kind === 'list' ? (group.style === 'number' ? <ol>{group.blocks.map((block) => <li set:html={inline(block)} />)}</ol> : <ul>{group.blocks.map((block) => <li set:html={inline(block)} />)}</ul>) : group.blocks.map((block) => block.style === 'h2' ? <h2 set:html={inline(block)} /> : block.style === 'h3' ? <h3 set:html={inline(block)} /> : block.style === 'h4' ? <h4 set:html={inline(block)} /> : block.style === 'blockquote' ? <blockquote set:html={inline(block)} /> : <p set:html={inline(block)} />))}

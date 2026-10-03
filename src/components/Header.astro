@@ -1,0 +1,66 @@
+---
+interface Props { contactHref?: string; variant?: 'overlay' | 'light'; pageNavigation?: boolean; }
+const { contactHref = '/contacto', variant = 'overlay', pageNavigation = false } = Astro.props;
+const homeLinks = [
+  { href: '/vender', label: 'Vender' },
+  { href: '/comprar#imoveis', label: 'Imóveis' },
+  { href: '/reviews', label: 'O que dizem os nossos clientes' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/sobre', label: 'Sobre nós' },
+];
+const pageLinks = [
+  { href: '/', label: 'Início' },
+  { href: '/vender', label: 'Vender' },
+  { href: '/comprar', label: 'Comprar' },
+  { href: '/sobre', label: 'Sobre nós' },
+  { href: '/blog', label: 'Blog' },
+];
+const links = pageNavigation ? pageLinks : homeLinks;
+---
+
+<header class:list={['site-header', { 'site-header--light': variant === 'light' }]} data-header>
+  <a class="brand" href="/" aria-label="Joaquim Mota Consultores"><img src={variant === 'light' ? '/assets/logo-color.svg' : '/assets/logo-white.svg'} alt="" /></a>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="site-navigation">Menu <span></span></button>
+  <nav id="site-navigation" aria-label="Navegação principal">
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+  </nav>
+  <a class:list={['button', 'contact-link', variant === 'light' ? 'button--dark' : 'button--light']} href={contactHref}>Contacte-nos</a>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const button = header?.querySelector<HTMLButtonElement>('.menu-toggle');
+  button?.addEventListener('click', () => {
+    const open = header?.classList.toggle('is-open') ?? false;
+    button.setAttribute('aria-expanded', String(open));
+  });
+</script>
+
+<style is:global>
+  .site-header--light {
+    width: 90vw;
+    height: 70px;
+    color: #20457f;
+    border-bottom: 1px solid #ddd;
+  }
+  .site-header--light .brand img { width: 101px; }
+  .site-header--light nav {
+    position: absolute;
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+  .site-header--light .menu-toggle { color: #20457f; }
+  .site-header--light .button--dark {
+    min-height: 42px;
+    padding: .5rem 1rem;
+    background: #db1430;
+    border-color: #db1430;
+    color: #f4f4f4;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, .25);
+  }
+  .site-header--light .contact-link { margin-left: auto !important; flex: 0 0 auto; }
+  @media (max-width: 640px) {
+    .site-header--light .contact-link { display: none; }
+  }
+</style>

@@ -5,4 +5,3 @@ Samples: one/two eligible items per actual required CMS collection; 100% source-
 Bulk: authorized only after sample parity; no source drafts; aggregate item and photo counts per CMS. No manual one-by-one Sanity inspection.
 Preview candidate: faithful public routes/static pages/templates/interactions, SEO, responsive verification, required forms/integrations, build and independent audit.
 Production: NOT AUTHORIZED. DNS, cutover, decommission remain separate explicit Owner decisions.
-

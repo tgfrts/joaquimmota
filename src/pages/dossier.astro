@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import CampaignLeadForm from '../components/CampaignLeadForm.astro'; import '../styles/campaigns.css';
+const download='https://drive.google.com/file/d/1wi6qHnQzGuJOpk2uK1WyfFUzRGUcAndF/view?usp=share_link';
+---
+<BaseLayout title="Dossier"><main class="campaign-page"><div class="campaign-page__image" style="background-image:url('/assets/campaign-dossier.jpg')"></div><section class="campaign-page__panel"><a href="/"><img class="campaign-page__logo" src="/assets/logo-color.svg" alt="Joaquim Mota Consultores" /></a><h1>Obtenha o seu Guia de Proprietário</h1><p class="campaign-page__intro">Preencha o formulário e descubra como trabalhamos e obtemos o melhor resultado na venda da casa dos nossos clientes.</p><CampaignLeadForm route="/dossier" submitLabel="Descarregar" downloadUrl={download}/><p class="campaign-page__legal">© {new Date().getFullYear()} - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p></section></main></BaseLayout>

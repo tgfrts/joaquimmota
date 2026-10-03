@@ -1,0 +1,14 @@
+<section class="cms-newsletter" aria-labelledby="cms-newsletter-title">
+  <p class="eyebrow dark" id="cms-newsletter-title">NÃO PERCA NENHUM ARTIGO!</p>
+  <p>Subscreva para receber em primeira mão os nossos artigos no seu email todas as semanas.</p>
+  <form data-newsletter><input type="text" aria-label="Nome" placeholder="Nome" /><input type="text" aria-label="Apelido" placeholder="Apelido" /><input name="email" type="email" aria-label="O seu email" placeholder="O seu email" required /><button class="button button--light" type="submit">Subscrever</button><p aria-live="polite" data-newsletter-status></p></form>
+</section>
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+  document.querySelectorAll<HTMLFormElement>('form[data-newsletter]').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault(); if (!form.reportValidity()) return;
+    const status = form.querySelector<HTMLElement>('[data-newsletter-status]');
+    try { await submitFormAccepted(form, { formType: 'newsletter', route: location.pathname, fields: { email: String(new FormData(form).get('email')) } }); if (status) status.textContent = 'Enviado com sucesso!'; form.reset(); }
+    catch { if (status) status.textContent = 'Oops! Alguma coisa correu mal.'; }
+  }));
+</script>

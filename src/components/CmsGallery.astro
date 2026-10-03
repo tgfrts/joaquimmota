@@ -1,0 +1,38 @@
+---
+import CmsImage from './CmsImage.astro';
+interface Props { images?: any[]; label: string; }
+const { images = [], label } = Astro.props;
+const imageUrl = (image: any) => {
+  const asset = image?.asset ?? image;
+  const ref = asset?._ref;
+  const sanityUrl = typeof ref === 'string' && ref.startsWith('image-') ? (() => { const [, id, dimensions, format] = ref.match(/^image-(.+)-(\d+x\d+)-([a-z0-9]+)$/) ?? []; return id && dimensions && format ? `https://cdn.sanity.io/images/kaq1vd9b/production/${id}-${dimensions}.${format}` : undefined; })() : undefined;
+  return typeof image === 'string' ? image : asset?.url ?? asset?.src ?? image?.url ?? sanityUrl;
+};
+const usable = images.filter((image) => Boolean(imageUrl(image)));
+---
+
+{usable.length > 0 && (
+  <section class="cms-gallery" data-cms-gallery aria-label={label}>
+    <div class="cms-gallery__grid">
+      {usable.map((image, index) => <button type="button" data-gallery-index={index} aria-label={`Ver imagem ${index + 1} de ${usable.length}`}><CmsImage value={image} alt="" loading={index < 3 ? 'eager' : 'lazy'} /></button>)}
+    </div>
+    <dialog class="cms-gallery__dialog" aria-label={`${label}: visualização ampliada`}>
+      <button type="button" class="cms-gallery__close" aria-label="Fechar galeria">×</button>
+      <img alt={label} />
+      <div class="cms-gallery__controls"><button type="button" data-gallery-previous aria-label="Imagem anterior">←</button><span data-gallery-count></span><button type="button" data-gallery-next aria-label="Imagem seguinte">→</button></div>
+    </dialog>
+    <script define:vars={{ sources: usable.map(imageUrl) }}>
+      document.querySelectorAll('[data-cms-gallery]').forEach((gallery) => {
+        const dialog = gallery.querySelector('dialog');
+        const fullImage = dialog?.querySelector('img');
+        const counter = dialog?.querySelector('[data-gallery-count]');
+        let current = 0;
+        const render = () => { if (fullImage) fullImage.src = sources[current]; if (counter) counter.textContent = `${current + 1} / ${sources.length}`; };
+        gallery.querySelectorAll('[data-gallery-index]').forEach((button) => button.addEventListener('click', () => { current = Number(button.getAttribute('data-gallery-index')); render(); dialog?.showModal(); }));
+        dialog?.querySelector('.cms-gallery__close')?.addEventListener('click', () => dialog.close());
+        dialog?.querySelector('[data-gallery-previous]')?.addEventListener('click', () => { current = (current - 1 + sources.length) % sources.length; render(); });
+        dialog?.querySelector('[data-gallery-next]')?.addEventListener('click', () => { current = (current + 1) % sources.length; render(); });
+      });
+    </script>
+  </section>
+)}

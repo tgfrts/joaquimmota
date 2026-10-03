@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CmsGallery from '../../components/CmsGallery.astro';
+import CmsMap from '../../components/CmsMap.astro';
+import CmsRichContent from '../../components/CmsRichContent.astro';
+import CmsImage from '../../components/CmsImage.astro';
+import CmsPropertyInquiry from '../../components/CmsPropertyInquiry.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import sampleContent from '../../data/sample-content.json';
+import '../../styles/cms.css';
+import '../../styles/property.css';
+
+export function getStaticPaths() { const sampleRecords: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? []; return sampleRecords.filter((record) => record._type === 'property').map((record) => ({ params: { slug: record.slug?.current ?? record.sourceSlug }, props: { record } })); }
+const { record } = Astro.props;
+const gallery = record.gallery ?? [];
+const imageRef = record.featuredImage?.asset?._ref;
+const socialImage = typeof imageRef === 'string' ? (() => { const [, id, dimensions, format] = imageRef.match(/^image-(.+)-(\d+x\d+)-([a-z0-9]+)$/) ?? []; return id && dimensions && format ? `https://cdn.sanity.io/images/kaq1vd9b/production/${id}-${dimensions}.${format}` : undefined; })() : undefined;
+---
+
+<BaseLayout title={record.title} description="" socialImage={socialImage}>
+  <Header variant="light" pageNavigation contactHref="/vamos-comecar" />
+  <main class:list={['property-page', { 'property-page--reserved': record.marketBanner === 'reserved' }]}><CmsImage value={record.featuredImage} alt="" class="property-page__cover" loading="eager" /><section class="property-page__header shell"><h1>{record.title}</h1><div class="property-page__price">{record.priceOnRequest ? 'Preço sob consulta' : <><span>€</span>{record.price}</>}</div><div class="property-page__location"><strong>{record.municipality}</strong><span>{record.parish}</span></div><div class="property-page__facts">{record.bedrooms != null && <span aria-label={`${record.bedrooms} quartos`}>{record.bedrooms}</span>}{record.bathrooms != null && <span aria-label={`${record.bathrooms} casas de banho`}>{record.bathrooms}</span>}{record.usableArea != null && <span>{record.usableArea} m² - Área Útil</span>}{record.grossArea != null && <span>{record.grossArea} m² - Área Bruta</span>}{record.energyCertificate && <span aria-label={`Certificado energético ${record.energyCertificate}`}>{record.energyCertificate}</span>}</div></section><section class="property-page__body shell"><div class="property-page__grid"><article class="cms-copy" id="descricao"><h2>Descrição</h2><CmsRichContent blocks={record.description} /></article><CmsPropertyInquiry /></div>{record.videoUrl && <iframe class="cms-media" title="Vídeo" src={record.videoUrl} allowfullscreen />}{record.matterportUrl && <iframe class="cms-media" title="Visita virtual" src={record.matterportUrl} allowfullscreen />}<section id="galeria"><h2>Galeria</h2><CmsGallery images={gallery} label="Galeria" /></section><section id="localizacao"><h2>Localização</h2><CmsMap embed={record.mapEmbed} title="Localização" /></section></section></main>
+  <Footer />
+</BaseLayout>

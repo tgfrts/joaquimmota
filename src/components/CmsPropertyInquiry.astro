@@ -1,0 +1,34 @@
+<aside class="property-inquiry">
+  <div class="property-inquiry__agent"><img src="/assets/joaquim-profile.png" alt="" /><div><strong>Joaquim Mota</strong><p><a href="tel:+351914257870">+351 914 257 870</a><br /><a href="mailto:jrmota@kwportugal.pt">jrmota@kwportugal.pt</a></p></div></div>
+  <hr />
+  <h2>Gostaria de visitar este imóvel?</h2>
+  <form data-form-type="contact" novalidate>
+    <input name="firstName" placeholder="Nome" aria-label="Nome" required />
+    <input name="lastName" placeholder="Apelido" aria-label="Apelido" required />
+    <input name="email" type="email" placeholder="O seu email" aria-label="O seu email" required />
+    <input name="phone" type="tel" placeholder="Telefone" aria-label="Telefone" required />
+    <label><input name="marketingConsent" type="checkbox" checked required /> Aceito receber informações comerciais enviadas por PS Real Estate Team.</label>
+    <button class="button button--dark" type="submit">Mais informações</button>
+    <p class="property-inquiry__status" aria-live="polite"></p>
+  </form>
+</aside>
+
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+  document.querySelectorAll<HTMLFormElement>('form[data-form-type="contact"]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const status = form.querySelector<HTMLElement>('.property-inquiry__status');
+      const fields = new FormData(form);
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (status) status.textContent = 'A enviar…';
+      if (button) button.disabled = true;
+      try {
+        await submitFormAccepted(form, { formType: 'contact', route: window.location.pathname, fields: { name: `${fields.get('firstName') ?? ''} ${fields.get('lastName') ?? ''}`.trim(), email: fields.get('email'), phone: fields.get('phone'), message: '' } });
+        if (status) status.textContent = 'Enviado com sucesso!'; form.reset();
+      } catch { if (status) status.textContent = 'Oops! Alguma coisa correu mal. Tente novamente.'; }
+      finally { if (button) button.disabled = false; }
+    });
+  });
+</script>

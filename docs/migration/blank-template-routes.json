@@ -1,0 +1,456 @@
+{
+  "source": "https://joaquimmota.pt",
+  "scope": "Eligible public blank CMS template paths; no content import",
+  "routes": [
+    {
+      "path": "open-house/1202-3313",
+      "sourceId": "662758ff2a1007398583fb2e",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "open-house/1202-2325",
+      "sourceId": "64d73faf12672d652ab57862",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "open-house/1202-2299",
+      "sourceId": "64d73faf12672d652ab5773c",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "consultores/paulo-soares",
+      "sourceId": "64d73faf12672d652ab5783a",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "blog-categories/dicas",
+      "sourceId": "64d73faf12672d652ab577a3",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "blog-categories/mercado",
+      "sourceId": "64d73faf12672d652ab577cd",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "blog-categories/vendedores",
+      "sourceId": "64d73faf12672d652ab577b9",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "blog-categories/compradores",
+      "sourceId": "64d73faf12672d652ab57812",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/referenciar-algum-cliente",
+      "sourceId": "64d73faf12672d652ab5776e",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/ser-cliente-da-ps-real-estate-team",
+      "sourceId": "64d73faf12672d652ab57710",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/how-do-i-get-my-home-ready-to-sell",
+      "sourceId": "64d73faf12672d652ab57813",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/how-fast-will-my-home-sell",
+      "sourceId": "64d73faf12672d652ab5773b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/how-is-your-calculation-different-from-zillow",
+      "sourceId": "64d73faf12672d652ab5773a",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/how-do-you-calculate-my-homes-value",
+      "sourceId": "64d73faf12672d652ab577e7",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/how-much-is-my-home-worth",
+      "sourceId": "64d73faf12672d652ab57754",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/how-long-does-the-buying-process-typically-take",
+      "sourceId": "64d73faf12672d652ab57739",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/do-i-need-to-be-pre-approved-if-so-how-do-i-get-pre-approved",
+      "sourceId": "64d73faf12672d652ab57809",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/how-do-i-write-an-offer-that-will-get-accepted",
+      "sourceId": "64d73faf12672d652ab57711",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "faq/how-can-i-be-the-first-to-see-new-homes-for-sale",
+      "sourceId": "64d73faf12672d652ab57788",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/03-outras-vantagens-exclusivas",
+      "sourceId": "64d73faf12672d652ab5781f",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/02-ofertas-exclusivas",
+      "sourceId": "64d73faf12672d652ab5781b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/01-acesso-a-eventos-exclusivos",
+      "sourceId": "64d73faf12672d652ab5781e",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/hora-de-festejar",
+      "sourceId": "64d73faf12672d652ab57823",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/negocie-o-melhor-valor",
+      "sourceId": "64d73faf12672d652ab5781a",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/mostre-a-sua-casa",
+      "sourceId": "64d73faf12672d652ab57837",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/estrategia-de-marketing",
+      "sourceId": "64d73faf12672d652ab57839",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/prepare-a-sua-casa",
+      "sourceId": "64d73faf12672d652ab57836",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/02-estrategia-de-preco",
+      "sourceId": "64d73faf12672d652ab57822",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/01-os-seus-objetivos",
+      "sourceId": "64d73faf12672d652ab57838",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/06-hora-de-festejar",
+      "sourceId": "64d73faf12672d652ab57818",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/04-faca-uma-oferta",
+      "sourceId": "64d73faf12672d652ab5781d",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/03-visitas",
+      "sourceId": "64d73faf12672d652ab57814",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/02-inicie-a-pesquisa",
+      "sourceId": "64d73faf12672d652ab57819",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/01-obtenha-a-pre-aprovacao",
+      "sourceId": "64d73faf12672d652ab57824",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/03-suporte",
+      "sourceId": "64d73faf12672d652ab57821",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/02-consultoria",
+      "sourceId": "64d73faf12672d652ab57825",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "vs-destaques/01-simples-e-facil",
+      "sourceId": "64d73faf12672d652ab57816",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/joao-carlos-de-almeida-55c95",
+      "sourceId": "67b454c5e23698381d4b5a8b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/carlos-dourado",
+      "sourceId": "67b454c48728d3d81a387c44",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/sonia-teixeira",
+      "sourceId": "67b454c40e6191ab38dd93b4",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/celia-silva",
+      "sourceId": "67b454c431cb80b581543815",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/carla-rocha",
+      "sourceId": "67b454c4ba76a8566c116ae4",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/rosa-vieira",
+      "sourceId": "67b454c416294d0dd7d83f9a",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/paulo-pereira",
+      "sourceId": "67b454c4445a686a6fdc2d56",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/joaquim-ferreira",
+      "sourceId": "67b454c4b3a8ed624a80ab95",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/cristina-pinto",
+      "sourceId": "67b454c31c58cf1ccb931413",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/gisela-almeida",
+      "sourceId": "67b454c3d756ec6ee51b9d5f",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/isabel-costa",
+      "sourceId": "67b454c300eea974a3ec3f4b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/paulinhodefontes-youtube",
+      "sourceId": "67b454c3a547aac135cb03bb",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/adelino-samorinha",
+      "sourceId": "67b454c3d756ec6ee51b9d20",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/paula-fernandes",
+      "sourceId": "67b454c30075d4bc4a230624",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/maria-fernanda",
+      "sourceId": "67b454c347236a636fd95deb",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/antonio-marques",
+      "sourceId": "67b454c331cb80b581543568",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/nuno-teixeira",
+      "sourceId": "67b454c32ead792fa087686b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/maria-nogueira",
+      "sourceId": "67b454c3ba76a8566c1169ff",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/ivone-baldaia",
+      "sourceId": "67b454c3e4e0b333d8cfef31",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/graca",
+      "sourceId": "67b454c24f54fe731662d6aa",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/bruno-santos",
+      "sourceId": "67b454c242cd3da4d37b19e1",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/lurdes-santos",
+      "sourceId": "67b454c269a51c5f6218e5e1",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/bruno-vanessa",
+      "sourceId": "67b454c203f471be13f96306",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/joao-carlos-de-almeida",
+      "sourceId": "652f96cb684575bd79cc55e6",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/joana-teixeira",
+      "sourceId": "652f96b6811d83333f6a45ff",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/fernando-gc",
+      "sourceId": "652f969ef07d0af70408db33",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/jorge-mendes",
+      "sourceId": "652f967923bd5beb1289a007",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/joao",
+      "sourceId": "652f964e99e5a384fac6f29e",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/bruna-augusto",
+      "sourceId": "652f96102bab7444d6e36fe0",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/susana-loureiro",
+      "sourceId": "652f95ea488ed3e20371204e",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/samuel-castro",
+      "sourceId": "652f95c499e5a384fac63080",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/juliana-ramalho",
+      "sourceId": "652f959cc8e4c50b1b987165",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/jose-silva",
+      "sourceId": "652f9559355b22cce2bb32f4",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/maria-helena-vieira",
+      "sourceId": "64d73faf12672d652ab5784d",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/bruno-oliveira",
+      "sourceId": "64d73faf12672d652ab5784c",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/isidro-guedes",
+      "sourceId": "64d73faf12672d652ab5784b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/vera-silva",
+      "sourceId": "64d73faf12672d652ab5784a",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    },
+    {
+      "path": "testemunhos/ivo-duraes",
+      "sourceId": "64d73faf12672d652ab57849",
+      "locale": "64d73fb112672d652ab57ff5",
+      "title": "Joaquim Mota Consultores"
+    }
+  ]
+}
