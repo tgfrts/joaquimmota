@@ -6,7 +6,7 @@ const key = 'submission-20261003-001';
 const leadPayload = {
   formType: 'contact',
   route: '/contacto',
-  fields: { name: 'Ana', email: 'ANA@example.test', message: 'Olá\n<script>alert(1)</script>' },
+  fields: { name: 'Ana', email: 'ANA@example.test', message: 'Olá\n<script>alert(1)</script>', consent: true },
 };
 
 function request(payload, headers = {}) {
@@ -37,6 +37,7 @@ test('allows newsletter capture only on an approved public route', async () => {
   assert.equal(adapter.calls.length, 1);
   assert.equal(adapter.calls[0][0], 'newsletter');
   assert.equal(adapter.calls[0][1].fields.email, 'visitor@example.test');
+  assert.equal('consent' in adapter.calls[0][1].fields, false);
 });
 
 test('rejects routes outside the server allowlist before invoking an adapter', async () => {
@@ -99,6 +100,21 @@ test('rejects malformed fields and missing idempotency keys', async () => {
   assert.equal(adapter.calls.length, 0);
 });
 
+test('requires explicit true consent for every non-newsletter submission before invoking an adapter', async () => {
+  const adapter = mockAdapter();
+  const handler = createFormHandler(adapter);
+  const missingFields = { ...leadPayload.fields };
+  delete missingFields.consent;
+  const missing = await handler({ request: request({ ...leadPayload, fields: missingFields }), env: {} });
+  const unchecked = await handler({ request: request({ ...leadPayload, fields: { ...leadPayload.fields, consent: false } }), env: {} });
+  const wrongType = await handler({ request: request({ ...leadPayload, fields: { ...leadPayload.fields, consent: 'true' } }), env: {} });
+
+  assert.equal(missing.status, 422);
+  assert.equal(unchecked.status, 422);
+  assert.equal(wrongType.status, 422);
+  assert.equal(adapter.calls.length, 0);
+});
+
 test('rejects malformed JSON without handing it to an adapter', async () => {
   const adapter = mockAdapter();
   const response = await createFormHandler(adapter)({ request: request('{not json'), env: {} });
@@ -128,6 +144,7 @@ test('normalizes the visitor reply-to address without permitting header injectio
 
   assert.equal(accepted.status, 202);
   assert.equal(adapter.calls[0][1].fields.email, 'ana@example.test');
+  assert.equal(adapter.calls[0][1].fields.consent, true);
   assert.equal(injected.status, 422);
 });
 
@@ -151,6 +168,7 @@ test('the Resend adapter uses configured recipient only and escapes lead HTML', 
   assert.equal(calls[0].url, 'https://api.resend.com/emails');
   assert.deepEqual(body.to, ['owner@example.test']);
   assert.equal(body.reply_to, 'ana@example.test');
+  assert.match(body.html, /<th scope="row">consent<\/th><td>true<\/td>/u);
   assert.match(body.html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/u);
   assert.doesNotMatch(body.html, /<script>/u);
   assert.equal(calls[0].init.headers['idempotency-key'], key);

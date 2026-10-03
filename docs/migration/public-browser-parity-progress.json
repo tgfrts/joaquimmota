@@ -1,0 +1,105 @@
+{
+  "observedAt": "2026-10-03T21:50:44.399406+00:00",
+  "status": "partial; full sample acceptance remains pending",
+  "sourceReadOnly": true,
+  "noFormSubmissions": true,
+  "offer": {
+    "slug": "vinho-e-fado",
+    "viewports": [
+      "1280x720",
+      "390x844",
+      "834x1112"
+    ],
+    "headingAndFormGeometry": "exact at observed viewports",
+    "desktop": {
+      "headingTop": 127.859375,
+      "firstFieldTop": 281.859375,
+      "submitTop": 680.859375
+    },
+    "mobile": {
+      "headingTop": 505.359375,
+      "firstFieldTop": 717.359375,
+      "submitTop": 1217.359375
+    },
+    "tablet": {
+      "headingTop": 772.75,
+      "firstFieldTop": 898.75,
+      "imageWrapperHeight": 667.1953125
+    },
+    "interaction": "required controls/default selects/checked consent; own 202 redirect contract tested with mocks; no real delivery test",
+    "hiddenFieldsExcluded": [
+      "field-2 textarea Assunto"
+    ]
+  },
+  "preListing": {
+    "samples": [
+      "te-t2-gulpilhares-20260916-39528",
+      "sc-t4-arcozelo-20260416"
+    ],
+    "activeHeroBinding": "six of nineteen eligible items use their original hero-image-2; thirteen use static public fallback",
+    "testimonialOrder": "ten selected per route, nineteen route selections preserved; seven ambiguous identities retained as candidate IDs",
+    "mobileSecondSample": {
+      "finalCardHeightSource": 416.7890625,
+      "finalCardHeightTarget": 416.78125,
+      "contentHeightBoth": 229.5859375
+    },
+    "permanentlyHiddenExcluded": [
+      "sold-card property counts",
+      "gallery-render",
+      "sticky-bar"
+    ],
+    "stickyObservation": {
+      "secondDesktop": {
+        "scrollY": 1440,
+        "heroBottom": -720,
+        "barTop": 720,
+        "barBottom": 796,
+        "viewportHeight": 720
+      },
+      "secondMobile": {
+        "scrollY": 1688,
+        "heroBottom": -844,
+        "barTop": 844,
+        "barBottom": 920,
+        "viewportHeight": 844
+      },
+      "transformBoth": "matrix(1, 0, 0, 1, 0, 76)",
+      "firstSample": "same off-viewport state observed at scroll720/1440",
+      "sourceScript": "literal HTML entities in script text; observer intention alone does not establish active visible behavior",
+      "independentReview": "initial markup-only P1 withdrawn; bounded data/form checks pass"
+    }
+  },
+  "remaining": [
+    "whole-page visual and responsive certification of every sample template",
+    "representative static-family browser comparison",
+    "protected and DOOP route behavior",
+    "actual own form delivery configuration/test",
+    "bulk only after full sample acceptance"
+  ],
+  "property": {
+    "samples": [
+      "kwpt032055",
+      "kwpt036155"
+    ],
+    "viewports": [
+      "1280x720",
+      "390x844"
+    ],
+    "bodySections": "description, characteristics, map, gallery and inquiry dimensions match in both examples; desktop positions exact after market-banner spacing; mobile positions differ by a constant 0.5px",
+    "galleryImageCounts": [
+      19,
+      25
+    ],
+    "galleryOrderedAssets": "validated in sample-data-parity.json",
+    "mobileBadgeGeometry": "exact five active badges; parking is desktop-only; location inline flow wraps naturally",
+    "closingLoadedImage": "card 389px desktop; 400.09375px source vs 400.0859375px target mobile; observed only after original lazy image loaded",
+    "footerLoaded": "713.625px desktop and 1150.5390625px source vs1150.546875px target mobile; same 294px mobile newsletter form and72px privacy note",
+    "anchorsRestored": [
+      "caracteristicas"
+    ],
+    "remaining": [
+      "motion and tablet behavior independent verification",
+      "complete SEO/links and lightbox interaction recheck after body layout changes"
+    ]
+  }
+}

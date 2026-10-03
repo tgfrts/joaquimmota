@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/partnerships.css';
+
+interface Props {
+  locale: 'pt' | 'en' | 'fr';
+}
+
+const { locale } = Astro.props;
+const content = {
+  pt: {
+    title: 'Parcerias',
+    switches: [{ label: 'Français', href: '/partenariats' }, { label: 'English', href: '/partnerships' }],
+    question: 'Tens um Cliente no Norte de Portugal?',
+    offer: 'Ganha 50% da Comissão!',
+    introduction: 'Tens um comprador ou vendedor interessado no Norte de Portugal, mas não atendes essa zona?',
+    explanation: 'Envia a referência e recebe 50% da comissão assim que o negócio fechar – sem complicações!',
+    clientTypeQuestion: 'Qual é o tipo de cliente que estás a referenciar?',
+    seller: 'Vendedor',
+    buyer: 'Comprador',
+    firstName: 'Nome',
+    lastName: 'Apelido',
+    email: 'Email',
+    phone: 'Telefone',
+    consent: 'Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.',
+  },
+  en: {
+    title: 'Partnerships',
+    switches: [{ label: 'Français', href: '/partenariats' }, { label: 'Português', href: '/parcerias' }],
+    question: 'Do You Have a Client in Northern Portugal?',
+    offer: 'Earn 50% Commission!',
+    introduction: 'Do you know a buyer or seller interested in Northern Portugal?',
+    explanation: 'Send the referral and receive 50% commission once the deal is closed – hassle-free!',
+    clientTypeQuestion: 'What type of client are you referring?',
+    seller: 'Seller',
+    buyer: 'Buyer',
+    firstName: 'Name',
+    lastName: 'Last name',
+    email: 'Email',
+    phone: 'Whatsapp',
+    consent: 'I agree that my data may be used for the sending of commercial information by Joaquim Mota Consultores Imobiliários.',
+  },
+  fr: {
+    title: 'Partenariats',
+    switches: [{ label: 'English', href: '/partnerships' }, { label: 'Português', href: '/parcerias' }],
+    question: 'Vous Avez un Client dans le Nord du Portugal?',
+    offer: 'Gagnez 50% de commission!',
+    introduction: 'Vous connaissez un acheteur ou un vendeur intéressé par le nord du Portugal?',
+    explanation: 'Envoyez la recommandation et recevez 50% de commission dès que la transaction est conclue – sans complications !',
+    clientTypeQuestion: 'Quel type de client recommandes-tu?',
+    seller: 'Vendeur',
+    buyer: 'Acheteur',
+    firstName: 'Nom',
+    lastName: 'Prénom',
+    email: 'Email',
+    phone: 'Whatsapp',
+    consent: 'J’accepte que mes données soient utilisées pour l’envoi d’informations commerciales par Joaquim Mota Consultores Imobiliários.',
+  },
+};
+const page = content[locale];
+const route = { pt: '/parcerias', en: '/partnerships', fr: '/partenariats' }[locale];
+---
+
+<BaseLayout title={page.title} socialImage="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg">
+  <main class="partnership-page">
+    <div class="partnership-page__image" aria-hidden="true">
+      <div class="partnership-page__photo"></div>
+    </div>
+    <section class="partnership-page__panel">
+      <nav class="partnership-page__languages" aria-label="Language">
+        {page.switches.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <div class="partnership-page__content">
+        <a class="partnership-page__logo" href="/" aria-label="Joaquim Mota Consultores — página inicial">
+          <img src="/assets/logo-color.svg" alt="" width="100" />
+        </a>
+        <h1><strong>{page.question}</strong><strong>{page.offer}</strong></h1>
+        <p class="partnership-page__description">{page.introduction}<br />{page.explanation}</p>
+
+        <form class="partnership-form" data-partnership-form data-route={route}>
+          <div class="partnership-form__name-fields">
+            <input name="firstName" type="text" placeholder={page.firstName} required />
+            <input name="lastName" type="text" placeholder={page.lastName} required />
+          </div>
+          <input name="email" type="email" placeholder={page.email} required />
+          <input name="phone" type="tel" placeholder={page.phone} required />
+          <label class="partnership-form__client-type">
+            <span>{page.clientTypeQuestion}</span>
+            <select name="clientType" required>
+              <option value="vendedor">{page.seller}</option>
+              <option value="comprador">{page.buyer}</option>
+            </select>
+          </label>
+          <label class="partnership-form__consent">
+            <input name="consent" type="checkbox" required checked />
+            <span>{page.consent}</span>
+          </label>
+          <button type="submit">Enviar</button>
+          <p class="partnership-form__status" aria-live="polite"></p>
+        </form>
+        <p class="partnership-page__legal">©<span data-current-year></span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+        <div class="partnership-page__success" hidden role="status">Obrigado! O seu formulário foi enviado com sucesso.</div>
+        <p class="partnership-page__error" hidden role="alert">Oops! Aconteceu algo de errado enquanto submetia o seu formulário.</p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+
+  document.querySelectorAll<HTMLFormElement>('[data-partnership-form]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const firstName = String(data.get('firstName') ?? '').trim();
+      const lastName = String(data.get('lastName') ?? '').trim();
+      const status = form.querySelector<HTMLElement>('.partnership-form__status');
+      const success = form.parentElement?.querySelector<HTMLElement>('.partnership-page__success');
+      const error = form.parentElement?.querySelector<HTMLElement>('.partnership-page__error');
+      if (status) status.textContent = '';
+      if (error) error.hidden = true;
+      try {
+        await submitFormAccepted(form, {
+          formType: 'partnership',
+          route: form.dataset.route!,
+          fields: {
+            name: `${firstName} ${lastName}`.trim(),
+            email: data.get('email'),
+            phone: data.get('phone'),
+            clientType: data.get('clientType'),
+          },
+        });
+        form.hidden = true;
+        if (success) success.hidden = false;
+      } catch {
+        if (error) error.hidden = false;
+      }
+    });
+  });
+
+  const year = document.querySelector<HTMLElement>('[data-current-year]');
+  if (year) year.textContent = String(new Date().getFullYear());
+</script>

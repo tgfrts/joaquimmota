@@ -1,0 +1,232 @@
+{
+  "source": "/private/tmp/prelisting-testimonial-bindings.json",
+  "scope": "Public testimonial fallback records with eligible source-document matches only.",
+  "counts": {
+    "eligiblePublicMatchDocuments": 37
+  },
+  "fallbackPolicy": "Prefer a matched local Sanity document when available; use these source records as fallback pending bulk approval.",
+  "testimonials": [
+    {
+      "legacyId": "64d73faf12672d652ab57849",
+      "clientName": "Ivo Durães",
+      "quote": "Profissional, dedicado e honesto. Obrigado pela ajuda na compra da casa.",
+      "portraitURL": "https://uploads-ssl.webflow.com/63638f133928eb56dba4ed2d/637b476e03cd691dcb0b4871_81944571_3020492074652274_6293006388704575488_n.jpg"
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5784a",
+      "clientName": "Vera Silva",
+      "quote": "O Sr. Joaquim foi super prestativo. Ajudou-nos completamente em todo o processo, foi super tranquilo. Graças à sua estratégia, a casa foi vendida em menos de uma semana. Muito obrigado.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5784b",
+      "clientName": "Isidro Guedes",
+      "quote": "Grande profissional, rigor, empenho, dedicação ao negócio!\nMuito obrigado.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5784c",
+      "clientName": "Bruno Oliveira",
+      "quote": "Quero-lhe agradecer a amabilidade e profissionalismo com que tratou da venda da minha casa.\nFicou com mais um amigo. Muito sucesso e quando voltar a comprar casa certamente será consigo.\nMuito obrigado e um abraço!",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5784d",
+      "clientName": "Maria Helena Vieira",
+      "quote": "Venho através deste meio, reconhecer o profissionalismo e vontade, com que nos atendeu, desde que o contactámos para que vende-se a nossa moradia.\nVerificámos que é uma pessoa muito diligente e atenciosa, o que nos agradou.\nSerá uma pessoa, que recomendarei, caso precise dos seus serviços.\nAgradeço toda a atenção e despeço-me, com elevada consideração.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f9559355b22cce2bb32f4",
+      "clientName": "Jose Silva",
+      "quote": "Excelente profissional, além de uma grande simpatia, aconselho a que tem interesse em vender um imóvel a contactar. Daqui faço um agradecimento publico. Muito Obrigado e um abraço.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f959cc8e4c50b1b987165",
+      "clientName": "Juliana Ramalho",
+      "quote": "Gostaríamos de agradecer, a todos os intervenientes na compra do nosso imóvel, em especial ao Sr. Joaquim Mota e à D. Carla , que sempre nos aconselharam e tiverem imensa paciência durante todo o processo.\nHoje temos o nosso imóvel e apesar de muitas adversidades que ocorreram durante o processo, foram todos muito eficientes e profissionais connosco. O nosso muito obrigada!",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f95c499e5a384fac63080",
+      "clientName": "Samuel Castro",
+      "quote": "Um excelente profissional e um excelente ser humano, que não só nos prestou os seus serviços com o máximo profissionalismo e qualidade assim como também ficou a partir daí uma amizade e consideração. Excelente!",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f95ea488ed3e20371204e",
+      "clientName": "Susana Loureiro",
+      "quote": "Vender e comprar casa ao mesmo tempo não é de todo fácil, mas com a ajuda do Sr. Joaquim Mota tornou-se possível. Sem dúvida um profissional de excelência. Dedicado e sempre pronto a ajudar. Sem a ajuda do sr. Joaquim nunca teria sido possível a nossa mudança de casa. Muito obrigada por tudo.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f96102bab7444d6e36fe0",
+      "clientName": "Bruna Augusto",
+      "quote": "Excelente profissional muito acessível e simpático gosta do que faz e prima por ser uma pessoa genuína .Obrigado por tudo.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f964e99e5a384fac6f29e",
+      "clientName": "João",
+      "quote": "Desde já agradeço ao Sr. Joaquim Mota pela atenção dispensada e sempre que foi preciso a sua disponibilidade em dar, resposta as minhas necessidades! Continue sempre assim, um excelente profissional. Já não é o primeiro negócio que já realizamos. Acima de tudo muito honesto no que vê e no que prevê! Parabéns mais uma vez, obrigado por tudo. Assim haja muitos Srs. Joaquim.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f967923bd5beb1289a007",
+      "clientName": "Jorge Mendes",
+      "quote": "Bom dia a todos, já fiz mais de que um negócio com a KW SOMOS essencialmente com o vendedor Joaquim Mota ao qual só tenho a agradecer pela sua atenção e simpatia sempre disponível quando eu precisava. Obrigado.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f969ef07d0af70408db33",
+      "clientName": "Fernando GC",
+      "quote": "Atendimento de excelência!",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f96b6811d83333f6a45ff",
+      "clientName": "Joana Teixeira",
+      "quote": "O sr. Joaquim é uma pessoa muito profissional, simpática, disponível e que nos tranquilizou no processo de compra da nossa primeira casa. É um excelente profissional.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "652f96cb684575bd79cc55e6",
+      "clientName": "João Carlos de Almeida",
+      "quote": "Excelente profissional.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c203f471be13f96306",
+      "clientName": "Bruno Vanessa",
+      "quote": "Excelente profissional... recomendo.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c242cd3da4d37b19e1",
+      "clientName": "Bruno Santos",
+      "quote": "Consultor de confiança, ajudou bastante no nosso processo e ficamos super satisfeitos.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c24f54fe731662d6aa",
+      "clientName": "Graça",
+      "quote": "O sr. Mota é um senhor muito simpático, sério e competente. Já fiz dois negócios com ele estou muito satisfeita. Recomendo.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c269a51c5f6218e5e1",
+      "clientName": "Lurdes Santos",
+      "quote": "O Sr. Mota é, sem dúvida, um profissional de mão cheia! Muito obrigada por toda a atenção, cuidado e dedicação. Bem haja.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c30075d4bc4a230624",
+      "clientName": "PAULA FERNANDES",
+      "quote": "Vendi e comprei casa e gostei muito como tudo correu... Estou satisfeita com o serviço efetuado.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c300eea974a3ec3f4b",
+      "clientName": "Isabel Costa",
+      "quote": "Pessoa muito afável e competente. Acompanhamento excelente desde a angariação até à escritura.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c31c58cf1ccb931413",
+      "clientName": "Cristina Pinto",
+      "quote": "Conseguiu rapidamente resolver a venda e compra da minha nova casa. Obrigada e felicidades.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c32ead792fa087686b",
+      "clientName": "Nuno Teixeira",
+      "quote": "Fenomenal acompanhamento no processo de aquisição da nossa nova casa. Obrigado Sr. Joaquim. Profissional, transparente, dedicado.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c331cb80b581543568",
+      "clientName": "António Marques",
+      "quote": "Boa experiência.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c347236a636fd95deb",
+      "clientName": "Maria Fernanda",
+      "quote": "Foi uma venda rápida e bem sucedida na altura o Sr.Mota ainda representava a Remax, como tal voltei a contactá-lo recentemente para uma nova venda....Moradia em Pedroso.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c3a547aac135cb03bb",
+      "clientName": "paulinhodefontes youtube",
+      "quote": "Foi uma venda rápida e bem sucedida. Pessoal simpático, profissional e dedicado.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c3ba76a8566c1169ff",
+      "clientName": "Maria Nogueira",
+      "quote": "O sr. Joaquim já me vendeu um apartamento em Gulpilhares, foi uma venda rápida e bem sucedida, foi em parceria com outro colega da Remax. Estou em vias de fazer um novo negócio já o recomendei a minha irmã e já lhe vendeu duas casas, é muito sério e responsável. Recomendo bastante tudo o que diz faz.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c3d756ec6ee51b9d20",
+      "clientName": "Adelino Samorinha",
+      "quote": "Competente e sempre disponível para ajudar.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c3d756ec6ee51b9d5f",
+      "clientName": "Gisela Almeida",
+      "quote": "Pela segunda vez, recorri ao Sr. Joaquim, para ajuda na venda e compra de casa. Rapidez, disponibilidade e profissionalismo! Bastante prestável e confiável! Desejo continuação de muito sucesso!",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c3e4e0b333d8cfef31",
+      "clientName": "Ivone Baldaia",
+      "quote": "Consultoria imobiliária de excelência, apoio em todo o processo de compra e pós compra. Obrigada Sr. Mota pelo profissionalismo, seriedade e disponibilidade.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c40e6191ab38dd93b4",
+      "clientName": "sonia teixeira",
+      "quote": "Muita eficácia e profissionalismo... Recomendo.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c416294d0dd7d83f9a",
+      "clientName": "Rosa Vieira",
+      "quote": "Excelente trabalho.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c431cb80b581543815",
+      "clientName": "Celia Silva",
+      "quote": "NÃO tenho outra opção, a não ser 5 estrelas.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c4445a686a6fdc2d56",
+      "clientName": "Paulo Pereira",
+      "quote": "Uma excelente pessoa. Um excelente vendedor. Felicidades.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c48728d3d81a387c44",
+      "clientName": "Carlos Dourado",
+      "quote": "Registo, o profissionalismo do Sr. Joaquim Mota, durante o período que ambos partilhamos, o que permitiu a consumação do contrato relativo ao apartamento, sito em Macedo de Cavaleiros.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c4b3a8ed624a80ab95",
+      "clientName": "Joaquim Ferreira",
+      "quote": "Muito bom resultados 100%. Excelente.",
+      "portraitURL": null
+    },
+    {
+      "legacyId": "67b454c5e23698381d4b5a8b",
+      "clientName": "João Carlos de Almeida",
+      "quote": "Excelente profissional.",
+      "portraitURL": null
+    }
+  ]
+}

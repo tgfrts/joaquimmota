@@ -1,0 +1,71 @@
+[
+  {
+    "_type": "processStep",
+    "legacyId": "64d73faf12672d652ab57824",
+    "locale": "64d73fb112672d652ab57ff5",
+    "sourceSlug": "01-obtenha-a-pre-aprovacao",
+    "slug": {
+      "_type": "slug",
+      "current": "01-obtenha-a-pre-aprovacao"
+    },
+    "title": "01. Obtenha a pré-aprovação",
+    "body": "O primeiro grande passo para comprar a casa dos seus sonhos é obter a pré-aprovação do financiamento. Isso ajudará a determinar exatamente quanto poderá pagar e quais casas estão no seu orçamento.",
+    "placement": "buy",
+    "ctaLabel": "Quero obter uma proposta",
+    "ctaUrl": "https://www.joaquimmota.pt/credito-habitacao"
+  },
+  {
+    "_type": "processStep",
+    "legacyId": "64d73faf12672d652ab57819",
+    "locale": "64d73fb112672d652ab57ff5",
+    "sourceSlug": "02-inicie-a-pesquisa",
+    "slug": {
+      "_type": "slug",
+      "current": "02-inicie-a-pesquisa"
+    },
+    "title": "02. Inicie a pesquisa",
+    "body": "Vamos configurar alertas de imóveis para que possa começar a procurar casas online e agendar visitas às casas que mais chamam a sua atenção.",
+    "placement": "buy",
+    "ctaLabel": "Quero ver os imóveis",
+    "ctaUrl": "https://www.joaquimmota.pt/comprar#imoveis"
+  },
+  {
+    "_type": "processStep",
+    "legacyId": "64d73faf12672d652ab57814",
+    "locale": "64d73fb112672d652ab57ff5",
+    "sourceSlug": "03-visitas",
+    "slug": {
+      "_type": "slug",
+      "current": "03-visitas"
+    },
+    "title": "03. Visitas",
+    "body": "Agora é hora da parte divertida – comprar a casa dos seus sonhos! Após selecionar algumas casas e agendar visitas, esta é a hora de visitar.",
+    "placement": "buy"
+  },
+  {
+    "_type": "processStep",
+    "legacyId": "64d73faf12672d652ab5781d",
+    "locale": "64d73fb112672d652ab57ff5",
+    "sourceSlug": "04-faca-uma-oferta",
+    "slug": {
+      "_type": "slug",
+      "current": "04-faca-uma-oferta"
+    },
+    "title": "04. Faça uma oferta",
+    "body": "Depois de encontrar a sua casa preferida, é hora de fazer uma oferta. Isso pode parecer assustador, mas os nossos consultores irão guiar ao longo de todo o processo – espere algumas negociações aqui!",
+    "placement": "buy"
+  },
+  {
+    "_type": "processStep",
+    "legacyId": "64d73faf12672d652ab57818",
+    "locale": "64d73fb112672d652ab57ff5",
+    "sourceSlug": "06-hora-de-festejar",
+    "slug": {
+      "_type": "slug",
+      "current": "06-hora-de-festejar"
+    },
+    "title": "06. Hora de festejar",
+    "body": "Parabéns! Chegou a hora de fechar negócio da casa dos seus sonhos. Garantiremos que todos os documentos e transações necessárias sejam concluídos para lhe podermos entregar as chaves da sua nova casa!",
+    "placement": "buy"
+  }
+]

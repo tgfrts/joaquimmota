@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/public-campaigns.css';
+const title = 'Smillingstreet';
+const description = 'A JRM Consultores uniu-se à Smilling Street – uma clínica dentária de excelência – para lhe oferecer vantagens exclusivas enquanto nosso cliente.';
+---
+<BaseLayout title={title} description={description} socialImage="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f4fbc9eb92ea877163a92d_Dentista%20Adobe%20Stock-2.webp">
+  <main class="smilling-campaign">
+    <section class="smilling-campaign__hero">
+      <a href="/" aria-label="Joaquim Mota — página inicial"><img class="smilling-campaign__logo" src="/assets/logo-color.svg" alt="" /></a>
+      <div class="smilling-campaign__timer" aria-label="00 dias, 00 horas, 00 minutos e 00 segundos"><span>00<small>Dias</small></span><span>00<small>Horas</small></span><span>00<small>Min</small></span><span>00<small>Seg</small></span></div>
+      <div class="smilling-campaign__brand-row"><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f5036326b2a29644678d0e_Logo-jrm.svg" alt="JRM Consultores Imobiliários" /><span>×</span><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f50311058aa2987daf6668_log-clinica_cor.png" alt="Smilling Street" /></div>
+      <p class="smilling-campaign__eyebrow">JRM Consultores Imobiliários x Smilling Street</p>
+      <h1>Uma parceria que o vai fazer sorrir</h1>
+      <p>Acreditamos que cuidar de uma casa é importante. Mas cuidar de quem vive nela é essencial.</p>
+      <p>É por isso que a JRM Consultores se aliou à Smillingstreet, empresa de referencia na reabilitacao sobre implantes, para lhe oferecer benefícios únicos enquanto nosso cliente.</p>
+      <a href="#inscricao" class="smilling-campaign__button">Quero inscrever-me</a>
+      <p class="smilling-campaign__date">10 de Maio - 15h às 18h</p>
+    </section>
+    <section class="smilling-campaign__event"><div><h2>Um evento que não vai querer perder</h2><ul><li>Conheça os serviços da Smillingstreet e como pode melhorar a sua saúde oral com confiança.</li><li>Desconto exclusivo de 10% em todos os serviços, só para clientes JRM.</li><li>Os tratamentos são realizados na Clinica da Associação São Francisco de Assis Anta Espinho.</li><li>Descubra como a parceria foi pensada para cuidar não só do seu património, mas também de si.</li></ul><p><strong>E ainda…</strong> um sorteio com prémios especiais, só para participantes presentes!</p></div><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f4fbc9eb92ea877163a92d_Dentista%20Adobe%20Stock-2.webp" alt="" loading="lazy" /></section>
+    <section class="smilling-campaign__speaker"><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f5000707a3c583ecd1f645_foto-orador3.png" alt="" loading="lazy" /><div><h2>Participação especial: Dr. Carlo Trivoli</h2><p>Cirurgião dentista e professor em implantodontia, com vasta experiência internacional.</p><p>Vai partilhar conselhos práticos e inspiradores sobre como cuidar do seu sorriso com qualidade e segurança.</p><a href="#inscricao" class="smilling-campaign__button">Quero inscrever-me</a></div></section>
+    <section class="smilling-campaign__clinic"><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f505d672e936f2b66597b8_Associac%CC%A7a%CC%83o%20Sa%CC%83o%20Francisco%20de%20Assis.jpg" alt="" loading="lazy" /><p>10 de Maio - 15h às 18h</p><a href="#inscricao" class="smilling-campaign__button">Quero inscrever-me</a></section>
+    <section class="smilling-campaign__form-section" id="inscricao"><h2>Garanta o seu desconto.</h2><p>Registe-se para obter o seu desconto de 10% em todos os tratamentos dentários.</p>
+      <form data-smilling-form data-route="/lp/smillingstreet"><div class="smilling-campaign__names"><input name="firstName" placeholder="Nome" required /><input name="lastName" placeholder="Apelido" required /></div><input name="email" type="email" placeholder="O seu email" required /><input name="phone" type="tel" placeholder="Telefone" required />
+        <label>Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label>
+        <label>Está a pensar vender ou a comprar casa?<select name="intent" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label>
+        <label class="smilling-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label><button type="submit">Enviar</button><p data-smilling-status role="status" aria-live="polite" hidden></p>
+      </form>
+    </section>
+  </main>
+</BaseLayout>
+<script>
+  import { submitFormAccepted } from '../../scripts/forms-client';
+  document.querySelectorAll<HTMLFormElement>('[data-smilling-form]').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault(); if (!form.reportValidity()) return;
+    const data = new FormData(form); const button = form.querySelector<HTMLButtonElement>('button'); const status = form.querySelector<HTMLElement>('[data-smilling-status]'); if (!button || !status) return;
+    button.disabled = true; status.hidden = false;
+    const message = `Conhece alguém que esteja a vender ou a comprar casa?: ${data.get('referral')}\nEstá a pensar vender ou a comprar casa?: ${data.get('intent')}`;
+    try { await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } }); form.hidden = true; status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.'; }
+    catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
+  }));
+</script>

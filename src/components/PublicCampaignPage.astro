@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/public-campaigns.css';
+
+interface Props {
+  campaign: 'cabaz' | 'euro';
+}
+const { campaign } = Astro.props;
+const isCabaz = campaign === 'cabaz';
+const route = isCabaz ? '/lp/cabaz-de-natal' : '/lp/oferta-selecao';
+const title = isCabaz ? 'Cabaz de Natal' : 'Euro 2024 - Oferta 4 cachecóis da seleção';
+const description = isCabaz
+  ? 'Torne o seu Natal ainda mais mágico. Participe no sorteio de 1 cabaz de Natal no dia 16 de Dezembro!'
+  : 'O Euro 2024 está a chegar  e queremos que apoie e celebre os jogos da seleção em grande estilo! Para tornar este evento ainda mais especial, vamos oferecer 4 cachecóis exclusivos da nossa seleção! Clique para participar.';
+const heading = isCabaz ? 'Um Natal ainda mais mágico?' : 'Preencha o formulário e habilite-se a um dos 4 cachecóis que temos para oferecer.';
+const image = isCabaz
+  ? 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69148e8ba28d33842a7cb66a_cabaz-natal.webp'
+  : 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6660c70d634094bb55f82e7a_Euro_Squad_PORTUGAL.webp';
+---
+<BaseLayout title={title} description={description} socialImage={isCabaz ? 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69148e9dbd965d99f992dad0_cn-og.webp' : 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6660c70d634094bb55f82e7a_Euro_Squad_PORTUGAL.webp'}>
+  <main class:list={['public-campaign', `public-campaign--${campaign}`]}>
+    <div class="public-campaign__image" style={`--campaign-bg:url("${image}")`} aria-hidden="true"></div>
+    <section class="public-campaign__panel">
+      <a class="public-campaign__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
+      <h1>{heading}{isCabaz && <><br />Participe no sorteio do nosso cabaz natalício. Para se habilitar preencha o formulário.</>}</h1>
+      <form data-public-campaign data-route={route} data-success={isCabaz ? 'Obrigado! A sua participação foi registada com sucesso.' : 'Obrigado! O seu formulário foi enviado com sucesso.'}>
+        <div class="public-campaign__names"><input name="firstName" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" autocomplete="family-name" placeholder="Apelido" required /></div>
+        <input name="email" type="email" autocomplete="email" placeholder="O seu email" required />
+        <input name="phone" type="tel" autocomplete="tel" placeholder="Telefone" required />
+        <label>Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label>
+        <label>Está a pensar vender ou a comprar casa?<select name="intent" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label>
+        {isCabaz && <><input name="street" autocomplete="street-address" placeholder="Morada" required /><div class="public-campaign__names"><input name="postalCode" autocomplete="postal-code" placeholder="Código Postal" required /><input name="county" autocomplete="address-level2" placeholder="Concelho" required /></div></>}
+        <label class="public-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
+        <button type="submit">{isCabaz ? 'Participar' : 'Enviar'}</button>
+        <p class="public-campaign__status" data-campaign-status role="status" aria-live="polite" hidden></p>
+      </form>
+      <p class="public-campaign__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+    </section>
+  </main>
+</BaseLayout>
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+  document.querySelectorAll<HTMLFormElement>('[data-public-campaign]').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault(); if (!form.reportValidity()) return;
+    const data = new FormData(form); const button = form.querySelector<HTMLButtonElement>('button'); const status = form.querySelector<HTMLElement>('[data-campaign-status]'); if (!button || !status) return;
+    button.disabled = true; status.hidden = false;
+    const message = [`Conhece alguém que esteja a vender ou a comprar casa?: ${data.get('referral')}`, `Está a pensar vender ou a comprar casa?: ${data.get('intent')}`, ...(data.get('street') ? [`Morada: ${data.get('street')}`, `Código Postal: ${data.get('postalCode')}`, `Concelho: ${data.get('county')}`] : [])].join('\n');
+    try {
+      await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } });
+      form.hidden = true; status.textContent = form.dataset.success ?? 'Obrigado! O seu formulário foi enviado com sucesso.';
+    } catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
+  }));
+  const year = document.querySelector<HTMLElement>('[data-current-year]'); if (year) year.textContent = String(new Date().getFullYear());
+</script>

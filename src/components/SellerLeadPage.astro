@@ -1,0 +1,99 @@
+---
+import '../styles/seller-leads.css';
+
+interface Props {
+  title: string;
+  heading: string;
+  description: string;
+  route: '/quanto-vale-a-sua-casa-hoje' | '/uma-venda-com-sucesso';
+  background: 'market' | 'oliveira';
+  propertyDetails?: boolean;
+  socialImage?: string;
+}
+
+const { title, heading, description, route, background, propertyDetails = false, socialImage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta property="og:title" content={title} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <meta name="twitter:title" content={title} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main class="seller-lead">
+      <div class:list={['seller-lead__image', `seller-lead__image--${background}`]} aria-hidden="true"></div>
+      <section class="seller-lead__panel">
+        <div class="seller-lead__content">
+          <a class="seller-lead__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
+          <h1>{heading}</h1>
+          <p class="seller-lead__description">{description}</p>
+          <form class="seller-lead__form" data-seller-lead-form data-route={route} data-property-details={propertyDetails ? 'true' : 'false'}>
+            <div class="seller-lead__names">
+              <label><span>Nome</span><input name="firstName" autocomplete="given-name" placeholder="Nome" required /></label>
+              <label><span>Apelido</span><input name="lastName" autocomplete="family-name" placeholder="Apelido" required /></label>
+            </div>
+            <label><span>O seu email</span><input name="email" type="email" autocomplete="email" placeholder="O seu email" required /></label>
+            <label><span>Telefone</span><input name="phone" type="tel" autocomplete="tel" placeholder="Telefone" required /></label>
+            {propertyDetails && <>
+              <label class="seller-lead__question"><span>Selecione o tipo de imóvel:</span><select name="propertyType" required><option value="">Selecione</option><option value="apartamento">Apartamento</option><option value="moradia">Moradia</option><option value="outro">Outro</option></select></label>
+              <label class="seller-lead__question"><span>Número de quartos:</span><select name="bedrooms" required><option value="">Selecione</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+">4+</option></select></label>
+              <label><span class="seller-lead__visually-hidden">Localização do imóvel — Avenida / Rua / Travessa</span><input name="street" autocomplete="street-address" placeholder="Avenida / Rua / Travessa" required /></label>
+              <div class="seller-lead__names">
+                <label><span class="seller-lead__visually-hidden">Código Postal</span><input name="postalCode" autocomplete="postal-code" placeholder="Código Postal" required /></label>
+                <label><span class="seller-lead__visually-hidden">Concelho</span><input name="county" autocomplete="address-level2" placeholder="Concelho" required /></label>
+              </div>
+            </>}
+            <label class="seller-lead__consent"><input name="consent" type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
+            <button type="submit">Enviar</button>
+            <p class="seller-lead__status" data-seller-lead-status role="status" aria-live="polite" hidden></p>
+          </form>
+          <p class="seller-lead__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+  document.querySelectorAll<HTMLFormElement>('[data-seller-lead-form]').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const status = form.querySelector<HTMLElement>('[data-seller-lead-status]');
+    if (!button || !status) return;
+    button.disabled = true;
+    const data = new FormData(form);
+    const fields: Record<string, string> = {
+      name: `${String(data.get('firstName') ?? '').trim()} ${String(data.get('lastName') ?? '').trim()}`.trim(),
+      email: String(data.get('email') ?? '').trim(),
+      phone: String(data.get('phone') ?? '').trim(),
+    };
+    if (form.dataset.propertyDetails === 'true') {
+      fields.propertyType = String(data.get('propertyType') ?? '');
+      fields.bedrooms = String(data.get('bedrooms') ?? '');
+      fields.location = [data.get('street'), data.get('postalCode'), data.get('county')].map((part) => String(part ?? '').trim()).filter(Boolean).join(', ');
+    }
+    status.hidden = false;
+    try {
+      await submitFormAccepted(form, { formType: 'valuation', route: form.dataset.route ?? '', fields });
+      form.hidden = true;
+      status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
+    } catch {
+      status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.';
+      button.disabled = false;
+    }
+  }));
+  const year = document.querySelector<HTMLElement>('[data-current-year]');
+  if (year) year.textContent = String(new Date().getFullYear());
+</script>

@@ -1,0 +1,265 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { buildPayload } from './sample-payloads.mjs';
+
+const REQUIRED = [
+  { type: 'property', sourceName: 'Imóveis', slug: 'imoveis' },
+  { type: 'article', sourceName: 'Blog Posts', slug: 'post' },
+  { type: 'testimonial', sourceName: 'Testemunhos', slug: 'testemunhos' },
+  { type: 'offer', sourceName: 'Ofertas', slug: 'ofertas' },
+  { type: 'preListing', sourceName: 'Pre-Listings', slug: 'vouvender' },
+  { type: 'processStep', sourceName: 'VS Destaques', slug: 'vs-destaques' },
+];
+const BUY_PAGE_ID = '61e1b999e018031966a98c78f8548d5d';
+const HOME_PAGE_ID = '663132020846a392d304a25e78392a84';
+const SELL_PAGE_ID = '12b19dfc9cb975be3f2f8c2b397c5af7';
+const PS_EXCLUSIVE_PAGE_ID = '476ae63fed50f2fc5dcf2605b91221c0';
+const HOME_VISIBILITY_EVIDENCE = {
+  source: 'Owner browser inspection at 1280px; all three Home headings have visible w-dyn-item ancestors and non-zero rectangles',
+  viewportWidth: 1280,
+  headingNames: ['01. Simples e fácil', '02. Consultoria', '03. Suporte'],
+  headingRectHeight: 116.398,
+  containingSectionHeight: 541,
+  sourceIds: ['64d73faf12672d652ab57816', '64d73faf12672d652ab57821', '64d73faf12672d652ab57825'],
+};
+const SELL_HIDDEN_EVIDENCE = {
+  source: 'Owner verified all seven Vender steps permanently hidden on desktop and mobile',
+};
+const IMAGE_TYPES = new Set(['Image', 'MultiImage']);
+const IMAGE_EXCLUDED_NAMES = new Set(['open-house', 'Open Houses', 'FAQs', 'Blog categories', 'Consultores']);
+const PRELISTING_IMAGE_EXCLUSIONS = [
+  { slug: 'galeria-2', type: 'MultiImage' },
+];
+const PRELISTING_BINDING_EVIDENCE = '/private/tmp/joaquimmota-prelisting-public-binding-audit.md';
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(file, 'utf8'));
+}
+
+function collection(snapshot, name) {
+  const result = snapshot.collections?.find((candidate) => candidate.name === name);
+  if (!result || !Array.isArray(result.staged?.items) || !Array.isArray(result.live?.items)) {
+    throw new Error(`Missing complete staged/live source collection: ${name}`);
+  }
+  if (result.staged.items.length !== result.staged.pagination?.total
+    || result.live.items.length !== result.live.pagination?.total) {
+    throw new Error(`Incomplete staged/live source pagination: ${name}`);
+  }
+  return result;
+}
+
+function imageInventory(item, fields) {
+  let photoSlots = 0;
+  let gallerySlots = 0;
+  const originalFileIds = new Set();
+  for (const field of fields.filter((entry) => IMAGE_TYPES.has(entry.type))) {
+    const value = item.fieldData?.[field.slug];
+    const values = Array.isArray(value) ? value : [value];
+    for (const asset of values) {
+      if (!asset || typeof asset.fileId !== 'string' || !asset.fileId.trim()) continue;
+      photoSlots += 1;
+      originalFileIds.add(asset.fileId);
+      if (field.type === 'MultiImage') gallerySlots += 1;
+    }
+  }
+  return { photoSlots, gallerySlots, originalFileIds };
+}
+
+function isEligible(item, collectionData) {
+  if (!item || item.isDraft !== false || item.isArchived !== false) return false;
+  if (typeof item.id !== 'string' || !item.id.trim() || typeof item.cmsLocaleId !== 'string' || !item.cmsLocaleId.trim()) return false;
+  const slug = item.fieldData?.slug;
+  if (typeof slug !== 'string' || !slug.trim()) return false;
+  return collectionData.live.items.some((live) => live.id === item.id
+    && live.cmsLocaleId === item.cmsLocaleId && live.slug === slug);
+}
+
+function exactGate(gate, sampleIdsBySlug) {
+  if (gate?.status !== 'passed' || !Array.isArray(gate.collections)) return false;
+  return REQUIRED.every(({ slug }) => {
+    const entry = gate.collections.find((candidate) => candidate.slug === slug);
+    const expectedIds = sampleIdsBySlug[slug] ?? [];
+    const providedIds = Array.isArray(entry?.sourceIds) ? [...entry.sourceIds].sort() : [];
+    const requiredEvidence = ['content', 'visibleImages', 'order', 'layout', 'responsive', 'urls', 'seo', 'behavior'];
+    return entry?.status === 'passed'
+      && typeof entry.evidence === 'string' && entry.evidence.trim().length > 0
+      && JSON.stringify(providedIds) === JSON.stringify([...expectedIds].sort())
+      && requiredEvidence.every((key) => entry.parity?.[key] === true);
+  });
+}
+
+export function buildBulkManifest(source, eligibilityReport, samplePayload, blankRoutes, sampleGate = null) {
+  if (!Array.isArray(samplePayload?.documents) || !Array.isArray(eligibilityReport?.collections)) {
+    throw new Error('Sample payload and eligibility report are required.');
+  }
+  const sampleIdsBySlug = Object.fromEntries(REQUIRED.map(({ slug }) => [slug, []]));
+  for (const document of samplePayload.documents) {
+    const config = REQUIRED.find((entry) => entry.type === document._type);
+    if (!config || !sampleIdsBySlug[config.slug]) throw new Error(`Unexpected generated sample type: ${document._type}`);
+    sampleIdsBySlug[config.slug].push(document.legacyId);
+  }
+
+  const cmsCollections = REQUIRED.map(({ type, sourceName, slug }) => {
+    const sourceCollection = collection(source, sourceName);
+    const reportCollection = eligibilityReport.collections.find((entry) => entry.collection?.slug === slug);
+    if (!reportCollection || reportCollection.pagination?.stagedComplete !== true || reportCollection.pagination?.liveComplete !== true) {
+      throw new Error(`Eligibility report is missing complete evidence for ${slug}.`);
+    }
+    const stagedEligible = sourceCollection.staged.items.filter((item) => isEligible(item, sourceCollection));
+    if (type === 'processStep') {
+      const homeIds = stagedEligible.filter((item) => item.fieldData?.page === HOME_PAGE_ID).map((item) => item.id).sort();
+      const expectedHomeIds = [...HOME_VISIBILITY_EVIDENCE.sourceIds].sort();
+      const sellerCount = stagedEligible.filter((item) => item.fieldData?.page === SELL_PAGE_ID).length;
+      if (JSON.stringify(homeIds) !== JSON.stringify(expectedHomeIds) || sellerCount !== 7) {
+        throw new Error('Process-step source identities/counts disagree with recorded Home/Vender visibility evidence.');
+      }
+    }
+    const eligibleItems = type === 'processStep'
+      ? stagedEligible.filter((item) => [BUY_PAGE_ID, HOME_PAGE_ID].includes(item.fieldData?.page))
+      : stagedEligible;
+    const sourceImageFields = sourceCollection.schema?.fields ?? [];
+    const excludedSourceImageFields = type === 'preListing'
+      ? PRELISTING_IMAGE_EXCLUSIONS.map((excluded) => {
+        const field = sourceImageFields.find((entry) => entry.slug === excluded.slug);
+        if (!field || field.type !== excluded.type) {
+          throw new Error(`Pre-listing image exclusion evidence no longer matches source field ${excluded.slug}.`);
+        }
+        return {
+          slug: field.slug,
+          type: field.type,
+          rawSourcePhotoSlots: eligibleItems.reduce((sum, item) => sum + imageInventory(item, [field]).photoSlots, 0),
+          evidence: PRELISTING_BINDING_EVIDENCE,
+          reason: 'no rendered cms-gallery consumer found across 19 audited public routes; field has no source values',
+        };
+      })
+      : [];
+    if (type === 'preListing'
+      && (eligibleItems.length !== 19
+        || excludedSourceImageFields.some((field) => field.rawSourcePhotoSlots !== 0))) {
+      throw new Error('Pre-listing gallery binding evidence is stale: expected 19 eligible records and no values in excluded galeria-2.');
+    }
+    const excludedSlugs = new Set(excludedSourceImageFields.map((field) => field.slug));
+    const migratedImageFields = sourceImageFields.filter((field) => !excludedSlugs.has(field.slug));
+    const eligibleIds = new Set(eligibleItems.map((item) => item.id));
+    const sampleIds = sampleIdsBySlug[slug];
+    if (sampleIds.length === 0 || sampleIds.some((id) => !eligibleIds.has(id))) {
+      throw new Error(`Current sample generator has missing/ineligible samples for required collection ${slug}.`);
+    }
+    let photoSlots = 0;
+    let gallerySlots = 0;
+    const uniqueOriginalAssets = new Set();
+    for (const item of eligibleItems) {
+      const inventory = imageInventory(item, migratedImageFields);
+      photoSlots += inventory.photoSlots;
+      gallerySlots += inventory.gallerySlots;
+      for (const id of inventory.originalFileIds) uniqueOriginalAssets.add(id);
+    }
+    const sourceReport = reportCollection.eligible ?? [];
+    const sourceReportIds = [...sourceReport.map((item) => item.sourceId)].sort();
+    const currentEligibleIds = [...stagedEligible.map((item) => item.id)].sort();
+    if (JSON.stringify(currentEligibleIds) !== JSON.stringify(sourceReportIds)) {
+      throw new Error(`Eligibility report identities differ from the complete staged source for ${slug}.`);
+    }
+    const reportedSlots = sourceReport.reduce((sum, item) => sum + (item.photoReferences ?? 0), 0);
+    const reportedGallerySlots = sourceReport.reduce((sum, item) => sum + (item.gallerySlots ?? 0), 0);
+    const allSourceAssets = stagedEligible.reduce((sum, item) => sum + imageInventory(item, sourceCollection.schema?.fields ?? []).photoSlots, 0);
+    if (sourceReport.length !== stagedEligible.length || reportedSlots !== allSourceAssets
+      || reportedGallerySlots !== stagedEligible.reduce((sum, item) => sum + imageInventory(item, sourceCollection.schema?.fields ?? []).gallerySlots, 0)) {
+      throw new Error(`Eligibility report image totals differ from the complete staged source for ${slug}.`);
+    }
+    return {
+      type,
+      slug,
+      sourceCollection: sourceName,
+      sourceEligibleItems: eligibleItems.length,
+      sourcePhotoSlots: photoSlots,
+      sourceGallerySlots: gallerySlots,
+      uniqueOriginalAssets: uniqueOriginalAssets.size,
+      ...(type === 'preListing' ? { excludedSourceImageFields } : {}),
+      sampleSourceIds: [...sampleIds].sort(),
+      samplesRemainingAfterValidation: Math.max(eligibleItems.length - sampleIds.length, 0),
+      visibility: type === 'processStep'
+        ? {
+          basis: 'source enum ids plus recorded page visibility evidence',
+          includedPlacements: [
+            { name: 'Comprar', enumId: BUY_PAGE_ID, eligibleItems: stagedEligible.filter((item) => item.fieldData?.page === BUY_PAGE_ID).length },
+            { name: 'Home', enumId: HOME_PAGE_ID, eligibleItems: stagedEligible.filter((item) => item.fieldData?.page === HOME_PAGE_ID).length, evidence: HOME_VISIBILITY_EVIDENCE },
+          ],
+          excludedPlacements: [
+            { name: 'Vender', enumId: SELL_PAGE_ID, eligibleItems: stagedEligible.filter((item) => item.fieldData?.page === SELL_PAGE_ID).length, evidence: SELL_HIDDEN_EVIDENCE },
+          ],
+          unresolvedCases: stagedEligible.filter((item) => item.fieldData?.page === PS_EXCLUSIVE_PAGE_ID).map((item) => item.id).sort(),
+        }
+        : { basis: 'required collection in accepted migration scope', unresolvedCases: 0 },
+    };
+  });
+
+  const unresolved = [];
+  for (const name of IMAGE_EXCLUDED_NAMES) {
+    const sourceCollection = source.collections.find((candidate) => candidate.name === name);
+    if (!sourceCollection) continue;
+    const eligibleCount = sourceCollection.staged.items.filter((item) => isEligible(item, sourceCollection)).length;
+    if (eligibleCount) unresolved.push({ sourceCollection: name, eligibleRecords: eligibleCount, reason: 'visibility-or-template-need-not-established; excluded from required CMS import' });
+  }
+  const processSteps = collection(source, 'VS Destaques');
+  const psExclusive = processSteps.staged.items
+    .filter((item) => isEligible(item, processSteps) && item.fieldData?.page === PS_EXCLUSIVE_PAGE_ID);
+  if (psExclusive.length) unresolved.push({
+    sourceCollection: 'VS Destaques',
+    placement: 'PS Exclusive',
+    sourceIds: psExclusive.map((item) => item.id).sort(),
+    reason: 'no PS Exclusive page exists in the accepted route scope; visibility remains unresolved',
+  });
+
+  const bulkReady = exactGate(sampleGate, sampleIdsBySlug);
+  return {
+    generatedAt: new Date().toISOString(),
+    mode: 'read-only-preparation',
+    sourceSiteId: source.siteId ?? null,
+    sourceCapturedAt: source.capturedAt ?? null,
+    sourceDraftPolicy: 'exclude every staged source draft regardless of older live version',
+    collections: cmsCollections,
+    blankCmsOriginalRoutes: {
+      count: Array.isArray(blankRoutes?.routes) ? blankRoutes.routes.length : null,
+      contentRequired: false,
+      basis: 'docs/migration/blank-template-routes.json',
+    },
+    unresolvedVisibilityCases: unresolved,
+    bulkGate: {
+      status: bulkReady ? 'passed' : 'blocked',
+      reason: bulkReady ? 'all required collection samples have recorded complete parity evidence' : 'recorded 100% content/image/order/layout/responsive/URL/SEO/behavior sample evidence is absent or incomplete',
+      bulkWritesPermitted: bulkReady,
+    },
+    safety: { sourceCmsWrites: false, destinationCmsWrites: false, sourcePayloadOrPersonalContentIncluded: false },
+  };
+}
+
+function usage() {
+  console.error('Usage: node scripts/migration/bulk-manifest.mjs <source.json> <eligibility-report.json> <asset-map.json> <blank-routes.json> <output.json> [--sample-gate gate.json] [--require-bulk-ready]');
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const args = process.argv.slice(2);
+  const [sourcePath, reportPath, assetMapPath, blankRoutesPath, outputPath] = args;
+  const gateIndex = args.indexOf('--sample-gate');
+  const requireReady = args.includes('--require-bulk-ready');
+  if (!sourcePath || !reportPath || !assetMapPath || !blankRoutesPath || !outputPath) {
+    usage();
+    process.exitCode = 2;
+  } else {
+    const source = readJson(sourcePath);
+    const report = readJson(reportPath);
+    const assets = readJson(assetMapPath);
+    const blankRoutes = readJson(blankRoutesPath);
+    const samplePayload = buildPayload(source, assets);
+    const gate = gateIndex >= 0 ? readJson(args[gateIndex + 1]) : null;
+    const manifest = buildBulkManifest(source, report, samplePayload, blankRoutes, gate);
+    if (requireReady && !manifest.bulkGate.bulkWritesPermitted) {
+      throw new Error(`Bulk gate ${manifest.bulkGate.status}: ${manifest.bulkGate.reason}`);
+    }
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, `${JSON.stringify(manifest, null, 2)}\n`);
+    console.log(`Wrote read-only manifest for ${manifest.collections.length} required CMS collections; bulk gate ${manifest.bulkGate.status}.`);
+  }
+}

@@ -29,7 +29,7 @@ name: 'article',
 type: 'document',
 fields: [
 {name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true},
-{name: 'title', type: 'string'}, {name: 'subtitle', type: 'string'}, {name: 'summary', type: 'text', rows: 4}, {name: 'body', type: 'array', of: [{type: 'block', marks: {annotations: [{type: 'link'}]}}]}, {name: 'readingMinutes', type: 'number'}, {name: 'cta', type: 'articleCta'}, {name: 'mainImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'thumbnailImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'openGraphImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'videoUrl', type: 'url'}, {name: 'gallery', type: 'array', of: [{type: 'image', fields: [{name: 'alt', type: 'string'}]}]},
+{name: 'title', type: 'string'}, {name: 'subtitle', type: 'string'}, {name: 'summary', type: 'text', rows: 4}, {name: 'body', type: 'array', of: [{type: 'block', marks: {annotations: [{type: 'link'}]}}]}, {name: 'publishedAt', type: 'datetime'}, {name: 'readingMinutes', type: 'number'}, {name: 'cta', type: 'articleCta'}, {name: 'mainImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'thumbnailImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'openGraphImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'videoUrl', type: 'url'}, {name: 'gallery', type: 'array', of: [{type: 'image', fields: [{name: 'alt', type: 'string'}]}]},
 ],
 }
 {
@@ -43,7 +43,7 @@ fields: [
 name: 'preListing',
 type: 'document',
 fields: [
-{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'clientName', type: 'string'}, {name: 'address', type: 'string'}, {name: 'parish', type: 'string'}, {name: 'municipality', type: 'string'}, {name: 'propertyType', type: 'string', options: {list: ['apartment', 'house', 'land', 'commercial', 'garage', 'other']}}, {name: 'typology', type: 'string'}, {name: 'heroImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'gallery', type: 'array', of: [{type: 'image', fields: [{name: 'alt', type: 'string'}]}]},
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'clientName', type: 'string'}, {name: 'address', type: 'string'}, {name: 'parish', type: 'string'}, {name: 'municipality', type: 'string'}, {name: 'heroImage', type: 'image', fields: [{name: 'alt', type: 'string'}]},
 ],
 }
 {
@@ -57,6 +57,6 @@ fields: [
 name: 'processStep',
 type: 'document',
 fields: [
-{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'title', type: 'string'}, {name: 'body', type: 'text', rows: 4}, {name: 'placement', type: 'string', options: {list: ['buy', 'marketing']}}, {name: 'ctaLabel', type: 'string'}, {name: 'ctaUrl', type: 'url'}, {name: 'videoUrl', type: 'url'}, {name: 'thumbnail', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'image', type: 'image', fields: [{name: 'alt', type: 'string'}]},
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'title', type: 'string'}, {name: 'body', type: 'text', rows: 4}, {name: 'placement', type: 'string', options: {list: ['home', 'buy', 'marketing']}}, {name: 'ctaLabel', type: 'string'}, {name: 'ctaUrl', type: 'url'}, {name: 'videoUrl', type: 'url'}, {name: 'thumbnail', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'image', type: 'image', fields: [{name: 'alt', type: 'string'}]},
 ],
 }

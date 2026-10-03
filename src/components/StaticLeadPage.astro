@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/static-leads.css';
+
+interface Props {
+  title: string;
+  heading: string;
+  description: string;
+  route: string;
+  formType: 'valuation' | 'contact' | 'mortgage';
+  background: 'market' | 'session' | 'mortgage';
+}
+
+const { title, heading, description, route, formType, background } = Astro.props;
+const socialImage = 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg';
+---
+
+<BaseLayout title={title} socialImage={socialImage}>
+  <main class="static-lead" data-static-lead-page>
+    <div class:list={['static-lead__image', `static-lead__image--${background}`]} aria-hidden="true"></div>
+    <section class="static-lead__panel">
+      <div class="static-lead__content">
+        <a class="static-lead__logo" href="/" aria-label="Joaquim Mota — página inicial">
+          <img src="/assets/logo-color.svg" alt="" width="100" height="49" />
+        </a>
+        <h1>{heading}</h1>
+        <p class="static-lead__description">{description}</p>
+        <form class="static-lead__form" data-static-lead-form data-route={route} data-form-type={formType}>
+          <div class="static-lead__name-fields">
+            <label><span class="static-lead__visually-hidden">Nome</span><input name="firstName" autocomplete="given-name" placeholder="Nome" required /></label>
+            <label><span class="static-lead__visually-hidden">Apelido</span><input name="lastName" autocomplete="family-name" placeholder="Apelido" required /></label>
+          </div>
+          <label><span class="static-lead__visually-hidden">O seu email</span><input name="email" type="email" autocomplete="email" placeholder="O seu email" required /></label>
+          <label><span class="static-lead__visually-hidden">Telefone</span><input name="phone" type="tel" autocomplete="tel" placeholder="Telefone" required /></label>
+          <label class="static-lead__consent">
+            <input name="consent" type="checkbox" required checked />
+            <span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span>
+          </label>
+          <button type="submit">Enviar</button>
+          <p class="static-lead__status" data-form-status role="status" aria-live="polite" hidden></p>
+        </form>
+        <p class="static-lead__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+
+  document.querySelectorAll<HTMLFormElement>('[data-static-lead-form]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const status = form.querySelector<HTMLElement>('[data-form-status]');
+      if (!button || !status) return;
+      button.disabled = true;
+      status.hidden = false;
+      status.textContent = '';
+      const data = new FormData(form);
+      const fields = {
+        name: `${String(data.get('firstName') ?? '').trim()} ${String(data.get('lastName') ?? '').trim()}`.trim(),
+        email: String(data.get('email') ?? '').trim(),
+        phone: String(data.get('phone') ?? '').trim(),
+      };
+      try {
+        await submitFormAccepted(form, {
+          formType: form.dataset.formType ?? '',
+          route: form.dataset.route ?? '',
+          fields,
+        });
+        form.hidden = true;
+        status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
+      } catch {
+        status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.';
+        button.disabled = false;
+      }
+    });
+  });
+
+  const year = document.querySelector<HTMLElement>('[data-current-year]');
+  if (year) year.textContent = String(new Date().getFullYear());
+</script>

@@ -1,0 +1,676 @@
+{
+  "generatedAt": "2026-10-03T21:22:57.271411+00:00",
+  "source": "public GET only; no query parameters; BeautifulSoup DOM parse",
+  "checkedRoutes": 19,
+  "domCounts": {
+    "heroSectionPresent": 19,
+    "heroBgImgNodes": 0,
+    "galleryRenderNodes": 0,
+    "galleryRenderedImages": 0,
+    "cmsHeroNodes": 19,
+    "cmsHeroNonemptyText": 19,
+    "cmsGalleryNodes": 19,
+    "cmsGalleryNonemptyText": 0,
+    "cmsHeroDistinctTextValues": 1,
+    "cmsHeroPlaceholderValue": "https://placehold.co/1600x900/1E3B6A/1E3B6A"
+  },
+  "renderedHeroGroups": [
+    {
+      "imageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "count": 13,
+      "routes": [
+        {
+          "legacyId": "6aaa6c0742b7f0b0b572f137",
+          "slug": "te-t2-gulpilhares-20260916-39528"
+        },
+        {
+          "legacyId": "6aaa6c05e5531aa86e7ef8a1",
+          "slug": "te-t2-gulpilhares-20260916-ff2b3"
+        },
+        {
+          "legacyId": "6aaa6c04459d4e95d7c7b85e",
+          "slug": "te-t2-gulpilhares-20260916-10d24"
+        },
+        {
+          "legacyId": "6aaa6c03b084cdf87e1e04fe",
+          "slug": "te-t2-gulpilhares-20260916-4f56b"
+        },
+        {
+          "legacyId": "6aaa6c00a8c18699eea52e0f",
+          "slug": "te-t2-gulpilhares-20260916-ee8f2"
+        },
+        {
+          "legacyId": "6aaa6bfdb084cdf87e1e0313",
+          "slug": "te-t2-gulpilhares-20260916-f3061"
+        },
+        {
+          "legacyId": "6aaa6bf9006c5c8ef3cbb435",
+          "slug": "te-t2-gulpilhares-20260916-fec87"
+        },
+        {
+          "legacyId": "6aaa6bf943f72813a7805475",
+          "slug": "te-t2-gulpilhares-20260916-3e97c"
+        },
+        {
+          "legacyId": "6aaa6bf413013c01def73147",
+          "slug": "te-t2-gulpilhares-20260916"
+        },
+        {
+          "legacyId": "6a4f570e54cc71aa48865955",
+          "slug": "mb-t3-crestuma-20260709-472cf"
+        },
+        {
+          "legacyId": "6a4f5708d86f98863eede13b",
+          "slug": "mb-t3-crestuma-20260709-56749"
+        },
+        {
+          "legacyId": "6a4f5705d8ddb628ff0e0f59",
+          "slug": "mb-t3-crestuma-20260709-d57ce"
+        },
+        {
+          "legacyId": "6a08483dadf70b1b75591292",
+          "slug": "fc-t3-canidelo-20260516-1089a"
+        }
+      ]
+    },
+    {
+      "imageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f2945675f174d8cc5ecd01_arc.jpeg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "count": 1,
+      "routes": [
+        {
+          "legacyId": "69f2924211224100dc840df2",
+          "slug": "sc-t4-arcozelo-20260416"
+        }
+      ]
+    },
+    {
+      "imageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a086a14adf70b1b755f728f_6a086a11fda1bb575c293140_13624.jpeg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "count": 1,
+      "routes": [
+        {
+          "legacyId": "6a08555e17000c0ff74cf1ad",
+          "slug": "sc-t2-pedroso-20260516-bf70c"
+        }
+      ]
+    },
+    {
+      "imageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a0de345929719e8e3f14487_6a0de34140982c5f7ae6e4b9_7121.jpeg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "count": 1,
+      "routes": [
+        {
+          "legacyId": "6a083edddf663e7d99711a7c",
+          "slug": "mc-t4-sao-felix-20260516"
+        }
+      ]
+    },
+    {
+      "imageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a16d2eafc384a30905d0151_6a16d2e6ddcf8666bf80e431_modern-dining-room-through-kitchen-interior-with-dining-table-chairs-kitchenware.webp",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "count": 1,
+      "routes": [
+        {
+          "legacyId": "69f291e2c5875808b53a8641",
+          "slug": "mm-t3-canidelo-20260428"
+        }
+      ]
+    },
+    {
+      "imageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a4f6e1d6186f383f4d91c04_6a4f6dbba8c92741f2c1537a_1000350940.webp",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "count": 1,
+      "routes": [
+        {
+          "legacyId": "6a4f6e1d6186f383f4d91c11",
+          "slug": "si-t2-oliveira-do-douro-20260709"
+        }
+      ]
+    },
+    {
+      "imageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a4f764f38c82ee1bb689e8c_6a4f75ca2885cb7286f1c679_1000350948.webp",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "count": 1,
+      "routes": [
+        {
+          "legacyId": "6a4f764f38c82ee1bb689e95",
+          "slug": "da-t3-santa-marinha-20260709"
+        }
+      ]
+    }
+  ],
+  "conclusion": {
+    "activeCmsHeroBinding": true,
+    "activeCmsGalleryBinding": false,
+    "import": "preListing.heroImage (hero-image-2): six exact public URL matches",
+    "fallback": "4725 static hero when hero-image-2 is empty (13 routes)",
+    "excludedAsResidual": [
+      "preListing.gallery (galeria-2)"
+    ],
+    "reason": "The earlier ID-selector result was incomplete: the active consumer is .inline-img-0, not #hero-bg-img. The six variable rendered .inline-img-0 URLs exactly match hero-image-2 per source-field comparison. The gallery has no public consumer."
+  },
+  "records": [
+    {
+      "legacyId": "6aaa6c0742b7f0b0b572f137",
+      "slug": "te-t2-gulpilhares-20260916-39528",
+      "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916-39528",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6aaa6c05e5531aa86e7ef8a1",
+      "slug": "te-t2-gulpilhares-20260916-ff2b3",
+      "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916-ff2b3",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6aaa6c04459d4e95d7c7b85e",
+      "slug": "te-t2-gulpilhares-20260916-10d24",
+      "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916-10d24",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6aaa6c03b084cdf87e1e04fe",
+      "slug": "te-t2-gulpilhares-20260916-4f56b",
+      "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916-4f56b",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6aaa6c00a8c18699eea52e0f",
+      "slug": "te-t2-gulpilhares-20260916-ee8f2",
+      "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916-ee8f2",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6aaa6bfdb084cdf87e1e0313",
+      "slug": "te-t2-gulpilhares-20260916-f3061",
+      "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916-f3061",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6aaa6bf9006c5c8ef3cbb435",
+      "slug": "te-t2-gulpilhares-20260916-fec87",
+      "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916-fec87",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6aaa6bf943f72813a7805475",
+      "slug": "te-t2-gulpilhares-20260916-3e97c",
+      "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916-3e97c",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6aaa6bf413013c01def73147",
+      "slug": "te-t2-gulpilhares-20260916",
+      "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6a4f764f38c82ee1bb689e95",
+      "slug": "da-t3-santa-marinha-20260709",
+      "url": "https://joaquimmota.pt/vouvender/da-t3-santa-marinha-20260709",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a4f764f38c82ee1bb689e8c_6a4f75ca2885cb7286f1c679_1000350948.webp",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a4f764f38c82ee1bb689e8c_6a4f75ca2885cb7286f1c679_1000350948.webp",
+      "heroImage2PublicMatch": true,
+      "heroImage2PublicMatchBasis": "exact URL match between source field `hero-image-2` and the first rendered .inline-img-0 image, per supplied source-field comparison"
+    },
+    {
+      "legacyId": "6a4f6e1d6186f383f4d91c11",
+      "slug": "si-t2-oliveira-do-douro-20260709",
+      "url": "https://joaquimmota.pt/vouvender/si-t2-oliveira-do-douro-20260709",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a4f6e1d6186f383f4d91c04_6a4f6dbba8c92741f2c1537a_1000350940.webp",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a4f6e1d6186f383f4d91c04_6a4f6dbba8c92741f2c1537a_1000350940.webp",
+      "heroImage2PublicMatch": true,
+      "heroImage2PublicMatchBasis": "exact URL match between source field `hero-image-2` and the first rendered .inline-img-0 image, per supplied source-field comparison"
+    },
+    {
+      "legacyId": "6a4f570e54cc71aa48865955",
+      "slug": "mb-t3-crestuma-20260709-472cf",
+      "url": "https://joaquimmota.pt/vouvender/mb-t3-crestuma-20260709-472cf",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6a4f5708d86f98863eede13b",
+      "slug": "mb-t3-crestuma-20260709-56749",
+      "url": "https://joaquimmota.pt/vouvender/mb-t3-crestuma-20260709-56749",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6a4f5705d8ddb628ff0e0f59",
+      "slug": "mb-t3-crestuma-20260709-d57ce",
+      "url": "https://joaquimmota.pt/vouvender/mb-t3-crestuma-20260709-d57ce",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6a08555e17000c0ff74cf1ad",
+      "slug": "sc-t2-pedroso-20260516-bf70c",
+      "url": "https://joaquimmota.pt/vouvender/sc-t2-pedroso-20260516-bf70c",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a086a14adf70b1b755f728f_6a086a11fda1bb575c293140_13624.jpeg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a086a14adf70b1b755f728f_6a086a11fda1bb575c293140_13624.jpeg",
+      "heroImage2PublicMatch": true,
+      "heroImage2PublicMatchBasis": "exact URL match between source field `hero-image-2` and the first rendered .inline-img-0 image, per supplied source-field comparison"
+    },
+    {
+      "legacyId": "6a08483dadf70b1b75591292",
+      "slug": "fc-t3-canidelo-20260516-1089a",
+      "url": "https://joaquimmota.pt/vouvender/fc-t3-canidelo-20260516-1089a",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "heroImage2PublicMatch": false,
+      "heroImage2PublicMatchBasis": null
+    },
+    {
+      "legacyId": "6a083edddf663e7d99711a7c",
+      "slug": "mc-t4-sao-felix-20260516",
+      "url": "https://joaquimmota.pt/vouvender/mc-t4-sao-felix-20260516",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a0de345929719e8e3f14487_6a0de34140982c5f7ae6e4b9_7121.jpeg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a0de345929719e8e3f14487_6a0de34140982c5f7ae6e4b9_7121.jpeg",
+      "heroImage2PublicMatch": true,
+      "heroImage2PublicMatchBasis": "exact URL match between source field `hero-image-2` and the first rendered .inline-img-0 image, per supplied source-field comparison"
+    },
+    {
+      "legacyId": "69f2924211224100dc840df2",
+      "slug": "sc-t4-arcozelo-20260416",
+      "url": "https://joaquimmota.pt/vouvender/sc-t4-arcozelo-20260416",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f2945675f174d8cc5ecd01_arc.jpeg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f2945675f174d8cc5ecd01_arc.jpeg",
+      "heroImage2PublicMatch": true,
+      "heroImage2PublicMatchBasis": "exact URL match between source field `hero-image-2` and the first rendered .inline-img-0 image, per supplied source-field comparison"
+    },
+    {
+      "legacyId": "69f291e2c5875808b53a8641",
+      "slug": "mm-t3-canidelo-20260428",
+      "url": "https://joaquimmota.pt/vouvender/mm-t3-canidelo-20260428",
+      "heroSectionFound": true,
+      "renderedHeroImageSources": [
+        "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a16d2eafc384a30905d0151_6a16d2e6ddcf8666bf80e431_modern-dining-room-through-kitchen-interior-with-dining-table-chairs-kitchenware.webp",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639d5c98717c87c16c8232_logo_white.svg",
+        "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+      ],
+      "heroBgImgNodeCount": 0,
+      "galleryRenderNodeCount": 0,
+      "galleryRenderedImageCount": 0,
+      "cmsHeroNodeCount": 1,
+      "cmsHeroText": "https://placehold.co/1600x900/1E3B6A/1E3B6A",
+      "cmsGalleryNodeCount": 1,
+      "cmsGalleryText": "",
+      "inlineImage0Source": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a16d2eafc384a30905d0151_6a16d2e6ddcf8666bf80e431_modern-dining-room-through-kitchen-interior-with-dining-table-chairs-kitchenware.webp",
+      "heroImage2PublicMatch": true,
+      "heroImage2PublicMatchBasis": "exact URL match between source field `hero-image-2` and the first rendered .inline-img-0 image, per supplied source-field comparison"
+    }
+  ],
+  "sourceFieldCorrelation": {
+    "heroImage2": {
+      "publicConsumer": ".inline-img-0 within #hero-section",
+      "exactUrlMatches": 6,
+      "matchedRecords": [
+        {
+          "legacyId": "6a4f764f38c82ee1bb689e95",
+          "slug": "da-t3-santa-marinha-20260709",
+          "renderedInlineImage0": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a4f764f38c82ee1bb689e8c_6a4f75ca2885cb7286f1c679_1000350948.webp"
+        },
+        {
+          "legacyId": "6a4f6e1d6186f383f4d91c11",
+          "slug": "si-t2-oliveira-do-douro-20260709",
+          "renderedInlineImage0": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a4f6e1d6186f383f4d91c04_6a4f6dbba8c92741f2c1537a_1000350940.webp"
+        },
+        {
+          "legacyId": "6a08555e17000c0ff74cf1ad",
+          "slug": "sc-t2-pedroso-20260516-bf70c",
+          "renderedInlineImage0": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a086a14adf70b1b755f728f_6a086a11fda1bb575c293140_13624.jpeg"
+        },
+        {
+          "legacyId": "6a083edddf663e7d99711a7c",
+          "slug": "mc-t4-sao-felix-20260516",
+          "renderedInlineImage0": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a0de345929719e8e3f14487_6a0de34140982c5f7ae6e4b9_7121.jpeg"
+        },
+        {
+          "legacyId": "69f2924211224100dc840df2",
+          "slug": "sc-t4-arcozelo-20260416",
+          "renderedInlineImage0": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f2945675f174d8cc5ecd01_arc.jpeg"
+        },
+        {
+          "legacyId": "69f291e2c5875808b53a8641",
+          "slug": "mm-t3-canidelo-20260428",
+          "renderedInlineImage0": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a16d2eafc384a30905d0151_6a16d2e6ddcf8666bf80e431_modern-dining-room-through-kitchen-interior-with-dining-table-chairs-kitchenware.webp"
+        }
+      ],
+      "emptyFieldFallbackRecords": 13,
+      "fallbackRenderedSource": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69f28493c7d70238803df684_4725.jpg",
+      "fallbackRecords": [
+        {
+          "legacyId": "6aaa6c0742b7f0b0b572f137",
+          "slug": "te-t2-gulpilhares-20260916-39528"
+        },
+        {
+          "legacyId": "6aaa6c05e5531aa86e7ef8a1",
+          "slug": "te-t2-gulpilhares-20260916-ff2b3"
+        },
+        {
+          "legacyId": "6aaa6c04459d4e95d7c7b85e",
+          "slug": "te-t2-gulpilhares-20260916-10d24"
+        },
+        {
+          "legacyId": "6aaa6c03b084cdf87e1e04fe",
+          "slug": "te-t2-gulpilhares-20260916-4f56b"
+        },
+        {
+          "legacyId": "6aaa6c00a8c18699eea52e0f",
+          "slug": "te-t2-gulpilhares-20260916-ee8f2"
+        },
+        {
+          "legacyId": "6aaa6bfdb084cdf87e1e0313",
+          "slug": "te-t2-gulpilhares-20260916-f3061"
+        },
+        {
+          "legacyId": "6aaa6bf9006c5c8ef3cbb435",
+          "slug": "te-t2-gulpilhares-20260916-fec87"
+        },
+        {
+          "legacyId": "6aaa6bf943f72813a7805475",
+          "slug": "te-t2-gulpilhares-20260916-3e97c"
+        },
+        {
+          "legacyId": "6aaa6bf413013c01def73147",
+          "slug": "te-t2-gulpilhares-20260916"
+        },
+        {
+          "legacyId": "6a4f570e54cc71aa48865955",
+          "slug": "mb-t3-crestuma-20260709-472cf"
+        },
+        {
+          "legacyId": "6a4f5708d86f98863eede13b",
+          "slug": "mb-t3-crestuma-20260709-56749"
+        },
+        {
+          "legacyId": "6a4f5705d8ddb628ff0e0f59",
+          "slug": "mb-t3-crestuma-20260709-d57ce"
+        },
+        {
+          "legacyId": "6a08483dadf70b1b75591292",
+          "slug": "fc-t3-canidelo-20260516-1089a"
+        }
+      ],
+      "migrationDecision": "Import heroImage for the six exact public source-field matches. Use the established 4725 static fallback where hero-image-2 is empty."
+    },
+    "gallery2": {
+      "publicConsumer": null,
+      "renderEvidence": "#gallery-render absent and no gallery images rendered on all 19 parsed routes.",
+      "migrationDecision": "Exclude galeria-2 as residual content."
+    }
+  }
+}

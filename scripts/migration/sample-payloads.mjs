@@ -29,7 +29,7 @@ const SAMPLE_IDS = {
   article: ['69a2dce4b48d3344ed295952', '698af82db57942d2c5d10a3e'],
   testimonial: ['67b454c5e23698381d4b5a8b', '67b454c48728d3d81a387c44'],
   offer: ['64d744240d28836501ab496f'],
-  preListing: ['6aaa6c0742b7f0b0b572f137', '6aaa6c05e5531aa86e7ef8a1'],
+  preListing: ['6aaa6c0742b7f0b0b572f137', '69f2924211224100dc840df2'],
   processStep: ['64d73faf12672d652ab57824', '64d73faf12672d652ab57819'],
 };
 
@@ -43,6 +43,7 @@ const COLLECTIONS = {
 };
 
 const PROCESS_STEP_PLACEMENT = {
+  '663132020846a392d304a25e78392a84': 'home',
   '61e1b999e018031966a98c78f8548d5d': 'buy',
   '1d2e3b2ba040ba7d01a627b6f2c9396d': 'marketing',
 };
@@ -87,23 +88,6 @@ const ENERGY_CERTIFICATE = {
   '82804a7cfc13347aa0b5dc4bef6c6449': 'G',
   'f669308ada6ccfe21735403988a558c2': 'Exempt',
 };
-const PRELISTING_TYPE = {
-  '6027b99e4693143da643b6afb571aed5': 'apartment',
-  '5480ef756d6933eebbf693ed49b1475a': 'house',
-  '5681e6ddefeeccc74954301b0581969a': 'land',
-  'caf0373435fbc4bcdf7efec117cf3efc': 'commercial',
-  'b2b5e6eb8ed76dc4a6b25c817753fa54': 'garage',
-  '381796996ca3b6d16e31dac75673ab6a': 'other',
-};
-const PRELISTING_TYPOLOGY = {
-  'ce159bfbd24968c652828cb2b334ba39': 'T0',
-  '96e2083e2aa1875d009d2815824c2b54': 'T1',
-  'e4984315ebfaa5fda7ee8dbe75b393ee': 'T2',
-  '4e29dcc17e248c6cf642780cc6fcbf95': 'T3',
-  'cb66cd89561b7fb58ee536d9b0393cb2': 'T4',
-  'cf482302c2ac1ef6aca6707f43d9091c': 'T5+',
-  'd5283f699cff4d5827df2c23f19473ef': 'N/A',
-};
 
 function requiredString(value, label) {
   if (typeof value !== 'string' || !value.trim()) throw new Error(`Missing ${label}.`);
@@ -112,6 +96,12 @@ function requiredString(value, label) {
 
 function optionalString(value) {
   return typeof value === 'string' && value.trim() ? value.trim() : undefined;
+}
+
+function sourceCreatedAt(item) {
+  const value = requiredString(item.createdOn, 'article source createdOn');
+  if (!Number.isFinite(Date.parse(value))) throw new Error('Invalid article source createdOn.');
+  return value;
 }
 
 function optionalNumber(value) {
@@ -255,6 +245,7 @@ function mapArticle(item, assetMap) {
   return prune({
     _type: 'article',
     ...identity(item),
+    publishedAt: sourceCreatedAt(item),
     title: requiredString(data.name, 'article title'),
     subtitle: optionalString(data.subtitulo),
     summary: optionalString(data.resumo),
@@ -299,6 +290,7 @@ function mapOffer(item, assetMap) {
 
 function mapPreListing(item, assetMap) {
   const data = item.fieldData;
+  if (Array.isArray(data['galeria-2']) && data['galeria-2'].length) throw new Error('Unexpected pre-listing gallery: refresh public visibility inventory before importing.');
   return prune({
     _type: 'preListing',
     ...identity(item),
@@ -306,10 +298,7 @@ function mapPreListing(item, assetMap) {
     address: requiredString(data.morada, 'pre-listing address'),
     parish: requiredString(data.freguesia, 'pre-listing parish'),
     municipality: optionalString(data.concelho),
-    propertyType: enumValue(PRELISTING_TYPE, data['tipo-de-imovel'], 'pre-listing property type'),
-    typology: enumValue(PRELISTING_TYPOLOGY, data.tipologia, 'pre-listing typology'),
-    heroImage: assetRef(assetMap, data['hero-image-2'], 'pre-listing hero image'),
-    gallery: imageArray(assetMap, data['galeria-2'], 'pre-listing gallery'),
+    heroImage: assetRef(assetMap, data['hero-image-2'], 'pre-listing public hero image'),
   });
 }
 
@@ -369,4 +358,4 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   }
 }
 
-export { assetRef, buildPayload, eligibleItem, imageArray, mapProcessStep, portableText };
+export { assetRef, buildPayload, eligibleItem, imageArray, mapArticle, mapPreListing, mapProcessStep, portableText };

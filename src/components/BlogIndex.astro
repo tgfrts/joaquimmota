@@ -1,0 +1,98 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import CmsImage from './CmsImage.astro';
+import sampleContent from '../data/sample-content.json';
+import '../styles/blog-index.css';
+
+const records: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? [];
+const articles = records
+  .filter((record) => record._type === 'article')
+  .sort((a, b) => new Date(b.publishedAt ?? 0).getTime() - new Date(a.publishedAt ?? 0).getTime());
+const featured = articles[0];
+const sourcePageSize = 6;
+---
+
+<Header variant="light" pageNavigation contactHref="/vamos-comecar" />
+<main class="blog-index" data-blog-index data-page-size={sourcePageSize} data-article-count={articles.length}>
+  {featured && <section class="blog-index__featured" aria-labelledby="blog-featured-title">
+    <p class="blog-index__eyebrow">O nosso último artigo</p>
+    <a class="blog-index__featured-image" href={`/post/${featured.sourceSlug}`} aria-label={`Ler ${featured.title}`}>
+      <CmsImage value={featured.thumbnailImage} alt="" loading="eager" />
+    </a>
+    <div class="blog-index__featured-copy"><h1 id="blog-featured-title">{featured.title}</h1><a href={`/post/${featured.sourceSlug}`}>Ler mais</a></div>
+  </section>}
+
+  <section class="blog-index__subscribe" aria-labelledby="blog-subscribe-title">
+    <div><p class="blog-index__eyebrow">Os últimos artigos no seu email</p><h2 id="blog-subscribe-title">Não perca nenhum artigo!</h2><p>Subscreva a nossa newletter e fique atualizado sobre todas as novidades do mercado imobiliário do Grande Porto.</p></div>
+    <form data-blog-newsletter>
+      <label class="blog-index__visually-hidden" for="blog-newsletter-email">O seu email</label>
+      <div class="blog-index__subscribe-controls"><input id="blog-newsletter-email" name="email" type="email" placeholder="O seu email" required /><button type="submit">SUBSCREVER</button></div>
+      <p class="blog-index__privacy">Também detestamos SPAM! Apenas enviamos conteúdo de valor para a sua caixa de correio.</p>
+      <p class="blog-index__newsletter-status" data-blog-newsletter-status role="status" aria-live="polite" hidden></p>
+    </form>
+  </section>
+
+  <section class="blog-index__articles" aria-label="Artigos">
+    <div class="blog-index__grid">
+      {articles.map((article, index) => <article class="blog-index__card" data-blog-card-page={Math.floor(index / sourcePageSize) + 1}>
+        <a class="blog-index__card-image" href={`/post/${article.sourceSlug}`} aria-label={`Ler ${article.title}`}><CmsImage value={article.thumbnailImage} alt="" /></a>
+        <div class="blog-index__card-copy"><h2><a href={`/post/${article.sourceSlug}`}>{article.title}</a></h2>{article.subtitle && <p>{article.subtitle}</p>}<a class="blog-index__read-more" href={`/post/${article.sourceSlug}`}>Ler mais</a></div>
+      </article>)}
+    </div>
+    <nav class="blog-index__pagination" aria-label="Paginação de artigos" data-blog-pagination>
+      <a href="?51fb55cf_page=1" data-blog-previous aria-label="Página anterior" hidden><span aria-hidden="true">←</span></a>
+      <a href="?51fb55cf_page=2" data-blog-next aria-label="Página seguinte" hidden={articles.length <= sourcePageSize}><span aria-hidden="true">→</span></a>
+    </nav>
+  </section>
+
+  <section class="blog-index__closing"><div><p class="blog-index__eyebrow">Vamos Conversar</p><h2>Ainda à procura de uma solução para a sua casa?</h2><p>Tenha uma equipa de sucesso ao seu lado.</p><a href="/vamos-comecar">Vamos Começar</a></div><img src="/assets/closing-jm.png" alt="" loading="lazy" /></section>
+</main>
+<Footer />
+
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+
+  const root = document.querySelector<HTMLElement>('[data-blog-index]');
+  if (root) {
+    const params = new URLSearchParams(location.search);
+    const rawPage = params.get('51fb55cf_page');
+    const requestedPage = rawPage === null ? 1 : Number.parseInt(rawPage, 10);
+    const totalPages = Math.max(1, Math.ceil(Number(root.dataset.articleCount ?? '0') / Number(root.dataset.pageSize ?? '6')));
+    const page = Number.isFinite(requestedPage) ? Math.min(Math.max(requestedPage, 1), totalPages) : 1;
+    if (rawPage !== null && requestedPage !== page) {
+      params.set('51fb55cf_page', String(page));
+      const query = params.toString();
+      history.replaceState(history.state, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
+    }
+    root.dataset.currentPage = String(page);
+    const previous = root.querySelector<HTMLAnchorElement>('[data-blog-previous]');
+    const next = root.querySelector<HTMLAnchorElement>('[data-blog-next]');
+    const hrefForPage = (nextPage: number) => {
+      const nextParams = new URLSearchParams(location.search);
+      nextParams.set('51fb55cf_page', String(nextPage));
+      return `${location.pathname}?${nextParams.toString()}${location.hash}`;
+    };
+    if (previous) {
+      previous.hidden = page <= 1 || totalPages <= 1;
+      previous.href = hrefForPage(page - 1);
+    }
+    if (next) {
+      next.hidden = page >= totalPages;
+      next.href = hrefForPage(page + 1);
+    }
+    root.querySelectorAll<HTMLElement>('[data-blog-card-page]').forEach((card) => card.hidden = Number(card.dataset.blogCardPage) !== page);
+  }
+
+  document.querySelectorAll<HTMLFormElement>('[data-blog-newsletter]').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault(); if (!form.reportValidity()) return;
+    const status = form.querySelector<HTMLElement>('[data-blog-newsletter-status]'); const button = form.querySelector<HTMLButtonElement>('button');
+    if (!status || !button) return;
+    const email = String(new FormData(form).get('email') ?? '').trim();
+    button.disabled = true; status.hidden = false;
+    try {
+      await submitFormAccepted(form, { formType: 'newsletter', route: '/blog', fields: { email } });
+      form.hidden = true; status.textContent = 'Subscrito com sucesso!';
+    } catch { status.textContent = 'Oops! Alguma coisa correu mal na submissão do formulário.'; button.disabled = false; }
+  }));
+</script>

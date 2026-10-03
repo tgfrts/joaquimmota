@@ -1,0 +1,41 @@
+[
+  {
+    "_type": "processStep",
+    "legacyId": "64d73faf12672d652ab57816",
+    "locale": "64d73fb112672d652ab57ff5",
+    "sourceSlug": "01-simples-e-facil",
+    "slug": {
+      "_type": "slug",
+      "current": "01-simples-e-facil"
+    },
+    "title": "01. Simples e fácil",
+    "body": "O seu sucesso é a nossa prioridade. Sabemos que a venda e a compra de uma casa pode ser complexa. Dedicamo-nos para que, para si, esse processo seja simples e fácil.",
+    "placement": "home"
+  },
+  {
+    "_type": "processStep",
+    "legacyId": "64d73faf12672d652ab57825",
+    "locale": "64d73fb112672d652ab57ff5",
+    "sourceSlug": "02-consultoria",
+    "slug": {
+      "_type": "slug",
+      "current": "02-consultoria"
+    },
+    "title": "02. Consultoria",
+    "body": "Todos os nossos clientes começam com uma sessão de consultoria gratuita para entendermos os seus objetivos e o seu plano para o futuro.",
+    "placement": "home"
+  },
+  {
+    "_type": "processStep",
+    "legacyId": "64d73faf12672d652ab57821",
+    "locale": "64d73fb112672d652ab57ff5",
+    "sourceSlug": "03-suporte",
+    "slug": {
+      "_type": "slug",
+      "current": "03-suporte"
+    },
+    "title": "03. Suporte",
+    "body": "Estamos aqui para si. Sabemos que as coisas acontecem quando menos espera, por isso estamos disponíveis sempre que tenha alguma questão.",
+    "placement": "home"
+  }
+]

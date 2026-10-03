@@ -8,6 +8,7 @@ const imageUrl = (image: any) => {
   const sanityUrl = typeof ref === 'string' && ref.startsWith('image-') ? (() => { const [, id, dimensions, format] = ref.match(/^image-(.+)-(\d+x\d+)-([a-z0-9]+)$/) ?? []; return id && dimensions && format ? `https://cdn.sanity.io/images/kaq1vd9b/production/${id}-${dimensions}.${format}` : undefined; })() : undefined;
   return typeof image === 'string' ? image : asset?.url ?? asset?.src ?? image?.url ?? sanityUrl;
 };
+const galleryId = `gallery-${crypto.randomUUID()}`;
 const usable = images.filter((image) => Boolean(imageUrl(image)));
 ---
 
@@ -18,20 +19,54 @@ const usable = images.filter((image) => Boolean(imageUrl(image)));
     </div>
     <dialog class="cms-gallery__dialog" aria-label={`${label}: visualização ampliada`}>
       <button type="button" class="cms-gallery__close" aria-label="Fechar galeria">×</button>
-      <img alt={label} />
-      <div class="cms-gallery__controls"><button type="button" data-gallery-previous aria-label="Imagem anterior">←</button><span data-gallery-count></span><button type="button" data-gallery-next aria-label="Imagem seguinte">→</button></div>
+      <div class="cms-gallery__view" role="tabpanel" id={`${galleryId}-panel`}><img class="cms-gallery__full-image" alt={label} />
+        <button type="button" data-gallery-previous aria-label="Imagem anterior"><span></span></button>
+        <button type="button" data-gallery-next aria-label="Imagem seguinte"><span></span></button>
+      </div>
+      <div class="cms-gallery__strip" role="tablist" aria-label="Imagens da galeria">{usable.map((image, index) => <button type="button" role="tab" aria-label={`Mostrar imagem ${index + 1} de ${usable.length}`} aria-selected="false" aria-controls={`${galleryId}-panel`} id={`${galleryId}-tab-${index}`} tabindex="-1" data-gallery-thumbnail={index}><CmsImage value={image} alt="" loading="lazy" /></button>)}</div>
     </dialog>
-    <script define:vars={{ sources: usable.map(imageUrl) }}>
-      document.querySelectorAll('[data-cms-gallery]').forEach((gallery) => {
-        const dialog = gallery.querySelector('dialog');
-        const fullImage = dialog?.querySelector('img');
-        const counter = dialog?.querySelector('[data-gallery-count]');
+    <script>
+      document.querySelectorAll<HTMLElement>('[data-cms-gallery]').forEach((gallery) => {
+        const dialog = gallery.querySelector<HTMLDialogElement>('dialog');
+        const fullImage = dialog?.querySelector<HTMLImageElement>('.cms-gallery__full-image');
+        const thumbs = Array.from(gallery.querySelectorAll<HTMLButtonElement>('[data-gallery-thumbnail]'));
+        const sources = thumbs.map((thumb) => thumb.querySelector('img')?.src ?? '');
+        const previous = dialog?.querySelector<HTMLButtonElement>('[data-gallery-previous]');
+        const next = dialog?.querySelector<HTMLButtonElement>('[data-gallery-next]');
         let current = 0;
-        const render = () => { if (fullImage) fullImage.src = sources[current]; if (counter) counter.textContent = `${current + 1} / ${sources.length}`; };
-        gallery.querySelectorAll('[data-gallery-index]').forEach((button) => button.addEventListener('click', () => { current = Number(button.getAttribute('data-gallery-index')); render(); dialog?.showModal(); }));
+        let touchStart: { x: number; y: number } | undefined;
+        let returnFocus: HTMLElement | undefined;
+        const render = () => {
+          if (fullImage) fullImage.src = sources[current];
+          if (previous) previous.disabled = current === 0;
+          if (next) next.disabled = current === sources.length - 1;
+          thumbs.forEach((thumb, index) => { thumb.setAttribute('aria-selected', String(index === current)); thumb.tabIndex = index === current ? 0 : -1; });
+          dialog?.querySelector('.cms-gallery__view')?.setAttribute('aria-labelledby', thumbs[current].id);
+          const strip = dialog?.querySelector<HTMLElement>('.cms-gallery__strip');
+          const thumb = thumbs[current];
+          if (strip && thumb) strip.scrollTo({ left: Math.max(0, thumb.offsetLeft - (strip.clientWidth - thumb.clientWidth) / 2), behavior: 'smooth' });
+        };
+        const move = (delta: number) => { current = Math.max(0, Math.min(sources.length - 1, current + delta)); render(); };
+        gallery.querySelectorAll<HTMLElement>('[data-gallery-index]').forEach((button) => button.addEventListener('click', () => {
+          current = Number(button.getAttribute('data-gallery-index')); returnFocus = button;
+          dialog?.showModal(); document.documentElement.style.overflow = 'hidden'; render();
+        }));
+        thumbs.forEach((thumb, index) => thumb.addEventListener('click', () => { current = index; render(); }));
         dialog?.querySelector('.cms-gallery__close')?.addEventListener('click', () => dialog.close());
-        dialog?.querySelector('[data-gallery-previous]')?.addEventListener('click', () => { current = (current - 1 + sources.length) % sources.length; render(); });
-        dialog?.querySelector('[data-gallery-next]')?.addEventListener('click', () => { current = (current + 1) % sources.length; render(); });
+        previous?.addEventListener('click', () => move(-1));
+        next?.addEventListener('click', () => move(1));
+        dialog?.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); const onTab = event.target instanceof Element && Boolean(event.target.closest('[role=tab]')); move(event.key === 'ArrowLeft' ? -1 : 1); if (onTab) thumbs[current].focus(); }
+        });
+        dialog?.addEventListener('click', (event) => { if (event.target === dialog || event.target === dialog.querySelector('.cms-gallery__view')) dialog.close(); });
+        dialog?.addEventListener('touchstart', (event) => { const touch = event.changedTouches[0]; touchStart = { x: touch.clientX, y: touch.clientY }; }, { passive: true });
+        dialog?.addEventListener('touchend', (event) => {
+          if (!touchStart || !event.target || !(event.target instanceof Element) || event.target.closest('.cms-gallery__strip')) return;
+          const touch = event.changedTouches[0], dx = touch.clientX - touchStart.x, dy = touch.clientY - touchStart.y;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) move(dx < 0 ? 1 : -1);
+          touchStart = undefined;
+        }, { passive: true });
+        dialog?.addEventListener('close', () => { document.documentElement.style.overflow = ''; returnFocus?.focus(); });
       });
     </script>
   </section>

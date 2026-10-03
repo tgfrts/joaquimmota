@@ -1,18 +1,19 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import CmsGallery from '../../components/CmsGallery.astro';
 import CmsImage from '../../components/CmsImage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer.astro';
 import sampleContent from '../../data/sample-content.json';
+import testimonialOrder from '../../data/prelisting-testimonial-order.json';
+import testimonialSource from '../../data/prelisting-testimonial-source.json';
 import '../../styles/prelisting.css';
 export function getStaticPaths() { const sampleRecords: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? []; return sampleRecords.filter((record) => record._type === 'preListing').map((record) => ({ params: { slug: record.slug?.current ?? record.sourceSlug }, props: { record } })); }
 const { record } = Astro.props;
-const location = [record.parish, record.municipality].filter(Boolean).join(', ');
+const sampleRecords: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? [];
 const reasons = [
-  ['⌖', 'Conhecimento profundo do mercado local', 'Trabalho nesta zona há mais de 10 anos. Conheço bem o tipo de comprador que procura casa aqui e como posicionar o seu imóvel para gerar interesse e propostas.'],
-  ['▥', 'Estratégia de preço baseada no mercado', 'Utilizo análises comparativas e dados de mercado para definir um posicionamento que maximize o interesse dos compradores sem comprometer o valor do imóvel.'],
-  ['◉', 'Apresentação profissional do imóvel', 'Fotografia profissional, apresentação cuidada e presença nos principais canais ajudam a garantir que o seu imóvel se destaca desde o primeiro momento.'],
-  ['♢', 'Acompanhamento claro do início ao fim', 'Durante todo o processo terá um único ponto de contacto, com comunicação clara e acompanhamento até à escritura.'],
+  ['/assets/prelisting-reason-1.svg', 'Conhecimento profundo do mercado local', 'Trabalho nesta zona há mais de 10 anos. Conheço bem o tipo de comprador que procura casa aqui e como posicionar o seu imóvel para gerar interesse e propostas.'],
+  ['/assets/prelisting-reason-2.svg', 'Estratégia de preço baseada no mercado', 'Utilizo análises comparativas e dados de mercado para definir um posicionamento que maximize o interesse dos compradores sem comprometer o valor do imóvel.'],
+  ['/assets/prelisting-reason-3.svg', 'Apresentação profissional do imóvel', 'Fotografia profissional, apresentação cuidada e presença nos principais canais ajudam a garantir que o seu imóvel se destaca desde o primeiro momento.'],
+  ['/assets/prelisting-reason-4.svg', 'Acompanhamento claro do início ao fim', 'Durante todo o processo terá um único ponto de contacto, com comunicação clara e acompanhamento até à escritura.'],
 ];
 const process = [
   ['Reunião inicial', 'Visitamos o imóvel e conversamos sobre os seus objetivos, prazos e expectativas. É neste momento que começo a perceber qual a melhor estratégia para a venda.'],
@@ -22,15 +23,20 @@ const process = [
   ['Proposta aceite e escritura', 'Acompanho todo o processo até à escritura, tratando das etapas necessárias para que a venda decorra com segurança e tranquilidade.'],
 ];
 const sold = [
-  ['/assets/sold-carvicais.webp', 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', '3 · 1', 'Torre de Moncorvo · Carviçais'],
-  ['/assets/sold-pacos.webp', 'Armazém à venda em Paços de Brandão', '1', 'Santa Maria a Feira · Paços de Brandão'],
-  ['/assets/sold-pedroso.webp', 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', '2 · 1', 'Vila Nova de Gaia · Pedroso'],
-  ['/assets/sold-vilar.webp', 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', '1 · 1 · 1', 'Vila Nova de Gaia · Vilar do Paraíso'],
-  ['/assets/sold-serzedo.webp', 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', '3 · 2 · 0', 'Vila Nova de Gaia · Serzedo'],
+  ['/assets/sold-carvicais.webp', 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', 'Torre de Moncorvo', 'Carviçais'],
+  ['/assets/sold-pacos.webp', 'Armazém à venda em Paços de Brandão', 'Santa Maria a Feira', 'Paços de Brandão'],
+  ['/assets/sold-pedroso.webp', 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', 'Vila Nova de Gaia', 'Pedroso'],
+  ['/assets/sold-vilar.webp', 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', 'Vila Nova de Gaia', 'Vilar do Paraíso'],
+  ['/assets/sold-serzedo.webp', 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', 'Vila Nova de Gaia', 'Serzedo'],
 ];
-const testimonials = [
-  ['Carlos Dourado', 'Registo, o profissionalismo do Sr. Joaquim Mota, durante o período que ambos partilhamos, o que permitiu a consumação do contrato relativo ao apartamento, sito em Macedo de Cavaleiros.'], ['Adelino Samorinha', 'Competente e sempre disponível para ajudar.'], ['Ivo Durães', 'Profissional, dedicado e honesto. Obrigado pela ajuda na compra da casa.'], ['Nuno Teixeira', 'Fenomenal acompanhamento no processo de aquisição da nossa nova casa. Obrigado Sr. Joaquim. Profissional, transparente, dedicado.'], ['Cristina Pinto', 'Conseguiu rapidamente resolver a venda e compra da minha nova casa. Obrigada e felicidades.'], ['Vera Silva', 'O Sr. Joaquim foi super prestativo. Ajudou-nos completamente em todo o processo, foi super tranquilo. Graças à sua estratégia, a casa foi vendida em menos de uma semana. Muito obrigado.'], ['Jorge Mendes', 'Bom dia a todos, já fiz mais de que um negócio com a KW SOMOS essencialmente com o vendedor Joaquim Mota ao qual só tenho a agradecer pela sua atenção e simpatia sempre disponível quando eu precisava. Obrigado.'], ['PAULA FERNANDES', 'Vendi e comprei casa e gostei muito como tudo correu... Estou satisfeita com o serviço efetuado.'], ['João', 'Desde já agradeço ao Sr. Joaquim Mota pela atenção dispensada e sempre que foi preciso a sua disponibilidade em dar, resposta as minhas necessidades! Continue sempre assim, um excelente profissional. Já não é o primeiro negócio que já realizamos. Acima de tudo muito honesto no que vê e no que prevê! Parabéns mais uma vez, obrigado por tudo. Assim haja muitos Srs. Joaquim.'], ['Ivone Baldaia', 'Consultoria imobiliária de excelência, apoio em todo o processo de compra e pós compra. Obrigada Sr. Mota pelo profissionalismo, seriedade e disponibilidade.'],
-];
+const orderedTestimonials = testimonialOrder.routes.find(route => route.preListingLegacyId === record.legacyId)?.testimonials;
+if (!orderedTestimonials) throw new Error('Missing verified public pre-listing testimonial order.');
+const testimonials = orderedTestimonials.map(entry => {
+  const own = sampleRecords.find(item => item._type === 'testimonial' && entry.candidateLegacyIds.includes(item.legacyId));
+  const fallback = testimonialSource.testimonials.find(item => entry.candidateLegacyIds.includes(item.legacyId));
+  if (!own && !fallback) throw new Error('Missing eligible pre-listing testimonial content.');
+  return own ?? fallback;
+});
 ---
 
 <BaseLayout title={`Como vender a sua casa com sucesso ${record.clientName}`} socialImage="">
@@ -38,19 +44,37 @@ const testimonials = [
     <section class="prelisting-hero">
       {record.heroImage ? <CmsImage value={record.heroImage} alt="" loading="eager" /> : <img src="/assets/prelisting-hero-4725.jpg" alt="" loading="eager" />}
       <div class="prelisting-hero__shade"></div>
-      <a href="/" class="prelisting-brand" aria-label="Joaquim Mota Consultores"><img src="/assets/logo-white.svg" alt="" /></a>
-      <div class="prelisting-hero__agent"><img src="/assets/joaquim-profile.png" alt="" /><span>JOAQUIM MOTA</span></div>
-      <div class="prelisting-hero__copy"><h1>Conheça a estratégia de venda do seu imóvel.</h1><span class="prelisting-hero__divider"></span><div class="prelisting-hero__address"><strong>{record.clientName}</strong><span>{record.address}</span><span>{record.parish}</span><span>{record.municipality}</span></div></div>
+      <div class="prelisting-brand"><img src="/assets/logo-white.svg" alt="" /></div>
+      <div class="prelisting-hero__inner"><div class="prelisting-hero__agent"><img src="/assets/prelisting-profile.png" alt="" /><span>JOAQUIM MOTA</span></div>
+      <div class="prelisting-hero__copy"><h1>Conheça a estratégia de venda do seu imóvel.</h1><span class="prelisting-hero__divider"></span><div class="prelisting-hero__address"><strong>{record.clientName}</strong><span>{record.address}</span><div><span>{record.parish}</span><span>{record.municipality}</span></div></div></div></div>
       <div class="prelisting-hero__scroll">DESLIZE PARA BAIXO<span></span></div>
     </section>
-    <section class="prelisting-section prelisting-section--intro"><div class="prelisting-person"><img src="/assets/joaquim-profile.png" alt="" /><p>Porquê comigo</p></div><h2>Vender o seu imóvel merece a dedicação certa.</h2><div class="prelisting-reasons">{reasons.map(([icon, title, copy]) => <article><span class="prelisting-icon" aria-hidden="true">{icon}</span><h4>{title}</h4><p>{copy}</p></article>)}</div></section>
-    <section class="prelisting-sold"><div class="prelisting-sold__heading"><p>Os meus resultados</p><h2>Últimos imóveis vendidos</h2></div><div class="prelisting-sold__rail">{[...sold, ...sold].map(([image, title, facts, place], index) => <article aria-hidden={index >= sold.length ? 'true' : undefined}><div><img src={image} alt="" /><span>VENDIDO</span></div><h4>{title}</h4><p>{facts}</p><small>{place}</small></article>)}</div></section>
-    <section class="prelisting-section prelisting-section--process"><p class="prelisting-kicker">O processo</p><h2>Simples, claro e orientado para um objetivo: vender bem o seu imóvel.</h2><ol>{process.map(([title, copy], index) => <li><span class="prelisting-process__icon">0{index + 1}</span><div><h4>{title}</h4><p>{copy}</p></div></li>)}</ol></section>
-    <section class="prelisting-stats"><h2>Vendemos a sua casa com sucesso.</h2><div><p>+ Valor<strong>96%</strong><span>Valor Inicial de Oferta</span></p><p>+ Rápido<strong>60 dias</strong><span>Tempo médio de venda</span></p><p>+ Tranquilidade<strong>85%</strong><span>Angariações Vendidas</span></p></div></section>
-    <section class="prelisting-testimonials"><header><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2><a href="/reviews">Leia as nossas avaliações</a></header><div>{testimonials.map(([name, quote]) => <figure><span>★★★★★</span><blockquote>{quote}</blockquote><figcaption>{name}</figcaption></figure>)}</div></section>
-    <section class="prelisting-contact"><h2><span>{record.clientName}</span> estou aqui para si.</h2><p>Sem compromisso. Sem pressão.</p><p>Joaquim Mota<br /><a href="tel:+351914257870">+351 914 257 870</a></p></section>
-    {record.gallery?.length > 0 && <section class="prelisting-gallery"><CmsGallery images={record.gallery} label={`${record.typology} em ${location}`} /></section>}
+    <section class="prelisting-section prelisting-section--intro"><div class="prelisting-person"><img src="/assets/prelisting-profile.png" alt="" /><p>Porquê comigo</p></div><h2>Vender o seu imóvel merece a dedicação certa.</h2><div class="prelisting-reasons">{reasons.map(([icon, title, copy]) => <article><img class="prelisting-icon" src={icon} alt="" /><h4>{title}</h4><p>{copy}</p></article>)}</div></section>
+    <section class="prelisting-sold"><div class="prelisting-sold__heading"><p>Os meus resultados</p><h2>Últimos imóveis vendidos</h2></div><div class="prelisting-sold__rail">{[...sold, ...sold].map(([image, title, city, parish], index) => <article aria-hidden={index >= sold.length ? 'true' : undefined}><div><img src={image} alt="" /><span class="prelisting-sold__shade"></span><img class="prelisting-sold__banner" src="/assets/prelisting-sold-banner.webp" alt="" /><div class="prelisting-sold__copy"><h4>{title}</h4><span class="prelisting-sold__divider"></span><h6>{city}</h6><h6>{parish}</h6></div></div></article>)}</div></section>
+    <section class="prelisting-section prelisting-section--process"><p class="prelisting-kicker">O processo</p><h2>Simples, claro e orientado para um objetivo: vender bem o seu imóvel.</h2><ol>{process.map(([title, copy], index) => <li><span class="prelisting-process__icon"><img src={`/assets/prelisting-process-${index + 1}.svg`} alt="" /></span><div><h4>{title}</h4><p>{copy}</p></div></li>)}</ol></section>
+    <section class="prelisting-stats"><p class="prelisting-stats__kicker">Os nossos resultados</p><h2>Vendemos a sua casa com sucesso.</h2><div><p>+ Valor<strong>96%</strong><span>Valor Inicial de Oferta</span></p><p>+ Rápido<strong>60 dias</strong><span>Tempo médio de venda</span></p><p>+ Tranquilidade<strong>85%</strong><span>Angariações Vendidas</span></p></div></section>
+    <section class="prelisting-testimonials" id="testemunhos"><header><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2><a href="/reviews">Leia as nossas avaliações</a></header><div>{testimonials.map(testimonial => <figure><div class="prelisting-stars" aria-label="5 estrelas">{Array.from({length:5},()=> <img src="/assets/prelisting-star.svg" alt="" />)}</div><blockquote>{testimonial.quote}</blockquote><figcaption><span class="prelisting-testimonial__avatar">{testimonial.portrait ? <CmsImage value={testimonial.portrait} alt="" /> : testimonial.portraitURL && <img src={testimonial.legacyId === '64d73faf12672d652ab57849' ? '/assets/testimonial-ivo.webp' : testimonial.portraitURL} alt="" />}</span><span>{testimonial.clientName}</span></figcaption></figure>)}</div></section>
+    <section class="prelisting-contact"><div class="prelisting-contact__card" data-source-cta><div><p class="prelisting-contact__kicker">Próximo passo</p><div class="prelisting-contact__title"><h2>{record.clientName}</h2><h2>estou aqui para si.</h2></div><p>Sem compromisso. Sem pressão.</p></div><div class="prelisting-contact__portrait"><img src="/assets/prelisting-profile.png" alt="" /></div></div></section>
   </main>
-  <a class="prelisting-phone" href="tel:+351914257870" aria-label="Ligar para Joaquim Mota">+351 914 257 870</a>
   <Footer newsletter={false} facebookHref="https://www.facebook.com/joaquimmotakw" />
 </BaseLayout>
+
+<script>
+  import { bindSourceScrollMotion, interpolate } from '../../scripts/source-scroll-motion';
+  const soldRail = document.querySelector('.prelisting-sold__rail');
+  if (soldRail) {
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        soldRail.classList.add('is-visible');
+        observer.disconnect();
+      }
+    });
+    observer.observe(soldRail);
+  }
+  document.querySelectorAll<HTMLElement>('[data-source-cta]').forEach(element => {
+    bindSourceScrollMotion(element, (progress, reduced) => {
+      element.style.opacity = reduced ? '1' : String(interpolate(progress, [[0,0],[.35,1]]));
+      element.style.transform = reduced ? 'none' : `scale(${interpolate(progress, [[0,1.25],[.35,1]])})`;
+    });
+  });
+</script>

@@ -1,5 +1,22 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'; import '../styles/campaigns.css';
-const terms=`A oferta do certificado energético é aplicável apenas no cumprimento das seguintes condições:\n\n1. Assinatura de contrato de mediação imobiliária com Somos Real Estate Med. Imo. Lda. e Joaquim Mota Consultores Imobiliários\n\n2. O prazo do contrato mencionado acima tem a duração mínima de 12 meses após a celebração do mesmo\n\n3. O preço de venda do imóvel terá de ser o mesmo mencionado no estudo de mercado, fornecido gratuitamente e previamente à celebração do contrato de mediação imobiliário.\n\nAo violar qualquer um dos Termos e Condições da Oferta, a mesma se tornará inválida e implicará a restituição do valor pago pela emissão do certificado energético a Joaquim Mota.`;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/certificate-offer.css';
+
+const socialImage = 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg';
 ---
-<BaseLayout title="Oferta Certificado Energético"><main class="campaign-page campaign-page--terms"><div class="campaign-page__image" style="background-image:url('/assets/campaign-certificado.jpeg')"></div><section class="campaign-page__panel"><a href="/"><img class="campaign-page__logo" src="/assets/logo-color.svg" alt="Joaquim Mota Consultores" /></a><h1>Termos e Condições da Oferta</h1><p class="campaign-page__intro">{terms}</p></section></main></BaseLayout>
+
+<BaseLayout title="Oferta Certificado Energético" socialImage={socialImage}>
+  <main class="certificate-offer">
+    <div class="certificate-offer__image" aria-hidden="true"></div>
+    <section class="certificate-offer__content">
+      <h1>Termos e Condições da Oferta</h1>
+      <p>A oferta do certificado energético é aplicável apenas no cumprimento das seguintes condições:</p>
+      <ol>
+        <li>Assinatura de contrato de mediação imobiliária com Somos Real Estate Med. Imo. Lda. e Joaquim Mota Consultores Imobiliários</li>
+        <li>O prazo do contrato mencionado acima tem a duração mínima de 12 meses após a celebração do mesmo</li>
+        <li>O preço de venda do imóvel terá de ser o mesmo mencionado no estudo de mercado, fornecido gratuitamente e previamente à celebração do contrato de mediação imobiliário.</li>
+      </ol>
+      <p>Ao violar qualquer dos Termos e Condições da Oferta, a mesma se tornará inválida e implicará a restituição do valor pago pela emissão do certificado energético a Joaquim Mota.</p>
+    </section>
+  </main>
+</BaseLayout>

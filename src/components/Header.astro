@@ -1,6 +1,6 @@
 ---
-interface Props { contactHref?: string; variant?: 'overlay' | 'light'; pageNavigation?: boolean; contactLabel?: string; }
-const { contactHref = '/contacto', variant = 'overlay', pageNavigation = false, contactLabel = 'Contacte-nos' } = Astro.props;
+interface Props { contactHref?: string; variant?: 'overlay' | 'light'; pageNavigation?: boolean; contactLabel?: string; showBlog?: boolean; }
+const { contactHref = '/contacto', variant = 'overlay', pageNavigation = false, contactLabel = 'Contacte-nos', showBlog = true } = Astro.props;
 const homeLinks = [
   { href: '/vender', label: 'Vender' },
   { href: '/comprar#imoveis', label: 'Imóveis' },
@@ -15,13 +15,14 @@ const pageLinks = [
   { href: '/sobre', label: 'Sobre nós' },
   { href: '/blog', label: 'Blog' },
 ];
-const links = pageNavigation ? pageLinks : homeLinks;
+const links = (pageNavigation ? pageLinks : homeLinks).filter(link => showBlog || link.href !== '/blog');
+const navigationId = `site-navigation-${crypto.randomUUID()}`;
 ---
 
 <header class:list={['site-header', { 'site-header--light': variant === 'light' }]} data-header>
   <a class="brand" href="/" aria-label="Joaquim Mota Consultores"><img src={variant === 'light' ? '/assets/logo-color.svg' : '/assets/logo-white.svg'} alt="" /></a>
-  <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-navigation"><span></span></button>
-  <nav id="site-navigation" aria-label="Navegação principal">
+  <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls={navigationId}><span></span></button>
+  <nav id={navigationId} aria-label="Navegação principal">
     {links.map((link) => <a href={link.href}>{link.label}</a>)}
     <a class="nav-mobile-contact" href={contactHref}>{contactLabel}</a>
   </nav>
@@ -29,11 +30,12 @@ const links = pageNavigation ? pageLinks : homeLinks;
 </header>
 
 <script>
-  const header = document.querySelector<HTMLElement>('[data-header]');
-  const button = header?.querySelector<HTMLButtonElement>('.menu-toggle');
-  button?.addEventListener('click', () => {
-    const open = header?.classList.toggle('is-open') ?? false;
-    button.setAttribute('aria-expanded', String(open));
+  document.querySelectorAll<HTMLElement>('[data-header]').forEach((header) => {
+    const button = header.querySelector<HTMLButtonElement>('.menu-toggle');
+    button?.addEventListener('click', () => {
+      const open = header.classList.toggle('is-open');
+      button.setAttribute('aria-expanded', String(open));
+    });
   });
 </script>
 

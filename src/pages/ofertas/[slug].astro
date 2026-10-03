@@ -12,14 +12,14 @@ const { record } = Astro.props;
     <div class="offer-page__image"><CmsImage value={record.image} alt="" loading="eager" /></div>
     <section class="offer-page__content">
       <a href="/" class="offer-page__brand" aria-label="Joaquim Mota Consultores"><img src="/assets/logo-color.svg" alt="" /></a>
-      <div class="offer-page__intro"><h1>{record.heading ?? record.title}</h1><p>{record.body}</p></div>
+      <div class="offer-page__intro"><h5>{record.heading ?? record.title}</h5><p>{record.body}</p></div>
       <form class="offer-form" data-form-type="leadMagnet" novalidate>
         <div class="offer-form__names"><input name="firstName" required autocomplete="given-name" placeholder="Nome" aria-label="Nome" /><input name="lastName" required autocomplete="family-name" placeholder="Apelido" aria-label="Apelido" /></div><input name="email" type="email" required autocomplete="email" placeholder="O seu email" aria-label="O seu email" /><input name="phone" type="tel" required autocomplete="tel" placeholder="Telefone" aria-label="Telefone" />
         <p>Conhece alguém que esteja a vender ou a comprar casa?</p><select name="referral" required aria-label="Conhece alguém que esteja a vender ou a comprar casa?"><option selected>Sim, a comprar</option><option>Sim, a vender</option><option>Não</option></select>
         <p>Está a pensar vender ou a comprar casa?</p><select name="intent" required aria-label="Está a pensar vender ou a comprar casa?"><option selected>Sim, a comprar</option><option>Sim, a vender</option><option>Não</option></select>
-        <label class="offer-form__consent"><input name="consent" type="checkbox" required checked /> Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</label><button type="submit">Enviar</button><p class="offer-form__status" aria-live="polite"></p>
+        <label class="offer-form__consent"><input name="consent" type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label><button type="submit">Enviar</button><p class="offer-form__status" aria-live="polite" hidden></p><p class="offer-page__legal">©2023 - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
       </form>
-      <p class="offer-page__legal">©2023 - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+
     </section>
   </main>
   <script>
@@ -27,7 +27,7 @@ const { record } = Astro.props;
     document.querySelectorAll<HTMLFormElement>('[data-form-type="leadMagnet"]').forEach((form) => form.addEventListener('submit', async (event) => {
       event.preventDefault(); const status = form.querySelector<HTMLElement>('.offer-form__status'); if (!form.reportValidity()) return;
       const values = new FormData(form); const fields = { name: `${values.get('firstName')} ${values.get('lastName')}`.trim(), email: String(values.get('email')), phone: String(values.get('phone')), message: `Referência: ${values.get('referral')}. Interesse: ${values.get('intent')}.` };
-      try { await submitFormAccepted(form, { formType: 'leadMagnet', route: location.pathname, fields }); location.assign('/obrigado'); } catch { if (status) status.textContent = 'Oops! Alguma coisa correu mal.'; }
+      try { await submitFormAccepted(form, { formType: 'leadMagnet', route: location.pathname, fields }); location.assign('/obrigado'); } catch { if (status) { status.hidden = false; status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; } }
     }));
   </script>
 </BaseLayout>

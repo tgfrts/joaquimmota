@@ -1,0 +1,47 @@
+---
+import '../../styles/public-campaigns.css';
+---
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta property="og:title" content="Atualização de Informação" /><meta name="twitter:title" content="Atualização de Informação" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Atualização de Informação</title>
+  </head>
+  <body>
+    <main class="public-campaign public-campaign--update">
+      <div class="public-campaign__image" style="--campaign-bg:url('https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6363b57795d5a577af21a4ba_DSCF0045.png')" aria-hidden="true"></div>
+      <section class="public-campaign__panel">
+        <a class="public-campaign__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
+        <h1>Para atualizar as suas informações, preencha o formulário.</h1>
+        <form data-information-update data-route="/lp/atualizacao-de-informacao">
+          <div class="public-campaign__names"><input name="firstName" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" autocomplete="family-name" placeholder="Apelido" required /></div>
+          <input name="email" type="email" autocomplete="email" placeholder="O seu email" required />
+          <input name="phone" type="tel" autocomplete="tel" placeholder="Telefone" required />
+          <input name="street" autocomplete="street-address" placeholder="Avenida / Rua / Travessa" required />
+          <div class="public-campaign__names"><input name="postalCode" autocomplete="postal-code" placeholder="Código Postal" required /><input name="county" autocomplete="address-level2" placeholder="Concelho" required /></div>
+          <label class="public-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
+          <button type="submit">Enviar</button><p class="public-campaign__status" data-information-status role="status" aria-live="polite" hidden></p>
+        </form>
+        <p class="public-campaign__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+      </section>
+    </main>
+  </body>
+</html>
+<script>
+  import { submitFormAccepted } from '../../scripts/forms-client';
+  document.querySelectorAll<HTMLFormElement>('[data-information-update]').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault(); if (!form.reportValidity()) return;
+    const data = new FormData(form); const button = form.querySelector<HTMLButtonElement>('button'); const status = form.querySelector<HTMLElement>('[data-information-status]'); if (!button || !status) return;
+    button.disabled = true; status.hidden = false;
+    const message = [`A sua morada: ${data.get('street')}`, `Código Postal: ${data.get('postalCode')}`, `Concelho: ${data.get('county')}`].join('\n');
+    try {
+      await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } });
+      form.hidden = true; status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
+    } catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
+  }));
+  const year = document.querySelector<HTMLElement>('[data-current-year]'); if (year) year.textContent = String(new Date().getFullYear());
+</script>

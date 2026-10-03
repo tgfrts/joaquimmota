@@ -1,14 +1,21 @@
-<section class="cms-newsletter" aria-labelledby="cms-newsletter-title">
-  <p class="eyebrow dark" id="cms-newsletter-title">NÃO PERCA NENHUM ARTIGO!</p>
+<aside class="cms-newsletter" aria-labelledby="cms-newsletter-title">
+  <h2 id="cms-newsletter-title">Não perca nenhum artigo!</h2>
   <p>Subscreva para receber em primeira mão os nossos artigos no seu email todas as semanas.</p>
-  <form data-newsletter><input type="text" aria-label="Nome" placeholder="Nome" /><input type="text" aria-label="Apelido" placeholder="Apelido" /><input name="email" type="email" aria-label="O seu email" placeholder="O seu email" required /><button class="button button--light" type="submit">Subscrever</button><p aria-live="polite" data-newsletter-status></p></form>
-</section>
+  <form data-newsletter>
+    <input name="firstName" type="text" aria-label="Nome" placeholder="Nome" required />
+    <input name="lastName" type="text" aria-label="Apelido" placeholder="Apelido" required />
+    <input name="email" type="email" aria-label="O seu email" placeholder="O seu email" required />
+    <button type="submit">Subscrever</button>
+    <p class="cms-newsletter__privacy">Nós também detestamos SPAM! Por isso só enviamos conteúdos que sejam relevantes para si.</p>
+    <p aria-live="polite" data-newsletter-status hidden></p>
+  </form>
+</aside>
 <script>
   import { submitFormAccepted } from '../scripts/forms-client';
   document.querySelectorAll<HTMLFormElement>('form[data-newsletter]').forEach((form) => form.addEventListener('submit', async (event) => {
     event.preventDefault(); if (!form.reportValidity()) return;
     const status = form.querySelector<HTMLElement>('[data-newsletter-status]');
-    try { await submitFormAccepted(form, { formType: 'newsletter', route: location.pathname, fields: { email: String(new FormData(form).get('email')) } }); if (status) status.textContent = 'Enviado com sucesso!'; form.reset(); }
-    catch { if (status) status.textContent = 'Oops! Alguma coisa correu mal.'; }
+    try { await submitFormAccepted(form, { formType: 'newsletter', route: location.pathname, fields: { email: String(new FormData(form).get('email')), firstName: String(new FormData(form).get('firstName')), lastName: String(new FormData(form).get('lastName')) } }); if (status) { status.hidden = false; status.textContent = 'Enviado com sucesso!'; } form.querySelectorAll('input, button, .cms-newsletter__privacy').forEach((element) => (element as HTMLElement).hidden = true); }
+    catch { if (status) { status.hidden = false; status.textContent = 'Oops! Alguma coisa correu mal.'; } }
   }));
 </script>

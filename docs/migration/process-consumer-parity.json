@@ -1,0 +1,60 @@
+{
+  "status": "verified-consumer-mapping",
+  "destinationImportsAdded": 0,
+  "sourceHomeIds": [
+    "64d73faf12672d652ab57816",
+    "64d73faf12672d652ab57825",
+    "64d73faf12672d652ab57821"
+  ],
+  "sampleBuyIds": [
+    "64d73faf12672d652ab57824",
+    "64d73faf12672d652ab57819"
+  ],
+  "content": "exact source title/body/order, CTA href/label retained",
+  "desktop": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "home": {
+      "sourceAndTargetX": 501.328125,
+      "sourceAndTargetWidth": 714.671875,
+      "sourceAndTargetHeights": [
+        116.3984375,
+        116.3984375,
+        116.3984375
+      ],
+      "sourceAndTargetY": [
+        856,
+        1036.3984375,
+        1216.796875
+      ]
+    },
+    "buy": "same heading/body typography and links; target positioning compared after source assets load"
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "home": {
+      "sourceAndTargetHeights": [
+        154.3984375,
+        130.3984375,
+        154.3984375
+      ],
+      "verticalTolerancePx": 0.02
+    },
+    "buy": {
+      "sourceAndTargetHeights": [
+        240.796875,
+        178.3984375
+      ]
+    }
+  },
+  "limitations": [
+    "fallback contains only eligible public source copy until approved bulk target snapshot exists",
+    "Source header and CTA scroll motion implemented from public keyframes; browser comparison and whole-page acceptance still in progress.",
+    "does not certify complete site or enable bulk"
+  ]
+}

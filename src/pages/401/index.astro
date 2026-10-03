@@ -1,0 +1,29 @@
+---
+import '../../styles/global.css';
+import '../../styles/utility-pages.css';
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Protected page</title>
+    <meta property="og:title" content="Protected page" />
+    <meta name="twitter:title" content="Protected page" />
+  </head>
+  <body class="utility-page">
+    <main class="utility-component" aria-labelledby="protected-title">
+      <section class="utility-card">
+        <img class="utility-image" src="https://cdn.prod.website-files.com/static/utility-lock.ae54711958.svg" alt="" />
+        <h1 id="protected-title">Protected Page</h1>
+        <form class="utility-form" aria-label="Password protected page">
+          <label class="visually-hidden" for="password">Enter your password</label>
+          <input id="password" name="pass" type="password" placeholder="Enter your password" autocomplete="current-password" />
+          <button type="button">Submit</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

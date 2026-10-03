@@ -4,6 +4,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/home-fidelity.css';
+import content from '../data/sample-content.json';
+import homeSource from '../data/home-process-source.json';
+const homeIds = ['64d73faf12672d652ab57816', '64d73faf12672d652ab57825', '64d73faf12672d652ab57821'];
+const records: any[] = Array.isArray(content) ? content : (content as any).documents ?? [];
+const ownHome = records.filter(record => record._type === 'processStep' && record.placement === 'home');
+// Verified source copy keeps the preview intact until the approved bulk snapshot is materialized.
+const homeSteps = homeIds.map(id => ownHome.find(record => record.legacyId === id) ?? homeSource.find(record => record.legacyId === id));
+if (homeSteps.some(step => !step)) throw new Error('Missing Home process content.');
 
 const sold = [
   { image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', beds: '3', baths: '1', municipality: 'Torre de Moncorvo', location: 'Carviçais' },
@@ -13,6 +21,7 @@ const sold = [
   { image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', beds: '3', baths: '2', municipality: '', location: 'Serzedo' },
 ];
 const soldLoop = [...sold, ...sold];
+const joao = records.find(record => record._type === 'testimonial' && record.legacyId === '67b454c5e23698381d4b5a8b');
 const testimonials = [
   ['Consultor de confiança, ajudou bastante no nosso processo e ficamos super satisfeitos.', 'BRUNO SANTOS'],
   ['Gostaríamos de agradecer, a todos os intervenientes na compra do nosso imóvel, em especial ao Sr. Joaquim Mota e à D. Carla , que sempre nos aconselharam e tiverem imensa paciência durante todo o processo. Hoje temos o nosso imóvel e apesar de muitas adversidades que ocorreram durante o processo, foram todos muito eficientes e profissionais connosco. O nosso muito obrigada!', 'JULIANA RAMALHO'],
@@ -20,7 +29,7 @@ const testimonials = [
   ['Uma excelente pessoa. Um excelente vendedor. Felicidades.', 'PAULO PEREIRA'],
   ['Conseguiu rapidamente resolver a venda e compra da minha nova casa. Obrigada e felicidades.', 'CRISTINA PINTO'],
   ['Recomendado. Profissionais merecedores de 5 estrelas.', 'CARLA ROCHA'],
-  ['Excelente profissional.', 'JOÃO CARLOS DE ALMEIDA'],
+  [joao?.quote ?? 'Excelente profissional.', (joao?.clientName ?? 'João Carlos de Almeida').toUpperCase()],
   ['O Sr. Joaquim foi super prestativo. Ajudou-nos completamente em todo o processo, foi super tranquilo. Graças à sua estratégia, a casa foi vendida em menos de uma semana. Muito obrigado.', 'VERA SILVA'],
   ['Vender e comprar casa ao mesmo tempo não é de todo fácil, mas com a ajuda do Sr. Joaquim Mota tornou-se possível. Sem dúvida um profissional de excelência. Dedicado e sempre pronto a ajudar. Sem a ajuda do sr. Joaquim nunca teria sido possível a nossa mudança de casa. Muito obrigada por tudo.', 'SUSANA LOUREIRO'],
   ['Desde já agradeço ao Sr. Joaquim Mota pela atenção dispensada e sempre que foi preciso a sua disponibilidade em dar, resposta as minhas necessidades! Continue sempre assim, um excelente profissional. Já não é o primeiro negócio que já realizamos. Acima de tudo muito honesto no que vê e no que prevê! Parabéns mais uma vez, obrigado por tudo. Assim haja muitos Srs. Joaquim.', 'JOÃO'],
@@ -28,14 +37,14 @@ const testimonials = [
 ---
 
 <BaseLayout description="Uma venda com sucesso" richSocial>
-  <main>
+  <main class="home-page">
     <section class="hero">
       <video class="hero-video" autoplay muted loop playsinline poster="/assets/hero-poster.jpg" aria-hidden="true"><source src="/assets/hero.mp4" type="video/mp4" /></video><div class="hero-shade"></div><Header />
       <div class="hero-content shell"><p class="eyebrow">JOAQUIM MOTA CONSULTORES</p><h1>Uma experiência imobiliária bem sucedida</h1><p>Quer esteja a pensar vender ou comprar, estamos aqui para lhe guiar numa experiência bem sucedida.</p><div class="hero-actions"><a href="/vender" class="button button--light">Vou vender</a><a href="/comprar" class="button button--outline">Vou comprar</a></div></div>
     </section>
 
-    <section class="intro shell section-grid"><div><p class="eyebrow dark">COMO O FAZEMOS</p><h2>Espere mais do seu consultor</h2></div><div><p>Sabemos que vender e comprar uma casa pode ser complicado.</p><p>Estamos aqui para tornar esse processo o mais simples possível para si.</p></div></section>
-    <section class="process shell"><article><h3>01. Simples e fácil</h3><p>O seu sucesso é a nossa prioridade. Sabemos que a venda e a compra de uma casa pode ser complexa. Dedicamo-nos para que, para si, esse processo seja simples e fácil.</p></article><article><h3>02. Consultoria</h3><p>Todos os nossos clientes começam com uma sessão de consultoria gratuita para entendermos os seus objetivos e o seu plano para o futuro.</p></article><article><h3>03. Suporte</h3><p>Estamos aqui para si. Sabemos que as coisas acontecem quando menos espera, por isso estamos disponíveis sempre que tenha alguma questão.</p></article></section>
+    <div class="home-secondary-header"><Header variant="light" pageNavigation contactHref="/vamos-comecar" contactLabel="Vamos começar" showBlog={false} /></div>
+    <section class="home-process shell"><div class="home-process__intro"><p class="eyebrow">Como o fazemos</p><h2>Espere mais do seu consultor</h2><p>Sabemos que vender e comprar uma casa pode ser complicado.<br />Estamos aqui para tornar esse processo o mais simples possível para si.</p></div><div class="home-process__steps">{homeSteps.map(step => <article data-source-id={step!.legacyId}><h3>{step!.title}</h3><p>{step!.body}</p></article>)}</div></section>
     <section class="results"><div class="shell section-grid"><div><p class="eyebrow">OS NOSSOS RESULTADOS</p><h2>Comercializamos a sua casa com excelência.</h2></div><div><p>A nossa estratégia de marketing é dinamicamente construída para obter os resultados que procura.</p><p>A nossa abordagem abrangente inclui anúncios direcionados no Facebook, email marketing, marketing de conteúdos e fotografias e videos profissionais. Criamos ainda uma página exclusiva no nosso site para a sua casa.</p></div></div><dl class="metrics shell"><div><dt>85%</dt><dd>Angariações vendidas</dd></div><div><dt>60 dias</dt><dd>Tempo médio de venda</dd></div><div><dt>-4%</dt><dd>Taxa média de desconto</dd></div></dl></section>
     <section class="sold shell"><p class="eyebrow dark">OS NOSSOS RESULTADOS</p><h2>Últimos imóveis vendidos</h2><div class="property-rail" aria-label="Últimos imóveis vendidos"><div class="property-track">{soldLoop.map((property, index) => <article class="property-card" aria-hidden={index >= sold.length ? 'true' : undefined}><div class="property-image"><img src={property.image} alt="" loading="lazy" /><span>VENDIDO</span></div><h3>{property.title}</h3><p class="facts"><span>{property.beds} quartos</span><span>{property.baths} casa de banho</span></p><p class="place">{property.municipality && <>{property.municipality}<br /></>}{property.location}</p></article>)}</div></div></section>
     <section class="testimonials"><div class="shell testimonial-heading"><div><p class="eyebrow">O QUE DIZEM OS NOSSOS CLIENTES</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a href="/reviews" class="text-link">Leia as nossas avaliações</a></div><div class="testimonial-rail shell">{testimonials.map(([quote, name]) => <figure><div aria-label="5 estrelas" class="stars">★★★★★</div><blockquote>“{quote}”</blockquote><figcaption>{name}</figcaption></figure>)}</div></section>

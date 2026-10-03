@@ -32,11 +32,11 @@ const ROUTES: Record<FormType, ReadonlySet<string>> = {
 
 const FIELDS: Record<FormType, ReadonlySet<string>> = {
   newsletter: new Set(['email', 'firstName', 'lastName']),
-  contact: new Set(['name', 'email', 'phone', 'message']),
-  valuation: new Set(['name', 'email', 'phone', 'propertyType', 'bedrooms', 'location', 'message']),
-  mortgage: new Set(['name', 'email', 'phone', 'message']),
-  partnership: new Set(['name', 'email', 'phone', 'clientType', 'message']),
-  leadMagnet: new Set(['name', 'email', 'phone', 'message']),
+  contact: new Set(['name', 'email', 'phone', 'message', 'consent']),
+  valuation: new Set(['name', 'email', 'phone', 'propertyType', 'bedrooms', 'location', 'message', 'consent']),
+  mortgage: new Set(['name', 'email', 'phone', 'message', 'consent']),
+  partnership: new Set(['name', 'email', 'phone', 'clientType', 'message', 'consent']),
+  leadMagnet: new Set(['name', 'email', 'phone', 'message', 'consent']),
 };
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/u;
@@ -94,12 +94,14 @@ function parseSubmission(payload: unknown, idempotencyKey: string): Submission {
   if (!body.fields || typeof body.fields !== 'object' || Array.isArray(body.fields)) throw new FormError(422, 'Invalid fields.');
   const fields = body.fields as Record<string, unknown>;
   if (Object.keys(fields).some((key) => !FIELDS[type].has(key))) throw new FormError(422, 'Unsupported field.');
+  if (type !== 'newsletter' && fields.consent !== true) throw new FormError(422, 'Consent is required.');
   const email = requiredString(fields.email, 'email', 320).toLowerCase();
   if (!EMAIL.test(email)) throw new FormError(422, 'Invalid email.');
   const normalized: Record<string, unknown> = { email };
+  if (type !== 'newsletter') normalized.consent = true;
   if (type === 'contact' && !fields.name) throw new FormError(422, 'Invalid name.');
   for (const field of FIELDS[type]) {
-    if (field === 'email') continue;
+    if (field === 'email' || field === 'consent') continue;
     const value = optionalText(fields[field], field, field === 'message' ? 4_000 : 500);
     if (value !== undefined) normalized[field] = value;
   }

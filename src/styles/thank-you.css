@@ -1,0 +1,139 @@
+@import './global.css';
+
+.thank-you {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+
+.thank-you__backdrop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: linear-gradient(359deg, #00093400, #f4f4f4);
+}
+
+.thank-you__image {
+  position: relative;
+  inset: 0 auto 0 0;
+  width: 100%;
+  height: 100vh;
+  margin-right: auto;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  mix-blend-mode: multiply;
+}
+
+.thank-you__image--default {
+  background-image: url('https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg');
+}
+
+.thank-you__image--mota {
+  background-image: url('https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6363b57795d5a577af21a4ba_DSCF0045.png');
+}
+
+.thank-you__image--wallow {
+  background-image: url('https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/672e900e8db5ce87646cefd6_Facebook%20Image.jpg');
+}
+
+.thank-you__image--smilling {
+  background-image: url('https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f4fbc9eb92ea877163a92d_Dentista%20Adobe%20Stock-2.webp');
+}
+
+.thank-you__overlay {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 100%;
+  height: 100vh;
+  background: #20457f80;
+  mix-blend-mode: multiply;
+}
+
+.thank-you__content {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: min(80vw, 960px);
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.thank-you__content h1 {
+  margin: 0 0 1.5rem;
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+
+.thank-you__content p {
+  margin: 0;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.thank-you__home {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  padding: .75rem 1.5rem;
+  border: 1px solid #e5e7eb;
+  background: #e5e7eb;
+  color: #142348;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 4px 4px 20px #0006;
+}
+
+.thank-you__home:hover {
+  border-color: #fff;
+  background: #fff;
+}
+
+@media (max-width: 991px) {
+  .thank-you__backdrop {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 767px) {
+  .thank-you__backdrop {
+    height: 33vh;
+  }
+
+  .thank-you__content h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .thank-you__backdrop {
+    height: 25vh;
+  }
+
+  .thank-you__image {
+    display: none;
+  }
+
+  .thank-you__content {
+    top: 12.5vh;
+  }
+
+  .thank-you__home {
+    margin-top: 2rem;
+  }
+}

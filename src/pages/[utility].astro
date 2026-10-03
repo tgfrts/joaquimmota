@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+import '../styles/utility-pages.css';
+
+export function getStaticPaths() {
+  return [{ params: { utility: '404' } }];
+}
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Not Found</title>
+    <meta property="og:title" content="Not Found" />
+    <meta name="twitter:title" content="Not Found" />
+  </head>
+  <body class="utility-page">
+    <main class="utility-component" aria-labelledby="not-found-title">
+      <section class="utility-card">
+        <img class="utility-image" src="https://cdn.prod.website-files.com/static/page-not-found.211a85e40c.svg" alt="" />
+        <h1 id="not-found-title">Page Not Found</h1>
+        <p>The page you are looking for doesn&#39;t exist or has been moved</p>
+        <a class="utility-button" href="#">Go Home</a>
+      </section>
+    </main>
+  </body>
+</html>

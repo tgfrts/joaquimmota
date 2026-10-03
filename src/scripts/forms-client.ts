@@ -3,7 +3,13 @@ const attempts = new WeakMap<HTMLFormElement, { payload: string; key: string; pe
 
 /** Keep the same provider idempotency key when a visitor retries an unchanged submission. */
 export async function submitFormAccepted(form: HTMLFormElement, payload: FormPayload) {
-  const serialized = JSON.stringify(payload);
+  const requiredConsent = payload.formType === 'newsletter'
+    ? undefined
+    : form.querySelector<HTMLInputElement>('input[type="checkbox"][required]')?.checked === true;
+  const requestPayload = payload.formType === 'newsletter'
+    ? payload
+    : { ...payload, fields: { ...payload.fields, consent: requiredConsent } };
+  const serialized = JSON.stringify(requestPayload);
   const previous = attempts.get(form);
   if (previous?.pending) throw new Error('Submission already pending.');
   const attempt = previous?.payload === serialized

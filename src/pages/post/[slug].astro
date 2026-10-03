@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CmsGallery from '../../components/CmsGallery.astro';
+import Footer from '../../components/Footer.astro';
 import CmsImage from '../../components/CmsImage.astro';
 import CmsNewsletter from '../../components/CmsNewsletter.astro';
 import Header from '../../components/Header.astro';
@@ -10,13 +11,35 @@ import '../../styles/cms.css';
 import '../../styles/article.css';
 export function getStaticPaths() { const sampleRecords: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? []; return sampleRecords.filter((record) => record._type === 'article').map((record) => ({ params: { slug: record.slug?.current ?? record.sourceSlug }, props: { record } })); }
 const { record } = Astro.props;
-const publishedDates: Record<string, string> = {
-  'a-proposta-mais-alta-pode-nao-ser-a-melhor': '28/2/2026',
-  'os-segredos-que-as-casas-nao-contam-2': '10/2/2026',
-};
-const publishedAt = publishedDates[record.slug?.current ?? record.sourceSlug];
+// The public Webflow template renders the source item's createdOn date.
+const sourceDate = record.publishedAt ? new Date(record.publishedAt) : undefined;
+const publishedAt = sourceDate ? `${sourceDate.getUTCDate()}/${sourceDate.getUTCMonth() + 1}/${sourceDate.getUTCFullYear()}` : undefined;
 const imageRef = (record.openGraphImage ?? record.mainImage)?.asset?._ref;
 const socialImage = typeof imageRef === 'string' ? (() => { const [, id, dimensions, format] = imageRef.match(/^image-(.+)-(\d+x\d+)-([a-z0-9]+)$/) ?? []; return id && dimensions && format ? `https://cdn.sanity.io/images/kaq1vd9b/production/${id}-${dimensions}.${format}` : undefined; })() : undefined;
 ---
 
-<BaseLayout title={record.title} description="" socialImage={socialImage} richSocial><Header variant="light" pageNavigation contactHref="/vamos-comecar" /><main class="cms-article"><header class="cms-article__header"><div class="cms-article__meta"><a class="cms-article__category" href="#">Categoria</a>{record.readingMinutes && <span>Tempo de leitura: {record.readingMinutes} min</span>}</div><h1>{record.title}</h1>{record.subtitle && <p>{record.subtitle}</p>}</header><CmsImage value={record.mainImage} alt="" class="cms-article__hero" loading="eager" /><article class="cms-copy shell"><p class="cms-article__byline">Autor <strong>Joaquim Mota</strong>{publishedAt && <><span>Publicado em</span><strong>{publishedAt}</strong></>}</p><CmsRichContent blocks={record.body} /></article>{record.videoUrl && <div class="shell"><iframe class="cms-media" title="Vídeo" src={record.videoUrl} allowfullscreen /></div>}<div class="shell"><CmsGallery images={record.gallery} label="Galeria" /><CmsNewsletter />{record.cta?.heading && <section class="cms-copy"><p class="eyebrow dark">{record.cta.eyebrow}</p><h2>{record.cta.heading}</h2><p>{record.cta.copy}</p>{record.cta.label && <a class="button button--light" href="/vamos-comecar">{record.cta.label}</a>}</section>}</div></main></BaseLayout>
+<BaseLayout title={record.title} description="" socialImage={socialImage} richSocial>
+  <Header variant="light" pageNavigation contactHref="/vamos-comecar" />
+  <main class="cms-article">
+    <header class="cms-article__header">
+      <div class="cms-article__meta"><a class="cms-article__category" href="#">Categoria</a>{record.readingMinutes && <span>Tempo de leitura: {record.readingMinutes} min</span>}</div>
+      <h1>{record.title}</h1>{record.subtitle && <h4>{record.subtitle}</h4>}
+    </header>
+    <CmsImage value={record.mainImage} alt="" class="cms-article__hero" loading="eager" />
+    <div class="cms-article__byline"><div><p>Autor</p><strong>Joaquim Mota</strong></div>{publishedAt && <div><p>Publicado em</p><strong>{publishedAt}</strong></div>}</div>
+    <div class="cms-article__content">
+      <article class="cms-article__body"><CmsRichContent blocks={record.body} />{record.videoUrl && <iframe class="cms-media" title="Vídeo" src={record.videoUrl} allowfullscreen />}<CmsGallery images={record.gallery} label="Galeria" /></article>
+      <CmsNewsletter />
+    </div>
+    {record.cta?.heading && <section class="cms-article__cta-wrap"><div class="cms-article__cta" data-article-cta><div class="cms-article__cta-content">{record.cta.eyebrow && <p class="cms-article__cta-eyebrow">{record.cta.eyebrow}</p>}<h2>{record.cta.heading}</h2><p>{record.cta.copy}</p>{record.cta.label && <a class="button button--light" href={record.cta.href ?? '/vamos-comecar'}>{record.cta.label}</a>}</div><img class="cms-article__cta-portrait" src="/assets/closing-jm.png" alt="" loading="lazy" /></div></section>}
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  import { bindSourceScrollMotion, interpolate } from '../../scripts/source-scroll-motion';
+  document.querySelectorAll<HTMLElement>('[data-article-cta]').forEach((element) => bindSourceScrollMotion(element, (progress, reduced) => {
+    element.style.transform = reduced ? 'none' : `scale(${interpolate(progress, [[0, 1.25], [.35, 1]])})`;
+    element.style.opacity = reduced ? '1' : String(interpolate(progress, [[0, 0], [.35, 1]]));
+  }));
+</script>

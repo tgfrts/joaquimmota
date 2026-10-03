@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T15:03:30.321Z",
+  "generatedAt": "2026-10-03T21:35:49.338121+00:00",
   "scope": "11 authorized CMS samples only; data parity only; no bulk/import authorization",
   "identityKey": [
     "_type",
@@ -259,70 +259,6 @@
     },
     {
       "identity": {
-        "type": "preListing",
-        "legacyId": "6aaa6c0742b7f0b0b572f137",
-        "locale": "64d73fb112672d652ab57ff5"
-      },
-      "sourceSlug": "te-t2-gulpilhares-20260916-39528",
-      "targetDraft": true,
-      "imageSlots": {
-        "sourcePhotoSlots": 0,
-        "targetPhotoSlots": 0,
-        "orderedAssetReferencesMatch": true,
-        "fields": [
-          {
-            "sourceField": "hero-image-2",
-            "targetField": "featuredImage",
-            "sourceSlots": 0,
-            "targetSlots": 0,
-            "assetMappingsPresent": true,
-            "orderedReferencesMatch": true
-          },
-          {
-            "sourceField": "galeria-2",
-            "targetField": "gallery",
-            "sourceSlots": 0,
-            "targetSlots": 0,
-            "assetMappingsPresent": true,
-            "orderedReferencesMatch": true
-          }
-        ]
-      }
-    },
-    {
-      "identity": {
-        "type": "preListing",
-        "legacyId": "6aaa6c05e5531aa86e7ef8a1",
-        "locale": "64d73fb112672d652ab57ff5"
-      },
-      "sourceSlug": "te-t2-gulpilhares-20260916-ff2b3",
-      "targetDraft": true,
-      "imageSlots": {
-        "sourcePhotoSlots": 0,
-        "targetPhotoSlots": 0,
-        "orderedAssetReferencesMatch": true,
-        "fields": [
-          {
-            "sourceField": "hero-image-2",
-            "targetField": "featuredImage",
-            "sourceSlots": 0,
-            "targetSlots": 0,
-            "assetMappingsPresent": true,
-            "orderedReferencesMatch": true
-          },
-          {
-            "sourceField": "galeria-2",
-            "targetField": "gallery",
-            "sourceSlots": 0,
-            "targetSlots": 0,
-            "assetMappingsPresent": true,
-            "orderedReferencesMatch": true
-          }
-        ]
-      }
-    },
-    {
-      "identity": {
         "type": "processStep",
         "legacyId": "64d73faf12672d652ab57824",
         "locale": "64d73fb112672d652ab57ff5"
@@ -366,6 +302,54 @@
         "targetPhotoSlots": 0,
         "orderedAssetReferencesMatch": true,
         "fields": []
+      }
+    },
+    {
+      "identity": {
+        "type": "preListing",
+        "legacyId": "6aaa6c0742b7f0b0b572f137",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "te-t2-gulpilhares-20260916-39528",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 0,
+        "targetPhotoSlots": 0,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "hero-image-2",
+            "targetField": "heroImage",
+            "sourceSlots": 0,
+            "targetSlots": 0,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
+      }
+    },
+    {
+      "identity": {
+        "type": "preListing",
+        "legacyId": "69f2924211224100dc840df2",
+        "locale": "64d73fb112672d652ab57ff5"
+      },
+      "sourceSlug": "sc-t4-arcozelo-20260416",
+      "targetDraft": true,
+      "imageSlots": {
+        "sourcePhotoSlots": 1,
+        "targetPhotoSlots": 1,
+        "orderedAssetReferencesMatch": true,
+        "fields": [
+          {
+            "sourceField": "hero-image-2",
+            "targetField": "heroImage",
+            "sourceSlots": 1,
+            "targetSlots": 1,
+            "assetMappingsPresent": true,
+            "orderedReferencesMatch": true
+          }
+        ]
       }
     }
   ],
@@ -518,8 +502,8 @@
     }
   ],
   "totals": {
-    "sourceImageSlots": 53,
-    "targetImageSlots": 53,
+    "sourceImageSlots": 54,
+    "targetImageSlots": 54,
     "imageSlotComparisonsPass": true
   },
   "overall": {
@@ -563,10 +547,40 @@
     "replacementSourceId": "64d73faf12672d652ab57819",
     "structuredSemanticMismatches": [],
     "generatedPortableTextKeysIgnoredForRegeneration": true,
-    "referencedUniqueAssets": 50,
-    "uploadedAssets": 51,
+    "referencedUniqueAssets": 51,
+    "uploadedAssets": 52,
     "unusedValidationThumbnailAssets": 1,
     "independentCorrectionReview": "PASS: foundation_audit verified authoritative schema enum options, source draft flags, both Comprar source records and regenerated payload versus queried target semantics; visual/behavioral parity and bulk remain pending",
     "verifiedAt": "2026-10-03T16:03:44.437014+00:00"
+  },
+  "articleDates": [
+    {
+      "legacyId": "69a2dce4b48d3344ed295952",
+      "sourceField": "createdOn",
+      "targetField": "publishedAt",
+      "value": "2026-02-28T12:17:40.199Z",
+      "exactMatch": true
+    },
+    {
+      "legacyId": "698af82db57942d2c5d10a3e",
+      "sourceField": "createdOn",
+      "targetField": "publishedAt",
+      "value": "2026-02-10T09:19:41.825Z",
+      "exactMatch": true
+    }
+  ],
+  "structuredComparisonRechecked": true,
+  "preListingCorrection": {
+    "supersededSampleSourceId": "6aaa6c05e5531aa86e7ef8a1",
+    "replacementSampleSourceId": "69f2924211224100dc840df2",
+    "reason": "Two samples cover the visible static fallback and active CMS hero. All 19 public routes were parsed; six hero-image-2 URLs match the rendered image, thirteen use the fixed fallback. Gallery has no public consumer. Unused propertyType/typology removed from two own draft samples.",
+    "targetDraftCount": 2,
+    "publicHeroImageSlotsAcrossEligible19": 6,
+    "excludedSourceFields": [
+      "galeria-2",
+      "tipo-de-imovel",
+      "tipologia"
+    ],
+    "bindingAudit": "prelisting-public-binding-audit.json"
   }
 }
