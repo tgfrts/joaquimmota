@@ -1,6 +1,6 @@
 ---
-interface Props { contactHref?: string; variant?: 'overlay' | 'light'; pageNavigation?: boolean; }
-const { contactHref = '/contacto', variant = 'overlay', pageNavigation = false } = Astro.props;
+interface Props { contactHref?: string; variant?: 'overlay' | 'light'; pageNavigation?: boolean; contactLabel?: string; }
+const { contactHref = '/contacto', variant = 'overlay', pageNavigation = false, contactLabel = 'Contacte-nos' } = Astro.props;
 const homeLinks = [
   { href: '/vender', label: 'Vender' },
   { href: '/comprar#imoveis', label: 'Imóveis' },
@@ -24,7 +24,7 @@ const links = pageNavigation ? pageLinks : homeLinks;
   <nav id="site-navigation" aria-label="Navegação principal">
     {links.map((link) => <a href={link.href}>{link.label}</a>)}
   </nav>
-  <a class:list={['button', 'contact-link', variant === 'light' ? 'button--dark' : 'button--light']} href={contactHref}>Contacte-nos</a>
+  <a class:list={['button', 'contact-link', variant === 'light' ? 'button--dark' : 'button--light']} href={contactHref}>{contactLabel}</a>
 </header>
 
 <script>
@@ -39,21 +39,25 @@ const links = pageNavigation ? pageLinks : homeLinks;
 <style is:global>
   .site-header--light {
     width: 90vw;
-    height: 70px;
+    height: 72px;
     color: #20457f;
     border-bottom: 1px solid #ddd;
   }
-  .site-header--light .brand img { width: 101px; }
+  .site-header--light .brand img { width: auto; height: 50px; }
   .site-header--light nav {
     position: absolute;
     left: 50%;
     margin: 0;
     transform: translateX(-50%);
+    gap: 0;
+    font: 500 16px/24px Roboto, sans-serif;
   }
+  .site-header--light nav a { padding: 8px 16px; }
   .site-header--light .menu-toggle { color: #20457f; }
   .site-header--light .button--dark {
     min-height: 42px;
-    padding: .5rem 1rem;
+    padding: 8px 24px;
+    font: 500 16px/24px Roboto, sans-serif;
     background: #db1430;
     border-color: #db1430;
     color: #f4f4f4;
@@ -62,5 +66,6 @@ const links = pageNavigation ? pageLinks : homeLinks;
   .site-header--light .contact-link { margin-left: auto !important; flex: 0 0 auto; }
   @media (max-width: 640px) {
     .site-header--light .contact-link { display: none; }
+    .site-header--light nav { transform: none; left: 0; }
   }
 </style>

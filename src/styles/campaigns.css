@@ -18,3 +18,5 @@
 .campaign-page--terms .campaign-page__panel{align-self:center}
 .campaign-page--terms .campaign-page__intro{white-space:pre-line}
 @media(max-width:767px){.campaign-page{display:block;padding-top:25vh}.campaign-page__image{display:none}.campaign-page__panel{padding:5vw}.campaign-form__names{display:block}}
+
+.campaign-page--contact .campaign-page__image:after{content:"";position:absolute;inset:0;background:linear-gradient(359deg,rgba(0,9,52,0),#f4f4f4)}

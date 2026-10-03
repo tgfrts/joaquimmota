@@ -33,7 +33,7 @@ const testimonials = [
 ];
 ---
 
-<BaseLayout title={`Como vender a sua casa com sucesso ${record.clientName}`} description="">
+<BaseLayout title={`Como vender a sua casa com sucesso ${record.clientName}`} socialImage="">
   <main class="prelisting-page">
     <section class="prelisting-hero">
       {record.heroImage ? <CmsImage value={record.heroImage} alt="" loading="eager" /> : <img src="/assets/prelisting-hero-4725.jpg" alt="" loading="eager" />}
@@ -52,5 +52,5 @@ const testimonials = [
     {record.gallery?.length > 0 && <section class="prelisting-gallery"><CmsGallery images={record.gallery} label={`${record.typology} em ${location}`} /></section>}
   </main>
   <a class="prelisting-phone" href="tel:+351914257870" aria-label="Ligar para Joaquim Mota">+351 914 257 870</a>
-  <Footer />
+  <Footer newsletter={false} facebookHref="https://www.facebook.com/joaquimmotakw" />
 </BaseLayout>

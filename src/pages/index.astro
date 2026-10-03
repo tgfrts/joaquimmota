@@ -1,4 +1,5 @@
 ---
+import WhatsAppWidget from '../components/WhatsAppWidget.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -26,7 +27,7 @@ const testimonials = [
 ];
 ---
 
-<BaseLayout>
+<BaseLayout description="Uma venda com sucesso" richSocial>
   <main>
     <section class="hero">
       <video class="hero-video" autoplay muted loop playsinline poster="/assets/hero-poster.jpg" aria-hidden="true"><source src="/assets/hero.mp4" type="video/mp4" /></video><div class="hero-shade"></div><Header />
@@ -40,15 +41,5 @@ const testimonials = [
     <section class="testimonials"><div class="shell testimonial-heading"><div><p class="eyebrow">O QUE DIZEM OS NOSSOS CLIENTES</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a href="/reviews" class="text-link">Leia as nossas avaliações</a></div><div class="testimonial-rail shell">{testimonials.map(([quote, name]) => <figure><div aria-label="5 estrelas" class="stars">★★★★★</div><blockquote>“{quote}”</blockquote><figcaption>{name}</figcaption></figure>)}</div></section>
     <section class="closing"><img class="closing-photo" src="/assets/closing-jm.png" alt="Joaquim Mota" loading="lazy" /><div class="shell"><p class="eyebrow">VAMOS CONVERSAR</p><h2>Ainda à procura de uma solução para a sua casa?</h2><p>Tenha uma equipa de sucesso ao seu lado.</p><a class="button button--light" href="/vamos-comecar">Vamos Começar</a></div></section>
   </main>
-  <Footer />
-  <div class="whatsapp-widget" data-whatsapp-widget><section class="whatsapp-popup" aria-label="Conversa WhatsApp" hidden><button class="whatsapp-popup__close" type="button" aria-label="Fechar">×</button><div class="whatsapp-popup__head"><img src="/assets/whatsapp-profile.png" alt="" /><div><strong>Joaquim Mota Consultores</strong><span>Responde em algumas horas</span></div></div><p><strong>Joaquim Mota Consultores</strong><br />Olá,<br />Em que podemos ajudar?</p><a href="https://api.whatsapp.com/send?phone=914257870" target="_blank" rel="noreferrer">Iniciar uma conversa</a></section><button class="whatsapp-launcher" type="button" aria-expanded="false" aria-label="Abrir conversa no WhatsApp"><img src="/assets/whatsapp-small.svg" alt="" /></button></div>
-  <script>
-    const widget = document.querySelector<HTMLElement>('[data-whatsapp-widget]');
-    const launcher = widget?.querySelector<HTMLButtonElement>('.whatsapp-launcher');
-    const popup = widget?.querySelector<HTMLElement>('.whatsapp-popup');
-    const close = widget?.querySelector<HTMLButtonElement>('.whatsapp-popup__close');
-    const setPopup = (open: boolean) => { if (popup) popup.hidden = !open; launcher?.setAttribute('aria-expanded', String(open)); };
-    launcher?.addEventListener('click', () => setPopup(popup?.hidden ?? true));
-    close?.addEventListener('click', () => setPopup(false));
-  </script>
+  <Footer /><WhatsAppWidget />
 </BaseLayout>

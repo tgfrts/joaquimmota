@@ -7,7 +7,7 @@ export function getStaticPaths() { const sampleRecords: any[] = Array.isArray(sa
 const { record } = Astro.props;
 ---
 
-<BaseLayout title="Joaquim Mota Consultores" description="">
+<BaseLayout title="Joaquim Mota Consultores" social={false}>
   <main class="offer-page">
     <div class="offer-page__image"><CmsImage value={record.image} alt="" loading="eager" /></div>
     <section class="offer-page__content">

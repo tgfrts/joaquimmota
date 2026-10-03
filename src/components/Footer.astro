@@ -1,3 +1,7 @@
+---
+interface Props { newsletter?: boolean; facebookHref?: string; }
+const {newsletter = true, facebookHref = "https://www.facebook.com/joaquimmotakwJRM"} = Astro.props;
+---
 <footer class="footer">
   <div class="footer-top shell">
     <div class="footer-contact">
@@ -5,15 +9,27 @@
       <p class="eyebrow">SUCESSO E CONTINUIDADE</p>
       <p><strong>JOAQUIM MOTA CONSULTORES</strong><br />Avenida da República, 690<br />4430-190 Vila Nova de Gaia</p>
       <p><a href="tel:+351914257870">+351 914 257 870</a><br /><a href="mailto:jrmota@kwportugal.pt">jrmota@kwportugal.pt</a></p>
-      <p class="social"><a href="https://www.facebook.com/joaquimmotakwJRM">Facebook</a><a href="https://www.instagram.com/joaquimmotakw">Instagram</a></p>
+      <p class="social"><a href={facebookHref}>Facebook</a><a href="https://www.instagram.com/joaquimmotakw">Instagram</a></p>
     </div>
     <div class="footer-award"><p class="eyebrow">UM CONSULTOR PREMIADO</p><img src="/assets/premios-2025.webp" alt="Prémios Joaquim Mota Consultores" loading="lazy" /></div>
-    <section class="newsletter" aria-labelledby="newsletter-title">
+    {newsletter && <section class="newsletter" aria-labelledby="newsletter-title">
       <p class="eyebrow" id="newsletter-title">SUBSCREVA A NOSSA NEWSLETTER</p>
       <p>Receba em primeira mão notícias e novidades sobre o mercado imobiliário</p>
-      <form><input type="email" aria-label="O seu email" placeholder="O seu email" /><input type="text" aria-label="Nome" placeholder="Nome" /><input type="text" aria-label="Apelido" placeholder="Apelido" /><button class="button button--light" type="button">Subscrever</button></form>
+      <form data-footer-newsletter><input name="email" required type="email" aria-label="O seu email" placeholder="O seu email" /><input name="firstName" required type="text" aria-label="Nome" placeholder="Nome" /><input name="lastName" required type="text" aria-label="Apelido" placeholder="Apelido" /><button class="button button--light" type="submit">Subscrever</button><p aria-live="polite" data-newsletter-status></p></form>
       <small>*Respeitamos a sua privacidade. Só enviamos conteúdos de interesse relevante para si.</small>
-    </section>
+    </section>}
   </div>
   <div class="footer-bottom shell"><span>Joaquim Mota Consultores © {new Date().getFullYear()}</span><a href="https://www.kwportugal.pt/politica-de-privacidade">Política de Privacidade</a><span>Somos Real Estate Med. Imo. Lda. AMI 11829</span><span>Made by doop.pt</span></div>
 </footer>
+
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+  document.querySelectorAll<HTMLFormElement>('form[data-footer-newsletter]').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault(); if (!form.reportValidity()) return;
+    const status = form.querySelector<HTMLElement>('[data-newsletter-status]');
+    const data = new FormData(form);
+    const fields = {email: String(data.get('email')), firstName: String(data.get('firstName')), lastName: String(data.get('lastName'))};
+    try { await submitFormAccepted(form, {formType: 'newsletter', route: location.pathname, fields}); if (status) status.textContent = 'Obrigado. A sua subscrição foi realizado com sucesso!'; form.reset(); }
+    catch { if (status) status.textContent = 'Oops! Aconteceu algo errado enquanto submetia o formulário..'; }
+  }));
+</script>
