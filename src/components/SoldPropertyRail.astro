@@ -1,0 +1,13 @@
+---
+const properties = [
+  { image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', municipality: 'Torre de Moncorvo', parish: 'Carviçais' },
+  { image: '/assets/sold-pacos.webp', title: 'Armazém à venda em Paços de Brandão', municipality: 'Santa Maria a Feira', parish: 'Paços de Brandão' },
+  { image: '/assets/sold-pedroso.webp', title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', municipality: 'Vila Nova de Gaia', parish: 'Pedroso' },
+  { image: '/assets/sold-vilar.webp', title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', municipality: 'Vila Nova de Gaia', parish: 'Vilar do Paraíso' },
+  { image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', municipality: 'Vila Nova de Gaia', parish: 'Serzedo' },
+];
+---
+<div class="sold-rail" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><span>Vendido</span></div><h3>{property.title}</h3><p>{index < properties.length && <>{property.municipality}<br /></>}{property.parish}</p></article>)}</div></div>
+<style>
+.sold-rail{overflow:hidden;width:100%}.sold-rail__track{display:flex;gap:64px;width:max-content;animation:slide 48s linear infinite}.sold-rail__card{flex:0 0 320px;width:320px;color:#20457f}.sold-rail__image{height:480px;position:relative;overflow:hidden}.sold-rail__image img{width:100%;height:100%;object-fit:cover}.sold-rail__image span{position:absolute;inset:0;display:grid;place-items:center;color:#fff;text-transform:uppercase;font-size:40px;font-weight:700;transform:rotate(-12deg)}.sold-rail__card h3{font-size:24px;line-height:1.3;margin:24px 0 12px}.sold-rail__card p{font-size:16px;line-height:1.5}.sold-rail:hover .sold-rail__track{animation-play-state:paused}@keyframes slide{to{transform:translateX(calc(-50% - 32px))}}@media(prefers-reduced-motion:reduce){.sold-rail__track{animation:none}.sold-rail{overflow-x:auto}}@media(max-width:767px){.sold-rail__track{gap:24px}.sold-rail__card{flex-basis:280px;width:280px}.sold-rail__image{height:420px}@keyframes slide{to{transform:translateX(calc(-50% - 12px))}}}
+</style>

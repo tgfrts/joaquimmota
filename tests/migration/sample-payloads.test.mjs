@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { assetRef, eligibleItem, imageArray, portableText } from '../../scripts/migration/sample-payloads.mjs';
+import { assetRef, eligibleItem, imageArray, mapProcessStep, portableText } from '../../scripts/migration/sample-payloads.mjs';
 
 function sourceWithProperty(item, live = item) {
   return {
@@ -36,6 +36,13 @@ test('an image without an uploaded asset mapping fails closed', () => {
     () => assetRef({ byFileId: {} }, { fileId: 'source-file', url: 'https://example.test/image.jpg' }, 'fixture image'),
     /no Sanity image ref/,
   );
+});
+
+test('Webflow buying and marketing enum IDs retain their source placement; hidden seller placement is rejected', () => {
+  const item = { id: 'step', cmsLocaleId: 'pt-PT', fieldData: { name: 'Step', copy: 'Source copy', slug: 'step', page: '61e1b999e018031966a98c78f8548d5d' } };
+  assert.equal(mapProcessStep(item, {}).placement, 'buy');
+  assert.equal(mapProcessStep({ ...item, fieldData: { ...item.fieldData, page: '1d2e3b2ba040ba7d01a627b6f2c9396d' } }, {}).placement, 'marketing');
+  assert.throws(() => mapProcessStep({ ...item, fieldData: { ...item.fieldData, page: '12b19dfc9cb975be3f2f8c2b397c5af7' } }, {}));
 });
 
 test('ordered duplicate media slots receive distinct keys and retain supplied alt text', () => {

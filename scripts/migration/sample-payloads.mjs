@@ -30,7 +30,7 @@ const SAMPLE_IDS = {
   testimonial: ['67b454c5e23698381d4b5a8b', '67b454c48728d3d81a387c44'],
   offer: ['64d744240d28836501ab496f'],
   preListing: ['6aaa6c0742b7f0b0b572f137', '6aaa6c05e5531aa86e7ef8a1'],
-  processStep: ['64d73faf12672d652ab57824', '64d73faf12672d652ab57839'],
+  processStep: ['64d73faf12672d652ab57824', '64d73faf12672d652ab57819'],
 };
 
 const COLLECTIONS = {
@@ -44,7 +44,7 @@ const COLLECTIONS = {
 
 const PROCESS_STEP_PLACEMENT = {
   '61e1b999e018031966a98c78f8548d5d': 'buy',
-  '12b19dfc9cb975be3f2f8c2b397c5af7': 'marketing',
+  '1d2e3b2ba040ba7d01a627b6f2c9396d': 'marketing',
 };
 
 const PROPERTY_STATUS = {
@@ -369,4 +369,4 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   }
 }
 
-export { assetRef, buildPayload, eligibleItem, imageArray, portableText };
+export { assetRef, buildPayload, eligibleItem, imageArray, mapProcessStep, portableText };

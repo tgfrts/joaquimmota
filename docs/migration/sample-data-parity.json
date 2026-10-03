@@ -356,33 +356,16 @@
     {
       "identity": {
         "type": "processStep",
-        "legacyId": "64d73faf12672d652ab57839",
+        "legacyId": "64d73faf12672d652ab57819",
         "locale": "64d73fb112672d652ab57ff5"
       },
-      "sourceSlug": "estrategia-de-marketing",
+      "sourceSlug": "02-inicie-a-pesquisa",
       "targetDraft": true,
       "imageSlots": {
-        "sourcePhotoSlots": 1,
-        "targetPhotoSlots": 1,
+        "sourcePhotoSlots": 0,
+        "targetPhotoSlots": 0,
         "orderedAssetReferencesMatch": true,
-        "fields": [
-          {
-            "sourceField": "image",
-            "targetField": "image",
-            "sourceSlots": 0,
-            "targetSlots": 0,
-            "assetMappingsPresent": true,
-            "orderedReferencesMatch": true
-          },
-          {
-            "sourceField": "thumbnail",
-            "targetField": "thumbnail",
-            "sourceSlots": 1,
-            "targetSlots": 1,
-            "assetMappingsPresent": true,
-            "orderedReferencesMatch": true
-          }
-        ]
+        "fields": []
       }
     }
   ],
@@ -535,8 +518,8 @@
     }
   ],
   "totals": {
-    "sourceImageSlots": 54,
-    "targetImageSlots": 54,
+    "sourceImageSlots": 53,
+    "targetImageSlots": 53,
     "imageSlotComparisonsPass": true
   },
   "overall": {
@@ -573,5 +556,17 @@
       "count": 2,
       "drafts": 2
     }
+  },
+  "correction": {
+    "reason": "The previous seller step was permanently hidden and its enum was mislabeled as marketing. Replaced draft sample with eligible visible buying step 02. No source changes.",
+    "supersedesSourceId": "64d73faf12672d652ab57839",
+    "replacementSourceId": "64d73faf12672d652ab57819",
+    "structuredSemanticMismatches": [],
+    "generatedPortableTextKeysIgnoredForRegeneration": true,
+    "referencedUniqueAssets": 50,
+    "uploadedAssets": 51,
+    "unusedValidationThumbnailAssets": 1,
+    "independentCorrectionReview": "PASS: foundation_audit verified authoritative schema enum options, source draft flags, both Comprar source records and regenerated payload versus queried target semantics; visual/behavioral parity and bulk remain pending",
+    "verifiedAt": "2026-10-03T16:03:44.437014+00:00"
   }
 }
