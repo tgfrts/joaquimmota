@@ -1,8 +1,132 @@
 {
-  "observedAt": "2026-10-03T21:50:44.399406+00:00",
+  "observedAt": "2026-10-03T23:33:34.913854+00:00",
   "status": "partial; full sample acceptance remains pending",
   "sourceReadOnly": true,
   "noFormSubmissions": true,
+  "homeResponsiveFollowup": {
+    "route": "/",
+    "sourceReadOnly": true,
+    "noSubmissions": true,
+    "viewports": {
+      "1280x720": {
+        "sourceAndTargetSectionHeights": {
+          "process": [
+            669.195,
+            669.195
+          ],
+          "resultsHeader": [
+            290,
+            290
+          ],
+          "resultsMetrics": [
+            179.593,
+            179.602
+          ],
+          "sold": [
+            696,
+            696
+          ],
+          "testimonials": [
+            1502,
+            1502
+          ],
+          "closing": [
+            517,
+            517
+          ]
+        },
+        "status": "measured; differences below 0.01px are font rounding"
+      },
+      "834x1112": {
+        "sourceAndTargetSectionHeights": {
+          "process": [
+            802.758,
+            802.789
+          ],
+          "resultsHeader": [
+            368.086,
+            368.094
+          ],
+          "resultsMetrics": [
+            346.68,
+            346.68
+          ],
+          "sold": [
+            530.633,
+            530.633
+          ],
+          "testimonials": [
+            2126.27,
+            2126.27
+          ],
+          "closing": [
+            520.766,
+            520.773
+          ]
+        },
+        "status": "measured; differences below 0.04px are font rounding"
+      },
+      "390x844": {
+        "sourceAndTargetSectionHeights": {
+          "process": [
+            883.586,
+            883.586
+          ],
+          "resultsHeader": [
+            424.086,
+            424.109
+          ],
+          "resultsMetrics": [
+            438.586,
+            438.609
+          ],
+          "sold": [
+            620.141,
+            620.156
+          ],
+          "testimonials": [
+            3226.09,
+            3230.11
+          ],
+          "closing": [
+            501.789,
+            501.805
+          ]
+        },
+        "lastObservedDifference": "testimonial heading was 4.023px too tall; reduced its kicker bottom margin from 16px to 12px based on the measured source kicker (24px high) and heading geometry. The post-adjustment HMR value was not captured.",
+        "status": "measured before final 4px testimonial heading adjustment; post-adjustment whole-section HMR pending"
+      }
+    },
+    "testimonialCards": {
+      "mobileSourceHeights": [
+        224,
+        392,
+        176,
+        200,
+        224,
+        200,
+        176,
+        272,
+        344,
+        392
+      ],
+      "mobileTargetHeightsBeforeFinalHeaderAdjustment": [
+        224,
+        392,
+        176,
+        200,
+        224,
+        200,
+        176,
+        272,
+        344,
+        392
+      ],
+      "status": "all ten card heights matched after matching 24px rating row and 20px rating/quote margins"
+    },
+    "motion": "partial; continuous Home process motion was implemented from the literal source config, but full motion acceptance remains pending",
+    "acceptance": "responsive geometry observed at three viewports; this does not satisfy the full sample or migration acceptance gate"
+  },
   "offer": {
     "slug": "vinho-e-fado",
     "viewports": [
@@ -253,5 +377,183 @@
     ],
     "closeIcon": "original public SVG preserved; control geometry corrected",
     "realSubmissions": 0
+  },
+  "testimonialConsumerFollowup": {
+    "route": "/reviews",
+    "sourceReadOnly": true,
+    "noSubmissions": true,
+    "samples": [
+      "67b454c5e23698381d4b5a8b",
+      "67b454c48728d3d81a387c44"
+    ],
+    "order": "ten visible cards, both imported sample documents consumed; independent verification pending",
+    "viewports": {
+      "1280x720": {
+        "heroImageSource": [
+          531.1953125,
+          720
+        ],
+        "heroImageTarget": [
+          531.203125,
+          720
+        ],
+        "testimonialsSourceHeight": 1421,
+        "testimonialsTargetHeight": 1421,
+        "ctaSourceHeight": 517,
+        "ctaTargetHeight": 517
+      },
+      "834x1112": {
+        "heroImageSource": [
+          590.578125,
+          469.5
+        ],
+        "heroImageTarget": [
+          590.5859375,
+          469.5078125
+        ],
+        "testimonialsSourceHeight": 1856.2734375,
+        "testimonialsTargetHeight": 1856.28125,
+        "ctaSourceHeight": 520.765625,
+        "ctaTargetHeight": 520.7734375,
+        "ctaCardBoth": 395.6796875,
+        "cardHeightsBoth": [
+          183,
+          345,
+          210,
+          318,
+          183,
+          210,
+          318,
+          291,
+          237,
+          264
+        ]
+      },
+      "390x844": {
+        "heroImageSource": [
+          584,
+          219.171875
+        ],
+        "heroImageTarget": [
+          584,
+          219.1796875
+        ],
+        "testimonialsSourceHeight": 2938.0859375,
+        "testimonialsTargetHeight": 2938.109375,
+        "ctaSourceHeight": 525.7890625,
+        "ctaTargetHeight": 525.8046875,
+        "cardHeightsBoth": [
+          176,
+          296,
+          200,
+          272,
+          176,
+          200,
+          272,
+          272,
+          224,
+          224
+        ]
+      }
+    },
+    "hiddenExcluded": [
+      "A família Silva residual feature"
+    ],
+    "ctaMotion": "original continuous scale 1.25 to 1 and opacity 0 to 1 by progress .35; original portrait margin and 115px tablet/desktop,43vw <=479",
+    "acceptance": "geometry observed; independent review and final interactions pending"
+  },
+  "articleSecondCtaFollowup": {
+    "slug": "os-segredos-que-as-casas-nao-contam-2",
+    "tablet834x1112": {
+      "sourceCardHeight": 861,
+      "targetCardHeight": 861,
+      "sourceOuterHeight": 986.0859375,
+      "targetOuterBeforeCorrection": 944.390625,
+      "correction": "restored source outer 5vw page padding plus 5vw section padding, and -10vw tablet footer overlap",
+      "targetOuterAfterCorrection": 986.09375
+    },
+    "mobile390x844": {
+      "sourceCardHeight": 583.390625,
+      "sourceOuterHeight": 641.890625,
+      "correction": "restored source combined 10vw top/5vw bottom",
+      "targetCardHeight": 583.40625,
+      "targetOuterHeight": 641.90625
+    },
+    "status": "source/target card and outer dimensions confirmed at tablet and mobile; differences below .016px font rounding, final whole-page review pending"
+  },
+  "homeFinalGeometryFollowup": {
+    "sourceReadOnly": true,
+    "viewports": [
+      "1280x720",
+      "834x1112",
+      "390x844"
+    ],
+    "desktop": {
+      "processHeight": 669.1953125,
+      "resultsHeaderHeight": 290,
+      "metricsHeight": 179.6015625,
+      "soldHeight": 696,
+      "testimonialsHeight": 1502,
+      "ctaHeight": 517
+    },
+    "tablet": {
+      "processSourceHeight": 802.7578125,
+      "processTargetHeight": 802.7890625,
+      "resultsHeaderSourceHeight": 368.0859375,
+      "resultsHeaderTargetHeight": 368.09375,
+      "metricsBothHeight": 346.6796875,
+      "soldBothHeight": 530.6328125,
+      "testimonialsBothHeight": 2126.2734375,
+      "ctaSourceHeight": 520.765625,
+      "ctaTargetHeight": 520.7734375
+    },
+    "mobile": {
+      "processBothTop": 908,
+      "processBothHeight": 883.5859375,
+      "testimonialsSourceHeight": 3226.0859375,
+      "testimonialsTargetHeight": 3226.109375,
+      "allTenCardHeightsBoth": [
+        224,
+        392,
+        176,
+        200,
+        224,
+        200,
+        176,
+        272,
+        344,
+        392
+      ],
+      "ctaSourceHeight": 501.7890625,
+      "ctaTargetHeight": 501.8046875
+    },
+    "status": "major observed geometry matches, rounding differences under .05px; not complete temporal motion acceptance"
+  },
+  "homeHeaderInteractionFollowup": {
+    "tabletMenuBoth": {
+      "top": 72,
+      "width": 337.828125,
+      "height": 410
+    },
+    "mobileAndTabletLogoWidth": 51.1640625,
+    "desktopLogoWidth": 102.328125,
+    "sourceEscape": "menu closes; settled display:none",
+    "targetEscape": "menu closes, aria-expanded false, focus returns to menu button",
+    "tabletContactSourceLeft": 589.9921875,
+    "tabletContactTargetLeft": 589.9765625,
+    "mobileContact": "hidden in source and target; menu button remains active",
+    "noSourceWrites": true
+  },
+  "portraitSourceAssets": {
+    "homeAndReviews": {
+      "asset": "closing-jm.png",
+      "sha256": "2be6b82835297b561f9fc7f1f0b5345f717943d37788ce8029782c170a2a46c7",
+      "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/650a93f367add9520f71678c_nova-foto.png"
+    },
+    "articleAndProperty": {
+      "asset": "article-cta-jm.png",
+      "sha256": "64d39add739ae45e6a5386595c774c2531e064fdc18207dc1ae4f06e30bf3395",
+      "independentReview": "source original bytes match; property closing corrected to this exact portrait"
+    }
   }
 }

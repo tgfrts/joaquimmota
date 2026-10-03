@@ -27,7 +27,39 @@ const SELL_HIDDEN_EVIDENCE = {
   source: 'Owner verified all seven Vender steps permanently hidden on desktop and mobile',
 };
 const IMAGE_TYPES = new Set(['Image', 'MultiImage']);
-const IMAGE_EXCLUDED_NAMES = new Set(['open-house', 'Open Houses', 'FAQs', 'Blog categories', 'Consultores']);
+const RESIDUAL_DISPOSITIONS = [
+  {
+    sourceCollection: 'Open Houses',
+    sourceSlug: 'open-house',
+    sourceIds: ['662758ff2a1007398583fb2e', '64d73faf12672d652ab57862', '64d73faf12672d652ab5773c'],
+    evidence: 'docs/migration/visibility-dispositions.json#open-houses',
+  },
+  {
+    sourceCollection: 'FAQs',
+    sourceSlug: 'faq',
+    sourceIds: ['64d73faf12672d652ab5776e', '64d73faf12672d652ab57710', '64d73faf12672d652ab57813', '64d73faf12672d652ab5773b', '64d73faf12672d652ab5773a', '64d73faf12672d652ab577e7', '64d73faf12672d652ab57754', '64d73faf12672d652ab57739', '64d73faf12672d652ab57809', '64d73faf12672d652ab57711', '64d73faf12672d652ab57788'],
+    evidence: 'docs/migration/visibility-dispositions.json#faqs',
+  },
+  {
+    sourceCollection: 'Blog categories',
+    sourceSlug: 'blog-categories',
+    sourceIds: ['64d73faf12672d652ab577a3', '64d73faf12672d652ab577cd', '64d73faf12672d652ab577b9', '64d73faf12672d652ab57812'],
+    evidence: 'docs/migration/visibility-dispositions.json#blog-categories',
+  },
+  {
+    sourceCollection: 'Consultores',
+    sourceSlug: 'consultores',
+    sourceIds: ['64d73faf12672d652ab5783a'],
+    evidence: 'docs/migration/visibility-dispositions.json#consultants',
+  },
+  {
+    sourceCollection: 'VS Destaques',
+    sourceSlug: 'vs-destaques',
+    sourceIds: ['64d73faf12672d652ab5781e', '64d73faf12672d652ab5781b', '64d73faf12672d652ab5781f'],
+    matches: (item) => item.fieldData?.page === PS_EXCLUSIVE_PAGE_ID,
+    evidence: 'docs/migration/visibility-dispositions.json#ps-exclusive-process-steps',
+  },
+];
 const PRELISTING_IMAGE_EXCLUSIONS = [
   { slug: 'galeria-2', type: 'MultiImage' },
 ];
@@ -87,6 +119,56 @@ function exactGate(gate, sampleIdsBySlug) {
       && JSON.stringify(providedIds) === JSON.stringify([...expectedIds].sort())
       && requiredEvidence.every((key) => entry.parity?.[key] === true);
   });
+}
+
+function sameIds(left, right) {
+  return JSON.stringify([...left].sort()) === JSON.stringify([...right].sort());
+}
+
+function resolveResidualDispositions(source, blankRoutes) {
+  const resolved = [];
+  const unresolved = [];
+  const routes = Array.isArray(blankRoutes?.routes) ? blankRoutes.routes : [];
+  for (const disposition of RESIDUAL_DISPOSITIONS) {
+    const sourceCollection = source.collections?.find((candidate) => candidate.name === disposition.sourceCollection);
+    if (!sourceCollection
+      || !Array.isArray(sourceCollection.staged?.items)
+      || !Array.isArray(sourceCollection.live?.items)
+      || sourceCollection.staged.items.length !== sourceCollection.staged.pagination?.total
+      || sourceCollection.live.items.length !== sourceCollection.live.pagination?.total) {
+      unresolved.push({
+        sourceCollection: disposition.sourceCollection,
+        sourceIds: [],
+        expectedSourceIds: [...disposition.sourceIds].sort(),
+        missingBlankRouteSourceIds: [],
+        reason: 'recorded residual disposition has no complete staged/live source snapshot',
+      });
+      continue;
+    }
+    const eligibleItems = sourceCollection.staged?.items
+      ?.filter((item) => isEligible(item, sourceCollection) && (!disposition.matches || disposition.matches(item))) ?? [];
+    const eligibleIds = eligibleItems.map((item) => item.id);
+    const missingRoutes = eligibleItems.filter((item) => !routes.some((route) => route.sourceId === item.id
+      && route.path === `${disposition.sourceSlug}/${item.fieldData.slug}`)).map((item) => item.id);
+    if (!sameIds(eligibleIds, disposition.sourceIds) || missingRoutes.length > 0) {
+      unresolved.push({
+        sourceCollection: disposition.sourceCollection,
+        sourceIds: eligibleIds.sort(),
+        expectedSourceIds: [...disposition.sourceIds].sort(),
+        missingBlankRouteSourceIds: missingRoutes.sort(),
+        reason: 'recorded residual disposition no longer matches current eligible source identities or exact blank routes',
+      });
+      continue;
+    }
+    resolved.push({
+      sourceCollection: disposition.sourceCollection,
+      sourceIds: eligibleIds.sort(),
+      blankRoutes: eligibleItems.map((item) => `/${disposition.sourceSlug}/${item.fieldData.slug}`).sort(),
+      action: 'preserve blank route; do not import source content',
+      evidence: disposition.evidence,
+    });
+  }
+  return { resolved, unresolved };
 }
 
 export function buildBulkManifest(source, eligibilityReport, samplePayload, blankRoutes, sampleGate = null) {
@@ -195,24 +277,18 @@ export function buildBulkManifest(source, eligibilityReport, samplePayload, blan
     };
   });
 
-  const unresolved = [];
-  for (const name of IMAGE_EXCLUDED_NAMES) {
-    const sourceCollection = source.collections.find((candidate) => candidate.name === name);
-    if (!sourceCollection) continue;
-    const eligibleCount = sourceCollection.staged.items.filter((item) => isEligible(item, sourceCollection)).length;
-    if (eligibleCount) unresolved.push({ sourceCollection: name, eligibleRecords: eligibleCount, reason: 'visibility-or-template-need-not-established; excluded from required CMS import' });
-  }
-  const processSteps = collection(source, 'VS Destaques');
-  const psExclusive = processSteps.staged.items
-    .filter((item) => isEligible(item, processSteps) && item.fieldData?.page === PS_EXCLUSIVE_PAGE_ID);
-  if (psExclusive.length) unresolved.push({
-    sourceCollection: 'VS Destaques',
-    placement: 'PS Exclusive',
-    sourceIds: psExclusive.map((item) => item.id).sort(),
-    reason: 'no PS Exclusive page exists in the accepted route scope; visibility remains unresolved',
-  });
+  const { resolved: resolvedVisibilityDispositions, unresolved } = resolveResidualDispositions(source, blankRoutes);
 
-  const bulkReady = exactGate(sampleGate, sampleIdsBySlug);
+  // A recorded six-collection sample review is insufficient when the same
+  // snapshot still contains source-eligible records whose public disposition
+  // is unknown. Keep the manifest preparatory until those cases are resolved.
+  const sampleGatePassed = exactGate(sampleGate, sampleIdsBySlug);
+  const bulkReady = sampleGatePassed && unresolved.length === 0;
+  const bulkReason = !sampleGatePassed
+    ? 'recorded 100% content/image/order/layout/responsive/URL/SEO/behavior sample evidence is absent or incomplete'
+    : unresolved.length > 0
+      ? 'source-eligible records have unresolved public visibility or template disposition'
+      : 'all required collection samples have recorded complete parity evidence and no source-eligible visibility cases remain unresolved';
   return {
     generatedAt: new Date().toISOString(),
     mode: 'read-only-preparation',
@@ -225,10 +301,11 @@ export function buildBulkManifest(source, eligibilityReport, samplePayload, blan
       contentRequired: false,
       basis: 'docs/migration/blank-template-routes.json',
     },
+    resolvedVisibilityDispositions,
     unresolvedVisibilityCases: unresolved,
     bulkGate: {
       status: bulkReady ? 'passed' : 'blocked',
-      reason: bulkReady ? 'all required collection samples have recorded complete parity evidence' : 'recorded 100% content/image/order/layout/responsive/URL/SEO/behavior sample evidence is absent or incomplete',
+      reason: bulkReason,
       bulkWritesPermitted: bulkReady,
     },
     safety: { sourceCmsWrites: false, destinationCmsWrites: false, sourcePayloadOrPersonalContentIncluded: false },

@@ -125,6 +125,45 @@ function fixtures() {
   return { source, report, samplePayload, blankRoutes, sampleGate };
 }
 
+function addExactResidualDispositions(data) {
+  const records = [
+    ['Open Houses', 'open-house', [
+      ['662758ff2a1007398583fb2e', '1202-3313'], ['64d73faf12672d652ab57862', '1202-2325'], ['64d73faf12672d652ab5773c', '1202-2299'],
+    ]],
+    ['FAQs', 'faq', [
+      ['64d73faf12672d652ab5776e', 'referenciar-algum-cliente'], ['64d73faf12672d652ab57710', 'ser-cliente-da-ps-real-estate-team'], ['64d73faf12672d652ab57813', 'how-do-i-get-my-home-ready-to-sell'], ['64d73faf12672d652ab5773b', 'how-fast-will-my-home-sell'], ['64d73faf12672d652ab5773a', 'how-is-your-calculation-different-from-zillow'], ['64d73faf12672d652ab577e7', 'how-do-you-calculate-my-homes-value'], ['64d73faf12672d652ab57754', 'how-much-is-my-home-worth'], ['64d73faf12672d652ab57739', 'how-long-does-the-buying-process-typically-take'], ['64d73faf12672d652ab57809', 'do-i-need-to-be-pre-approved-if-so-how-do-i-get-pre-approved'], ['64d73faf12672d652ab57711', 'how-do-i-write-an-offer-that-will-get-accepted'], ['64d73faf12672d652ab57788', 'how-can-i-be-the-first-to-see-new-homes-for-sale'],
+    ]],
+    ['Blog categories', 'blog-categories', [
+      ['64d73faf12672d652ab577a3', 'dicas'], ['64d73faf12672d652ab577cd', 'mercado'], ['64d73faf12672d652ab577b9', 'vendedores'], ['64d73faf12672d652ab57812', 'compradores'],
+    ]],
+    ['Consultores', 'consultores', [['64d73faf12672d652ab5783a', 'paulo-soares']]],
+  ];
+  for (const [name, slug, identities] of records) {
+    const items = identities.map(([id, itemSlug]) => makeItem(id, itemSlug));
+    data.source.collections.push({
+      name, slug, schema: { fields: [] },
+      staged: { items, pagination: { total: items.length } },
+      live: { items: items.map((item) => ({ id: item.id, cmsLocaleId: item.cmsLocaleId, slug: item.fieldData.slug })), pagination: { total: items.length } },
+    });
+    data.blankRoutes.routes.push(...items.map((item) => ({ sourceId: item.id, path: `${slug}/${item.fieldData.slug}` })));
+  }
+
+  const exclusive = [
+    ['64d73faf12672d652ab5781e', '01-acesso-a-eventos-exclusivos'],
+    ['64d73faf12672d652ab5781b', '02-ofertas-exclusivas'],
+    ['64d73faf12672d652ab5781f', '03-outras-vantagens-exclusivas'],
+  ];
+  const steps = data.source.collections.find((entry) => entry.name === 'VS Destaques');
+  steps.staged.items = steps.staged.items.filter((item) => item.fieldData.page !== pageIds.exclusive)
+    .concat(exclusive.map(([id, slug]) => makeItem(id, slug, { page: pageIds.exclusive })));
+  steps.live.items = steps.staged.items.map((item) => ({ id: item.id, cmsLocaleId: item.cmsLocaleId, slug: item.fieldData.slug }));
+  steps.staged.pagination.total = steps.staged.items.length;
+  steps.live.pagination.total = steps.live.items.length;
+  const reportSteps = data.report.collections.find((entry) => entry.collection.slug === 'vs-destaques');
+  reportSteps.eligible = steps.staged.items.map((item) => ({ sourceId: item.id, photoReferences: 0, gallerySlots: 0 }));
+  data.blankRoutes.routes.push(...exclusive.map(([id, slug]) => ({ sourceId: id, path: `vs-destaques/${slug}` })));
+}
+
 test('bulk gate stays blocked without complete recorded sample evidence', () => {
   const data = fixtures();
   const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes);
@@ -137,15 +176,81 @@ test('bulk gate stays blocked without complete recorded sample evidence', () => 
   assert.equal(incomplete.bulkGate.bulkWritesPermitted, false);
 });
 
-test('recorded complete evidence opens the gate only for the exact current sample IDs', () => {
+test('recorded complete evidence stays blocked while source-eligible visibility remains unresolved', () => {
   const data = fixtures();
   const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate);
-  assert.equal(manifest.bulkGate.status, 'passed');
-  assert.equal(manifest.bulkGate.bulkWritesPermitted, true);
+  assert.equal(manifest.bulkGate.status, 'blocked');
+  assert.equal(manifest.bulkGate.bulkWritesPermitted, false);
+  assert.match(manifest.bulkGate.reason, /unresolved public visibility/);
 
   data.sampleGate.collections.find((entry) => entry.slug === 'post').sourceIds.push('unreviewed-id');
   const wrongSamples = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate);
   assert.equal(wrongSamples.bulkGate.status, 'blocked');
+});
+
+test('complete exact residual dispositions and an all-passed sample gate permit the manifest', () => {
+  const data = fixtures();
+  addExactResidualDispositions(data);
+  const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate);
+  assert.equal(manifest.resolvedVisibilityDispositions.length, 5);
+  assert.deepEqual(manifest.unresolvedVisibilityCases, []);
+  assert.equal(manifest.bulkGate.status, 'passed');
+  assert.equal(manifest.bulkGate.bulkWritesPermitted, true);
+});
+
+test('one exact residual blank-route mismatch blocks the otherwise complete manifest', () => {
+  const data = fixtures();
+  addExactResidualDispositions(data);
+  const route = data.blankRoutes.routes.find((entry) => entry.sourceId === '64d73faf12672d652ab5783a');
+  route.path = 'consultores/not-paulo-soares';
+  const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate);
+  assert.equal(manifest.bulkGate.status, 'blocked');
+  assert.equal(manifest.bulkGate.bulkWritesPermitted, false);
+  const consultant = manifest.unresolvedVisibilityCases.find((entry) => entry.sourceCollection === 'Consultores');
+  assert.deepEqual(consultant.missingBlankRouteSourceIds, ['64d73faf12672d652ab5783a']);
+});
+
+test('a recorded disposition fails closed if one of its source identities disappears', () => {
+  const data = fixtures();
+  const steps = data.source.collections.find((entry) => entry.name === 'VS Destaques');
+  steps.staged.items = steps.staged.items.filter((item) => item.fieldData.page !== pageIds.exclusive);
+  steps.live.items = steps.live.items.filter((item) => !item.id.startsWith('exclusive-'));
+  steps.staged.pagination.total = steps.staged.items.length;
+  steps.live.pagination.total = steps.live.items.length;
+  const reportSteps = data.report.collections.find((entry) => entry.collection.slug === 'vs-destaques');
+  reportSteps.eligible = reportSteps.eligible.filter((item) => !item.sourceId.startsWith('exclusive-'));
+  const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate);
+  assert.equal(manifest.bulkGate.status, 'blocked');
+  assert.equal(manifest.bulkGate.bulkWritesPermitted, false);
+  assert.ok(manifest.unresolvedVisibilityCases.some((entry) => entry.sourceCollection === 'VS Destaques'));
+});
+
+test('an unknown residual collection record stays unresolved instead of inheriting a disposition', () => {
+  const data = fixtures();
+  const item = makeItem('unexpected-open-house', 'unexpected-open-house');
+  data.source.collections.push({
+    name: 'Open Houses', slug: 'open-house', schema: { fields: [] },
+    staged: { items: [item], pagination: { total: 1 } },
+    live: { items: [{ id: item.id, cmsLocaleId: item.cmsLocaleId, slug: item.fieldData.slug }], pagination: { total: 1 } },
+  });
+  const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate);
+  const unresolved = manifest.unresolvedVisibilityCases.find((entry) => entry.sourceCollection === 'Open Houses');
+  assert.deepEqual(unresolved.sourceIds, ['unexpected-open-house']);
+  assert.deepEqual(unresolved.expectedSourceIds, ['64d73faf12672d652ab5773c', '64d73faf12672d652ab57862', '662758ff2a1007398583fb2e']);
+  assert.equal(manifest.bulkGate.bulkWritesPermitted, false);
+});
+
+test('a residual disposition without complete staged and live pagination stays unresolved', () => {
+  const data = fixtures();
+  data.source.collections.push({
+    name: 'Consultores', slug: 'consultores', schema: { fields: [] },
+    staged: { items: [], pagination: { total: 1 } },
+    live: { items: [], pagination: { total: 0 } },
+  });
+  const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate);
+  const unresolved = manifest.unresolvedVisibilityCases.find((entry) => entry.sourceCollection === 'Consultores');
+  assert.match(unresolved.reason, /complete staged\/live source snapshot/);
+  assert.equal(manifest.bulkGate.bulkWritesPermitted, false);
 });
 
 test('current drafts stay excluded and process-step totals follow verified page visibility', () => {
@@ -164,7 +269,9 @@ test('current drafts stay excluded and process-step totals follow verified page 
   assert.deepEqual(steps.visibility.unresolvedCases, ['exclusive-1', 'exclusive-2', 'exclusive-3']);
   assert.equal(manifest.blankCmsOriginalRoutes.count, 75);
   assert.equal(manifest.blankCmsOriginalRoutes.contentRequired, false);
-  assert.equal(manifest.unresolvedVisibilityCases.find((entry) => entry.placement === 'PS Exclusive').sourceIds.length, 3);
+  const psExclusive = manifest.unresolvedVisibilityCases.find((entry) => entry.sourceCollection === 'VS Destaques');
+  assert.deepEqual(psExclusive.sourceIds, ['exclusive-1', 'exclusive-2', 'exclusive-3']);
+  assert.deepEqual(psExclusive.expectedSourceIds, ['64d73faf12672d652ab5781b', '64d73faf12672d652ab5781e', '64d73faf12672d652ab5781f']);
 });
 
 test('pre-listing keeps all records, excludes empty unbound gallery, and retains hero asset inventory', () => {

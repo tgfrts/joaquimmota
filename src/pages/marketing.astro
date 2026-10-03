@@ -1,4 +1,23 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import SoldPropertyRail from '../components/SoldPropertyRail.astro';import '../styles/buy-sell-marketing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SoldPropertyRail from '../components/SoldPropertyRail.astro';
+import WhatsAppWidget from '../components/WhatsAppWidget.astro';
+import { marketingTestimonials } from '../data/source-seller';
+import '../styles/sell-fidelity.css';
+import '../styles/marketing-fidelity.css';
 ---
-<BaseLayout title="Marketing"><Header/><section class="bsm-hero"><span class="bsm-tag">Marketing</span><h1>MAIS EXPOSIÇÃO, MAIS OPORTUNIDADES</h1><p>Sabemos que a maioria dos consultores faz o mínimo necessário, por isso, resolvemos o problema: só oferecemos um serviço de qualidade máxima.</p><a class="bsm-button" href="/reviews">As nossas avaliações</a></section><section class="bsm-section"><span class="bsm-tag">A magia do marketing</span><h2>A sua casa merece a melhor divulgação</h2><p>Uma boa estratégia de marketing faz com que a sua casa se destaque das outras casas no mercado. O nosso objetivo é fornecer estratégias inovadoras de marketing digital para garantir que a sua casa brilhe, para que os compradores certos a encontrem e a venham visitar.</p></section><section class="bsm-section bsm-dark"><p class="bsm-tag">UM MARKETING QUE FUNCIONA</p><h2>Últimos imóveis vendidos</h2><SoldPropertyRail/></section><section class="bsm-cta"><h2>Ainda não tem um plano para a sua casa?</h2><p>Temos a estratégia certa para si.</p><a class="bsm-button" href="/sessao-gratuita">Vamos Começar</a></section><Footer/></BaseLayout>
+
+<BaseLayout title="Marketing">
+  <Header />
+  <main class="seller-page marketing-page">
+    <section class="seller-hero"><div class="seller-shell"><p class="seller-kicker">Marketing</p><h1>MAIS EXPOSIÇÃO, MAIS OPORTUNIDADES</h1><p>Sabemos que a maioria dos consultores faz o mínimo necessário, por isso, resolvemos o problema: só oferecemos um serviço de qualidade máxima.</p><a class="seller-button" href="/reviews">As nossas avaliações</a></div></section>
+    <section class="seller-copy"><div class="seller-copy__content"><p class="seller-kicker">A magia do marketing</p><h2>A sua casa merece a melhor divulgação</h2><p>Uma boa estratégia de marketing faz com que a sua casa se destaque das outras casas no mercado. O nosso objetivo é fornecer estratégias inovadoras de marketing digital para garantir que a sua casa brilhe, para que os compradores certos a encontrem e a venham visitar.</p></div></section>
+    <section class="seller-rail"><div class="seller-shell"><p class="seller-kicker">Um Marketing que funciona</p><h2>Últimos imóveis vendidos</h2><SoldPropertyRail /></div></section>
+    <section class="seller-testimonials"><div class="seller-testimonials__head"><p class="seller-kicker">O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2><a href="https://www.facebook.com/PauloSoaresRealEstateTeam/reviews">Leia as nossas avaliações no Facebook</a></div><div class="seller-testimonials__grid">{marketingTestimonials.map(({ name, quote }) => <figure><div aria-label="5 estrelas">★★★★★</div><blockquote>{quote}</blockquote><figcaption>{name}</figcaption></figure>)}</div></section>
+    <section class="seller-cta"><p class="seller-kicker">Vamos Conversar</p><h2>Ainda não tem um plano para a sua casa?</h2><p>Temos a estratégia certa para si.</p><a class="seller-button" href="/sessao-gratuita">Vamos Começar</a></section>
+  </main>
+  <Footer />
+  <WhatsAppWidget />
+</BaseLayout>

@@ -2,22 +2,43 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import WhatsAppWidget from '../components/WhatsAppWidget.astro';
 import sampleContent from '../data/sample-content.json';
-import '../styles/sample-context.css';
+import '../styles/reviews-fidelity.css';
+
 const records: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? [];
-const testimonials = records.filter((record) => record._type === 'testimonial');
-const bySlug = new Map(testimonials.map((testimonial) => [testimonial.slug?.current ?? testimonial.sourceSlug, testimonial]));
+const imported = new Map(records.filter((record) => record._type === 'testimonial').map((record) => [record.legacyId, record]));
 const sourceReviews = [
-  { slug: 'joao-carlos-de-almeida-55c95', clientName: 'João Carlos de Almeida', quote: 'Excelente profissional.' },
-  { clientName: 'Bruno Oliveira', quote: 'Quero-lhe agradecer a amabilidade e profissionalismo com que tratou da venda da minha casa. Ficou com mais um amigo. Muito sucesso e quando voltar a comprar casa certamente será consigo. Muito obrigado e um abraço!' },
-  { clientName: 'sonia teixeira', quote: 'Muita eficácia e profissionalismo... Recomendo.' },
-  { clientName: 'Vera Silva', quote: 'O Sr. Joaquim foi super prestativo. Ajudou-nos completamente em todo o processo, foi super tranquilo. Graças à sua estratégia, a casa foi vendida em menos de uma semana. Muito obrigado.' },
-  { slug: 'joao-carlos-de-almeida-55c95', clientName: 'João Carlos de Almeida', quote: 'Excelente profissional.' },
-  { clientName: 'Paulo Pereira', quote: 'Uma excelente pessoa. Um excelente vendedor. Felicidades.' },
-  { slug: 'carlos-dourado', clientName: 'Carlos Dourado', quote: 'Registo, o profissionalismo do Sr. Joaquim Mota, durante o período que ambos partilhamos, o que permitiu a consumação do contrato relativo ao apartamento, sito em Macedo de Cavaleiros.' },
-  { clientName: 'Ivone Baldaia', quote: 'Consultoria imobiliária de excelência, apoio em todo o processo de compra e pós compra. Obrigada Sr. Mota pelo profissionalismo, seriedade e disponibilidade.' },
-  { clientName: 'Bruno Santos', quote: 'Consultor de confiança, ajudou bastante no nosso processo e ficamos super satisfeitos.' },
-  { clientName: 'Bruna Augusto', quote: 'Excelente profissional muito acessível e simpático gosta do que faz e prima por ser uma pessoa genuína .Obrigado por tudo.' },
-].map((review) => review.slug ? bySlug.get(review.slug) ?? review : review);
+  ['67b454c5e23698381d4b5a8b', 'João Carlos de Almeida', 'Excelente profissional.'],
+  [undefined, 'Bruno Oliveira', 'Quero-lhe agradecer a amabilidade e profissionalismo com que tratou da venda da minha casa.\nFicou com mais um amigo. Muito sucesso e quando voltar a comprar casa certamente será consigo. Muito obrigado e um abraço!'],
+  [undefined, 'sonia teixeira', 'Muita eficácia e profissionalismo... Recomendo.'],
+  [undefined, 'Vera Silva', 'O Sr. Joaquim foi super prestativo. Ajudou-nos completamente em todo o processo, foi super tranquilo. Graças à sua estratégia, a casa foi vendida em menos de uma semana. Muito obrigado.'],
+  ['67b454c5e23698381d4b5a8b', 'João Carlos de Almeida', 'Excelente profissional.'],
+  [undefined, 'Paulo Pereira', 'Uma excelente pessoa. Um excelente vendedor. Felicidades.'],
+  ['67b454c48728d3d81a387c44', 'Carlos Dourado', 'Registo, o profissionalismo do Sr. Joaquim Mota, durante o período que ambos partilhamos, o que permitiu a consumação do contrato relativo ao apartamento, sito em Macedo de Cavaleiros.'],
+  [undefined, 'Ivone Baldaia', 'Consultoria imobiliária de excelência, apoio em todo o processo de compra e pós compra. Obrigada Sr. Mota pelo profissionalismo, seriedade e disponibilidade.'],
+  [undefined, 'Bruno Santos', 'Consultor de confiança, ajudou bastante no nosso processo e ficamos super satisfeitos.'],
+  [undefined, 'Bruna Augusto', 'Excelente profissional muito acessível e simpático gosta do que faz e prima por ser uma pessoa genuína .Obrigado por tudo.'],
+] as const;
+const reviews = sourceReviews.map(([legacyId, clientName, quote]) => imported.get(legacyId ?? '') ?? { clientName, quote });
+const googleReviews = 'https://www.google.com/search?sca_esv=8a5f3c529fc99551&hl=pt-PT&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzQv_LngknV97AguR9DyJ43ug8lKUScEz-IEp4X8FWpBof3OgPOsehMBCKn3ExCty8hLMA5jgyjsLIyNImebmOGDUMhaZB2CFwGV7BXhRlsr2xuBklqJNyX9vRfua0_H5kBtLA5k%3D&q=JRM+Joaquim+Mota+Consultor+Imobili%C3%A1rio+Cr%C3%ADticas&sa=X&ved=2ahUKEwj0j6XMvtKLAxXzcaQEHYLUHoMQ0bkNegQILBAE&biw=1420&bih=855&dpr=2';
 ---
-<BaseLayout title="Reviews"><Header variant="light" pageNavigation contactHref="/vamos-comecar" /><main class="reviews-page"><header class="reviews-page__hero"><p>Testemunhos</p><h1>Somos alimentados pelo seu sucesso</h1><p>Dedicamo-nos para entregar um serviço de primeira classe para os nossos clientes. Se ainda não o deixamos claro, esperamos que estas avaliações ajudem a comprovar o nosso compromisso.</p></header><section class="reviews-page__feature"><div><h2>A família Silva</h2><p>Working with the Altenburg's on their purchase a while back was not just a fun experience because they are good friends of mine, it was extremely rewarding because we knew right away that this home was exactly what they wanted, and we were able to make it happen.</p></div></section><section class="reviews-page__list"><header><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></header><div class="sample-testimonials">{sourceReviews.map((testimonial) => <figure><div aria-label="5 estrelas">★★★★★</div><blockquote>{testimonial.quote}</blockquote><figcaption>{testimonial.clientName}</figcaption></figure>)}</div></section><section class="reviews-page__cta"><h2>Ainda à procura de uma parceria de confiança?</h2><p>Na opinião dos nossos clientes somos a melhor opção.</p><a href="/vamos-comecar">Vamos começar</a></section></main><Footer /></BaseLayout>
+<BaseLayout title="Reviews">
+  <Header variant="light" pageNavigation contactHref="/contacto" />
+  <main class="reviews-fidelity">
+    <header class="reviews-fidelity__hero"><div><p>Porquê trabalhar connosco</p><h1>Somos alimentados pelo seu sucesso</h1><p>Dedicamo-nos para entregar um serviço de primeira classe para os nossos clientes. Se ainda não o deixamos claro, esperamos que estas avaliações ajudem a comprovar o nosso compromisso.</p><a href="/reviews">O que dizem os nossos clientes</a></div><div class="reviews-fidelity__hero-image"><span class="reviews-fidelity__hero-overlay"></span><img src="/assets/reviews-hero.png" alt="" loading="eager" /></div></header>
+    <Header variant="light" pageNavigation showBlog={false} contactHref="/vamos-comecar" contactLabel="Vamos começar" />
+    <section class="reviews-fidelity__testimonials"><header><div><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a href={googleReviews} target="_blank" rel="noopener noreferrer">Leia as nossas avaliações no Google</a></header><div class="reviews-fidelity__grid">{reviews.map((review) => <figure><div class="reviews-fidelity__stars" aria-label="5 estrelas">{Array.from({ length: 5 }, () => <svg viewBox="0 0 18 17" aria-hidden="true"><path d="M8.164.551a.91.91 0 0 1 1.672 0l1.826 4.337 4.739.375a.91.91 0 0 1 .517 1.572l-3.611 3.055 1.104 4.569a.91.91 0 0 1-1.353.971L9 14.418l-4.058 2.448a.91.91 0 0 1-1.353-.971l1.104-4.569L1.082 8.27A.91.91 0 0 1 1.6 6.698l4.739-.375z" /></svg>)}</div><blockquote>{review.quote}</blockquote><figcaption>{review.clientName}</figcaption></figure>)}</div></section>
+    <section class="reviews-fidelity__cta-wrap"><div class="reviews-fidelity__cta"><div><p>Vamos Conversar</p><h2>Ainda à procura de uma parceria de confiança?</h2><p>Na opinião dos nossos clientes somos a melhor opção.</p><a href="/vamos-comecar">Vamos Começar</a></div><div class="reviews-fidelity__portrait"><img src="/assets/closing-jm.png" alt="" loading="lazy" /></div></div></section>
+  </main><Footer /><WhatsAppWidget />
+<script>
+  import { bindInteriorHero, bindSourceScrollMotion, interpolate } from '../scripts/source-scroll-motion';
+  const image = document.querySelector<HTMLImageElement>('.reviews-fidelity__hero-image img');
+  if (image) bindInteriorHero(image, document.querySelector<HTMLElement>('.reviews-fidelity__hero-overlay'));
+  const cta = document.querySelector<HTMLElement>('.reviews-fidelity__cta');
+  if (cta) bindSourceScrollMotion(cta, (progress, reduced) => {
+    cta.style.transform = reduced ? 'none' : `scale(${interpolate(progress, [[0, 1.25], [.35, 1]])})`;
+    cta.style.opacity = reduced ? '1' : String(interpolate(progress, [[0, 0], [.35, 1]]));
+  });
+</script>
+</BaseLayout>

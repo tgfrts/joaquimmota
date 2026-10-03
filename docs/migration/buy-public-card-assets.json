@@ -1,0 +1,68 @@
+{
+  "sourceReadOnly": true,
+  "records": [
+    {
+      "sourceId": "6a54f0b08ea6f4acb252d675",
+      "url": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a54efe9f095d8fbb9071061_DJI_20260701173923_0028_D.jpg",
+      "path": "public/assets/buy-property-6a54f0b08ea6f4acb252d675.jpg",
+      "bytes": 1009698,
+      "sha256": "584ac976995324ff2b1a64ae9e6c78ad95b5bbf74536d56dcee248eb503a4820"
+    },
+    {
+      "sourceId": "69f3362d997f2b0e23600e81",
+      "url": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f3353c7a6665403327365e_IMG_3995.jpg",
+      "path": "public/assets/buy-property-69f3362d997f2b0e23600e81.jpg",
+      "bytes": 401177,
+      "sha256": "0c2ed30ee89fe398258d71c9c702ff07e5644568ae30deb582d798a1df0fc675"
+    },
+    {
+      "sourceId": "69f85f2cd504290f91170cad",
+      "url": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f85f130f2cf923ff33cde3_IMG_3967.jpeg",
+      "path": "public/assets/buy-property-69f85f2cd504290f91170cad.jpeg",
+      "bytes": 956703,
+      "sha256": "d7a4f9b7d860ef70eafd150275ffae42ab68024b816164684a13398eb87c48f0"
+    },
+    {
+      "sourceId": "69ca79014b79e52d8d0efd0e",
+      "url": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69ca76a640409750fea7b80f_IMG_3782.jpg",
+      "path": "public/assets/buy-property-69ca79014b79e52d8d0efd0e.jpg",
+      "bytes": 287405,
+      "sha256": "55ca40c6ded8ea2b703dd2e44d058618656e41eaf22ee24b562e76bc6c716a28"
+    },
+    {
+      "sourceId": "6964d41dcd4c29cf4a934f07",
+      "url": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6964d3a2b92f0844970bdc73_IMG_3613.webp",
+      "path": "public/assets/buy-property-6964d41dcd4c29cf4a934f07.webp",
+      "bytes": 98220,
+      "sha256": "0a11f60c11496abd21c3bbc06bf505d5f943864099abdac88980db2296a2731c"
+    },
+    {
+      "sourceId": "690391c0d3220f7e2038c27f",
+      "url": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/690390dd23eb274afdcc45bc_IMG_3530-HDR.jpeg",
+      "path": "public/assets/buy-property-690391c0d3220f7e2038c27f.jpeg",
+      "bytes": 754795,
+      "sha256": "26adbcdd1d502af02e79a7ee17835808c443f65cc80adafe5288e929adfa2dec"
+    },
+    {
+      "sourceId": "685043180aabf4b0120419ea",
+      "url": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/68504488eae0606c9abb6dea_Imagens%20editadas.png",
+      "path": "public/assets/buy-property-685043180aabf4b0120419ea.png",
+      "bytes": 2728710,
+      "sha256": "2b0c50200ba2f2e0ce58b60f5e3a56981d22f6db1e5091ef57df8b445933f142"
+    },
+    {
+      "sourceId": "67e6d33f5b891f9ac2eda4fc",
+      "url": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/67e6d555e27ab04c51171a12_7.webp",
+      "path": "public/assets/buy-property-67e6d33f5b891f9ac2eda4fc.webp",
+      "bytes": 474626,
+      "sha256": "07649969a9444eb753cda950db828a291ec7752e96cacb1bf69de8dcaca177c6"
+    },
+    {
+      "sourceId": "6776738c6bba83fee2ec3c78",
+      "url": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6776761ca89c746294450e24_IMG_2729.webp",
+      "path": "public/assets/buy-property-6776738c6bba83fee2ec3c78.webp",
+      "bytes": 560392,
+      "sha256": "6afd818d56150e70da5f859d41166d11ecbb270a5cacd5b1620176027faa8b38"
+    }
+  ]
+}

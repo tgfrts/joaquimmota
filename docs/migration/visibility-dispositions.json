@@ -1,0 +1,60 @@
+{
+  "scope": "Current complete staged/live Webflow snapshot only. These records preserve their existing public blank routes; no CMS document is generated from them.",
+  "policy": "Every listed identity must remain eligible in the matching collection and retain its exact source route. Any added, removed, renamed, draft, archived, locale-mismatched, or otherwise unknown identity makes the bulk manifest fail closed.",
+  "records": {
+    "open-houses": {
+      "sourceCollection": "Open Houses",
+      "sourceIds": ["662758ff2a1007398583fb2e", "64d73faf12672d652ab57862", "64d73faf12672d652ab5773c"],
+      "routes": ["/open-house/1202-3313", "/open-house/1202-2325", "/open-house/1202-2299"],
+      "disposition": "preserve blank route; exclude CMS content",
+      "evidence": [
+        "The current live CMS HTTP audit records all three direct routes as generic blank pages without record content.",
+        "The captured public property 1202-3313 contains populated Open House data only under the source's w-condition-invisible section; source CSS defines that class as display:none!important."
+      ]
+    },
+    "faqs": {
+      "sourceCollection": "FAQs",
+      "sourceIds": ["64d73faf12672d652ab5776e", "64d73faf12672d652ab57710", "64d73faf12672d652ab57813", "64d73faf12672d652ab5773b", "64d73faf12672d652ab5773a", "64d73faf12672d652ab577e7", "64d73faf12672d652ab57754", "64d73faf12672d652ab57739", "64d73faf12672d652ab57809", "64d73faf12672d652ab57711", "64d73faf12672d652ab57788"],
+      "routes": ["/faq/referenciar-algum-cliente", "/faq/ser-cliente-da-ps-real-estate-team", "/faq/how-do-i-get-my-home-ready-to-sell", "/faq/how-fast-will-my-home-sell", "/faq/how-is-your-calculation-different-from-zillow", "/faq/how-do-you-calculate-my-homes-value", "/faq/how-much-is-my-home-worth", "/faq/how-long-does-the-buying-process-typically-take", "/faq/do-i-need-to-be-pre-approved-if-so-how-do-i-get-pre-approved", "/faq/how-do-i-write-an-offer-that-will-get-accepted", "/faq/how-can-i-be-the-first-to-see-new-homes-for-sale"],
+      "disposition": "preserve blank route; exclude CMS content",
+      "evidence": [
+        "Direct FAQ routes are generic blank pages in the current live CMS HTTP audit.",
+        "The documented public-browser inspection found Comprar and Vender FAQ sections display:none with zero dimensions on desktop and mobile; no PS Exclusive public page path exists in the captured inventory."
+      ]
+    },
+    "blog-categories": {
+      "sourceCollection": "Blog categories",
+      "sourceIds": ["64d73faf12672d652ab577a3", "64d73faf12672d652ab577cd", "64d73faf12672d652ab577b9", "64d73faf12672d652ab57812"],
+      "routes": ["/blog-categories/dicas", "/blog-categories/mercado", "/blog-categories/vendedores", "/blog-categories/compradores"],
+      "disposition": "preserve blank route; exclude CMS taxonomy",
+      "evidence": [
+        "Direct category routes are generic blank pages in the current live CMS HTTP audit.",
+        "Eligible articles contain 78 category-reference occurrences across 59 eligible articles, but the public article template exposes only a literal Categoria link to #; it does not render a category label, relation, or category route."
+      ]
+    },
+    "consultants": {
+      "sourceCollection": "Consultores",
+      "sourceIds": ["64d73faf12672d652ab5783a"],
+      "routes": ["/consultores/paulo-soares"],
+      "disposition": "preserve blank route; exclude CMS content",
+      "evidence": [
+        "The direct consultant route is a generic blank page in the current live CMS HTTP audit and no captured public template consumes the record."
+      ]
+    },
+    "ps-exclusive-process-steps": {
+      "sourceCollection": "VS Destaques",
+      "sourceIds": ["64d73faf12672d652ab5781e", "64d73faf12672d652ab5781b", "64d73faf12672d652ab5781f"],
+      "routes": ["/vs-destaques/01-acesso-a-eventos-exclusivos", "/vs-destaques/02-ofertas-exclusivas", "/vs-destaques/03-outras-vantagens-exclusivas"],
+      "disposition": "preserve blank route; exclude CMS content",
+      "evidence": [
+        "All three records use the PS Exclusive page enum. The captured inventory has no PS Exclusive public page path, while every direct record route is a generic blank page in the live CMS HTTP audit."
+      ]
+    }
+  },
+  "evidenceFiles": [
+    "/private/tmp/joaquimmota-live-cms-http-audit.json",
+    "/private/tmp/audit-jrmota-property.html",
+    "/private/tmp/joaquimmota-source.css",
+    "docs/migration/INVENTORY.md"
+  ]
+}
