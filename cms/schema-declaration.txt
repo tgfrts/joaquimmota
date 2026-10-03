@@ -1,0 +1,62 @@
+{
+name: 'link',
+type: 'object',
+fields: [{name: 'href', type: 'url'}, {name: 'openInNewTab', type: 'boolean'}],
+}
+{
+name: 'articleCta',
+type: 'object',
+fields: [{name: 'eyebrow', type: 'string'}, {name: 'heading', type: 'string'}, {name: 'copy', type: 'text', rows: 3}, {name: 'label', type: 'string'}],
+}
+{
+name: 'propertyAmenities',
+type: 'object',
+fields: [{name: 'elevator', type: 'boolean'}, {name: 'storage', type: 'boolean'}, {name: 'balcony', type: 'boolean'}, {name: 'terrace', type: 'boolean'}, {name: 'garden', type: 'boolean'}, {name: 'pool', type: 'boolean'}],
+}
+{
+name: 'property',
+type: 'document',
+fields: [
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true},
+{name: 'title', type: 'string'}, {name: 'referenceCode', type: 'string'}, {name: 'summary', type: 'text', rows: 4}, {name: 'description', type: 'array', of: [{type: 'block', marks: {annotations: [{type: 'link'}]}}]},
+{name: 'listingStatus', type: 'string', options: {list: ['active', 'sold', 'reserved', 'expiredCancelled']}}, {name: 'marketBanner', type: 'string', options: {list: ['new', 'newPrice', 'openHouse', 'reserved']}}, {name: 'price', type: 'number'}, {name: 'priceOnRequest', type: 'boolean'}, {name: 'propertyType', type: 'string', options: {list: ['apartment', 'house', 'building', 'other']}},
+{name: 'municipality', type: 'string'}, {name: 'parish', type: 'string'}, {name: 'bedrooms', type: 'number'}, {name: 'bathrooms', type: 'number'}, {name: 'parkingSpaces', type: 'number'}, {name: 'usableArea', type: 'number'}, {name: 'grossArea', type: 'number'}, {name: 'energyCertificate', type: 'string', options: {list: ['A+', 'A', 'B', 'B-', 'C', 'D', 'E', 'F', 'G', 'Exempt']}}, {name: 'amenities', type: 'propertyAmenities'},
+{name: 'featuredImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'gallery', type: 'array', of: [{type: 'image', fields: [{name: 'alt', type: 'string'}]}]}, {name: 'videoUrl', type: 'url'}, {name: 'matterportUrl', type: 'url'}, {name: 'mapEmbed', type: 'text', rows: 4},
+],
+}
+{
+name: 'article',
+type: 'document',
+fields: [
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true},
+{name: 'title', type: 'string'}, {name: 'subtitle', type: 'string'}, {name: 'summary', type: 'text', rows: 4}, {name: 'body', type: 'array', of: [{type: 'block', marks: {annotations: [{type: 'link'}]}}]}, {name: 'readingMinutes', type: 'number'}, {name: 'cta', type: 'articleCta'}, {name: 'mainImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'thumbnailImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'openGraphImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'videoUrl', type: 'url'}, {name: 'gallery', type: 'array', of: [{type: 'image', fields: [{name: 'alt', type: 'string'}]}]},
+],
+}
+{
+name: 'testimonial',
+type: 'document',
+fields: [
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'clientName', type: 'string'}, {name: 'quote', type: 'text', rows: 5}, {name: 'portrait', type: 'image', fields: [{name: 'alt', type: 'string'}]},
+],
+}
+{
+name: 'preListing',
+type: 'document',
+fields: [
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'clientName', type: 'string'}, {name: 'address', type: 'string'}, {name: 'parish', type: 'string'}, {name: 'municipality', type: 'string'}, {name: 'propertyType', type: 'string', options: {list: ['apartment', 'house', 'land', 'commercial', 'garage', 'other']}}, {name: 'typology', type: 'string'}, {name: 'heroImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'gallery', type: 'array', of: [{type: 'image', fields: [{name: 'alt', type: 'string'}]}]},
+],
+}
+{
+name: 'offer',
+type: 'document',
+fields: [
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'title', type: 'string'}, {name: 'heading', type: 'string'}, {name: 'body', type: 'text', rows: 4}, {name: 'image', type: 'image', fields: [{name: 'alt', type: 'string'}]},
+],
+}
+{
+name: 'processStep',
+type: 'document',
+fields: [
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'title', type: 'string'}, {name: 'body', type: 'text', rows: 4}, {name: 'placement', type: 'string', options: {list: ['buy', 'marketing']}}, {name: 'ctaLabel', type: 'string'}, {name: 'ctaUrl', type: 'url'}, {name: 'videoUrl', type: 'url'}, {name: 'thumbnail', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'image', type: 'image', fields: [{name: 'alt', type: 'string'}]},
+],
+}

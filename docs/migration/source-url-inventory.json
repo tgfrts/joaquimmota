@@ -1,0 +1,1494 @@
+{
+  "source": "https://joaquimmota.pt",
+  "collections": [
+    {
+      "name": "Pre-Listings",
+      "slug": "vouvender",
+      "live": [
+        {
+          "id": "6aaa6c0742b7f0b0b572f137",
+          "slug": "te-t2-gulpilhares-20260916-39528",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6aaa6c05e5531aa86e7ef8a1",
+          "slug": "te-t2-gulpilhares-20260916-ff2b3",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6aaa6c04459d4e95d7c7b85e",
+          "slug": "te-t2-gulpilhares-20260916-10d24",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6aaa6c03b084cdf87e1e04fe",
+          "slug": "te-t2-gulpilhares-20260916-4f56b",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6aaa6c00a8c18699eea52e0f",
+          "slug": "te-t2-gulpilhares-20260916-ee8f2",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6aaa6bfdb084cdf87e1e0313",
+          "slug": "te-t2-gulpilhares-20260916-f3061",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6aaa6bf9006c5c8ef3cbb435",
+          "slug": "te-t2-gulpilhares-20260916-fec87",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6aaa6bf943f72813a7805475",
+          "slug": "te-t2-gulpilhares-20260916-3e97c",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6aaa6bf413013c01def73147",
+          "slug": "te-t2-gulpilhares-20260916",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a4f764f38c82ee1bb689e95",
+          "slug": "da-t3-santa-marinha-20260709",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a4f6e1d6186f383f4d91c11",
+          "slug": "si-t2-oliveira-do-douro-20260709",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a4f570e54cc71aa48865955",
+          "slug": "mb-t3-crestuma-20260709-472cf",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a4f570a65617e2a93ccdf8a",
+          "slug": "mb-t3-crestuma-20260709-8861e",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a4f5708d86f98863eede13b",
+          "slug": "mb-t3-crestuma-20260709-56749",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a4f5705d8ddb628ff0e0f59",
+          "slug": "mb-t3-crestuma-20260709-d57ce",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a4f5702139a1db60f0abcf8",
+          "slug": "mb-t3-crestuma-20260709",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a08555e17000c0ff74cf1ad",
+          "slug": "sc-t2-pedroso-20260516-bf70c",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a08483dadf70b1b75591292",
+          "slug": "fc-t3-canidelo-20260516-1089a",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a08483c0d735e1da6eb6c01",
+          "slug": "fc-t3-canidelo-20260516-907cc",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a08483a428e6446d29be42e",
+          "slug": "fc-t3-canidelo-20260516-25ee4",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a0848380e30c43087483e19",
+          "slug": "fc-t3-canidelo-20260516",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6a083edddf663e7d99711a7c",
+          "slug": "mc-t4-sao-felix-20260516",
+          "includeInSitemap": true
+        },
+        {
+          "id": "69f2924211224100dc840df2",
+          "slug": "sc-t4-arcozelo-20260416",
+          "includeInSitemap": true
+        },
+        {
+          "id": "69f291e2c5875808b53a8641",
+          "slug": "mm-t3-canidelo-20260428",
+          "includeInSitemap": true
+        }
+      ]
+    },
+    {
+      "name": "Ofertas",
+      "slug": "ofertas",
+      "live": [
+        {
+          "id": "64d744240d28836501ab496f",
+          "slug": "vinho-e-fado",
+          "includeInSitemap": true
+        }
+      ]
+    },
+    {
+      "name": "Open Houses",
+      "slug": "open-house",
+      "live": [
+        {
+          "id": "662758ff2a1007398583fb2e",
+          "slug": "1202-3313",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57862",
+          "slug": "1202-2325",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5773c",
+          "slug": "1202-2299",
+          "includeInSitemap": true
+        }
+      ]
+    },
+    {
+      "name": "Consultores",
+      "slug": "consultores",
+      "live": [
+        {
+          "id": "64d73faf12672d652ab5783a",
+          "slug": "paulo-soares",
+          "includeInSitemap": true
+        }
+      ]
+    },
+    {
+      "name": "Blog categories",
+      "slug": "blog-categories",
+      "live": [
+        {
+          "id": "64d73faf12672d652ab577a3",
+          "slug": "dicas",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab577cd",
+          "slug": "mercado",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab577b9",
+          "slug": "vendedores",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57812",
+          "slug": "compradores",
+          "includeInSitemap": true
+        }
+      ]
+    },
+    {
+      "name": "Blog Posts",
+      "slug": "post",
+      "live": [
+        {
+          "id": "69a2dce4b48d3344ed295952",
+          "slug": "a-proposta-mais-alta-pode-nao-ser-a-melhor",
+          "includeInSitemap": true
+        },
+        {
+          "id": "698af82db57942d2c5d10a3e",
+          "slug": "os-segredos-que-as-casas-nao-contam-2",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6973a8382c9f58da6611b23a",
+          "slug": "deve-comprar-ou-arrendar-em-2026",
+          "includeInSitemap": true
+        },
+        {
+          "id": "687b424c81155d44aebb00e3",
+          "slug": "4-passos-para-mudar-de-casa-neste-verao",
+          "includeInSitemap": true
+        },
+        {
+          "id": "68441252e1b2d0967e958cde",
+          "slug": "o-lado-emocional-de-vender-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "680c7e7d769837151099a3be",
+          "slug": "como-definir-o-preco-ideal-da-sua-casa-na-primavera-de-2025",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67ddbdbe2791d09749ba3a0f",
+          "slug": "a-primavera-e-a-melhor-altura-para-vender-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67c2d72bca537c92e1165fa7",
+          "slug": "virtual-staging-a-estrategia-que-pode-acelerar-a-venda-da-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b060587a6c805c960a3239",
+          "slug": "4-tendencias-de-design-de-interiores-para-2025",
+          "includeInSitemap": true
+        },
+        {
+          "id": "679df6675b7f77a3f18f0c8d",
+          "slug": "oliveira-do-douro",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6785698289f192422cecd64e",
+          "slug": "3-dicas-essenciais-para-mudar-de-casa-em-2025",
+          "includeInSitemap": true
+        },
+        {
+          "id": "675d50a49f940c0315cb7e14",
+          "slug": "espirito-festivo-em-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6748cca91c9fd6dab3ef60d9",
+          "slug": "comprar-casa-durante-as-festas",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6723d94d5fff3c9d24b39c14",
+          "slug": "como-maximizar-o-seu-orcamento-e-comprar-a-casa-dos-seus-sonhos",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67097eef9fb586347f087d95",
+          "slug": "vender-a-sua-casa-no-outono",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66dc13c089b1d6020419e763",
+          "slug": "6-coisas-a-fazer-se-nao-consegue-vender-a-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66c354b1bf68d92a8b99b40d",
+          "slug": "renovar-ou-mudar-de-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66b70b9df45a1b42aab1206b",
+          "slug": "aumente-os-seus-rendimentos-com-o-apoio-financeiro-para-senhorios",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66b0e471a51f637eb02927fe",
+          "slug": "4-coisas-a-ponderar-ao-contratar-um-consultor-imobiliario",
+          "includeInSitemap": true
+        },
+        {
+          "id": "669fcbbd48e4342b445c61db",
+          "slug": "primeira-vez-a-vender-casa-evite-estes-erros",
+          "includeInSitemap": true
+        },
+        {
+          "id": "668902b9a1ca47575759491f",
+          "slug": "como-garantir-uma-mudanca-de-casa-rapida-neste-verao-2024",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66746b57c4ecc97c2f348435",
+          "slug": "5-dicas-essenciais-para-uma-venda-de-casa-bem-sucedida-neste-verao",
+          "includeInSitemap": true
+        },
+        {
+          "id": "665ae1edc00d7fc80697fc68",
+          "slug": "reduza-o-risco-e-aumente-o-valor-de-venda-da-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66485c1dee467eb1375b511f",
+          "slug": "5-solucoes-sustentaveis-para-proprietarios-ecologicos",
+          "includeInSitemap": true
+        },
+        {
+          "id": "662cbd80d0e9217e80a585cc",
+          "slug": "simplifique-a-sua-mudanca-de-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66102df9b60e07f43eb33b7d",
+          "slug": "estrategias-de-preco-inteligentes",
+          "includeInSitemap": true
+        },
+        {
+          "id": "65f89d1b47b8f01593214fc8",
+          "slug": "primavera-venda-a-sua-casa-com-sucesso",
+          "includeInSitemap": true
+        },
+        {
+          "id": "65e23abcd1c6e252eda0ea5c",
+          "slug": "8-dicas-para-aproveitar-melhor-os-espacos-exteriores-da-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "65d08aa4366f5933de0cbc15",
+          "slug": "torne-a-sua-casa-mais-eficiente-energeticamente",
+          "includeInSitemap": true
+        },
+        {
+          "id": "65be054a1b61394c612e96c5",
+          "slug": "estrategia-de-preco-a-importancia-do-preco-certo-para-um-venda-bem-sucedida",
+          "includeInSitemap": true
+        },
+        {
+          "id": "65b01ba5a8acc6f3282ebd4c",
+          "slug": "ano-novo-casa-nova-3-dicas-para-mudar-de-casa-em-2024",
+          "includeInSitemap": true
+        },
+        {
+          "id": "659688c718c9fd0e67418a4c",
+          "slug": "8-dicas-quentinhas-para-vender-a-sua-casa-neste-inverno",
+          "includeInSitemap": true
+        },
+        {
+          "id": "658b209094967e35ebdef7f0",
+          "slug": "potencie-a-sua-casa-e-o-seu-estilo-de-vida-em-2024",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6574430260cc6ee0a2aa4b3c",
+          "slug": "evite-este-erro-para-uma-negociacao-bem-sucedida",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6561d07eb0669b030cf17d26",
+          "slug": "pos-e-contras-de-vender-a-sua-casa-nestas-festas",
+          "includeInSitemap": true
+        },
+        {
+          "id": "654f367ac3bb2ee66548dd19",
+          "slug": "a-divisao-do-atual-mercado-imobiliario",
+          "includeInSitemap": true
+        },
+        {
+          "id": "653c2267f98ed53697865c87",
+          "slug": "de-uma-venda-assombrada-a-uma-venda-com-sucesso",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652a39b9722f7ce55d56bf7b",
+          "slug": "as-3-caracteristicas-a-ter-em-conta-na-hora-de-comprar-a-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "65172b682bc4e80617b5a630",
+          "slug": "a-verdade-por-tras-de-5-mitos-comuns-na-negociacao-de-uma-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "650556e225ec0563bd569d6b",
+          "slug": "outono-inspirador",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64f34384468c25972ddf661c",
+          "slug": "sera-a-comissao-o-fator-mais-importante",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64e067450838e40e67002d4a",
+          "slug": "como-descobrir-o-valor-atual-de-uma-casa-de-maneira-eficaz",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57864",
+          "slug": "7-dicas-para-umas-ferias-relaxadas",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57863",
+          "slug": "como-garantir-uma-mudanca-de-casa-rapida-neste-verao",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57860",
+          "slug": "a-importancia-de-receber-qualquer-proposta-na-venda-da-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5785f",
+          "slug": "casa-nova-ou-usada-descubra-qual-e-a-melhor-opcao-para-si",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5785e",
+          "slug": "7-coisas-que-deve-saber-antes-de-contratar-um-consultor-imobiliario",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5785d",
+          "slug": "qual-a-melhor-altura-do-ano-para-se-vender-uma-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5785b",
+          "slug": "4-novas-dicas-de-home-staging-para-2023",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5785a",
+          "slug": "a-sua-proposta-foi-rejeitada-4-dicas-para-chegar-a-bom-porto",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57857",
+          "slug": "como-melhorar-os-espacos-exteriores-da-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57856",
+          "slug": "tudo-o-que-precisa-saber-para-vender-a-sua-casa-nesta-primavera",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57855",
+          "slug": "maximize-a-sua-mudanca-para-uma-casa-maior-com-estas-5-dicas",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57854",
+          "slug": "6-razoes-pelas-quais-o-investimento-em-imoveis-e-uma-opcao-inteligente",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57853",
+          "slug": "devo-comprar-e-vender-a-minha-casa-ao-mesmo-tempo",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57852",
+          "slug": "as-5-melhores-renovacoes-para-aumentar-o-valor-da-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57851",
+          "slug": "5-novas-regras-para-vender-a-sua-casa-em-2023",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57850",
+          "slug": "novas-tendencias-para-decorar-a-sua-casa-em-2023",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5784f",
+          "slug": "3-dicas-para-comprar-uma-casa-durante-as-festas-de-natal-e-ano-novo",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5784e",
+          "slug": "8-dicas-para-simplificar-a-sua-mudanca-de-casa",
+          "includeInSitemap": true
+        }
+      ]
+    },
+    {
+      "name": "FAQs",
+      "slug": "faq",
+      "live": [
+        {
+          "id": "64d73faf12672d652ab5776e",
+          "slug": "referenciar-algum-cliente",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57710",
+          "slug": "ser-cliente-da-ps-real-estate-team",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57813",
+          "slug": "how-do-i-get-my-home-ready-to-sell",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5773b",
+          "slug": "how-fast-will-my-home-sell",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5773a",
+          "slug": "how-is-your-calculation-different-from-zillow",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab577e7",
+          "slug": "how-do-you-calculate-my-homes-value",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57754",
+          "slug": "how-much-is-my-home-worth",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57739",
+          "slug": "how-long-does-the-buying-process-typically-take",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57809",
+          "slug": "do-i-need-to-be-pre-approved-if-so-how-do-i-get-pre-approved",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57711",
+          "slug": "how-do-i-write-an-offer-that-will-get-accepted",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57788",
+          "slug": "how-can-i-be-the-first-to-see-new-homes-for-sale",
+          "includeInSitemap": true
+        }
+      ]
+    },
+    {
+      "name": "VS Destaques",
+      "slug": "vs-destaques",
+      "live": [
+        {
+          "id": "64d73faf12672d652ab5781f",
+          "slug": "03-outras-vantagens-exclusivas",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5781b",
+          "slug": "02-ofertas-exclusivas",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5781e",
+          "slug": "01-acesso-a-eventos-exclusivos",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57817",
+          "slug": "video-e-matterport",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5781c",
+          "slug": "marketing-nas-redes-sociais",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57820",
+          "slug": "uma-base-de-dados-com-clientes-compradores-qualificados",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57815",
+          "slug": "fotografia-profissional",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57823",
+          "slug": "hora-de-festejar",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5781a",
+          "slug": "negocie-o-melhor-valor",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57837",
+          "slug": "mostre-a-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57839",
+          "slug": "estrategia-de-marketing",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57836",
+          "slug": "prepare-a-sua-casa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57822",
+          "slug": "02-estrategia-de-preco",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57838",
+          "slug": "01-os-seus-objetivos",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57818",
+          "slug": "06-hora-de-festejar",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5781d",
+          "slug": "04-faca-uma-oferta",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57814",
+          "slug": "03-visitas",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57819",
+          "slug": "02-inicie-a-pesquisa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57824",
+          "slug": "01-obtenha-a-pre-aprovacao",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57821",
+          "slug": "03-suporte",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57825",
+          "slug": "02-consultoria",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57816",
+          "slug": "01-simples-e-facil",
+          "includeInSitemap": true
+        }
+      ]
+    },
+    {
+      "name": "Imóveis",
+      "slug": "imoveis",
+      "live": [
+        {
+          "id": "6a54f0b08ea6f4acb252d675",
+          "slug": "kwpt036155",
+          "includeInSitemap": true
+        },
+        {
+          "id": "69f85f2cd504290f91170cad",
+          "slug": "kwpt032055",
+          "includeInSitemap": true
+        },
+        {
+          "id": "69f3362d997f2b0e23600e81",
+          "slug": "kwpt032072",
+          "includeInSitemap": true
+        },
+        {
+          "id": "69ca79014b79e52d8d0efd0e",
+          "slug": "kwpt029949",
+          "includeInSitemap": true
+        },
+        {
+          "id": "69af0b38cdc286f1d80acdbe",
+          "slug": "kwpt029212",
+          "includeInSitemap": true
+        },
+        {
+          "id": "697889f130b6d852b1f52055",
+          "slug": "kwpt027057",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6964d41dcd4c29cf4a934f07",
+          "slug": "kwpt026529",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6960e9aaf84806ee59710ab1",
+          "slug": "kwpt026427",
+          "includeInSitemap": true
+        },
+        {
+          "id": "695d35b09f5de4973299416b",
+          "slug": "kwpt026377",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6937fdc31a1cdb29a1f2f2b3",
+          "slug": "kwpt025265",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6937eca300c97af63c25ced9",
+          "slug": "kwpt025253",
+          "includeInSitemap": true
+        },
+        {
+          "id": "690391c0d3220f7e2038c27f",
+          "slug": "kwpt023708",
+          "includeInSitemap": true
+        },
+        {
+          "id": "68bb24b837fda8b288f288a4",
+          "slug": "kwpt021094",
+          "includeInSitemap": true
+        },
+        {
+          "id": "68b82bd761fa085a9fda2bd9",
+          "slug": "kwpt021050",
+          "includeInSitemap": true
+        },
+        {
+          "id": "68af150b82da3342de7a05ce",
+          "slug": "kwpt020688",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6893665b07dc3f0295ca6da6",
+          "slug": "kwpt019807",
+          "includeInSitemap": true
+        },
+        {
+          "id": "687e331ff1181a91058b7b53",
+          "slug": "kwpt018853",
+          "includeInSitemap": true
+        },
+        {
+          "id": "687918df0ca5b739bc3123e9",
+          "slug": "kwpt018563",
+          "includeInSitemap": true
+        },
+        {
+          "id": "686567559e73d74febbf2495",
+          "slug": "kwpt017699",
+          "includeInSitemap": true
+        },
+        {
+          "id": "685043180aabf4b0120419ea",
+          "slug": "kwpt016225",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6839bbcb25137e35648d947b",
+          "slug": "kwpt016210",
+          "includeInSitemap": true
+        },
+        {
+          "id": "682df3f5d8091721611b42e9",
+          "slug": "kwpt016039",
+          "includeInSitemap": true
+        },
+        {
+          "id": "682c4b9c6ce8e0bf4bd33b22",
+          "slug": "kwpt015500",
+          "includeInSitemap": true
+        },
+        {
+          "id": "68090d299d296cdc67011bf4",
+          "slug": "kwpt014647",
+          "includeInSitemap": true
+        },
+        {
+          "id": "680687133f041ff177f0edac",
+          "slug": "kwpt014629",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67effaa61c15e5aad1a7e9bc",
+          "slug": "kwpt013751",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67e6d33f5b891f9ac2eda4fc",
+          "slug": "kwpt013603",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6786b32b4e25b4ae93fd1c94",
+          "slug": "kwpt009968",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6776738c6bba83fee2ec3c78",
+          "slug": "kwpt009872",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6753249084519a41568f4532",
+          "slug": "kwpt009202",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6733630b99345ef1fe1fafaa",
+          "slug": "kwpt007991",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6716521b7c524460a1e59fe3",
+          "slug": "kwpt007079",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6707f6d4914c7b1e818d94e2",
+          "slug": "kwpt005472",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66e9ac6be8aa7c7190395ba3",
+          "slug": "kwpt005471",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66e2fb6a94b92a9d52edf565",
+          "slug": "kwpt005347",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66d9c7f2b400808377a5e502",
+          "slug": "kwpt005146",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66ce13894853157bdf674226",
+          "slug": "kwpt004101",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6699295330d72163c6b0c498",
+          "slug": "kwpt003096",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6696866f91160dea280058a5",
+          "slug": "kwpt003071",
+          "includeInSitemap": true
+        },
+        {
+          "id": "668d5903fd6f43b50a3e2a1b",
+          "slug": "kwpt002034",
+          "includeInSitemap": true
+        },
+        {
+          "id": "665d76d962690e5776dfddd6",
+          "slug": "1202-3404",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66434b5ea6521fc52b039da3",
+          "slug": "1202-3274",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66434b3f6aefaa02b2047361",
+          "slug": "1202-3280",
+          "includeInSitemap": true
+        },
+        {
+          "id": "66434b10530826c8ac86dafc",
+          "slug": "1202-3243",
+          "includeInSitemap": true
+        },
+        {
+          "id": "663b1c7f3f6563d7d8a02fc3",
+          "slug": "1202-3315",
+          "includeInSitemap": true
+        },
+        {
+          "id": "663090c2d3fa071768077c7a",
+          "slug": "1202-3467",
+          "includeInSitemap": true
+        },
+        {
+          "id": "661642337ac97d436bb85af9",
+          "slug": "1202-3382",
+          "includeInSitemap": true
+        },
+        {
+          "id": "660fbc60ca6741eb7f147701",
+          "slug": "1202-3348",
+          "includeInSitemap": true
+        },
+        {
+          "id": "65f01992db518103ca1e041d",
+          "slug": "1202-3313",
+          "includeInSitemap": true
+        },
+        {
+          "id": "65c0f9620838c9d43e5a05bd",
+          "slug": "1202-3222",
+          "includeInSitemap": true
+        },
+        {
+          "id": "65afa25c7b8493e8d999f99e",
+          "slug": "1202-3220",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6542285ffdc03c4eaa8ed4e3",
+          "slug": "1202-3060",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f8dd51186e500259c99fb",
+          "slug": "1202-2471",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f8d181fcddfc32c847a95",
+          "slug": "1202-2472",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f8c41856c2e4b30621165",
+          "slug": "1202-2904",
+          "includeInSitemap": true
+        },
+        {
+          "id": "650adb87585f82f314b74670",
+          "slug": "1202-2863",
+          "includeInSitemap": true
+        },
+        {
+          "id": "650adb79c989bfa554aa266d",
+          "slug": "1202-2909",
+          "includeInSitemap": true
+        },
+        {
+          "id": "650ad8d07f71b90111310836",
+          "slug": "1202-2991",
+          "includeInSitemap": true
+        },
+        {
+          "id": "6503fda0fa7df4bd0cc5f80d",
+          "slug": "1202-2864",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57858",
+          "slug": "1202-2711",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57848",
+          "slug": "1202-1933",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57847",
+          "slug": "1202-2093",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57846",
+          "slug": "1202-2268",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57845",
+          "slug": "1202-2283",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57844",
+          "slug": "1202-2406",
+          "includeInSitemap": true
+        }
+      ]
+    },
+    {
+      "name": "Testemunhos",
+      "slug": "testemunhos",
+      "live": [
+        {
+          "id": "67b454c5e23698381d4b5a8b",
+          "slug": "joao-carlos-de-almeida-55c95",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c48728d3d81a387c44",
+          "slug": "carlos-dourado",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c40e6191ab38dd93b4",
+          "slug": "sonia-teixeira",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c431cb80b581543815",
+          "slug": "celia-silva",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c4ba76a8566c116ae4",
+          "slug": "carla-rocha",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c416294d0dd7d83f9a",
+          "slug": "rosa-vieira",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c4445a686a6fdc2d56",
+          "slug": "paulo-pereira",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c4b3a8ed624a80ab95",
+          "slug": "joaquim-ferreira",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c31c58cf1ccb931413",
+          "slug": "cristina-pinto",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c3d756ec6ee51b9d5f",
+          "slug": "gisela-almeida",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c300eea974a3ec3f4b",
+          "slug": "isabel-costa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c3a547aac135cb03bb",
+          "slug": "paulinhodefontes-youtube",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c3d756ec6ee51b9d20",
+          "slug": "adelino-samorinha",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c30075d4bc4a230624",
+          "slug": "paula-fernandes",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c347236a636fd95deb",
+          "slug": "maria-fernanda",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c331cb80b581543568",
+          "slug": "antonio-marques",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c32ead792fa087686b",
+          "slug": "nuno-teixeira",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c3ba76a8566c1169ff",
+          "slug": "maria-nogueira",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c3e4e0b333d8cfef31",
+          "slug": "ivone-baldaia",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c24f54fe731662d6aa",
+          "slug": "graca",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c242cd3da4d37b19e1",
+          "slug": "bruno-santos",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c269a51c5f6218e5e1",
+          "slug": "lurdes-santos",
+          "includeInSitemap": true
+        },
+        {
+          "id": "67b454c203f471be13f96306",
+          "slug": "bruno-vanessa",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f96cb684575bd79cc55e6",
+          "slug": "joao-carlos-de-almeida",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f96b6811d83333f6a45ff",
+          "slug": "joana-teixeira",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f969ef07d0af70408db33",
+          "slug": "fernando-gc",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f967923bd5beb1289a007",
+          "slug": "jorge-mendes",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f964e99e5a384fac6f29e",
+          "slug": "joao",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f96102bab7444d6e36fe0",
+          "slug": "bruna-augusto",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f95ea488ed3e20371204e",
+          "slug": "susana-loureiro",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f95c499e5a384fac63080",
+          "slug": "samuel-castro",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f959cc8e4c50b1b987165",
+          "slug": "juliana-ramalho",
+          "includeInSitemap": true
+        },
+        {
+          "id": "652f9559355b22cce2bb32f4",
+          "slug": "jose-silva",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5784d",
+          "slug": "maria-helena-vieira",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5784c",
+          "slug": "bruno-oliveira",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5784b",
+          "slug": "isidro-guedes",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab5784a",
+          "slug": "vera-silva",
+          "includeInSitemap": true
+        },
+        {
+          "id": "64d73faf12672d652ab57849",
+          "slug": "ivo-duraes",
+          "includeInSitemap": true
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "id": "69f2488ce28f457768575c56",
+      "path": "/vouvender",
+      "draft": false,
+      "collectionId": "69f2488be28f457768575ab9"
+    },
+    {
+      "id": "69f244dfc0fbc7243ebd908c",
+      "path": "/admin/dashboard",
+      "draft": false
+    },
+    {
+      "id": "692ec774c148e0a47b0bd6de",
+      "path": "/quanto-vale-a-sua-casa-hoje",
+      "draft": false
+    },
+    {
+      "id": "68e124f3f71391dc02c92b35",
+      "path": "/uma-venda-com-sucesso",
+      "draft": false
+    },
+    {
+      "id": "68bfec26a56ef008449cbdcb",
+      "path": "/lp-flyer-uma-venda-com-sucesso",
+      "draft": false
+    },
+    {
+      "id": "6899f826d0bc8f8dc63e442d",
+      "path": "/lp/guia-de-ferias",
+      "draft": false
+    },
+    {
+      "id": "6875fd0be975b8ea08f68cb1",
+      "path": "/guia-vender-para-comprar",
+      "draft": false
+    },
+    {
+      "id": "683e9e6b6f441a44494fd54c",
+      "path": "/lp/evento-smillingstreet",
+      "draft": true
+    },
+    {
+      "id": "67f509b96fb421db0456b7f1",
+      "path": "/lp/obrigado-evento",
+      "draft": false
+    },
+    {
+      "id": "67f4f8876cca9ffdb78ec5c9",
+      "path": "/lp/smillingstreet",
+      "draft": false
+    },
+    {
+      "id": "67cea8c3959bca130fcd2193",
+      "path": "/partnerships",
+      "draft": false
+    },
+    {
+      "id": "67cea6d43ef716d960160f34",
+      "path": "/partenariats",
+      "draft": false
+    },
+    {
+      "id": "67cea27a27368dbb56f8bba7",
+      "path": "/parcerias",
+      "draft": false
+    },
+    {
+      "id": "679b726ef0b9ac6107d6d1dc",
+      "path": "/credito-habitacao",
+      "draft": false
+    },
+    {
+      "id": "66ade6d9c6c2ad93988824ef",
+      "path": "/lp/cabaz-de-natal",
+      "draft": false
+    },
+    {
+      "id": "65f01dc50d7ed90e8f26bef4",
+      "path": "/lp/atualizacao-de-informacao",
+      "draft": false
+    },
+    {
+      "id": "65f01caf9e4a2e3680c12b00",
+      "path": "/lp/obrigado-oferta",
+      "draft": false
+    },
+    {
+      "id": "65608a14fe76683c2fad4e81",
+      "path": "/lp/oferta-selecao",
+      "draft": false
+    },
+    {
+      "id": "6525056acc9c8570ee2d2df8",
+      "path": "/doop/relatorios-de-atividades",
+      "draft": false
+    },
+    {
+      "id": "652505165aa060ebe1c033a9",
+      "path": "/doop/relatorios-de-visita",
+      "draft": false
+    },
+    {
+      "id": "64d74145b28e329b90939f9d",
+      "path": "/obrigado",
+      "draft": false
+    },
+    {
+      "id": "64d7403e04a893ff7e417f9d",
+      "path": "/ofertas",
+      "draft": false,
+      "collectionId": "64d7403e04a893ff7e417f91"
+    },
+    {
+      "id": "64d73faf12672d652ab5770b",
+      "path": "/lp/oferta-cruzeiro-pontes",
+      "draft": true
+    },
+    {
+      "id": "64d73faf12672d652ab57707",
+      "path": "/lp/obrigado",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576ce",
+      "path": "/lp/cabaz-pascoa",
+      "draft": true
+    },
+    {
+      "id": "64d73faf12672d652ab57708",
+      "path": "/lp/obrigado-barbara-tinoco",
+      "draft": true
+    },
+    {
+      "id": "64d73faf12672d652ab57709",
+      "path": "/lp/oferta-barbara-tinoco",
+      "draft": true
+    },
+    {
+      "id": "64d73faf12672d652ab5770a",
+      "path": "/oferta-certificado-energetico",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576d7",
+      "path": "/open-house",
+      "draft": false,
+      "collectionId": "64d73faf12672d652ab5770d"
+    },
+    {
+      "id": "64d73faf12672d652ab576d1",
+      "path": "/contacto",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576e9",
+      "path": "/imoveis",
+      "draft": true
+    },
+    {
+      "id": "64d73faf12672d652ab5772a",
+      "path": "/somos-credito",
+      "draft": true
+    },
+    {
+      "id": "64d73faf12672d652ab576db",
+      "path": "/dossier",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab57728",
+      "path": "/sessao-gratuita",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576dc",
+      "path": "/estudo-de-mercado",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576d4",
+      "path": "/consultores",
+      "draft": false,
+      "collectionId": "64d73faf12672d652ab57737"
+    },
+    {
+      "id": "64d73faf12672d652ab576de",
+      "path": "/estudo-de-mercadob",
+      "draft": true
+    },
+    {
+      "id": "64d73faf12672d652ab576d3",
+      "path": "/blog-categories",
+      "draft": false,
+      "collectionId": "64d73faf12672d652ab57738"
+    },
+    {
+      "id": "64d73faf12672d652ab57730",
+      "path": "/vamos-comecar",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576d8",
+      "path": "/post",
+      "draft": false,
+      "collectionId": "64d73faf12672d652ab576f3"
+    },
+    {
+      "id": "64d73faf12672d652ab57731",
+      "path": "/vender",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576d5",
+      "path": "/faq",
+      "draft": false,
+      "collectionId": "64d73faf12672d652ab57734"
+    },
+    {
+      "id": "64d73faf12672d652ab576cf",
+      "path": "/comprar",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab57729",
+      "path": "/sobre",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576da",
+      "path": "/vs-destaques",
+      "draft": false,
+      "collectionId": "64d73faf12672d652ab57733"
+    },
+    {
+      "id": "64d73faf12672d652ab576d6",
+      "path": "/imoveis",
+      "draft": false,
+      "collectionId": "64d73faf12672d652ab57736"
+    },
+    {
+      "id": "64d73faf12672d652ab576d9",
+      "path": "/testemunhos",
+      "draft": false,
+      "collectionId": "64d73faf12672d652ab57735"
+    },
+    {
+      "id": "64d73faf12672d652ab576c7",
+      "path": "/blog",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576ec",
+      "path": "/marketing",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab57726",
+      "path": "/reviews",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576c0",
+      "path": "/",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576c5",
+      "path": "/404",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab576c4",
+      "path": "/401",
+      "draft": false
+    },
+    {
+      "id": "64d73faf12672d652ab5772b",
+      "path": "/style-guide",
+      "draft": true
+    }
+  ],
+  "ownerAcceptedAt": "2026-10-03",
+  "eligibilityRule": "Source isDraft must be exactly false, isArchived exactly false, and have an authoritative live match; unknown source state is ineligible. No source draft even when an old live URL exists."
+}
