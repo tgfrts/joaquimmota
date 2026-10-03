@@ -20,9 +20,10 @@ const links = pageNavigation ? pageLinks : homeLinks;
 
 <header class:list={['site-header', { 'site-header--light': variant === 'light' }]} data-header>
   <a class="brand" href="/" aria-label="Joaquim Mota Consultores"><img src={variant === 'light' ? '/assets/logo-color.svg' : '/assets/logo-white.svg'} alt="" /></a>
-  <button class="menu-toggle" aria-expanded="false" aria-controls="site-navigation">Menu <span></span></button>
+  <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-navigation"><span></span></button>
   <nav id="site-navigation" aria-label="Navegação principal">
     {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    <a class="nav-mobile-contact" href={contactHref}>{contactLabel}</a>
   </nav>
   <a class:list={['button', 'contact-link', variant === 'light' ? 'button--dark' : 'button--light']} href={contactHref}>{contactLabel}</a>
 </header>
@@ -37,11 +38,12 @@ const links = pageNavigation ? pageLinks : homeLinks;
 </script>
 
 <style is:global>
+  .nav-mobile-contact { display:none; }
   .site-header--light {
     width: 90vw;
     height: 72px;
     color: #20457f;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 0;
   }
   .site-header--light .brand img { width: auto; height: 50px; }
   .site-header--light nav {
@@ -65,7 +67,14 @@ const links = pageNavigation ? pageLinks : homeLinks;
   }
   .site-header--light .contact-link { margin-left: auto !important; flex: 0 0 auto; }
   @media (max-width: 640px) {
+    .site-header--light { height:64px; border:0; }
+    .site-header--light .brand img { width:51.164px; height:50px; }
+    .menu-toggle { display:grid; gap:5px; width:24px; padding:0; }
+    .menu-toggle span,.menu-toggle:before,.menu-toggle:after { content:"";display:block;width:24px;height:2px;background:currentColor; }
     .site-header--light .contact-link { display: none; }
     .site-header--light nav { transform: none; left: 0; }
+    .site-header--light.is-open nav {display:flex;position:absolute;top:64px;left:50%;right:auto;transform:translateX(-50%);width:200px;padding:16px 5vw 40px;background:#fff;box-shadow:0 8px 20px #0002;gap:0;align-items:stretch;font:500 18px/27px Roboto,sans-serif;color:#304b7d;text-align:center;}
+    .site-header--light.is-open nav a {padding:16px 0;}
+    .site-header--light.is-open .nav-mobile-contact {display:block;}
   }
 </style>
