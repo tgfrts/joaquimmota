@@ -52,6 +52,18 @@ const ORIGINS = new Set([
   'http://127.0.0.1:8789',
 ]);
 
+function isAllowedOrigin(request: Request) {
+  const origin = request.headers.get('origin') ?? '';
+  if (ORIGINS.has(origin)) return true;
+  const url = new URL(request.url);
+  // Same-origin HTTP requests only on loopback or a private LAN preview host.
+  const localHost = url.hostname === 'localhost' || url.hostname === '127.0.0.1'
+    || /^192\.168\.\d{1,3}\.\d{1,3}$/u.test(url.hostname)
+    || /^10\.\d{1,3}\.\d{1,3}\.\d{1,3}$/u.test(url.hostname)
+    || /^172\.(1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}$/u.test(url.hostname);
+  return localHost && url.protocol === 'http:' && origin === url.origin;
+}
+
 class FormError extends Error {
   readonly status: number;
   readonly retryAfter?: number;
@@ -217,7 +229,7 @@ export function createFormHandler(adapter: FormAdapter) {
   return async ({ request, env }: { request: Request; env: Env }) => {
     try {
       if (request.method !== 'POST') return response(405, { error: 'Method not allowed.' });
-      if (!ORIGINS.has(request.headers.get('origin') ?? '')) throw new FormError(403, 'Origin is not allowed.');
+      if (!isAllowedOrigin(request)) throw new FormError(403, 'Origin is not allowed.');
       const idempotencyKey = request.headers.get('idempotency-key') ?? '';
       if (!IDEMPOTENCY.test(idempotencyKey)) throw new FormError(400, 'Missing or invalid idempotency key.');
       const payload: unknown = await readBoundedJson(request);

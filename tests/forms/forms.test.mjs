@@ -237,3 +237,18 @@ test('missing configuration and retryable provider failures never return false s
 test('new property directory accepts its newsletter with the existing capture adapter', async () => {
  const adapter=mockAdapter();const response=await createFormHandler(adapter)({request:request({formType:'newsletter',route:'/imoveis',fields:{email:'visitor@example.test'}}),env:formEnv()});assert.equal(response.status,202);assert.equal(adapter.calls[0][1].route,'/imoveis');
 });
+
+for (const host of ['192.168.1.14:8791', '127.0.0.1:8791']) {
+  test(`accepts same-origin local preview submissions on ${host}`, async () => {
+    const adapter = mockAdapter();
+    const makeRequest = origin => new Request(`http://${host}/api/forms`, { method: 'POST', headers: { 'content-type': 'application/json', origin, 'idempotency-key': key }, body: JSON.stringify(leadPayload) });
+    const handler = createFormHandler(adapter);
+    assert.equal((await handler({ request: makeRequest(`http://${host}`), env: formEnv() })).status, 202);
+    assert.equal((await handler({ request: makeRequest('https://attacker.example'), env: formEnv() })).status, 403);
+  });
+}
+test('does not accept arbitrary same-origin public hosts as preview origins', async () => {
+  const adapter = mockAdapter();
+  const request = new Request('http://unknown.example/api/forms', { method: 'POST', headers: { origin: 'http://unknown.example', 'content-type': 'application/json', 'idempotency-key': key }, body: JSON.stringify(leadPayload) });
+  assert.equal((await createFormHandler(adapter)({ request, env: formEnv() })).status, 403);
+});

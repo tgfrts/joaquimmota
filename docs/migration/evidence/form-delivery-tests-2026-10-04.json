@@ -1,0 +1,183 @@
+{
+  "date": "2026-10-04",
+  "site": "Joaquim Mota",
+  "environment": "LAN preview; local D1",
+  "recipient": "t@doop.pt",
+  "from": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
+  "replyTo": "jrmota@kwportugal.pt",
+  "method": "Built HTML with compiled real Astro form handlers executed in JSDOM; real HTTP submission to Wrangler Pages endpoint, real Resend sends/contact updates. Not an interactive browser test.",
+  "routeCoverage": {
+    "instances": 274,
+    "method": "Every built form instance route validated through the real API handler with mock provider and in-memory SQLite; no additional emails."
+  },
+  "results": [
+    {
+      "route": "/blog",
+      "type": "newsletter",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "59a3037a-3cd9-4a97-b928-58976ea65295",
+      "providerStatus": "contact verified"
+    },
+    {
+      "route": "/imoveis",
+      "type": "newsletter",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "59a3037a-3cd9-4a97-b928-58976ea65295",
+      "providerStatus": "contact verified"
+    },
+    {
+      "route": "/",
+      "type": "newsletter",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "59a3037a-3cd9-4a97-b928-58976ea65295",
+      "providerStatus": "contact verified"
+    },
+    {
+      "route": "/credito-habitacao",
+      "type": "mortgage",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-63f8-75cc-9c69-2bf128932d70",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/dossier",
+      "type": "leadMagnet",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-67df-7edd-a7da-999f4c45efd7",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/guia-vender-para-comprar",
+      "type": "leadMagnet",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-6bd3-7e95-bf19-43037f26b367",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/estudo-de-mercado",
+      "type": "valuation",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-70ef-7421-82c3-5dd2ede86a22",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/imoveis/kwpt026529",
+      "type": "contact",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-74d1-741a-a6cd-1c200ce28e76",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/lp/atualizacao-de-informacao",
+      "type": "leadMagnet",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-792b-7ae5-88b2-6d9e3cca851d",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/lp/cabaz-de-natal",
+      "type": "leadMagnet",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-7d43-704a-a965-965e45d09479",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/lp/guia-de-ferias",
+      "type": "leadMagnet",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-816b-7a65-bb02-ae2eb309eaa2",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/lp/smillingstreet",
+      "type": "leadMagnet",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-856d-759c-81f3-61d39bd95e1d",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/lp-flyer-uma-venda-com-sucesso",
+      "type": "valuation",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-89a0-74e8-8cc9-f408bf7061bd",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/parcerias",
+      "type": "partnership",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-8d9f-758d-b69f-b5eb5700e7d2",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/partenariats",
+      "type": "partnership",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-91b0-7927-9eef-1e29bf019dad",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/partnerships",
+      "type": "partnership",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-95ce-7449-ac9a-bdebc54dc929",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "type": "newsletter",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "59a3037a-3cd9-4a97-b928-58976ea65295",
+      "providerStatus": "contact verified"
+    },
+    {
+      "route": "/quanto-vale-a-sua-casa-hoje",
+      "type": "valuation",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10808-9e1e-74c8-9aa7-3d345d8736f7",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/sessao-gratuita",
+      "type": "contact",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10809-061a-7a08-85f0-4d27a0b04dca",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/uma-venda-com-sucesso",
+      "type": "valuation",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10809-0aa1-7237-84eb-674299619fc0",
+      "providerStatus": "delivered"
+    },
+    {
+      "route": "/vamos-comecar",
+      "type": "contact",
+      "apiStatus": 202,
+      "d1Status": "accepted",
+      "providerId": "01a10809-0eb4-73a4-87da-edf0c3133cae",
+      "providerStatus": "delivered"
+    }
+  ]
+}
