@@ -138,3 +138,9 @@
   .property-page__facts{position:relative;margin-top:24px}
   .property-page__facts:before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:#e4e2df}
 }
+
+/* Match the card's spacing between characteristics, without badge insets. */
+@media(max-width:767px){
+  .property-page__facts,.property-page--reserved .property-page__facts{column-gap:20px}
+  .property-page__facts>span{padding:0}
+}

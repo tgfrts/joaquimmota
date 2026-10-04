@@ -253,3 +253,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Owner: imagem do card de destaque desktop volta a preencher toda a altura disponível até às margens interiores verticais, com cover e sem proporção fixa. Cards da grelha mantêm 3:2; destaque continua oculto no mobile.
 
 2026-10-04 — Reposto divisor do cabeçalho da ficha no mobile: a linha antes dos indicadores estava definida apenas a partir de 768px. Agora também aparece até 767px, largura completa e mesma cor desktop.
+
+2026-10-04 — Indicadores no cabeçalho mobile da ficha: removido padding residual dos antigos badges; gap entre características 20px, igual ao card comum. Intervalo ícone/valor de 6px preservado.
