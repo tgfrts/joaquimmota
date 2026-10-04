@@ -281,3 +281,9 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Labels CE / Certificado Energético passam a font-weight 500 para equilíbrio com o traço dos ícones, mantendo azul e valor do certificado com peso atual.
 
 2026-10-04 — Owner: link “O que dizem os nossos clientes” oculto em todos os menus mobile abertos, mantendo desktop. Regra no Header comum aplicada a todas as variantes.
+
+2026-10-04 — Blog Owner: títulos dos cards azuis. Primeiro destaque com título 40px desktop/32px mobile, subtítulo CMS e início do artigo com truncagem responsiva. No mobile imagem após subtítulo, seguida de excerto e ação. CSS limitado ao Blog não altera destaque de Imóveis.
+
+2026-10-04 — Cards Blog alinham espaçamento aos imóveis: padding interno 32px; grelha desktop 48px/32px, tablet 5vw/32px e mobile 45px/26px. Removida margem extra de 7px após a imagem.
+
+- Blog: excertos nos cards normais limitados a duas linhas apenas no desktop; no artigo em destaque, duas linhas em mobile e espaço disponível até ao padding no desktop.
