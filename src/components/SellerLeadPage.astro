@@ -35,29 +35,30 @@ const { title, heading, description, route, background, propertyDetails = false,
       <section class="seller-lead__panel">
         <div class="seller-lead__content">
           <a class="seller-lead__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
-          <h5>{heading}</h5>
+          <h5 class="seller-lead__heading">{route === "/uma-venda-com-sucesso" ? <strong>{heading}</strong> : heading}</h5>
           {route === '/uma-venda-com-sucesso' ? <h5 class="seller-lead__description">{description}</h5> : <p class="seller-lead__description">{description}</p>}
           <form class="seller-lead__form" data-seller-lead-form data-route={route} data-property-details={propertyDetails ? 'true' : 'false'}>
             <div class="seller-lead__names">
-              <label><span>Nome</span><input name="firstName" autocomplete="given-name" placeholder="Nome" required /></label>
-              <label><span>Apelido</span><input name="lastName" autocomplete="family-name" placeholder="Apelido" required /></label>
+              <label><span class="seller-lead__visually-hidden">Nome</span><input maxlength="256" name="firstName" autocomplete="given-name" placeholder="Nome" required /></label>
+              <label><span class="seller-lead__visually-hidden">Apelido</span><input maxlength="256" name="lastName" autocomplete="family-name" placeholder="Apelido" required /></label>
             </div>
-            <label><span>O seu email</span><input name="email" type="email" autocomplete="email" placeholder="O seu email" required /></label>
-            <label><span>Telefone</span><input name="phone" type="tel" autocomplete="tel" placeholder="Telefone" required /></label>
+            <label><span class="seller-lead__visually-hidden">O seu email</span><input maxlength="256" name="email" type="email" autocomplete="email" placeholder="O seu email" required /></label>
+            <label><span class="seller-lead__visually-hidden">Telefone</span><input maxlength="256" name="phone" type="tel" autocomplete="tel" placeholder="Telefone" required /></label>
             {propertyDetails && <>
-              <label class="seller-lead__question"><span>Selecione o tipo de imóvel:</span><select name="propertyType" required><option value="">Selecione</option><option value="apartamento">Apartamento</option><option value="moradia">Moradia</option><option value="outro">Outro</option></select></label>
-              <label class="seller-lead__question"><span>Número de quartos:</span><select name="bedrooms" required><option value="">Selecione</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+">4+</option></select></label>
-              <label><span class="seller-lead__visually-hidden">Localização do imóvel — Avenida / Rua / Travessa</span><input name="street" autocomplete="street-address" placeholder="Avenida / Rua / Travessa" required /></label>
-              <div class="seller-lead__names">
-                <label><span class="seller-lead__visually-hidden">Código Postal</span><input name="postalCode" autocomplete="postal-code" placeholder="Código Postal" required /></label>
-                <label><span class="seller-lead__visually-hidden">Concelho</span><input name="county" autocomplete="address-level2" placeholder="Concelho" required /></label>
+              <label class="seller-lead__question"><span>Selecione o tipo de imóvel:</span><select name="propertyType" required><option value="apartamento">Apartamento</option><option value="moradia">Moradia</option><option value="outro">Outro</option></select></label>
+              <label class="seller-lead__question"><span>Número de quartos:</span><select name="bedrooms" required><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+">4+</option></select></label>
+              <label class="seller-lead__question"><span>Localização do imóvel:</span><input maxlength="256" name="street" autocomplete="street-address" placeholder="Avenida / Rua / Travessa" required /></label>
+              <div class="seller-lead__address">
+                <label><span class="seller-lead__visually-hidden">Código Postal</span><input maxlength="256" name="postalCode" autocomplete="postal-code" placeholder="Código Postal" required /></label>
+                <label><span class="seller-lead__visually-hidden">Concelho</span><input maxlength="256" name="county" autocomplete="address-level2" placeholder="Concelho" required /></label>
               </div>
             </>}
             <label class="seller-lead__consent"><input name="consent" type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
             <button type="submit">Enviar</button>
-            <p class="seller-lead__status" data-seller-lead-status role="status" aria-live="polite" hidden></p>
+            {!propertyDetails && <p class="seller-lead__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>}
           </form>
-          <p class="seller-lead__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+          <div class="seller-lead__success" data-seller-lead-success role="status" hidden>Obrigado! O seu formulário foi enviado com sucesso.</div>
+          <div class="seller-lead__error" data-seller-lead-error role="alert" hidden>Oops! Aconteceu algo de errado enquanto submetia o seu formulário.</div>
         </div>
       </section>
     </main>
@@ -68,11 +69,13 @@ const { title, heading, description, route, background, propertyDetails = false,
   import { submitFormAccepted } from '../scripts/forms-client';
   document.querySelectorAll<HTMLFormElement>('[data-seller-lead-form]').forEach((form) => form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (!form.reportValidity()) return;
+    if (form.dataset.pending === 'true' || form.hidden || !form.reportValidity()) return;
     const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-    const status = form.querySelector<HTMLElement>('[data-seller-lead-status]');
-    if (!button || !status) return;
-    button.disabled = true;
+    const success = form.parentElement?.querySelector<HTMLElement>('[data-seller-lead-success]');
+    const error = form.parentElement?.querySelector<HTMLElement>('[data-seller-lead-error]');
+    if (!button || !success || !error) return;
+    const label = button.textContent;
+    form.dataset.pending = 'true'; button.disabled = true; button.textContent = 'Por favor aguarde...'; error.hidden = true;
     const data = new FormData(form);
     const fields: Record<string, string> = {
       name: `${String(data.get('firstName') ?? '').trim()} ${String(data.get('lastName') ?? '').trim()}`.trim(),
@@ -84,15 +87,11 @@ const { title, heading, description, route, background, propertyDetails = false,
       fields.bedrooms = String(data.get('bedrooms') ?? '');
       fields.location = [data.get('street'), data.get('postalCode'), data.get('county')].map((part) => String(part ?? '').trim()).filter(Boolean).join(', ');
     }
-    status.hidden = false;
     try {
       await submitFormAccepted(form, { formType: 'valuation', route: form.dataset.route ?? '', fields });
-      form.hidden = true;
-      status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
-    } catch {
-      status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.';
-      button.disabled = false;
-    }
+      form.hidden = true; success.hidden = false;
+    } catch { error.hidden = false; }
+    finally { form.dataset.pending = 'false'; button.disabled = false; button.textContent = label; }
   }));
   const year = document.querySelector<HTMLElement>('[data-current-year]');
   if (year) year.textContent = String(new Date().getFullYear());

@@ -1467,5 +1467,43 @@
     },
     "content": "Two validated article samples only; full index height and pagination await all59 eligible articles. Source featured/title/subtitle/card link semantics retained; source newsletter copy restored.",
     "runtime": "Accepted202 success/error/retry/duplicate guards tested using real handler/helper and CSS with mocks; no real subscription/email."
+  },
+  "campaignLeadFollowup": {
+    "date": "2026-10-04",
+    "routes": [
+      "/vamos-comecar",
+      "/dossier",
+      "/guia-vender-para-comprar",
+      "/oferta-certificado-energetico",
+      "/quanto-vale-a-sua-casa-hoje",
+      "/uma-venda-com-sucesso"
+    ],
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "geometry": "Compared heading, description, first input, button and legal rectangles where publicly present; source and target match the observed desktop/mobile dimensions. All thirteen Uma venda heading/field/control rectangles match. Certificate text block432px desktop/648px mobile matches.",
+    "visibility": "Preserve mobile empty25vh container; Uma venda permanent hidden legal excluded. Certificate has no form.",
+    "copyAndDefaults": "Source strong32/32 seller heading preserved; source defaults Apartamento and1 retained without invented blank options; postal code/county full-width rows and visible location label restored. Original certificate wording and leading/inter-paragraph BR preserved.",
+    "feedback": "Seller acceptance message moved outside hidden form; actual handler/helper with real CSS tests rejection200/503, acceptance202, duplicate/pending and retry idempotency. No sourcePOST or real email.",
+    "assets": [
+      {
+        "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6405b7f5257c7414871e4cad_AdobeStock_257904089-2.jpeg",
+        "localPath": "/Users/tiagofreitas/site-consultores/sites/jrmota/public/assets/certificate-offer-background.jpeg",
+        "sha256": "05755ed171b1da721817530c6f2be538c96681b89b704bf27ea2800ba1f5bce5",
+        "dimensions": "1920x1141"
+      },
+      {
+        "source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6941353dc0db77d19847bdb1_%2B9.100%E2%82%AC.webp",
+        "bytes": 480058,
+        "sha256": "55929497453deb4386c3f7ba30542a7f8c937d092e2141cf09c52ac6e870ce97"
+      }
+    ]
   }
 }
