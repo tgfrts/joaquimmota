@@ -158,5 +158,6 @@
  .property-page__layout>.property-page__header{grid-column:1;grid-row:1;width:100%;margin:0}
  .property-page__layout>.property-page__body{grid-column:1;grid-row:2;width:100%;padding-bottom:0}
  .property-page__layout>.property-page__inquiry{grid-column:2;grid-row:1 / span 2;align-self:stretch;width:100%;margin:0;padding:0;min-width:0;opacity:1}
+ .property-page__layout>.property-page__body>.property-page__card:last-child{margin-bottom:0!important}
  .property-page__inquiry .property-inquiry{position:sticky;top:80px}
 }

@@ -299,3 +299,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Detalhe de artigo: removido o ancestral de scroll criado por overflow:hidden (substituído por clip) para a newsletter sticky acompanhar o viewport no desktop e terminar na grelha do artigo. Mobile/tablet mantêm posição estática.
 
 2026-10-04 — Contacto do imóvel desktop em coluna lateral desde o header até antes do CTA, sticky com top 80px e gap inferior 64px. Entrada sincronizada com a opacidade do header. Newsletter do artigo e contacto do imóvel usam o gradiente azul da navbar. Mobile mantém formulário após conteúdo.
+
+2026-10-04 — Contacto sticky do imóvel: limite inferior alinhado ao fundo da última secção de conteúdo, removendo a margem final dessa secção dentro da grelha desktop. Ambas as colunas partilham o mesmo gap até ao CTA.
