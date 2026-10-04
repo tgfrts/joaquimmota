@@ -38,16 +38,11 @@ const tourSource = mediaSource(record.matterportUrl);
 
 <script>
   import { bindSourceScrollMotion, interpolate } from '../../scripts/source-scroll-motion';
-  const inquiryCard = document.querySelector<HTMLElement>('.property-page__inquiry .property-inquiry');
   const header = document.querySelector<HTMLElement>('.property-page__header');
   if (header) bindSourceScrollMotion(header, (progress, reduced) => {
     const opacity = reduced || innerWidth <= 991 ? '1' : String(interpolate(progress, [[.35, 0], [.65, 1]]));
     header.style.opacity = opacity;
-    if (inquiryCard) inquiryCard.style.opacity = opacity;
   });
-  const inquiry = document.querySelector<HTMLElement>('.property-page__inquiry');
-  if (inquiry) bindSourceScrollMotion(inquiry, (progress, reduced) => {
-    inquiry.style.opacity = reduced || innerWidth >= 992 ? '1' : String(interpolate(progress, [[0, 0], [.35, 1], [.65, 1], [1, 0]]));
-  });
+
 
 </script>

@@ -301,3 +301,7 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Contacto do imóvel desktop em coluna lateral desde o header até antes do CTA, sticky com top 80px e gap inferior 64px. Entrada sincronizada com a opacidade do header. Newsletter do artigo e contacto do imóvel usam o gradiente azul da navbar. Mobile mantém formulário após conteúdo.
 
 2026-10-04 — Contacto sticky do imóvel: limite inferior alinhado ao fundo da última secção de conteúdo, removendo a margem final dessa secção dentro da grelha desktop. Ambas as colunas partilham o mesmo gap até ao CTA.
+
+2026-10-04 — Correção kwpt026529: o limite sticky incluía a margem !important de #localizacao; regra final agora supera também os seletores por ID, garantindo alinhamento quando mapa, características ou descrição terminam o conteúdo.
+
+2026-10-04 — Owner: contacto do imóvel começa ao lado da descrição, abaixo do header de largura total, sem animação. Mantém sticky desktop e limite no fundo da última secção.
