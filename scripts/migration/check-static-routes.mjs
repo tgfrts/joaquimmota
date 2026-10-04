@@ -2,6 +2,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// Explicit Owner exclusions. Keep their source inventory records as historical evidence.
+export const OWNER_EXCLUDED_SOURCE_ROUTES = Object.freeze([
+  '/doop/relatorios-de-atividades',
+  '/doop/relatorios-de-visita',
+  '/lp/oferta-selecao',
+  '/ofertas/vinho-e-fado',
+]);
+
 function routePathFromHtml(filepath, root) {
   const relative = path.relative(root, filepath).split(path.sep).join('/');
   if (relative === 'index.html') return '/';
@@ -36,7 +44,9 @@ export function buildStaticRouteGate(inventory, eligibilityReport, outputDirecto
       (page.draft ? staticDrafts : staticPublished).push(page.path);
     }
   }
-  const staticPublishedPaths = [...new Set(staticPublished)].sort();
+  const ownerExcludedRoutes = new Set(OWNER_EXCLUDED_SOURCE_ROUTES);
+  const sourceStaticPublishedPaths = [...new Set(staticPublished)].sort();
+  const staticPublishedPaths = sourceStaticPublishedPaths.filter((route) => !ownerExcludedRoutes.has(route));
   const staticDraftPaths = [...new Set(staticDrafts)].sort();
   const reportCollections = new Map(eligibilityReport.collections.map((collection) => [collection.collection?.id, collection]));
   const expandedCmsPaths = [];
@@ -47,7 +57,8 @@ export function buildStaticRouteGate(inventory, eligibilityReport, outputDirecto
       if (typeof item.sourceSlug !== 'string' || !item.sourceSlug.trim() || item.sourceSlug.includes('/')) {
         throw new Error(`Eligible item in collection ${reportCollection.collection.slug} has invalid source slug.`);
       }
-      expandedCmsPaths.push(`${template.path.replace(/\/$/, '')}/${item.sourceSlug}`);
+      const route = `${template.path.replace(/\/$/, '')}/${item.sourceSlug}`;
+      if (!ownerExcludedRoutes.has(route)) expandedCmsPaths.push(route);
     }
   }
   const uniqueExpandedCmsPaths = [...new Set(expandedCmsPaths)].sort();
@@ -58,22 +69,26 @@ export function buildStaticRouteGate(inventory, eligibilityReport, outputDirecto
   const actualSet = new Set(actualPaths);
   const missingPublishedPaths = expectedPaths.filter((route) => !actualSet.has(route));
   const generatedDraftPaths = staticDraftPaths.filter((route) => actualSet.has(route));
+  const generatedOwnerExcludedPaths = OWNER_EXCLUDED_SOURCE_ROUTES.filter((route) => actualSet.has(route));
   const generatedUnlistedCmsPaths = [...actualSet].filter((route) => cmsTemplateBases.some((base) => route === base || route.startsWith(`${base}/`))
     && !uniqueExpandedCmsPaths.includes(route));
-  const passes = missingPublishedPaths.length === 0 && generatedDraftPaths.length === 0 && generatedUnlistedCmsPaths.length === 0;
+  const passes = missingPublishedPaths.length === 0 && generatedDraftPaths.length === 0 && generatedOwnerExcludedPaths.length === 0 && generatedUnlistedCmsPaths.length === 0;
   return {
     generatedAt: new Date().toISOString(),
     status: passes ? 'pass' : 'fail',
     inventoryPageRecords: inventory.pages.length,
-    staticPublishedPageRecords: staticPublished.length,
+    sourceStaticPublishedPageRecords: sourceStaticPublishedPaths.length,
+    staticPublishedPageRecords: staticPublishedPaths.length,
     excludedStaticDraftPageRecords: staticDrafts.length,
     cmsTemplateRecords: templates.length,
     staticPublishedPaths,
+    ownerExcludedSourceRoutes: [...OWNER_EXCLUDED_SOURCE_ROUTES],
     expandedCmsPaths: uniqueExpandedCmsPaths,
     forbiddenStaticDraftPaths: staticDraftPaths,
     builtHtmlRouteCount: actualSet.size,
     missingPublishedPaths,
     generatedDraftPaths,
+    generatedOwnerExcludedPaths,
     generatedUnlistedCmsPaths,
   };
 }

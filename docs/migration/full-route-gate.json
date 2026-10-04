@@ -1,8 +1,9 @@
 {
-  "generatedAt": "2026-10-04T05:06:13.201Z",
+  "generatedAt": "2026-10-04T09:53:03.515Z",
   "status": "pass",
   "inventoryPageRecords": 54,
-  "staticPublishedPageRecords": 35,
+  "sourceStaticPublishedPageRecords": 35,
+  "staticPublishedPageRecords": 32,
   "excludedStaticDraftPageRecords": 9,
   "cmsTemplateRecords": 10,
   "staticPublishedPaths": [
@@ -14,8 +15,6 @@
     "/comprar",
     "/contacto",
     "/credito-habitacao",
-    "/doop/relatorios-de-atividades",
-    "/doop/relatorios-de-visita",
     "/dossier",
     "/estudo-de-mercado",
     "/guia-vender-para-comprar",
@@ -26,7 +25,6 @@
     "/lp/obrigado",
     "/lp/obrigado-evento",
     "/lp/obrigado-oferta",
-    "/lp/oferta-selecao",
     "/lp/smillingstreet",
     "/marketing",
     "/obrigado",
@@ -41,6 +39,12 @@
     "/uma-venda-com-sucesso",
     "/vamos-comecar",
     "/vender"
+  ],
+  "ownerExcludedSourceRoutes": [
+    "/doop/relatorios-de-atividades",
+    "/doop/relatorios-de-visita",
+    "/lp/oferta-selecao",
+    "/ofertas/vinho-e-fado"
   ],
   "expandedCmsPaths": [
     "/blog-categories/compradores",
@@ -124,7 +128,6 @@
     "/imoveis/kwpt032055",
     "/imoveis/kwpt032072",
     "/imoveis/kwpt036155",
-    "/ofertas/vinho-e-fado",
     "/open-house/1202-2299",
     "/open-house/1202-2325",
     "/open-house/1202-3313",
@@ -274,8 +277,9 @@
     "/somos-credito",
     "/style-guide"
   ],
-  "builtHtmlRouteCount": 254,
+  "builtHtmlRouteCount": 250,
   "missingPublishedPaths": [],
   "generatedDraftPaths": [],
+  "generatedOwnerExcludedPaths": [],
   "generatedUnlistedCmsPaths": []
 }

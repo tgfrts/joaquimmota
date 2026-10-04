@@ -1,4 +1,5 @@
 import allowedSourceRoutes from './allowed-source-routes.json' with { type: 'json' };
+import { LeadIdempotencyConflict, LeadStore, type LeadsDatabase, type ValidatedLead } from './leads.ts';
 
 type FormType = 'newsletter' | 'contact' | 'valuation' | 'mortgage' | 'partnership' | 'leadMagnet';
 
@@ -8,18 +9,16 @@ type Env = {
   RESEND_FROM?: string;
   RESEND_REPLY_TO?: string;
   FORMS_RECIPIENT?: string;
+  LEADS_DB?: LeadsDatabase;
 };
 
-type Submission = {
-  formType: FormType;
-  route: string;
-  fields: Record<string, unknown>;
-  idempotencyKey: string;
-};
+type Submission = ValidatedLead;
+
+type Delivery = { providerId?: string };
 
 type FormAdapter = {
-  captureNewsletter(submission: Submission, env: Env): Promise<void>;
-  notifyLead(submission: Submission, env: Env): Promise<void>;
+  captureNewsletter(submission: Submission, env: Env): Promise<Delivery | void>;
+  notifyLead(submission: Submission, env: Env): Promise<Delivery | void>;
 };
 
 const ROUTES: Record<FormType, ReadonlySet<string>> = {
@@ -28,7 +27,7 @@ const ROUTES: Record<FormType, ReadonlySet<string>> = {
   valuation: new Set(['/quanto-vale-a-sua-casa-hoje', '/estudo-de-mercado', '/uma-venda-com-sucesso', '/lp-flyer-uma-venda-com-sucesso']),
   mortgage: new Set(['/credito-habitacao']),
   partnership: new Set(['/partnerships', '/partenariats', '/parcerias']),
-  leadMagnet: new Set(['/dossier', '/guia-vender-para-comprar', '/lp/guia-de-ferias', '/lp/smillingstreet', '/lp/cabaz-de-natal', '/lp/atualizacao-de-informacao', '/lp/oferta-selecao']),
+  leadMagnet: new Set(['/dossier', '/guia-vender-para-comprar', '/lp/guia-de-ferias', '/lp/smillingstreet', '/lp/cabaz-de-natal', '/lp/atualizacao-de-informacao']),
 };
 
 const FIELDS: Record<FormType, ReadonlySet<string>> = {
@@ -98,8 +97,7 @@ function parseSubmission(payload: unknown, idempotencyKey: string): Submission {
   const route = requiredString(body.route, 'route', 200);
   const propertyRoute = route.startsWith('/imoveis/') && allowedSourceRoutes.propertySlugs.includes(route.slice('/imoveis/'.length));
   const articleRoute = route.startsWith('/post/') && allowedSourceRoutes.articleSlugs.includes(route.slice('/post/'.length));
-  const offerRoute = route.startsWith('/ofertas/') && allowedSourceRoutes.offerSlugs.includes(route.slice('/ofertas/'.length));
-  if (!ROUTES[type].has(route) && !((type === 'contact' && propertyRoute) || (type === 'newsletter' && (propertyRoute || articleRoute)) || (type === 'leadMagnet' && offerRoute))) throw new FormError(403, 'Form is not allowed on this route.');
+  if (!ROUTES[type].has(route) && !((type === 'contact' && propertyRoute) || (type === 'newsletter' && (propertyRoute || articleRoute)))) throw new FormError(403, 'Form is not allowed on this route.');
   if (!body.fields || typeof body.fields !== 'object' || Array.isArray(body.fields)) throw new FormError(422, 'Invalid fields.');
   const fields = body.fields as Record<string, unknown>;
   if (Object.keys(fields).some((key) => !FIELDS[type].has(key))) throw new FormError(422, 'Unsupported field.');
@@ -117,7 +115,9 @@ function parseSubmission(payload: unknown, idempotencyKey: string): Submission {
   return { formType: type, route, fields: normalized, idempotencyKey };
 }
 
-function requiredConfig(env: Env, key: keyof Env) {
+type ConfigKey = 'RESEND_SEND_API_KEY' | 'RESEND_CONTACTS_API_KEY' | 'RESEND_FROM' | 'RESEND_REPLY_TO' | 'FORMS_RECIPIENT';
+
+function requiredConfig(env: Env, key: ConfigKey) {
   const value = env[key];
   if (!value || /[\r\n]/u.test(value)) throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
   return value;
@@ -140,14 +140,26 @@ function retryable(status: number) {
   return status === 429 || status >= 500;
 }
 
-async function resendRequest(fetcher: typeof fetch, path: string, apiKey: string, idempotencyKey: string, body: Record<string, unknown>) {
-  const result = await fetcher(`https://api.resend.com${path}`, {
-    method: 'POST',
-    headers: { authorization: `Bearer ${apiKey}`, 'content-type': 'application/json', 'idempotency-key': idempotencyKey },
-    body: JSON.stringify(body),
-  });
-  const retryAfter = Number(result.headers.get('retry-after'));
-  if (!result.ok) throw new FormError(retryable(result.status) ? 503 : 422, 'Form delivery failed.', retryable(result.status) ? (Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : 30) : undefined);
+async function resendRequest(fetcher: typeof fetch, path: string, apiKey: string, idempotencyKey: string, body: Record<string, unknown>): Promise<Delivery> {
+  const controller = new AbortController();
+  const deadline = setTimeout(() => controller.abort(), 20_000);
+  try {
+    const result = await fetcher(`https://api.resend.com${path}`, {
+      method: 'POST',
+      headers: { authorization: `Bearer ${apiKey}`, 'content-type': 'application/json', 'idempotency-key': idempotencyKey },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+    const retryAfter = Number(result.headers.get('retry-after'));
+    if (!result.ok) throw new FormError(retryable(result.status) ? 503 : 422, 'Form delivery failed.', retryable(result.status) ? (Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : 30) : undefined);
+    const payload = await result.json().catch(() => undefined) as { id?: unknown } | undefined;
+    return typeof payload?.id === 'string' ? { providerId: payload.id } : {};
+  } catch (error) {
+    if (error instanceof FormError) throw error;
+    throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
+  } finally {
+    clearTimeout(deadline);
+  }
 }
 
 async function readBoundedJson(request: Request) {
@@ -182,7 +194,7 @@ async function readBoundedJson(request: Request) {
 export function createResendAdapter(fetcher: typeof fetch): FormAdapter {
   return {
     async captureNewsletter(submission, env) {
-      await resendRequest(fetcher, '/contacts', requiredConfig(env, 'RESEND_CONTACTS_API_KEY'), submission.idempotencyKey, {
+      return resendRequest(fetcher, '/contacts', requiredConfig(env, 'RESEND_CONTACTS_API_KEY'), submission.idempotencyKey, {
         email: submission.fields.email,
         ...(submission.fields.firstName ? { first_name: submission.fields.firstName } : {}),
         ...(submission.fields.lastName ? { last_name: submission.fields.lastName } : {}),
@@ -190,7 +202,7 @@ export function createResendAdapter(fetcher: typeof fetch): FormAdapter {
     },
     async notifyLead(submission, env) {
       const email = requiredString(submission.fields.email, 'email', 320);
-      await resendRequest(fetcher, '/emails', requiredConfig(env, 'RESEND_SEND_API_KEY'), submission.idempotencyKey, {
+      return resendRequest(fetcher, '/emails', requiredConfig(env, 'RESEND_SEND_API_KEY'), submission.idempotencyKey, {
         from: requiredConfig(env, 'RESEND_FROM'),
         to: [configuredEmail(env, 'FORMS_RECIPIENT')],
         reply_to: env.RESEND_REPLY_TO ? configuredEmail(env, 'RESEND_REPLY_TO') : email,
@@ -210,10 +222,27 @@ export function createFormHandler(adapter: FormAdapter) {
       if (!IDEMPOTENCY.test(idempotencyKey)) throw new FormError(400, 'Missing or invalid idempotency key.');
       const payload: unknown = await readBoundedJson(request);
       const submission = parseSubmission(payload, idempotencyKey);
-      if (submission.formType === 'newsletter') await adapter.captureNewsletter(submission, env);
-      else await adapter.notifyLead(submission, env);
+      if (!env.LEADS_DB) throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
+
+      const leads = new LeadStore(env.LEADS_DB);
+      const reservation = await leads.reserveAndClaim(submission);
+      if (reservation.kind === 'accepted') return response(202, { accepted: true });
+      if (reservation.kind === 'sending' || reservation.kind === 'manual') throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
+
+      try {
+        const delivery = submission.formType === 'newsletter'
+          ? await adapter.captureNewsletter(submission, env)
+          : await adapter.notifyLead(submission, env);
+        const providerId = delivery?.providerId?.trim();
+        if (!providerId || providerId.length > 200) throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
+        await leads.markAccepted(submission.idempotencyKey, reservation.claimToken, providerId);
+      } catch (error) {
+        await leads.markFailed(submission.idempotencyKey, reservation.claimToken);
+        throw error;
+      }
       return response(202, { accepted: true });
     } catch (error) {
+      if (error instanceof LeadIdempotencyConflict) return response(409, { error: 'Idempotency key conflicts with a different submission.' });
       if (error instanceof FormError) return response(error.status, { error: error.message }, error.retryAfter);
       return response(503, { error: 'Form delivery is temporarily unavailable.' }, 30);
     }

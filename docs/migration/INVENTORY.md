@@ -194,3 +194,6 @@ O inventário de publicação está fechado para esta captura. O Owner aceitou o
 ## Evidência visual adicional — 2026-10-03
 
 Comprar e Vender: a secção `section-faq2` tem `display:none` e dimensões zero no navegador, tanto em desktop como a 390×844. FAQs são resíduos permanentemente ocultos, excluídos do conteúdo alvo. Esta verificação não exclui disclosures ativos noutras páginas.
+
+## Owner scope update — 2026-10-04
+The historical source counts above remain discovery evidence. The Owner subsequently removed `/lp/oferta-selecao`, `/ofertas/vinho-e-fado` and both `/doop/relatorios-*` pages/forms from the target. The active route gate now requires250 routes, and separately asserts404 for these four exclusions. See CONTRACT.md and d1-leads-validation.json.

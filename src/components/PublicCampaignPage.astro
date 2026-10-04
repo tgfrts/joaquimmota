@@ -2,36 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/public-campaigns.css';
 
-interface Props {
-  campaign: 'cabaz' | 'euro';
-}
-const { campaign } = Astro.props;
-const isCabaz = campaign === 'cabaz';
-const route = isCabaz ? '/lp/cabaz-de-natal' : '/lp/oferta-selecao';
-const title = isCabaz ? 'Cabaz de Natal' : 'Euro 2024 - Oferta 4 cachecóis da seleção';
-const description = isCabaz
-  ? 'Torne o seu Natal ainda mais mágico. Participe no sorteio de 1 cabaz de Natal no dia 16 de Dezembro!'
-  : 'O Euro 2024 está a chegar  e queremos que apoie e celebre os jogos da seleção em grande estilo! Para tornar este evento ainda mais especial, vamos oferecer 4 cachecóis exclusivos da nossa seleção! Clique para participar.';
-const heading = isCabaz ? 'Um Natal ainda mais mágico?' : 'Preencha o formulário e habilite-se a um dos 4 cachecóis que temos para oferecer.';
-const image = isCabaz
-  ? '/assets/campaign-cabaz-natal.webp'
-  : '/assets/campaign-oferta-selecao.webp';
+const route = '/lp/cabaz-de-natal';
+const title = 'Cabaz de Natal';
+const description = 'Torne o seu Natal ainda mais mágico. Participe no sorteio de 1 cabaz de Natal no dia 16 de Dezembro!';
+const image = '/assets/campaign-cabaz-natal.webp';
 ---
-<BaseLayout title={title} description={description} socialImage={isCabaz ? 'https://joaquimmota.pt/assets/campaign-cabaz-og.webp' : 'https://joaquimmota.pt/assets/campaign-oferta-selecao.webp'} richSocial>
-  <main class:list={['public-campaign', `public-campaign--${campaign}`]}>
+<BaseLayout title={title} description={description} socialImage="https://joaquimmota.pt/assets/campaign-cabaz-og.webp" richSocial>
+  <main class="public-campaign public-campaign--cabaz">
     <div class="public-campaign__image" style={`--campaign-bg:url("${image}")`} aria-hidden="true"></div>
     <section class="public-campaign__panel">
       <a class="public-campaign__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
-      {isCabaz ? <h5><strong>Um Natal ainda mais mágico?<br />Participe no sorteio do nosso cabaz natalício</strong><strong>. Para se habilitar preencha o formulário.</strong></h5> : <h5>{heading}</h5>}
-      <form data-public-campaign data-route={route} data-redirect="/lp/obrigado-oferta" data-success={isCabaz ? 'Obrigado! A sua participação foi registada com sucesso.' : 'Obrigado! O seu formulário foi enviado com sucesso.'}>
+      <h5><strong>Um Natal ainda mais mágico?<br />Participe no sorteio do nosso cabaz natalício</strong><strong>. Para se habilitar preencha o formulário.</strong></h5>
+      <form data-public-campaign data-route={route} data-redirect="/lp/obrigado-oferta" data-success="Obrigado! A sua participação foi registada com sucesso.">
         <div class="public-campaign__names"><input name="firstName" maxlength="256" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" maxlength="256" autocomplete="family-name" placeholder="Apelido" required /></div>
         <input name="email" type="email" maxlength="256" autocomplete="email" placeholder="O seu email" required />
         <input name="phone" type="tel" maxlength="256" autocomplete="tel" placeholder="Telefone" required />
         <label>Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="null">Selecione uma opção</option><option value="Não">Não</option><option value="Sim, a comprar">Sim, a comprar</option><option value="Sim, a vender">Sim, a vender</option></select></label>
         <label>Está a pensar vender ou a comprar casa?<select name="intent" required><option value="null">Selecione uma opção</option><option value="Não">Não</option><option value="Sim, a comprar">Sim, a comprar</option><option value="Sim, a vender">Sim, a vender</option></select></label>
-        {isCabaz && <><label class="public-campaign__address-label">Localização do imóvel:</label><input name="street" maxlength="256" autocomplete="street-address" placeholder="Morada" required /><input name="postalCode" maxlength="256" autocomplete="postal-code" placeholder="Código Postal" required /><input name="county" maxlength="256" autocomplete="address-level2" placeholder="Concelho" required /></>}
+        <label class="public-campaign__address-label">Localização do imóvel:</label><input name="street" maxlength="256" autocomplete="street-address" placeholder="Morada" required /><input name="postalCode" maxlength="256" autocomplete="postal-code" placeholder="Código Postal" required /><input name="county" maxlength="256" autocomplete="address-level2" placeholder="Concelho" required />
         <label class="public-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
-        <button type="submit">{isCabaz ? 'Participar' : 'Enviar'}</button>
+        <button type="submit">Participar</button>
         <p class="public-campaign__status" data-campaign-status role="status" aria-live="polite" hidden></p>
       </form>
     </section>
@@ -46,7 +36,7 @@ const image = isCabaz
     const status = form.querySelector<HTMLElement>('[data-campaign-status]'); if (!status) return;
     button.disabled = true; status.hidden = false; status.textContent = '';
     const data = new FormData(form);
-    const message = [`Conhece alguém que esteja a vender ou a comprar casa?: ${data.get('referral')}`, `Está a pensar vender ou a comprar casa?: ${data.get('intent')}`, ...(data.get('street') ? [`Morada: ${data.get('street')}`, `Código Postal: ${data.get('postalCode')}`, `Concelho: ${data.get('county')}`] : [])].join('\n');
+    const message = [`Conhece alguém que esteja a vender ou a comprar casa?: ${data.get('referral')}`, `Está a pensar vender ou a comprar casa?: ${data.get('intent')}`, `Morada: ${data.get('street')}`, `Código Postal: ${data.get('postalCode')}`, `Concelho: ${data.get('county')}`].join('\n');
     try {
       await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } });
       if (form.dataset.redirect) location.assign(form.dataset.redirect);

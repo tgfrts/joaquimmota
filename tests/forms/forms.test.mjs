@@ -1,8 +1,23 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFile } from 'node:fs/promises';
+import { DatabaseSync } from 'node:sqlite';
 import { createFormHandler, createResendAdapter } from '../../functions/api/forms.ts';
 
 const key = 'submission-20261003-001';
+const migration = await readFile(new URL('../../migrations/0001_create_leads.sql', import.meta.url), 'utf8');
+function formEnv(overrides = {}) {
+  const sqlite = new DatabaseSync(':memory:');
+  sqlite.exec(migration);
+  return { LEADS_DB: { prepare(sql) {
+    let values = [];
+    return {
+      bind(...next) { values = next; return this; },
+      async run() { const result = sqlite.prepare(sql).run(...values); return { meta: { changes: Number(result.changes) } }; },
+      async first() { return sqlite.prepare(sql).get(...values) ?? null; },
+    };
+  } }, ...overrides };
+}
 const leadPayload = {
   formType: 'contact',
   route: '/contacto',
@@ -21,8 +36,8 @@ function mockAdapter() {
   const calls = [];
   return {
     calls,
-    async captureNewsletter(submission) { calls.push(['newsletter', submission]); },
-    async notifyLead(submission) { calls.push(['lead', submission]); },
+    async captureNewsletter(submission) { calls.push(['newsletter', submission]); return { providerId: 'contact-mock' }; },
+    async notifyLead(submission) { calls.push(['lead', submission]); return { providerId: 'email-mock' }; },
   };
 }
 
@@ -30,7 +45,7 @@ test('allows newsletter capture only on an approved public route', async () => {
   const adapter = mockAdapter();
   const response = await createFormHandler(adapter)({
     request: request({ formType: 'newsletter', route: '/blog', fields: { email: 'visitor@example.test' } }),
-    env: {},
+    env: formEnv(),
   });
 
   assert.equal(response.status, 202);
@@ -44,7 +59,7 @@ test('rejects routes outside the server allowlist before invoking an adapter', a
   const adapter = mockAdapter();
   const response = await createFormHandler(adapter)({
     request: request({ formType: 'newsletter', route: '/doop/relatorios-private', fields: { email: 'visitor@example.test' } }),
-    env: {},
+    env: formEnv(),
   });
 
   assert.equal(response.status, 403);
@@ -54,10 +69,10 @@ test('rejects routes outside the server allowlist before invoking an adapter', a
 test('allows only eligibility-gated CMS property and article routes', async () => {
   const adapter = mockAdapter();
   const handler = createFormHandler(adapter);
-  const property = await handler({ request: request({ ...leadPayload, route: '/imoveis/kwpt036155' }), env: {} });
-  const article = await handler({ request: request({ formType: 'newsletter', route: '/post/a-proposta-mais-alta-pode-nao-ser-a-melhor', fields: { email: 'visitor@example.test', firstName: 'Ana', lastName: 'Silva' } }), env: {} });
-  const eligibleNearMatch = await handler({ request: request({ formType: 'newsletter', route: '/post/como-garantir-uma-mudanca-de-casa-rapida-neste-verao-2024', fields: { email: 'visitor@example.test' } }), env: {} });
-  const excludedNearMatch = await handler({ request: request({ formType: 'newsletter', route: '/post/como-garantir-uma-mudanca-de-casa-rapida-neste-verao', fields: { email: 'visitor@example.test' } }), env: {} });
+  const property = await handler({ request: request({ ...leadPayload, route: '/imoveis/kwpt036155' }), env: formEnv() });
+  const article = await handler({ request: request({ formType: 'newsletter', route: '/post/a-proposta-mais-alta-pode-nao-ser-a-melhor', fields: { email: 'visitor@example.test', firstName: 'Ana', lastName: 'Silva' } }), env: formEnv() });
+  const eligibleNearMatch = await handler({ request: request({ formType: 'newsletter', route: '/post/como-garantir-uma-mudanca-de-casa-rapida-neste-verao-2024', fields: { email: 'visitor@example.test' } }), env: formEnv() });
+  const excludedNearMatch = await handler({ request: request({ formType: 'newsletter', route: '/post/como-garantir-uma-mudanca-de-casa-rapida-neste-verao', fields: { email: 'visitor@example.test' } }), env: formEnv() });
 
   assert.equal(property.status, 202);
   assert.equal(article.status, 202);
@@ -66,18 +81,19 @@ test('allows only eligibility-gated CMS property and article routes', async () =
   assert.deepEqual(adapter.calls[1][1].fields, { email: 'visitor@example.test', firstName: 'Ana', lastName: 'Silva' });
 });
 
-test('accepts the eligible offer route and rejects invented offer slugs', async () => {
+test('rejects removed offer routes before invoking an adapter', async () => {
   const adapter = mockAdapter();
   const handler = createFormHandler(adapter);
-  const payload = { ...leadPayload, formType: 'leadMagnet', route: '/ofertas/vinho-e-fado' };
-  assert.equal((await handler({ request: request(payload), env: {} })).status, 202);
-  assert.equal((await handler({ request: request({ ...payload, route: '/ofertas/inventada' }), env: {} })).status, 403);
-  assert.equal(adapter.calls.length, 1);
+  const removedOffer = { ...leadPayload, formType: 'leadMagnet', route: '/ofertas/vinho-e-fado' };
+  const removedCampaign = { ...leadPayload, formType: 'leadMagnet', route: '/lp/oferta-selecao' };
+  assert.equal((await handler({ request: request(removedOffer), env: formEnv() })).status, 403);
+  assert.equal((await handler({ request: request(removedCampaign), env: formEnv() })).status, 403);
+  assert.equal(adapter.calls.length, 0);
 });
 
 test('rejects a cross-site origin before handling a submission', async () => {
   const adapter = mockAdapter();
-  const response = await createFormHandler(adapter)({ request: request(leadPayload, { origin: 'https://attacker.example' }), env: {} });
+  const response = await createFormHandler(adapter)({ request: request(leadPayload, { origin: 'https://attacker.example' }), env: formEnv() });
 
   assert.equal(response.status, 403);
   assert.equal(adapter.calls.length, 0);
@@ -86,7 +102,7 @@ test('rejects a cross-site origin before handling a submission', async () => {
 for (const origin of ['http://localhost:8789', 'http://127.0.0.1:8789']) {
   test(`allows the Cloudflare Pages local-preview origin ${origin}`, async () => {
     const adapter = mockAdapter();
-    const response = await createFormHandler(adapter)({ request: request(leadPayload, { origin }), env: {} });
+    const response = await createFormHandler(adapter)({ request: request(leadPayload, { origin }), env: formEnv() });
 
     assert.equal(response.status, 202);
     assert.equal(adapter.calls.length, 1);
@@ -98,11 +114,11 @@ test('rejects malformed fields and missing idempotency keys', async () => {
   const handler = createFormHandler(adapter);
   const unsupported = await handler({
     request: request({ ...leadPayload, fields: { ...leadPayload.fields, recipient: 'attacker@example.test' } }),
-    env: {},
+    env: formEnv(),
   });
   const noKey = await handler({
     request: request(leadPayload, { 'idempotency-key': '' }),
-    env: {},
+    env: formEnv(),
   });
 
   assert.equal(unsupported.status, 422);
@@ -115,9 +131,9 @@ test('requires explicit true consent for every non-newsletter submission before 
   const handler = createFormHandler(adapter);
   const missingFields = { ...leadPayload.fields };
   delete missingFields.consent;
-  const missing = await handler({ request: request({ ...leadPayload, fields: missingFields }), env: {} });
-  const unchecked = await handler({ request: request({ ...leadPayload, fields: { ...leadPayload.fields, consent: false } }), env: {} });
-  const wrongType = await handler({ request: request({ ...leadPayload, fields: { ...leadPayload.fields, consent: 'true' } }), env: {} });
+  const missing = await handler({ request: request({ ...leadPayload, fields: missingFields }), env: formEnv() });
+  const unchecked = await handler({ request: request({ ...leadPayload, fields: { ...leadPayload.fields, consent: false } }), env: formEnv() });
+  const wrongType = await handler({ request: request({ ...leadPayload, fields: { ...leadPayload.fields, consent: 'true' } }), env: formEnv() });
 
   assert.equal(missing.status, 422);
   assert.equal(unchecked.status, 422);
@@ -127,7 +143,7 @@ test('requires explicit true consent for every non-newsletter submission before 
 
 test('rejects malformed JSON without handing it to an adapter', async () => {
   const adapter = mockAdapter();
-  const response = await createFormHandler(adapter)({ request: request('{not json'), env: {} });
+  const response = await createFormHandler(adapter)({ request: request('{not json'), env: formEnv() });
 
   assert.equal(response.status, 400);
   assert.equal(adapter.calls.length, 0);
@@ -136,8 +152,8 @@ test('rejects malformed JSON without handing it to an adapter', async () => {
 test('stops reading oversized requests and preserves the 413 response', async () => {
   const adapter = mockAdapter();
   const handler = createFormHandler(adapter);
-  const oversized = await handler({ request: request('a'.repeat(16_385)), env: {} });
-  const declared = await handler({ request: request('{}', { 'content-length': '17000' }), env: {} });
+  const oversized = await handler({ request: request('a'.repeat(16_385)), env: formEnv() });
+  const declared = await handler({ request: request('{}', { 'content-length': '17000' }), env: formEnv() });
   assert.equal(oversized.status, 413);
   assert.equal(declared.status, 413);
   assert.equal(adapter.calls.length, 0);
@@ -146,10 +162,10 @@ test('stops reading oversized requests and preserves the 413 response', async ()
 test('normalizes the visitor reply-to address without permitting header injection', async () => {
   const adapter = mockAdapter();
   const handler = createFormHandler(adapter);
-  const accepted = await handler({ request: request(leadPayload), env: {} });
+  const accepted = await handler({ request: request(leadPayload), env: formEnv() });
   const injected = await handler({
     request: request({ ...leadPayload, fields: { ...leadPayload.fields, email: 'visitor@example.test\r\nBcc: attacker@example.test' } }),
-    env: {},
+    env: formEnv(),
   });
 
   assert.equal(accepted.status, 202);
@@ -162,15 +178,15 @@ test('the Resend adapter uses configured recipient only and escapes lead HTML', 
   const calls = [];
   const adapter = createResendAdapter(async (url, init) => {
     calls.push({ url, init });
-    return new Response('{}', { status: 200 });
+    return new Response('{"id":"mock-id"}', { status: 200 });
   });
   const response = await createFormHandler(adapter)({
     request: request(leadPayload),
-    env: {
+    env: formEnv({
       RESEND_SEND_API_KEY: 'send-key',
       RESEND_FROM: 'Joaquim Mota <noreply@mail.joaquimmota.pt>',
       FORMS_RECIPIENT: 'owner@example.test',
-    },
+    }),
   });
   const body = JSON.parse(calls[0].init.body);
 
@@ -182,6 +198,8 @@ test('the Resend adapter uses configured recipient only and escapes lead HTML', 
   assert.match(body.html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/u);
   assert.doesNotMatch(body.html, /<script>/u);
   assert.equal(calls[0].init.headers['idempotency-key'], key);
+  assert.ok(calls[0].init.signal instanceof AbortSignal);
+  assert.equal(calls[0].init.signal.aborted, false);
 });
 
 test('configured reply address and server-side test recipient override visitor routing', async () => {
@@ -190,23 +208,23 @@ test('configured reply address and server-side test recipient override visitor r
     calls.push({ url, init });
     return new Response('{"id":"mock-email"}', { status: 200 });
   }));
-  const env = { RESEND_SEND_API_KEY: 'test-key', RESEND_FROM: 'Joaquim Mota Consultores <geral@mail.joaquimmota.pt>', RESEND_REPLY_TO: 'jrmota@kwportugal.pt', FORMS_RECIPIENT: 't@doop.pt' };
+  const env = formEnv({ RESEND_SEND_API_KEY: 'test-key', RESEND_FROM: 'Joaquim Mota Consultores <geral@mail.joaquimmota.pt>', RESEND_REPLY_TO: 'jrmota@kwportugal.pt', FORMS_RECIPIENT: 't@doop.pt' });
   assert.equal((await handler({ request: request(leadPayload), env })).status, 202);
   const body = JSON.parse(calls[0].init.body);
   assert.equal(body.from, env.RESEND_FROM);
   assert.deepEqual(body.to, ['t@doop.pt']);
   assert.equal(body.reply_to, 'jrmota@kwportugal.pt');
-  assert.equal((await handler({ request: request(leadPayload), env: { ...env, RESEND_REPLY_TO: 'bad\r\nheader' } })).status, 503);
+  assert.equal((await handler({ request: request(leadPayload, { 'idempotency-key': 'submission-20261003-002' }), env: formEnv({ ...env, RESEND_REPLY_TO: 'bad\r\nheader' }) })).status, 503);
   assert.equal(calls.length, 1);
 });
 
 test('missing configuration and retryable provider failures never return false success', async () => {
   const adapter = createResendAdapter(async () => new Response('{}', { status: 503, headers: { 'retry-after': '47' } }));
   const handler = createFormHandler(adapter);
-  const missingConfig = await handler({ request: request(leadPayload), env: {} });
+  const missingConfig = await handler({ request: request(leadPayload), env: formEnv() });
   const providerFailure = await handler({
     request: request(leadPayload),
-    env: { RESEND_SEND_API_KEY: 'send-key', RESEND_FROM: 'Joaquim <noreply@mail.joaquimmota.pt>', FORMS_RECIPIENT: 'owner@example.test' },
+    env: formEnv({ RESEND_SEND_API_KEY: 'send-key', RESEND_FROM: 'Joaquim <noreply@mail.joaquimmota.pt>', FORMS_RECIPIENT: 'owner@example.test' }),
   });
 
   assert.equal(missingConfig.status, 503);

@@ -1,7 +1,7 @@
 {
-  "verifiedAt": "2026-10-04T05:06:19.097855+00:00",
+  "verifiedAt": "2026-10-04T09:54:23.230609+00:00",
   "runtime": "local Cloudflare Pages at 127.0.0.1:8789",
-  "builtRoutes": 254,
+  "builtRoutes": 250,
   "checks": 264,
   "passed": 264,
   "failures": [],
@@ -120,18 +120,18 @@
     },
     {
       "path": "/doop/relatorios-de-atividades",
-      "expected": 200,
-      "status": 200,
+      "expected": 404,
+      "status": 404,
       "location": null,
-      "cache": "public, max-age=0, must-revalidate",
+      "cache": "no-store",
       "passed": true
     },
     {
       "path": "/doop/relatorios-de-visita",
-      "expected": 200,
-      "status": 200,
+      "expected": 404,
+      "status": 404,
       "location": null,
-      "cache": "public, max-age=0, must-revalidate",
+      "cache": "no-store",
       "passed": true
     },
     {
@@ -880,10 +880,10 @@
     },
     {
       "path": "/lp/oferta-selecao",
-      "expected": 200,
-      "status": 200,
+      "expected": 404,
+      "status": 404,
       "location": null,
-      "cache": "public, max-age=0, must-revalidate",
+      "cache": "no-store",
       "passed": true
     },
     {
@@ -920,10 +920,10 @@
     },
     {
       "path": "/ofertas/vinho-e-fado",
-      "expected": 200,
-      "status": 200,
+      "expected": 404,
+      "status": 404,
       "location": null,
-      "cache": "public, max-age=0, must-revalidate",
+      "cache": "no-store",
       "passed": true
     },
     {

@@ -127,34 +127,6 @@
     "motion": "partial; continuous Home process motion was implemented from the literal source config, but full motion acceptance remains pending",
     "acceptance": "responsive geometry observed at three viewports; this does not satisfy the full sample or migration acceptance gate"
   },
-  "offer": {
-    "slug": "vinho-e-fado",
-    "viewports": [
-      "1280x720",
-      "390x844",
-      "834x1112"
-    ],
-    "headingAndFormGeometry": "exact at observed viewports",
-    "desktop": {
-      "headingTop": 127.859375,
-      "firstFieldTop": 281.859375,
-      "submitTop": 680.859375
-    },
-    "mobile": {
-      "headingTop": 505.359375,
-      "firstFieldTop": 717.359375,
-      "submitTop": 1217.359375
-    },
-    "tablet": {
-      "headingTop": 772.75,
-      "firstFieldTop": 898.75,
-      "imageWrapperHeight": 667.1953125
-    },
-    "interaction": "required controls/default selects/checked consent; own 202 redirect contract tested with mocks; no real delivery test",
-    "hiddenFieldsExcluded": [
-      "field-2 textarea Assunto"
-    ]
-  },
   "preListing": {
     "samples": [
       "te-t2-gulpilhares-20260916-39528",
@@ -194,8 +166,7 @@
     }
   },
   "remaining": [
-    "Own DOOP activity/visit destinations",
-    "Owner review of the preview; production recipient/hosting secrets/SEO activation and cutover require separate authorization"
+    "Owner preview acceptance; production recipient/hosting secrets/SEO activation and cutover require separate authorization"
   ],
   "property": {
     "samples": [
@@ -1276,30 +1247,6 @@
     },
     "remainingDifference": "Sub-pixel original image ratio/font-line rounding below 0.3 px per measured section."
   },
-  "reportCalendarFollowup": {
-    "publicReadOnlySource": "Native date widget configured mm-dd-yyyy; source vendor read for selection/navigation rules only.",
-    "targetMobileObserved": {
-      "days": [
-        210,
-        251
-      ],
-      "monthsHeight": 191.5,
-      "yearsHeight": 191.5,
-      "monthGridColumns": [
-        52.5,
-        52.5,
-        52.5,
-        52.5
-      ],
-      "yearRange": "2021 - 2032",
-      "readonlyInput": true,
-      "initialValue": "",
-      "escapeCloses": true,
-      "escapeFocus": "activity-date"
-    },
-    "tests": "8 date-picker runtime tests, including year/month immediate changes, leap-day clamp, year arrows ±10 and month navigation day preservation.",
-    "submissions": 0
-  },
   "aboutPortraitLazyLoadCorrection": {
     "status": "verified-bounded",
     "source": "public browser 390x844 after native scroll loaded original nova-foto.png",
@@ -1574,6 +1521,25 @@
     "deliveredTestEmails": 1,
     "newsletterTestContacts": 1,
     "sourceSubmissions": 0,
+    "productionActivated": false
+  },
+  "ownerRouteExclusions": {
+    "date": "2026-10-04",
+    "routes": [
+      "/lp/oferta-selecao",
+      "/ofertas/vinho-e-fado",
+      "/doop/relatorios-de-atividades",
+      "/doop/relatorios-de-visita"
+    ],
+    "behavior": "404; pages/forms/report handlers removed; Webflow read-only"
+  },
+  "d1ConfigurationFollowup": {
+    "date": "2026-10-04",
+    "evidence": "d1-leads-validation.json",
+    "remoteDatabases": "own production and preview; schemas applied; zero leads",
+    "localLeadRows": 2,
+    "testRecipient": "t@doop.pt",
+    "testNotificationStatus": "delivered",
     "productionActivated": false
   }
 }

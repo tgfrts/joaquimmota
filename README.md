@@ -11,7 +11,7 @@ npm run check
 npm run build
 ```
 
-The current preview builds 254 original paths, including eligible static pages, CMS templates and source-empty CMS paths. Source drafts are excluded. It is not approved for production deployment. Pages carry `noindex, nofollow` during this preview phase; original production SEO must be restored and verified before cutover.
+The current preview builds 250 paths, including eligible static pages, CMS templates and source-empty CMS paths. Source drafts and the four routes explicitly removed by the Owner on 2026-10-04 are excluded. It is not approved for production deployment. Pages carry `noindex, nofollow` during this preview phase; original production SEO must be restored and verified before cutover.
 
 The site's own Sanity project `kaq1vd9b`, dataset `production`, holds 190 eligible documents as target drafts. The sample gate passed before the remaining179 were imported. Aggregate verification confirms1447 visible image positions referencing1342 distinct originals. `src/data/sample-content.json` is an ignored local preview cache, never a committed source of content. A clean checkout requires a read-only snapshot of the target drafts and the approved private migration inputs before building:
 
@@ -25,12 +25,17 @@ For the built-site local preview with Pages Functions, use the already installed
 
 ```sh
 npm run build
-wrangler pages dev dist --port 8789 --compatibility-date 2026-09-15
+wrangler d1 migrations apply joaquimmota-leads-preview --local --persist-to /private/tmp/jrmota-pages-local-state
+wrangler pages dev dist --ip 127.0.0.1 --port 8789 --persist-to /private/tmp/jrmota-pages-local-state
 ```
 
 The migration validation used Wrangler `4.130.0`. This runs locally and performs no Cloudflare deployment. Original extensionless paths are preserved through Astro file-format output. The public dashboard route serves the locked view with HTTP 401; the unknown route serves HTTP 404.
 
-Forms use a server-side Resend adapter. Own credentials are configured locally in private ignored `.dev.vars`; local Astro development does not execute Cloudflare Pages Functions. Owner-authorized tests confirmed one delivered notification to `t@doop.pt`, idempotent retry without duplicates and one test newsletter contact. All notification tests still route to `t@doop.pt`. Production recipient activation, hosting secrets and DOOP destinations remain pending; no customer send, source form submission or DNS change occurred.
+Forms persist validated leads in the own `LEADS_DB` D1 binding before the server-side Resend call. Production and preview databases are independent: `joaquimmota-leads-production` and `joaquimmota-leads-preview`, created in the EU jurisdiction. `wrangler.jsonc` configures these bindings; migrations live in `migrations/`. Same-key retries reuse the stored result; a different payload under the same key returns409. The stored `accepted` status confirms provider acceptance, not delivery to an inbox.
+
+Own credentials are configured locally in private ignored `.dev.vars`; Astro development does not execute Pages Functions. Local Pages uses an emulated local D1 database; remote bindings take effect when deployed. No production deployment is authorized. All test notifications still route to `t@doop.pt`; sender is `geral@mail.joaquimmota.pt` and Reply-To is `jrmota@kwportugal.pt`. Hosting secrets and production recipient activation remain pending. See `docs/migration/D1-LEADS.md` for persistence and validation.
+
+The Owner removed `/lp/oferta-selecao`, `/ofertas/vinho-e-fado`, `/doop/relatorios-de-atividades` and `/doop/relatorios-de-visita`, including their forms and report handlers. These URLs return404 in the target. The Webflow source and historical source inventory remain untouched.
 
 ## Dependency audit
 

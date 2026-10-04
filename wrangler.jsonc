@@ -1,0 +1,51 @@
+{
+  "name": "joaquimmota",
+  "account_id": "e23a1ecc3719f496e47f56f20e6da716",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-09-15",
+  "d1_databases": [
+    {
+      "binding": "LEADS_DB",
+      "database_name": "joaquimmota-leads-preview",
+      "database_id": "c63b0ebb-80bd-495a-b34e-068626208b26",
+      "migrations_dir": "./migrations"
+    }
+  ],
+  "vars": {
+    "RESEND_FROM": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
+    "RESEND_REPLY_TO": "jrmota@kwportugal.pt",
+    "FORMS_RECIPIENT": "t@doop.pt"
+  },
+  "env": {
+    "production": {
+      "d1_databases": [
+        {
+          "binding": "LEADS_DB",
+          "database_name": "joaquimmota-leads-production",
+          "database_id": "18572d19-56cc-44aa-9a72-18f5acd67737",
+          "migrations_dir": "./migrations"
+        }
+      ],
+      "vars": {
+        "RESEND_FROM": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
+        "RESEND_REPLY_TO": "jrmota@kwportugal.pt",
+        "FORMS_RECIPIENT": "t@doop.pt"
+      }
+    },
+    "preview": {
+      "d1_databases": [
+        {
+          "binding": "LEADS_DB",
+          "database_name": "joaquimmota-leads-preview",
+          "database_id": "c63b0ebb-80bd-495a-b34e-068626208b26",
+          "migrations_dir": "./migrations"
+        }
+      ],
+      "vars": {
+        "RESEND_FROM": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
+        "RESEND_REPLY_TO": "jrmota@kwportugal.pt",
+        "FORMS_RECIPIENT": "t@doop.pt"
+      }
+    }
+  }
+}

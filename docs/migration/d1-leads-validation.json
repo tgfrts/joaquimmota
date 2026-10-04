@@ -1,0 +1,155 @@
+{
+  "verifiedAt": "2026-10-04T09:56:11.566555+00:00",
+  "status": "pass",
+  "ownerAuthorized": true,
+  "remote": {
+    "preview": {
+      "databaseName": "joaquimmota-leads-preview",
+      "databaseId": "c63b0ebb-80bd-495a-b34e-068626208b26",
+      "jurisdiction": "eu",
+      "schemaObjects": [
+        {
+          "name": "leads",
+          "type": "table"
+        },
+        {
+          "name": "leads_delivery_status_idx",
+          "type": "index"
+        },
+        {
+          "name": "leads_form_type_created_at_idx",
+          "type": "index"
+        },
+        {
+          "name": "leads_created_at_idx",
+          "type": "index"
+        }
+      ],
+      "migration": [
+        {
+          "name": "0001_create_leads.sql"
+        }
+      ],
+      "leadCount": 0
+    },
+    "production": {
+      "databaseName": "joaquimmota-leads-production",
+      "databaseId": "18572d19-56cc-44aa-9a72-18f5acd67737",
+      "jurisdiction": "eu",
+      "schemaObjects": [
+        {
+          "name": "leads",
+          "type": "table"
+        },
+        {
+          "name": "leads_delivery_status_idx",
+          "type": "index"
+        },
+        {
+          "name": "leads_form_type_created_at_idx",
+          "type": "index"
+        },
+        {
+          "name": "leads_created_at_idx",
+          "type": "index"
+        }
+      ],
+      "migration": [
+        {
+          "name": "0001_create_leads.sql"
+        }
+      ],
+      "leadCount": 0
+    }
+  },
+  "migrationSha256": "d4d2a9cd3303af8bfdf6a152dafc014572bf0748cee343e0bcea7525072a0a50",
+  "binding": "LEADS_DB",
+  "local": {
+    "runtime": "local Pages with local emulated D1",
+    "leadCount": 2,
+    "acceptedCount": 2,
+    "checks": {
+      "contact": {
+        "status": 202,
+        "body": {
+          "accepted": true
+        }
+      },
+      "duplicate": {
+        "status": 202,
+        "body": {
+          "accepted": true
+        }
+      },
+      "phoneDuplicate": {
+        "status": 202,
+        "body": {
+          "accepted": true
+        }
+      },
+      "conflict": {
+        "status": 409,
+        "body": {
+          "error": "Idempotency key conflicts with a different submission."
+        }
+      },
+      "newsletter": {
+        "status": 202,
+        "body": {
+          "accepted": true
+        }
+      },
+      "/lp/oferta-selecao": {
+        "status": 403,
+        "body": {
+          "error": "Form is not allowed on this route."
+        }
+      },
+      "/ofertas/vinho-e-fado": {
+        "status": 403,
+        "body": {
+          "error": "Form is not allowed on this route."
+        }
+      },
+      "/api/doop/activities": {
+        "status": 404
+      },
+      "/api/doop/visits": {
+        "status": 404
+      }
+    },
+    "newsletterContactReused": true,
+    "providerReceiptPresent": true,
+    "oneContactNotificationDespiteTwoRetries": true
+  },
+  "resendTest": {
+    "account": "Joaquim Mota",
+    "notificationId": "01a10656-1a3a-73cd-9025-bdb6a82bcc0d",
+    "status": "delivered",
+    "to": "t@doop.pt",
+    "from": "geral@mail.joaquimmota.pt",
+    "replyTo": "jrmota@kwportugal.pt"
+  },
+  "validation": {
+    "buildPages": 250,
+    "astroCheck": {
+      "files": 101,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    },
+    "tests": {
+      "passed": 124,
+      "failed": 0
+    },
+    "routeGets": {
+      "passed": 264,
+      "failed": 0
+    },
+    "independentReview": "foundation_audit; final backend passes; prior lease/receipt findings closed; 25 focused tests passed"
+  },
+  "limitations": [
+    "The local Pages preview writes local emulated D1; remote databases have applied schemas but remain empty until authorized application deployment.",
+    "No production deployment, DNS change, customer send, Webflow write or Sanity deletion."
+  ]
+}

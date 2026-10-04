@@ -122,13 +122,7 @@ test('all owned shared form handlers short-circuit while the active submit butto
   }
 });
 
-test('source-present metadata and anchors are restored only on their audited pages', async () => {
-  const activity = await read('src/pages/doop/relatorios-de-atividades.astro');
-  const visit = await read('src/pages/doop/relatorios-de-visita.astro');
-  for (const [source, title] of [[activity, 'Relatórios de Atividades'], [visit, 'Relatórios de Visita']]) {
-    assert.ok(source.includes(`<meta property="og:title" content="${title}" />`));
-    assert.ok(source.includes(`<meta name="twitter:title" content="${title}" />`));
-  }
+test('source-present anchors are restored only on their audited pages', async () => {
   const flyer = await read('src/pages/lp-flyer-uma-venda-com-sucesso.astro');
   assert.match(flyer, /<footer class="seller-campaign__footer"[\s\S]*?href="https:\/\/www\.kwportugal\.pt\/politica-de-privacidade" target="_blank" rel="noopener noreferrer"/);
   const marketing = await read('src/pages/marketing.astro');
