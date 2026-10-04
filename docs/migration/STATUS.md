@@ -249,3 +249,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Fecho destas correções: Astro check 127 ficheiros sem diagnósticos, build 250 páginas, suite 151/151, diff-check limpo e revisão independente PASS após correções de H1 mobile e pseudo-elementos do menu. Preview /imoveis respondeu HTTP 200 em 8791. Verificação visual por browser continua indisponível.
 
 2026-10-04 — Correção final Owner: secção do imóvel em destaque oculta no mobile (até 767px), desktop preservado. Mobile começa na newsletter, seguida de seis imóveis, guia e restantes imóveis.
+
+2026-10-04 — Owner: imagem do card de destaque desktop volta a preencher toda a altura disponível até às margens interiores verticais, com cover e sem proporção fixa. Cards da grelha mantêm 3:2; destaque continua oculto no mobile.

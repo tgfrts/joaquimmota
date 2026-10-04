@@ -84,3 +84,5 @@ Owner Home mobile process action2026-10-04: add a red/light-text "Vamos começar
 2026-10-04 — Owner: indicadores de área usam Lucide Scan nos cards e na Área Bruta da ficha; Área Útil usa Scan Square. Revisão do destaque mobile corrigiu heading para H1 com a mesma apresentação do card comum; seleção aleatória define imagens de candidatos ocultos como lazy.
 
 2026-10-04 — Correção final Owner: secção do imóvel em destaque oculta no mobile (até 767px), desktop preservado. Mobile começa na newsletter, seguida de seis imóveis, guia e restantes imóveis.
+
+2026-10-04 — Owner: imagem do card de destaque desktop volta a preencher toda a altura disponível até às margens interiores verticais, com cover e sem proporção fixa. Cards da grelha mantêm 3:2; destaque continua oculto no mobile.
