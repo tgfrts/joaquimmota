@@ -263,3 +263,11 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Corrigida formatação efetiva da galeria: frame do botão 3:2 com overflow hidden; img absoluto 100% largura/altura e cover, sobrepondo altura intrínseca dos atributos HTML. Removidas proporções legadas 100/66 e padding inferior 6.5px. Lightbox mantém contain/proporção original. Índices das miniaturas são posicionais, preservando ocorrências repetidas.
 
 2026-10-04 — Owner: fotografia do agente no formulário de contacto do imóvel substituída pela mesma imagem de camisa branca usada no ClosingCta (/assets/closing-jm.png), no componente CmsPropertyInquiry comum.
+
+2026-10-04 — Owner: galeria na ficha começa com seis fotos mobile / nove desktop; botão “Ver mais fotos” outline azul revela todas as restantes. Lightbox mantém todas as imagens desde o início, artigos não recebem limite. Botão aparece apenas quando há fotos adicionais no respetivo viewport.
+
+2026-10-04 — Complemento Owner: o controlo da galeria alterna “Ver mais fotos” / “Ver menos fotos” e permite recolher novamente para seis/nove, mantendo estilo outline azul e aria-expanded.
+
+2026-10-04 — Owner: consentimento comercial no CmsPropertyInquiry corrigido para “Joaquim Mota Consultor Imobiliário”. Pesquisa nos componentes, páginas, dados CMS e handler dos formulários não encontrou outras referências a PS Real Estate Team; identidade legal Somos Real Estate preservada.
+
+2026-10-04 — Owner: ao recolher a galeria, scroll automático ao topo da grelha, com margem de 80px para a navbar; smooth por defeito e sem animação quando prefere movimento reduzido.

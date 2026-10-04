@@ -88,3 +88,9 @@ Owner Home mobile process action2026-10-04: add a red/light-text "Vamos começar
 2026-10-04 — Owner: imagem do card de destaque desktop volta a preencher toda a altura disponível até às margens interiores verticais, com cover e sem proporção fixa. Cards da grelha mantêm 3:2; destaque continua oculto no mobile.
 
 2026-10-04 — Owner: título mobile da ficha 24px/28.8px; capa abre a galeria partilhada no desktop e mobile, selecionando a própria capa no lightbox (sem duplicar se já existe). Navegação/fecho/restauro de foco preservados. Indicadores nos cards usam peso 300, igual ao header, sem negrito.
+
+2026-10-04 — Owner: galeria na ficha começa com seis fotos mobile / nove desktop; botão “Ver mais fotos” outline azul revela todas as restantes. Lightbox mantém todas as imagens desde o início, artigos não recebem limite. Botão aparece apenas quando há fotos adicionais no respetivo viewport.
+
+2026-10-04 — O botão outline azul mantém-se na galeria expandida como “Ver menos fotos”, recolhendo novamente para seis mobile / nove desktop.
+
+2026-10-04 — Ao recolher as fotos, regressar por scroll ao topo da grelha. Formulários não podem conter PS Real Estate Team; consentimento na ficha identifica “Joaquim Mota Consultor Imobiliário”.

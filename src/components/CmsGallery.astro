@@ -1,8 +1,8 @@
 ---
 import SiteIcon from './SiteIcon.astro';
 import CmsImage from './CmsImage.astro';
-interface Props { images?: any[]; label: string; id?: string; openingImage?: any; }
-const { images = [], label, id, openingImage } = Astro.props;
+interface Props { images?: any[]; label: string; id?: string; openingImage?: any; preview?: boolean; }
+const { images = [], label, id, openingImage, preview = false } = Astro.props;
 const imageUrl = (image: any) => {
   const asset = image?.asset ?? image;
   const ref = asset?._ref;
@@ -18,10 +18,11 @@ const openingIndex = Math.max(0, lightboxImages.findIndex(image => imageUrl(imag
 ---
 
 {lightboxImages.length > 0 && (
-  <section class="cms-gallery" id={galleryId} data-cms-gallery data-opening-index={openingIndex} aria-label={label}>
-    <div class="cms-gallery__grid">
+  <section class="cms-gallery" id={galleryId} data-cms-gallery data-gallery-limited={preview || undefined} data-opening-index={openingIndex} aria-label={label}>
+    <div class="cms-gallery__grid" id={`${galleryId}-grid`}>
       {usable.map((image, index) => <button type="button" data-gallery-index={index + (coverWasPrepended ? 1 : 0)} aria-label={`Ver imagem ${index + 1} de ${usable.length}`}><CmsImage value={image} alt="" loading={index < 3 ? 'eager' : 'lazy'} /></button>)}
     </div>
+    {preview && usable.length > 6 && <div class:list={['cms-gallery__actions', { 'cms-gallery__actions--mobile-only': usable.length <= 9 }]}><button type="button" class="cms-gallery__more" data-gallery-more aria-expanded="false" aria-controls={`${galleryId}-grid`}>Ver mais fotos</button></div>}
     <dialog id={`${galleryId}-dialog`} class="cms-gallery__dialog" aria-label={`${label}: visualização ampliada`}>
       <button type="button" class="cms-gallery__close" aria-label="Fechar galeria"><SiteIcon name="close" /></button>
       <div class="cms-gallery__view" role="tabpanel" id={`${galleryId}-panel`}><img class="cms-gallery__full-image" alt={label} />
@@ -38,6 +39,13 @@ const openingIndex = Math.max(0, lightboxImages.findIndex(image => imageUrl(imag
         const sources = thumbs.map((thumb) => thumb.querySelector('img')?.src ?? '');
         const previous = dialog?.querySelector<HTMLButtonElement>('[data-gallery-previous]');
         const next = dialog?.querySelector<HTMLButtonElement>('[data-gallery-next]');
+        const more = gallery.querySelector<HTMLButtonElement>('[data-gallery-more]');
+        more?.addEventListener('click', () => {
+          const expanded = gallery.classList.toggle('is-expanded');
+          more.setAttribute('aria-expanded', String(expanded));
+          more.textContent = expanded ? 'Ver menos fotos' : 'Ver mais fotos';
+          if (!expanded) gallery.querySelector<HTMLElement>('.cms-gallery__grid')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        });
         let current = 0;
         let touchStart: { x: number; y: number } | undefined;
         let returnFocus: HTMLElement | undefined;

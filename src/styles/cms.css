@@ -7,3 +7,13 @@
 .cms-gallery__view>button span{display:contents;width:auto;height:auto;border:0;transform:none}
 .cms-gallery__view>button .site-icon{width:24px;height:24px}
 @media(max-width:767px){.cms-gallery__close{top:0;width:68px;height:44.2px}}
+
+.cms-gallery[data-gallery-limited]:not(.is-expanded) .cms-gallery__grid>button:nth-child(n+10){display:none}
+.cms-gallery__actions{display:flex;justify-content:center;margin-top:32px}
+.cms-gallery__more{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 24px;border:1px solid #20457f;background:transparent;color:#20457f;font:500 16px/24px Roboto,sans-serif;cursor:pointer}
+.cms-gallery__more[hidden]{display:none}
+.cms-gallery__more:focus-visible{outline:2px solid #20457f;outline-offset:4px}
+@media(min-width:768px){.cms-gallery:not(.is-expanded) .cms-gallery__actions--mobile-only{display:none}}
+@media(max-width:767px){.cms-gallery[data-gallery-limited]:not(.is-expanded) .cms-gallery__grid>button:nth-child(n+7){display:none}}
+
+.cms-gallery[data-gallery-limited] .cms-gallery__grid{scroll-margin-top:80px}

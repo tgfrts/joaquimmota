@@ -36,3 +36,21 @@ test('cover is included once in the lightbox without changing the gallery grid',
   assert.equal(Array.from(d.querySelectorAll('.cms-gallery__strip img')).filter(img=>img.getAttribute('src')===src).length,1);
  }
 });
+
+test('gallery more control reveals all images and then restores the responsive preview',async t=>{
+ const dom=new JSDOM(await readFile(new URL('dist/imoveis/kwpt013603.html',root),'utf8'),{runScripts:'outside-only'});t.after(()=>dom.window.close());
+ let scroll;dom.window.matchMedia=()=>({matches:false});dom.window.HTMLElement.prototype.scrollIntoView=function(options){scroll={element:this,options};};
+ dom.window.eval(compiled.outputFiles[0].text);
+ const gallery=dom.window.document.querySelector('#property-gallery');const more=gallery.querySelector('[data-gallery-more]');
+ const images=gallery.querySelectorAll('[data-gallery-index]');const count=images.length;
+ assert.ok(count>9);assert.ok(gallery.hasAttribute('data-gallery-limited'));
+ assert.equal(more.getAttribute('aria-expanded'),'false');
+ more.click();assert.ok(gallery.classList.contains('is-expanded'));assert.equal(more.getAttribute('aria-expanded'),'true');assert.equal(more.textContent,'Ver menos fotos');
+ assert.equal(gallery.querySelectorAll('[data-gallery-index]').length,count);
+ more.click();assert.equal(gallery.classList.contains('is-expanded'),false);assert.equal(more.getAttribute('aria-expanded'),'false');assert.equal(more.textContent,'Ver mais fotos');
+ assert.equal(scroll.element,gallery.querySelector('.cms-gallery__grid'));assert.equal(scroll.options.behavior,'smooth');assert.equal(scroll.options.block,'start');
+ dom.window.matchMedia=()=>({matches:true});more.click();more.click();assert.equal(scroll.options.behavior,'auto');
+ const css=await readFile(new URL('src/styles/cms.css',root),'utf8');
+ assert.match(css,/\[data-gallery-limited\]:not\(\.is-expanded\) \.cms-gallery__grid>button:nth-child\(n\+10\)\{display:none\}/);
+ assert.match(css,/@media\(max-width:767px\)\{[^}]*nth-child\(n\+7\)\{display:none\}/);
+});
