@@ -4,7 +4,7 @@ interface Props { contactHref?: string; desktopContactHref?: string; variant?: '
 const { contactHref = '/contacto', desktopContactHref = contactHref, variant = 'overlay', pageNavigation = false, contactLabel = 'Contacte-nos', desktopContactLabel = contactLabel, showBlog = true } = Astro.props;
 const homeLinks = [
   { href: '/vender', label: 'Vender' },
-  { href: 'https://www.joaquimmota.pt/comprar#imoveis', label: 'Imóveis' },
+  { href: '/comprar#imoveis', label: 'Imóveis' },
   { href: '/reviews', label: 'O que dizem os nossos clientes' },
   { href: '/blog', label: 'Blog' },
   { href: '/sobre', label: 'Sobre nós' },
