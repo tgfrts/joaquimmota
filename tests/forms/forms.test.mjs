@@ -184,6 +184,22 @@ test('the Resend adapter uses configured recipient only and escapes lead HTML', 
   assert.equal(calls[0].init.headers['idempotency-key'], key);
 });
 
+test('configured reply address and server-side test recipient override visitor routing', async () => {
+  const calls = [];
+  const handler = createFormHandler(createResendAdapter(async (url, init) => {
+    calls.push({ url, init });
+    return new Response('{"id":"mock-email"}', { status: 200 });
+  }));
+  const env = { RESEND_SEND_API_KEY: 'test-key', RESEND_FROM: 'Joaquim Mota Consultores <geral@mail.joaquimmota.pt>', RESEND_REPLY_TO: 'jrmota@kwportugal.pt', FORMS_RECIPIENT: 't@doop.pt' };
+  assert.equal((await handler({ request: request(leadPayload), env })).status, 202);
+  const body = JSON.parse(calls[0].init.body);
+  assert.equal(body.from, env.RESEND_FROM);
+  assert.deepEqual(body.to, ['t@doop.pt']);
+  assert.equal(body.reply_to, 'jrmota@kwportugal.pt');
+  assert.equal((await handler({ request: request(leadPayload), env: { ...env, RESEND_REPLY_TO: 'bad\r\nheader' } })).status, 503);
+  assert.equal(calls.length, 1);
+});
+
 test('missing configuration and retryable provider failures never return false success', async () => {
   const adapter = createResendAdapter(async () => new Response('{}', { status: 503, headers: { 'retry-after': '47' } }));
   const handler = createFormHandler(adapter);

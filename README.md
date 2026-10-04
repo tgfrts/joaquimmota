@@ -30,7 +30,7 @@ wrangler pages dev dist --port 8789 --compatibility-date 2026-09-15
 
 The migration validation used Wrangler `4.130.0`. This runs locally and performs no Cloudflare deployment. Original extensionless paths are preserved through Astro file-format output. The public dashboard route serves the locked view with HTTP 401; the unknown route serves HTTP 404.
 
-Forms use a server-side Resend adapter with mocked verification only. Actual credentials and the Owner's recipient are not configured; local Astro development does not execute Cloudflare Pages Functions. No real email or source form submission has been performed.
+Forms use a server-side Resend adapter. Own credentials are configured locally in private ignored `.dev.vars`; local Astro development does not execute Cloudflare Pages Functions. Owner-authorized tests confirmed one delivered notification to `t@doop.pt`, idempotent retry without duplicates and one test newsletter contact. All notification tests still route to `t@doop.pt`. Production recipient activation, hosting secrets and DOOP destinations remain pending; no customer send, source form submission or DNS change occurred.
 
 ## Dependency audit
 

@@ -1,0 +1,81 @@
+{
+  "verifiedAt": "2026-10-04T09:21:15.771695+00:00",
+  "recipient": "t@doop.pt",
+  "from": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
+  "replyTo": "jrmota@kwportugal.pt",
+  "tests": {
+    "lead": {
+      "status": 202,
+      "body": {
+        "accepted": true
+      }
+    },
+    "idempotentRetry": {
+      "status": 202,
+      "body": {
+        "accepted": true
+      }
+    },
+    "newsletter": {
+      "status": 202,
+      "body": {
+        "accepted": true
+      }
+    },
+    "iphoneNetworkIdempotentRetry": {
+      "status": 202,
+      "body": {
+        "accepted": true
+      }
+    }
+  },
+  "scope": "Own local runtime and own Resend; Owner authorized tests only to t@doop.pt. No customer sends, Webflow submission or DNS changes.",
+  "domain": "mail.joaquimmota.pt",
+  "region": "eu-west-1",
+  "keys": {
+    "sending": "sending_access restricted to own verified domain",
+    "contacts": "full_access; smallest available Resend permission supporting contacts; separate server-only key"
+  },
+  "credentialStorage": {
+    "file": ".dev.vars",
+    "permissions": "0600",
+    "gitIgnored": true,
+    "trackedCredentialLeaks": 0
+  },
+  "providerVerification": {
+    "emailId": "01a10637-af7b-7d7a-a97a-f5d363b3dcac",
+    "status": "delivered",
+    "matchingEmails": 1,
+    "from": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
+    "to": [
+      "t@doop.pt"
+    ],
+    "replyTo": [
+      "jrmota@kwportugal.pt"
+    ],
+    "newsletterTestContacts": 1
+  },
+  "unusedPreparedDomain": {
+    "name": "joaquimmota.pt",
+    "status": "not_started",
+    "note": "Prepared before Owner selected the already verified mail subdomain. No DNS records changed; this domain is not used by the configured sender."
+  },
+  "productionRecipient": "jrmota@kwportugal.pt",
+  "productionActivated": false,
+  "mockedSuite": {
+    "tests": 137,
+    "passed": 137,
+    "failed": 0
+  },
+  "astroCheck": {
+    "files": 111,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "independentReview": {
+    "agent": "static_contract_audit",
+    "status": "pass",
+    "scope": "Reply-To validation and fallback, server recipient routing, ignored0600 file metadata, no secret values read by auditor; mocked focused tests and diff."
+  }
+}

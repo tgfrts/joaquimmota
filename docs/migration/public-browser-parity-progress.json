@@ -194,9 +194,8 @@
     }
   },
   "remaining": [
-    "Own Resend server configuration and intended recipient",
     "Own DOOP activity/visit destinations",
-    "Owner review of the preview; production SEO activation and cutover require separate authorization"
+    "Owner review of the preview; production recipient/hosting secrets/SEO activation and cutover require separate authorization"
   ],
   "property": {
     "samples": [
@@ -1565,5 +1564,16 @@
       "pagination": "Native next-link navigation reached page2 with six visible cards and both controls visible."
     }
   },
-  "evidenceHistory": "Earlier partial observations below are historical. Later follow-ups and sample-gate.json supersede their pending sample/bulk statements; no assertion of pixel parity at every possible viewport."
+  "evidenceHistory": "Earlier partial observations below are historical. Later follow-ups and sample-gate.json supersede their pending sample/bulk statements; no assertion of pixel parity at every possible viewport.",
+  "resendConfigurationFollowup": {
+    "date": "2026-10-04",
+    "ownerAuthorized": true,
+    "testRecipient": "t@doop.pt",
+    "from": "geral@mail.joaquimmota.pt",
+    "replyTo": "jrmota@kwportugal.pt",
+    "deliveredTestEmails": 1,
+    "newsletterTestContacts": 1,
+    "sourceSubmissions": 0,
+    "productionActivated": false
+  }
 }

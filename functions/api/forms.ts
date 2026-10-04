@@ -6,6 +6,7 @@ type Env = {
   RESEND_SEND_API_KEY?: string;
   RESEND_CONTACTS_API_KEY?: string;
   RESEND_FROM?: string;
+  RESEND_REPLY_TO?: string;
   FORMS_RECIPIENT?: string;
 };
 
@@ -122,7 +123,7 @@ function requiredConfig(env: Env, key: keyof Env) {
   return value;
 }
 
-function configuredEmail(env: Env, key: 'FORMS_RECIPIENT') {
+function configuredEmail(env: Env, key: 'FORMS_RECIPIENT' | 'RESEND_REPLY_TO') {
   const value = requiredConfig(env, key).trim().toLowerCase();
   if (!EMAIL.test(value)) throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
   return value;
@@ -192,7 +193,7 @@ export function createResendAdapter(fetcher: typeof fetch): FormAdapter {
       await resendRequest(fetcher, '/emails', requiredConfig(env, 'RESEND_SEND_API_KEY'), submission.idempotencyKey, {
         from: requiredConfig(env, 'RESEND_FROM'),
         to: [configuredEmail(env, 'FORMS_RECIPIENT')],
-        reply_to: email,
+        reply_to: env.RESEND_REPLY_TO ? configuredEmail(env, 'RESEND_REPLY_TO') : email,
         subject: `Novo contacto — ${submission.formType}`,
         html: leadEmailHtml(submission),
       });
