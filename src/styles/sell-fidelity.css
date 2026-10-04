@@ -8,3 +8,9 @@
 @media(max-width:991px){.seller-page>.site-header{height:72px}.seller-page>.site-header nav{display:none}.seller-page>.site-header .contact-link{display:none}.seller-page>.site-header .menu-toggle{display:grid;gap:5px;width:40px;padding:8px;margin-left:auto;border:0;background:none;color:#f4f4f4}.seller-page>.site-header .menu-toggle span,.seller-page>.site-header .menu-toggle:before,.seller-page>.site-header .menu-toggle:after{content:"";display:block;width:24px;height:2px;background:currentColor}.seller-page>.site-header.is-open nav{display:flex;position:absolute;top:72px;left:50%;width:200px;padding:16px 5vw 40px;transform:translateX(-50%);flex-direction:column;align-items:stretch;background:#fff;box-shadow:0 8px 20px #0002;color:#20457f;text-align:center}.seller-page>.site-header.is-open nav a{padding:16px 0;font:500 18px/27px Roboto,sans-serif}.seller-page>.site-header.is-open .nav-mobile-contact{display:block}}
 @media(max-width:767px){.site-header:has(+ .seller-page),.seller-page>.site-header{height:64px}.seller-page>.site-header.is-open nav{top:64px}.seller-page>.site-header .menu-toggle{width:24px;padding:0}}
 .seller-hero .seller-kicker{font-size:16px;font-weight:300;line-height:24px}
+
+/* Vender shares Home's current sold-property rail; this wrapper supplies only the fixed source background. */
+.seller-sold-results{margin-top:0;background-image:linear-gradient(rgba(22,43,78,.85),rgba(32,69,127,.85)),url('/assets/seller-results-bg.png');background-position:0 0,center;background-size:auto,cover;background-attachment:scroll,fixed;color:#fff}
+.seller-sold-results .sold-properties{padding-top:64px}
+.seller-results .seller-stats strong{color:#f4f4f4}
+@media(max-width:767px){.seller-sold-results .sold-properties{padding-top:5vw}}

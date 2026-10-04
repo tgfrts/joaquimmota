@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-04",
+  "scope": [
+    "/",
+    "/vender"
+  ],
+  "component": "src/components/SoldPropertiesSection.astro",
+  "vender": {
+    "soldSections": 1,
+    "legacySoldSections": 0,
+    "headingAlignment": "left",
+    "backgroundAttachment": "scroll, fixed",
+    "metrics": [
+      "96%",
+      "60 dias",
+      "85%"
+    ],
+    "metricColor": "rgb(244, 244, 244)"
+  },
+  "cmsSelection": {
+    "type": "property",
+    "listingStatus": "sold",
+    "order": "_updatedAt descending, _id ascending",
+    "limit": 5,
+    "hardcodedFallback": false
+  },
+  "browser": {
+    "desktop1280": {
+      "homeSectionHeight": 696,
+      "cardHeight": 480,
+      "cardsFitSection": true,
+      "municipalityOrder": -1
+    },
+    "mobile390": {
+      "cardHeight": 438.75,
+      "headingMarginBottom": 20,
+      "eyebrowMarginBottom": 12,
+      "cardsFitSection": true,
+      "headingAlignment": "left"
+    }
+  },
+  "validation": {
+    "astroCheck": "zero diagnostics",
+    "buildPages": 250,
+    "testsPassed": 127,
+    "testsFailed": 0,
+    "independentAudit": "PASS; final responsive and motion corrections verified"
+  },
+  "screenshots": [
+    "/private/tmp/jrmota-vender-sold-corrected.jpg",
+    "/private/tmp/jrmota-vender-metrics-corrected.jpg"
+  ],
+  "limitations": [
+    "CMS edits require snapshot refresh and rebuild; automatic publication trigger remains unconfigured."
+  ],
+  "providerMutations": false
+}
