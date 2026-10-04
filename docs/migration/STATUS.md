@@ -287,3 +287,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Cards Blog alinham espaçamento aos imóveis: padding interno 32px; grelha desktop 48px/32px, tablet 5vw/32px e mobile 45px/26px. Removida margem extra de 7px após a imagem.
 
 - Blog: excertos nos cards normais limitados a duas linhas apenas no desktop; no artigo em destaque, duas linhas em mobile e espaço disponível até ao padding no desktop.
+
+2026-10-04 — Blog desktop: ação Ler mais alinhada ao fundo de cada card, com o corpo a ocupar a altura disponível na grelha.

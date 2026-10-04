@@ -127,3 +127,10 @@ body:has(.blog-index) .site-header--light{width:90vw;height:72px;}
  [data-blog-index] .blog-index__featured-copy>a{align-self:flex-start}
 }
 @media(max-width:767px){.blog-index__card-excerpt{display:none}}
+
+@media(min-width:768px){
+ [data-blog-index] .blog-index__card{display:flex;flex-direction:column}
+ [data-blog-index] .blog-index__card-image{flex-shrink:0}
+ [data-blog-index] .blog-index__card-copy{flex:1}
+ [data-blog-index] .blog-index__read-more{margin-top:auto;padding-top:24px}
+}
