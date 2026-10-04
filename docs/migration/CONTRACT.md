@@ -38,3 +38,5 @@ Final Owner common-hero effect change2026-10-04: remove overlay on both video an
 Owner common hero width2026-10-04: text/actions container is66% of hero width, centered; actions may wrap to stay inside this container on narrow screens.
 
 Owner final media/width correction2026-10-04: image heroes retain the original blue overlay and its scroll fade; video has no overlay and keeps blur-only motion. The66% text/actions width applies only to desktop>=992px; tablet/mobile retain90vw. Media itself stays opacity1/no transform.
+
+Owner image overlay timing2026-10-04: fade the image overlay to0 by scroll progress0.35, exactly when the media blur reaches0. Video remains overlay-free.
