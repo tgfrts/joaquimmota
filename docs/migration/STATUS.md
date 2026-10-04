@@ -289,3 +289,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 - Blog: excertos nos cards normais limitados a duas linhas apenas no desktop; no artigo em destaque, duas linhas em mobile e espaço disponível até ao padding no desktop.
 
 2026-10-04 — Blog desktop: ação Ler mais alinhada ao fundo de cada card, com o corpo a ocupar a altura disponível na grelha.
+
+2026-10-04 — Correção Owner: excerto do último artigo limitado a três linhas no desktop e duas no mobile, mantendo Ler mais no fundo em desktop.
