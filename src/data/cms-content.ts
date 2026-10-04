@@ -27,3 +27,17 @@ export function selectRecentSoldProperties(records: CmsRecord[], limit = 5): Cms
     })
     .slice(0, limit);
 }
+
+/** Public-source eligible snapshot; target Sanity drafts remain available in migration preview. */
+export function selectAvailableProperties(records: CmsRecord[]): CmsRecord[] {
+  return records
+    .filter(record => record._type === 'property' && record.listingStatus === 'active')
+    .slice()
+    .sort((left, right) => String(right._updatedAt ?? '').localeCompare(String(left._updatedAt ?? ''))
+      || String(left._id ?? '').localeCompare(String(right._id ?? '')));
+}
+
+/** Featured listing follows the latest available edit, excluding reservations. */
+export function selectFeaturedProperty(records: CmsRecord[]): CmsRecord | undefined {
+  return selectAvailableProperties(records).find(record => record.marketBanner !== 'reserved');
+}

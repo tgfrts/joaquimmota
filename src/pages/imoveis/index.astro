@@ -9,19 +9,17 @@ import PropertyNewsletter from '../../components/PropertyNewsletter.astro';
 import BuySellGuide from '../../components/BuySellGuide.astro';
 import ClosingCta from '../../components/ClosingCta.astro';
 import WhatsAppWidget from '../../components/WhatsAppWidget.astro';
-import { availableProperties } from '../../data/available-properties';
+import { featuredProperty as featured } from '../../data/available-properties';
 import { formatPropertyPrice } from '../../lib/format-property-price';
 import '../../styles/buy-fidelity.css';
 import '../../styles/blog-index.css';
-// Preserve the public source's newest-first listing order, rather than import timestamps.
-const featured = availableProperties[0];
 ---
 <BaseLayout title="Imóveis" description="Descubra aqui a sua casa de sonho. Conheça os imóveis disponíveis de Joaquim Mota Consultores.">
   <Header variant="light" pageNavigation />
   <main class="blog-index property-directory">
     {featured && <section class="blog-index__featured" aria-labelledby="property-featured-title">
       <div class="blog-index__featured-card">
-        <div class="blog-index__featured-copy"><p class="blog-index__eyebrow">O nosso imóvel mais recente</p><h1 id="property-featured-title">{featured.title}</h1><div class="property-featured__summary"><p class="buy-property__price">{featured.priceOnRequest ? 'Preço sob consulta' : formatPropertyPrice(featured.price)}</p><p class="buy-property__place"><span>{featured.municipality}</span><span>{featured.parish}</span></p><p class="buy-property__reference">{featured.reference}</p></div><a href={`/imoveis/${featured.slug}`}>Conheça este imóvel</a><hr class="property-featured__divider" /><PropertyFacts beds={featured.beds} baths={featured.baths} parking={featured.parking} area={featured.area} /></div>
+        <div class="blog-index__featured-copy"><p class="property-featured__badge">Destaque</p><h1 id="property-featured-title">{featured.title}</h1><div class="property-featured__summary"><p class="buy-property__price">{featured.priceOnRequest ? 'Preço sob consulta' : formatPropertyPrice(featured.price)}</p><p class="buy-property__place"><span>{featured.municipality}</span><span>{featured.parish}</span></p><p class="buy-property__reference">{featured.reference}</p></div><a href={`/imoveis/${featured.slug}`}>Conheça este imóvel</a><hr class="property-featured__divider" /><PropertyFacts beds={featured.beds} baths={featured.baths} parking={featured.parking} area={featured.area} /></div>
         <div class="blog-index__featured-image">{featured.cms?.featuredImage ? <CmsImage value={featured.cms.featuredImage} alt="" loading="eager" /> : <img src={featured.image} alt="" />}</div>
       </div>
     </section>}
@@ -35,6 +33,7 @@ const featured = availableProperties[0];
 </BaseLayout>
 <style>
   .property-directory .blog-index__featured h1{font-size:40px;line-height:48px;letter-spacing:-.8px}
+  .property-featured__badge{display:inline-block;margin:0 0 16px;padding:8px 16px;background:#db1430;color:#fff;font:500 16px/24px Roboto,sans-serif}
   .property-featured__summary{margin-top:24px}
   .property-featured__summary .buy-property__place{flex-wrap:wrap;row-gap:8px}
   .property-featured__divider{height:1px;border:0;background:#ddd;margin:32px 0}

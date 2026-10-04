@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {JSDOM} from 'jsdom';
+import {selectFeaturedProperty} from '../../src/data/cms-content.ts';
 const root=new URL('../../',import.meta.url);
 const documentFor=route=>new JSDOM(fs.readFileSync(new URL(`dist/${route}.html`,root),'utf8')).window.document;
 test('top navigation hides the current page, keeps testimonials everywhere and preserves lower navigation',()=>{
@@ -18,7 +19,9 @@ test('property directory retains every available card and uses the featured prop
  const cards=d=>Array.from(d.querySelectorAll('.buy-property'),a=>({href:a.getAttribute('href'),text:a.textContent}));
  assert.equal(cards(directory).length,9);assert.deepEqual(cards(directory),cards(buy));
  assert.equal(buy.querySelector('.buy-properties__more').getAttribute('href'),'/imoveis');
- assert.equal(directory.querySelector('.blog-index__featured-copy a').getAttribute('href'),cards(directory)[0].href);
+ const content=JSON.parse(fs.readFileSync(new URL('src/data/sample-content.json',root),'utf8'));const featured=selectFeaturedProperty(Array.isArray(content)?content:content.documents);
+ assert.equal(directory.querySelector('.blog-index__featured-copy a').getAttribute('href'),`/imoveis/${featured.slug.current}`);
+ assert.equal(directory.querySelector('.property-featured__badge').textContent,'Destaque');
  assert.equal(directory.querySelector('#blog-subscribe-title').textContent,'Não perca nenhuma novidade!');
  assert.equal(directory.querySelector('.buy-guide').textContent,buy.querySelector('.buy-guide').textContent);
  assert.ok(directory.querySelector('form[data-blog-newsletter]'));assert.ok(directory.querySelector('footer'));
