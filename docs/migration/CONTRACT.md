@@ -48,3 +48,5 @@ Owner hero scroll alignment2026-10-04: mobile and desktop use native vertical pr
 Owner snap correction2026-10-04: restrict hero proximity snap to mobile<=767px. Desktop/tablet use normal page scrolling; menu/reduced-motion opt-outs remain.
 
 Owner final snap removal2026-10-04: remove hero snapping entirely, including mobile. Restore unrestricted native page scrolling and original hero overflow clipping. This supersedes both prior snap directives; media blur/fade/overlay behavior stays unchanged.
+
+Owner Home mobile media2026-10-04: Home only replaces video with Vender's /assets/reviews-hero.png at<=767px, with the shared image overlay/fade/blur. Desktop/tablet retain video without overlay. Other hero consumers remain unchanged. Do not attach/download Home video source on initial mobile rendering; pause/unload when resizing to mobile and resume on returning to desktop.

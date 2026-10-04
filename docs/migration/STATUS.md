@@ -183,3 +183,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — correção Owner: snap limitado a mobile<=767px; removido de desktop/tablet. Build250 passou, preview atualizado. Sem alteração aos efeitos/media ou aos opt-outs menu/reduced-motion.
 
 2026-10-04 — Owner rejeitou também o snap mobile: removidas todas as regras de snap do InteriorHero, restaurado overflow hidden original. Scroll livre em todos os dispositivos; carrosséis e efeitos hero preservados. Build250 e diff-check passaram; preview atualizado.
+
+2026-10-04 — Home apenas:mobile<=767px mostra imagem de Vender com overlay/fade/blur; desktop/tablet mantém vídeo semoverlay. Prop mobileImage isolada à Home; helper não atribui src nem chama load/play no mobile inicial, descarrega fonte ao resize mobile e retoma no desktop. Check108 sem diagnósticos,build250,6 testes scripts, validação HTML gerado das4 rotas e auditoria independente passaram. Outros heroes permanecem iguais, semsnap; preview atualizado. Gesto/render visual iPhone ainda não confirmado nesta ligação.
