@@ -203,3 +203,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Classe comum section-heading reposta azul#20457f por instrução Owner, sem mudar tipografia; build249 passou. HTML gerado confirma3ações mobile depois dos respetivos VideoLightbox e mesmoscopy/href das açõesdesktop. Servidores8789/8791 emescuta; renderbrowser não confirmado.
 
 2026-10-04 — Top navbar comum inclui Início mobile-only href/ acima de Vender. Desktop preservado. Build249 e HTML gerado Home/Vender/Comprar/Sobre/Blog confirmam ordem/classe/href;diffchecklimpo.
+
+2026-10-04 — Comprar apenas: botão vermelho Vamos começar após06.Hora de festejar, href/vamos-comecar, visível sómobile<=767px. Owner retirou pedido para Vender; ficheiroVender inalterado. Build249 e HTML gerado confirmam posição/destino/umaocorrência;diffchecklimpo.

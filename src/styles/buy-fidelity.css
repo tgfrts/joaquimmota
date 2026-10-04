@@ -53,3 +53,6 @@ body:has(.buy-hero){overflow-x:hidden}.buy-hero__heading{padding:128px 5vw 64px;
 @media(max-width:991px){.buy-page .home-process{padding-block:96px}}
 @media(max-width:767px){.buy-page .home-process{padding-block:64px}}
 @media(max-width:767px){.buy-properties{background:linear-gradient(45deg,#20457f,#162b4e)}}
+
+.buy-page .home-process__steps .buy-process__mobile-action{display:none}
+@media(max-width:767px){.buy-page .home-process__steps .buy-process__mobile-action{display:inline-flex;align-items:center;justify-content:center;justify-self:start;min-height:50px;margin-top:0;padding:12px 24px;border:1px solid #db1430;background:#db1430;color:#f4f4f4;text-decoration:none;box-shadow:4px 4px 20px #0004;font:500 16px/24px Roboto,sans-serif}}
