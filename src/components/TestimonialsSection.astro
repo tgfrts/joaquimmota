@@ -1,0 +1,44 @@
+---
+import CmsImage from './CmsImage.astro';
+import '../styles/section-type.css';
+
+interface Props {
+  items: Array<{ clientName: string; quote: string; portrait?: any }>;
+  id?: string;
+}
+const { items, id = 'testemunhos' } = Astro.props;
+---
+<section class="testimonials-section" id={id}>
+  <header class="testimonials-section__header">
+    <div>
+      <p class="section-eyebrow">O que dizem os nossos clientes</p>
+      <h2 class="section-heading">Os nossos clientes são os nossos maiores fãs.</h2>
+    </div>
+  </header>
+  <div class="testimonials-section__grid">
+    {items.map(item => <figure class="testimonials-section__card">
+      <div class="testimonials-section__stars" aria-label="5 estrelas">{Array.from({ length: 5 }, () => <img src="/assets/prelisting-star.svg" alt="" loading="lazy" />)}</div>
+      <blockquote>{item.quote}</blockquote>
+      <figcaption>{item.portrait && <CmsImage value={item.portrait} alt="" class="testimonials-section__portrait" loading="lazy" />}<span>{item.clientName}</span></figcaption>
+    </figure>)}
+  </div>
+</section>
+<script>
+  import { bindTestimonialMotion } from '../scripts/source-scroll-motion';
+  document.querySelectorAll<HTMLElement>('.testimonials-section__card').forEach(bindTestimonialMotion);
+</script>
+<style>
+  .testimonials-section{padding:64px 0 0;background:var(--paper);color:#161616}
+  .testimonials-section__header,.testimonials-section__grid{width:90vw;margin-inline:auto}
+  .testimonials-section__header{margin-bottom:64px}
+  .testimonials-section__header h2{margin:0;max-width:none}
+  .testimonials-section__grid{column-count:3;column-gap:32px}
+  .testimonials-section__card{display:inline-block;vertical-align:top;width:100%;margin:0 0 32px;padding:32px;background:#fff;box-shadow:4px 4px 20px #0004;break-inside:avoid}
+  .testimonials-section__stars{display:flex;gap:4px;height:20px;margin-bottom:24px}
+  .testimonials-section__stars img{display:block;width:20px;height:20px}
+  .testimonials-section__card blockquote{margin:0 0 24px;padding:0;border:0;font:300 18px/27px Roboto,sans-serif}
+  .testimonials-section__card figcaption{display:flex;align-items:center;gap:16px;min-height:24px;font:600 16px/24px Roboto,sans-serif}
+  .testimonials-section__card :global(.testimonials-section__portrait){display:block;flex:none;width:48px;height:48px;border-radius:50%;object-fit:cover}
+  @media(max-width:991px){.testimonials-section{padding:5vw 0}.testimonials-section__header{gap:48px}.testimonials-section__grid{column-count:2}}
+  @media(max-width:767px){.testimonials-section__header{grid-template-columns:1fr;gap:0;margin-bottom:32px}.testimonials-section__grid{column-count:1}.testimonials-section__card{padding:24px}.testimonials-section__stars{margin-bottom:20px}.testimonials-section__card blockquote{margin-bottom:20px;font-size:16px;line-height:24px}.testimonials-section__card figcaption{min-height:40px}}
+</style>

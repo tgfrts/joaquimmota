@@ -81,13 +81,15 @@ test('allows only eligibility-gated CMS property and article routes', async () =
   assert.deepEqual(adapter.calls[1][1].fields, { email: 'visitor@example.test', firstName: 'Ana', lastName: 'Silva' });
 });
 
-test('rejects removed offer routes before invoking an adapter', async () => {
+test('rejects removed offer and reviews routes before invoking an adapter', async () => {
   const adapter = mockAdapter();
   const handler = createFormHandler(adapter);
   const removedOffer = { ...leadPayload, formType: 'leadMagnet', route: '/ofertas/vinho-e-fado' };
   const removedCampaign = { ...leadPayload, formType: 'leadMagnet', route: '/lp/oferta-selecao' };
+  const removedReviews = { formType: 'newsletter', route: '/reviews', fields: { email: 'visitor@example.test' } };
   assert.equal((await handler({ request: request(removedOffer), env: formEnv() })).status, 403);
   assert.equal((await handler({ request: request(removedCampaign), env: formEnv() })).status, 403);
+  assert.equal((await handler({ request: request(removedReviews), env: formEnv() })).status, 403);
   assert.equal(adapter.calls.length, 0);
 });
 

@@ -3,9 +3,10 @@
 interface Props { contactHref?: string; desktopContactHref?: string; variant?: 'light' | 'blue'; pageNavigation?: boolean; contactLabel?: string; desktopContactLabel?: string; showBlog?: boolean; }
 const { contactHref = '/contacto', desktopContactHref = contactHref, variant = 'light', pageNavigation = false, contactLabel = 'Contacte-nos', desktopContactLabel = contactLabel, showBlog = true } = Astro.props;
 const homeLinks = [
-  { href: '/vender', label: 'Vender' },
+  { href: '/vender', label: 'Vender', mobileOnly: true },
+  { href: '/comprar', label: 'Comprar', mobileOnly: true },
   { href: '/comprar#imoveis', label: 'Imóveis' },
-  { href: '/reviews', label: 'O que dizem os nossos clientes' },
+  { href: '/#testemunhos', label: 'O que dizem os nossos clientes' },
   { href: '/blog', label: 'Blog' },
   { href: '/sobre', label: 'Sobre nós' },
 ];
@@ -16,7 +17,7 @@ const pageLinks = [
   { href: '/sobre', label: 'Sobre nós' },
   { href: '/blog', label: 'Blog' },
 ];
-const links = (pageNavigation ? pageLinks : homeLinks).filter(link => showBlog || link.href !== '/blog');
+const links = (variant === 'light' || !pageNavigation ? homeLinks : pageLinks).filter(link => showBlog || link.href !== '/blog');
 const navigationId = `site-navigation-${crypto.randomUUID()}`;
 ---
 
@@ -24,7 +25,7 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
   <a class="brand" href="/" aria-label="Joaquim Mota Consultores"><img src={variant === 'light' ? '/assets/logo-color.svg' : '/assets/logo-white.svg'} alt="" /></a>
   <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls={navigationId}><span></span></button>
   <nav id={navigationId} aria-label="Navegação principal">
-    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    {links.map((link) => <a class:list={{'nav-desktop-only': link.href === '/#testemunhos', 'nav-mobile-only': 'mobileOnly' in link && link.mobileOnly}} href={link.href}>{link.label}</a>)}
     <a class="nav-mobile-contact" href={contactHref}>{contactLabel}</a>
   </nav>
   <a class:list={['button', 'contact-link', 'button--dark']} href={desktopContactHref}>{desktopContactLabel}</a>
@@ -58,6 +59,7 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
 </script>
 
 <style is:global>
+  .site-header nav .nav-mobile-only{display:none}
   .nav-mobile-contact { display:none; }
   .interior-secondary-header { position:sticky; top:0; z-index:10; background:linear-gradient(45deg,#20457f,#162b4e); box-shadow:6px 0 20px rgba(0,0,0,.25); }
   /* Owner-approved reduction applies to every navbar variant, including mobile. */
@@ -103,6 +105,8 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
   }
   .site-header--blue nav a[href="/"] { color: #9195ba; }
   @media (max-width: 991px) {
+    :is(.site-header--light,.site-header--blue) nav .nav-desktop-only{display:none}
+    :is(.site-header--light,.site-header--blue) nav .nav-mobile-only{display:block}
     :is(.site-header--light, .site-header--blue) { height:72px; border:0; }
     :is(.site-header--light, .site-header--blue) .brand img { width:51.164px; height:50px; }
     :is(.site-header--light, .site-header--blue) .menu-toggle { display:grid; gap:5px; width:40px; padding:8px; border:0; background:none; margin-left:auto; }
@@ -142,9 +146,9 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
     .interior-hero:has([data-header].is-open){z-index:100;overflow:visible}
     .home-secondary-header:has([data-header].is-open),.interior-secondary-header:has([data-header].is-open){z-index:100}
     [data-header].site-header.is-open{z-index:100}
-    [data-header].site-header.is-open nav{position:fixed!important;inset:0!important;transform:none!important;width:100vw!important;height:100dvh!important;max-height:100dvh;margin:0!important;padding:80px 5vw!important;display:flex!important;flex-direction:column;align-items:center!important;justify-content:center;gap:0;background:#f4f4f4!important;color:#20457f!important;overflow-y:auto;box-shadow:none!important;z-index:100}
-    [data-header].site-header.is-open nav a{padding:12px 0!important;text-align:center;font:500 18px/27px Roboto,sans-serif!important}
-    [data-header].site-header.is-open .menu-toggle{position:fixed;top:20px;right:5vw;width:24px;height:24px;margin:0;padding:0;color:#20457f!important;z-index:101;display:block}
+    [data-header].site-header.is-open nav{position:fixed!important;inset:0!important;transform:none!important;width:100vw!important;height:100dvh!important;max-height:100dvh;margin:0!important;padding:80px 5vw!important;display:flex!important;flex-direction:column;align-items:center!important;justify-content:center;gap:0;background:linear-gradient(45deg,#20457f,#162b4e)!important;color:#f4f4f4!important;overflow-y:auto;box-shadow:none!important;z-index:100}
+    [data-header].site-header.is-open nav a{color:#f4f4f4!important;padding:12px 0!important;text-align:center;font:500 18px/27px Roboto,sans-serif!important}
+    [data-header].site-header.is-open .menu-toggle{position:fixed;top:20px;right:5vw;width:24px;height:24px;margin:0;padding:0;color:#f4f4f4!important;z-index:101;display:block}
     [data-header].site-header.is-open .menu-toggle span{display:none!important}
     [data-header].site-header.is-open .menu-toggle:before,[data-header].site-header.is-open .menu-toggle:after{position:absolute;top:11px;left:0;width:24px;height:2px;background:currentColor;transform:rotate(45deg)}
     [data-header].site-header.is-open .menu-toggle:after{transform:rotate(-45deg)}

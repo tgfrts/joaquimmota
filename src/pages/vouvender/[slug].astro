@@ -1,5 +1,5 @@
 ---
-import ReviewsButton from '../../components/ReviewsButton.astro';
+import TestimonialsSection from '../../components/TestimonialsSection.astro';
 import CmsImage from '../../components/CmsImage.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer.astro';
@@ -63,14 +63,14 @@ const testimonials: any[] = orderedTestimonials.map(entry => {
     <section class="prelisting-sold"><div class="prelisting-sold__heading"><p>Os meus resultados</p><h2>Últimos imóveis vendidos</h2></div><div class="prelisting-sold__rail">{[...sold, ...sold].map((property, index) => <article aria-hidden={index >= sold.length ? 'true' : undefined}><div>{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" /> : <img src={property.image} alt="" />}<span class="prelisting-sold__shade"></span><img class="prelisting-sold__banner" src="/assets/prelisting-sold-banner.webp" alt="" /><div class="prelisting-sold__copy"><h4>{property.title}</h4><span class="prelisting-sold__divider"></span><div class="prelisting-sold__locations">{property.parish && <h6 class:list={['prelisting-sold__municipality', {'prelisting-sold__municipality--mobile-hidden': index % sold.length >= 2, 'prelisting-sold__municipality--clone-hidden': index >= sold.length && index % sold.length >= 2}]}>{property.parish}</h6>}<h6 class="prelisting-sold__parish">{property.city}</h6></div></div></div></article>)}</div></section>
     <section class="prelisting-section prelisting-section--process"><p class="prelisting-kicker">O processo</p><h2>Simples, claro e orientado para um objetivo: vender bem o seu imóvel.</h2><ol>{process.map(([title, copy], index) => <li><span class="prelisting-process__icon"><img src={`/assets/prelisting-process-${index + 1}.svg`} alt="" /></span><div><h4>{title}</h4><p>{copy}</p></div></li>)}</ol></section>
     <section class="prelisting-stats"><p class="prelisting-stats__kicker">Os nossos resultados</p><h2>Vendemos a sua casa com sucesso.</h2><div><p>+ Valor<strong>96%</strong><span>Valor Inicial de Oferta</span></p><p>+ Rápido<strong>60 dias</strong><span>Tempo médio de venda</span></p><p>+ Tranquilidade<strong>85%</strong><span>Angariações Vendidas</span></p></div></section>
-    <section class="prelisting-testimonials" id="testemunhos"><header><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2><ReviewsButton href="/reviews">Leia as nossas avaliações</ReviewsButton></header><div>{testimonials.map(testimonial => <figure><div class="prelisting-stars" aria-label="5 estrelas">{Array.from({length:5},()=> <img src="/assets/prelisting-star.svg" alt="" />)}</div><blockquote>{testimonial.quote}</blockquote><figcaption><span class="prelisting-testimonial__avatar">{testimonial.portrait ? <CmsImage value={testimonial.portrait} alt="" /> : testimonial.portraitURL && <img src={testimonial.legacyId === '64d73faf12672d652ab57849' ? '/assets/testimonial-ivo.webp' : testimonial.portraitURL} alt="" />}</span><span>{testimonial.clientName}</span></figcaption></figure>)}</div></section>
+    <TestimonialsSection items={testimonials.map(item => ({clientName:item.clientName,quote:item.quote,portrait:item.portrait ?? (item.portraitURL ? item.legacyId === "64d73faf12672d652ab57849" ? "/assets/testimonial-ivo.webp" : item.portraitURL : undefined)}))} />
     <section class="prelisting-contact"><div class="prelisting-contact__card" data-source-cta><div><p class="prelisting-contact__kicker">Próximo passo</p><div class="prelisting-contact__title"><h2>{record.clientName}</h2><h2>estou aqui para si.</h2></div><p>Sem compromisso. Sem pressão.</p></div><div class="prelisting-contact__portrait"><img src="/assets/prelisting-profile.png" alt="" /></div></div></section>
   </main>
   <Footer newsletter={false} facebookHref="https://www.facebook.com/joaquimmotakw" />
 </BaseLayout>
 
 <script>
-  import { bindSourceScrollMotion, bindTestimonialMotion, interpolate } from '../../scripts/source-scroll-motion';
+  import { bindSourceScrollMotion, interpolate } from '../../scripts/source-scroll-motion';
   const soldRail = document.querySelector('.prelisting-sold__rail');
   if (soldRail) {
     const observer = new IntersectionObserver(entries => {
@@ -87,5 +87,4 @@ const testimonials: any[] = orderedTestimonials.map(entry => {
       element.style.transform = reduced ? 'none' : `scale(${interpolate(progress, [[0,1.25],[.35,1]])})`;
     });
   });
-  document.querySelectorAll<HTMLElement>('.prelisting-testimonials figure').forEach(bindTestimonialMotion);
 </script>

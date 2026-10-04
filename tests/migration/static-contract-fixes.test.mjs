@@ -125,12 +125,11 @@ test('all owned shared form handlers short-circuit while the active submit butto
 test('source-present anchors are restored only on their audited pages', async () => {
   const flyer = await read('src/pages/lp-flyer-uma-venda-com-sucesso.astro');
   assert.match(flyer, /<footer class="seller-campaign__footer"[\s\S]*?href="https:\/\/www\.kwportugal\.pt\/politica-de-privacidade" target="_blank" rel="noopener noreferrer"/);
-  // Verify the emitted anchor, including attributes provided by the shared button.
+  // Owner removed the dedicated reviews page and testimonial action button.
   const marketing = new JSDOM(await read('dist/marketing.html'));
-  const reviews = marketing.window.document.querySelector('a[href="https://www.facebook.com/PauloSoaresRealEstateTeam/reviews"]');
-  assert.ok(reviews, 'Marketing keeps its source Facebook reviews destination');
-  assert.equal(reviews.target, '_blank');
-  assert.ok(reviews.relList.contains('noopener'));
-  assert.ok(reviews.relList.contains('noreferrer'));
+  assert.equal(marketing.window.document.querySelector('a[href="/reviews"]'), null);
+  assert.ok(marketing.window.document.querySelector('a[href="#testemunhos"]'));
+  assert.ok(marketing.window.document.getElementById('testemunhos'));
+  assert.equal([...marketing.window.document.querySelectorAll('a')].some(link => link.textContent.includes('Leia as nossas avaliações')), false);
   marketing.window.close();
 });

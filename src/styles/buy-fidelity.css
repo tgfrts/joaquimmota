@@ -11,7 +11,7 @@ body:has(.buy-hero){overflow-x:hidden}.buy-hero__heading{padding:128px 5vw 64px;
 
 /* Public card images retain their individual source aspect ratio. */
 .buy-properties>.shell,.buy-guide>.shell,.buy-testimonials>.shell,.buy-closing>.shell{width:90vw;max-width:1152px}.buy-property__image{aspect-ratio:auto}.buy-property__image img{height:auto;object-fit:initial}@media(max-width:767px){.buy-properties__grid{gap:45px 26px}}
-.buy-properties{background:linear-gradient(#162b4ed9,#20457fd9),url('/assets/seller-results-bg.png') center/cover fixed;color:#fff}.buy-properties h2{color:#f4f4f4}.buy-property{border-radius:5px;overflow:hidden;box-shadow:0 3px 20px #080f340f}
+.buy-properties{background:linear-gradient(#162b4ed9,#20457fd9),url('/assets/seller-results-bg.png') center/cover fixed;color:#fff}.buy-properties h2{color:#f4f4f4}.buy-property{border-radius:0;overflow:hidden;box-shadow:0 3px 20px #080f340f}
 .buy-guide__card{background-image:url('/assets/buy-guide-cta.webp'),linear-gradient(45deg,#7b001d,#db1430);background-position:100%,0 0;background-repeat:no-repeat,repeat;background-size:cover,auto}
 .buy-guide__card,.buy-closing__card{min-height:0}
 .buy-closing__portrait{justify-self:end;width:115px;margin:-5vw}

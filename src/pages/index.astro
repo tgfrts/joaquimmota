@@ -1,11 +1,12 @@
 ---
-import ReviewsButton from '../components/ReviewsButton.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
 import WhatsAppWidget from '../components/WhatsAppWidget.astro';
 import InteriorHero from '../components/InteriorHero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/home-fidelity.css';
+import '../styles/section-type.css';
 import content from '../data/sample-content.json';
 import homeSource from '../data/home-process-source.json';
 import SoldPropertiesSection from '../components/SoldPropertiesSection.astro';
@@ -40,12 +41,12 @@ const testimonials = testimonialFallback.map(([legacyId, quote, clientName]) => 
     <InteriorHero eyebrow="JOAQUIM MOTA CONSULTORES" heading="Uma experiência imobiliária bem sucedida" body="Quer esteja a pensar vender ou comprar, estamos aqui para lhe guiar numa experiência bem sucedida." video="/assets/hero.mp4" poster="/assets/hero-poster.jpg" mobileImage="/assets/reviews-hero.png" label="Vou vender" href="/vender" secondaryLabel="Vou comprar" secondaryHref="/comprar" />
 
     <div class="home-secondary-header"><Header variant="blue" pageNavigation contactHref="/vamos-comecar" contactLabel="Vamos começar" showBlog={false} /></div>
-    <section class="home-process shell"><div class="home-process__intro"><p class="eyebrow">Como o fazemos</p><h2>Espere mais do seu consultor</h2><p>Sabemos que vender e comprar uma casa pode ser complicado.<br />Estamos aqui para tornar esse processo o mais simples possível para si.</p></div><div class="home-process__steps">{homeSteps.map(step => <article data-source-id={step!.legacyId}><h3>{step!.title}</h3><p>{step!.body}</p></article>)}</div></section>
+    <section class="home-process shell"><div class="home-process__intro"><p class="section-eyebrow">Como o fazemos</p><h2 class="section-heading">Espere mais do seu consultor</h2><p>Sabemos que vender e comprar uma casa pode ser complicado.<br />Estamos aqui para tornar esse processo o mais simples possível para si.</p></div><div class="home-process__steps">{homeSteps.map(step => <article data-source-id={step!.legacyId}><h3>{step!.title}</h3><p>{step!.body}</p></article>)}</div></section>
     <div class="home-results-background">
     <section class="results"><div class="shell section-grid"><div><p class="eyebrow">OS NOSSOS RESULTADOS</p><h2>Comercializamos a sua casa com excelência.</h2></div><div><p>A nossa estratégia de marketing é dinamicamente construída para obter os resultados que procura.<br />A nossa abordagem abrangente inclui anúncios direcionados no Facebook, email marketing, marketing de conteúdos e fotografias e videos profissionais. Criamos ainda uma página exclusiva no nosso site para a sua casa.</p></div></div><dl class="metrics shell"><div><dt>85%</dt><dd>Angariações vendidas</dd></div><div><dt>60 dias</dt><dd>Tempo médio de venda</dd></div><div><dt>-4%</dt><dd>Taxa média de desconto</dd></div></dl></section>
     <SoldPropertiesSection />
     </div>
-    <section class="testimonials"><div class="shell testimonial-heading"><div><p class="eyebrow">O QUE DIZEM OS NOSSOS CLIENTES</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><ReviewsButton href="/reviews">Leia as nossas avaliações</ReviewsButton></div><div class="testimonial-rail shell">{testimonials.map((testimonial) => <article class="testimonial-card"><div aria-label="5 estrelas" class="stars">{Array.from({ length: 5 }, () => <img src="/assets/prelisting-star.svg" alt="" loading="lazy" />)}</div><blockquote>{testimonial.quote}</blockquote><figcaption>{testimonial.clientName}</figcaption></article>)}</div></section>
+    <TestimonialsSection items={testimonials.map(item => ({clientName:String(item.clientName),quote:String(item.quote)}))} />
     <ClosingCta heading="Ainda à procura de uma solução para a sua casa?" body="Tenha uma equipa de sucesso ao seu lado." href="/vamos-comecar" />
   </main>
   <Footer /><WhatsAppWidget />

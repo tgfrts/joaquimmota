@@ -246,5 +246,3 @@
 .home-page .sold > .eyebrow { letter-spacing:0; }
 @media(max-width:991px) { .home-page .home-results-background { margin-top:-5vw; } }
 @media(max-width:767px){.home-page .home-results-background{background:linear-gradient(45deg,#20457f,#162b4e)}}
-.home-page .home-process__intro .eyebrow,.home-page .testimonial-heading .eyebrow{color:#20457f}
-.home-page .home-process__intro h2,.home-page .testimonial-heading h2{color:#db1430}

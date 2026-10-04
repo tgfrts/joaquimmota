@@ -8,6 +8,7 @@ export const OWNER_EXCLUDED_SOURCE_ROUTES = Object.freeze([
   '/doop/relatorios-de-visita',
   '/lp/oferta-selecao',
   '/ofertas/vinho-e-fado',
+  '/reviews',
 ]);
 
 function routePathFromHtml(filepath, root) {

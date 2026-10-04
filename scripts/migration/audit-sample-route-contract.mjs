@@ -13,7 +13,6 @@ const ROUTES = [
   { kind: 'preListing', slug: 'te-t2-gulpilhares-20260916-39528', path: '/vouvender/te-t2-gulpilhares-20260916-39528' },
   { kind: 'preListing', slug: 'sc-t4-arcozelo-20260416', path: '/vouvender/sc-t4-arcozelo-20260416' },
   { kind: 'consumer', slug: 'comprar', path: '/comprar' },
-  { kind: 'consumer', slug: 'reviews', path: '/reviews' },
 ];
 const SEO_NAMES = ['description', 'robots', 'author', 'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image'];
 const SEO_PROPERTIES = ['og:title', 'og:description', 'og:type', 'og:url', 'og:image', 'og:site_name'];

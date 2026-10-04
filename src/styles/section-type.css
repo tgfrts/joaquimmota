@@ -1,0 +1,20 @@
+/* Shared type roles for the Home and Vender editorial sections. */
+:is(.home-page,.seller-page,.buy-page,.testimonials-section) .section-eyebrow{
+  margin:0 0 16px;
+  color:#20457f;
+  font:400 16px/24px Roboto,sans-serif;
+  letter-spacing:0;
+  text-transform:uppercase;
+}
+:is(.home-page,.seller-page,.buy-page,.testimonials-section) h2.section-heading{
+  color:#db1430;
+  font:500 40px/48px Roboto,sans-serif;
+  letter-spacing:-.8px;
+}
+@media(min-width:768px) and (max-width:991px){
+  :is(.home-page,.seller-page,.buy-page,.testimonials-section) h2.section-heading{font-size:44px;line-height:52.8px}
+}
+@media(max-width:767px){
+  :is(.home-page,.seller-page,.buy-page,.testimonials-section) .section-eyebrow{margin-bottom:12px}
+  :is(.home-page,.seller-page,.buy-page,.testimonials-section) h2.section-heading{font-size:36px;line-height:43.2px;letter-spacing:-.72px}
+}
