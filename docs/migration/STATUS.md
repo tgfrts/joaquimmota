@@ -201,3 +201,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — TestimonialsSection comum: shuffle por carregamento,6desktop/3mobile, botão azul Ver mais para revelar próximos6/3 sem novo shuffle; itens/copy/CMS preservados. SoldPropertiesSection sobre-heading UMA VENDA COM SUCESSO. Vender3CTAs apósvídeo sómobile<=767px, desktop/tablet posiçãooriginal; ações duplicadas mutuamenteexclusivas porCSS. Check110 sem diagnósticos, build249, suite135/135 e auditoria independentePASS. Sem confirmação visual de browser nesta ligação; preview local atualizado.
 
 2026-10-04 — Classe comum section-heading reposta azul#20457f por instrução Owner, sem mudar tipografia; build249 passou. HTML gerado confirma3ações mobile depois dos respetivos VideoLightbox e mesmoscopy/href das açõesdesktop. Servidores8789/8791 emescuta; renderbrowser não confirmado.
+
+2026-10-04 — Top navbar comum inclui Início mobile-only href/ acima de Vender. Desktop preservado. Build249 e HTML gerado Home/Vender/Comprar/Sobre/Blog confirmam ordem/classe/href;diffchecklimpo.

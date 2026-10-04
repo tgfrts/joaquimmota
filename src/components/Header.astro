@@ -3,6 +3,7 @@
 interface Props { contactHref?: string; desktopContactHref?: string; variant?: 'light' | 'blue'; pageNavigation?: boolean; contactLabel?: string; desktopContactLabel?: string; showBlog?: boolean; }
 const { contactHref = '/contacto', desktopContactHref = contactHref, variant = 'light', pageNavigation = false, contactLabel = 'Contacte-nos', desktopContactLabel = contactLabel, showBlog = true } = Astro.props;
 const homeLinks = [
+  { href: '/', label: 'Início', mobileOnly: true },
   { href: '/vender', label: 'Vender', mobileOnly: true },
   { href: '/comprar', label: 'Comprar', mobileOnly: true },
   { href: '/comprar#imoveis', label: 'Imóveis' },
