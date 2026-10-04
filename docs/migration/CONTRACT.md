@@ -40,3 +40,5 @@ Owner common hero width2026-10-04: text/actions container is66% of hero width, c
 Owner final media/width correction2026-10-04: image heroes retain the original blue overlay and its scroll fade; video has no overlay and keeps blur-only motion. The66% text/actions width applies only to desktop>=992px; tablet/mobile retain90vw. Media itself stays opacity1/no transform.
 
 Owner image overlay timing2026-10-04: fade the image overlay to0 by scroll progress0.35, exactly when the media blur reaches0. Video remains overlay-free.
+
+Owner image fade-in timing2026-10-04: image opacity goes0→1 over progress0→0.35, synchronized with blur500→0 and overlay1→0. It remains fully visible afterwards; reduced motion shows it immediately. Video opacity stays1.
