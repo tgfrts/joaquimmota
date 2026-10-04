@@ -36,3 +36,5 @@ Final Owner Home correction2026-10-04 supersedes the full-viewport video backgro
 Final Owner common-hero effect change2026-10-04: remove overlay on both video and image media in InteriorHero. Keep only blur; opacity stays1 and no animated scale/translation. Applies to Home/Vender/Comprar/Sobre and overrides the prior shared overlay/motion contract.
 
 Owner common hero width2026-10-04: text/actions container is66% of hero width, centered; actions may wrap to stay inside this container on narrow screens.
+
+Owner final media/width correction2026-10-04: image heroes retain the original blue overlay and its scroll fade; video has no overlay and keeps blur-only motion. The66% text/actions width applies only to desktop>=992px; tablet/mobile retain90vw. Media itself stays opacity1/no transform.
