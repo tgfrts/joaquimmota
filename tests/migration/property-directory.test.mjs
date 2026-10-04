@@ -5,11 +5,11 @@ import {JSDOM} from 'jsdom';
 import {selectFeaturedProperty} from '../../src/data/cms-content.ts';
 const root=new URL('../../',import.meta.url);
 const documentFor=route=>new JSDOM(fs.readFileSync(new URL(`dist/${route}.html`,root),'utf8')).window.document;
-test('top navigation hides the current page, keeps testimonials everywhere and preserves lower navigation',()=>{
+test('top navigation hides the current page, keeps testimonials desktop only and preserves lower navigation',()=>{
  for(const route of ['index','blog','vender','comprar','sobre','imoveis']){
   const d=documentFor(route);const nav=d.querySelector('.site-header--light nav');const current=route==='index'?'/':`/${route}`;
   assert.equal(nav.querySelector(`a[href="${current}"]`),null);
-  const customer=nav.querySelector('a[href="/#testemunhos"]');assert.ok(customer);assert.equal(customer.classList.contains('nav-desktop-only'),false);
+  const customer=nav.querySelector('a[href="/#testemunhos"]');assert.ok(customer);assert.equal(customer.classList.contains('nav-desktop-only'),true);
   if(route!=='index'){assert.equal(nav.querySelector('a').textContent,'Início');assert.equal(nav.querySelector('a').classList.contains('nav-mobile-only'),false);}
  }
  const lower=documentFor('comprar').querySelector('.site-header--blue nav');assert.deepEqual(Array.from(lower.children,x=>x.textContent),['Início','Vender','Comprar','Sobre nós','Vamos começar']);

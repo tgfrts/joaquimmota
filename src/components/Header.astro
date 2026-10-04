@@ -29,7 +29,7 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
   <a class="brand" href="/" aria-label="Joaquim Mota Consultores"><img src={variant === 'light' ? '/assets/logo-color.svg' : '/assets/logo-white.svg'} alt="" /></a>
   <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls={navigationId}><SiteIcon name="menu" size={24} class="menu-toggle__open site-icon" /><SiteIcon name="close" size={24} class="menu-toggle__close site-icon" /></button>
   <nav id={navigationId} aria-label="Navegação principal">
-    {links.map((link) => <a class:list={{'nav-desktop-only': variant !== 'light' && link.href === '/#testemunhos', 'nav-mobile-only': 'mobileOnly' in link && link.mobileOnly}} href={link.href}>{link.label}</a>)}
+    {links.map((link) => <a class:list={{'nav-desktop-only': link.href === '/#testemunhos', 'nav-mobile-only': 'mobileOnly' in link && link.mobileOnly}} href={link.href}>{link.label}</a>)}
     <a class="nav-mobile-contact" href={contactHref}>{contactLabel}</a>
   </nav>
   <a class:list={['button', 'contact-link', 'button--dark']} href={desktopContactHref}>{desktopContactLabel}</a>
