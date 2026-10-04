@@ -17,6 +17,7 @@ fields: [{name: 'elevator', type: 'boolean'}, {name: 'storage', type: 'boolean'}
 name: 'property',
 type: 'document',
 fields: [
+{name: 'sourceUpdatedAt', type: 'datetime', readOnly: true, description: 'Original Webflow lastUpdated; Home orders by native Sanity _updatedAt.'},
 {name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true},
 {name: 'title', type: 'string'}, {name: 'referenceCode', type: 'string'}, {name: 'summary', type: 'text', rows: 4}, {name: 'description', type: 'array', of: [{type: 'block', marks: {annotations: [{type: 'link'}]}}]},
 {name: 'listingStatus', type: 'string', options: {list: ['active', 'sold', 'reserved', 'expiredCancelled']}}, {name: 'marketBanner', type: 'string', options: {list: ['new', 'newPrice', 'openHouse', 'reserved']}}, {name: 'price', type: 'number'}, {name: 'priceOnRequest', type: 'boolean'}, {name: 'propertyType', type: 'string', options: {list: ['apartment', 'house', 'building', 'other']}},

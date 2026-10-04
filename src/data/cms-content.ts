@@ -15,3 +15,15 @@ export function recordsFromContent(content: unknown): CmsRecord[] {
 export function ownRecordByLegacyId(records: CmsRecord[], type: string, legacyId: string): CmsRecord | undefined {
   return records.find((record) => record._type === type && record.legacyId === legacyId);
 }
+
+/** The Home sold rail is a current CMS projection, not a curated fallback list. */
+export function selectRecentSoldProperties(records: CmsRecord[], limit = 5): CmsRecord[] {
+  return records
+    .filter((record) => record._type === 'property' && record.listingStatus === 'sold')
+    .slice()
+    .sort((left, right) => {
+      const byUpdatedAt = String(right._updatedAt ?? '').localeCompare(String(left._updatedAt ?? ''));
+      return byUpdatedAt || String(left._id ?? '').localeCompare(String(right._id ?? ''));
+    })
+    .slice(0, limit);
+}

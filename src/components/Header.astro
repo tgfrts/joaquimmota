@@ -55,6 +55,8 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
 
 <style is:global>
   .nav-mobile-contact { display:none; }
+  /* Owner-approved reduction applies to every navbar variant, including mobile. */
+  .site-header .brand img { transform:scale(.9);transform-origin:left center; }
   .site-header:not(:is(.site-header--light, .site-header--blue)) .contact-link {min-height:42px;padding:8px 24px;font:500 16px/24px Roboto,sans-serif;}
   :is(.site-header--light, .site-header--blue) {
     width: 90vw;

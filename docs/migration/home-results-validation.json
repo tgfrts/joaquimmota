@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-04",
+  "projectId": "kaq1vd9b",
+  "dataset": "production",
+  "selection": {
+    "filter": "property && listingStatus == sold",
+    "order": "_updatedAt desc, _id asc",
+    "limit": 5,
+    "refresh": "Current migration preview uses refreshed Sanity snapshot plus Astro build; no automatic publication trigger configured."
+  },
+  "latest": [
+    {
+      "_id": "drafts.jm-property-697889f130b6d852b1f52055-64d73fb112672d652ab57ff5",
+      "_rev": "NmMgYNjnGEkXUr2p1q0uz4",
+      "_updatedAt": "2026-10-04T10:59:52Z",
+      "legacyId": "697889f130b6d852b1f52055",
+      "sourceUpdatedAt": "2026-05-20T16:45:22.878Z"
+    },
+    {
+      "_id": "drafts.jm-property-6937eca300c97af63c25ced9-64d73fb112672d652ab57ff5",
+      "_rev": "d9mV0P6innAzkqOAkuwGvN",
+      "_updatedAt": "2026-10-04T10:59:51Z",
+      "legacyId": "6937eca300c97af63c25ced9",
+      "sourceUpdatedAt": "2026-08-10T11:07:14.863Z"
+    },
+    {
+      "_id": "drafts.jm-property-6937fdc31a1cdb29a1f2f2b3-64d73fb112672d652ab57ff5",
+      "_rev": "NmMgYNjnGEkXUr2p1q0uoo",
+      "_updatedAt": "2026-10-04T10:59:51Z",
+      "legacyId": "6937fdc31a1cdb29a1f2f2b3",
+      "sourceUpdatedAt": "2026-07-16T13:55:11.209Z"
+    },
+    {
+      "_id": "drafts.jm-property-695d35b09f5de4973299416b-64d73fb112672d652ab57ff5",
+      "_rev": "9DYqH0yXtNxkyo4VJUEWQu",
+      "_updatedAt": "2026-10-04T10:59:51Z",
+      "legacyId": "695d35b09f5de4973299416b",
+      "sourceUpdatedAt": "2026-05-11T09:28:38.089Z"
+    },
+    {
+      "_id": "drafts.jm-property-6960e9aaf84806ee59710ab1-64d73fb112672d652ab57ff5",
+      "_rev": "9DYqH0yXtNxkyo4VJUEWWE",
+      "_updatedAt": "2026-10-04T10:59:51Z",
+      "legacyId": "6960e9aaf84806ee59710ab1",
+      "sourceUpdatedAt": "2026-08-10T11:10:28.265Z"
+    }
+  ],
+  "visual": {
+    "sharedBackground": "/assets/seller-results-bg.png",
+    "attachment": "scroll, fixed",
+    "metricBorders": "1px solid #fff",
+    "soldTitleAlignment": "left",
+    "soldHeight": {
+      "at1280": 696,
+      "at1920": 936
+    },
+    "logoScale": 0.9
+  },
+  "audit": "Independent foundation_audit passed selector and visuals; current five preserved; copy and photos unchanged."
+}

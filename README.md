@@ -44,3 +44,5 @@ Astro is pinned to `7.3.5`. On 2026-10-03, `npm audit` reported two high finding
 ## Source evidence
 
 The implementation was inspected against the live public homepage on 2026-10-03. Its active visual hero uses the source video poster, and all local files in `public/assets/` are public source copies fetched from the Webflow CDN. The source's zero-sized alternate hero DOM block is intentionally excluded; see the migration contract's rule against residual hidden variants.
+
+Home sold properties are selected from this site's own CMS snapshot: `property`, `listingStatus === 'sold'`, newest native Sanity `_updatedAt` first, deterministic `_id` tie-break, maximum five. Changing a property's status or editing it changes this selection after refreshing the CMS snapshot and rebuilding. The current migration preview does not yet have an automatic CMS publication/build trigger. Original source `sourceUpdatedAt` is optional migration metadata and is not used for ordering.
