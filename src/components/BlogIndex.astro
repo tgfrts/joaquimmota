@@ -12,6 +12,7 @@ const articles = records
   .filter((record) => record._type === 'article')
   .sort((a, b) => new Date(b.publishedAt ?? 0).getTime() - new Date(a.publishedAt ?? 0).getTime());
 const featured = articles[0];
+const gridArticles = articles.slice(1);
 const articleExcerpt = (article: any) => (article?.body ?? [])
   .filter((block: any) => block?._type === 'block')
   .map((block: any) => (block.children ?? []).map((span: any) => span.text ?? '').join(''))
@@ -21,7 +22,7 @@ const sourcePageSize = 6;
 ---
 
 <Header variant="light" pageNavigation contactHref="/vamos-comecar" />
-<main class="blog-index" data-blog-index data-page-size={sourcePageSize} data-article-count={articles.length}>
+<main class="blog-index" data-blog-index data-page-size={sourcePageSize} data-article-count={gridArticles.length}>
   {featured && <section class="blog-index__featured" aria-labelledby="blog-featured-title">
     <div class="blog-index__featured-card">
     <div class="blog-index__featured-copy"><p class="blog-index__eyebrow">Artigo mais recente</p><h1 id="blog-featured-title">{featured.title}</h1>{featured.subtitle && <p class="blog-index__featured-subtitle">{featured.subtitle}</p>}{featuredExcerpt && <p class="blog-index__featured-excerpt">{featuredExcerpt}</p>}<a href={`/post/${featured.sourceSlug}`}>Ler mais</a></div>
@@ -49,14 +50,14 @@ const sourcePageSize = 6;
 
   <section class="blog-index__articles" aria-label="Artigos">
     <div class="blog-index__grid">
-      {articles.map((article, index) => <article class="blog-index__card" data-blog-card-page={Math.floor(index / sourcePageSize) + 1}>
+      {gridArticles.map((article, index) => <article class="blog-index__card" data-blog-card-page={Math.floor(index / sourcePageSize) + 1}>
         <a class="blog-index__card-image" href="#" aria-label={article.title}><CmsImage value={article.thumbnailImage} alt="" /></a>
         <div class="blog-index__card-copy"><a class="blog-index__card-heading" href="#"><h3>{article.title}</h3>{article.subtitle && <h6>{article.subtitle}</h6>}</a>{articleExcerpt(article) && <p class="blog-index__card-excerpt">{articleExcerpt(article)}</p>}<a class="blog-index__read-more" href={`/post/${article.sourceSlug}`}>Ler mais<SiteIcon name="chevron-right" size={16} class="site-icon" /></a></div>
       </article>)}
     </div>
     <nav class="blog-index__pagination" aria-label="Paginação de artigos" data-blog-pagination>
       <a href="?51fb55cf_page=1" data-blog-previous aria-label="Página anterior" hidden><SiteIcon name="chevron-left" size={12} class="site-icon" /></a>
-      <a href="?51fb55cf_page=2" data-blog-next aria-label="Página seguinte" hidden={articles.length <= sourcePageSize}><SiteIcon name="chevron-right" size={12} class="site-icon" /></a>
+      <a href="?51fb55cf_page=2" data-blog-next aria-label="Página seguinte" hidden={gridArticles.length <= sourcePageSize}><SiteIcon name="chevron-right" size={12} class="site-icon" /></a>
     </nav>
   </section>
 
