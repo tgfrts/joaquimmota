@@ -148,3 +148,5 @@ body:has(.blog-index) .site-header--light{width:90vw;height:72px;}
  [data-blog-index] .blog-index__featured-copy{position:absolute;left:64px;bottom:64px;z-index:1;width:42%;max-width:560px;padding:32px;background:#fff;display:flex;flex-direction:column;justify-content:center}
  [data-blog-index] .blog-index__featured-copy>a{align-self:flex-start;margin-top:24px}
 }
+
+@media(max-width:767px){[data-blog-index] .blog-index__featured-image{aspect-ratio:3/2}}
