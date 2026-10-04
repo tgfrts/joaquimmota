@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { videoEmbedSource } from '../../lib/media-source';
 import CmsGallery from '../../components/CmsGallery.astro';
 import ClosingCta from '../../components/ClosingCta.astro';
 import Footer from '../../components/Footer.astro';
@@ -12,6 +13,7 @@ import '../../styles/cms.css';
 import '../../styles/article.css';
 export function getStaticPaths() { const sampleRecords: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? []; return sampleRecords.filter((record) => record._type === 'article').map((record) => ({ params: { slug: record.slug?.current ?? record.sourceSlug }, props: { record } })); }
 const { record } = Astro.props;
+const videoSource = videoEmbedSource(record.videoUrl);
 // The public Webflow template renders the source item's createdOn date.
 const sourceDate = record.publishedAt ? new Date(record.publishedAt) : undefined;
 const publishedAt = sourceDate ? `${sourceDate.getUTCDate()}/${sourceDate.getUTCMonth() + 1}/${sourceDate.getUTCFullYear()}` : undefined;
@@ -29,7 +31,7 @@ const socialImage = typeof imageRef === 'string' ? (() => { const [, id, dimensi
     <CmsImage value={record.mainImage} alt="" class="cms-article__hero" loading="eager" />
     <div class="cms-article__byline"><div><p>Autor</p><strong>Joaquim Mota</strong></div>{publishedAt && <div><p>Publicado em</p><strong>{publishedAt}</strong></div>}</div>
     <div class="cms-article__content">
-      <article class="cms-article__body"><CmsRichContent blocks={record.body} />{record.videoUrl && <iframe class="cms-media" title="Vídeo" src={record.videoUrl} allowfullscreen />}<CmsGallery images={record.gallery} label="Galeria" /></article>
+      <article class="cms-article__body"><CmsRichContent blocks={record.body} />{videoSource && <iframe class="cms-media" title="Vídeo" src={videoSource} allowfullscreen />}<CmsGallery images={record.gallery} label="Galeria" /></article>
       <CmsNewsletter />
     </div>
     {record.cta?.heading && <ClosingCta eyebrow={record.cta.eyebrow} heading={record.cta.heading} body={record.cta.copy} label={record.cta.label} href={record.cta.href ?? '/vamos-comecar'} showButton={Boolean(record.cta.label)} />}

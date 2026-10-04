@@ -1,8 +1,8 @@
 ---
 import { mediaSource } from '../lib/media-source';
-interface Props { embed?: string; title: string; }
-const { embed, title } = Astro.props;
+interface Props { embed?: string; title: string; loading?: 'lazy' | 'eager'; }
+const { embed, title, loading = 'lazy' } = Astro.props;
 const source = mediaSource(embed);
 ---
 
-{source && <iframe class="cms-map" title={title} src={source} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>}
+{source && <iframe class="cms-map" title={title} src={source} loading={loading} referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>}

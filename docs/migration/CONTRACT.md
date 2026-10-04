@@ -94,3 +94,5 @@ Owner Home mobile process action2026-10-04: add a red/light-text "Vamos começar
 2026-10-04 — O botão outline azul mantém-se na galeria expandida como “Ver menos fotos”, recolhendo novamente para seis mobile / nove desktop.
 
 2026-10-04 — Ao recolher as fotos, regressar por scroll ao topo da grelha. Formulários não podem conter PS Real Estate Team; consentimento na ficha identifica “Joaquim Mota Consultor Imobiliário”.
+
+2026-10-04 — Links YouTube normais guardados no Sanity são convertidos apenas na apresentação para URLs /embed; watch, youtu.be, shorts e live suportados, timestamps preservados. Matterport permanece inalterado mesmo com erro remoto. Fotografias fica depois de Descrição; CE/Certificado Energético com peso 500.

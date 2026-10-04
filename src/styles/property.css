@@ -120,7 +120,7 @@
 .property-page__characteristics li{color:#161616}
 .property-page__certificate-label--desktop{display:inline}
 .property-page__certificate-label--mobile{display:none}
-.property-page__certificate-label--desktop,.property-page__certificate-label--mobile{color:#20457f}
+.property-page__certificate-label--desktop,.property-page__certificate-label--mobile{color:#20457f;font-weight:500}
 @media(max-width:767px){
   .property-page__header h1,.property-page--reserved .property-page__header h1{font-size:24px;line-height:28.8px}
   .property-page__facts,.property-page--reserved .property-page__facts{column-gap:12px}

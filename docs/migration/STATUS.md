@@ -273,3 +273,9 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Owner: ao recolher a galeria, scroll automático ao topo da grelha, com margem de 80px para a navbar; smooth por defeito e sem animação quando prefere movimento reduzido.
 
 2026-10-04 — Owner: galeria movida para antes da descrição na ficha de imóvel (correção final Owner).
+
+2026-10-04 — Correção final Owner: secção Fotografias volta para imediatamente depois da descrição; âncora #galeria preservada e título/label público passa a “Fotografias”.
+
+2026-10-04 — Vídeos: 28 links YouTube responderam oEmbed 200; corrigida renderização de watch/youtu.be/shorts/live para /embed preservando start e linkCMS original, também em artigos. Visitas: 20 Matterport consultados (18 HTTP410, 1 HTTP404, 1 HTTP200); 1 Webobook excedeu timeout. Owner determina preservar todos os links Matterport. Mapas: 53 HTTP200; iframe kwpt013603 comparado com Webflow e URL idêntica. Antecipado carregamento na ficha com eager/preconnect Google; navegação real/tempos no browser não verificados por indisponibilidade de browser. Fotografias fica depois de Descrição.
+
+2026-10-04 — Labels CE / Certificado Energético passam a font-weight 500 para equilíbrio com o traço dos ícones, mantendo azul e valor do certificado com peso atual.

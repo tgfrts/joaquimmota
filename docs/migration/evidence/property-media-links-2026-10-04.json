@@ -1,0 +1,680 @@
+{
+  "checkedOn": "2026-10-04",
+  "scope": "Public read-only HTTP checks; no browser playback verification",
+  "youtube": [
+    {
+      "slug": "1202-2711",
+      "source": "https://www.youtube.com/watch?v=m5W8kMAnh-4&t=9s",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-2991",
+      "source": "https://youtu.be/mWEePWffcTo",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-2909",
+      "source": "https://youtu.be/VAl8EmJQPlM",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-2863",
+      "source": "https://youtu.be/Xp035mCi_5g",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-3060",
+      "source": "https://www.youtube.com/watch?v=4favSmZ1oKA&t=1s",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-3220",
+      "source": "https://www.youtube.com/watch?v=YN8mB3YmaGg",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-3222",
+      "source": "https://www.youtube.com/watch?v=03O3XcbcZlQ",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-3313",
+      "source": "https://www.youtube.com/watch?v=Z2c_MHOCYKM",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-3382",
+      "source": "https://www.youtube.com/watch?v=fzX4075TD-w",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-3467",
+      "source": "https://www.youtube.com/watch?v=3HxnHJgRjzA&t=1s",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-3315",
+      "source": "https://www.youtube.com/watch?v=RRvXhmrIwdk",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "1202-3404",
+      "source": "https://www.youtube.com/watch?v=Nd2bYpdEnqk",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt002034",
+      "source": "https://www.youtube.com/watch?v=0oa4hIDnaoA&t=1s",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt003096",
+      "source": "https://youtu.be/cI2sa6o6u4E",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt004101",
+      "source": "https://www.youtube.com/watch?v=pyMlcuxVnqU&t=1s",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt005146",
+      "source": "https://www.youtube.com/watch?v=ivCmviw_qL0",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt005347",
+      "source": "https://www.youtube.com/watch?v=kkIScO-f1Lg",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt005471",
+      "source": "https://www.youtube.com/watch?v=FXptlbaeJtY&t=1s",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt005472",
+      "source": "https://www.youtube.com/watch?v=8CxAO-jyuV0",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt007079",
+      "source": "https://youtu.be/rOYUGrbjwHg",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt007991",
+      "source": "https://www.youtube.com/watch?v=7ktAy8r4VZ8",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt009872",
+      "source": "https://youtu.be/MCKO6XpqBFo",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt014647",
+      "source": "https://www.youtube.com/watch?v=eykt3EYIvm8",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt015500",
+      "source": "https://www.youtube.com/watch?v=ix-hNF1YpBg",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt016039",
+      "source": "https://www.youtube.com/watch?v=QyT0gXOYO28",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt025253",
+      "source": "https://youtu.be/EtuLi9UJSgA",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt026427",
+      "source": "https://youtu.be/IK_QB6Oi7qc",
+      "status": 200,
+      "error": null
+    },
+    {
+      "slug": "kwpt027057",
+      "source": "https://youtu.be/jFJuxhpz9y4",
+      "status": 200,
+      "error": null
+    }
+  ],
+  "virtualTours": [
+    {
+      "slug": "1202-2991",
+      "source": "https://my.matterport.com/show/?m=PikcpURs7eK",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "1202-2909",
+      "source": "https://my.matterport.com/show/?m=uGCgpi7zHWR",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "1202-3060",
+      "source": "https://my.matterport.com/show/?m=U4UWk9tU6XD",
+      "status": null,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "slug": "1202-3220",
+      "source": "https://my.matterport.com/show/?m=BqNENiM6tNP",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "1202-3313",
+      "source": "https://my.matterport.com/show/?m=grAZxYcT5nn",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "1202-3348",
+      "source": "https://my.matterport.com/show/?m=htRjYwxbJMB",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "1202-3382",
+      "source": "https://webobook.com/public/640faf4348899c5fc06ceca2,en",
+      "status": null,
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "slug": "1202-3467",
+      "source": "https://my.matterport.com/show/?m=xDFqwjY3tVj",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "1202-3404",
+      "source": "https://my.matterport.com/show/?m=CSj6y1DLeFa",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt002034",
+      "source": "https://my.matterport.com/show/?m=F2ActKvA8wY",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt003096",
+      "source": "https://my.matterport.com/show/?m=G2U5Xi5PBFF",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt004101",
+      "source": "https://my.matterport.com/show/?m=qGYJhe4BFdF",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt005146",
+      "source": "https://my.matterport.com/show/?m=FiMiQWyG9KH",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt005347",
+      "source": "https://my.matterport.com/show/?m=JP8g8pwZYoi",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt005471",
+      "source": "https://my.matterport.com/show/?m=XcVNbE9Uv17",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt005472",
+      "source": "https://my.matterport.com/show/?m=muSSbRTjVeW",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt009872",
+      "source": "https://my.matterport.com/show/?m=zDgrPtpSYKH",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt015500",
+      "source": "https://my.matterport.com/show/?m=w5oFeAC3vfu",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt016210",
+      "source": "https://my.matterport.com/show/?m=bpFZRhyaZCC",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt019807",
+      "source": "https://my.matterport.com/show/?m=jzQuMP3boKs",
+      "status": null,
+      "error": "HTTP Error 410: Gone"
+    },
+    {
+      "slug": "kwpt023708",
+      "source": "https://my.matterport.com/show/?m=w4uUSuLdzjb",
+      "status": 200,
+      "error": null
+    }
+  ],
+  "maps": [
+    {
+      "slug": "kwpt036155",
+      "status": 200,
+      "seconds": 11.77,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt032055",
+      "status": 200,
+      "seconds": 11.8,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-2711",
+      "status": 200,
+      "seconds": 11.76,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-2864",
+      "status": 200,
+      "seconds": 11.76,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-2991",
+      "status": 200,
+      "seconds": 0.44,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-2909",
+      "status": 200,
+      "seconds": 0.43,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-2863",
+      "status": 200,
+      "seconds": 0.43,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3060",
+      "status": 200,
+      "seconds": 0.41,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3220",
+      "status": 200,
+      "seconds": 0.37,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3222",
+      "status": 200,
+      "seconds": 0.35,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3313",
+      "status": 200,
+      "seconds": 0.37,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3348",
+      "status": 200,
+      "seconds": 0.41,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3382",
+      "status": 200,
+      "seconds": 0.44,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3467",
+      "status": 200,
+      "seconds": 0.43,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3315",
+      "status": 200,
+      "seconds": 0.43,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3280",
+      "status": 200,
+      "seconds": 0.36,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "1202-3404",
+      "status": 200,
+      "seconds": 0.4,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt002034",
+      "status": 200,
+      "seconds": 0.41,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt003071",
+      "status": 200,
+      "seconds": 0.36,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt003096",
+      "status": 200,
+      "seconds": 0.4,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt005146",
+      "status": 200,
+      "seconds": 0.42,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt005347",
+      "status": 200,
+      "seconds": 0.65,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt005471",
+      "status": 200,
+      "seconds": 0.45,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt005472",
+      "status": 200,
+      "seconds": 0.46,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt007079",
+      "status": 200,
+      "seconds": 0.56,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt007991",
+      "status": 200,
+      "seconds": 0.44,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt009202",
+      "status": 200,
+      "seconds": 0.42,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt009872",
+      "status": 200,
+      "seconds": 0.33,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt009968",
+      "status": 200,
+      "seconds": 0.36,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt013603",
+      "status": 200,
+      "seconds": 0.36,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt013751",
+      "status": 200,
+      "seconds": 0.64,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt014629",
+      "status": 200,
+      "seconds": 0.62,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt014647",
+      "status": 200,
+      "seconds": 0.45,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt015500",
+      "status": 200,
+      "seconds": 0.6,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt016039",
+      "status": 200,
+      "seconds": 0.46,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt016210",
+      "status": 200,
+      "seconds": 0.46,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt016225",
+      "status": 200,
+      "seconds": 0.39,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt017699",
+      "status": 200,
+      "seconds": 0.46,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt018563",
+      "status": 200,
+      "seconds": 0.44,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt018853",
+      "status": 200,
+      "seconds": 0.41,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt019807",
+      "status": 200,
+      "seconds": 0.44,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt020688",
+      "status": 200,
+      "seconds": 0.54,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt021050",
+      "status": 200,
+      "seconds": 0.38,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt021094",
+      "status": 200,
+      "seconds": 0.39,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt023708",
+      "status": 200,
+      "seconds": 0.53,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt025253",
+      "status": 200,
+      "seconds": 0.42,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt025265",
+      "status": 200,
+      "seconds": 0.41,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt026377",
+      "status": 200,
+      "seconds": 0.4,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt026427",
+      "status": 200,
+      "seconds": 0.43,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt026529",
+      "status": 200,
+      "seconds": 0.37,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt027057",
+      "status": 200,
+      "seconds": 0.52,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt029212",
+      "status": 200,
+      "seconds": 0.56,
+      "title": "",
+      "errorText": false
+    },
+    {
+      "slug": "kwpt032072",
+      "status": 200,
+      "seconds": 0.4,
+      "title": "",
+      "errorText": false
+    }
+  ],
+  "sourceComparison": {
+    "route": "/imoveis/kwpt013603",
+    "mapMatchesWebflow": true
+  },
+  "matterportPolicy": "Links kept unchanged per Owner request"
+}
