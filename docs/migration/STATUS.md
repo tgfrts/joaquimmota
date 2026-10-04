@@ -271,3 +271,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Owner: consentimento comercial no CmsPropertyInquiry corrigido para “Joaquim Mota Consultor Imobiliário”. Pesquisa nos componentes, páginas, dados CMS e handler dos formulários não encontrou outras referências a PS Real Estate Team; identidade legal Somos Real Estate preservada.
 
 2026-10-04 — Owner: ao recolher a galeria, scroll automático ao topo da grelha, com margem de 80px para a navbar; smooth por defeito e sem animação quando prefere movimento reduzido.
+
+2026-10-04 — Owner: galeria movida para antes da descrição na ficha de imóvel (correção final Owner).

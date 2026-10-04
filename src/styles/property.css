@@ -47,7 +47,7 @@
 .property-page__characteristics ul{margin-bottom:32px}
 .property-page__card .cms-map{height:450px;margin-bottom:6.5px}
 .property-page__body>#localizacao{margin-bottom:calc(48px + 5vw)!important}
-.property-page__body>#galeria{padding:5vw 5%;margin-bottom:0!important}
+.property-page__body>#galeria{padding:5vw 5%;}
 .property-page #galeria .cms-gallery{padding:0}
 .property-page #galeria .cms-gallery__grid{gap:2.5vw}
 .property-page #galeria .cms-gallery__grid button{background:transparent}
@@ -59,7 +59,7 @@
 .property-page__body>.cms-copy>h2,.property-page__body>section>h2{font-size:20px;line-height:28px;padding-bottom:1vw;margin-bottom:2vw;border-bottom:1px solid #e4e2df}
 .property-page__card .cms-map{height:450px;margin-bottom:6.5px}
 .property-page__body>#localizacao{margin-bottom:128px!important}
-.property-page__body>#galeria{padding:64px 5%;margin-bottom:0!important}
+.property-page__body>#galeria{padding:64px 5%;}
 .property-page #galeria .cms-gallery__grid button{background:transparent}
 
 }
