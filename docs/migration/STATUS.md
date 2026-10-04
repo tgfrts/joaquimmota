@@ -235,3 +235,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Destaque maisrecente /imoveis: título reduzido40pxdesktop/32pxmobile, divider apósbotão seguidoindicadores. PropertyFacts comum extraído/reusado peloscards e destaque, mantém gap20/ícone-número6 e omitezeros. Check120 semdiagnósticos,build250,4testesfocados e HTMLsequênciabotão-divider-indicadores passaram;diffchecklimpo.
 
 2026-10-04 — Owner todoslinksImóveis apontam/imoveis: navbar jácorreta; heroComprar e CTA02.Queroverosimóveis atualizados. PreservadaâncoraComprar#imoveis para URLsantigas; payloadCMS/sourceproveniênciainalterado, CTAURL mapeadonarenderização. Build250/HTMLlinks/diffcheckpassaram.
+
+2026-10-04 — Destaque /imoveis mostra preçoPT/concelho/freguesia/ID abaixo título e antesbotão, mesmosdados/classes doscards, ID12pxpeso400, semíconelocalização. Preçosobconsulta preservado. Build250/HTMLsequênciaevalores/diffcheckpassaram.
