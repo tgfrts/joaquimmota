@@ -25,6 +25,11 @@ const { eyebrow = 'Vamos Conversar', heading, body, label = 'Vamos Começar', hr
   </div>
 </section>
 
+<script>
+  import { bindClosingCtaMotion } from '../scripts/source-scroll-motion';
+  document.querySelectorAll<HTMLElement>('.closing-cta__card').forEach(bindClosingCtaMotion);
+</script>
+
 <style>
   .closing-cta {
     overflow: hidden;

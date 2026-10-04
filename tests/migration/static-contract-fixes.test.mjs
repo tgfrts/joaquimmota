@@ -125,6 +125,12 @@ test('all owned shared form handlers short-circuit while the active submit butto
 test('source-present anchors are restored only on their audited pages', async () => {
   const flyer = await read('src/pages/lp-flyer-uma-venda-com-sucesso.astro');
   assert.match(flyer, /<footer class="seller-campaign__footer"[\s\S]*?href="https:\/\/www\.kwportugal\.pt\/politica-de-privacidade" target="_blank" rel="noopener noreferrer"/);
-  const marketing = await read('src/pages/marketing.astro');
-  assert.match(marketing, /href="https:\/\/www\.facebook\.com\/PauloSoaresRealEstateTeam\/reviews" target="_blank" rel="noopener noreferrer"/);
+  // Verify the emitted anchor, including attributes provided by the shared button.
+  const marketing = new JSDOM(await read('dist/marketing.html'));
+  const reviews = marketing.window.document.querySelector('a[href="https://www.facebook.com/PauloSoaresRealEstateTeam/reviews"]');
+  assert.ok(reviews, 'Marketing keeps its source Facebook reviews destination');
+  assert.equal(reviews.target, '_blank');
+  assert.ok(reviews.relList.contains('noopener'));
+  assert.ok(reviews.relList.contains('noreferrer'));
+  marketing.window.close();
 });

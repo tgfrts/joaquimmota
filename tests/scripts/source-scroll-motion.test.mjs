@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { JSDOM } from 'jsdom';
-import { bindInteriorHero, bindSourceScrollMotion } from '../../src/scripts/source-scroll-motion.ts';
+import { bindClosingCtaMotion, bindInteriorHero, bindSourceScrollMotion } from '../../src/scripts/source-scroll-motion.ts';
 
 function runtime(t, initiallyReduced) {
   const dom = new JSDOM('<main><div id="overlay"></div><img id="hero" alt=""><section id="sensor"><img id="lazy" alt=""></section></main>');
@@ -126,4 +126,28 @@ test('generic motion consumers receive the changed preference on resize and lazy
   r.frame();
   assert.equal(rendered.at(-1).reduced, true);
   r.settle();
+});
+
+test('closing CTA settles on entrance, stays visible on exit and respects reduced motion', t => {
+  const r = runtime(t, false);
+  r.setTop(720);
+  bindClosingCtaMotion(r.sensor);
+  r.settle();
+  assert.equal(r.sensor.style.opacity, '0');
+  assert.equal(r.sensor.style.transform, 'scale(1.25)');
+  r.setTop(200);
+  r.window.dispatchEvent(new r.window.Event('scroll'));
+  r.settle();
+  assert.equal(r.sensor.style.opacity, '1');
+  assert.equal(r.sensor.style.transform, 'scale(1)');
+  r.setTop(-500);
+  r.window.dispatchEvent(new r.window.Event('scroll'));
+  r.settle();
+  assert.equal(r.sensor.style.opacity, '1');
+  assert.equal(r.sensor.style.transform, 'scale(1)');
+  r.setTop(720);
+  r.preference.set(true);
+  r.settle();
+  assert.equal(r.sensor.style.opacity, '1');
+  assert.equal(r.sensor.style.transform, 'none');
 });

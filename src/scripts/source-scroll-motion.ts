@@ -45,3 +45,11 @@ export function bindTestimonialMotion(element: HTMLElement) {
     element.style.opacity = reduced ? '1' : String(interpolate(eased, [[0, .25], [.25, 1], [.5, 1], [1, .25]]));
   });
 }
+
+// Source a-55: the final CTA card settles at 35% and stays visible afterwards.
+export function bindClosingCtaMotion(element: HTMLElement) {
+  bindSourceScrollMotion(element, (progress, reduced) => {
+    element.style.transform = reduced ? 'none' : `scale(${interpolate(progress, [[0, 1.25], [.35, 1]])})`;
+    element.style.opacity = reduced ? '1' : String(interpolate(progress, [[0, 0], [.35, 1]]));
+  });
+}

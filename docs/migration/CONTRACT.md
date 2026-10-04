@@ -54,3 +54,11 @@ Owner Home mobile media2026-10-04: Home only replaces video with Vender's /asset
 Owner review/navbar buttons2026-10-04: all "Leia as nossas avaliações" testimonial CTAs use blue background/border and light text; hide them on mobile<=767px. Preserve labels and destinations, including Google/Facebook variants. Lower blue navbar's "Vamos começar" action uses red background/border with light text, replacing white. Top navbar remains blue-action variant.
 
 Owner Vender video-section buttons2026-10-04: blue background/border and light text for the three media-section actions: market study, marketing plan and owner's guide. Preserve destinations and labels; scope to Vender, excluding Marketing page.
+
+Source section spacing verification2026-10-04: Vender layout2 uses112/96/64px vertical wrapper inset (desktop/tablet/mobile); correct tablet seller-copy to96. Comprar layout19 process uses the same scale, without target-only intro/steps trailing margins. Sobre's two about-header profile sections use the same scale; retain card64px desktop/tablet and5vw mobile inset, compensate outer48/32/(64px-5vw) to avoid extra nested content offset. Other CTA/card/testimonial wrappers retain their own spacing.
+
+Owner mobile results background2026-10-04: at<=767px replace the fixed photographs behind Home results/sold, Vender results/sold and Comprar properties with precisely the scroll-navbar blue gradient:45deg,#20457f→#162b4e. Desktop/tablet photographs remain.
+
+Owner final CTA motion2026-10-04: restore original sourcea-55 on the shared final ClosingCta card (source target29d885fc-64db-3f2e-80ac-c4cbb7c158ef,e-194): continuous scroll progress,smoothing50,startsEntering=true,startsExiting=false,no offsets; scale1.25/opacity0 at0 toscale1/opacity1 at35%,then hold. Allbreakpoints; reduced motion uses no transform/opacity1. Guide promotions remain separate.
+
+Owner Home section colors2026-10-04: process/testimonial eyebrows are blue#20457f ("Como o fazemos", "O que dizem os nossos clientes"); their headings are red#db1430 ("Espere mais do seu consultor", "Os nossos clientes são os nossos maiores fãs"). Apply through Home-specific semantic classes, preserving other pages' colors/copy.

@@ -46,3 +46,10 @@ body:has(.buy-hero){overflow-x:hidden}.buy-hero__heading{padding:128px 5vw 64px;
 
 /* Align full-width sections with the site's 90vw navigation axis. */
 .buy-properties>.shell,.buy-guide>.shell,.buy-testimonials>.shell{max-width:none}
+
+/* Source layout19 owns one vertical inset, without a second trailing margin. */
+.buy-page .home-process{padding-block:112px}
+.buy-page .home-process__intro,.buy-page .home-process__steps{margin-bottom:0}
+@media(max-width:991px){.buy-page .home-process{padding-block:96px}}
+@media(max-width:767px){.buy-page .home-process{padding-block:64px}}
+@media(max-width:767px){.buy-properties{background:linear-gradient(45deg,#20457f,#162b4e)}}

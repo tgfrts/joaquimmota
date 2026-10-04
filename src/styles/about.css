@@ -23,3 +23,8 @@
 /* Shared outer alignment; preserve padding inside the profile cards. */
 .about-hero__content{width:90vw}
 .about-profile__card,.about-profile-cta__card,.about-testimonials__header,.about-testimonials__grid{width:100%}
+
+/* Preserve card insets while matching the source's 112/96/64px content offset. */
+.about-profile{padding-block:48px}
+@media(max-width:991px){.about-profile{padding-block:32px}}
+@media(max-width:767px){.about-profile{padding-block:calc(64px - 5vw)}}
