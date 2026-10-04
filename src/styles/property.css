@@ -144,3 +144,7 @@
   .property-page__facts,.property-page--reserved .property-page__facts{column-gap:20px}
   .property-page__facts>span{padding:0}
 }
+
+@media(max-width:767px){
+  .property-page__header,.property-page--reserved .property-page__header{padding-bottom:5vw}
+}

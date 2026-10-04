@@ -255,3 +255,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Reposto divisor do cabeçalho da ficha no mobile: a linha antes dos indicadores estava definida apenas a partir de 768px. Agora também aparece até 767px, largura completa e mesma cor desktop.
 
 2026-10-04 — Indicadores no cabeçalho mobile da ficha: removido padding residual dos antigos badges; gap entre características 20px, igual ao card comum. Intervalo ícone/valor de 6px preservado.
+
+2026-10-04 — Cabeçalho mobile da ficha: padding inferior reduzido de calc(64px + 5vw) para 5vw, alinhado às restantes margens interiores.
