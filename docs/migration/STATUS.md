@@ -181,3 +181,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — snap nativo de proximidade no topo da imagem/vídeo InteriorHero em mobile e desktop por instrução Owner. Root limitado às páginas com este componente; menu aberto/reduced-motion desativam snap. Overflow clip mantém o recorte visual sem criar scroller que impediria o snap no viewport. Home/Vender/Comprar/Sobre mantêm copy/media/motion e scroll livre fora da proximidade. Check106 sem diagnósticos, build250,4 testes motion e revisão independente passaram. CUA continua browsers[]; gesto real/Safari iPhone ainda por confirmar, sem claim de validação visual.
 
 2026-10-04 — correção Owner: snap limitado a mobile<=767px; removido de desktop/tablet. Build250 passou, preview atualizado. Sem alteração aos efeitos/media ou aos opt-outs menu/reduced-motion.
+
+2026-10-04 — Owner rejeitou também o snap mobile: removidas todas as regras de snap do InteriorHero, restaurado overflow hidden original. Scroll livre em todos os dispositivos; carrosséis e efeitos hero preservados. Build250 e diff-check passaram; preview atualizado.

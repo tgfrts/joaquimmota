@@ -46,3 +46,5 @@ Owner image fade-in timing2026-10-04: image opacity goes0→1 over progress0→0
 Owner hero scroll alignment2026-10-04: mobile and desktop use native vertical proximity snap at the top of the shared hero image/video. Keep normal scrolling elsewhere; never use mandatory page snapping. Disable snap while the fullscreen menu is open and for reduced motion. Hero overflow uses clip so it does not become a separate scroll container. Browser decides the proximity threshold; no scripted scroll interception.
 
 Owner snap correction2026-10-04: restrict hero proximity snap to mobile<=767px. Desktop/tablet use normal page scrolling; menu/reduced-motion opt-outs remain.
+
+Owner final snap removal2026-10-04: remove hero snapping entirely, including mobile. Restore unrestricted native page scrolling and original hero overflow clipping. This supersedes both prior snap directives; media blur/fade/overlay behavior stays unchanged.
