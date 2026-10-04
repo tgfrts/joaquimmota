@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CmsImage from '../../components/CmsImage.astro';
+import PropertyGrid from '../../components/PropertyGrid.astro';
+import PropertyNewsletter from '../../components/PropertyNewsletter.astro';
+import BuySellGuide from '../../components/BuySellGuide.astro';
+import ClosingCta from '../../components/ClosingCta.astro';
+import WhatsAppWidget from '../../components/WhatsAppWidget.astro';
+import { availableProperties } from '../../data/available-properties';
+import '../../styles/buy-fidelity.css';
+import '../../styles/blog-index.css';
+// Preserve the public source's newest-first listing order, rather than import timestamps.
+const featured = availableProperties[0];
+---
+<BaseLayout title="Imóveis" description="Descubra aqui a sua casa de sonho. Conheça os imóveis disponíveis de Joaquim Mota Consultores.">
+  <Header variant="light" pageNavigation />
+  <main class="blog-index property-directory">
+    {featured && <section class="blog-index__featured" aria-labelledby="property-featured-title">
+      <div class="blog-index__featured-card">
+        <div class="blog-index__featured-copy"><p class="blog-index__eyebrow">O nosso imóvel mais recente</p><h1 id="property-featured-title">{featured.title}</h1><a href={`/imoveis/${featured.slug}`}>Conheça este imóvel</a></div>
+        <div class="blog-index__featured-image">{featured.cms?.featuredImage ? <CmsImage value={featured.cms.featuredImage} alt="" loading="eager" /> : <img src={featured.image} alt="" />}</div>
+      </div>
+    </section>}
+    <PropertyNewsletter />
+    <section class="property-directory__list" aria-label="Imóveis disponíveis"><div class="shell"><PropertyGrid /></div></section>
+    <BuySellGuide />
+    <ClosingCta heading="Quer comprar a sua casa com sucesso?" body="Mais de 100 famílias compraram a sua casa connosco." href="/vamos-comecar" />
+  </main>
+  <Footer />
+  <WhatsAppWidget />
+</BaseLayout>
+<style>
+  .property-directory__list{padding:64px 0}
+  .property-directory__list .shell{width:90vw;max-width:none}
+  .property-directory__list :global(.buy-properties__grid){margin-top:0}
+  @media(max-width:991px){.property-directory__list{padding:5vw 0}}
+</style>

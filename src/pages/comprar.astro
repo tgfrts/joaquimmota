@@ -5,11 +5,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppWidget from '../components/WhatsAppWidget.astro';
-import CmsImage from '../components/CmsImage.astro';
+import BuySellGuide from '../components/BuySellGuide.astro';
+import PropertyGrid from '../components/PropertyGrid.astro';
 import ClosingCta from '../components/ClosingCta.astro';
 import data from '../data/sample-content.json';
 import buySource from '../data/buy-process-source.json';
-import sourceProperties from '../data/buy-properties-source.json';
 import buyTestimonials from '../data/buy-testimonials-source.json';
 import '../styles/buy-sell-marketing.css';
 import '../styles/home-fidelity.css';
@@ -17,27 +17,6 @@ import '../styles/buy-fidelity.css';
 import '../styles/section-type.css';
 import { ownRecordByLegacyId, recordsFromContent } from '../data/cms-content';
 const records = recordsFromContent(data);
-// The enum values and public labels are pinned in the source payload contract.
-const marketBannerLabels: Record<string, string> = { new: 'Novidade', newPrice: 'Novo Preço', openHouse: 'Open House', reserved: 'Reservado' };
-const properties = sourceProperties.map((fallback) => {
-  const own = ownRecordByLegacyId(records, 'property', fallback.legacyId);
-  if (!own) return { ...fallback, cms: undefined, priceOnRequest: false };
-  return {
-    ...fallback,
-    cms: own,
-    title: own.title,
-    price: String(own.price ?? ''),
-    priceOnRequest: own.priceOnRequest === true,
-    municipality: own.municipality ?? '',
-    parish: own.parish ?? '',
-    reference: own.referenceCode ?? '',
-    beds: own.bedrooms,
-    baths: own.bathrooms,
-    parking: own.parkingSpaces,
-    area: own.grossArea,
-    label: own.marketBanner ? (marketBannerLabels[own.marketBanner] ?? own.marketBanner) : '',
-  };
-});
 const buyTestimonialLegacyIds = [
   '67b454c48728d3d81a387c44', '67b454c242cd3da4d37b19e1', '67b454c40e6191ab38dd93b4',
   '67b454c3a547aac135cb03bb', '67b454c5e23698381d4b5a8b', '67b454c3d756ec6ee51b9d5f',
@@ -52,8 +31,8 @@ const buySteps = buySource.map(source => records.find(record => record._type ===
     <InteriorHero eyebrow="Compradores" heading="Todos queremos ter uma casa de sonho" body="Simplificamos o processo para que possa encontrar e comprar a sua casa de uma forma tranquila." image="/assets/buy-kitchen.jpg" label="Conheça os nosso imóveis" href="#imoveis" />
     <div class="interior-secondary-header"><Header variant="blue" pageNavigation showBlog={false} contactHref="/vamos-comecar" contactLabel="Vamos começar" /></div>
     <section class="home-process shell"><div class="home-process__intro"><p class="section-eyebrow">Uma compra tranquila</p><h2 class="section-heading">Como funciona</h2><p>Sabemos que encontrar e comprar a casa ideal pode ser complicado.<br /><br />Estamos aqui para tornar esse processo o mais simples possível para si.</p></div><div class="home-process__steps">{buySteps.map(step => <article data-source-id={step.legacyId} data-buy-step-motion><h3>{step.title}</h3><p>{step.body}</p>{step.ctaLabel && step.ctaUrl && <a href={step.ctaUrl}>{step.ctaLabel}</a>}</article>)}<a class="buy-process__mobile-action" href="/vamos-comecar">Vamos começar</a></div></section>
-    <section id="imoveis" class="buy-properties"><div class="shell"><p class="buy-kicker">Imóveis</p><h2>Descubra aqui a sua casa de sonho</h2><div class="buy-properties__grid">{properties.map(property => <a class="buy-property" data-source-id={property.legacyId} href={`/imoveis/${property.slug}`}><div class="buy-property__image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} width={property.imageWidth} height={property.imageHeight} alt="" loading="lazy" />}<span>{property.label}</span></div><div class="buy-property__copy"><h3>{property.title}</h3>{property.priceOnRequest ? <p class="buy-property__price">Preço sob consulta</p> : <p class="buy-property__price"><b>€</b>{property.price}</p>}<p class="buy-property__place"><img src="/assets/property-address.svg" alt="" /><span>{property.municipality}</span><span>{property.parish}</span></p><p class="buy-property__reference">{property.reference}</p><hr /><div class="buy-property__facts"><span><img src="/assets/property-bed.svg" alt="" />{property.beds}</span><span><img src="/assets/property-bath.svg" alt="" />{property.baths}</span><span><img src="/assets/property-garage.svg" alt="" />{property.parking}</span><span class="buy-property__area"><img src="/assets/property-area.svg" alt="" />{property.area} m2 - Área Bruta</span></div></div></a>)}</div></div></section>
-    <section class="buy-guide"><div class="shell buy-guide__card" data-buy-guide-progress><div><p>Guia</p><h2>Precisa se vender antes de comprar?</h2><p>Obtenha um guia prático para mudar de casa sem stress e sem complicações.</p><a class="button" href="/guia-vender-para-comprar">QUERO OBTER O GUIA</a></div></div></section>
+    <section id="imoveis" class="buy-properties"><div class="shell"><p class="buy-kicker">Imóveis</p><h2>Descubra aqui a sua casa de sonho</h2><div class="buy-properties__preview"><PropertyGrid /></div><a class="buy-properties__more" href="/imoveis">Ver mais</a></div></section>
+    <BuySellGuide />
     <TestimonialsSection items={testimonials.map(item => ({clientName:String(item.clientName),quote:String(item.quote)}))} />
     <ClosingCta heading="Quer comprar a sua casa com sucesso?" body="Mais de 100 famílias compraram a sua casa connosco." href="/vamos-comecar" />
   </main>

@@ -104,3 +104,7 @@
 .property-closing__portrait{margin:-5vw}
 .property-closing__portrait img{margin-top:-5vw}
 }
+
+/* Owner: summary indicators use plain icons/text, without filled badges. */
+.property-page__facts>span{background:transparent;color:#20457f;box-shadow:none}
+.property-page__facts>span>img{filter:none}

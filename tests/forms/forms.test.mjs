@@ -233,3 +233,7 @@ test('missing configuration and retryable provider failures never return false s
   assert.equal(providerFailure.status, 503);
   assert.equal(providerFailure.headers.get('retry-after'), '47');
 });
+
+test('new property directory accepts its newsletter with the existing capture adapter', async () => {
+ const adapter=mockAdapter();const response=await createFormHandler(adapter)({request:request({formType:'newsletter',route:'/imoveis',fields:{email:'visitor@example.test'}}),env:formEnv()});assert.equal(response.status,202);assert.equal(adapter.calls[0][1].route,'/imoveis');
+});

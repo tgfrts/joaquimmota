@@ -22,7 +22,7 @@ type FormAdapter = {
 };
 
 const ROUTES: Record<FormType, ReadonlySet<string>> = {
-  newsletter: new Set(['/', '/blog', '/vender', '/comprar', '/sobre', '/marketing', '/contacto']),
+  newsletter: new Set(['/', '/blog', '/vender', '/comprar', '/imoveis', '/sobre', '/marketing', '/contacto']),
   contact: new Set(['/contacto', '/vamos-comecar', '/sessao-gratuita']),
   valuation: new Set(['/quanto-vale-a-sua-casa-hoje', '/estudo-de-mercado', '/uma-venda-com-sucesso', '/lp-flyer-uma-venda-com-sucesso']),
   mortgage: new Set(['/credito-habitacao']),

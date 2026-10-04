@@ -1,0 +1,34 @@
+<section class="blog-index__subscribe" aria-labelledby="blog-subscribe-title">
+    <div class="blog-index__subscribe-card">
+    <div><p class="blog-index__eyebrow">As últimas novidades no seu email</p><h3 id="blog-subscribe-title">Não perca nenhuma novidade!</h3><p>Subscreva a nossa newletter e fique atualizado sobre todas as novidades do mercado imobiliário do Grande Porto.</p></div>
+    <div class="blog-index__newsletter-block">
+    <p class="blog-index__newsletter-intro">Subscreva a nossa newsletter</p>
+    <form data-blog-newsletter>
+      <label class="blog-index__visually-hidden" for="blog-newsletter-email">O seu email</label>
+      <div class="blog-index__subscribe-controls"><input id="blog-newsletter-email" name="email" type="email" placeholder="O seu email" maxlength="256" required /><button type="submit">SUBSCREVER</button></div>
+      <p class="blog-index__privacy">Também detestamos SPAM! Apenas enviamos conteúdo de valor para a sua caixa de correio.</p>
+    </form>
+    <div class="blog-index__newsletter-success" data-blog-newsletter-success role="status" hidden>Subscrito com sucesso!</div>
+    <div class="blog-index__newsletter-error" data-blog-newsletter-error role="alert" hidden>Oops! Alguma coisa correu mal na submissão do formulário</div>
+    </div>
+    </div>
+  </section>
+<script>
+  import { submitFormAccepted } from '../scripts/forms-client';
+  document.querySelectorAll<HTMLFormElement>('[data-blog-newsletter]').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault(); if (!form.reportValidity()) return;
+    if (form.dataset.pending === 'true' || form.hidden) return;
+    const success = form.parentElement?.querySelector<HTMLElement>('[data-blog-newsletter-success]');
+    const error = form.parentElement?.querySelector<HTMLElement>('[data-blog-newsletter-error]');
+    const button = form.querySelector<HTMLButtonElement>('button');
+    if (!success || !error || !button) return;
+    const email = String(new FormData(form).get('email') ?? '').trim();
+    const label = button.textContent;
+    form.dataset.pending = 'true'; button.disabled = true; button.textContent = 'Please wait...'; error.hidden = true;
+    try {
+      await submitFormAccepted(form, { formType: 'newsletter', route: location.pathname, fields: { email } });
+      form.hidden = true; success.hidden = false;
+    } catch { error.hidden = false; }
+    finally { form.dataset.pending = 'false'; button.disabled = false; button.textContent = label; }
+  }));
+</script>

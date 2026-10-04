@@ -27,7 +27,7 @@ function htmlFiles(directory) {
   });
 }
 
-export function buildStaticRouteGate(inventory, eligibilityReport, outputDirectory) {
+export function buildStaticRouteGate(inventory, eligibilityReport, outputDirectory, { ownerAddedRoutes = [] } = {}) {
   if (!Array.isArray(inventory?.pages)) throw new Error('Route inventory must contain a pages array.');
   if (!Array.isArray(eligibilityReport?.collections)) throw new Error('Eligibility report must contain collections.');
   const staticPublished = [];
@@ -64,15 +64,15 @@ export function buildStaticRouteGate(inventory, eligibilityReport, outputDirecto
   }
   const uniqueExpandedCmsPaths = [...new Set(expandedCmsPaths)].sort();
   if (uniqueExpandedCmsPaths.length !== expandedCmsPaths.length) throw new Error('Eligible CMS items produce duplicate expanded routes.');
-  const expectedPaths = [...new Set([...staticPublishedPaths, ...uniqueExpandedCmsPaths])].sort();
+  const expectedPaths = [...new Set([...staticPublishedPaths, ...uniqueExpandedCmsPaths, ...ownerAddedRoutes])].sort();
   const cmsTemplateBases = templates.map((template) => template.path.replace(/\/$/, ''));
   const actualPaths = htmlFiles(outputDirectory).map((file) => routePathFromHtml(file, outputDirectory));
   const actualSet = new Set(actualPaths);
   const missingPublishedPaths = expectedPaths.filter((route) => !actualSet.has(route));
-  const generatedDraftPaths = staticDraftPaths.filter((route) => actualSet.has(route));
+  const generatedDraftPaths = staticDraftPaths.filter((route) => actualSet.has(route) && !ownerAddedRoutes.includes(route));
   const generatedOwnerExcludedPaths = OWNER_EXCLUDED_SOURCE_ROUTES.filter((route) => actualSet.has(route));
   const generatedUnlistedCmsPaths = [...actualSet].filter((route) => cmsTemplateBases.some((base) => route === base || route.startsWith(`${base}/`))
-    && !uniqueExpandedCmsPaths.includes(route));
+    && !uniqueExpandedCmsPaths.includes(route) && !ownerAddedRoutes.includes(route));
   const passes = missingPublishedPaths.length === 0 && generatedDraftPaths.length === 0 && generatedOwnerExcludedPaths.length === 0 && generatedUnlistedCmsPaths.length === 0;
   return {
     generatedAt: new Date().toISOString(),
@@ -84,6 +84,7 @@ export function buildStaticRouteGate(inventory, eligibilityReport, outputDirecto
     cmsTemplateRecords: templates.length,
     staticPublishedPaths,
     ownerExcludedSourceRoutes: [...OWNER_EXCLUDED_SOURCE_ROUTES],
+    ownerAddedRoutes,
     expandedCmsPaths: uniqueExpandedCmsPaths,
     forbiddenStaticDraftPaths: staticDraftPaths,
     builtHtmlRouteCount: actualSet.size,
@@ -106,7 +107,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   } else {
     const inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
     const eligibility = JSON.parse(fs.readFileSync(eligibilityPath, 'utf8'));
-    const report = buildStaticRouteGate(inventory, eligibility, outputDirectory);
+    // New directory explicitly authorized by Owner; the original Webflow draft remains excluded.
+    const report = buildStaticRouteGate(inventory, eligibility, outputDirectory, { ownerAddedRoutes: ['/imoveis'] });
     if (reportPath) fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
     console.log(`${report.status}: ${report.staticPublishedPageRecords} static published pages; ${report.excludedStaticDraftPageRecords} static drafts excluded; ${report.cmsTemplateRecords} CMS templates; ${report.missingPublishedPaths.length} required routes missing; ${report.generatedDraftPaths.length + report.generatedUnlistedCmsPaths.length} forbidden routes generated.`);
     if (report.status !== 'pass') process.exitCode = 1;

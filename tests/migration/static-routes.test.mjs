@@ -141,3 +141,16 @@ test('unknown draft state fails closed', () => {
   const inventory = { pages: [{ path: '/unknown', draft: null }] };
   withBuild([], (dist) => assert.throws(() => buildStaticRouteGate(inventory, { collections: [] }, dist), /unknown draft state/));
 });
+
+test('an explicitly authorized new directory does not import the old draft or allow other draft routes', () => {
+  const inventory={pages:[{path:'/imoveis',draft:true},{path:'/style-guide',draft:true},{path:'/imoveis',draft:false,collectionId:'properties'}]};
+  const eligibility={collections:[{collection:{id:'properties'},eligible:[]}]};
+  withBuild(['imoveis.html'],dist=>{
+    assert.equal(buildStaticRouteGate(inventory,eligibility,dist).status,'fail');
+    const report=buildStaticRouteGate(inventory,eligibility,dist,{ownerAddedRoutes:['/imoveis']});
+    assert.equal(report.status,'pass');assert.deepEqual(report.ownerAddedRoutes,['/imoveis']);
+  });
+  withBuild(['imoveis.html','style-guide.html'],dist=>{
+    assert.deepEqual(buildStaticRouteGate(inventory,eligibility,dist,{ownerAddedRoutes:['/imoveis']}).generatedDraftPaths,['/style-guide']);
+  });
+});

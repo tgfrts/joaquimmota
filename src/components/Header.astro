@@ -3,10 +3,10 @@
 interface Props { contactHref?: string; desktopContactHref?: string; variant?: 'light' | 'blue'; pageNavigation?: boolean; contactLabel?: string; desktopContactLabel?: string; showBlog?: boolean; }
 const { contactHref = '/contacto', desktopContactHref = contactHref, variant = 'light', pageNavigation = false, contactLabel = 'Contacte-nos', desktopContactLabel = contactLabel, showBlog = true } = Astro.props;
 const homeLinks = [
-  { href: '/', label: 'Início', mobileOnly: true },
+  { href: '/', label: 'Início' },
   { href: '/vender', label: 'Vender', mobileOnly: true },
   { href: '/comprar', label: 'Comprar', mobileOnly: true },
-  { href: '/comprar#imoveis', label: 'Imóveis' },
+  { href: '/imoveis', label: 'Imóveis' },
   { href: '/#testemunhos', label: 'O que dizem os nossos clientes' },
   { href: '/blog', label: 'Blog' },
   { href: '/sobre', label: 'Sobre nós' },
@@ -18,7 +18,9 @@ const pageLinks = [
   { href: '/sobre', label: 'Sobre nós' },
   { href: '/blog', label: 'Blog' },
 ];
-const links = (variant === 'light' || !pageNavigation ? homeLinks : pageLinks).filter(link => showBlog || link.href !== '/blog');
+const currentPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/\/$/, '') || '/';
+const links = (variant === 'light' || !pageNavigation ? homeLinks : pageLinks)
+  .filter(link => (showBlog || link.href !== '/blog') && (variant !== 'light' || link.href !== currentPath));
 const navigationId = `site-navigation-${crypto.randomUUID()}`;
 ---
 
@@ -26,7 +28,7 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
   <a class="brand" href="/" aria-label="Joaquim Mota Consultores"><img src={variant === 'light' ? '/assets/logo-color.svg' : '/assets/logo-white.svg'} alt="" /></a>
   <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls={navigationId}><span></span></button>
   <nav id={navigationId} aria-label="Navegação principal">
-    {links.map((link) => <a class:list={{'nav-desktop-only': link.href === '/#testemunhos', 'nav-mobile-only': 'mobileOnly' in link && link.mobileOnly}} href={link.href}>{link.label}</a>)}
+    {links.map((link) => <a class:list={{'nav-desktop-only': variant !== 'light' && link.href === '/#testemunhos', 'nav-mobile-only': 'mobileOnly' in link && link.mobileOnly}} href={link.href}>{link.label}</a>)}
     <a class="nav-mobile-contact" href={contactHref}>{contactLabel}</a>
   </nav>
   <a class:list={['button', 'contact-link', 'button--dark']} href={desktopContactHref}>{desktopContactLabel}</a>
