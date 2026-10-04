@@ -28,3 +28,5 @@ Owner Vender addition2026-10-04: add a guide promotion between the final Negocia
 Owner site-wide margin correction2026-10-04: align main outer sections of Comprar/Sobre/Marketing/Reviews/Contacto to90vw like Vender/navbar. Preserve intentional inner card padding and readable article/form/campaign widths.
 
 Owner hero change2026-10-04: Vender/Comprar/Sobre use one InteriorHero component based on approved Vender. Only image/copy/action vary. Center copy vertically and horizontally; positioned copy/button must stack above image/blur. This explicitly replaces original Comprar/Sobre hero presentation.
+
+Owner hero/navbar/menu changes2026-10-04: center hero copy relative the full viewport (not a fixed-height copy panel), desktop and mobile. Home uses the common hero with original video background/copy/two CTAs. Only top light and lower blue navbar visual variants remain, with navigation configurable. Mobile menus fill the viewport with centered links and an X replacing the hamburger. Desktop WhatsApp launcher diameter is halved; mobile unchanged.

@@ -1,7 +1,7 @@
 ---
 // 'light' denotes the colored-logo variant; its navbar background remains transparent.
-interface Props { contactHref?: string; desktopContactHref?: string; variant?: 'overlay' | 'light' | 'blue'; pageNavigation?: boolean; contactLabel?: string; desktopContactLabel?: string; showBlog?: boolean; }
-const { contactHref = '/contacto', desktopContactHref = contactHref, variant = 'overlay', pageNavigation = false, contactLabel = 'Contacte-nos', desktopContactLabel = contactLabel, showBlog = true } = Astro.props;
+interface Props { contactHref?: string; desktopContactHref?: string; variant?: 'light' | 'blue'; pageNavigation?: boolean; contactLabel?: string; desktopContactLabel?: string; showBlog?: boolean; }
+const { contactHref = '/contacto', desktopContactHref = contactHref, variant = 'light', pageNavigation = false, contactLabel = 'Contacte-nos', desktopContactLabel = contactLabel, showBlog = true } = Astro.props;
 const homeLinks = [
   { href: '/vender', label: 'Vender' },
   { href: '/comprar#imoveis', label: 'Imóveis' },
@@ -27,29 +27,33 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
     {links.map((link) => <a href={link.href}>{link.label}</a>)}
     <a class="nav-mobile-contact" href={contactHref}>{contactLabel}</a>
   </nav>
-  <a class:list={['button', 'contact-link', variant !== 'overlay' ? 'button--dark' : 'button--light']} href={desktopContactHref}>{desktopContactLabel}</a>
+  <a class:list={['button', 'contact-link', 'button--dark']} href={desktopContactHref}>{desktopContactLabel}</a>
 </header>
 
 <script>
   document.querySelectorAll<HTMLElement>('[data-header]').forEach((header) => {
     const button = header.querySelector<HTMLButtonElement>('.menu-toggle');
-    button?.addEventListener('click', () => {
-      const open = header.classList.toggle('is-open');
-      button.setAttribute('aria-expanded', String(open));
-    });
-    const close = () => {
-      header.classList.remove('is-open');
-      button?.setAttribute('aria-expanded', 'false');
+    const nav = header.querySelector<HTMLElement>('nav');
+    const setOpen = (open: boolean) => {
+      header.classList.toggle('is-open', open);
+      button?.setAttribute('aria-expanded', String(open));
+      button?.setAttribute('aria-label', open ? 'Fechar menu' : 'Menu');
     };
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && header.classList.contains('is-open')) {
-        close();
-        button?.focus();
+    button?.addEventListener('click', () => setOpen(!header.classList.contains('is-open')));
+    nav?.addEventListener('click', event => {
+      if (event.target instanceof Element && event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', event => {
+      if (!header.classList.contains('is-open')) return;
+      if (event.key === 'Escape') { setOpen(false); button?.focus(); }
+      if (event.key === 'Tab') {
+        const controls = [button, ...Array.from(nav?.querySelectorAll<HTMLAnchorElement>('a') ?? [])].filter(Boolean) as HTMLElement[];
+        const first = controls[0], last = controls.at(-1);
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
       }
     });
-    document.addEventListener('pointerdown', (event) => {
-      if (event.target instanceof Node && !header.contains(event.target)) close();
-    });
+    matchMedia('(min-width:992px)').addEventListener('change', event => { if (event.matches) setOpen(false); });
   });
 </script>
 
@@ -59,7 +63,7 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
   /* Owner-approved reduction applies to every navbar variant, including mobile. */
   .site-header .brand img { transform:scale(.9);transform-origin:left center; }
   .site-header:not(:is(.site-header--light, .site-header--blue)) .contact-link {min-height:42px;padding:8px 24px;font:500 16px/24px Roboto,sans-serif;}
-  :is(.site-header--light, .site-header--blue) {
+  .site-header:is(.site-header--light, .site-header--blue) {
     width: 90vw;
     height: 72px;
     color: #20457f;
@@ -130,5 +134,19 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
     .site-header:not(:is(.site-header--light, .site-header--blue)) .contact-link {display:none;}
     .site-header:not(:is(.site-header--light, .site-header--blue)) .menu-toggle {margin-left:auto;padding:8px;}
     .site-header:not(:is(.site-header--light, .site-header--blue)).is-open nav {top:64px;}
+  }
+  @media(max-width:767px){.site-header.site-header--light{height:64px}}
+  @media(max-width:991px){
+    html:has([data-header].is-open),body:has([data-header].is-open){overflow:hidden}
+    .interior-hero:has([data-header].is-open){z-index:100;overflow:visible}
+    .home-secondary-header:has([data-header].is-open),.interior-secondary-header:has([data-header].is-open){z-index:100}
+    [data-header].site-header.is-open{z-index:100}
+    [data-header].site-header.is-open nav{position:fixed!important;inset:0!important;transform:none!important;width:100vw!important;height:100dvh!important;max-height:100dvh;margin:0!important;padding:80px 5vw!important;display:flex!important;flex-direction:column;align-items:center!important;justify-content:center;gap:0;background:#f4f4f4!important;color:#20457f!important;overflow-y:auto;box-shadow:none!important;z-index:100}
+    [data-header].site-header.is-open nav a{padding:12px 0!important;text-align:center;font:500 18px/27px Roboto,sans-serif!important}
+    [data-header].site-header.is-open .menu-toggle{position:fixed;top:20px;right:5vw;width:24px;height:24px;margin:0;padding:0;color:#20457f!important;z-index:101;display:block}
+    [data-header].site-header.is-open .menu-toggle span{display:none!important}
+    [data-header].site-header.is-open .menu-toggle:before,[data-header].site-header.is-open .menu-toggle:after{position:absolute;top:11px;left:0;width:24px;height:2px;background:currentColor;transform:rotate(45deg)}
+    [data-header].site-header.is-open .menu-toggle:after{transform:rotate(-45deg)}
+    body:has([data-header].is-open) .whatsapp-widget{visibility:hidden}
   }
 </style>

@@ -3,41 +3,56 @@ interface Props {
   eyebrow: string;
   heading: string;
   body: string;
-  image: string;
+  image?: string;
+  video?: string;
+  poster?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
   label: string;
   href: string;
 }
-const { eyebrow, heading, body, image, label, href } = Astro.props;
+const { eyebrow, heading, body, image, label, href, video, poster, secondaryLabel, secondaryHref } = Astro.props;
 ---
-<section class="interior-hero" data-interior-hero>
+<section class:list={['interior-hero', {'interior-hero--video': Boolean(video)}]} data-interior-hero>
+  {video && <><video class="interior-hero__video" autoplay muted loop playsinline poster={poster} aria-hidden="true"><source src={video} type="video/mp4" /></video><div class="interior-hero__shade"></div></>}
+  <slot name="header" />
   <div class="interior-hero__content">
     <p class="interior-hero__eyebrow">{eyebrow}</p>
     <h1>{heading}</h1>
     <p class="interior-hero__body">{body}</p>
-    <a class="interior-hero__button" href={href}>{label}</a>
+    <div class="interior-hero__actions"><a class="interior-hero__button" href={href}>{label}</a>{secondaryLabel && secondaryHref && <a class="interior-hero__button interior-hero__button--secondary" href={secondaryHref}>{secondaryLabel}</a>}</div>
   </div>
-  <div class="interior-hero__image">
+  {image && <div class="interior-hero__image">
     <span class="interior-hero__overlay"></span>
     <img src={image} alt="" loading="eager" />
-  </div>
+  </div>}
 </section>
 <script>
   import { bindInteriorHero } from '../scripts/source-scroll-motion';
   document.querySelectorAll<HTMLElement>('[data-interior-hero]').forEach(hero => {
-    const image = hero.querySelector<HTMLImageElement>('img');
+    const image = hero.querySelector<HTMLImageElement>('.interior-hero__image img');
     if (image) bindInteriorHero(image, hero.querySelector<HTMLElement>('.interior-hero__overlay'));
   });
 </script>
 <style>
-  .interior-hero{min-height:0;padding:0;overflow:hidden;color:#161616;background:#f4f4f4;text-align:center;isolation:isolate}
-  .interior-hero__content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:440px;width:90vw;margin-inline:auto;padding:64px 0}
+  .interior-hero{position:relative;min-height:0;padding:0;overflow:hidden;color:#161616;background:#f4f4f4;text-align:center;isolation:isolate}
+  .interior-hero__content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100svh - 144px);width:90vw;margin-inline:auto;padding:64px 0}
   .interior-hero__eyebrow{margin:0 0 16px;color:#20457f;font-size:16px;font-weight:300;line-height:24px}
   .interior-hero h1{margin:0;color:#20457f;font-size:56px;font-weight:500;line-height:67.2px;letter-spacing:-1.12px;text-transform:uppercase}
   .interior-hero__body{max-width:1152px;margin:24px auto 0;font-size:18px;font-weight:300;line-height:27px}
-  .interior-hero__button{display:inline-block;min-height:50px;margin-top:32px;padding:12px 24px;border:1px solid #db1430;background:#db1430;box-shadow:4px 4px 20px #0004;color:#f4f4f4;font-size:16px;font-weight:500;line-height:24px;text-decoration:none}
+  .interior-hero__button{display:inline-block;min-height:50px;margin-top:0;padding:12px 24px;border:1px solid #db1430;background:#db1430;box-shadow:4px 4px 20px #0004;color:#f4f4f4;font-size:16px;font-weight:500;line-height:24px;text-decoration:none}
+  .interior-hero__actions{display:flex;justify-content:center;gap:16px;margin-top:32px}
+  .interior-hero__button--secondary{background:transparent;border-color:currentColor;color:inherit}
+  .interior-hero--video{color:#f4f4f4}
+  .interior-hero--video .interior-hero__content{min-height:100svh}
+  .interior-hero--video h1,.interior-hero--video .interior-hero__eyebrow{color:inherit}
+  .interior-hero__video,.interior-hero__shade{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .interior-hero__shade{background:rgba(7,14,26,.55)}
+  .interior-hero--video :global(.site-header){position:absolute;top:0;left:5vw;width:90vw;height:72px;z-index:3;border-bottom:0}
   .interior-hero__image{position:relative;z-index:0;aspect-ratio:16/9;margin-top:0;overflow:visible}
   .interior-hero__image img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.03)}
   .interior-hero__overlay{position:absolute;z-index:1;inset:0;background:linear-gradient(to right,#162b4e,#20457f);filter:blur(100px)}
-  @media(min-width:768px) and (max-width:991px){.interior-hero__content{min-height:0;padding:15vw 0}.interior-hero h1{font-size:52px;line-height:62.4px;letter-spacing:-1.04px}.interior-hero__image{aspect-ratio:1080/608;margin-top:0}}
-  @media(max-width:767px){.interior-hero__content{min-height:0;padding:15vw 0}.interior-hero__eyebrow{margin:0 0 12px}.interior-hero h1{margin-bottom:20px;font-size:40px;line-height:48px;letter-spacing:-.8px}.interior-hero__body{margin:0;font-size:16px;line-height:24px}.interior-hero__image{margin-top:0}}
+  @media(min-width:768px) and (max-width:991px){.interior-hero__content{min-height:calc(100svh - 144px);padding:32px 0}.interior-hero h1{font-size:52px;line-height:62.4px;letter-spacing:-1.04px}.interior-hero__image{aspect-ratio:1080/608;margin-top:0}}
+  @media(max-width:767px){.interior-hero__content{min-height:calc(100svh - 128px);padding:32px 0}.interior-hero__eyebrow{margin:0 0 12px}.interior-hero h1{margin-bottom:20px;font-size:40px;line-height:48px;letter-spacing:-.8px}.interior-hero__body{margin:0;font-size:16px;line-height:24px}.interior-hero__image{margin-top:0}}
+  @media(max-width:767px){.interior-hero--video :global(.site-header){height:64px}}
 </style>

@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-04",
+  "scope": [
+    "InteriorHero",
+    "Home",
+    "Header",
+    "WhatsAppWidget"
+  ],
+  "ownerChanges": [
+    "Center hero copy relative entire viewport desktop/mobile",
+    "Reuse hero for Home with original video and second CTA",
+    "Only top/light and lower/blue navbar visual variants",
+    "Fullscreen mobile menu with centered links and close X",
+    "Halve desktop WhatsApp diameter"
+  ],
+  "browser": {
+    "1280x720": {
+      "allFourHeroCenters": 360,
+      "viewportCenter": 360,
+      "headerHeight": 72,
+      "whatsappDiameter": 50
+    },
+    "390x844": {
+      "allFourHeroCenters": 422,
+      "viewportCenter": 422,
+      "headerHeight": 64,
+      "whatsappDiameter": 70
+    },
+    "mobileMenu": {
+      "bothVariants": [
+        390,
+        844
+      ],
+      "origin": [
+        0,
+        0
+      ],
+      "linksCentered": true,
+      "scrollLockedWhenOpen": true,
+      "closeX": true,
+      "escapeCloses": true
+    }
+  },
+  "home": {
+    "video": "/assets/hero.mp4",
+    "poster": "/assets/hero-poster.jpg",
+    "actions": [
+      "/vender",
+      "/comprar"
+    ],
+    "height": "100svh"
+  },
+  "safety": "Image-motion selector excludes slotted logo/video; CMS/source/PM unchanged.",
+  "validation": {
+    "check": "106files zero diagnostics",
+    "buildPages": 250,
+    "testsPassed": 127,
+    "independentAudit": "PASS"
+  },
+  "screenshots": [
+    "/private/tmp/jrmota-shared-home-video.jpg",
+    "/private/tmp/jrmota-mobile-full-menu.jpg"
+  ]
+}
