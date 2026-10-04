@@ -108,3 +108,5 @@
 /* Owner: summary indicators use plain icons/text, without filled badges. */
 .property-page__facts>span{background:transparent;color:#20457f;box-shadow:none}
 .property-page__facts>span>img{filter:none}
+
+.property-page__reserved{background:#fff;color:#20457f}
