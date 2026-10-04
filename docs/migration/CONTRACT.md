@@ -70,3 +70,7 @@ Owner final reviews removal2026-10-04: remove the testimonial action button ever
 Owner final top navigation2026-10-04: every light/top Header uses the same Home link set. Desktop shows Imóveis(/comprar#imoveis), testimonials(/#testemunhos),Blog,Sobre nós; Vender/Comprar are hidden. At the hamburger breakpoint<=991px show Vender,Comprar,Imóveis,Blog,Sobre nós, hiding testimonials. Preserve the existing contact action. Lower blue navigation retains its page links. Every fullscreen mobile menu uses the blue navbar gradient, white links and white close control, with existing focus/scroll-lock/close behavior.
 
 Owner Home mobile process action2026-10-04: add a red/light-text "Vamos começar" button after03.Suporte, targeting/vamos-comecar. Only visible<=767px onHome; processcopy/order and desktoplayout remain.
+
+2026-10-04 — Owner: TestimonialsSection apresenta seleção aleatória por carregamento, inicialmente6 desktop/3 mobile<=767px; botão azul “Ver mais” revela lotes seguintes na mesma ordem. Copy e itens CMS preservados. SoldPropertiesSection usa sobre-heading “UMA VENDA COM SUCESSO”. Em Vender, três ações das secções vídeo aparecem depois do respetivo vídeo apenas mobile<=767px; desktop/tablet mantêm posição original.
+
+2026-10-04 — Correção Owner: toda a classe partilhada section-heading volta a azul#20457f, mantendo tipografia e aplicação aos títulos Home/process, Vender/media, Comprar/process e TestimonialsSection.

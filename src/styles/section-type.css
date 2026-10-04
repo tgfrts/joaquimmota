@@ -7,7 +7,7 @@
   text-transform:uppercase;
 }
 :is(.home-page,.seller-page,.buy-page,.testimonials-section) h2.section-heading{
-  color:#db1430;
+  color:#20457f;
   font:500 40px/48px Roboto,sans-serif;
   letter-spacing:-.8px;
 }

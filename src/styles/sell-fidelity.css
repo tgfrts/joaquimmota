@@ -29,3 +29,6 @@
 @media(max-width:991px){.seller-page:not(.marketing-page) .seller-copy--media{grid-template-columns:1fr}}
 @media(min-width:768px) and (max-width:991px){.seller-page:not(.marketing-page) .seller-copy{padding-block:96px}}
 @media(max-width:767px){.seller-results,.seller-sold-results{background:linear-gradient(45deg,#20457f,#162b4e)}}
+
+.seller-button--mobile{display:none}
+@media(max-width:767px){.seller-page .seller-button--desktop{display:none}.seller-page .seller-button--mobile{display:inline-block;justify-self:start;margin-top:0}}

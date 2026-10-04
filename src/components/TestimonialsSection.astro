@@ -8,7 +8,7 @@ interface Props {
 }
 const { items, id = 'testemunhos' } = Astro.props;
 ---
-<section class="testimonials-section" id={id}>
+<section class="testimonials-section" id={id} data-testimonials>
   <header class="testimonials-section__header">
     <div>
       <p class="section-eyebrow">O que dizem os nossos clientes</p>
@@ -22,10 +22,17 @@ const { items, id = 'testemunhos' } = Astro.props;
       <figcaption>{item.portrait && <CmsImage value={item.portrait} alt="" class="testimonials-section__portrait" loading="lazy" />}<span>{item.clientName}</span></figcaption>
     </figure>)}
   </div>
+  <div class="testimonials-section__actions"><button class="testimonials-section__more" type="button" hidden>Ver mais</button></div>
 </section>
 <script>
   import { bindTestimonialMotion } from '../scripts/source-scroll-motion';
-  document.querySelectorAll<HTMLElement>('.testimonials-section__card').forEach(bindTestimonialMotion);
+  import { bindTestimonialsSection } from '../scripts/testimonials-section';
+  document.querySelectorAll<HTMLElement>('[data-testimonials]').forEach(section => {
+    const bound = new WeakSet<HTMLElement>();
+    bindTestimonialsSection(section, card => {
+      if (!bound.has(card)) { bound.add(card); bindTestimonialMotion(card); }
+    });
+  });
 </script>
 <style>
   .testimonials-section{padding:64px 0 0;background:var(--paper);color:#161616}
@@ -34,6 +41,11 @@ const { items, id = 'testemunhos' } = Astro.props;
   .testimonials-section__header h2{margin:0;max-width:none}
   .testimonials-section__grid{column-count:3;column-gap:32px}
   .testimonials-section__card{display:inline-block;vertical-align:top;width:100%;margin:0 0 32px;padding:32px;background:#fff;box-shadow:4px 4px 20px #0004;break-inside:avoid}
+  .testimonials-section__card[hidden],.testimonials-section__grid:not(.is-ready) .testimonials-section__card:nth-child(n+7){display:none}
+  .testimonials-section__actions{width:90vw;margin:0 auto}
+  .testimonials-section__more{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 24px;border:1px solid #20457f;background:#20457f;color:#f4f4f4;font:500 16px/24px Roboto,sans-serif;cursor:pointer;box-shadow:4px 4px 20px #0004}
+  .testimonials-section__more[hidden]{display:none}
+  .testimonials-section__more:focus-visible{outline:2px solid #20457f;outline-offset:4px}
   .testimonials-section__stars{display:flex;gap:4px;height:20px;margin-bottom:24px}
   .testimonials-section__stars img{display:block;width:20px;height:20px}
   .testimonials-section__card blockquote{margin:0 0 24px;padding:0;border:0;font:300 18px/27px Roboto,sans-serif}
@@ -41,4 +53,5 @@ const { items, id = 'testemunhos' } = Astro.props;
   .testimonials-section__card :global(.testimonials-section__portrait){display:block;flex:none;width:48px;height:48px;border-radius:50%;object-fit:cover}
   @media(max-width:991px){.testimonials-section{padding:5vw 0}.testimonials-section__header{gap:48px}.testimonials-section__grid{column-count:2}}
   @media(max-width:767px){.testimonials-section__header{grid-template-columns:1fr;gap:0;margin-bottom:32px}.testimonials-section__grid{column-count:1}.testimonials-section__card{padding:24px}.testimonials-section__stars{margin-bottom:20px}.testimonials-section__card blockquote{margin-bottom:20px;font-size:16px;line-height:24px}.testimonials-section__card figcaption{min-height:40px}}
+  @media(max-width:767px){.testimonials-section__grid:not(.is-ready) .testimonials-section__card:nth-child(n+4){display:none}}
 </style>
