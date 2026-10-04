@@ -22,3 +22,5 @@ Owner CTA change 2026-10-04: all existing final portrait CTAs use one Astro comp
 Final CTA detail: white-shirt portrait must be contained without clipping the head/shoulders. The overheading is uppercase; the button retains normal case and blue text. Existing interior scroll/sticky navbars use the same blue/white Header variant and navigation as Home; initial transparent headers remain unchanged.
 
 Owner Vender change 2026-10-04: first results block is the Home sold-properties subsection only, reusing its latest-five CMS selection, cards and fixed photograph. Keep the second results block's values96%/60 dias/85% and show numbers white. Remove the later duplicate sold-properties block from Vender. This overrides original duplication/presentation only on that page.
+
+Owner Vender addition2026-10-04: add a guide promotion between the final Negociação video and testimonials, using the existing Comprar guide visual/copy and /guia-vender-para-comprar destination. Heading uses Owner wording: Precisa de vender antes de comprar?
