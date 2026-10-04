@@ -291,3 +291,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Blog desktop: ação Ler mais alinhada ao fundo de cada card, com o corpo a ocupar a altura disponível na grelha.
 
 2026-10-04 — Correção Owner: excerto do último artigo limitado a três linhas no desktop e duas no mobile, mantendo Ler mais no fundo em desktop.
+
+2026-10-04 — Blog: artigo mais recente exclusivo do destaque, grelha a partir do penúltimo com paginação ajustada. No desktop, imagem a toda a largura com painel branco sobreposto no canto inferior esquerdo; mobile mantém composição existente.

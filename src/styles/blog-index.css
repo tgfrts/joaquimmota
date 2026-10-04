@@ -140,3 +140,11 @@ body:has(.blog-index) .site-header--light{width:90vw;height:72px;}
 [data-blog-index] .blog-index__featured-copy>.blog-index__eyebrow{text-transform:uppercase}
 
 @media(min-width:768px){[data-blog-index] .blog-index__featured-card{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}}
+
+/* Featured article: full image with its content anchored over the lower left. */
+@media(min-width:992px){
+ [data-blog-index] .blog-index__featured-card{position:relative;display:block;padding:0;isolation:isolate}
+ [data-blog-index] .blog-index__featured-image{width:100%;aspect-ratio:3/2}
+ [data-blog-index] .blog-index__featured-copy{position:absolute;left:32px;bottom:32px;z-index:1;width:42%;max-width:560px;padding:32px;background:#fff;display:flex;flex-direction:column;justify-content:center}
+ [data-blog-index] .blog-index__featured-copy>a{align-self:flex-start;margin-top:24px}
+}
