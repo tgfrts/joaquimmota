@@ -233,3 +233,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Gap entre indicadores doscards aumentado12→20px porOwner; alinhamentoesquerda/linhaúnica preservados. Build250/diffcheckpassaram.
 
 2026-10-04 — Destaque maisrecente /imoveis: título reduzido40pxdesktop/32pxmobile, divider apósbotão seguidoindicadores. PropertyFacts comum extraído/reusado peloscards e destaque, mantém gap20/ícone-número6 e omitezeros. Check120 semdiagnósticos,build250,4testesfocados e HTMLsequênciabotão-divider-indicadores passaram;diffchecklimpo.
+
+2026-10-04 — Owner todoslinksImóveis apontam/imoveis: navbar jácorreta; heroComprar e CTA02.Queroverosimóveis atualizados. PreservadaâncoraComprar#imoveis para URLsantigas; payloadCMS/sourceproveniênciainalterado, CTAURL mapeadonarenderização. Build250/HTMLlinks/diffcheckpassaram.
