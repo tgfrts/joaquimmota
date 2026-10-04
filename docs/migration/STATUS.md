@@ -209,3 +209,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Owner repôs vermelho#db1430 nas3ações de vídeo Vender (Agende/Conheça/Descarregue), desktop e mobile, texto claro; posição/copy/href preservados e Marketing excluído. Build249/diffcheckpassaram.
 
 2026-10-04 — TestimonialsSection Ver mais agora outline azul#20457f, fundo transparente/texto azul/sem sombra, em todosconsumidores. Lotes/shuffle/visibilidade/interação preservados. Build249 e diffcheckpassaram.
+
+2026-10-04 — Footer.astro comum: nota de privacidade da newsletter passa de meia largura para100%, igual ao botão Subscrever, desktop/mobile. Copy/formulário preservados. Build249 e diffcheckpassaram.
