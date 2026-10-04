@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-04",
+  "scope": [
+    "/",
+    "/vender",
+    "/comprar",
+    "/sobre"
+  ],
+  "component": "src/components/InteriorHero.astro",
+  "ownerChange": "All common hero media use only blur, without overlay, opacity animation or transform.",
+  "browser": {
+    "eachOfFourRoutes": {
+      "overlayCount": 0,
+      "opacity": 1,
+      "transform": "none",
+      "openingBlur": "approximately429px"
+    },
+    "homeScroll": {
+      "blur": 0,
+      "opacity": 1
+    }
+  },
+  "validation": {
+    "check": "106files zero diagnostics",
+    "buildPages": 250,
+    "independentAudit": "PASS",
+    "motionTestsPassed": 4
+  },
+  "screenshot": "/private/tmp/jrmota-hero-blur-only.jpg"
+}
