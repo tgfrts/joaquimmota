@@ -44,7 +44,7 @@ const { eyebrow, heading, body, image, label, href, video, poster, secondaryLabe
 </script>
 <style>
   /* A single proximity target clears the gap above the media without locking page scrolling. */
-  :global(html:has([data-interior-hero])){scroll-snap-type:y proximity}
+  @media(max-width:767px){:global(html:has([data-interior-hero])){scroll-snap-type:y proximity}}
   :global(html:has([data-interior-hero]):has([data-header].is-open)){scroll-snap-type:none}
   .interior-hero__image{scroll-snap-align:start}
   @media(prefers-reduced-motion:reduce){:global(html:has([data-interior-hero])){scroll-snap-type:none;scroll-behavior:auto}}
