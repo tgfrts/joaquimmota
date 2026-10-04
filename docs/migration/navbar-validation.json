@@ -1,0 +1,46 @@
+{
+  "verifiedAt": "2026-10-04T10:41:32.230031+00:00",
+  "sourceReadOnly": true,
+  "variants": {
+    "overlay": "transparent with white logo and centered desktop links; no divider",
+    "blue": "home sticky wrapper blue gradient; white logo and off-white button",
+    "light": "transparent interior header; colored logo and red button"
+  },
+  "heroAt1280": {
+    "sourceMenu": {
+      "x": 341.28125,
+      "y": 16,
+      "width": 597.421875,
+      "height": 40
+    },
+    "targetMenu": {
+      "x": 341.2890625,
+      "y": 16,
+      "width": 597.421875,
+      "height": 40
+    },
+    "border": "0px"
+  },
+  "heroTargetAt1920": {
+    "x": 661.2890625,
+    "width": 597.421875,
+    "center": 960
+  },
+  "secondary": {
+    "heightDesktop": 72,
+    "heightMobile": 64,
+    "width": "90vw",
+    "background": "linear-gradient(45deg, #20457f, #162b4e)",
+    "logo": "/assets/logo-white.svg",
+    "buttonBackground": "#e4e2df",
+    "buttonColor": "#20457f"
+  },
+  "mobileMenus": "hero and secondary open with visible links; Escape closes and sets aria-expanded=false",
+  "validation": {
+    "buildPages": 250,
+    "checkFiles": 102,
+    "diagnostics": 0,
+    "testsPassed": 124,
+    "independentReview": "foundation_audit: no material regression; home-specific blue variant"
+  }
+}

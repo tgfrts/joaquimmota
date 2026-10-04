@@ -1,5 +1,6 @@
 ---
-interface Props { contactHref?: string; desktopContactHref?: string; variant?: 'overlay' | 'light'; pageNavigation?: boolean; contactLabel?: string; desktopContactLabel?: string; showBlog?: boolean; }
+// 'light' denotes the colored-logo variant; its navbar background remains transparent.
+interface Props { contactHref?: string; desktopContactHref?: string; variant?: 'overlay' | 'light' | 'blue'; pageNavigation?: boolean; contactLabel?: string; desktopContactLabel?: string; showBlog?: boolean; }
 const { contactHref = '/contacto', desktopContactHref = contactHref, variant = 'overlay', pageNavigation = false, contactLabel = 'Contacte-nos', desktopContactLabel = contactLabel, showBlog = true } = Astro.props;
 const homeLinks = [
   { href: '/vender', label: 'Vender' },
@@ -19,14 +20,14 @@ const links = (pageNavigation ? pageLinks : homeLinks).filter(link => showBlog |
 const navigationId = `site-navigation-${crypto.randomUUID()}`;
 ---
 
-<header class:list={['site-header', { 'site-header--light': variant === 'light' }]} data-header>
+<header class:list={['site-header', { 'site-header--light': variant === 'light', 'site-header--blue': variant === 'blue' }]} data-header>
   <a class="brand" href="/" aria-label="Joaquim Mota Consultores"><img src={variant === 'light' ? '/assets/logo-color.svg' : '/assets/logo-white.svg'} alt="" /></a>
   <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls={navigationId}><span></span></button>
   <nav id={navigationId} aria-label="Navegação principal">
     {links.map((link) => <a href={link.href}>{link.label}</a>)}
     <a class="nav-mobile-contact" href={contactHref}>{contactLabel}</a>
   </nav>
-  <a class:list={['button', 'contact-link', variant === 'light' ? 'button--dark' : 'button--light']} href={desktopContactHref}>{desktopContactLabel}</a>
+  <a class:list={['button', 'contact-link', variant !== 'overlay' ? 'button--dark' : 'button--light']} href={desktopContactHref}>{desktopContactLabel}</a>
 </header>
 
 <script>
@@ -54,15 +55,15 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
 
 <style is:global>
   .nav-mobile-contact { display:none; }
-  .site-header:not(.site-header--light) .contact-link {min-height:42px;padding:8px 24px;font:500 16px/24px Roboto,sans-serif;}
-  .site-header--light {
+  .site-header:not(:is(.site-header--light, .site-header--blue)) .contact-link {min-height:42px;padding:8px 24px;font:500 16px/24px Roboto,sans-serif;}
+  :is(.site-header--light, .site-header--blue) {
     width: 90vw;
     height: 72px;
     color: #20457f;
     border-bottom: 0;
   }
-  .site-header--light .brand img { width: auto; height: 50px; }
-  .site-header--light nav {
+  :is(.site-header--light, .site-header--blue) .brand img { width: auto; height: 50px; }
+  :is(.site-header--light, .site-header--blue) nav {
     position: absolute;
     left: 50%;
     margin: 0;
@@ -70,9 +71,9 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
     gap: 0;
     font: 500 16px/24px Roboto, sans-serif;
   }
-  .site-header--light nav a { padding: 8px 16px; }
-  .site-header--light .menu-toggle { color: #20457f; }
-  .site-header--light .button--dark {
+  :is(.site-header--light, .site-header--blue) nav a { padding: 8px 16px; }
+  :is(.site-header--light, .site-header--blue) .menu-toggle { color: #20457f; }
+  :is(.site-header--light, .site-header--blue) .button--dark {
     min-height: 42px;
     padding: 8px 24px;
     font: 500 16px/24px Roboto, sans-serif;
@@ -81,38 +82,50 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
     color: #f4f4f4;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, .25);
   }
-  .site-header--light .contact-link { margin-left: auto !important; flex: 0 0 auto; }
+  :is(.site-header--light, .site-header--blue) .contact-link { margin-left: auto !important; flex: 0 0 auto; }
+  .site-header.site-header--blue { width:90vw; height:72px; border-bottom:0; color:#e4e2df; }
+  @media (min-width:992px) {
+    .site-header.site-header--blue nav { position:absolute;left:50%;transform:translateX(-50%);margin:0;gap:0;font:500 16px/24px Roboto,sans-serif; }
+  }
+  @media (max-width:767px) { .site-header.site-header--blue { height:64px; } }
+  .site-header--blue .menu-toggle { color: #e4e2df; }
+  .site-header--blue .button--dark {
+    background: #e4e2df;
+    border-color: #e4e2df;
+    color: #20457f;
+  }
+  .site-header--blue nav a[href="/"] { color: #9195ba; }
   @media (max-width: 991px) {
-    .site-header--light { height:72px; border:0; }
-    .site-header--light .brand img { width:51.164px; height:50px; }
-    .site-header--light .menu-toggle { display:grid; gap:5px; width:40px; padding:8px; border:0; background:none; margin-left:auto; }
-    .site-header--light nav { display:none; }
-    .site-header--light .menu-toggle span,.site-header--light .menu-toggle:before,.site-header--light .menu-toggle:after { content:"";display:block;width:24px;height:2px;background:currentColor; }
-    .site-header--light .contact-link { display: none; }
-    .site-header--light nav { transform: none; left: 0; }
-    .site-header--light.is-open nav {display:flex;position:absolute;top:72px;left:50%;right:auto;transform:translateX(-50%);width:200px;padding:16px 5vw 40px;background:#fff;box-shadow:0 8px 20px #0002;gap:0;flex-direction:column;align-items:stretch;font:500 18px/27px Roboto,sans-serif;color:#304b7d;text-align:center;}
-    .site-header--light.is-open nav a {padding:16px 0;}
-    .site-header--light.is-open .nav-mobile-contact {display:block;}
+    :is(.site-header--light, .site-header--blue) { height:72px; border:0; }
+    :is(.site-header--light, .site-header--blue) .brand img { width:51.164px; height:50px; }
+    :is(.site-header--light, .site-header--blue) .menu-toggle { display:grid; gap:5px; width:40px; padding:8px; border:0; background:none; margin-left:auto; }
+    :is(.site-header--light, .site-header--blue) nav { display:none; }
+    :is(.site-header--light, .site-header--blue) .menu-toggle span,:is(.site-header--light, .site-header--blue) .menu-toggle:before,:is(.site-header--light, .site-header--blue) .menu-toggle:after { content:"";display:block;width:24px;height:2px;background:currentColor; }
+    :is(.site-header--light, .site-header--blue) .contact-link { display: none; }
+    :is(.site-header--light, .site-header--blue) nav { transform: none; left: 0; }
+    :is(.site-header--light, .site-header--blue).is-open nav {display:flex;position:absolute;top:72px;left:50%;right:auto;transform:translateX(-50%);width:200px;padding:16px 5vw 40px;background:#fff;box-shadow:0 8px 20px #0002;gap:0;flex-direction:column;align-items:stretch;font:500 18px/27px Roboto,sans-serif;color:#304b7d;text-align:center;}
+    :is(.site-header--light, .site-header--blue).is-open nav a {padding:16px 0;}
+    :is(.site-header--light, .site-header--blue).is-open .nav-mobile-contact {display:block;}
   }
   @media (max-width:767px) {
-    .site-header--light { height:64px; }
-    .site-header--light.is-open nav { top:64px; }
-    .site-header--light .menu-toggle { width:24px; padding:0; }
+    :is(.site-header--light, .site-header--blue) { height:64px; }
+    :is(.site-header--light, .site-header--blue).is-open nav { top:64px; }
+    :is(.site-header--light, .site-header--blue) .menu-toggle { width:24px; padding:0; }
   }
   @media (max-width:991px) {
-    .site-header:not(.site-header--light) {gap:16px;}
-    .site-header:not(.site-header--light) .brand img { width:51.164px; height:50px; }
-    .site-header:not(.site-header--light) nav { display:none; }
-    .site-header:not(.site-header--light) .contact-link { order:1; margin-left:auto; }
-    .site-header:not(.site-header--light) .menu-toggle { display:grid;order:2;gap:5px;align-content:center;width:40px;height:48px;padding:8px;margin-left:0;background:none;border:0;color:#f4f4f4; }
-    .site-header:not(.site-header--light) .menu-toggle span,.site-header:not(.site-header--light) .menu-toggle:before,.site-header:not(.site-header--light) .menu-toggle:after { content:"";display:block;width:24px;height:2px;background:currentColor; }
-    .site-header:not(.site-header--light).is-open nav { display:flex;position:absolute;top:72px;left:50%;right:auto;transform:translateX(-50%);width:max-content;min-width:200px;padding:16px 5vw 40px;background:#fff;box-shadow:0 8px 20px #0002;gap:0;flex-direction:column;align-items:stretch;text-align:center;color:#304b7d; }
-    .site-header:not(.site-header--light).is-open nav a {padding:16px 0;font:500 18px/27px Roboto,sans-serif;}
-    .site-header:not(.site-header--light).is-open .nav-mobile-contact {display:block;}
+    .site-header:not(:is(.site-header--light, .site-header--blue)) {gap:16px;}
+    .site-header:not(:is(.site-header--light, .site-header--blue)) .brand img { width:51.164px; height:50px; }
+    .site-header:not(:is(.site-header--light, .site-header--blue)) nav { display:none; }
+    .site-header:not(:is(.site-header--light, .site-header--blue)) .contact-link { order:1; margin-left:auto; }
+    .site-header:not(:is(.site-header--light, .site-header--blue)) .menu-toggle { display:grid;order:2;gap:5px;align-content:center;width:40px;height:48px;padding:8px;margin-left:0;background:none;border:0;color:#f4f4f4; }
+    .site-header:not(:is(.site-header--light, .site-header--blue)) .menu-toggle span,.site-header:not(:is(.site-header--light, .site-header--blue)) .menu-toggle:before,.site-header:not(:is(.site-header--light, .site-header--blue)) .menu-toggle:after { content:"";display:block;width:24px;height:2px;background:currentColor; }
+    .site-header:not(:is(.site-header--light, .site-header--blue)).is-open nav { display:flex;position:absolute;top:72px;left:50%;right:auto;transform:translateX(-50%);width:max-content;min-width:200px;padding:16px 5vw 40px;background:#fff;box-shadow:0 8px 20px #0002;gap:0;flex-direction:column;align-items:stretch;text-align:center;color:#304b7d; }
+    .site-header:not(:is(.site-header--light, .site-header--blue)).is-open nav a {padding:16px 0;font:500 18px/27px Roboto,sans-serif;}
+    .site-header:not(:is(.site-header--light, .site-header--blue)).is-open .nav-mobile-contact {display:block;}
   }
   @media (max-width:767px) {
-    .site-header:not(.site-header--light) .contact-link {display:none;}
-    .site-header:not(.site-header--light) .menu-toggle {margin-left:auto;padding:8px;}
-    .site-header:not(.site-header--light).is-open nav {top:64px;}
+    .site-header:not(:is(.site-header--light, .site-header--blue)) .contact-link {display:none;}
+    .site-header:not(:is(.site-header--light, .site-header--blue)) .menu-toggle {margin-left:auto;padding:8px;}
+    .site-header:not(:is(.site-header--light, .site-header--blue)).is-open nav {top:64px;}
   }
 </style>
