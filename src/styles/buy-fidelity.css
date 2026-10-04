@@ -43,3 +43,6 @@ body:has(.buy-hero){overflow-x:hidden}.buy-hero__heading{padding:128px 5vw 64px;
   .buy-stars{height:20px;line-height:20px}
   .buy-testimonials blockquote{margin:24px 0 20px}
 }
+
+/* Align full-width sections with the site's 90vw navigation axis. */
+.buy-properties>.shell,.buy-guide>.shell,.buy-testimonials>.shell{max-width:none}

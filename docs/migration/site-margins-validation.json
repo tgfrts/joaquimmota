@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-04",
+  "scope": [
+    "/comprar",
+    "/sobre",
+    "/marketing",
+    "/reviews",
+    "/contacto"
+  ],
+  "change": "Remove unintended outer-section 1152px caps; use common90vw alignment; preserve inner card padding and readable copy constraints.",
+  "browser": {
+    "1920x1080": {
+      "outerX": 96,
+      "outerWidth": 1728,
+      "allAffectedContainersMatched": true
+    },
+    "390x844": {
+      "outerX": 19.5,
+      "outerWidth": 351,
+      "allAffectedContainersMatched": true
+    }
+  },
+  "wholeSiteInventory": {
+    "home": "Already90vw aligned",
+    "blog": "Already5vw section padding",
+    "propertyTemplates": "Already90vw outer shells; inner constraints retained",
+    "articleTemplates": "Outer90vw; readable body/heading/newsletter widths retained",
+    "prelistingTemplates": "Intentional hero/content widths retained",
+    "campaignsAndForms": "Intentional split layouts/form widths retained",
+    "sharedClosingCta": "Already consistent; unchanged"
+  },
+  "validation": {
+    "check": "105files, zero diagnostics",
+    "build": 250,
+    "independentAudit": "PASS"
+  },
+  "screenshot": "/private/tmp/jrmota-site-margins-sobre.jpg"
+}

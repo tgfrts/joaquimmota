@@ -21,3 +21,8 @@
 @media(max-width:767px){.marketing-page .seller-rail h2{letter-spacing:-.72px}}
 .marketing-page .seller-rail{padding:64px 5vw}.marketing-page .seller-rail h2{margin-bottom:64px}
 @media(max-width:767px){.marketing-page .seller-rail{padding:10vw 5vw 5vw}.marketing-page .seller-rail h2{margin-bottom:20px}.marketing-page .seller-rail .sold-rail{margin-left:0}}
+
+/* Use the same outer gutters as the main navigation and sold sections. */
+.marketing-page .seller-hero__content,.marketing-services{width:90vw}
+.marketing-page .seller-shell,.marketing-page .seller-results__inner,.marketing-page .seller-testimonials__head{width:100%}
+.marketing-page .seller-testimonials__grid{max-width:none}

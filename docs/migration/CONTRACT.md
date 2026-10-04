@@ -24,3 +24,5 @@ Final CTA detail: white-shirt portrait must be contained without clipping the he
 Owner Vender change 2026-10-04: first results block is the Home sold-properties subsection only, reusing its latest-five CMS selection, cards and fixed photograph. Keep the second results block's values96%/60 dias/85% and show numbers white. Remove the later duplicate sold-properties block from Vender. This overrides original duplication/presentation only on that page.
 
 Owner Vender addition2026-10-04: add a guide promotion between the final Negociação video and testimonials, using the existing Comprar guide visual/copy and /guia-vender-para-comprar destination. Heading uses Owner wording: Precisa de vender antes de comprar?
+
+Owner site-wide margin correction2026-10-04: align main outer sections of Comprar/Sobre/Marketing/Reviews/Contacto to90vw like Vender/navbar. Preserve intentional inner card padding and readable article/form/campaign widths.

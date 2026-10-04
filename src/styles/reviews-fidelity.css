@@ -47,3 +47,7 @@
 .reviews-fidelity__cta h2{font-size:44px;line-height:52.8px;letter-spacing:-.88px;margin-bottom:16px}
 }
 @media(min-width:480px){.reviews-fidelity__portrait{width:115px;justify-self:end}}
+
+/* Keep testimonial sections on the site's common outer alignment. */
+.reviews-fidelity__hero>div:first-child{width:90vw}
+.reviews-fidelity__hero h1+p,.reviews-fidelity__testimonials>header,.reviews-fidelity__grid{max-width:none}
