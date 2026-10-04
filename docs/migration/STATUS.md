@@ -247,3 +247,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Owner: indicadores de área usam Lucide Scan nos cards e na Área Bruta da ficha; Área Útil usa Scan Square. Revisão do destaque mobile corrigiu heading para H1 com a mesma apresentação do card comum; seleção aleatória define imagens de candidatos ocultos como lazy.
 
 2026-10-04 — Fecho destas correções: Astro check 127 ficheiros sem diagnósticos, build 250 páginas, suite 151/151, diff-check limpo e revisão independente PASS após correções de H1 mobile e pseudo-elementos do menu. Preview /imoveis respondeu HTTP 200 em 8791. Verificação visual por browser continua indisponível.
+
+2026-10-04 — Correção final Owner: secção do imóvel em destaque oculta no mobile (até 767px), desktop preservado. Mobile começa na newsletter, seguida de seis imóveis, guia e restantes imóveis.

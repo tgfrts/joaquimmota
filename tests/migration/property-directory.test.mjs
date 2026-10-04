@@ -43,3 +43,8 @@ test('directory guide sits between the sixth property and the remaining properti
   assert.equal(mobile.querySelector('.buy-property__image>span').textContent,'Imóvel em destaque');
  }
 });
+
+test('featured section is hidden only on mobile',()=>{
+ const source=fs.readFileSync(new URL('src/pages/imoveis/index.astro',root),'utf8');
+ assert.match(source,/@media\(max-width:767px\)\{\.property-directory \.blog-index__featured\{display:none\}/);
+});
