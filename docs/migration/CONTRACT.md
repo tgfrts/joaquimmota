@@ -26,3 +26,5 @@ Owner Vender change 2026-10-04: first results block is the Home sold-properties 
 Owner Vender addition2026-10-04: add a guide promotion between the final Negociação video and testimonials, using the existing Comprar guide visual/copy and /guia-vender-para-comprar destination. Heading uses Owner wording: Precisa de vender antes de comprar?
 
 Owner site-wide margin correction2026-10-04: align main outer sections of Comprar/Sobre/Marketing/Reviews/Contacto to90vw like Vender/navbar. Preserve intentional inner card padding and readable article/form/campaign widths.
+
+Owner hero change2026-10-04: Vender/Comprar/Sobre use one InteriorHero component based on approved Vender. Only image/copy/action vary. Center copy vertically and horizontally; positioned copy/button must stack above image/blur. This explicitly replaces original Comprar/Sobre hero presentation.

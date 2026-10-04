@@ -3,6 +3,7 @@ import VideoLightbox from '../components/VideoLightbox.astro';
 import ClosingCta from '../components/ClosingCta.astro';
 import WhatsAppWidget from '../components/WhatsAppWidget.astro';
 import CmsImage from '../components/CmsImage.astro';
+import InteriorHero from '../components/InteriorHero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -29,15 +30,7 @@ const ivoPortrait = ivoCms?.portrait ?? ivoCms?.image;
 <BaseLayout title="Sobre">
   <Header variant="light" pageNavigation />
   <main class="about-page">
-    <section class="about-hero">
-      <div class="about-hero__content">
-        <p class="about-kicker">Joaquim Mota Consultores Imobiliários</p>
-        <h1>Não somos os típicos consultores imobiliários</h1>
-        <p class="about-hero__copy">Temos orgulho em lhe poder proporcionar um serviço de excelência. Não estamos aqui apenas para "abrir a porta" da sua casa.</p>
-        <a class="about-button about-button--red" href="/reviews">As nossas avaliações</a>
-      </div>
-      <div class="about-hero__image"><span></span><img src="/assets/about-hero.png" alt="" loading="eager" /></div>
-    </section>
+    <InteriorHero eyebrow="Joaquim Mota Consultores Imobiliários" heading="Não somos os típicos consultores imobiliários" body={'Temos orgulho em lhe poder proporcionar um serviço de excelência. Não estamos aqui apenas para "abrir a porta" da sua casa.'} image="/assets/about-hero.png" label="As nossas avaliações" href="/reviews" />
     <div class="interior-secondary-header"><Header variant="blue" pageNavigation showBlog={false} contactHref="/vamos-comecar" contactLabel="Vamos começar" /></div>
     <section class="about-profile about-profile--journey"><div class="about-profile__card"><div class="about-profile__copy"><p class="about-kicker">Entrevista</p><h2>Conheça o meu percurso</h2><p>Nesta entrevista falamos um pouco sobre quem sou e o meu percurso profissional até virar um consultor imobiliário de sucesso.</p></div><VideoLightbox image="/assets/about-video-0.jpg" videoId="GA8Iw5rMdyw" title="Conheça o meu percurso" /></div></section>
     <section class="about-profile-cta"><div class="about-profile-cta__card"><div><p class="about-kicker">SOmos PErfil</p><h2>Leia a entrevista completa</h2><p>Conheça nesta entrevista um pouco mais sobre quem sou e o meu percurso profissional até virar um consultor imobiliário de sucesso.</p><a class="about-button" href="https://drive.google.com/file/d/1yReWQExXBI34cqCxArzpSLjCcMUDXJIM/view" target="_blank" rel="noopener">LER ENTREVISTA</a></div></div></section>
@@ -49,8 +42,6 @@ const ivoPortrait = ivoCms?.portrait ?? ivoCms?.image;
 </BaseLayout>
 
 <script>
-  import { bindInteriorHero, bindTestimonialMotion } from '../scripts/source-scroll-motion';
-  const heroImage = document.querySelector<HTMLImageElement>('.about-hero__image img');
-  if (heroImage) bindInteriorHero(heroImage, document.querySelector<HTMLElement>('.about-hero__image span'));
+  import { bindTestimonialMotion } from '../scripts/source-scroll-motion';
   document.querySelectorAll<HTMLElement>('.about-testimonials figure').forEach(bindTestimonialMotion);
 </script>

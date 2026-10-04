@@ -1,4 +1,5 @@
 ---
+import InteriorHero from '../components/InteriorHero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -13,7 +14,7 @@ import '../styles/sell-fidelity.css';
 <BaseLayout title="Vender">
   <Header variant="light" pageNavigation />
   <main class="seller-page">
-    <section class="seller-hero"><div class="seller-hero__content"><p class="seller-kicker">Proprietários</p><h1>Vou vender a Sua casa</h1><p>Connosco, vender a sua casa é mais simples, fácil e rápido.</p><a class="seller-button" href="/vamos-comecar">Vamos começar</a></div><div class="seller-hero__image"><span class="seller-hero__overlay"></span><img src="/assets/reviews-hero.png" alt="" loading="eager" /></div></section>
+    <InteriorHero eyebrow="Proprietários" heading="Vou vender a Sua casa" body="Connosco, vender a sua casa é mais simples, fácil e rápido." image="/assets/reviews-hero.png" label="Vamos começar" href="/vamos-comecar" />
     <div class="interior-secondary-header"><Header variant="blue" pageNavigation showBlog={false} contactHref="/vamos-comecar" contactLabel="Vamos começar" /></div>
     <section class="seller-copy seller-copy--media"><div class="seller-copy__content"><p class="seller-kicker">Preço</p><h2>UMA ESTRATÉGIA DE PREÇO VENCEDORA</h2><p>Um dos fatores mais importantes ao vender a sua casa é o preço. Providenciamos-lhe um relatório com uma análise comparativa de mercado que determina qual a melhor estratégia de preço para si e para a sua casa.</p><a class="seller-button" href="/estudo-de-mercado">Agende o seu estudo de mercado</a></div><VideoLightbox image="/assets/seller-price.jpg" videoId="MTuuS9VXc8E" title="Estratégia de preço" /></section>
     <section class="seller-sold-results"><SoldPropertiesSection /></section>
@@ -27,9 +28,3 @@ import '../styles/sell-fidelity.css';
   <Footer />
   <WhatsAppWidget />
 </BaseLayout>
-
-<script>
-  import { bindInteriorHero } from '../scripts/source-scroll-motion';
-  const heroImage = document.querySelector<HTMLImageElement>('.seller-hero__image img');
-  if (heroImage) bindInteriorHero(heroImage, document.querySelector<HTMLElement>('.seller-hero__overlay'));
-</script>
