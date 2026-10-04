@@ -1,0 +1,12 @@
+---
+interface Props {
+  href?: string;
+  external?: boolean;
+}
+const { href = '/reviews', external = false } = Astro.props;
+---
+<a class="reviews-button" href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}><slot /></a>
+<style>
+  .reviews-button{display:inline-flex;align-items:center;justify-content:center;justify-self:start;min-height:50px;padding:12px 24px;border:1px solid #20457f;background:#20457f;color:#f4f4f4;font:500 16px/24px Roboto,sans-serif;text-decoration:none;box-shadow:4px 4px 20px #0004}
+  @media(max-width:767px){.reviews-button{display:none}}
+</style>

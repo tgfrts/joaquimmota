@@ -1,4 +1,5 @@
 ---
+import ReviewsButton from '../components/ReviewsButton.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -29,7 +30,7 @@ const googleReviews = 'https://www.google.com/search?sca_esv=8a5f3c529fc99551&hl
   <main class="reviews-fidelity">
     <header class="reviews-fidelity__hero"><div><p>Porquê trabalhar connosco</p><h1>Somos alimentados pelo seu sucesso</h1><p>Dedicamo-nos para entregar um serviço de primeira classe para os nossos clientes. Se ainda não o deixamos claro, esperamos que estas avaliações ajudem a comprovar o nosso compromisso.</p><a href="/reviews">O que dizem os nossos clientes</a></div><div class="reviews-fidelity__hero-image"><span class="reviews-fidelity__hero-overlay"></span><img src="/assets/reviews-hero.png" alt="" loading="eager" /></div></header>
     <div class="interior-secondary-header"><Header variant="blue" pageNavigation showBlog={false} contactHref="/vamos-comecar" contactLabel="Vamos começar" /></div>
-    <section class="reviews-fidelity__testimonials"><header><div><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a href={googleReviews} target="_blank" rel="noopener noreferrer">Leia as nossas avaliações no Google</a></header><div class="reviews-fidelity__grid">{reviews.map((review) => <figure><div class="reviews-fidelity__stars" aria-label="5 estrelas">{Array.from({ length: 5 }, () => <svg viewBox="0 0 18 17" aria-hidden="true"><path d="M8.164.551a.91.91 0 0 1 1.672 0l1.826 4.337 4.739.375a.91.91 0 0 1 .517 1.572l-3.611 3.055 1.104 4.569a.91.91 0 0 1-1.353.971L9 14.418l-4.058 2.448a.91.91 0 0 1-1.353-.971l1.104-4.569L1.082 8.27A.91.91 0 0 1 1.6 6.698l4.739-.375z" /></svg>)}</div><blockquote>{review.quote}</blockquote><figcaption>{review.clientName}</figcaption></figure>)}</div></section>
+    <section class="reviews-fidelity__testimonials"><header><div><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><ReviewsButton href={googleReviews} external>Leia as nossas avaliações no Google</ReviewsButton></header><div class="reviews-fidelity__grid">{reviews.map((review) => <figure><div class="reviews-fidelity__stars" aria-label="5 estrelas">{Array.from({ length: 5 }, () => <svg viewBox="0 0 18 17" aria-hidden="true"><path d="M8.164.551a.91.91 0 0 1 1.672 0l1.826 4.337 4.739.375a.91.91 0 0 1 .517 1.572l-3.611 3.055 1.104 4.569a.91.91 0 0 1-1.353.971L9 14.418l-4.058 2.448a.91.91 0 0 1-1.353-.971l1.104-4.569L1.082 8.27A.91.91 0 0 1 1.6 6.698l4.739-.375z" /></svg>)}</div><blockquote>{review.quote}</blockquote><figcaption>{review.clientName}</figcaption></figure>)}</div></section>
     <ClosingCta heading="Ainda à procura de uma parceria de confiança?" body="Na opinião dos nossos clientes somos a melhor opção." href="/vamos-comecar" />
   </main><Footer /><WhatsAppWidget />
 <script>

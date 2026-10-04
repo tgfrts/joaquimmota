@@ -50,3 +50,5 @@ Owner snap correction2026-10-04: restrict hero proximity snap to mobile<=767px. 
 Owner final snap removal2026-10-04: remove hero snapping entirely, including mobile. Restore unrestricted native page scrolling and original hero overflow clipping. This supersedes both prior snap directives; media blur/fade/overlay behavior stays unchanged.
 
 Owner Home mobile media2026-10-04: Home only replaces video with Vender's /assets/reviews-hero.png at<=767px, with the shared image overlay/fade/blur. Desktop/tablet retain video without overlay. Other hero consumers remain unchanged. Do not attach/download Home video source on initial mobile rendering; pause/unload when resizing to mobile and resume on returning to desktop.
+
+Owner review/navbar buttons2026-10-04: all "Leia as nossas avaliações" testimonial CTAs use blue background/border and light text; hide them on mobile<=767px. Preserve labels and destinations, including Google/Facebook variants. Lower blue navbar's "Vamos começar" action uses red background/border with light text, replacing white. Top navbar remains blue-action variant.
