@@ -42,13 +42,14 @@ const strategies = [
       <section class="seller-campaign__clients"><h2>Os nossos clientes são os nossos maiores fãs.</h2><div>{['Jose Silva', 'Isabel Costa', 'Susana Loureiro', 'Joaquim Ferreira', 'Bruna Augusto', 'Bruno Oliveira', 'Isidro Guedes', 'Jorge Mendes', 'Ivone Baldaia', 'Carla Rocha'].map((name) => <span>{name}</span>)}</div></section>
       <section class="seller-campaign__form-section" id="form"><h2>ESTÁ NA HORA DE VENDER A SUA CASA COM SUCESSO.</h2><p>Preencha o formulário.</p>
         <form data-campaign-valuation data-route="/lp-flyer-uma-venda-com-sucesso">
-          <div class="seller-campaign__name-fields"><input name="firstName" placeholder="Nome" required /><input name="lastName" placeholder="Apelido" required /></div>
-          <input name="email" type="email" placeholder="O seu email" required /><input name="phone" type="tel" placeholder="Telefone" required />
+          <div class="seller-campaign__name-fields"><input name="firstName" maxlength="256" placeholder="Nome" required /><input name="lastName" maxlength="256" placeholder="Apelido" required /></div>
+          <input name="email" type="email" maxlength="256" placeholder="O seu email" required /><input name="phone" type="tel" maxlength="256" placeholder="Telefone" required />
           <label class="seller-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
           <button type="submit">QUERO VENDER A MINHA CASA</button><p data-campaign-status role="status" aria-live="polite" hidden></p>
         </form>
       </section>
     </main>
+    <footer class="seller-campaign__footer"><span>Joaquim Mota Consultores © {new Date().getFullYear()}</span><a href="https://www.kwportugal.pt/politica-de-privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a></footer>
   </body>
 </html>
 <script>
@@ -61,3 +62,8 @@ const strategies = [
     catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
   }));
 </script>
+<style>
+  .seller-campaign__footer{display:flex;justify-content:space-between;gap:16px;padding:20px max(24px,7vw);font-size:12px}
+  .seller-campaign__footer a{color:inherit}
+  @media(max-width:767px){.seller-campaign__footer{padding:16px 22px}}
+</style>

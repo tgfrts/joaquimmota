@@ -1,0 +1,3341 @@
+{
+  "generatedAt": "2026-10-04T00:57:03.903Z",
+  "status": "partial-contract-audit",
+  "scope": "Seven sample CMS routes plus the public Comprar and Reviews consumers; title/SEO, DOM href inventory, and initial GET form contracts only. This does not certify visual/layout/interactive parity.",
+  "sourceOrigin": "https://joaquimmota.pt",
+  "targetOrigin": "http://127.0.0.1:4327",
+  "rules": {
+    "links": "Unique DOM anchor href + target pairs; URL normalization preserves pathname, query, and fragment. Browser-confirmed permanently hidden property-section nav is excluded. Sticky-bar links are excluded. Interactive WhatsApp popup is retained despite its closed-state hidden attribute. Other aria-hidden/hidden Webflow elements are excluded.",
+    "forms": "Visible input/select/textarea contracts, required state, consent, success/error copy, and target backend class; source provider actions are not copied.",
+    "authorizedDifference": "Target robots noindex and the accompanying nofollow directive are authorized preview directives and are not reported as SEO deltas.",
+    "exclusions": [
+      "empty zero-width spans without href",
+      "property .navbar2_component.imoveis section links (browser-confirmed display:none and 0x0)",
+      "/comprar form[action=\"/search\"] (browser-confirmed permanently hidden, 0x0)",
+      "offer textarea[placeholder=\"Assunto\"] (browser-confirmed display:none and 0x0)",
+      "non-public hidden Seller/marketing placements",
+      "Webflow runtime scripts and source webhook URLs"
+    ],
+    "fieldNameComparison": "Exact source and target field names are retained in each form record; parity comparison ignores implementation-specific names and compares ordered public labels, types, required state, consent, and select options. Name mappings are reported explicitly.",
+    "runtimeMessages": "Target success/error copy is extracted from static literal source inspection without executing scripts or submitting forms; source data-redirect/redirect takes precedence over default success DOM copy, which is retained as source evidence but not treated as the submitted outcome."
+  },
+  "routeCounts": {
+    "checked": 9,
+    "noDeltaInAuditedContracts": 9,
+    "deltasFound": 0
+  },
+  "routes": [
+    {
+      "kind": "property",
+      "slug": "kwpt036155",
+      "path": "/imoveis/kwpt036155",
+      "source": {
+        "status": 200,
+        "url": "https://joaquimmota.pt/imoveis/kwpt036155",
+        "bytes": 69953,
+        "seo": {
+          "title": "Apartamento T2 com Suite e Garagem junto ao Metro da Campainha em Rio Tinto",
+          "canonical": null,
+          "meta": {
+            "name:description": [
+              ""
+            ],
+            "name:robots": null,
+            "name:author": null,
+            "name:twitter:card": [
+              "summary_large_image"
+            ],
+            "name:twitter:title": [
+              "Apartamento T2 com Suite e Garagem junto ao Metro da Campainha em Rio Tinto"
+            ],
+            "name:twitter:description": [
+              ""
+            ],
+            "name:twitter:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a54efe9f095d8fbb9071061_DJI_20260701173923_0028_D.jpg"
+            ],
+            "property:og:title": [
+              "Apartamento T2 com Suite e Garagem junto ao Metro da Campainha em Rio Tinto"
+            ],
+            "property:og:description": [
+              ""
+            ],
+            "property:og:type": [
+              "website"
+            ],
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a54efe9f095d8fbb9071061_DJI_20260701173923_0028_D.jpg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/imoveis/kwpt036155",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": null
+          }
+        ],
+        "forms": [
+          {
+            "key": "imoveis",
+            "sourceName": "wf-form-Form-Imoveis",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "Telefone",
+                "type": "tel",
+                "required": true,
+                "label": "Telefone"
+              },
+              {
+                "name": "checkbox-2",
+                "type": "checkbox",
+                "required": true,
+                "label": "Aceito receber informações comerciais enviadas por PS Real Estate Team."
+              }
+            ],
+            "consent": [
+              {
+                "name": "checkbox-2",
+                "required": true,
+                "label": "Aceito receber informações comerciais enviadas por PS Real Estate Team."
+              }
+            ],
+            "successText": "Enviado com sucesso!",
+            "errorText": "Oops! Alguma coisa correu mal."
+          },
+          {
+            "key": "newsletter",
+            "sourceName": "wf-form-Form-Newsletter",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário.."
+          }
+        ]
+      },
+      "target": {
+        "status": 200,
+        "url": "http://127.0.0.1:4327/imoveis/kwpt036155",
+        "bytes": 108666,
+        "seo": {
+          "title": "Apartamento T2 com Suite e Garagem junto ao Metro da Campainha em Rio Tinto",
+          "canonical": null,
+          "meta": {
+            "name:description": [
+              ""
+            ],
+            "name:robots": [
+              "noindex, nofollow"
+            ],
+            "name:author": null,
+            "name:twitter:card": [
+              "summary_large_image"
+            ],
+            "name:twitter:title": [
+              "Apartamento T2 com Suite e Garagem junto ao Metro da Campainha em Rio Tinto"
+            ],
+            "name:twitter:description": [
+              ""
+            ],
+            "name:twitter:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/04e27ee18231578468e8e878399f08f4f5890888-2000x1125.jpg"
+            ],
+            "property:og:title": [
+              "Apartamento T2 com Suite e Garagem junto ao Metro da Campainha em Rio Tinto"
+            ],
+            "property:og:description": [
+              ""
+            ],
+            "property:og:type": [
+              "website"
+            ],
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/04e27ee18231578468e8e878399f08f4f5890888-2000x1125.jpg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": "Joaquim Mota Consultores"
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/imoveis/kwpt036155",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": "Facebook"
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Instagram"
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "Telefone"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "Email"
+          }
+        ],
+        "forms": [
+          {
+            "key": "imoveis",
+            "formType": "contact",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "phone",
+                "type": "tel",
+                "required": true,
+                "label": "Telefone"
+              },
+              {
+                "name": "marketingConsent",
+                "type": "checkbox",
+                "required": true,
+                "label": "Aceito receber informações comerciais enviadas por PS Real Estate Team."
+              }
+            ],
+            "consent": [
+              {
+                "name": "marketingConsent",
+                "required": true,
+                "label": "Aceito receber informações comerciais enviadas por PS Real Estate Team."
+              }
+            ],
+            "successText": "Enviado com sucesso!",
+            "errorText": "Oops! Alguma coisa correu mal.",
+            "runtimeMessages": {
+              "sourceFile": "src/components/CmsPropertyInquiry.astro",
+              "method": "static literal source inspection; no script execution or form submission",
+              "successText": null,
+              "errorText": null,
+              "successAction": "inline success status"
+            }
+          },
+          {
+            "key": "newsletter",
+            "formType": "newsletter",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário..",
+            "runtimeMessages": null
+          }
+        ]
+      },
+      "imageUrlEvidence": [
+        {
+          "field": "property:og:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a54efe9f095d8fbb9071061_DJI_20260701173923_0028_D.jpg",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/04e27ee18231578468e8e878399f08f4f5890888-2000x1125.jpg",
+          "sourceSHA1": "04e27ee18231578468e8e878399f08f4f5890888",
+          "sourceBytes": 1009698,
+          "targetOriginalSHA1": "04e27ee18231578468e8e878399f08f4f5890888",
+          "targetOriginalBytes": 1009698,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        },
+        {
+          "field": "name:twitter:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6a54efe9f095d8fbb9071061_DJI_20260701173923_0028_D.jpg",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/04e27ee18231578468e8e878399f08f4f5890888-2000x1125.jpg",
+          "sourceSHA1": "04e27ee18231578468e8e878399f08f4f5890888",
+          "sourceBytes": 1009698,
+          "targetOriginalSHA1": "04e27ee18231578468e8e878399f08f4f5890888",
+          "targetOriginalBytes": 1009698,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        }
+      ],
+      "deltas": {
+        "seo": [],
+        "hrefs": {
+          "sourceOnly": [],
+          "targetOnly": []
+        },
+        "forms": [
+          {
+            "key": "imoveis",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Telefone",
+                "targetName": "phone",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "checkbox-2",
+                "targetName": "marketingConsent",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          },
+          {
+            "key": "newsletter",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          }
+        ]
+      },
+      "status": "no-delta-in-audited-contracts"
+    },
+    {
+      "kind": "property",
+      "slug": "kwpt032055",
+      "path": "/imoveis/kwpt032055",
+      "source": {
+        "status": 200,
+        "url": "https://joaquimmota.pt/imoveis/kwpt032055",
+        "bytes": 62682,
+        "seo": {
+          "title": "T1+1 com renovação e Garagem em Vilar do Paraíso",
+          "canonical": null,
+          "meta": {
+            "name:description": [
+              ""
+            ],
+            "name:robots": null,
+            "name:author": null,
+            "name:twitter:card": [
+              "summary_large_image"
+            ],
+            "name:twitter:title": [
+              "T1+1 com renovação e Garagem em Vilar do Paraíso"
+            ],
+            "name:twitter:description": [
+              ""
+            ],
+            "name:twitter:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f85f130f2cf923ff33cde3_IMG_3967.jpeg"
+            ],
+            "property:og:title": [
+              "T1+1 com renovação e Garagem em Vilar do Paraíso"
+            ],
+            "property:og:description": [
+              ""
+            ],
+            "property:og:type": [
+              "website"
+            ],
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f85f130f2cf923ff33cde3_IMG_3967.jpeg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/imoveis/kwpt032055",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": null
+          }
+        ],
+        "forms": [
+          {
+            "key": "imoveis",
+            "sourceName": "wf-form-Form-Imoveis",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "Telefone",
+                "type": "tel",
+                "required": true,
+                "label": "Telefone"
+              },
+              {
+                "name": "checkbox-2",
+                "type": "checkbox",
+                "required": true,
+                "label": "Aceito receber informações comerciais enviadas por PS Real Estate Team."
+              }
+            ],
+            "consent": [
+              {
+                "name": "checkbox-2",
+                "required": true,
+                "label": "Aceito receber informações comerciais enviadas por PS Real Estate Team."
+              }
+            ],
+            "successText": "Enviado com sucesso!",
+            "errorText": "Oops! Alguma coisa correu mal."
+          },
+          {
+            "key": "newsletter",
+            "sourceName": "wf-form-Form-Newsletter",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário.."
+          }
+        ]
+      },
+      "target": {
+        "status": 200,
+        "url": "http://127.0.0.1:4327/imoveis/kwpt032055",
+        "bytes": 102978,
+        "seo": {
+          "title": "T1+1 com renovação e Garagem em Vilar do Paraíso",
+          "canonical": null,
+          "meta": {
+            "name:description": [
+              ""
+            ],
+            "name:robots": [
+              "noindex, nofollow"
+            ],
+            "name:author": null,
+            "name:twitter:card": [
+              "summary_large_image"
+            ],
+            "name:twitter:title": [
+              "T1+1 com renovação e Garagem em Vilar do Paraíso"
+            ],
+            "name:twitter:description": [
+              ""
+            ],
+            "name:twitter:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/482459ef06d4dccb0bec17ae468f91cb2b073046-2000x1333.jpg"
+            ],
+            "property:og:title": [
+              "T1+1 com renovação e Garagem em Vilar do Paraíso"
+            ],
+            "property:og:description": [
+              ""
+            ],
+            "property:og:type": [
+              "website"
+            ],
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/482459ef06d4dccb0bec17ae468f91cb2b073046-2000x1333.jpg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": "Joaquim Mota Consultores"
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/imoveis/kwpt032055",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": "Facebook"
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Instagram"
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "Telefone"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "Email"
+          }
+        ],
+        "forms": [
+          {
+            "key": "imoveis",
+            "formType": "contact",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "phone",
+                "type": "tel",
+                "required": true,
+                "label": "Telefone"
+              },
+              {
+                "name": "marketingConsent",
+                "type": "checkbox",
+                "required": true,
+                "label": "Aceito receber informações comerciais enviadas por PS Real Estate Team."
+              }
+            ],
+            "consent": [
+              {
+                "name": "marketingConsent",
+                "required": true,
+                "label": "Aceito receber informações comerciais enviadas por PS Real Estate Team."
+              }
+            ],
+            "successText": "Enviado com sucesso!",
+            "errorText": "Oops! Alguma coisa correu mal.",
+            "runtimeMessages": {
+              "sourceFile": "src/components/CmsPropertyInquiry.astro",
+              "method": "static literal source inspection; no script execution or form submission",
+              "successText": null,
+              "errorText": null,
+              "successAction": "inline success status"
+            }
+          },
+          {
+            "key": "newsletter",
+            "formType": "newsletter",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário..",
+            "runtimeMessages": null
+          }
+        ]
+      },
+      "imageUrlEvidence": [
+        {
+          "field": "property:og:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f85f130f2cf923ff33cde3_IMG_3967.jpeg",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/482459ef06d4dccb0bec17ae468f91cb2b073046-2000x1333.jpg",
+          "sourceSHA1": "482459ef06d4dccb0bec17ae468f91cb2b073046",
+          "sourceBytes": 956703,
+          "targetOriginalSHA1": "482459ef06d4dccb0bec17ae468f91cb2b073046",
+          "targetOriginalBytes": 956703,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        },
+        {
+          "field": "name:twitter:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f85f130f2cf923ff33cde3_IMG_3967.jpeg",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/482459ef06d4dccb0bec17ae468f91cb2b073046-2000x1333.jpg",
+          "sourceSHA1": "482459ef06d4dccb0bec17ae468f91cb2b073046",
+          "sourceBytes": 956703,
+          "targetOriginalSHA1": "482459ef06d4dccb0bec17ae468f91cb2b073046",
+          "targetOriginalBytes": 956703,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        }
+      ],
+      "deltas": {
+        "seo": [],
+        "hrefs": {
+          "sourceOnly": [],
+          "targetOnly": []
+        },
+        "forms": [
+          {
+            "key": "imoveis",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Telefone",
+                "targetName": "phone",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "checkbox-2",
+                "targetName": "marketingConsent",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          },
+          {
+            "key": "newsletter",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          }
+        ]
+      },
+      "status": "no-delta-in-audited-contracts"
+    },
+    {
+      "kind": "article",
+      "slug": "a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "path": "/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "source": {
+        "status": 200,
+        "url": "https://joaquimmota.pt/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+        "bytes": 33414,
+        "seo": {
+          "title": "A proposta mais alta pode não ser a melhor",
+          "canonical": null,
+          "meta": {
+            "name:description": [
+              ""
+            ],
+            "name:robots": null,
+            "name:author": null,
+            "name:twitter:card": [
+              "summary_large_image"
+            ],
+            "name:twitter:title": [
+              "A proposta mais alta pode não ser a melhor"
+            ],
+            "name:twitter:description": [
+              ""
+            ],
+            "name:twitter:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69a2e18596375f0006cbbb05_jkkzaz.webp"
+            ],
+            "property:og:title": [
+              "A proposta mais alta pode não ser a melhor"
+            ],
+            "property:og:description": [
+              ""
+            ],
+            "property:og:type": [
+              "website"
+            ],
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69a2e18596375f0006cbbb05_jkkzaz.webp"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+            "target": null,
+            "label": "Categoria"
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": [
+          {
+            "key": "blog",
+            "sourceName": "wf-form-Form-Blog",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              }
+            ],
+            "consent": [],
+            "successText": "Enviado com sucesso!",
+            "errorText": "Oops! Alguma coisa correu mal."
+          },
+          {
+            "key": "newsletter",
+            "sourceName": "wf-form-Form-Newsletter",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário.."
+          }
+        ]
+      },
+      "target": {
+        "status": 200,
+        "url": "http://127.0.0.1:4327/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+        "bytes": 67818,
+        "seo": {
+          "title": "A proposta mais alta pode não ser a melhor",
+          "canonical": null,
+          "meta": {
+            "name:description": [
+              ""
+            ],
+            "name:robots": [
+              "noindex, nofollow"
+            ],
+            "name:author": null,
+            "name:twitter:card": [
+              "summary_large_image"
+            ],
+            "name:twitter:title": [
+              "A proposta mais alta pode não ser a melhor"
+            ],
+            "name:twitter:description": [
+              ""
+            ],
+            "name:twitter:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/47dfbbbea7978cc7c70e3409047f9e097b2f99cd-1200x630.webp"
+            ],
+            "property:og:title": [
+              "A proposta mais alta pode não ser a melhor"
+            ],
+            "property:og:description": [
+              ""
+            ],
+            "property:og:type": [
+              "website"
+            ],
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/47dfbbbea7978cc7c70e3409047f9e097b2f99cd-1200x630.webp"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": "Joaquim Mota Consultores"
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+            "target": null,
+            "label": "Categoria"
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": "Facebook"
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Instagram"
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": [
+          {
+            "key": "blog",
+            "formType": "newsletter",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              }
+            ],
+            "consent": [],
+            "successText": "Enviado com sucesso!",
+            "errorText": "Oops! Alguma coisa correu mal.",
+            "runtimeMessages": {
+              "sourceFile": "src/components/CmsNewsletter.astro",
+              "method": "static literal source inspection; no script execution or form submission",
+              "successText": null,
+              "errorText": null,
+              "successAction": "inline success status"
+            }
+          },
+          {
+            "key": "newsletter",
+            "formType": "newsletter",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário..",
+            "runtimeMessages": null
+          }
+        ]
+      },
+      "imageUrlEvidence": [
+        {
+          "field": "property:og:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69a2e18596375f0006cbbb05_jkkzaz.webp",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/47dfbbbea7978cc7c70e3409047f9e097b2f99cd-1200x630.webp",
+          "sourceSHA1": "47dfbbbea7978cc7c70e3409047f9e097b2f99cd",
+          "sourceBytes": 38524,
+          "targetOriginalSHA1": "47dfbbbea7978cc7c70e3409047f9e097b2f99cd",
+          "targetOriginalBytes": 38524,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        },
+        {
+          "field": "name:twitter:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69a2e18596375f0006cbbb05_jkkzaz.webp",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/47dfbbbea7978cc7c70e3409047f9e097b2f99cd-1200x630.webp",
+          "sourceSHA1": "47dfbbbea7978cc7c70e3409047f9e097b2f99cd",
+          "sourceBytes": 38524,
+          "targetOriginalSHA1": "47dfbbbea7978cc7c70e3409047f9e097b2f99cd",
+          "targetOriginalBytes": 38524,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        }
+      ],
+      "deltas": {
+        "seo": [],
+        "hrefs": {
+          "sourceOnly": [],
+          "targetOnly": []
+        },
+        "forms": [
+          {
+            "key": "blog",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          },
+          {
+            "key": "newsletter",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          }
+        ]
+      },
+      "status": "no-delta-in-audited-contracts"
+    },
+    {
+      "kind": "article",
+      "slug": "os-segredos-que-as-casas-nao-contam-2",
+      "path": "/post/os-segredos-que-as-casas-nao-contam-2",
+      "source": {
+        "status": 200,
+        "url": "https://joaquimmota.pt/post/os-segredos-que-as-casas-nao-contam-2",
+        "bytes": 30894,
+        "seo": {
+          "title": "Os segredos que as casas não contam",
+          "canonical": null,
+          "meta": {
+            "name:description": [
+              ""
+            ],
+            "name:robots": null,
+            "name:author": null,
+            "name:twitter:card": [
+              "summary_large_image"
+            ],
+            "name:twitter:title": [
+              "Os segredos que as casas não contam"
+            ],
+            "name:twitter:description": [
+              ""
+            ],
+            "name:twitter:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/698afd90985b08b7d2844683_6s6s.webp"
+            ],
+            "property:og:title": [
+              "Os segredos que as casas não contam"
+            ],
+            "property:og:description": [
+              ""
+            ],
+            "property:og:type": [
+              "website"
+            ],
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/698afd90985b08b7d2844683_6s6s.webp"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/post/os-segredos-que-as-casas-nao-contam-2",
+            "target": null,
+            "label": "Categoria"
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": [
+          {
+            "key": "blog",
+            "sourceName": "wf-form-Form-Blog",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              }
+            ],
+            "consent": [],
+            "successText": "Enviado com sucesso!",
+            "errorText": "Oops! Alguma coisa correu mal."
+          },
+          {
+            "key": "newsletter",
+            "sourceName": "wf-form-Form-Newsletter",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário.."
+          }
+        ]
+      },
+      "target": {
+        "status": 200,
+        "url": "http://127.0.0.1:4327/post/os-segredos-que-as-casas-nao-contam-2",
+        "bytes": 62205,
+        "seo": {
+          "title": "Os segredos que as casas não contam",
+          "canonical": null,
+          "meta": {
+            "name:description": [
+              ""
+            ],
+            "name:robots": [
+              "noindex, nofollow"
+            ],
+            "name:author": null,
+            "name:twitter:card": [
+              "summary_large_image"
+            ],
+            "name:twitter:title": [
+              "Os segredos que as casas não contam"
+            ],
+            "name:twitter:description": [
+              ""
+            ],
+            "name:twitter:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/d330fceb508b9a0ef4b8400f9f125d2d81afe699-1200x630.webp"
+            ],
+            "property:og:title": [
+              "Os segredos que as casas não contam"
+            ],
+            "property:og:description": [
+              ""
+            ],
+            "property:og:type": [
+              "website"
+            ],
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/d330fceb508b9a0ef4b8400f9f125d2d81afe699-1200x630.webp"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": "Joaquim Mota Consultores"
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/post/os-segredos-que-as-casas-nao-contam-2",
+            "target": null,
+            "label": "Categoria"
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": "Facebook"
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Instagram"
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": [
+          {
+            "key": "blog",
+            "formType": "newsletter",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              }
+            ],
+            "consent": [],
+            "successText": "Enviado com sucesso!",
+            "errorText": "Oops! Alguma coisa correu mal.",
+            "runtimeMessages": {
+              "sourceFile": "src/components/CmsNewsletter.astro",
+              "method": "static literal source inspection; no script execution or form submission",
+              "successText": null,
+              "errorText": null,
+              "successAction": "inline success status"
+            }
+          },
+          {
+            "key": "newsletter",
+            "formType": "newsletter",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário..",
+            "runtimeMessages": null
+          }
+        ]
+      },
+      "imageUrlEvidence": [
+        {
+          "field": "property:og:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/698afd90985b08b7d2844683_6s6s.webp",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/d330fceb508b9a0ef4b8400f9f125d2d81afe699-1200x630.webp",
+          "sourceSHA1": "d330fceb508b9a0ef4b8400f9f125d2d81afe699",
+          "sourceBytes": 72636,
+          "targetOriginalSHA1": "d330fceb508b9a0ef4b8400f9f125d2d81afe699",
+          "targetOriginalBytes": 72636,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        },
+        {
+          "field": "name:twitter:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/698afd90985b08b7d2844683_6s6s.webp",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/d330fceb508b9a0ef4b8400f9f125d2d81afe699-1200x630.webp",
+          "sourceSHA1": "d330fceb508b9a0ef4b8400f9f125d2d81afe699",
+          "sourceBytes": 72636,
+          "targetOriginalSHA1": "d330fceb508b9a0ef4b8400f9f125d2d81afe699",
+          "targetOriginalBytes": 72636,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        }
+      ],
+      "deltas": {
+        "seo": [],
+        "hrefs": {
+          "sourceOnly": [],
+          "targetOnly": []
+        },
+        "forms": [
+          {
+            "key": "blog",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          },
+          {
+            "key": "newsletter",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          }
+        ]
+      },
+      "status": "no-delta-in-audited-contracts"
+    },
+    {
+      "kind": "offer",
+      "slug": "vinho-e-fado",
+      "path": "/ofertas/vinho-e-fado",
+      "source": {
+        "status": 200,
+        "url": "https://joaquimmota.pt/ofertas/vinho-e-fado",
+        "bytes": 8565,
+        "seo": {
+          "title": "Joaquim Mota Consultores",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": null,
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": null,
+            "name:twitter:description": null,
+            "name:twitter:image": null,
+            "property:og:title": null,
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": null,
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": null
+          }
+        ],
+        "forms": [
+          {
+            "key": "ofertas",
+            "sourceName": "wf-form-Form-Ofertas",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "Telefone",
+                "type": "tel",
+                "required": true,
+                "label": "Telefone"
+              },
+              {
+                "name": "Conhece-algu-m",
+                "type": "select-one",
+                "required": true,
+                "label": "Conhece alguém que esteja a vender ou a comprar casa?",
+                "options": [
+                  {
+                    "value": "Sim, a comprar",
+                    "label": "Sim, a comprar"
+                  },
+                  {
+                    "value": "Sim, a vender",
+                    "label": "Sim, a vender"
+                  },
+                  {
+                    "value": "Não",
+                    "label": "Não"
+                  }
+                ]
+              },
+              {
+                "name": "Est-a-pensar",
+                "type": "select-one",
+                "required": true,
+                "label": "Está a pensar vender ou a comprar casa?",
+                "options": [
+                  {
+                    "value": "Sim, a comprar",
+                    "label": "Sim, a comprar"
+                  },
+                  {
+                    "value": "Sim, a vender",
+                    "label": "Sim, a vender"
+                  },
+                  {
+                    "value": "Não",
+                    "label": "Não"
+                  }
+                ]
+              },
+              {
+                "name": "checkbox-2",
+                "type": "checkbox",
+                "required": true,
+                "label": "Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários."
+              }
+            ],
+            "consent": [
+              {
+                "name": "checkbox-2",
+                "required": true,
+                "label": "Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários."
+              }
+            ],
+            "successText": "Obrigado! O seu formulário foi enviado com sucesso.",
+            "errorText": "Oops! Aconteceu algo de errado enquanto submetia o seu formulário.",
+            "successAction": "redirect /obrigado",
+            "excludedSourceControls": [
+              {
+                "selector": "textarea[placeholder=\"Assunto\"]",
+                "reason": "Owner browser evidence: permanently display:none with a 0x0 rectangle."
+              }
+            ]
+          }
+        ]
+      },
+      "target": {
+        "status": 200,
+        "url": "http://127.0.0.1:4327/ofertas/vinho-e-fado",
+        "bytes": 18340,
+        "seo": {
+          "title": "Joaquim Mota Consultores",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": [
+              "noindex, nofollow"
+            ],
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": null,
+            "name:twitter:description": null,
+            "name:twitter:image": null,
+            "property:og:title": null,
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": null,
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": "Joaquim Mota Consultores"
+          }
+        ],
+        "forms": [
+          {
+            "key": "ofertas",
+            "formType": "leadMagnet",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              },
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "phone",
+                "type": "tel",
+                "required": true,
+                "label": "Telefone"
+              },
+              {
+                "name": "referral",
+                "type": "select-one",
+                "required": true,
+                "label": "Conhece alguém que esteja a vender ou a comprar casa?",
+                "options": [
+                  {
+                    "value": "Sim, a comprar",
+                    "label": "Sim, a comprar"
+                  },
+                  {
+                    "value": "Sim, a vender",
+                    "label": "Sim, a vender"
+                  },
+                  {
+                    "value": "Não",
+                    "label": "Não"
+                  }
+                ]
+              },
+              {
+                "name": "intent",
+                "type": "select-one",
+                "required": true,
+                "label": "Está a pensar vender ou a comprar casa?",
+                "options": [
+                  {
+                    "value": "Sim, a comprar",
+                    "label": "Sim, a comprar"
+                  },
+                  {
+                    "value": "Sim, a vender",
+                    "label": "Sim, a vender"
+                  },
+                  {
+                    "value": "Não",
+                    "label": "Não"
+                  }
+                ]
+              },
+              {
+                "name": "consent",
+                "type": "checkbox",
+                "required": true,
+                "label": "Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários."
+              }
+            ],
+            "consent": [
+              {
+                "name": "consent",
+                "required": true,
+                "label": "Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários."
+              }
+            ],
+            "successText": null,
+            "errorText": null,
+            "runtimeMessages": {
+              "sourceFile": "src/pages/ofertas/[slug].astro",
+              "method": "static literal source inspection; no script execution or form submission",
+              "successText": null,
+              "errorText": "Oops! Aconteceu algo de errado enquanto submetia o seu formulário.",
+              "successAction": "redirect /obrigado"
+            }
+          }
+        ]
+      },
+      "imageUrlEvidence": [],
+      "deltas": {
+        "seo": [],
+        "hrefs": {
+          "sourceOnly": [],
+          "targetOnly": []
+        },
+        "forms": [
+          {
+            "key": "ofertas",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Telefone",
+                "targetName": "phone",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Conhece-algu-m",
+                "targetName": "referral",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Est-a-pensar",
+                "targetName": "intent",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "checkbox-2",
+                "targetName": "consent",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          }
+        ]
+      },
+      "status": "no-delta-in-audited-contracts"
+    },
+    {
+      "kind": "preListing",
+      "slug": "te-t2-gulpilhares-20260916-39528",
+      "path": "/vouvender/te-t2-gulpilhares-20260916-39528",
+      "source": {
+        "status": 200,
+        "url": "https://joaquimmota.pt/vouvender/te-t2-gulpilhares-20260916-39528",
+        "bytes": 121860,
+        "seo": {
+          "title": "Como vender a sua casa com sucesso Teresinha",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": null,
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": [
+              "Como vender a sua casa com sucesso Teresinha"
+            ],
+            "name:twitter:description": null,
+            "name:twitter:image": [
+              ""
+            ],
+            "property:og:title": [
+              "Como vender a sua casa com sucesso Teresinha"
+            ],
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": [
+              ""
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/reviews",
+            "target": null,
+            "label": "Leia as nossas avaliações"
+          },
+          {
+            "href": "/vouvender/te-t2-gulpilhares-20260916-39528",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": []
+      },
+      "target": {
+        "status": 200,
+        "url": "http://127.0.0.1:4327/vouvender/te-t2-gulpilhares-20260916-39528",
+        "bytes": 96302,
+        "seo": {
+          "title": "Como vender a sua casa com sucesso Teresinha",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": [
+              "noindex, nofollow"
+            ],
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": [
+              "Como vender a sua casa com sucesso Teresinha"
+            ],
+            "name:twitter:description": null,
+            "name:twitter:image": [
+              ""
+            ],
+            "property:og:title": [
+              "Como vender a sua casa com sucesso Teresinha"
+            ],
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": [
+              ""
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/reviews",
+            "target": null,
+            "label": "Leia as nossas avaliações"
+          },
+          {
+            "href": "/vouvender/te-t2-gulpilhares-20260916-39528",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Facebook"
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Instagram"
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": []
+      },
+      "imageUrlEvidence": [],
+      "deltas": {
+        "seo": [],
+        "hrefs": {
+          "sourceOnly": [],
+          "targetOnly": []
+        },
+        "forms": []
+      },
+      "status": "no-delta-in-audited-contracts"
+    },
+    {
+      "kind": "preListing",
+      "slug": "sc-t4-arcozelo-20260416",
+      "path": "/vouvender/sc-t4-arcozelo-20260416",
+      "source": {
+        "status": 200,
+        "url": "https://joaquimmota.pt/vouvender/sc-t4-arcozelo-20260416",
+        "bytes": 121213,
+        "seo": {
+          "title": "Como vender a sua casa com sucesso Sr. António Carvalho",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": null,
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": [
+              "Como vender a sua casa com sucesso Sr. António Carvalho"
+            ],
+            "name:twitter:description": null,
+            "name:twitter:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f2945675f174d8cc5ecd01_arc.jpeg"
+            ],
+            "property:og:title": [
+              "Como vender a sua casa com sucesso Sr. António Carvalho"
+            ],
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f2945675f174d8cc5ecd01_arc.jpeg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/reviews",
+            "target": null,
+            "label": "Leia as nossas avaliações"
+          },
+          {
+            "href": "/vouvender/sc-t4-arcozelo-20260416",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": []
+      },
+      "target": {
+        "status": 200,
+        "url": "http://127.0.0.1:4327/vouvender/sc-t4-arcozelo-20260416",
+        "bytes": 96215,
+        "seo": {
+          "title": "Como vender a sua casa com sucesso Sr. António Carvalho",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": [
+              "noindex, nofollow"
+            ],
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": [
+              "Como vender a sua casa com sucesso Sr. António Carvalho"
+            ],
+            "name:twitter:description": null,
+            "name:twitter:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/58de33da5343c4990b575b4ffe072f6100f19168-2592x1840.jpg"
+            ],
+            "property:og:title": [
+              "Como vender a sua casa com sucesso Sr. António Carvalho"
+            ],
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.sanity.io/images/kaq1vd9b/production/58de33da5343c4990b575b4ffe072f6100f19168-2592x1840.jpg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/reviews",
+            "target": null,
+            "label": "Leia as nossas avaliações"
+          },
+          {
+            "href": "/vouvender/sc-t4-arcozelo-20260416",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Facebook"
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Instagram"
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": []
+      },
+      "imageUrlEvidence": [
+        {
+          "field": "property:og:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f2945675f174d8cc5ecd01_arc.jpeg",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/58de33da5343c4990b575b4ffe072f6100f19168-2592x1840.jpg",
+          "sourceSHA1": "58de33da5343c4990b575b4ffe072f6100f19168",
+          "sourceBytes": 668747,
+          "targetOriginalSHA1": "58de33da5343c4990b575b4ffe072f6100f19168",
+          "targetOriginalBytes": 668747,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        },
+        {
+          "field": "name:twitter:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/69f2945675f174d8cc5ecd01_arc.jpeg",
+          "targetUrl": "https://cdn.sanity.io/images/kaq1vd9b/production/58de33da5343c4990b575b4ffe072f6100f19168-2592x1840.jpg",
+          "sourceSHA1": "58de33da5343c4990b575b4ffe072f6100f19168",
+          "sourceBytes": 668747,
+          "targetOriginalSHA1": "58de33da5343c4990b575b4ffe072f6100f19168",
+          "targetOriginalBytes": 668747,
+          "evidence": "validated source original digest/bytes match the target Sanity image asset hash"
+        }
+      ],
+      "deltas": {
+        "seo": [],
+        "hrefs": {
+          "sourceOnly": [],
+          "targetOnly": []
+        },
+        "forms": []
+      },
+      "status": "no-delta-in-audited-contracts"
+    },
+    {
+      "kind": "consumer",
+      "slug": "comprar",
+      "path": "/comprar",
+      "source": {
+        "status": 200,
+        "url": "https://joaquimmota.pt/comprar",
+        "bytes": 143274,
+        "seo": {
+          "title": "Comprar",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": null,
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": [
+              "Comprar"
+            ],
+            "name:twitter:description": null,
+            "name:twitter:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg"
+            ],
+            "property:og:title": [
+              "Comprar"
+            ],
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/comprar#imoveis",
+            "target": null,
+            "label": "Conheça os nosso imóveis"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/credito-habitacao",
+            "target": null,
+            "label": "Quero obter uma proposta"
+          },
+          {
+            "href": "/guia-vender-para-comprar",
+            "target": null,
+            "label": "QUERO OBTER O GUIA"
+          },
+          {
+            "href": "/imoveis/kwpt009872",
+            "target": null,
+            "label": "Moradia T4 rés do chão e andar renovada em Rio Tinto€360000Preço sob consultaGondomarRio TintoKWPT009872441250 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt013603",
+            "target": null,
+            "label": "Novo PreçoApartamento com 4 quartos ao senhor da Pedra em Gulpilhares€290000Preço sob consultaVila Nova de GaiaGulpilharesKWPT013603431159 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt016225",
+            "target": null,
+            "label": "NovidadeTerreno com área total de 708m2 com projeto aprovado para moradia unifamiliar de 5 pisos€160000Preço sob consultaGondomarBaguim do MonteKWPT016225708 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt023708",
+            "target": null,
+            "label": "NovidadeT4 ao centro de Gaia com 2 lugares de garagem e arrumo€435000Preço sob consultaVila Nova de GaiaMafamude e Vilar do ParaísoKWPT023708432203 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt026529",
+            "target": null,
+            "label": "NovidadeMoradia T3 Térrea de Luxo - Nova a Estrear no Coração de Freamunde!€320000Preço sob consultaOutroPaços de FerreiraFreamundeKWPT026529321140 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt029949",
+            "target": null,
+            "label": "NovidadeApartamento T3 em Rio Tinto de 2002 com quintal, garagem p/2 carros e arrumo€307500Preço sob consultaGondomarRio TintoKWPT029949322163 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt032055",
+            "target": null,
+            "label": "ReservadoT1+1 com renovação e Garagem em Vilar do Paraíso€227500Preço sob consultaVila Nova de GaiaVilar do ParaísoKWPT032055 - Reservado21179 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt032072",
+            "target": null,
+            "label": "Novo PreçoExclusivo T2 em Condomínio Fechado com Vistas Deslumbrantes – Gervide€280000Preço sob consultaVila Nova de GaiaOliveira do DouroKWPT03207222295 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt036155",
+            "target": null,
+            "label": "NovidadeApartamento T2 com Suite e Garagem junto ao Metro da Campainha em Rio Tinto€310000Preço sob consultaGondomarRio TintoKWPT036155221100 m2 - Área Bruta"
+          },
+          {
+            "href": "/reviews",
+            "target": null,
+            "label": "Leia as nossas avaliações"
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Vamos começar"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://api.whatsapp.com/send?phone=914257870",
+            "target": "_blank",
+            "label": "Iniciar uma conversa",
+            "visibilityEvidence": "Owner browser confirmed the popup is temporarily hidden but interactively available in source and target."
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": [
+          {
+            "key": "search",
+            "sourceName": "unnamed",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "GET /search query route",
+            "fields": [
+              {
+                "name": "query",
+                "type": "search",
+                "required": true,
+                "label": "Search for properties"
+              }
+            ],
+            "consent": [],
+            "successText": null,
+            "errorText": null,
+            "excludedByRecordedVisibility": {
+              "selector": "form[action=\"/search\"]",
+              "reason": "Owner browser evidence: permanently hidden search filter with a 0x0 rectangle."
+            },
+            "excluded": true
+          },
+          {
+            "key": "newsletter",
+            "sourceName": "wf-form-Form-Newsletter",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário.."
+          }
+        ]
+      },
+      "target": {
+        "status": 200,
+        "url": "http://127.0.0.1:4327/comprar",
+        "bytes": 123680,
+        "seo": {
+          "title": "Comprar",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": [
+              "noindex, nofollow"
+            ],
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": [
+              "Comprar"
+            ],
+            "name:twitter:description": null,
+            "name:twitter:image": [
+              "https://joaquimmota.pt/assets/og-jrm.jpg"
+            ],
+            "property:og:title": [
+              "Comprar"
+            ],
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": [
+              "https://joaquimmota.pt/assets/og-jrm.jpg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": "Joaquim Mota Consultores"
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/comprar#imoveis",
+            "target": null,
+            "label": "Conheça os nosso imóveis"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/credito-habitacao",
+            "target": null,
+            "label": "Quero obter uma proposta"
+          },
+          {
+            "href": "/guia-vender-para-comprar",
+            "target": null,
+            "label": "QUERO OBTER O GUIA"
+          },
+          {
+            "href": "/imoveis/kwpt009872",
+            "target": null,
+            "label": "Moradia T4 rés do chão e andar renovada em Rio Tinto€360000GondomarRio TintoKWPT009872441250 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt013603",
+            "target": null,
+            "label": "Novo PreçoApartamento com 4 quartos ao senhor da Pedra em Gulpilhares€290000Vila Nova de GaiaGulpilharesKWPT013603431159 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt016225",
+            "target": null,
+            "label": "NovidadeTerreno com área total de 708m2 com projeto aprovado para moradia unifamiliar de 5 pisos€160000GondomarBaguim do MonteKWPT016225708 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt023708",
+            "target": null,
+            "label": "NovidadeT4 ao centro de Gaia com 2 lugares de garagem e arrumo€435000Vila Nova de GaiaMafamude e Vilar do ParaísoKWPT023708432203 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt026529",
+            "target": null,
+            "label": "NovidadeMoradia T3 Térrea de Luxo - Nova a Estrear no Coração de Freamunde!€320000Paços de FerreiraKWPT026529321140 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt029949",
+            "target": null,
+            "label": "NovidadeApartamento T3 em Rio Tinto de 2002 com quintal, garagem p/2 carros e arrumo€307500GondomarRio TintoKWPT029949322163 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt032055",
+            "target": null,
+            "label": "ReservadoT1+1 com renovação e Garagem em Vilar do Paraíso€227500Vila Nova de GaiaVilar do ParaísoKWPT032055 - Reservado21179 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt032072",
+            "target": null,
+            "label": "Novo PreçoExclusivo T2 em Condomínio Fechado com Vistas Deslumbrantes – Gervide€280000Vila Nova de GaiaOliveira do DouroKWPT03207222295 m2 - Área Bruta"
+          },
+          {
+            "href": "/imoveis/kwpt036155",
+            "target": null,
+            "label": "NovidadeApartamento T2 com Suite e Garagem junto ao Metro da Campainha em Rio Tinto€310000GondomarRio TintoKWPT036155221100 m2 - Área Bruta"
+          },
+          {
+            "href": "/reviews",
+            "target": null,
+            "label": "Leia as nossas avaliações"
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Vamos começar"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://api.whatsapp.com/send?phone=914257870",
+            "target": "_blank",
+            "label": "Iniciar uma conversa",
+            "visibilityEvidence": "Owner browser confirmed the popup is temporarily hidden but interactively available in source and target."
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": "Facebook"
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Instagram"
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": [
+          {
+            "key": "newsletter",
+            "formType": "newsletter",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário..",
+            "runtimeMessages": null
+          }
+        ]
+      },
+      "imageUrlEvidence": [
+        {
+          "field": "property:og:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg",
+          "targetUrl": "https://joaquimmota.pt/assets/og-jrm.jpg",
+          "sourceSHA256": "40d2a4f81e15234ba26622ad8fd86a6639a451e703631e923df3efe9d7904b9c",
+          "sourceBytes": 129661,
+          "evidence": "read-only HTTP GET byte digest and size match"
+        },
+        {
+          "field": "name:twitter:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg",
+          "targetUrl": "https://joaquimmota.pt/assets/og-jrm.jpg",
+          "sourceSHA256": "40d2a4f81e15234ba26622ad8fd86a6639a451e703631e923df3efe9d7904b9c",
+          "sourceBytes": 129661,
+          "evidence": "read-only HTTP GET byte digest and size match"
+        }
+      ],
+      "deltas": {
+        "seo": [],
+        "hrefs": {
+          "sourceOnly": [],
+          "targetOnly": []
+        },
+        "forms": [
+          {
+            "key": "newsletter",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          }
+        ]
+      },
+      "status": "no-delta-in-audited-contracts"
+    },
+    {
+      "kind": "consumer",
+      "slug": "reviews",
+      "path": "/reviews",
+      "source": {
+        "status": 200,
+        "url": "https://joaquimmota.pt/reviews",
+        "bytes": 71557,
+        "seo": {
+          "title": "Reviews",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": null,
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": [
+              "Reviews"
+            ],
+            "name:twitter:description": null,
+            "name:twitter:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg"
+            ],
+            "property:og:title": [
+              "Reviews"
+            ],
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": [
+              "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": null
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/reviews",
+            "target": null,
+            "label": "O que dizem os nossos clientes"
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Vamos começar"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://api.whatsapp.com/send?phone=914257870",
+            "target": "_blank",
+            "label": "Iniciar uma conversa",
+            "visibilityEvidence": "Owner browser confirmed the popup is temporarily hidden but interactively available in source and target."
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.google.com/search?sca_esv=8a5f3c529fc99551&hl=pt-PT&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzQv_LngknV97AguR9DyJ43ug8lKUScEz-IEp4X8FWpBof3OgPOsehMBCKn3ExCty8hLMA5jgyjsLIyNImebmOGDUMhaZB2CFwGV7BXhRlsr2xuBklqJNyX9vRfua0_H5kBtLA5k%3D&q=JRM+Joaquim+Mota+Consultor+Imobili%C3%A1rio+Cr%C3%ADticas&sa=X&ved=2ahUKEwj0j6XMvtKLAxXzcaQEHYLUHoMQ0bkNegQILBAE&biw=1420&bih=855&dpr=2",
+            "target": "_blank",
+            "label": "Leia as nossas avaliações no Google"
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": null
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": [
+          {
+            "key": "newsletter",
+            "sourceName": "wf-form-Form-Newsletter",
+            "formType": null,
+            "method": "GET",
+            "backendTarget": "Webflow-managed form endpoint (not copied)",
+            "fields": [
+              {
+                "name": "Email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "Nome",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "Apelido",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário.."
+          }
+        ]
+      },
+      "target": {
+        "status": 200,
+        "url": "http://127.0.0.1:4327/reviews",
+        "bytes": 87266,
+        "seo": {
+          "title": "Reviews",
+          "canonical": null,
+          "meta": {
+            "name:description": null,
+            "name:robots": [
+              "noindex, nofollow"
+            ],
+            "name:author": null,
+            "name:twitter:card": null,
+            "name:twitter:title": [
+              "Reviews"
+            ],
+            "name:twitter:description": null,
+            "name:twitter:image": [
+              "https://joaquimmota.pt/assets/og-jrm.jpg"
+            ],
+            "property:og:title": [
+              "Reviews"
+            ],
+            "property:og:description": null,
+            "property:og:type": null,
+            "property:og:url": null,
+            "property:og:image": [
+              "https://joaquimmota.pt/assets/og-jrm.jpg"
+            ],
+            "property:og:site_name": null
+          }
+        },
+        "hrefs": [
+          {
+            "href": "/",
+            "target": null,
+            "label": "Joaquim Mota Consultores"
+          },
+          {
+            "href": "/blog",
+            "target": null,
+            "label": "Blog"
+          },
+          {
+            "href": "/comprar",
+            "target": null,
+            "label": "Comprar"
+          },
+          {
+            "href": "/contacto",
+            "target": null,
+            "label": "Contacte-nos"
+          },
+          {
+            "href": "/reviews",
+            "target": null,
+            "label": "O que dizem os nossos clientes"
+          },
+          {
+            "href": "/sobre",
+            "target": null,
+            "label": "Sobre nós"
+          },
+          {
+            "href": "/vamos-comecar",
+            "target": null,
+            "label": "Vamos começar"
+          },
+          {
+            "href": "/vender",
+            "target": null,
+            "label": "Vender"
+          },
+          {
+            "href": "https://api.whatsapp.com/send?phone=914257870",
+            "target": "_blank",
+            "label": "Iniciar uma conversa",
+            "visibilityEvidence": "Owner browser confirmed the popup is temporarily hidden but interactively available in source and target."
+          },
+          {
+            "href": "https://www.facebook.com/joaquimmotakwJRM",
+            "target": "_blank",
+            "label": "Facebook"
+          },
+          {
+            "href": "https://www.google.com/search?sca_esv=8a5f3c529fc99551&hl=pt-PT&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzQv_LngknV97AguR9DyJ43ug8lKUScEz-IEp4X8FWpBof3OgPOsehMBCKn3ExCty8hLMA5jgyjsLIyNImebmOGDUMhaZB2CFwGV7BXhRlsr2xuBklqJNyX9vRfua0_H5kBtLA5k%3D&q=JRM+Joaquim+Mota+Consultor+Imobili%C3%A1rio+Cr%C3%ADticas&sa=X&ved=2ahUKEwj0j6XMvtKLAxXzcaQEHYLUHoMQ0bkNegQILBAE&biw=1420&bih=855&dpr=2",
+            "target": "_blank",
+            "label": "Leia as nossas avaliações no Google"
+          },
+          {
+            "href": "https://www.instagram.com/joaquimmotakw",
+            "target": "_blank",
+            "label": "Instagram"
+          },
+          {
+            "href": "https://www.kwportugal.pt/politica-de-privacidade",
+            "target": "_blank",
+            "label": "Política de Privacidade"
+          },
+          {
+            "href": "null+351914257870",
+            "target": null,
+            "label": "+351 914 257 870"
+          },
+          {
+            "href": "nulljrmota@kwportugal.pt",
+            "target": null,
+            "label": "jrmota@kwportugal.pt"
+          }
+        ],
+        "forms": [
+          {
+            "key": "newsletter",
+            "formType": "newsletter",
+            "method": "GET",
+            "backendTarget": "Site 1 /api/forms via existing form client",
+            "fields": [
+              {
+                "name": "email",
+                "type": "email",
+                "required": true,
+                "label": "O seu email"
+              },
+              {
+                "name": "firstName",
+                "type": "text",
+                "required": true,
+                "label": "Nome"
+              },
+              {
+                "name": "lastName",
+                "type": "text",
+                "required": true,
+                "label": "Apelido"
+              }
+            ],
+            "consent": [],
+            "successText": "Obrigado. A sua subscrição foi realizado com sucesso!",
+            "errorText": "Oops! Aconteceu algo errado enquanto submetia o formulário..",
+            "runtimeMessages": null
+          }
+        ]
+      },
+      "imageUrlEvidence": [
+        {
+          "field": "property:og:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg",
+          "targetUrl": "https://joaquimmota.pt/assets/og-jrm.jpg",
+          "sourceSHA256": "40d2a4f81e15234ba26622ad8fd86a6639a451e703631e923df3efe9d7904b9c",
+          "sourceBytes": 129661,
+          "evidence": "read-only HTTP GET byte digest and size match"
+        },
+        {
+          "field": "name:twitter:image",
+          "status": "same-original-content",
+          "sourceUrl": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg",
+          "targetUrl": "https://joaquimmota.pt/assets/og-jrm.jpg",
+          "sourceSHA256": "40d2a4f81e15234ba26622ad8fd86a6639a451e703631e923df3efe9d7904b9c",
+          "sourceBytes": 129661,
+          "evidence": "read-only HTTP GET byte digest and size match"
+        }
+      ],
+      "deltas": {
+        "seo": [],
+        "hrefs": {
+          "sourceOnly": [],
+          "targetOnly": []
+        },
+        "forms": [
+          {
+            "key": "newsletter",
+            "issue": "internal-field-name-mapping",
+            "informational": true,
+            "mappings": [
+              {
+                "sourceName": "Email",
+                "targetName": "email",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Nome",
+                "targetName": "firstName",
+                "matchedBy": "ordered label + type + required + public options"
+              },
+              {
+                "sourceName": "Apelido",
+                "targetName": "lastName",
+                "matchedBy": "ordered label + type + required + public options"
+              }
+            ],
+            "comparisonRule": "Names are implementation-specific; public form comparison uses exact ordered labels, types, required flags, and select options."
+          }
+        ]
+      },
+      "status": "no-delta-in-audited-contracts"
+    }
+  ],
+  "safety": {
+    "sourceCmsWrites": false,
+    "targetCmsWrites": false,
+    "formsSubmitted": false,
+    "providerWrites": false
+  }
+}

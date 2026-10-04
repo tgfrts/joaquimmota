@@ -97,3 +97,28 @@ test('Portable Text preserves H5 and source _blank behavior while rejecting unsu
   assert.throws(() => portableText('<p>Copy</p><img src="https://example.test/image.jpg" />', 'fixture article'), /unsupported <img>/);
   assert.throws(() => portableText('<p><a href="https://example.test" target="frame">Link</a></p>', 'fixture article'), /unsupported link target/);
 });
+
+
+test('Portable Text preserves NBSP spacing and marks attached to explicit line breaks', () => {
+  const blocks=portableText('<h3><strong>1. &nbsp;Source heading</strong></h3><p><a href="https://example.test" target="_blank">Source<br><br></a> after&nbsp; space</p>', 'spacing fixture');
+  assert.equal(blocks[0].children.map(child=>child.text).join(''), '1. \u00a0Source heading');
+  assert.ok(blocks[0].children.every(child=>child.marks.includes('strong')));
+  const link=blocks[1].markDefs.find(definition=>definition._type==='link');
+  assert.equal(link.openInNewTab,true);
+  const linkedText=blocks[1].children.filter(child=>child.marks.includes(link._key)).map(child=>child.text).join('');
+  assert.equal(linkedText,'Source\n\n');
+  assert.equal(blocks[1].children.map(child=>child.text).join(''),'Source\n\n after\u00a0 space');
+  assert.throws(()=>portableText('<p>Reserved \uE000 character</p>','fixture'), /reserved migration marker/);
+});
+
+
+test('numbered lists retain order and inline marks, with unsupported numbering and nesting rejected', () => {
+  const blocks = portableText('<p>Before</p><ol id="" start="1"><li><strong>First</strong></li><li>Second<br>line</li></ol><p>After</p>', 'numbered list');
+  assert.deepEqual(blocks.map(block => block.listItem ?? null), [null, 'number', 'number', null]);
+  assert.equal(blocks[1].level, 1);
+  assert.equal(blocks[1].children[0].text, 'First');
+  assert.ok(blocks[1].children[0].marks.includes('strong'));
+  assert.equal(blocks[2].children.map(span => span.text).join(''), 'Second\nline');
+  for (const html of ['<ol start="2"><li>Two</li></ol>', '<ol reversed><li>Reverse</li></ol>', '<ol type="a"><li>Letter</li></ol>', '<ol><li value="3">Three</li></ol>']) assert.throws(() => portableText(html, 'numbered fixture'), /unsupported .*numbering/);
+  for (const html of ['<ol><li>A<ul><li>B</li></ul></li></ol>', '<ul><li>A<ol><li>B</li></ol></li></ul>']) assert.throws(() => portableText(html, 'nested fixture'), /nested list/);
+});

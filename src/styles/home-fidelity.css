@@ -210,3 +210,5 @@
 }
 .home-page>.hero>.site-header .brand img{width:102.328125px;height:50px}
 @media(max-width:991px){.home-page>.hero>.site-header .brand img{width:51.1640625px}}
+
+@media(min-width:768px){.home-page .property-copy .property-municipality{order:-1}}

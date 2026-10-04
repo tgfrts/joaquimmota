@@ -1,6 +1,7 @@
 ---
 import '../../styles/global.css';
 import '../../styles/reports.css';
+import ReportDatePicker from '../../components/ReportDatePicker.astro';
 ---
 
 <!doctype html>
@@ -9,6 +10,8 @@ import '../../styles/reports.css';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
+    <meta property="og:title" content="Relatórios de Visita" />
+    <meta name="twitter:title" content="Relatórios de Visita" />
     <title>Relatórios de Visita</title>
   </head>
   <body>
@@ -18,14 +21,14 @@ import '../../styles/reports.css';
         <p>Preenche o formulário abaixo.<br /><a href="https://docs.google.com/spreadsheets/d/1Iks6B9-G8cx1R8RSMO3XvXAS_jabjWrNbF6mKEW-KK8/edit#gid=0" target="_blank" rel="noreferrer">Clica aqui</a> para ver todos os registos de visitas <a href="#" target="_blank" rel="noopener noreferrer">clica aqui</a>.</p>
       </header>
       <section class="doop-report-card" aria-label="Relatório de visita">
-        <form class="doop-report-form doop-report-form--visit" data-preview-form>
+        <form class="doop-report-form doop-report-form--visit" method="post" action="/api/doop/visits">
           <div class="doop-report-field"><label for="buyer-name">Nome Comprador</label><input id="buyer-name" name="nome" type="text" maxlength="256" placeholder="Nome do cliente" required /></div>
           <div class="doop-report-field"><label for="buyer-address">Morada Comprador</label><input id="buyer-address" name="Morada-comprador" type="text" maxlength="256" placeholder="Introduz a morada" required /></div>
           <div class="doop-report-field"><label for="buyer-birth">Data de Nascimento</label><input id="buyer-birth" name="Data-de-nascimento" type="text" maxlength="256" placeholder="Dia / Mês / Ano" required /></div>
           <div class="doop-report-field"><label for="buyer-phone">Telefone</label><input id="buyer-phone" name="Telefone" type="tel" maxlength="256" placeholder="Insere o ID do imóvel" required /></div>
           <div class="doop-report-field"><label for="buyer-document">Documento Identificação</label><input id="buyer-document" name="Documento" type="text" maxlength="256" placeholder="Número do documento de identificação" required /></div>
           <div class="doop-report-field"><label for="visit-property">Imóvel</label><input id="visit-property" name="Im-vel-2" type="text" maxlength="256" placeholder="Insere o ID do imóvel" required /></div>
-          <div class="doop-report-field"><label for="visit-date">Data</label><input id="visit-date" name="Data" type="text" maxlength="256" placeholder="Escolhe uma data" autocomplete="off" required /></div>
+          <div class="doop-report-field"><label for="visit-date">Data</label><ReportDatePicker id="visit-date" name="Data" required /></div>
           <div class="doop-report-field"><label for="construction">Qualidade de Construção</label><select id="construction" name="constru-o" required><option value="null">Escolhe uma opção</option><option value="mau">Mau</option><option value="medio">Médio</option><option value="bom">Bom</option><option value="muito bom">Muito bom</option></select></div>
           <div class="doop-report-field"><label for="finishes">Acabamentos</label><select id="finishes" name="acabamentos" required><option value="null">Escolhe uma opção</option><option value="mau">Mau</option><option value="medio">Médio</option><option value="bom">Bom</option><option value="muito bom">Muito bom</option></select></div>
           <div class="doop-report-field"><label for="sun-exposure">Exposição Solar</label><select id="sun-exposure" name="exposi-o-solar" required><option value="null">Escolhe uma opção</option><option value="mau">Mau</option><option value="medio">Médio</option><option value="bom">Bom</option><option value="muito bom">Muito bom</option></select></div>
@@ -37,23 +40,10 @@ import '../../styles/reports.css';
           <div class="doop-report-field"><label for="visit-notes">Observações</label><textarea id="visit-notes" name="message" maxlength="5000" placeholder="Escreve aqui alguma observação"></textarea></div>
           <div class="doop-report-field"><label for="visit-owner">Proprietário</label><input id="visit-owner" name="Propriet-rio" type="text" maxlength="256" placeholder="Nome do proprietário" /></div>
           <div class="doop-report-field"><label for="visit-owner-email">Email Proprietário</label><input id="visit-owner-email" name="Email-Propriet-rio" type="text" maxlength="256" placeholder="Email do proprietário" /></div>
-          <button class="doop-report-submit" type="button" data-preview-submit>Registar visita</button>
-          <p class="doop-report-preview">Pré-visualização: os registos não são enviados.</p>
-          <p class="doop-report-status" role="status" aria-live="polite" hidden data-preview-status></p>
+          <button class="doop-report-submit" type="submit">Registar visita</button>
         </form>
       </section>
     </main>
-    <script>
-      const form = document.querySelector<HTMLFormElement>('[data-preview-form]');
-      const status = document.querySelector<HTMLElement>('[data-preview-status]');
-      form?.querySelector('[data-preview-submit]')?.addEventListener('click', () => {
-        if (!form.reportValidity()) return;
-        if (status) {
-          status.textContent = 'Pré-visualização: não é possível registar esta visita.';
-          status.hidden = false;
-        }
-      });
-      form?.addEventListener('submit', event => event.preventDefault());
-    </script>
+
   </body>
 </html>

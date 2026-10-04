@@ -19,7 +19,7 @@ const socialImage = typeof imageRef === 'string' ? (() => { const [, id, dimensi
 ---
 
 <BaseLayout title={record.title} description="" socialImage={socialImage} richSocial>
-  <Header variant="light" pageNavigation contactHref="/contacto" />
+  <Header variant="light" pageNavigation contactHref="/contacto" desktopContactHref="/vamos-comecar" />
   <main class="cms-article">
     <header class="cms-article__header">
       <div class="cms-article__meta"><a class="cms-article__category" href="#">Categoria</a>{record.readingMinutes && <span>Tempo de leitura: {record.readingMinutes} min</span>}</div>

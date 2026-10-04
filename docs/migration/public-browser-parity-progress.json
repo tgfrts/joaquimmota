@@ -555,5 +555,824 @@
       "sha256": "64d39add739ae45e6a5386595c774c2531e064fdc18207dc1ae4f06e30bf3395",
       "independentReview": "source original bytes match; property closing corrected to this exact portrait"
     }
+  },
+  "navigationDestinationCorrection": {
+    "scope": [
+      "/imoveis/kwpt036155",
+      "/imoveis/kwpt032055",
+      "/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "/post/os-segredos-que-as-casas-nao-contam-2"
+    ],
+    "sourceEvidence": "Independent fresh public GET distinguishes navbar3_link /contacto from is-navbar3-button /vamos-comecar on both CMS templates. Reviews/Vender/Marketing/Comprar retain /contacto for both.",
+    "targetEvidence": "Shared Header desktopContactHref override applied only to article/property; browser DOM on kwpt036155 confirms /contacto menu and /vamos-comecar desktop CTA.",
+    "sourceReadOnly": true,
+    "noNavigationSubmission": true
+  },
+  "sellerVideoInteractionFollowup": {
+    "route": "/vender",
+    "viewport": [
+      390,
+      844
+    ],
+    "sourcePriceVideoId": "MTuuS9VXc8E",
+    "sourceOtherVideoIds": [
+      "4q_oaFYRMjQ",
+      "-udOEC_cJOM"
+    ],
+    "targetPriceVideoSrc": "https://www.youtube.com/embed/MTuuS9VXc8E",
+    "observedAfterClose": {
+      "openDialogs": 0,
+      "loadedVideoFrames": 0,
+      "focus": "Ver vídeo: Estratégia de preço"
+    },
+    "status": "Price video open/close and focus restoration observed; responsive whole page still being corrected",
+    "sourceReadOnly": true,
+    "noFormSubmissions": true
+  },
+  "articleMotionBrowserFollowup": {
+    "route": "/post/os-segredos-que-as-casas-nao-contam-2",
+    "viewport": [
+      390,
+      844
+    ],
+    "sourceReadOnly": true,
+    "noSubmissions": true,
+    "method": "Click CTA heading, allow lazy image to finish, press ArrowUp once to update source scroll animation. Compare observed source and target interpolation rather than scrollY, which differs with click placement and transformed geometry.",
+    "source": {
+      "opacity": 0.88549,
+      "scale": 1.02863,
+      "rectY": 396.836975,
+      "rectHeight": 600.091675,
+      "layoutHeight": 583,
+      "scrollY": 4866
+    },
+    "target": {
+      "opacity": 0.853786,
+      "scale": 1.03655,
+      "rectY": 411.563812,
+      "rectHeight": 604.731689,
+      "layoutHeight": 583,
+      "scrollY": 4829.5
+    },
+    "sourceScaleFromOpacity": 1.0286275,
+    "targetScaleFromOpacity": 1.0365535,
+    "curve": "Both observed scale = 1.25 - 0.25 * opacity to matrix rounding; opacity follows entering progress / .35. Loaded source observed fully settled opacity1/scale1 on the same surface.",
+    "limitation": "Different click/scroll positioning produces different progress values; this is curve evidence, not equal scroll-coordinate evidence. Reduced-motion branch remains static/code verification, no OS preference modified."
+  },
+  "propertyHeaderMotionBrowserFollowup": {
+    "route": "/imoveis/kwpt036155",
+    "viewport": [
+      1280,
+      720
+    ],
+    "sourceReadOnly": true,
+    "noSubmissions": true,
+    "sourceAndTargetLayoutHeight": 454.3984375,
+    "initial": {
+      "scrollY": 0,
+      "rectY": 456,
+      "opacitySource": 0,
+      "opacityTarget": 0
+    },
+    "intermediateSettled": {
+      "scrollY": 200,
+      "rectY": 256,
+      "opacitySource": 0.15007,
+      "opacityTarget": 0.150291,
+      "absoluteDifference": 0.000221
+    },
+    "fullyVisible": {
+      "scrollY": 900,
+      "rectY": -444,
+      "opacitySource": 1,
+      "opacityTarget": 1
+    },
+    "method": "Five native ArrowDown inputs then PageDown; same source/target coordinates and measured layout. Initial target intermediate value .133317 was a transient during smoothing and was re-read after settling.",
+    "status": "Initial, intermediate and final desktop header opacity observed in source and target; no frame-perfect timing claim."
+  },
+  "reducedMotionTestCapability": {
+    "browserCapabilities": [
+      "visibility",
+      "viewport"
+    ],
+    "mediaPreferenceEmulationAvailable": false,
+    "OSPreferenceChanged": false,
+    "runtimeEvidence": "4 isolated runtime tests passed using real JSDOM DOM/EventTarget and controlled RAF: initial reduce, change during smoothing, change after settling without scroll, resize and image load. Browser preference emulation unavailable; no OS setting changed."
+  },
+  "buyMobileFinalFollowup": {
+    "viewport": [
+      390,
+      844
+    ],
+    "sourceReadOnly": true,
+    "noFormSubmissions": true,
+    "testimonialCardHeightsSourceAndTarget": [
+      272,
+      224,
+      200,
+      200,
+      176,
+      296,
+      176,
+      200,
+      392,
+      296
+    ],
+    "sectionHeights": {
+      "guide": {
+        "source": 353.890625,
+        "target": 353.90625
+      },
+      "testimonials": {
+        "source": 3058.08594,
+        "target": 3058.109375
+      },
+      "closing": {
+        "source": 482.59375,
+        "target": 482.6015625
+      },
+      "closingCard": {
+        "source": 424.09375,
+        "target": 424.1015625
+      }
+    },
+    "portrait": {
+      "sourceWidth": 167.703125,
+      "targetWidth": 167.6953125,
+      "margin": "-19.5px",
+      "imageMargin": "-19.5px 0px 0px"
+    },
+    "status": "Loaded mobile section geometry and all ten testimonial card heights verified. Desktop/tablet full-page geometry remains outside this followup."
+  },
+  "articleEmptyAnchorDisposition": {
+    "route": "/post/os-segredos-que-as-casas-nao-contam-2",
+    "sourceHTML": "<a href=\"#\"><span></span></a>",
+    "parent": "newsletter spam notice",
+    "observedWidth": 0,
+    "observedHeight": 14,
+    "disposition": "Empty residual span paints no visible element; excluded under Owner visible-experience scope. Hidden share icons also excluded. No invented interaction added."
+  },
+  "prelistingCurrentResponsiveFollowup": {
+    "route": "/vouvender/sc-t4-arcozelo-20260416",
+    "sourceReadOnly": true,
+    "noFormSubmissions": true,
+    "desktopViewport": [
+      1280,
+      720
+    ],
+    "desktopSectionHeights": {
+      "hero": {
+        "source": 720,
+        "target": 720
+      },
+      "intro": {
+        "source": 803.78125,
+        "target": 803.78125
+      },
+      "soldRail": {
+        "source": 760,
+        "target": 760
+      },
+      "process": {
+        "source": 964.9765625,
+        "target": 964.9765625
+      },
+      "statsCombined": {
+        "source": 419.59375,
+        "target": 419.6015625
+      },
+      "testimonials": {
+        "source": 1475,
+        "target": 1475
+      },
+      "closingFullyLoaded": {
+        "source": 512,
+        "target": 512
+      }
+    },
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "mobileSectionHeights": {
+      "hero": {
+        "source": 844,
+        "target": 844
+      },
+      "intro": {
+        "source": 1238.3359375,
+        "target": 1238.3359375
+      },
+      "soldRail": {
+        "source": 639.640625,
+        "target": 639.140625
+      },
+      "process": {
+        "source": 1361.53125,
+        "target": 1361.53125
+      },
+      "statsCombined": {
+        "source": 691.5,
+        "target": 691.5
+      },
+      "testimonials": {
+        "source": 3058.0859375,
+        "target": 3058.0859375
+      },
+      "closing": {
+        "source": 475.28125,
+        "target": 475.28125
+      }
+    },
+    "responsiveLocations": "Source desktop first rail: municipality then parish, last three municipality visible. Second clone hides last-three municipality. Mobile: parish then municipality on first two, last-three municipality hidden. Target now retains these active responsive variants. Home desktop municipality comes before parish for first two, last-three municipality hidden.",
+    "stickyDisposition": "Source sticky-bar fixed bottom0 translates down76px; link rect top844/bottom904 in viewport844 both before and after scrolling to sold heading. Excluded as permanently outside public visible viewport; escaped custom script is not implemented in target.",
+    "remaining": "Mobile sold section residual half-pixel difference needs border/spacing check; new responsive locations need fresh target visual confirmation."
+  },
+  "offerNativeValidationFollowup": {
+    "route": "/ofertas/vinho-e-fado",
+    "targetOnly": true,
+    "method": "Clicked Enviar with every text field empty; no provider call or valid submission",
+    "observed": "Native validation popup Preencha este campo.; focus firstName; firstName,lastName,email,phone valueMissing true; status remains hidden; route unchanged.",
+    "runtime202AndError": "tests/forms/offer-form-runtime.test.mjs executes actual template markup and inline handler with actual forms-client using JSDOM and isolated fetch/navigation mocks: required/email/consent, 503/200 error, 202 redirect, rejected transport retry same key, changed fields new key, duplicate pending request suppressed. No real sends. No claim of browser network-stub or configured provider delivery."
+  },
+  "propertyFirstGalleryFinalFollowup": {
+    "route": "/imoveis/kwpt036155",
+    "viewport": [
+      390,
+      844
+    ],
+    "targetOnly": true,
+    "noFormSubmissions": true,
+    "steps": [
+      "Open Ver imagem 1 de 25",
+      "ArrowRight selects Mostrar imagem 2 de 25 and second Sanity image reference",
+      "Escape closes dialog and restores focus to Ver imagem 1 de 25"
+    ],
+    "dialogsAfterClose": 0,
+    "secondImageRef": "image-c8e0b5659e0ae3b06b62038602ee8ae848b94aba-2000x1333-jpg",
+    "status": "Current first-sample keyboard navigation verified after Header/CmsImage changes; second sample already recorded in propertyGalleryInteractionFollowup."
+  },
+  "buyMotionFinalFollowup": {
+    "route": "/comprar",
+    "viewport": [
+      390,
+      844
+    ],
+    "sourceReadOnly": true,
+    "noFormSubmissions": true,
+    "processAtScroll904": {
+      "sourceOpacity": [
+        1,
+        0.667967,
+        0.252295,
+        0.25,
+        0.25
+      ],
+      "targetOpacity": [
+        1,
+        0.668122,
+        0.252404,
+        0.25,
+        0.25
+      ],
+      "sourceY": [
+        383.6953125,
+        644.4921875,
+        842.890625,
+        993.2890625,
+        1191.6875
+      ],
+      "targetY": [
+        383.703125,
+        644.5,
+        842.8984375,
+        993.296875,
+        1191.6953125
+      ]
+    },
+    "guideVariant": {
+      "sourceClass": "cta3_component",
+      "sourceGuideOpacity": 1,
+      "sourceGuideTransform": "none",
+      "targetGuideOpacity": 1,
+      "targetGuideTransform": "none",
+      "sourceBehavior": "e-388/a-110 is triggered by guide but globally selects final cta1_component, leaving the guide itself static.",
+      "closingAfterGuideClickSourceAndTarget": {
+        "opacity": 1,
+        "scale": 1
+      }
+    },
+    "closingAfterClosingClick": {
+      "sourceOpacity": 1,
+      "targetOpacity": 1,
+      "sourceScale": 1,
+      "targetScale": 1,
+      "sourceY": 323.234375,
+      "targetY": 323.1015625
+    },
+    "status": "Five process steps source/target interpolation observed at same scroll coordinate. Active guide/closing global-selector behavior replicated; no invented animation on guide."
+  },
+  "sourceHiddenContractDispositions": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "sourceReadOnly": true,
+    "noFormSubmissions": true,
+    "propertySectionNav": {
+      "route": "/imoveis/kwpt036155",
+      "anchors": [
+        "#descricao",
+        "#caracteristicas",
+        "#galeria",
+        "#localizacao"
+      ],
+      "ancestor": ".navbar2_component.imoveis",
+      "computedDisplay": "none",
+      "allAnchorDimensions": [
+        0,
+        0
+      ],
+      "disposition": "Permanently hidden nav excluded; destination section IDs are preserved."
+    },
+    "buySearch": {
+      "route": "/comprar",
+      "form": "form[action=\"/search\"]",
+      "dimensions": [
+        0,
+        0
+      ],
+      "hiddenAncestor": ".position-relative.z-index-1",
+      "computedDisplay": "none",
+      "disposition": "Permanently hidden search widget excluded."
+    },
+    "offerTextarea": {
+      "route": "/ofertas/vinho-e-fado",
+      "placeholder": "Assunto",
+      "computedDisplay": "none",
+      "dimensions": [
+        0,
+        0
+      ],
+      "disposition": "Permanently hidden optional field excluded."
+    },
+    "whatsappConditionalLink": {
+      "targetConsumer": "/reviews",
+      "method": "Open launcher then close, without following outgoing link",
+      "expanded": true,
+      "visibleLinkDimensions": [
+        288,
+        49
+      ],
+      "href": "https://api.whatsapp.com/send?phone=914257870",
+      "target": "_blank",
+      "disposition": "Conditional interactive popup is active; include its link in contracts. Target hidden attribute when closed is not a missing interaction."
+    }
+  },
+  "formFeedbackSourceStyles": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "sourceReadOnly": true,
+    "noFormSubmissions": true,
+    "sourceMethod": "Read computed styles of existing hidden success/error widgets without activating or submitting source forms.",
+    "propertyAndArticle": {
+      "success": {
+        "copy": "Enviado com sucesso!",
+        "background": "#ddd",
+        "padding": "20px",
+        "margin": "0px",
+        "align": "center",
+        "font": "300 16px/24px",
+        "color": "#fff"
+      },
+      "error": {
+        "copy": "Oops! Alguma coisa correu mal.",
+        "background": "#ffdede",
+        "padding": "10px",
+        "margin": "10px 0 0",
+        "align": "start",
+        "font": "300 16px/24px",
+        "color": "#fff"
+      }
+    },
+    "offer": {
+      "successCopy": "Obrigado! O seu formulário foi enviado com sucesso.",
+      "successBehavior": "Source and target redirect to /obrigado on accepted submission; target runtime observed only with isolated mock.",
+      "error": {
+        "copy": "Oops! Aconteceu algo de errado enquanto submetia o seu formulário.",
+        "background": "#ffdede",
+        "padding": "10px",
+        "margin": "10px 0 0",
+        "align": "start",
+        "font": "300 16px/24px",
+        "color": "#161616"
+      }
+    },
+    "targetCorrection": "Offer error style corrected. Property/article feedback components being corrected separately with actual-handler runtime tests; initial visible geometry must stay unchanged."
+  },
+  "cmsFeedbackFinalFollowup": {
+    "status": "passed-observed-subpart",
+    "method": "Read-only source and preview DOM measurements; simulated handlers in tests, no real submissions",
+    "propertyDesktop1280": {
+      "sourceFormHeight": 356.5,
+      "targetFormHeight": 356.5,
+      "sourceCardHeight": 630.890625,
+      "targetCardHeight": 630.890625
+    },
+    "propertyMobile390": {
+      "sourceFormHeight": 346,
+      "targetFormHeight": 346,
+      "sourceCardHeight": 555.875,
+      "targetCardHeight": 555.890625
+    },
+    "newsletterDesktop1280": {
+      "sourceContentWidth": 1137,
+      "targetContentWidth": 1137,
+      "sourceCardWidth": 352.34375,
+      "targetCardWidth": 352.34375,
+      "sourceFormHeight": 308,
+      "targetFormHeight": 308,
+      "sourceCardHeight": 636,
+      "targetCardHeight": 636
+    },
+    "newsletterMobile390": {
+      "sourceFormHeight": 270,
+      "targetFormHeight": 270,
+      "sourceCardHeight": 446.1875,
+      "targetCardHeight": 446.203125
+    },
+    "disposition": "Visible source layout gaps around zero-height embed reproduced as spacing without residual DOM. Source/target copy and form feedback style retained. Fractional mobile height differences are 1/64px line rounding."
+  },
+  "prelistingResponsiveFinalFollowup": {
+    "status": "passed-observed-subpart",
+    "route": "/vouvender/sc-t4-arcozelo-20260416",
+    "desktop1280": "First rail municipality then parish; cloned last three municipalities hidden, matching active source variants.",
+    "mobile390": "Parish first; municipality visible only first two cards in both rail copies, matching active source variants.",
+    "soldRailSpacing": "Source collapsed heading margins require max(5vw,20px) on mobile; target section 639.625px after correction, with source heading 86.375px and cards 438.75px. Previously recorded 639.640625px source differs by font subpixel rounding.",
+    "excluded": "Source sticky bar remains permanently off viewport; no synthetic gallery or contact control added."
+  },
+  "sellerNavigationFinalFollowup": {
+    "checkedAt": "2026-10-04T01:48:08.411Z",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "source": {
+      "headingY": 240,
+      "headingHeight": 67.1875,
+      "heroHeight": 1152.1875,
+      "imageWrapperY": 504.1875,
+      "imageWrapperHeight": 720,
+      "stickyHeaderY": 1224.1875,
+      "stickyHeaderHeight": 72
+    },
+    "target": {
+      "headingY": 240,
+      "headingHeight": 67.203125,
+      "stickyHeaderY": 1224.203125,
+      "stickyHeaderHeight": 72
+    },
+    "navigation": {
+      "first": [
+        "/",
+        "/vender",
+        "/comprar",
+        "/sobre",
+        "/blog",
+        "/contacto"
+      ],
+      "second": [
+        "/",
+        "/vender",
+        "/comprar",
+        "/sobre",
+        "/vamos-comecar"
+      ],
+      "secondContactLabel": "Vamos começar",
+      "position": "sticky",
+      "background": "linear-gradient(45deg, #20457f, #162b4e)"
+    },
+    "result": "Desktop hero and navigation match within 1/64px font rounding; mobile follow-up remains separate"
+  },
+  "protectedPublicViewFollowup": {
+    "checkedAt": "2026-10-04T01:51:40.761Z",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "source": {
+      "iconY": 219.296875,
+      "headingY": 333.296875,
+      "inputY": 395.6875,
+      "iconSize": 106
+    },
+    "target": {
+      "iconY": 219.296875,
+      "headingY": 333.296875,
+      "inputY": 395.703125,
+      "iconSize": 106
+    },
+    "securityReview": "Independent foundation audit passed: admin function all methods returns 401/no-store using own static lock page; fresh asset GET forwards no credential headers or request body",
+    "tests": 9,
+    "limitation": "Public locked screen only. Authentication, sessions and private dashboard are not implemented. Preview password form is inert."
+  },
+  "smillingStreetFinalFollowup": {
+    "checkedAt": "2026-10-04T01:56:16.316Z",
+    "desktop": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "sourceAndTarget": {
+        "heroHeight": 1320.59375,
+        "formSectionHeight": 771.390625,
+        "formY": 1514.984375,
+        "formHeight": 450
+      }
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "sourceAndTarget": {
+        "heroHeight": 829.3125,
+        "formSectionHeight": 818.390625,
+        "formY": 1003.703125,
+        "formHeight": 565,
+        "subtitleWidth": 351,
+        "subtitleHeight": 56
+      }
+    },
+    "visibleExperience": "Only active partnership hero and discount form. Permanently hidden event/orator/countdown removed. Original media; #f4f4f4 background; centered hero and left-aligned form; exact copy, options and checked required consent",
+    "interactions": {
+      "anchor": "#form",
+      "successRedirect": "/lp/obrigado-evento",
+      "realSubmission": false
+    },
+    "limitations": [
+      "Delivery not tested with real provider"
+    ]
+  },
+  "contactFinalFollowup": {
+    "viewports": [
+      1280,
+      390
+    ],
+    "scope": "measured public contact sections and CTA; not complete site acceptance",
+    "mobile": {
+      "source": {
+        "heroHeight": 639.71875,
+        "detailsHeight": 877.0625,
+        "ctaHeight": 501.765625
+      },
+      "target": {
+        "heroHeight": 640,
+        "detailsHeight": 877.0625,
+        "ctaHeight": 501.796875
+      }
+    },
+    "desktop": {
+      "source": {
+        "heroHeight": 1301.953125,
+        "detailsHeight": 849.625,
+        "ctaHeight": 517
+      },
+      "target": {
+        "heroHeight": 1301.734375,
+        "detailsHeight": 849.625,
+        "ctaHeight": 517
+      }
+    },
+    "remainingDifference": "Original image ratio/responsive rounding below 0.3 px; no provider submissions performed."
+  },
+  "localPagesRuntime": {
+    "runtime": "local Cloudflare Pages",
+    "buildFormat": "file",
+    "trailingSlash": "never",
+    "builtRoutesChecked": 117,
+    "unknownRouteChecked": true,
+    "failures": 0,
+    "publicStatus": 200,
+    "adminStatus": 401,
+    "unknownStatus": 404,
+    "redirects": 0,
+    "evidence": "Private local GET report /private/tmp/jrmota-pages-local-route-evidence.json",
+    "limitation": "Sample build only; 137 eligible CMS routes await full bulk import."
+  },
+  "aboutFinalFollowup": {
+    "scope": "Public sections, typography, original background imagery, testimonial order, play controls and modal behavior; not complete site acceptance",
+    "desktop1280": {
+      "sourceHeights": [
+        1352.953125,
+        553.59375,
+        496,
+        553.59375,
+        1283,
+        517
+      ],
+      "targetHeights": [
+        1352.734375,
+        553.59375,
+        496,
+        553.59375,
+        1283,
+        517
+      ]
+    },
+    "mobile390": {
+      "sourceHeights": [
+        731.71875,
+        561.703125,
+        401.875,
+        657.703125,
+        2842.0625,
+        392.5625
+      ],
+      "targetHeights": [
+        732,
+        561.734375,
+        401.90625,
+        657.734375,
+        2842.109375,
+        392.609375
+      ]
+    },
+    "originalAssets": [
+      "about-profile-cta.webp",
+      "youtube-silver-play.svg",
+      "video-close.svg"
+    ],
+    "videoModalDesktop": {
+      "sourceAndTargetFrame": {
+        "width": 940,
+        "height": 528,
+        "x": 170,
+        "y": 158
+      },
+      "sourceAndTargetClose": {
+        "width": 68,
+        "height": 44.1875,
+        "x": 1212,
+        "y": 16.875
+      },
+      "observedEscape": {
+        "closed": true,
+        "iframeSourceRemoved": true,
+        "focusReturnedToTrigger": true
+      }
+    },
+    "testimonialMotion": {
+      "sourceAction": "a-59 / e-176",
+      "sourceKeyframes": [
+        [
+          0,
+          0.25
+        ],
+        [
+          25,
+          1
+        ],
+        [
+          50,
+          1
+        ],
+        [
+          100,
+          0.25
+        ]
+      ],
+      "exitEasing": "outQuad",
+      "smoothing": 50,
+      "publicSourceMobileObserved": [
+        {
+          "top": 216.0625,
+          "height": 296,
+          "opacity": 0.855452
+        },
+        {
+          "top": 544.0625,
+          "height": 176,
+          "opacity": 1
+        },
+        {
+          "top": 752.0625,
+          "height": 272,
+          "opacity": 0.4969
+        }
+      ],
+      "targetObserved": [
+        {
+          "top": 400.484375,
+          "height": 296,
+          "opacity": 1
+        },
+        {
+          "top": 728.484375,
+          "height": 176,
+          "opacity": 0.591272
+        }
+      ],
+      "note": "Source and target use the same progress formula; observations at different scroll positions, not claimed to be identical screenshots."
+    },
+    "remainingDifference": "Sub-pixel original image ratio/font-line rounding below 0.3 px per measured section."
+  },
+  "reportCalendarFollowup": {
+    "publicReadOnlySource": "Native date widget configured mm-dd-yyyy; source vendor read for selection/navigation rules only.",
+    "targetMobileObserved": {
+      "days": [
+        210,
+        251
+      ],
+      "monthsHeight": 191.5,
+      "yearsHeight": 191.5,
+      "monthGridColumns": [
+        52.5,
+        52.5,
+        52.5,
+        52.5
+      ],
+      "yearRange": "2021 - 2032",
+      "readonlyInput": true,
+      "initialValue": "",
+      "escapeCloses": true,
+      "escapeFocus": "activity-date"
+    },
+    "tests": "8 date-picker runtime tests, including year/month immediate changes, leap-day clamp, year arrows ±10 and month navigation day preservation.",
+    "submissions": 0
+  },
+  "aboutPortraitLazyLoadCorrection": {
+    "status": "verified-bounded",
+    "source": "public browser 390x844 after native scroll loaded original nova-foto.png",
+    "sourceCTAHeight": 501.765625,
+    "targetCTAHeight": 501.796875,
+    "sourcePortraitWidth": 167.703125,
+    "targetPortraitWidth": 167.6875,
+    "sourceWrapperHeight": 148.203125,
+    "targetWrapperHeight": 148.1875,
+    "correction": "Previous zero-size measurement was pre-load, not a permanent hidden variant; mobile active portrait restored."
+  },
+  "marketingActiveSurfaceFollowup": {
+    "status": "verified-bounded",
+    "sourceDraftCMSExcluded": [
+      "64d73faf12672d652ab57815",
+      "64d73faf12672d652ab57820",
+      "64d73faf12672d652ab5781c",
+      "64d73faf12672d652ab57817"
+    ],
+    "draftRule": "Current staged isDraft true excludes old publicly visible versions as instructed; original eligible static introduction retained in its left desktop column. Section height naturally differs after removing draft cards.",
+    "desktop": {
+      "viewport": [
+        1280,
+        844
+      ],
+      "sourceHeroHeight": 1312.765625,
+      "targetHeroHeight": 1312.53125,
+      "introHeight": 454,
+      "railHeight": 760,
+      "testimonialSectionHeight": 1529,
+      "testimonialCardHeights": [
+        183,
+        237,
+        453,
+        453,
+        291,
+        264,
+        237,
+        210,
+        210,
+        480
+      ],
+      "ctaHeight": 517
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "sourceHeroHeight": 708.0625,
+      "targetHeroHeight": 708,
+      "sourceRailHeight": 639.625,
+      "targetRailHeight": 639.65625,
+      "sourceTestimonialSectionHeight": 3346.0625,
+      "targetTestimonialSectionHeight": 3346.109375,
+      "testimonialCardHeights": [
+        176,
+        224,
+        392,
+        392,
+        272,
+        248,
+        224,
+        200,
+        200,
+        392
+      ],
+      "sourceCTAHeight": 501.765625,
+      "targetCTAHeight": 501.796875
+    },
+    "scopeLimit": "Bounded page measurements and source-derived authored motion, not global site acceptance; no real form submissions."
   }
 }

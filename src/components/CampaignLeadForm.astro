@@ -3,11 +3,11 @@ interface Props { route: string; submitLabel: string; downloadUrl?: string; show
 const { route, submitLabel, downloadUrl = '', showSubject = false, showReferralQuestions = false, contactSubject = false, formType = 'leadMagnet' } = Astro.props;
 ---
 <form class="campaign-form" data-campaign-form data-route={route} data-download={downloadUrl} data-form-type={formType}>
-  <div class="campaign-form__names"><input name="firstName" placeholder="Nome" required /><input name="lastName" placeholder="Apelido" required /></div>
-  <input name="email" type="email" placeholder="O seu email" required />
-  <input name="phone" type="tel" placeholder="Telefone" required />
+  <div class="campaign-form__names"><input name="firstName" maxlength="256" placeholder="Nome" required /><input name="lastName" maxlength="256" placeholder="Apelido" required /></div>
+  <input name="email" type="email" maxlength="256" placeholder="O seu email" required />
+  <input name="phone" type="tel" maxlength="256" placeholder="Telefone" required />
   {contactSubject && <label class="campaign-form__question">Selecione o assunto do contacto:<select name="contactSubject" required><option>Comprar</option><option>Vender</option><option>Outro</option></select></label>}
-  {showReferralQuestions && <><label class="campaign-form__question">Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label><label class="campaign-form__question">Está a pensar vender ou a comprar casa?<select name="intent" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label></>}
+  {showReferralQuestions && <><label class="campaign-form__question">Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="null">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label><label class="campaign-form__question">Está a pensar vender ou a comprar casa?<select name="intent" required><option value="null">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label></>}
   {showSubject && <textarea name="message" placeholder="Assunto"></textarea>}
   <label class="campaign-form__consent"><input type="checkbox" required checked /> <span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
   <button type="submit">{submitLabel}</button>
@@ -19,7 +19,11 @@ const { route, submitLabel, downloadUrl = '', showSubject = false, showReferralQ
   import { submitFormAccepted } from '../scripts/forms-client';
   document.querySelectorAll<HTMLFormElement>('[data-campaign-form]').forEach((form) => form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
     const status = form.querySelector<HTMLElement>('.campaign-form__status')!;
+    if (!button || button.disabled) return;
+    button.disabled = true;
+    status.textContent = '';
     const data = new FormData(form);
     const message = [data.get('message'), data.get('referral') ? `Conhece alguém: ${data.get('referral')}` : '', data.get('intent') ? `Está a pensar: ${data.get('intent')}` : '', data.get('contactSubject') ? `Assunto do contacto: ${data.get('contactSubject')}` : ''].filter(Boolean).join('\n');
     const fields = { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), ...(message ? { message } : {}) };
@@ -28,6 +32,6 @@ const { route, submitLabel, downloadUrl = '', showSubject = false, showReferralQ
       status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
       if (form.dataset.download) window.location.assign(form.dataset.download);
       else { form.hidden = true; const success = form.nextElementSibling as HTMLElement; success.hidden = false; }
-    } catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; }
+    } catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
   }));
 </script>

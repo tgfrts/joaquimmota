@@ -1,13 +1,49 @@
 ---
 const properties = [
-  { image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', municipality: 'Torre de Moncorvo', parish: 'Carviçais' },
-  { image: '/assets/sold-pacos.webp', title: 'Armazém à venda em Paços de Brandão', municipality: 'Santa Maria a Feira', parish: 'Paços de Brandão' },
-  { image: '/assets/sold-pedroso.webp', title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', municipality: 'Vila Nova de Gaia', parish: 'Pedroso' },
-  { image: '/assets/sold-vilar.webp', title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', municipality: 'Vila Nova de Gaia', parish: 'Vilar do Paraíso' },
-  { image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', municipality: 'Vila Nova de Gaia', parish: 'Serzedo' },
+  { image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', municipality: 'Torre de Moncorvo', parish: 'Carviçais', mobileMunicipality: 'Torre de Moncorvo' },
+  { image: '/assets/sold-pacos.webp', title: 'Armazém à venda em Paços de Brandão', municipality: 'Santa Maria a Feira', parish: 'Paços de Brandão', mobileMunicipality: 'Santa Maria a Feira' },
+  { image: '/assets/sold-pedroso.webp', title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', municipality: 'Vila Nova de Gaia', parish: 'Pedroso', mobileMunicipality: '' },
+  { image: '/assets/sold-vilar.webp', title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', municipality: 'Vila Nova de Gaia', parish: 'Vilar do Paraíso', mobileMunicipality: '' },
+  { image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', municipality: 'Vila Nova de Gaia', parish: 'Serzedo', mobileMunicipality: '' },
 ];
 ---
-<div class="sold-rail" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><span>Vendido</span></div><h3>{property.title}</h3><p>{index < properties.length && <>{property.municipality}<br /></>}{property.parish}</p></article>)}</div></div>
+<div class="sold-rail sold-rail--desktop" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h3>{property.title}</h3><p>{property.municipality}<br />{property.parish}</p></article>)}</div></div>
+<div class="sold-rail sold-rail--mobile" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h3>{property.title}</h3><p>{property.parish}{property.mobileMunicipality && <><br />{property.mobileMunicipality}</>}</p></article>)}</div></div>
 <style>
-.sold-rail{overflow:hidden;width:100%}.sold-rail__track{display:flex;gap:64px;width:max-content;animation:slide 48s linear infinite}.sold-rail__card{flex:0 0 320px;width:320px;color:#20457f}.sold-rail__image{height:480px;position:relative;overflow:hidden}.sold-rail__image img{width:100%;height:100%;object-fit:cover}.sold-rail__image span{position:absolute;inset:0;display:grid;place-items:center;color:#fff;text-transform:uppercase;font-size:40px;font-weight:700;transform:rotate(-12deg)}.sold-rail__card h3{font-size:24px;line-height:1.3;margin:24px 0 12px}.sold-rail__card p{font-size:16px;line-height:1.5}.sold-rail:hover .sold-rail__track{animation-play-state:paused}@keyframes slide{to{transform:translateX(calc(-50% - 32px))}}@media(prefers-reduced-motion:reduce){.sold-rail__track{animation:none}.sold-rail{overflow-x:auto}}@media(max-width:767px){.sold-rail__track{gap:24px}.sold-rail__card{flex-basis:280px;width:280px}.sold-rail__image{height:420px}@keyframes slide{to{transform:translateX(calc(-50% - 12px))}}}
+  .sold-rail { width: 100%; overflow: hidden; }
+  .sold-rail--mobile { display: none; }
+  .sold-rail__track { display: flex; width: max-content; animation: sold-loop-desktop 25s linear infinite; animation-play-state: paused; }
+  .sold-rail__track.is-running { animation-play-state: running; }
+  .sold-rail__card { position: relative; flex: 0 0 25vw; width: 25vw; height: 37.5vw; margin-right: 5vw; color: #fff; overflow: hidden; }
+  .sold-rail__image, .sold-rail__image > img { width: 100%; height: 100%; }
+  .sold-rail__image { position: absolute; inset: 0; overflow: hidden; }
+  .sold-rail__image > img { display: block; object-fit: cover; }
+  .sold-rail__image .sold-rail__banner { position: absolute; inset: 0; object-fit: cover; }
+  .sold-rail__card h3, .sold-rail__card p { position: absolute; z-index: 2; left: 2vw; right: 2vw; margin: 0; color: inherit; }
+  .sold-rail__card h3 { bottom: 5.75vw; font-size: 24px; font-weight: 500; line-height: 31.2px; }
+  .sold-rail__card p { bottom: 2vw; font-size: 17.6px; font-weight: 500; line-height: 24.64px; }
+  @keyframes sold-loop-desktop { from { transform: translateX(0); } to { transform: translateX(-150vw); } }
+  @media (prefers-reduced-motion: reduce) { .sold-rail__track { animation: none; } .sold-rail { overflow-x: auto; } }
+  @media (max-width: 767px) {
+    .sold-rail--desktop { display: none; }
+    .sold-rail--mobile { display: block; }
+    .sold-rail__track { animation-name: sold-loop-mobile; animation-duration: 20s; }
+    .sold-rail__card { flex-basis: 75vw; width: 75vw; height: 112.5vw; margin-right: 5vw; }
+    .sold-rail__card h3, .sold-rail__card p { left: 5vw; right: 5vw; }
+    .sold-rail__card h3 { bottom: 12vw; font-size: 24px; line-height: 33.6px; }
+    .sold-rail__card p { bottom: 5vw; font-size: 18px; line-height: 25.2px; }
+  }
+  @keyframes sold-loop-mobile { from { transform: translateX(0); } to { transform: translateX(-400vw); } }
 </style>
+
+<script>
+  const rails = document.querySelectorAll<HTMLElement>('.sold-rail');
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.querySelector('.sold-rail__track')?.classList.add('is-running');
+      observer.unobserve(entry.target);
+    }
+  }, { threshold: 0 });
+  rails.forEach((rail) => observer.observe(rail));
+</script>

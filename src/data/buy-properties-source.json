@@ -12,13 +12,15 @@
     "baths": 2,
     "parking": 1,
     "area": 100,
-    "image": "/assets/buy-property-6a54f0b08ea6f4acb252d675.jpg"
+    "image": "/assets/buy-property-6a54f0b08ea6f4acb252d675.jpg",
+    "imageWidth": 2000,
+    "imageHeight": 1125
   },
   {
     "legacyId": "69f3362d997f2b0e23600e81",
     "slug": "kwpt032072",
-    "label": "Novo Preço · Exclusivo",
-    "title": "T2 em Condomínio Fechado com Vistas Deslumbrantes – Gervide",
+    "label": "Novo Preço",
+    "title": "Exclusivo T2 em Condomínio Fechado com Vistas Deslumbrantes – Gervide",
     "price": "280000",
     "municipality": "Vila Nova de Gaia",
     "parish": "Oliveira do Douro",
@@ -27,7 +29,9 @@
     "baths": 2,
     "parking": 2,
     "area": 95,
-    "image": "/assets/buy-property-69f3362d997f2b0e23600e81.jpg"
+    "image": "/assets/buy-property-69f3362d997f2b0e23600e81.jpg",
+    "imageWidth": 2000,
+    "imageHeight": 1333
   },
   {
     "legacyId": "69f85f2cd504290f91170cad",
@@ -42,7 +46,9 @@
     "baths": 1,
     "parking": 1,
     "area": 79,
-    "image": "/assets/buy-property-69f85f2cd504290f91170cad.jpeg"
+    "image": "/assets/buy-property-69f85f2cd504290f91170cad.jpeg",
+    "imageWidth": 2000,
+    "imageHeight": 1333
   },
   {
     "legacyId": "69ca79014b79e52d8d0efd0e",
@@ -57,7 +63,9 @@
     "baths": 2,
     "parking": 2,
     "area": 163,
-    "image": "/assets/buy-property-69ca79014b79e52d8d0efd0e.jpg"
+    "image": "/assets/buy-property-69ca79014b79e52d8d0efd0e.jpg",
+    "imageWidth": 2000,
+    "imageHeight": 1333
   },
   {
     "legacyId": "6964d41dcd4c29cf4a934f07",
@@ -65,14 +73,16 @@
     "label": "Novidade",
     "title": "Moradia T3 Térrea de Luxo - Nova a Estrear no Coração de Freamunde!",
     "price": "320000",
-    "municipality": "Outro",
-    "parish": "Paços de Ferreira · Freamunde",
+    "municipality": "Paços de Ferreira",
+    "parish": "",
     "reference": "KWPT026529",
     "beds": 3,
     "baths": 2,
     "parking": 1,
     "area": 140,
-    "image": "/assets/buy-property-6964d41dcd4c29cf4a934f07.webp"
+    "image": "/assets/buy-property-6964d41dcd4c29cf4a934f07.webp",
+    "imageWidth": 2000,
+    "imageHeight": 1333
   },
   {
     "legacyId": "690391c0d3220f7e2038c27f",
@@ -87,7 +97,9 @@
     "baths": 3,
     "parking": 2,
     "area": 203,
-    "image": "/assets/buy-property-690391c0d3220f7e2038c27f.jpeg"
+    "image": "/assets/buy-property-690391c0d3220f7e2038c27f.jpeg",
+    "imageWidth": 2000,
+    "imageHeight": 1333
   },
   {
     "legacyId": "685043180aabf4b0120419ea",
@@ -99,7 +111,9 @@
     "parish": "Baguim do Monte",
     "reference": "KWPT016225",
     "area": 708,
-    "image": "/assets/buy-property-685043180aabf4b0120419ea.png"
+    "image": "/assets/buy-property-685043180aabf4b0120419ea.png",
+    "imageWidth": 1536,
+    "imageHeight": 1024
   },
   {
     "legacyId": "67e6d33f5b891f9ac2eda4fc",
@@ -114,7 +128,9 @@
     "baths": 3,
     "parking": 1,
     "area": 159,
-    "image": "/assets/buy-property-67e6d33f5b891f9ac2eda4fc.webp"
+    "image": "/assets/buy-property-67e6d33f5b891f9ac2eda4fc.webp",
+    "imageWidth": 2560,
+    "imageHeight": 1707
   },
   {
     "legacyId": "6776738c6bba83fee2ec3c78",
@@ -129,6 +145,8 @@
     "baths": 4,
     "parking": 1,
     "area": 250,
-    "image": "/assets/buy-property-6776738c6bba83fee2ec3c78.webp"
+    "image": "/assets/buy-property-6776738c6bba83fee2ec3c78.webp",
+    "imageWidth": 3000,
+    "imageHeight": 2000
   }
 ]

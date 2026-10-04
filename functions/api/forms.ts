@@ -42,7 +42,15 @@ const FIELDS: Record<FormType, ReadonlySet<string>> = {
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/u;
 const IDEMPOTENCY = /^[A-Za-z0-9._:-]{8,200}$/u;
 const MAX_BODY_BYTES = 16_384;
-const ORIGINS = new Set(['https://joaquimmota.pt', 'https://www.joaquimmota.pt', 'http://localhost:4321', 'http://127.0.0.1:4327']);
+const ORIGINS = new Set([
+  'https://joaquimmota.pt',
+  'https://www.joaquimmota.pt',
+  'http://localhost:4321',
+  'http://127.0.0.1:4327',
+  // Cloudflare Pages local preview ports; these do not widen production origins.
+  'http://localhost:8789',
+  'http://127.0.0.1:8789',
+]);
 
 class FormError extends Error {
   readonly status: number;

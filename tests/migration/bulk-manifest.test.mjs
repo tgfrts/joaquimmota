@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { buildBulkManifest } from '../../scripts/migration/bulk-manifest.mjs';
 
 const definitions = [
@@ -188,14 +189,139 @@ test('recorded complete evidence stays blocked while source-eligible visibility 
   assert.equal(wrongSamples.bulkGate.status, 'blocked');
 });
 
-test('complete exact residual dispositions and an all-passed sample gate permit the manifest', () => {
+test('complete exact residual dispositions and an all-passed sample gate still require full payload and media coverage', () => {
   const data = fixtures();
   addExactResidualDispositions(data);
   const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate);
   assert.equal(manifest.resolvedVisibilityDispositions.length, 5);
   assert.deepEqual(manifest.unresolvedVisibilityCases, []);
+  assert.equal(manifest.bulkGate.status, 'blocked');
+  assert.equal(manifest.bulkGate.bulkWritesPermitted, false);
+  assert.match(manifest.bulkGate.reason, /full 190-document payload, complete asset map, and source\/destination asset metadata are required/);
+  assert.equal(manifest.bulkGate.fullPayload.expectedDocuments, 190);
+  assert.equal(manifest.bulkGate.fullPayload.expectedVisibleAssetSlots, 1447);
+});
+
+test('a sample-only asset map cannot satisfy full visible-media coverage', () => {
+  const data = fixtures();
+  addExactResidualDispositions(data);
+  const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate,
+    { documents: data.samplePayload.documents }, { assets: {} });
+  assert.equal(manifest.bulkGate.bulkWritesPermitted, false);
+  assert.match(manifest.bulkGate.fullPayload.reason, /source\/destination asset metadata are required/);
+});
+
+test('exact full eligible identities and ordered visible image refs satisfy the payload coverage subgate', () => {
+  const data = fixtures();
+  addExactResidualDispositions(data);
+  const byName = (name) => data.source.collections.find((entry) => entry.name === name);
+  const appendEligible = (name, count, prefix) => {
+    const c = byName(name);
+    for (let i = 0; i < count; i += 1) c.staged.items.push(makeItem(`${prefix}-${i}`, `${prefix}-${i}`));
+    c.live.items = c.staged.items.map((item) => ({ id: item.id, cmsLocaleId: item.cmsLocaleId, slug: item.fieldData.slug }));
+    c.staged.pagination.total = c.staged.items.length;
+    c.live.pagination.total = c.live.items.length;
+    const report = data.report.collections.find((entry) => entry.collection.slug === c.slug);
+    report.eligible = c.staged.items.filter((item) => item.isDraft === false && item.isArchived === false)
+      .map((item) => ({ sourceId: item.id, photoReferences: 0, gallerySlots: 0 }));
+  };
+  appendEligible('Imóveis', 63, 'property-full');
+  appendEligible('Blog Posts', 57, 'article-full');
+  appendEligible('Testemunhos', 36, 'testimonial-full');
+
+  const articles = byName('Blog Posts');
+  const uniqueArticleAssets = Array.from({ length: 1336 }, (_, index) => ({ fileId: `article-asset-${index}`, url: `https://source.invalid/${index}.jpg` }));
+  const articleAssets = [...uniqueArticleAssets, ...uniqueArticleAssets.slice(0, 105)];
+  articles.schema.fields = [{ slug: 'galeria', type: 'MultiImage' }];
+  articles.staged.items.filter((item) => item.isDraft === false).forEach((item, index) => {
+    item.fieldData.galeria = index === 0 ? articleAssets : [];
+  });
+  const articleReport = data.report.collections.find((entry) => entry.collection.slug === 'post');
+  articleReport.eligible.forEach((row) => {
+    row.photoReferences = 0;
+    row.gallerySlots = 0;
+    if (row.sourceId === articles.staged.items[0].id) row.photoReferences = row.gallerySlots = articleAssets.length;
+  });
+
+  const assetMap = { assets: {} };
+  const assetEvidence = { sourceByFileId: {}, destinationByRef: {} };
+  const putAsset = (asset) => { assetMap.assets[asset.fileId] = `image-${asset.fileId}-1200x800-jpg`; };
+  articleAssets.forEach(putAsset);
+  const preListings = byName('Pre-Listings').staged.items;
+  preListings.slice(0, 6).forEach((item) => {
+    item.fieldData['hero-image-2'].url = `https://source.invalid/prelisting-${item.id}.jpg`;
+    putAsset(item.fieldData['hero-image-2']);
+  });
+  const addReceipt = (asset) => {
+    const sha1 = createHash('sha1').update(`fixture:${asset.fileId}`).digest('hex');
+    const bytes = Buffer.byteLength(`fixture-bytes:${asset.fileId}`);
+    assetEvidence.sourceByFileId[asset.fileId] = { url: asset.url, sourceSHA1: sha1, sourceBytes: bytes };
+    assetEvidence.destinationByRef[assetMap.assets[asset.fileId]] = { sha1, size: bytes };
+  };
+  [...uniqueArticleAssets, ...preListings.slice(0, 6).map((item) => item.fieldData['hero-image-2'])].forEach(addReceipt);
+  const eligibleByType = [
+    ['property', 'Imóveis'], ['article', 'Blog Posts'], ['testimonial', 'Testemunhos'],
+    ['offer', 'Ofertas'], ['preListing', 'Pre-Listings'], ['processStep', 'VS Destaques'],
+  ];
+  const fullDocuments = eligibleByType.flatMap(([type, name]) => byName(name).staged.items
+    .filter((item) => item.isDraft === false && (type !== 'processStep' || [pageIds.buy, pageIds.home].includes(item.fieldData.page)))
+    .map((item) => {
+      const slug = item.fieldData.slug;
+      const doc = { _type: type, legacyId: item.id, locale: item.cmsLocaleId, sourceSlug: slug, slug: { current: slug } };
+      if (type === 'article' && Array.isArray(item.fieldData.galeria) && item.fieldData.galeria.length) {
+        doc.gallery = item.fieldData.galeria.map((asset) => ({ asset: { _ref: assetMap.assets[asset.fileId] } }));
+      }
+      if (type === 'preListing' && item.fieldData['hero-image-2']) {
+        doc.heroImage = { asset: { _ref: assetMap.assets[item.fieldData['hero-image-2'].fileId] } };
+      }
+      return doc;
+    }));
+  assert.equal(fullDocuments.length, 190);
+  const manifest = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate,
+    { documents: fullDocuments }, assetMap, assetEvidence);
+  assert.equal(manifest.bulkGate.fullPayload.passed, true);
+  assert.equal(manifest.bulkGate.fullPayload.mappedVisibleAssetSlots, 1447);
+  assert.equal(manifest.bulkGate.fullPayload.uniqueVisibleSourceAssets, 1342);
+  assert.equal(manifest.bulkGate.fullPayload.assetMetadataChecks, 1447);
   assert.equal(manifest.bulkGate.status, 'passed');
-  assert.equal(manifest.bulkGate.bulkWritesPermitted, true);
+
+  const withoutDuplicatePositions = structuredClone(fullDocuments);
+  const firstArticle = withoutDuplicatePositions.find((document) => document._type === 'article' && document.gallery?.length);
+  firstArticle.gallery = firstArticle.gallery.slice(0, 1336);
+  const missingPositions = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate,
+    { documents: withoutDuplicatePositions }, assetMap, assetEvidence);
+  assert.equal(missingPositions.bulkGate.fullPayload.uniqueVisibleSourceAssets, 1342);
+  assert.equal(missingPositions.bulkGate.fullPayload.passed, false);
+  assert.match(missingPositions.bulkGate.fullPayload.reason, /coverage\/order/);
+
+  const mismatchedEvidence = structuredClone(assetEvidence);
+  const firstReceipt = Object.keys(mismatchedEvidence.destinationByRef)[0];
+  mismatchedEvidence.destinationByRef[firstReceipt].size += 1;
+  const mismatch = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate,
+    { documents: fullDocuments }, assetMap, mismatchedEvidence);
+  assert.equal(mismatch.bulkGate.fullPayload.passed, false);
+  assert.match(mismatch.bulkGate.fullPayload.reason, /digest-and-size receipts/);
+
+  const mismatchedDigest = structuredClone(assetEvidence);
+  mismatchedDigest.destinationByRef[firstReceipt].sha1 = '0'.repeat(40);
+  const digestMismatch = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate,
+    { documents: fullDocuments }, assetMap, mismatchedDigest);
+  assert.equal(digestMismatch.bulkGate.fullPayload.passed, false);
+
+  const nonexistentReferenceMap = structuredClone(assetMap);
+  const firstMappedFile = Object.keys(nonexistentReferenceMap.assets)[0];
+  nonexistentReferenceMap.assets[firstMappedFile] = 'image-reference-without-receipt';
+  const nonexistentReference = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate,
+    { documents: fullDocuments }, nonexistentReferenceMap, assetEvidence);
+  assert.equal(nonexistentReference.bulkGate.fullPayload.passed, false);
+  assert.match(nonexistentReference.bulkGate.fullPayload.reason, /coverage\/order or source\/destination digest-and-size receipts/);
+
+  const sampleSizedMap = { assets: Object.fromEntries(Object.entries(assetMap.assets).slice(0, 52)) };
+  const partial = buildBulkManifest(data.source, data.report, data.samplePayload, data.blankRoutes, data.sampleGate,
+    { documents: fullDocuments }, sampleSizedMap, assetEvidence);
+  assert.equal(partial.bulkGate.fullPayload.passed, false);
+  assert.equal(partial.bulkGate.bulkWritesPermitted, false);
+  assert.match(partial.bulkGate.fullPayload.reason, /asset coverage\/order/);
 });
 
 test('one exact residual blank-route mismatch blocks the otherwise complete manifest', () => {

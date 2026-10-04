@@ -1,0 +1,110 @@
+{
+  "status": "sample-evidence-complete-full-bulk-blocked-separately",
+  "purpose": "Readiness inventory behind the formal 11-draft sample gate. It does not authorize whole-bulk import, publication, or provider writes.",
+  "authority": [
+    "docs/migration/CONTRACT.md",
+    "docs/migration/ACCEPTANCE.md"
+  ],
+  "sourceDraftPolicy": "Every staged source draft is ineligible, even where an older live item exists.",
+  "requiredDimensions": [
+    "content",
+    "visibleImages",
+    "order",
+    "layout",
+    "responsive",
+    "urls",
+    "seo",
+    "behavior"
+  ],
+  "sharedEvidence": {
+    "sampleIdentityAndStructuredData": {
+      "status": "passed-subpart",
+      "evidence": "docs/migration/sample-data-parity.json",
+      "detail": "11 target drafts match type, legacyId, locale, source slug and route; structured mismatches are empty; 54 source/target image slots retain ordered references."
+    },
+    "sampleOriginalMedia": {
+      "status": "passed-subpart",
+      "evidence": "docs/migration/sample-image-original-digests.json",
+      "detail": "51 referenced originals have matching SHA-1 and bytes in destination metadata; one additional uploaded validation asset is unreferenced."
+    },
+    "articleRichBodyAggregate": {
+      "status": "passed-subpart",
+      "evidence": "docs/migration/article-rich-content-parity.json",
+      "detail": "59 eligible articles, 8 source drafts excluded, and zero rich-body semantic/render failures. This is not whole-page, SEO, motion or delivery acceptance."
+    },
+    "fullBulkAssetProof": {
+      "status": "implemented-not-yet-supplied",
+      "evidence": "scripts/migration/bulk-manifest.mjs#fullPayloadCheck",
+      "detail": "The bulk validator now requires source URL/SHA-1/size and destination ref/SHA-1/size receipts for every mapped visible asset. The full 190-document payload and 1,342-asset receipt set have not been supplied."
+    },
+    "sampleRouteContract": {
+      "status": "passed",
+      "evidence": "docs/migration/sample-route-contract-parity.json",
+      "detail": "Current GET audit covers seven sample routes plus Comprar and Reviews for head metadata, DOM hrefs and initial form contracts. All current routes report no contract delta; preview robots is an authorized difference and field-name mappings are informational."
+    }
+  },
+  "collections": [
+    {
+      "type": "property",
+      "sampleLegacyIds": ["6a54f0b08ea6f4acb252d675", "69f85f2cd504290f91170cad"],
+      "dimensions": {
+        "content": "passed-subpart", "visibleImages": "passed-subpart", "order": "passed-subpart", "layout": "passed-subpart", "responsive": "passed-subpart", "urls": "passed-subpart", "seo": "passed-subpart", "behavior": "passed-subpart"
+      },
+      "evidence": ["sample-data-parity.json", "sample-route-contract-parity.json", "public-browser-parity-progress.json#property", "public-browser-parity-progress.json#propertyGalleryInteractionFollowup", "public-browser-parity-progress.json#propertyFirstGalleryFinalFollowup", "public-browser-parity-progress.json#tabletFollowup"],
+      "blockers": []
+    },
+    {
+      "type": "article",
+      "sampleLegacyIds": ["69a2dce4b48d3344ed295952", "698af82db57942d2c5d10a3e"],
+      "dimensions": {
+        "content": "passed-subpart", "visibleImages": "passed-subpart", "order": "passed-subpart", "layout": "passed-subpart", "responsive": "passed-subpart", "urls": "passed-subpart", "seo": "passed-subpart", "behavior": "passed-subpart"
+      },
+      "evidence": ["sample-data-parity.json", "article-rich-content-parity.json", "sample-route-contract-parity.json", "public-browser-parity-progress.json#articleResponsiveFollowup", "public-browser-parity-progress.json#articleSecondCtaFollowup", "public-browser-parity-progress.json#articleMotionBrowserFollowup"],
+      "blockers": []
+    },
+    {
+      "type": "testimonial",
+      "sampleLegacyIds": ["67b454c5e23698381d4b5a8b", "67b454c48728d3d81a387c44"],
+      "dimensions": {
+        "content": "passed-subpart", "visibleImages": "not-applicable-no-visible-sample-image", "order": "passed-subpart", "layout": "passed-subpart", "responsive": "passed-subpart", "urls": "passed-subpart", "seo": "passed-subpart", "behavior": "passed-subpart"
+      },
+      "evidence": ["sample-data-parity.json", "sample-route-contract-parity.json", "src/pages/reviews.astro", "public-browser-parity-progress.json#testimonialConsumerFollowup"],
+      "consumerBinding": "Reviews consumes both target draft records: 67b454c5e23698381d4b5a8b at public positions 1 and 5, and 67b454c48728d3d81a387c44 at position 7. Comprar intentionally uses its separate public-source fallback list, not these target drafts.",
+      "blockers": ["No collection-specific route-contract delta remains: Reviews consumes both sample records and its only form finding is an informational internal field-name mapping. Whole-gate evidence remains required."]
+    },
+    {
+      "type": "offer",
+      "sampleLegacyIds": ["64d744240d28836501ab496f"],
+      "dimensions": {
+        "content": "passed-subpart", "visibleImages": "passed-subpart", "order": "passed-subpart", "layout": "passed-subpart", "responsive": "passed-subpart", "urls": "passed-subpart", "seo": "passed-subpart", "behavior": "passed-subpart"
+      },
+      "evidence": ["sample-data-parity.json", "sample-route-contract-parity.json", "public-browser-parity-progress.json#offer", "public-browser-parity-progress.json#offerNativeValidationFollowup", "tests/forms/offer-form-runtime.test.mjs"],
+      "blockers": []
+    },
+    {
+      "type": "preListing",
+      "sampleLegacyIds": ["6aaa6c0742b7f0b0b572f137", "69f2924211224100dc840df2"],
+      "dimensions": {
+        "content": "passed-subpart", "visibleImages": "passed-subpart", "order": "passed-subpart", "layout": "passed-subpart", "responsive": "passed-subpart", "urls": "passed-subpart", "seo": "passed-subpart", "behavior": "passed-subpart"
+      },
+      "evidence": ["sample-data-parity.json", "sample-route-contract-parity.json", "docs/migration/prelisting-public-binding-audit.json", "public-browser-parity-progress.json#preListing", "public-browser-parity-progress.json#prelistingTabletFollowup"],
+      "blockers": []
+    },
+    {
+      "type": "processStep",
+      "sampleLegacyIds": ["64d73faf12672d652ab57824", "64d73faf12672d652ab57819"],
+      "dimensions": {
+        "content": "passed-subpart", "visibleImages": "not-applicable-no-visible-sample-image", "order": "passed-subpart", "layout": "passed-subpart", "responsive": "passed-subpart", "urls": "passed-subpart", "seo": "passed-subpart", "behavior": "passed-subpart"
+      },
+      "evidence": ["sample-data-parity.json", "process-consumer-parity.json", "sample-route-contract-parity.json", "public-browser-parity-progress.json#buyMotionFinalFollowup"],
+      "consumerBinding": "These two Buy placement records are consumed on /comprar; SEO belongs to that consumer route rather than to synthetic item URLs.",
+      "blockers": ["No collection-specific route-contract delta remains: Comprar has only an informational internal newsletter field-name mapping. Whole-gate evidence remains required."]
+    }
+  ],
+  "gateBlockers": [],
+  "fullBulkBlockers": [
+    "The full payload, full asset map and destination metadata receipts have not been supplied to the bulk validator."
+  ],
+  "bulkWritesPermitted": false,
+  "nextArtifact": "docs/migration/sample-gate.json records the passed sample evidence. The next gate is the separately fail-closed full-bulk payload/media evidence."
+}

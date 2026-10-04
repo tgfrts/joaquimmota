@@ -1,0 +1,193 @@
+.report-datepicker {
+  position: relative;
+  min-width: 0;
+}
+
+.report-datepicker__popup[hidden] {
+  display: none;
+}
+
+.report-datepicker__popup {
+  position: absolute;
+  z-index: 100;
+  top: calc(100% + 8px);
+  left: 0;
+  box-sizing: border-box;
+  width: 210px;
+  height: 251px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 48px 88px rgb(23 9 54 / 8%);
+  color: #161616;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.report-datepicker__popup[data-view='months'],
+.report-datepicker__popup[data-view='years'] {
+  height: 191.5px;
+}
+
+.report-datepicker__popup[data-placement='above'] {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
+.report-datepicker__popup[data-align='right'] {
+  right: 0;
+  left: auto;
+}
+
+.report-datepicker__header {
+  display: flex;
+  height: 30px;
+  margin-bottom: 4px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.report-datepicker__panel {
+  width: 100%;
+  transform: scale(.97);
+  transform-origin: top left;
+}
+
+.report-datepicker__header button,
+.report-datepicker__header span {
+  min-width: 0;
+  height: 30px;
+  padding: 0 3px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #161616;
+  font: inherit;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.report-datepicker__header button:not(:disabled):hover,
+.report-datepicker__header button:not(:disabled):focus-visible,
+.report-datepicker__choice:hover,
+.report-datepicker__day:hover {
+  border-radius: 8px;
+  background: #f2f2f2;
+  outline: none;
+}
+
+.report-datepicker__arrow {
+  width: 30px;
+  padding: 0 !important;
+  font-size: 18px !important;
+}
+
+.report-datepicker__heading-button {
+  flex: 1;
+  font-weight: 500 !important;
+  color: #321f59 !important;
+}
+
+.report-datepicker__year-range {
+  flex: 1;
+  font-weight: 300 !important;
+  color: #ccc !important;
+}
+
+.report-datepicker__header button:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.report-datepicker__weekdays,
+.report-datepicker__days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.report-datepicker__weekdays {
+  box-sizing: border-box;
+  height: 33px;
+  margin-bottom: 4px;
+  padding-top: 3px;
+  background: #f3f5fb;
+  color: #321f59;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: center;
+}
+
+.report-datepicker__days {
+  grid-auto-rows: 30px;
+}
+
+.report-datepicker__day {
+  width: 100%;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #161616;
+  font: inherit;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.report-datepicker__day.is-adjacent {
+  color: #999;
+}
+
+.report-datepicker__day[aria-selected='true'] {
+  border-radius: 8px;
+  background: #f3f5fb;
+  color: #642eff;
+  font-weight: 500;
+}
+
+.report-datepicker__day[aria-current='date'] {
+  background: #f3f5fb;
+  color: #642eff;
+  font-weight: 500;
+}
+
+.report-datepicker__choices {
+  display: grid;
+  height: 157.5px;
+  align-content: start;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(3, 52.5px);
+}
+
+.report-datepicker__choice {
+  width: 100%;
+  height: 52.5px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #161616;
+  font: inherit;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.report-datepicker__choice[aria-selected='true'] {
+  background: #f3f5fb;
+  color: #642eff;
+  font-weight: 500;
+}
+
+.report-datepicker button:focus-visible {
+  outline: 2px solid #777;
+  outline-offset: -2px;
+}

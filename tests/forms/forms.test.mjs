@@ -83,6 +83,16 @@ test('rejects a cross-site origin before handling a submission', async () => {
   assert.equal(adapter.calls.length, 0);
 });
 
+for (const origin of ['http://localhost:8789', 'http://127.0.0.1:8789']) {
+  test(`allows the Cloudflare Pages local-preview origin ${origin}`, async () => {
+    const adapter = mockAdapter();
+    const response = await createFormHandler(adapter)({ request: request(leadPayload, { origin }), env: {} });
+
+    assert.equal(response.status, 202);
+    assert.equal(adapter.calls.length, 1);
+  });
+}
+
 test('rejects malformed fields and missing idempotency keys', async () => {
   const adapter = mockAdapter();
   const handler = createFormHandler(adapter);

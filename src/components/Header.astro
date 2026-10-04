@@ -1,6 +1,6 @@
 ---
-interface Props { contactHref?: string; variant?: 'overlay' | 'light'; pageNavigation?: boolean; contactLabel?: string; showBlog?: boolean; }
-const { contactHref = '/contacto', variant = 'overlay', pageNavigation = false, contactLabel = 'Contacte-nos', showBlog = true } = Astro.props;
+interface Props { contactHref?: string; desktopContactHref?: string; variant?: 'overlay' | 'light'; pageNavigation?: boolean; contactLabel?: string; desktopContactLabel?: string; showBlog?: boolean; }
+const { contactHref = '/contacto', desktopContactHref = contactHref, variant = 'overlay', pageNavigation = false, contactLabel = 'Contacte-nos', desktopContactLabel = contactLabel, showBlog = true } = Astro.props;
 const homeLinks = [
   { href: '/vender', label: 'Vender' },
   { href: 'https://www.joaquimmota.pt/comprar#imoveis', label: 'Imóveis' },
@@ -26,7 +26,7 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
     {links.map((link) => <a href={link.href}>{link.label}</a>)}
     <a class="nav-mobile-contact" href={contactHref}>{contactLabel}</a>
   </nav>
-  <a class:list={['button', 'contact-link', variant === 'light' ? 'button--dark' : 'button--light']} href={contactHref}>{contactLabel}</a>
+  <a class:list={['button', 'contact-link', variant === 'light' ? 'button--dark' : 'button--light']} href={desktopContactHref}>{desktopContactLabel}</a>
 </header>
 
 <script>

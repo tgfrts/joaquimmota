@@ -1,30 +1,41 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import '../../styles/public-campaigns.css';
 const title = 'Smillingstreet';
 const description = 'A JRM Consultores uniu-se à Smilling Street – uma clínica dentária de excelência – para lhe oferecer vantagens exclusivas enquanto nosso cliente.';
+const socialImage = new URL('/assets/smilling-hero.webp', Astro.site).toString();
 ---
-<BaseLayout title={title} description={description} socialImage="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f4fbc9eb92ea877163a92d_Dentista%20Adobe%20Stock-2.webp">
+<BaseLayout title={title} description={description} socialImage={socialImage}>
   <main class="smilling-campaign">
     <section class="smilling-campaign__hero">
-      <a href="/" aria-label="Joaquim Mota — página inicial"><img class="smilling-campaign__logo" src="/assets/logo-color.svg" alt="" /></a>
-      <div class="smilling-campaign__timer" aria-label="00 dias, 00 horas, 00 minutos e 00 segundos"><span>00<small>Dias</small></span><span>00<small>Horas</small></span><span>00<small>Min</small></span><span>00<small>Seg</small></span></div>
-      <div class="smilling-campaign__brand-row"><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f5036326b2a29644678d0e_Logo-jrm.svg" alt="JRM Consultores Imobiliários" /><span>×</span><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f50311058aa2987daf6668_log-clinica_cor.png" alt="Smilling Street" /></div>
+      <div class="smilling-campaign__brand-row">
+        <img class="smilling-campaign__brand-jrm" src="/assets/smilling-logo-jrm.svg" alt="JRM Consultores Imobiliários" />
+        <img class="smilling-campaign__brand-clinic" src="/assets/smilling-logo-clinic.png" alt="Smilling Street" />
+      </div>
       <p class="smilling-campaign__eyebrow">JRM Consultores Imobiliários x Smilling Street</p>
-      <h1>Uma parceria que o vai fazer sorrir</h1>
-      <p>Acreditamos que cuidar de uma casa é importante. Mas cuidar de quem vive nela é essencial.</p>
-      <p>É por isso que a JRM Consultores se aliou à Smillingstreet, empresa de referencia na reabilitacao sobre implantes, para lhe oferecer benefícios únicos enquanto nosso cliente.</p>
-      <a href="#inscricao" class="smilling-campaign__button">Quero inscrever-me</a>
-      <p class="smilling-campaign__date">10 de Maio - 15h às 18h</p>
+      <h2>Uma parceria que o vai fazer sorrir</h2>
+      <p class="smilling-campaign__intro">Acreditamos que cuidar de uma casa é importante. Mas cuidar de quem vive nela é essencial.<br />É por isso que a <strong>JRM Consultores</strong> se aliou à <strong>Smillingstreet</strong>, empresa de referencia na reabilitacao sobre implantes, para lhe oferecer <strong>benefícios únicos</strong> enquanto nosso cliente.</p>
+      <a href="#form" class="smilling-campaign__button">Quero inscrever-me</a>
+      <img class="smilling-campaign__hero-image" src="/assets/smilling-hero.webp" alt="" loading="lazy" />
     </section>
-    <section class="smilling-campaign__event"><div><h2>Um evento que não vai querer perder</h2><ul><li>Conheça os serviços da Smillingstreet e como pode melhorar a sua saúde oral com confiança.</li><li>Desconto exclusivo de 10% em todos os serviços, só para clientes JRM.</li><li>Os tratamentos são realizados na Clinica da Associação São Francisco de Assis Anta Espinho.</li><li>Descubra como a parceria foi pensada para cuidar não só do seu património, mas também de si.</li></ul><p><strong>E ainda…</strong> um sorteio com prémios especiais, só para participantes presentes!</p></div><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f4fbc9eb92ea877163a92d_Dentista%20Adobe%20Stock-2.webp" alt="" loading="lazy" /></section>
-    <section class="smilling-campaign__speaker"><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f5000707a3c583ecd1f645_foto-orador3.png" alt="" loading="lazy" /><div><h2>Participação especial: Dr. Carlo Trivoli</h2><p>Cirurgião dentista e professor em implantodontia, com vasta experiência internacional.</p><p>Vai partilhar conselhos práticos e inspiradores sobre como cuidar do seu sorriso com qualidade e segurança.</p><a href="#inscricao" class="smilling-campaign__button">Quero inscrever-me</a></div></section>
-    <section class="smilling-campaign__clinic"><img src="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f505d672e936f2b66597b8_Associac%CC%A7a%CC%83o%20Sa%CC%83o%20Francisco%20de%20Assis.jpg" alt="" loading="lazy" /><p>10 de Maio - 15h às 18h</p><a href="#inscricao" class="smilling-campaign__button">Quero inscrever-me</a></section>
-    <section class="smilling-campaign__form-section" id="inscricao"><h2>Garanta o seu desconto.</h2><p>Registe-se para obter o seu desconto de 10% em todos os tratamentos dentários.</p>
-      <form data-smilling-form data-route="/lp/smillingstreet"><div class="smilling-campaign__names"><input name="firstName" placeholder="Nome" required /><input name="lastName" placeholder="Apelido" required /></div><input name="email" type="email" placeholder="O seu email" required /><input name="phone" type="tel" placeholder="Telefone" required />
-        <label>Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label>
-        <label>Está a pensar vender ou a comprar casa?<select name="intent" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label>
-        <label class="smilling-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label><button type="submit">Enviar</button><p data-smilling-status role="status" aria-live="polite" hidden></p>
+    <section class="smilling-campaign__form-section" id="form">
+      <h3>Garanta o seu desconto.</h3>
+      <h5>Registe-se para obter o seu desconto de 10% em todos os tratamentos dentários.</h5>
+      <form data-smilling-form data-route="/lp/smillingstreet">
+        <div class="smilling-campaign__names">
+          <input name="firstName" autocomplete="given-name" placeholder="Nome" required />
+          <input name="lastName" autocomplete="family-name" placeholder="Apelido" required />
+        </div>
+        <input name="email" type="email" autocomplete="email" placeholder="O seu email" required />
+        <input name="phone" type="tel" autocomplete="tel" placeholder="Telefone" required />
+        <label>Conhece alguém que esteja a vender ou a comprar casa?
+          <select name="referral" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select>
+        </label>
+        <label>Está a pensar vender ou a comprar casa?
+          <select name="intent" required><option value="">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select>
+        </label>
+        <label class="smilling-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
+        <button type="submit">Enviar</button>
+        <p class="smilling-campaign__status" data-smilling-status role="status" aria-live="polite" hidden></p>
       </form>
     </section>
   </main>
@@ -36,7 +47,219 @@ const description = 'A JRM Consultores uniu-se à Smilling Street – uma clíni
     const data = new FormData(form); const button = form.querySelector<HTMLButtonElement>('button'); const status = form.querySelector<HTMLElement>('[data-smilling-status]'); if (!button || !status) return;
     button.disabled = true; status.hidden = false;
     const message = `Conhece alguém que esteja a vender ou a comprar casa?: ${data.get('referral')}\nEstá a pensar vender ou a comprar casa?: ${data.get('intent')}`;
-    try { await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } }); form.hidden = true; status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.'; }
+    try { await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } }); window.location.assign('/lp/obrigado-evento'); }
     catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
   }));
 </script>
+
+<style>
+  :global(body) {
+    background: #f4f4f4;
+    color: #161616;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .smilling-campaign {
+    color: #161616;
+  }
+
+  .smilling-campaign__hero,
+  .smilling-campaign__form-section {
+    padding: 112px 5%;
+    background: #f4f4f4;
+  }
+
+  .smilling-campaign__hero {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    text-align: center;
+  }
+
+  .smilling-campaign__brand-row {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding-bottom: 0;
+  }
+
+  .smilling-campaign__brand-row img {
+    display: block;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  .smilling-campaign__brand-jrm { width: 124px; }
+  .smilling-campaign__brand-clinic { width: 85px; }
+
+  .smilling-campaign__eyebrow {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  .smilling-campaign__hero h2 {
+    margin: 0 0 24px;
+    color: #20457f;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .smilling-campaign__intro {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 27px;
+  }
+
+  .smilling-campaign__button,
+  .smilling-campaign__form-section button {
+    display: inline-flex;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: 1px solid #db1430;
+    background: #db1430;
+    color: #e4e2df;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-decoration: none;
+    box-shadow: 4px 4px 20px #00000040;
+    cursor: pointer;
+  }
+
+  .smilling-campaign__button { align-self: center; margin-top: 32px; }
+
+  .smilling-campaign__hero-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-top: 64px;
+    object-fit: cover;
+  }
+
+  .smilling-campaign__form-section h3 {
+    margin: 0;
+    color: #db1430;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-align: left;
+  }
+
+  .smilling-campaign__form-section h5 {
+    margin: 16px 0 0;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    text-align: left;
+  }
+
+  .smilling-campaign__form-section { text-align: center; }
+
+  .smilling-campaign__form-section form {
+    display: grid;
+    gap: 0;
+    min-height: 450px;
+    align-content: start;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-top: 20px;
+    text-align: left;
+  }
+
+  .smilling-campaign__names {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .smilling-campaign__form-section input:not([type='checkbox']),
+  .smilling-campaign__form-section select {
+    display: block;
+    width: 100%;
+    height: 44px;
+    margin: 0 0 15px;
+    padding: 10px 0;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    background: #fff;
+    color: #161616;
+    font: inherit;
+  }
+
+  .smilling-campaign__form-section form > label:not(.smilling-campaign__consent) {
+    display: block;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  .smilling-campaign__consent {
+    position: relative;
+    display: flex;
+    min-height: 37px;
+    align-items: flex-start;
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .smilling-campaign__consent input {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    accent-color: #db1430;
+  }
+
+  .smilling-campaign__consent span {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+  }
+
+  .smilling-campaign__form-section button { justify-self: start; }
+  .smilling-campaign__status { margin: 12px 0 0; }
+
+  @media (max-width: 767px) {
+    .smilling-campaign__hero,
+    .smilling-campaign__form-section { padding: 64px 5%; }
+
+    .smilling-campaign__eyebrow { margin-bottom: 12px; }
+
+    .smilling-campaign__hero h2 {
+      margin-bottom: 20px;
+      font-size: 36px;
+      line-height: 1.2;
+    }
+
+    .smilling-campaign__intro { font-size: 16px; line-height: 24px; }
+    .smilling-campaign__button { margin-top: 24px; }
+    .smilling-campaign__hero-image { margin-top: 19.5px; }
+    .smilling-campaign__names { grid-template-columns: 1fr; }
+    .smilling-campaign__form-section form { min-height: 565px; }
+  }
+</style>

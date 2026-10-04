@@ -21,6 +21,15 @@ node scripts/migration/prepare-preview.mjs /absolute/path/target-sample-snapshot
 
 The snapshot shape is `{ "documents": [...], "routes": [...] }`. Read the 11 draft samples with the Joaquim Mota Sanity connection, using the identities in `docs/migration/sample-data-parity.json`. The preparer rejects missing/extra records, duplicate identities, changed slugs and non-draft targets. It performs no provider writes. Do not substitute another site's dataset or commit raw snapshots.
 
+For the built-site local preview with Pages Functions, use the already installed Wrangler runtime:
+
+```sh
+npm run build
+wrangler pages dev dist --port 8789 --compatibility-date 2026-09-15
+```
+
+The migration validation used Wrangler `4.130.0`. This runs locally and performs no Cloudflare deployment. Original extensionless paths are preserved through Astro file-format output. The public dashboard route serves the locked view with HTTP 401; the unknown route serves HTTP 404.
+
 Forms use a server-side Resend adapter with mocked verification only. Actual credentials and the Owner's recipient are not configured; local Astro development does not execute Cloudflare Pages Functions. No real email or source form submission has been performed.
 
 ## Dependency audit

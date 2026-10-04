@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-10-04T00:40:56.386Z",
+  "sourceSHA256": "c9cb1c38959cca8143c131d6fc8e169f7d78857424e39d163e773e01ec2674e8",
+  "sourceManifestSHA256": "649e99a782fc4658e6fa827846a0c61a15b2e9c31870636d2105c23f67742edc",
+  "converterSHA256": "c2f1bde66bb4048c23501de3c6ec06d8b60d0cb7b044639fdf3f47ed5db96095",
+  "status": "conversion-succeeded-only",
+  "counts": {
+    "documents": 190,
+    "routes": 190,
+    "imageSlots": 1447,
+    "uniqueSyntheticReferences": 1342,
+    "portableTextFields": 116,
+    "portableTextBlocks": 2230,
+    "types": {
+      "property": 65,
+      "article": 59,
+      "testimonial": 38,
+      "offer": 1,
+      "preListing": 19,
+      "processStep": 8
+    }
+  },
+  "sourceReceiptCount": 1342,
+  "failures": [],
+  "limitations": [
+    "Synthetic image references exist only in memory and are not destination assets.",
+    "This checks all production-mapped content fields and converter rejection rules, not renderer or visual parity.",
+    "No provider call, upload, content import, publication or bulk acceptance was performed."
+  ],
+  "numberedPropertyRendering": {
+    "legacyId": "650adb87585f82f314b74670",
+    "sourceSlug": "1202-2863",
+    "semanticMatch": true,
+    "structuralMatch": true,
+    "sourceListItems": 7,
+    "renderedListItems": 7,
+    "sourceDigest": "5d3a78bdd356e7c2623fd7ffe3023d964ed8b47926652008d445afdf9ab4b890",
+    "renderedDigest": "5d3a78bdd356e7c2623fd7ffe3023d964ed8b47926652008d445afdf9ab4b890",
+    "rendererSHA256": "a3cc149ffb922de0e8ab674f1b566c2e8f5f19dec5e636e791f078ed31963f2e",
+    "method": "Actual CmsRichContent.astro loaded through Astro Vite plugin and rendered by AstroContainer; compares ordered semantic blocks and source structural counts"
+  }
+}

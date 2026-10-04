@@ -1,21 +1,43 @@
+---
+import CmsFormFeedback from './CmsFormFeedback.astro';
+---
 <aside class="cms-newsletter" aria-labelledby="cms-newsletter-title">
   <h2 id="cms-newsletter-title">Não perca nenhum artigo!</h2>
   <p>Subscreva para receber em primeira mão os nossos artigos no seu email todas as semanas.</p>
+  <div class="cms-form-wrapper">
   <form data-newsletter>
-    <input name="firstName" type="text" aria-label="Nome" placeholder="Nome" required />
-    <input name="lastName" type="text" aria-label="Apelido" placeholder="Apelido" required />
-    <input name="email" type="email" aria-label="O seu email" placeholder="O seu email" required />
+    <input name="firstName" type="text" maxlength="256" aria-label="Nome" placeholder="Nome" required />
+    <input name="lastName" type="text" maxlength="256" aria-label="Apelido" placeholder="Apelido" required />
+    <input name="email" type="email" maxlength="256" aria-label="O seu email" placeholder="O seu email" required />
     <button type="submit">Subscrever</button>
     <p class="cms-newsletter__privacy">Nós também detestamos SPAM! Por isso só enviamos conteúdos que sejam relevantes para si.</p>
-    <p aria-live="polite" data-newsletter-status hidden></p>
   </form>
+  <CmsFormFeedback />
+  </div>
 </aside>
 <script>
   import { submitFormAccepted } from '../scripts/forms-client';
   document.querySelectorAll<HTMLFormElement>('form[data-newsletter]').forEach((form) => form.addEventListener('submit', async (event) => {
-    event.preventDefault(); if (!form.reportValidity()) return;
-    const status = form.querySelector<HTMLElement>('[data-newsletter-status]');
-    try { await submitFormAccepted(form, { formType: 'newsletter', route: location.pathname, fields: { email: String(new FormData(form).get('email')), firstName: String(new FormData(form).get('firstName')), lastName: String(new FormData(form).get('lastName')) } }); if (status) { status.hidden = false; status.textContent = 'Enviado com sucesso!'; } form.querySelectorAll('input, button, .cms-newsletter__privacy').forEach((element) => (element as HTMLElement).hidden = true); }
-    catch { if (status) { status.hidden = false; status.textContent = 'Oops! Alguma coisa correu mal.'; } }
+    event.preventDefault();
+    const button = form.querySelector<HTMLButtonElement>('button[type=submit]');
+    if (!button || button.disabled) return;
+    if (!form.reportValidity()) return;
+    const success = form.parentElement?.querySelector<HTMLElement>('[data-form-success]');
+    const error = form.parentElement?.querySelector<HTMLElement>('[data-form-error]');
+    const buttonText = button?.textContent;
+    if (error) error.hidden = true;
+    button.disabled = true; button.textContent = 'Please wait...';
+    try { await submitFormAccepted(form, { formType: 'newsletter', route: location.pathname, fields: { email: String(new FormData(form).get('email')), firstName: String(new FormData(form).get('firstName')), lastName: String(new FormData(form).get('lastName')) } }); form.hidden = true; if (success) success.hidden = false; }
+    catch { if (error) error.hidden = false; }
+    finally { button.disabled = false; button.textContent = buttonText ?? ''; }
   }));
 </script>
+
+<style>
+  .cms-form-wrapper{margin-bottom:16px;}
+  .cms-newsletter form{margin-bottom:0;}
+  /* Preserve the source gap around its zero-height embed before privacy copy. */
+  .cms-newsletter__privacy{margin-top:16px;}
+  @media(max-width:767px){.cms-newsletter__privacy{margin-top:12px;}}
+  form[hidden]{display:none!important;}
+</style>

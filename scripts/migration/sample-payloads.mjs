@@ -170,7 +170,7 @@ function imageArray(assetMap, sourceAssets, label) {
   }));
 }
 
-const ARTICLE_ALLOWED_TAGS = new Set(['p', 'br', 'h2', 'h3', 'h4', 'h5', 'strong', 'em', 'a', 'ul', 'li']);
+const ARTICLE_ALLOWED_TAGS = new Set(['p', 'br', 'h2', 'h3', 'h4', 'h5', 'strong', 'em', 'a', 'ul', 'ol', 'li']);
 const SAFE_LINK_HREF = /^(https?:|mailto:|tel:|\/)/;
 
 function articleHtmlContract(html, label) {
@@ -179,8 +179,10 @@ function articleHtmlContract(html, label) {
   for (const element of document.body.querySelectorAll('*')) {
     const tag = element.tagName.toLowerCase();
     if (!ARTICLE_ALLOWED_TAGS.has(tag)) throw new Error(`${label} contains unsupported <${tag}> content.`);
-    if (tag === 'ul' && element.querySelector('ul, ol')) throw new Error(`${label} contains a nested list.`);
-    if (tag === 'li' && element.parentElement?.tagName.toLowerCase() !== 'ul') throw new Error(`${label} contains a list item outside a bullet list.`);
+    if (['ul', 'ol'].includes(tag) && element.querySelector('ul, ol')) throw new Error(`${label} contains a nested list.`);
+    if (tag === 'li' && !['ul', 'ol'].includes(element.parentElement?.tagName.toLowerCase())) throw new Error(`${label} contains a list item outside a supported list.`);
+    if (tag === 'ol' && (element.hasAttribute('reversed') || (element.hasAttribute('start') && element.getAttribute('start') !== '1') || (element.hasAttribute('type') && element.getAttribute('type') !== '1'))) throw new Error(`${label} contains unsupported ordered-list numbering.`);
+    if (tag === 'li' && element.hasAttribute('value')) throw new Error(`${label} contains unsupported list-item numbering.`);
     if (tag !== 'a') continue;
     const href = element.getAttribute('href');
     if (!href || !SAFE_LINK_HREF.test(href)) throw new Error(`${label} contains an unsupported link href.`);
@@ -194,7 +196,23 @@ function articleHtmlContract(html, label) {
 function portableText(html, label) {
   const value = requiredString(html, `${label} HTML`);
   const expectedLinks = articleHtmlContract(value, label);
-  const blocks = htmlToBlocks(value, PORTABLE_TEXT_SCHEMA, {
+  // htmlToBlocks normalizes NBSP and moves BR outside inline annotations.
+  // Protect both as ordinary text during conversion, then restore the exact
+  // characters on each span while keeping the converter's original marks.
+  const nonbreakingSpaceMarker = '\uE000';
+  const lineBreakMarker = '\uE001';
+  if (value.includes(nonbreakingSpaceMarker) || value.includes(lineBreakMarker)) {
+    throw new Error(`${label} contains reserved migration marker characters.`);
+  }
+  const protectedDocument = new JSDOM(value).window.document;
+  const textNodes = protectedDocument.createTreeWalker(protectedDocument.body, 4);
+  while (textNodes.nextNode()) {
+    textNodes.currentNode.textContent = textNodes.currentNode.textContent.replace(/\u00a0/g, nonbreakingSpaceMarker);
+  }
+  protectedDocument.body.querySelectorAll('br').forEach(element => {
+    element.replaceWith(protectedDocument.createTextNode(lineBreakMarker));
+  });
+  const blocks = htmlToBlocks(protectedDocument.body.innerHTML, PORTABLE_TEXT_SCHEMA, {
     parseHtml: (input) => new JSDOM(input).window.document,
   });
   if (!Array.isArray(blocks) || blocks.length === 0) throw new Error(`${label} did not produce Portable Text blocks.`);
@@ -205,7 +223,14 @@ function portableText(html, label) {
     if (converted?.href !== expected.href) throw new Error(`${label} changed link order or href during Portable Text conversion.`);
     if (expected.openInNewTab) converted.openInNewTab = true;
   });
-  return blocks.map((block, index) => ({ ...block, _key: block._key ?? `source-${index}` }));
+  return blocks.map((block, index) => ({
+    ...block,
+    _key: block._key ?? `source-${index}`,
+    children: (block.children ?? []).map(child => child._type === 'span' ? {
+      ...child,
+      text: child.text.replaceAll(nonbreakingSpaceMarker, '\u00a0').replaceAll(lineBreakMarker, '\n'),
+    } : child),
+  }));
 }
 
 function identity(item) {
@@ -370,6 +395,58 @@ function buildPayload(source, assetMap) {
   return { documents, routes };
 }
 
+const FULL_KINDS = Object.keys(COLLECTIONS);
+
+function fullEligibleItem(source, kind, item) {
+  const config = COLLECTIONS[kind];
+  const collection = collectionByName(source, config.sourceName);
+  if (!collection.staged.pagination || collection.staged.items.length !== collection.staged.pagination.total
+    || !collection.live.pagination || collection.live.items.length !== collection.live.pagination.total) {
+    throw new Error(`Incomplete staged/live source pagination: ${config.sourceName}.`);
+  }
+  if (item.isDraft !== false || item.isArchived !== false) return null;
+  const id = requiredString(item.id, `${kind} legacy id`);
+  const locale = requiredString(item.cmsLocaleId, `${kind} locale`);
+  const slug = requiredString(item.fieldData?.slug, `${kind} staged slug`);
+  const live = collection.live.items.find((candidate) => candidate.id === id && candidate.cmsLocaleId === locale);
+  if (!live || requiredString(live.slug, `${kind} live slug`) !== slug) {
+    throw new Error(`${kind} eligible staged identity ${id} has no exact matching live id+locale+slug.`);
+  }
+  if (kind === 'processStep' && !['61e1b999e018031966a98c78f8548d5d', '663132020846a392d304a25e78392a84'].includes(item.fieldData?.page)) return null;
+  return { item, route: `${config.routePrefix}${slug}` };
+}
+
+function mapDocument(kind, item, assetMap) {
+  return {
+    property: () => mapProperty(item, assetMap),
+    article: () => mapArticle(item, assetMap),
+    testimonial: () => mapTestimonial(item, assetMap),
+    offer: () => mapOffer(item, assetMap),
+    preListing: () => mapPreListing(item, assetMap),
+    processStep: () => mapProcessStep(item, assetMap),
+  }[kind]();
+}
+
+export function buildFullPayload(source, assetMap) {
+  const documents = [];
+  const routes = [];
+  for (const kind of FULL_KINDS) {
+    const collection = collectionByName(source, COLLECTIONS[kind].sourceName);
+    if (collection.staged.items.length !== collection.staged.pagination?.total
+      || collection.live.items.length !== collection.live.pagination?.total) {
+      throw new Error(`Incomplete staged/live source pagination: ${COLLECTIONS[kind].sourceName}.`);
+    }
+    for (const candidate of collection.staged.items) {
+      const eligible = fullEligibleItem(source, kind, candidate);
+      if (!eligible) continue;
+      const document = mapDocument(kind, eligible.item, assetMap);
+      documents.push(document);
+      routes.push({ legacyId: document.legacyId, type: document._type, route: eligible.route });
+    }
+  }
+  return { documents, routes };
+}
+
 function usage() {
   console.error('Usage: node scripts/migration/sample-payloads.mjs <staged-source.json> <asset-map.json> <output.json>');
 }
@@ -380,10 +457,16 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     usage();
     process.exitCode = 2;
   } else {
-    const payload = buildPayload(readJson(sourcePath), readJson(assetMapPath));
+    const source = readJson(sourcePath);
+    const assetMap = readJson(assetMapPath);
+    const full = process.argv.includes('--all-eligible');
+    if (full && !path.resolve(outputPath).startsWith('/private/tmp/')) {
+      throw new Error('Full source payload output must be written under /private/tmp/.');
+    }
+    const payload = full ? buildFullPayload(source, assetMap) : buildPayload(source, assetMap);
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, `${JSON.stringify(payload, null, 2)}\n`);
-    console.log(`Wrote ${payload.documents.length} source-eligible sample documents to ${outputPath}`);
+    console.log(`Wrote ${payload.documents.length} ${full ? 'eligible' : 'sample'} documents to ${outputPath}`);
   }
 }
 

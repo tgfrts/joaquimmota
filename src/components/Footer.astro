@@ -12,7 +12,7 @@ const {newsletter = true, facebookHref = "https://www.facebook.com/joaquimmotakw
     </div>
     {newsletter && <section class="newsletter" aria-labelledby="newsletter-title">
       <h2 id="newsletter-title">SUBSCREVA A NOSSA NEWSLETTER</h2><p>Receba em primeira mão notícias e novidades sobre o mercado imobiliário</p>
-      <form data-footer-newsletter><input name="email" required type="email" aria-label="O seu email" placeholder="O seu email" /><div class="newsletter-names"><input name="firstName" required type="text" aria-label="Nome" placeholder="Nome" /><input name="lastName" required type="text" aria-label="Apelido" placeholder="Apelido" /></div><button type="submit">Subscrever</button><small>*Respeitamos a sua privacidade. Só enviamos conteúdos de interesse relevante para si.</small></form>
+      <form data-footer-newsletter><input name="email" required type="email" maxlength="256" aria-label="O seu email" placeholder="O seu email" /><div class="newsletter-names"><input name="firstName" required type="text" maxlength="256" aria-label="Nome" placeholder="Nome" /><input name="lastName" required type="text" maxlength="256" aria-label="Apelido" placeholder="Apelido" /></div><button type="submit">Subscrever</button><small>*Respeitamos a sua privacidade. Só enviamos conteúdos de interesse relevante para si.</small></form>
       <div aria-live="polite" data-newsletter-success hidden>Obrigado. A sua subscrição foi realizado com sucesso!</div><div aria-live="polite" data-newsletter-error hidden>Oops! Aconteceu algo errado enquanto submetia o formulário..</div>
     </section>}
   </div>
@@ -21,15 +21,20 @@ const {newsletter = true, facebookHref = "https://www.facebook.com/joaquimmotakw
 <script>
   import { submitFormAccepted } from '../scripts/forms-client';
   document.querySelectorAll<HTMLFormElement>('form[data-footer-newsletter]').forEach((form) => form.addEventListener('submit', async (event) => {
-    event.preventDefault(); if (!form.reportValidity()) return;
+    event.preventDefault();
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (!button || button.disabled) return;
+    if (!form.reportValidity()) return;
     const parent = form.parentElement!;
     const success = parent.querySelector<HTMLElement>('[data-newsletter-success]')!;
     const error = parent.querySelector<HTMLElement>('[data-newsletter-error]')!;
     const data = new FormData(form);
     const fields = {email: String(data.get('email')), firstName: String(data.get('firstName')), lastName: String(data.get('lastName'))};
     error.hidden = true;
+    button.disabled = true;
     try { await submitFormAccepted(form, {formType: 'newsletter', route: location.pathname, fields}); form.hidden = true; success.hidden = false; }
     catch { error.hidden = false; }
+    finally { button.disabled = false; }
   }));
 </script>
 <style>

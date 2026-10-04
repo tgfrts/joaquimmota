@@ -1,0 +1,2653 @@
+{
+  "generatedAt": "2026-10-04T00:40:59.933Z",
+  "scope": "Read-only aggregate rich-body conversion/rendering audit of eligible source articles; no provider writes or item-by-item Sanity inspection",
+  "status": "passed",
+  "expectedEligibleCount": 59,
+  "eligibleCount": 59,
+  "sourceDraftsExcluded": 8,
+  "sourceSnapshotSha256": "0bff54697d281c7252b3cb364b45dd72550013417b2626e5df2c41ca459df02d",
+  "converterSha256": "c2f1bde66bb4048c23501de3c6ec06d8b60d0cb7b044639fdf3f47ed5db96095",
+  "rendererSha256": "a3cc149ffb922de0e8ab674f1b566c2e8f5f19dec5e636e791f078ed31963f2e",
+  "renderMethod": "Actual CmsRichContent.astro loaded through Astro Vite plugin and rendered by AstroContainer; compares ordered semantic blocks and source structural counts",
+  "normalization": "HTML whitespace collapse and nonpainting block-edge spaces only; text-node boundaries merged when marks match. Generated Portable Text keys ignored by renderer. BR, heading levels, bullet order, strong/em/link marks and every href/target retained.",
+  "totals": {
+    "headings": {
+      "h2": 13,
+      "h3": 301,
+      "h4": 19,
+      "h5": 20
+    },
+    "listItems": 40,
+    "lineBreaks": 309,
+    "strongElements": 206,
+    "nonbreakingSpacesSource": 17,
+    "nonbreakingSpacesRendered": 17,
+    "links": 45,
+    "blankLinks": 18,
+    "articlesWithBlankLinks": 10
+  },
+  "unsupportedConstructFixturesRejected": true,
+  "failures": [],
+  "records": [
+    {
+      "legacyId": "69a2dce4b48d3344ed295952",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "26b8d88639735d12b8fa0c60b69e1611e5cca4482b52397801fb9eb337ed7dca",
+      "renderedDigest": "26b8d88639735d12b8fa0c60b69e1611e5cca4482b52397801fb9eb337ed7dca",
+      "sourceCounts": {
+        "paragraphs": 30,
+        "headings": {
+          "h2": 0,
+          "h3": 9,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 7,
+        "lineBreaks": 21,
+        "strong": 9,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 30,
+        "headings": {
+          "h2": 0,
+          "h3": 9,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 7,
+        "lineBreaks": 21,
+        "strong": 9,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "698af82db57942d2c5d10a3e",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "os-segredos-que-as-casas-nao-contam-2",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "047b7f553c75362e4e3f0e8f25c0c0c1aab9baa4ac0e8bba9966434a05fe4e89",
+      "renderedDigest": "047b7f553c75362e4e3f0e8f25c0c0c1aab9baa4ac0e8bba9966434a05fe4e89",
+      "sourceCounts": {
+        "paragraphs": 17,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 24,
+        "strong": 8,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 17,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 24,
+        "strong": 8,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "6973a8382c9f58da6611b23a",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "deve-comprar-ou-arrendar-em-2026",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "a7adeb66aab57d9456600ee03f4cd8b6ba0791e49536f5991982c104bc8e2856",
+      "renderedDigest": "a7adeb66aab57d9456600ee03f4cd8b6ba0791e49536f5991982c104bc8e2856",
+      "sourceCounts": {
+        "paragraphs": 28,
+        "headings": {
+          "h2": 7,
+          "h3": 0,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 15,
+        "lineBreaks": 26,
+        "strong": 10,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 28,
+        "headings": {
+          "h2": 7,
+          "h3": 0,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 15,
+        "lineBreaks": 26,
+        "strong": 10,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "687b424c81155d44aebb00e3",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "4-passos-para-mudar-de-casa-neste-verao",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "cb1eb4b8fd221c64b2ed9fa337f06b92795ece35bf2f580438b5750ffaeb2817",
+      "renderedDigest": "cb1eb4b8fd221c64b2ed9fa337f06b92795ece35bf2f580438b5750ffaeb2817",
+      "sourceCounts": {
+        "paragraphs": 11,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 3,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 11,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 3,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "68441252e1b2d0967e958cde",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "o-lado-emocional-de-vender-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "60b27cb9168ea10b59bcc4bc95c5f7668ddc79415c0c63d771886601ab927d01",
+      "renderedDigest": "60b27cb9168ea10b59bcc4bc95c5f7668ddc79415c0c63d771886601ab927d01",
+      "sourceCounts": {
+        "paragraphs": 18,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 6,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 18,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 6,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "680c7e7d769837151099a3be",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "como-definir-o-preco-ideal-da-sua-casa-na-primavera-de-2025",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "76c6126059f275fbeac74a71c9edcb835bf15c3dec8d85ac8e27c5f292bd9bc4",
+      "renderedDigest": "76c6126059f275fbeac74a71c9edcb835bf15c3dec8d85ac8e27c5f292bd9bc4",
+      "sourceCounts": {
+        "paragraphs": 23,
+        "headings": {
+          "h2": 0,
+          "h3": 11,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 12,
+        "nonbreakingSpaces": 1,
+        "links": 2,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 23,
+        "headings": {
+          "h2": 0,
+          "h3": 11,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 12,
+        "nonbreakingSpaces": 1,
+        "links": 2,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "67ddbdbe2791d09749ba3a0f",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "a-primavera-e-a-melhor-altura-para-vender-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "b648e3aa4de92bdcf626c8b5ff1219d8c17eadbdf07b5ba723ca8dbc63782482",
+      "renderedDigest": "b648e3aa4de92bdcf626c8b5ff1219d8c17eadbdf07b5ba723ca8dbc63782482",
+      "sourceCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "67c2d72bca537c92e1165fa7",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "virtual-staging-a-estrategia-que-pode-acelerar-a-venda-da-sua-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "050d7714ff9309d88a6a38d1c1586ae97a34d74dcc841429efb166ecf5f7b8a4",
+      "renderedDigest": "050d7714ff9309d88a6a38d1c1586ae97a34d74dcc841429efb166ecf5f7b8a4",
+      "sourceCounts": {
+        "paragraphs": 21,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 1
+        },
+        "listItems": 0,
+        "lineBreaks": 9,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 21,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 1
+        },
+        "listItems": 0,
+        "lineBreaks": 9,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "67b060587a6c805c960a3239",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "4-tendencias-de-design-de-interiores-para-2025",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "02bc8afb9fc216286f3e7affc12e97373b065f0db1f2b2c5324fb253eb96a7b2",
+      "renderedDigest": "02bc8afb9fc216286f3e7affc12e97373b065f0db1f2b2c5324fb253eb96a7b2",
+      "sourceCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 1
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 27,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 1
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 27,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "679df6675b7f77a3f18f0c8d",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "oliveira-do-douro",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "eee20c7471218a06280d7cb5cf01a6fe6e87dfeeb90c001ba77464d42402619b",
+      "renderedDigest": "eee20c7471218a06280d7cb5cf01a6fe6e87dfeeb90c001ba77464d42402619b",
+      "sourceCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 4,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 4,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "6785698289f192422cecd64e",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "3-dicas-essenciais-para-mudar-de-casa-em-2025",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "09bc44989f412862225794b9f3f550dea21e4d60a07bbc8a37646d5fece6a28a",
+      "renderedDigest": "09bc44989f412862225794b9f3f550dea21e4d60a07bbc8a37646d5fece6a28a",
+      "sourceCounts": {
+        "paragraphs": 17,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 4,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 3,
+        "blankLinks": 3
+      },
+      "renderedCounts": {
+        "paragraphs": 17,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 4,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 3,
+        "blankLinks": 3
+      }
+    },
+    {
+      "legacyId": "675d50a49f940c0315cb7e14",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "espirito-festivo-em-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "6bbffe79326e74bb40a6bc210050cf9101db1e3e28da1a17b4c5ec4023c071f2",
+      "renderedDigest": "6bbffe79326e74bb40a6bc210050cf9101db1e3e28da1a17b4c5ec4023c071f2",
+      "sourceCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 16,
+        "strong": 7,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 16,
+        "strong": 7,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "6748cca91c9fd6dab3ef60d9",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "comprar-casa-durante-as-festas",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "42c7bbb9b357a02edf1f7f05e81f7e79c5c8fdc2c44beaa143358b2da83429b3",
+      "renderedDigest": "42c7bbb9b357a02edf1f7f05e81f7e79c5c8fdc2c44beaa143358b2da83429b3",
+      "sourceCounts": {
+        "paragraphs": 13,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 6,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 13,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 6,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "6723d94d5fff3c9d24b39c14",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "como-maximizar-o-seu-orcamento-e-comprar-a-casa-dos-seus-sonhos",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "435422de7d6d57329a64ca641d34197a2fd454ca58f4d2646e05b750d46a2f21",
+      "renderedDigest": "435422de7d6d57329a64ca641d34197a2fd454ca58f4d2646e05b750d46a2f21",
+      "sourceCounts": {
+        "paragraphs": 22,
+        "headings": {
+          "h2": 0,
+          "h3": 0,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 18,
+        "strong": 6,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      },
+      "renderedCounts": {
+        "paragraphs": 22,
+        "headings": {
+          "h2": 0,
+          "h3": 0,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 18,
+        "strong": 6,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      }
+    },
+    {
+      "legacyId": "67097eef9fb586347f087d95",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "vender-a-sua-casa-no-outono",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "eb8cd2f9556ce85c1c7897440e46a25d472d405c4390611a707ddc35a1106172",
+      "renderedDigest": "eb8cd2f9556ce85c1c7897440e46a25d472d405c4390611a707ddc35a1106172",
+      "sourceCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 9,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 9,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "66dc13c089b1d6020419e763",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "6-coisas-a-fazer-se-nao-consegue-vender-a-sua-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "278730efbe5c7968a7fa54c5abcd9ec6a530116f368c50f0a6d69fedfbb45b4a",
+      "renderedDigest": "278730efbe5c7968a7fa54c5abcd9ec6a530116f368c50f0a6d69fedfbb45b4a",
+      "sourceCounts": {
+        "paragraphs": 20,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 16,
+        "strong": 6,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 20,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 16,
+        "strong": 6,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "66c354b1bf68d92a8b99b40d",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "renovar-ou-mudar-de-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "5484e633fad02948389a790f07bd8b8bbf0b565dced9e12f32eafc6980283dc9",
+      "renderedDigest": "5484e633fad02948389a790f07bd8b8bbf0b565dced9e12f32eafc6980283dc9",
+      "sourceCounts": {
+        "paragraphs": 22,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 2,
+        "strong": 15,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 22,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 2,
+        "strong": 15,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "66b70b9df45a1b42aab1206b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "aumente-os-seus-rendimentos-com-o-apoio-financeiro-para-senhorios",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "0d05afe9f24503cfe2eaa84d862fffae41200aa5d5d597712dfb886a406c6e03",
+      "renderedDigest": "0d05afe9f24503cfe2eaa84d862fffae41200aa5d5d597712dfb886a406c6e03",
+      "sourceCounts": {
+        "paragraphs": 29,
+        "headings": {
+          "h2": 0,
+          "h3": 0,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 7,
+        "strong": 10,
+        "nonbreakingSpaces": 1,
+        "links": 5,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 29,
+        "headings": {
+          "h2": 0,
+          "h3": 0,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 7,
+        "strong": 10,
+        "nonbreakingSpaces": 1,
+        "links": 5,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "66b0e471a51f637eb02927fe",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "4-coisas-a-ponderar-ao-contratar-um-consultor-imobiliario",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "7e524663e3135f44739ba9e96de3aa8631b2572cdf06320a0a9590ed6d8322e0",
+      "renderedDigest": "7e524663e3135f44739ba9e96de3aa8631b2572cdf06320a0a9590ed6d8322e0",
+      "sourceCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 7,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 7,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "669fcbbd48e4342b445c61db",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "primeira-vez-a-vender-casa-evite-estes-erros",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "d7e17685663a794375a2094ca0f9de0f1c76f6c13559c29cf7efb10e377d5553",
+      "renderedDigest": "d7e17685663a794375a2094ca0f9de0f1c76f6c13559c29cf7efb10e377d5553",
+      "sourceCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 6,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 6,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "668902b9a1ca47575759491f",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "como-garantir-uma-mudanca-de-casa-rapida-neste-verao-2024",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "c1f0ed761314520e8f5e1ba6d43c42dc42c4949807a3a71e5d0ba0602cd6b755",
+      "renderedDigest": "c1f0ed761314520e8f5e1ba6d43c42dc42c4949807a3a71e5d0ba0602cd6b755",
+      "sourceCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "66746b57c4ecc97c2f348435",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "5-dicas-essenciais-para-uma-venda-de-casa-bem-sucedida-neste-verao",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "661a58829664dc56052b84fbe6d61930125b7cf8e2a092f32889694d628aa38e",
+      "renderedDigest": "661a58829664dc56052b84fbe6d61930125b7cf8e2a092f32889694d628aa38e",
+      "sourceCounts": {
+        "paragraphs": 35,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 6
+        },
+        "listItems": 0,
+        "lineBreaks": 12,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      },
+      "renderedCounts": {
+        "paragraphs": 35,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 6
+        },
+        "listItems": 0,
+        "lineBreaks": 12,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      }
+    },
+    {
+      "legacyId": "665ae1edc00d7fc80697fc68",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "reduza-o-risco-e-aumente-o-valor-de-venda-da-sua-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "d4912ed486c8c084ffc52ec2bc54a00c28d6970592cab04f96e7e0dc1762e889",
+      "renderedDigest": "d4912ed486c8c084ffc52ec2bc54a00c28d6970592cab04f96e7e0dc1762e889",
+      "sourceCounts": {
+        "paragraphs": 16,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 5,
+        "lineBreaks": 1,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 16,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 5,
+        "lineBreaks": 1,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "66485c1dee467eb1375b511f",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "5-solucoes-sustentaveis-para-proprietarios-ecologicos",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "b26752051f08f97ec5d59ab9916f2c21ee04882710e3d3c48dc28ef6e7f161a1",
+      "renderedDigest": "b26752051f08f97ec5d59ab9916f2c21ee04882710e3d3c48dc28ef6e7f161a1",
+      "sourceCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "662cbd80d0e9217e80a585cc",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "simplifique-a-sua-mudanca-de-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "bfa1dd0b5d1e6ffc9fa9fadd3274eb254cc8e2485bb60f8b17d33b1505ed3f0d",
+      "renderedDigest": "bfa1dd0b5d1e6ffc9fa9fadd3274eb254cc8e2485bb60f8b17d33b1505ed3f0d",
+      "sourceCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 2,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 2,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "66102df9b60e07f43eb33b7d",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "estrategias-de-preco-inteligentes",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "3d9329e9e2ed1a65288318f09c7c28b9e741195e81b7e0aea19867231766184e",
+      "renderedDigest": "3d9329e9e2ed1a65288318f09c7c28b9e741195e81b7e0aea19867231766184e",
+      "sourceCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 7
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 18,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 7
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 18,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "65f89d1b47b8f01593214fc8",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "primavera-venda-a-sua-casa-com-sucesso",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "b648e3aa4de92bdcf626c8b5ff1219d8c17eadbdf07b5ba723ca8dbc63782482",
+      "renderedDigest": "b648e3aa4de92bdcf626c8b5ff1219d8c17eadbdf07b5ba723ca8dbc63782482",
+      "sourceCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "65e23abcd1c6e252eda0ea5c",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "8-dicas-para-aproveitar-melhor-os-espacos-exteriores-da-sua-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "ac17e04b9090683a537281555631ba213935114a3d57f1f45574bdd8a8e3639f",
+      "renderedDigest": "ac17e04b9090683a537281555631ba213935114a3d57f1f45574bdd8a8e3639f",
+      "sourceCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "65d08aa4366f5933de0cbc15",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "torne-a-sua-casa-mais-eficiente-energeticamente",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "98eb7ab64d89121d812da38b4e7ace92d3addd66ee46739d90d9a83945f3b1e8",
+      "renderedDigest": "98eb7ab64d89121d812da38b4e7ace92d3addd66ee46739d90d9a83945f3b1e8",
+      "sourceCounts": {
+        "paragraphs": 18,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 18,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "65be054a1b61394c612e96c5",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "estrategia-de-preco-a-importancia-do-preco-certo-para-um-venda-bem-sucedida",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "33dfc3919d56649fe6050e6586df063f0e36014f6c4a5211933e0431e4cf2587",
+      "renderedDigest": "33dfc3919d56649fe6050e6586df063f0e36014f6c4a5211933e0431e4cf2587",
+      "sourceCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "65b01ba5a8acc6f3282ebd4c",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "ano-novo-casa-nova-3-dicas-para-mudar-de-casa-em-2024",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "fe49a73b7adc5c8b42b9eaa4beae858363ea1c44fe7d6a0b1cb6f597337f7d6b",
+      "renderedDigest": "fe49a73b7adc5c8b42b9eaa4beae858363ea1c44fe7d6a0b1cb6f597337f7d6b",
+      "sourceCounts": {
+        "paragraphs": 17,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 4,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 4,
+        "blankLinks": 4
+      },
+      "renderedCounts": {
+        "paragraphs": 17,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 4,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 4,
+        "blankLinks": 4
+      }
+    },
+    {
+      "legacyId": "659688c718c9fd0e67418a4c",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "8-dicas-quentinhas-para-vender-a-sua-casa-neste-inverno",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "86bd1fe181b8e7fa28d76b7773eb9c9c0bcf8fbc3e111141b5efbcc318f06fea",
+      "renderedDigest": "86bd1fe181b8e7fa28d76b7773eb9c9c0bcf8fbc3e111141b5efbcc318f06fea",
+      "sourceCounts": {
+        "paragraphs": 20,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 1,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 27,
+        "strong": 8,
+        "nonbreakingSpaces": 0,
+        "links": 2,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 20,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 1,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 27,
+        "strong": 8,
+        "nonbreakingSpaces": 0,
+        "links": 2,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "658b209094967e35ebdef7f0",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "potencie-a-sua-casa-e-o-seu-estilo-de-vida-em-2024",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "a9f32d466a5b5823a523737fee2e6533444278ab1d25f1c8ab2ae1a9f00b25c3",
+      "renderedDigest": "a9f32d466a5b5823a523737fee2e6533444278ab1d25f1c8ab2ae1a9f00b25c3",
+      "sourceCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "6574430260cc6ee0a2aa4b3c",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "evite-este-erro-para-uma-negociacao-bem-sucedida",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "214e3cd91833753b1a43726ddd3a728e312d97d5f012994211c25bb27bc8ac76",
+      "renderedDigest": "214e3cd91833753b1a43726ddd3a728e312d97d5f012994211c25bb27bc8ac76",
+      "sourceCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 2,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 13,
+        "lineBreaks": 17,
+        "strong": 2,
+        "nonbreakingSpaces": 0,
+        "links": 2,
+        "blankLinks": 2
+      },
+      "renderedCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 2,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 13,
+        "lineBreaks": 17,
+        "strong": 2,
+        "nonbreakingSpaces": 0,
+        "links": 2,
+        "blankLinks": 2
+      }
+    },
+    {
+      "legacyId": "6561d07eb0669b030cf17d26",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "pos-e-contras-de-vender-a-sua-casa-nestas-festas",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "82db396e144295457dbd518efd92b0c97a8c9d5a5a5f88cf38d3ae69b92d8b8e",
+      "renderedDigest": "82db396e144295457dbd518efd92b0c97a8c9d5a5a5f88cf38d3ae69b92d8b8e",
+      "sourceCounts": {
+        "paragraphs": 14,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      },
+      "renderedCounts": {
+        "paragraphs": 14,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      }
+    },
+    {
+      "legacyId": "654f367ac3bb2ee66548dd19",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "a-divisao-do-atual-mercado-imobiliario",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "479b49b3de5339546e0d7dde8b458c6990467e1faaf5cb8e1cba54a48722799e",
+      "renderedDigest": "479b49b3de5339546e0d7dde8b458c6990467e1faaf5cb8e1cba54a48722799e",
+      "sourceCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 10,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 3,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 10,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 3,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "653c2267f98ed53697865c87",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "de-uma-venda-assombrada-a-uma-venda-com-sucesso",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "4c79e98f2d07526027881c13839471a511491fec9dc46f32fccf32363b3ba48a",
+      "renderedDigest": "4c79e98f2d07526027881c13839471a511491fec9dc46f32fccf32363b3ba48a",
+      "sourceCounts": {
+        "paragraphs": 11,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 4,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 3,
+        "blankLinks": 2
+      },
+      "renderedCounts": {
+        "paragraphs": 11,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 4,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 3,
+        "blankLinks": 2
+      }
+    },
+    {
+      "legacyId": "652a39b9722f7ce55d56bf7b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "as-3-caracteristicas-a-ter-em-conta-na-hora-de-comprar-a-sua-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "65b4368bbd3d0bca5c05cfb41483a80e3929beba8e219ab5b15392bd4c77012a",
+      "renderedDigest": "65b4368bbd3d0bca5c05cfb41483a80e3929beba8e219ab5b15392bd4c77012a",
+      "sourceCounts": {
+        "paragraphs": 20,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 9,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 20,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 9,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "65172b682bc4e80617b5a630",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "a-verdade-por-tras-de-5-mitos-comuns-na-negociacao-de-uma-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "07415e5c2c4e20e106f5f9765ef3c578f6aa9a75956ec3a139d2814ea5cd3c9e",
+      "renderedDigest": "07415e5c2c4e20e106f5f9765ef3c578f6aa9a75956ec3a139d2814ea5cd3c9e",
+      "sourceCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 21,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 21,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "650556e225ec0563bd569d6b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "outono-inspirador",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "c5a1f556dd15f59d8b0acaf763358c25461a6affa084dd5e5ef70aca10face81",
+      "renderedDigest": "c5a1f556dd15f59d8b0acaf763358c25461a6affa084dd5e5ef70aca10face81",
+      "sourceCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 2,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 10,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 2,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64f34384468c25972ddf661c",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "sera-a-comissao-o-fator-mais-importante",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "7e524663e3135f44739ba9e96de3aa8631b2572cdf06320a0a9590ed6d8322e0",
+      "renderedDigest": "7e524663e3135f44739ba9e96de3aa8631b2572cdf06320a0a9590ed6d8322e0",
+      "sourceCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 7,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 7,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64e067450838e40e67002d4a",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "como-descobrir-o-valor-atual-de-uma-casa-de-maneira-eficaz",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "1a8ca5be2e60be05cbf81a7feb86d1ab2c42139df9583f7458f0d94e2cb37530",
+      "renderedDigest": "1a8ca5be2e60be05cbf81a7feb86d1ab2c42139df9583f7458f0d94e2cb37530",
+      "sourceCounts": {
+        "paragraphs": 11,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 11,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57864",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "7-dicas-para-umas-ferias-relaxadas",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "11b99ccbc7d84b7d9252693dee0b8a0d711ada850d00ce7ba0310a0083e17a33",
+      "renderedDigest": "11b99ccbc7d84b7d9252693dee0b8a0d711ada850d00ce7ba0310a0083e17a33",
+      "sourceCounts": {
+        "paragraphs": 24,
+        "headings": {
+          "h2": 1,
+          "h3": 10,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 10,
+        "nonbreakingSpaces": 1,
+        "links": 2,
+        "blankLinks": 2
+      },
+      "renderedCounts": {
+        "paragraphs": 24,
+        "headings": {
+          "h2": 1,
+          "h3": 10,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 10,
+        "nonbreakingSpaces": 1,
+        "links": 2,
+        "blankLinks": 2
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57860",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "a-importancia-de-receber-qualquer-proposta-na-venda-da-sua-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "ce20ff43245b60836febfd762ab87c8dfaad168b28d14804788a9fb1a747d76f",
+      "renderedDigest": "ce20ff43245b60836febfd762ab87c8dfaad168b28d14804788a9fb1a747d76f",
+      "sourceCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 3,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 3,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5785f",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "casa-nova-ou-usada-descubra-qual-e-a-melhor-opcao-para-si",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "46957c0826f0e9e7fad7b7d7dc97df1d22308d089def3010dca9e5b17dbf8cd9",
+      "renderedDigest": "46957c0826f0e9e7fad7b7d7dc97df1d22308d089def3010dca9e5b17dbf8cd9",
+      "sourceCounts": {
+        "paragraphs": 20,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 20,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5785e",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "7-coisas-que-deve-saber-antes-de-contratar-um-consultor-imobiliario",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "c489f25cb809493941ce4f7328478d505c923ec35bc971e7cd4cca636667a4c7",
+      "renderedDigest": "c489f25cb809493941ce4f7328478d505c923ec35bc971e7cd4cca636667a4c7",
+      "sourceCounts": {
+        "paragraphs": 13,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 13,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5785d",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "qual-a-melhor-altura-do-ano-para-se-vender-uma-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "2b148699249661e5789ef36541bc502f61c0aa01c41d510151950ee4cb1a75cd",
+      "renderedDigest": "2b148699249661e5789ef36541bc502f61c0aa01c41d510151950ee4cb1a75cd",
+      "sourceCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 1,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 15,
+        "headings": {
+          "h2": 0,
+          "h3": 1,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5785b",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "4-novas-dicas-de-home-staging-para-2023",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "0b1ea4dfad9501dbcda54d08820e8a20d77183e6d71f61af65bdd4ee2be629d4",
+      "renderedDigest": "0b1ea4dfad9501dbcda54d08820e8a20d77183e6d71f61af65bdd4ee2be629d4",
+      "sourceCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 3,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 4,
+        "nonbreakingSpaces": 0,
+        "links": 4,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 19,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 3,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 4,
+        "nonbreakingSpaces": 0,
+        "links": 4,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5785a",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "a-sua-proposta-foi-rejeitada-4-dicas-para-chegar-a-bom-porto",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "226443045e91c354a1403d13b36c64f1cfe91694f8f1005a6eabc2a7d5cb9ab2",
+      "renderedDigest": "226443045e91c354a1403d13b36c64f1cfe91694f8f1005a6eabc2a7d5cb9ab2",
+      "sourceCounts": {
+        "paragraphs": 13,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 10,
+        "strong": 5,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 13,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 10,
+        "strong": 5,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57857",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "como-melhorar-os-espacos-exteriores-da-sua-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "54d9c0f7d16a510fc53b1fc6c4bb3241c99997aa6d516f4835d1d516784bb542",
+      "renderedDigest": "54d9c0f7d16a510fc53b1fc6c4bb3241c99997aa6d516f4835d1d516784bb542",
+      "sourceCounts": {
+        "paragraphs": 16,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 19,
+        "strong": 5,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 16,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 19,
+        "strong": 5,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57856",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "tudo-o-que-precisa-saber-para-vender-a-sua-casa-nesta-primavera",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "b648e3aa4de92bdcf626c8b5ff1219d8c17eadbdf07b5ba723ca8dbc63782482",
+      "renderedDigest": "b648e3aa4de92bdcf626c8b5ff1219d8c17eadbdf07b5ba723ca8dbc63782482",
+      "sourceCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 27,
+        "headings": {
+          "h2": 0,
+          "h3": 7,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57855",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "maximize-a-sua-mudanca-para-uma-casa-maior-com-estas-5-dicas",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "bac9cd5e06d62a9f7207dc471947269eebfd085152f6f97f006e5a53ba8f282b",
+      "renderedDigest": "bac9cd5e06d62a9f7207dc471947269eebfd085152f6f97f006e5a53ba8f282b",
+      "sourceCounts": {
+        "paragraphs": 16,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 2,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 16,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 2,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57854",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "6-razoes-pelas-quais-o-investimento-em-imoveis-e-uma-opcao-inteligente",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "b6dc5716ec5b02e56b3b3ffda2a9b5b071fdc1b358e44f3c6cf42726fb0df0fb",
+      "renderedDigest": "b6dc5716ec5b02e56b3b3ffda2a9b5b071fdc1b358e44f3c6cf42726fb0df0fb",
+      "sourceCounts": {
+        "paragraphs": 8,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      },
+      "renderedCounts": {
+        "paragraphs": 8,
+        "headings": {
+          "h2": 0,
+          "h3": 6,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 1,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57853",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "devo-comprar-e-vender-a-minha-casa-ao-mesmo-tempo",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "b708ecb213a86346754efa04ebbc2982d083a79efdb42942203926503324e9be",
+      "renderedDigest": "b708ecb213a86346754efa04ebbc2982d083a79efdb42942203926503324e9be",
+      "sourceCounts": {
+        "paragraphs": 6,
+        "headings": {
+          "h2": 0,
+          "h3": 2,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 6,
+        "headings": {
+          "h2": 0,
+          "h3": 2,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 1,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57852",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "as-5-melhores-renovacoes-para-aumentar-o-valor-da-sua-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "c5ecc730a049bf29b67b9210a9ad324e60d364d3d4b61e1c03b7a3fc53935c3a",
+      "renderedDigest": "c5ecc730a049bf29b67b9210a9ad324e60d364d3d4b61e1c03b7a3fc53935c3a",
+      "sourceCounts": {
+        "paragraphs": 17,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 5
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 17,
+        "headings": {
+          "h2": 0,
+          "h3": 5,
+          "h4": 0,
+          "h5": 5
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57851",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "5-novas-regras-para-vender-a-sua-casa-em-2023",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "e968c4652e69c8f84b54a17ed8146609c87115a35d080c1aad9bb680f1e1a51f",
+      "renderedDigest": "e968c4652e69c8f84b54a17ed8146609c87115a35d080c1aad9bb680f1e1a51f",
+      "sourceCounts": {
+        "paragraphs": 13,
+        "headings": {
+          "h2": 5,
+          "h3": 0,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 16,
+        "strong": 5,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 13,
+        "headings": {
+          "h2": 5,
+          "h3": 0,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 16,
+        "strong": 5,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab57850",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "novas-tendencias-para-decorar-a-sua-casa-em-2023",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "b9f83d5435dfde512b7a5188433176690be54d05c5131356bec178bdb9badc17",
+      "renderedDigest": "b9f83d5435dfde512b7a5188433176690be54d05c5131356bec178bdb9badc17",
+      "sourceCounts": {
+        "paragraphs": 11,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      },
+      "renderedCounts": {
+        "paragraphs": 11,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 1,
+        "blankLinks": 1
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5784f",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "3-dicas-para-comprar-uma-casa-durante-as-festas-de-natal-e-ano-novo",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "e448f13c358f45d1c37a9a9131b119850e75256fc7f9a018a5ae6efadaaa0265",
+      "renderedDigest": "e448f13c358f45d1c37a9a9131b119850e75256fc7f9a018a5ae6efadaaa0265",
+      "sourceCounts": {
+        "paragraphs": 9,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 9,
+        "headings": {
+          "h2": 0,
+          "h3": 4,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 0,
+        "links": 0,
+        "blankLinks": 0
+      }
+    },
+    {
+      "legacyId": "64d73faf12672d652ab5784e",
+      "locale": "64d73fb112672d652ab57ff5",
+      "sourceSlug": "8-dicas-para-simplificar-a-sua-mudanca-de-casa",
+      "semanticMatch": true,
+      "structuralMatch": true,
+      "sourceDigest": "731a2bdacbbfdf9da46bdeb6d2bbd1ec4b2a3666faf2cb12d095dd1a4c601b64",
+      "renderedDigest": "731a2bdacbbfdf9da46bdeb6d2bbd1ec4b2a3666faf2cb12d095dd1a4c601b64",
+      "sourceCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 2,
+        "links": 0,
+        "blankLinks": 0
+      },
+      "renderedCounts": {
+        "paragraphs": 12,
+        "headings": {
+          "h2": 0,
+          "h3": 8,
+          "h4": 0,
+          "h5": 0
+        },
+        "listItems": 0,
+        "lineBreaks": 0,
+        "strong": 0,
+        "nonbreakingSpaces": 2,
+        "links": 0,
+        "blankLinks": 0
+      }
+    }
+  ],
+  "limitations": [
+    "This checks source rich-body semantics and actual target renderer, not whole-page visual, SEO, motion or provider delivery parity.",
+    "No full source article body, link URL or private form content is written to this safe report."
+  ],
+  "sampleAssetReferenceIntegrity": {
+    "scope": "Current eleven sample documents only; checks locally retained original bytes against SHA-1 encoded in each referenced Sanity asset ID, without provider writes or a new remote byte download",
+    "referencedUniqueAssets": 51,
+    "verifiedOriginalBytes": 51,
+    "status": "passed",
+    "checks": [
+      {
+        "sourceFileId": "69f2945675f174d8cc5ecd01",
+        "originalSha1": "58de33da5343c4990b575b4ffe072f6100f19168",
+        "referenceHash": "58de33da5343c4990b575b4ffe072f6100f19168",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54efe9f095d8fbb9071061",
+        "originalSha1": "04e27ee18231578468e8e878399f08f4f5890888",
+        "referenceHash": "04e27ee18231578468e8e878399f08f4f5890888",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54efeeb6ce97149f6083e7",
+        "originalSha1": "55c029b8a3a52078780ef9775327d532498da11c",
+        "referenceHash": "55c029b8a3a52078780ef9775327d532498da11c",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01db6ce97149f60c13d",
+        "originalSha1": "c8e0b5659e0ae3b06b62038602ee8ae848b94aba",
+        "referenceHash": "c8e0b5659e0ae3b06b62038602ee8ae848b94aba",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01d8f8eb50768571272",
+        "originalSha1": "d1ef09a278bf08011de1f7b04d346c4d16349c2a",
+        "referenceHash": "d1ef09a278bf08011de1f7b04d346c4d16349c2a",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01da85404e60078815e",
+        "originalSha1": "a01bb0a16af5a890907d84ad39a83599c270eea4",
+        "referenceHash": "a01bb0a16af5a890907d84ad39a83599c270eea4",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01d15904f715bab35f2",
+        "originalSha1": "0b59130787bb7f837d6e354bb6399088fc04e7a3",
+        "referenceHash": "0b59130787bb7f837d6e354bb6399088fc04e7a3",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01cd5214d58c9de2c2a",
+        "originalSha1": "048675c09b9bdd68ed3cc7979a2c820ae208436a",
+        "referenceHash": "048675c09b9bdd68ed3cc7979a2c820ae208436a",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01ca9de889adf7e92d5",
+        "originalSha1": "b838e04963cbb46d8bc437cfcc9dc11bb23f0d4e",
+        "referenceHash": "b838e04963cbb46d8bc437cfcc9dc11bb23f0d4e",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01dc5f869f1bf74b8f8",
+        "originalSha1": "076893d16b0bee74a82d23119fb008847d344bc0",
+        "referenceHash": "076893d16b0bee74a82d23119fb008847d344bc0",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01c9ecf130fd3ca69e2",
+        "originalSha1": "6ce0ac4cdb86c74232cd7a097ae85692dfe80975",
+        "referenceHash": "6ce0ac4cdb86c74232cd7a097ae85692dfe80975",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01c9ecf130fd3ca69cb",
+        "originalSha1": "9b06249e8a77e3ab66243650446ee185a01cc69b",
+        "referenceHash": "9b06249e8a77e3ab66243650446ee185a01cc69b",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01c15904f715bab3551",
+        "originalSha1": "978e8a49a2864e060aea741cb2b9c08c3955e919",
+        "referenceHash": "978e8a49a2864e060aea741cb2b9c08c3955e919",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01cbcdb50dbab5fbd8c",
+        "originalSha1": "68df7506cc405884351ee9b2ad7efcda1cf3c846",
+        "referenceHash": "68df7506cc405884351ee9b2ad7efcda1cf3c846",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01c10c97860627caf71",
+        "originalSha1": "2b4909c8075d59b32a74f3a4899142f22fbe8014",
+        "referenceHash": "2b4909c8075d59b32a74f3a4899142f22fbe8014",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01cf77bbd38731ed690",
+        "originalSha1": "3bb17373466cb44d1c1de6bb9c4b6e63ea30f14a",
+        "referenceHash": "3bb17373466cb44d1c1de6bb9c4b6e63ea30f14a",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01cb764da445e121078",
+        "originalSha1": "34a853c2a1810d0b8854e2e80abd567e8c620b3b",
+        "referenceHash": "34a853c2a1810d0b8854e2e80abd567e8c620b3b",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01df1bec14356ff5d8e",
+        "originalSha1": "f7e3ade6a2543f771181b4b596b02c82c487adce",
+        "referenceHash": "f7e3ade6a2543f771181b4b596b02c82c487adce",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01d8ea6f4acb2527254",
+        "originalSha1": "067f586bf6b8ebcf448b9cc0c14300c8de09af57",
+        "referenceHash": "067f586bf6b8ebcf448b9cc0c14300c8de09af57",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01d8ea6f4acb2527260",
+        "originalSha1": "159f75ecc18ced33dbab246b421380fae7cfdb88",
+        "referenceHash": "159f75ecc18ced33dbab246b421380fae7cfdb88",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01d10c97860627caf95",
+        "originalSha1": "0382ae2ba6205e72ec60aa3d715cf27ab369ba83",
+        "referenceHash": "0382ae2ba6205e72ec60aa3d715cf27ab369ba83",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01d15904f715bab3599",
+        "originalSha1": "c6f3d7f7b49b854f6fdbfc5de263d1739c104f34",
+        "referenceHash": "c6f3d7f7b49b854f6fdbfc5de263d1739c104f34",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01dd901941225949369",
+        "originalSha1": "f2a2ff31807ef6afb83ce3737888ae0773d6c56d",
+        "referenceHash": "f2a2ff31807ef6afb83ce3737888ae0773d6c56d",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01da85404e60078813d",
+        "originalSha1": "e678e3f35cad13b44ed33f443f1f99f0abd3a566",
+        "referenceHash": "e678e3f35cad13b44ed33f443f1f99f0abd3a566",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01d11e2a460748b510f",
+        "originalSha1": "ae965d0d98436933deb25c5e675f1cc064e09893",
+        "referenceHash": "ae965d0d98436933deb25c5e675f1cc064e09893",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01da85404e600788127",
+        "originalSha1": "9bd47a56af327364ee54ae8a58ae6cb995cf3d27",
+        "referenceHash": "9bd47a56af327364ee54ae8a58ae6cb995cf3d27",
+        "matches": true
+      },
+      {
+        "sourceFileId": "6a54f01d537458d8a49d9f76",
+        "originalSha1": "f6251ceb026661f510f4c0543d42924de6261286",
+        "referenceHash": "f6251ceb026661f510f4c0543d42924de6261286",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f130f2cf923ff33cde3",
+        "originalSha1": "482459ef06d4dccb0bec17ae468f91cb2b073046",
+        "referenceHash": "482459ef06d4dccb0bec17ae468f91cb2b073046",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f25759ced98143bc1fb",
+        "originalSha1": "c2a699a7da0f8ac3e2fc914b56c7798e71085738",
+        "referenceHash": "c2a699a7da0f8ac3e2fc914b56c7798e71085738",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f25c3df2153609b62fb",
+        "originalSha1": "44740a65b318531d7fa5f323e62b918519fcbde8",
+        "referenceHash": "44740a65b318531d7fa5f323e62b918519fcbde8",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f259f58fdd1cac74197",
+        "originalSha1": "e865503edf9c469e4ffb3b7b9b50e109321ac81a",
+        "referenceHash": "e865503edf9c469e4ffb3b7b9b50e109321ac81a",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f25539328c65d48bb17",
+        "originalSha1": "bdeeffbb5a8dde167486a10cece0a0cc7141741f",
+        "referenceHash": "bdeeffbb5a8dde167486a10cece0a0cc7141741f",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f25ad5d76d6a92d4507",
+        "originalSha1": "37c3b7f29d294dd39141dd21d1a0ccada952db18",
+        "referenceHash": "37c3b7f29d294dd39141dd21d1a0ccada952db18",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f258d1af0de008bd7a5",
+        "originalSha1": "969deed4f7edc5707292c97317fd7a5cb6f1e78c",
+        "referenceHash": "969deed4f7edc5707292c97317fd7a5cb6f1e78c",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f255cb1330b2675ce1e",
+        "originalSha1": "319007735daeaa015fb244f241a8b9b72f0a7cbb",
+        "referenceHash": "319007735daeaa015fb244f241a8b9b72f0a7cbb",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f25f615d9ffa3a0719c",
+        "originalSha1": "47137508914332cf9f9591894231afd525804cb7",
+        "referenceHash": "47137508914332cf9f9591894231afd525804cb7",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f25dcf9159700edc15a",
+        "originalSha1": "cea8c0a6ab107ed7537d07aaa38ac5f2b6aa9eae",
+        "referenceHash": "cea8c0a6ab107ed7537d07aaa38ac5f2b6aa9eae",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f258e0eade4280a0820",
+        "originalSha1": "b704e753a719b803a141844fa11779ff538a3a6c",
+        "referenceHash": "b704e753a719b803a141844fa11779ff538a3a6c",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f2525dcbba9b8f65fd0",
+        "originalSha1": "4e24f1c505b778b20c2084940d99a4ad308e3969",
+        "referenceHash": "4e24f1c505b778b20c2084940d99a4ad308e3969",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f25cccbb2ec1c556045",
+        "originalSha1": "b2680b80b0cecc626ca60cdb1e81e5c1a261897b",
+        "referenceHash": "b2680b80b0cecc626ca60cdb1e81e5c1a261897b",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f251e9dc15978a74e8f",
+        "originalSha1": "a9a0497d1272ffbdde7245c32407f6651937ba92",
+        "referenceHash": "a9a0497d1272ffbdde7245c32407f6651937ba92",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f255ec4b7b24bfe97a8",
+        "originalSha1": "adc8810efec35ed0a7009a824f732a43980a0c90",
+        "referenceHash": "adc8810efec35ed0a7009a824f732a43980a0c90",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f253a351bb8e2ce1c08",
+        "originalSha1": "dfc2d9b026dcb8b6aca862f6458f14556162287a",
+        "referenceHash": "dfc2d9b026dcb8b6aca862f6458f14556162287a",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f254c62383cc0eca8a4",
+        "originalSha1": "ccf6056e6405320c43bbfe08db2d15c1ed8719da",
+        "referenceHash": "ccf6056e6405320c43bbfe08db2d15c1ed8719da",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f25a64174ecaa2f3f58",
+        "originalSha1": "54956b095a2156ff8978ae9a317753d5bad5980c",
+        "referenceHash": "54956b095a2156ff8978ae9a317753d5bad5980c",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69f85f254c62383cc0eca8b1",
+        "originalSha1": "427aa1da8f5ff10214c948fc86ecb51a58e04716",
+        "referenceHash": "427aa1da8f5ff10214c948fc86ecb51a58e04716",
+        "matches": true
+      },
+      {
+        "sourceFileId": "698afd6ed59bd06ec9d0f161",
+        "originalSha1": "d04fa4e334b49b7f29f6a65accf467c8dcad7a8a",
+        "referenceHash": "d04fa4e334b49b7f29f6a65accf467c8dcad7a8a",
+        "matches": true
+      },
+      {
+        "sourceFileId": "698afd90985b08b7d2844683",
+        "originalSha1": "d330fceb508b9a0ef4b8400f9f125d2d81afe699",
+        "referenceHash": "d330fceb508b9a0ef4b8400f9f125d2d81afe699",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69a2e17eb6c236e0111f33ac",
+        "originalSha1": "aa0b441f46c0fe80a7a8608f1996451fdfb762ca",
+        "referenceHash": "aa0b441f46c0fe80a7a8608f1996451fdfb762ca",
+        "matches": true
+      },
+      {
+        "sourceFileId": "69a2e18596375f0006cbbb05",
+        "originalSha1": "47dfbbbea7978cc7c70e3409047f9e097b2f99cd",
+        "referenceHash": "47dfbbbea7978cc7c70e3409047f9e097b2f99cd",
+        "matches": true
+      },
+      {
+        "sourceFileId": "64d75cfad8b2c979aa9a616f",
+        "originalSha1": "7b53b45b624ccd530e3323d9dfe88c3390711b76",
+        "referenceHash": "7b53b45b624ccd530e3323d9dfe88c3390711b76",
+        "matches": true
+      }
+    ],
+    "limitation": "Does not re-download Sanity CDN bytes; upload provenance remains the recorded asset mapping plus the encoded asset content hash."
+  }
+}

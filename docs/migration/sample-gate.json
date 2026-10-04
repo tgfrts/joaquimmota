@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "scope": "Independent evidence gate for the 11 authorized target drafts only. It authorizes neither a provider write nor the later full-bulk gate.",
+  "sourceDraftPolicy": "Every current source draft is excluded, including where an older live version exists.",
+  "sourceSnapshot": {
+    "staged": "/private/tmp/joaquimmota-staged-cms-source.json",
+    "sha256": "0bff54697d281c7252b3cb364b45dd72550013417b2626e5df2c41ca459df02d"
+  },
+  "evidence": [
+    "docs/migration/sample-data-parity.json",
+    "docs/migration/sample-image-original-digests.json",
+    "docs/migration/sample-route-contract-parity.json",
+    "docs/migration/public-browser-parity-progress.json",
+    "docs/migration/article-rich-content-parity.json",
+    "docs/migration/process-consumer-parity.json"
+  ],
+  "collections": [
+    {
+      "slug": "imoveis",
+      "status": "passed",
+      "sourceIds": ["6a54f0b08ea6f4acb252d675", "69f85f2cd504290f91170cad"],
+      "evidence": "sample-data/image/route parity; public-browser property, tablet, gallery-interaction, first-gallery and cmsFeedback final follow-ups",
+      "parity": {"content": true, "visibleImages": true, "order": true, "layout": true, "responsive": true, "urls": true, "seo": true, "behavior": true}
+    },
+    {
+      "slug": "post",
+      "status": "passed",
+      "sourceIds": ["69a2dce4b48d3344ed295952", "698af82db57942d2c5d10a3e"],
+      "evidence": "sample-data/image/route parity; article rich-content aggregate renderer audit; public-browser article responsive, second CTA, motion and cmsFeedback final follow-ups",
+      "parity": {"content": true, "visibleImages": true, "order": true, "layout": true, "responsive": true, "urls": true, "seo": true, "behavior": true}
+    },
+    {
+      "slug": "testemunhos",
+      "status": "passed",
+      "sourceIds": ["67b454c5e23698381d4b5a8b", "67b454c48728d3d81a387c44"],
+      "evidence": "sample-data/route parity; public-browser testimonial consumer follow-up at desktop, tablet and mobile; independent consumer binding review for both target draft records",
+      "parity": {"content": true, "visibleImages": true, "order": true, "layout": true, "responsive": true, "urls": true, "seo": true, "behavior": true}
+    },
+    {
+      "slug": "ofertas",
+      "status": "passed",
+      "sourceIds": ["64d744240d28836501ab496f"],
+      "evidence": "sample-data/image/route parity; public-browser offer and native-validation follow-ups; actual template runtime tests cover invalid input, 202 redirect, error and idempotent retry without a real delivery",
+      "parity": {"content": true, "visibleImages": true, "order": true, "layout": true, "responsive": true, "urls": true, "seo": true, "behavior": true}
+    },
+    {
+      "slug": "vouvender",
+      "status": "passed",
+      "sourceIds": ["6aaa6c0742b7f0b0b572f137", "69f2924211224100dc840df2"],
+      "evidence": "sample-data/image/route parity; prelisting public binding audit; public-browser desktop/tablet/current responsive and final responsive follow-ups",
+      "parity": {"content": true, "visibleImages": true, "order": true, "layout": true, "responsive": true, "urls": true, "seo": true, "behavior": true}
+    },
+    {
+      "slug": "vs-destaques",
+      "status": "passed",
+      "sourceIds": ["64d73faf12672d652ab57824", "64d73faf12672d652ab57819"],
+      "evidence": "sample-data parity; process consumer parity for exact Buy bindings; route contract parity; public-browser Buy motion final follow-up",
+      "parity": {"content": true, "visibleImages": true, "order": true, "layout": true, "responsive": true, "urls": true, "seo": true, "behavior": true}
+    }
+  ],
+  "limitations": [
+    "This is a sample evidence gate, not a claim of whole-site visual acceptance.",
+    "Preview does not perform real provider delivery; production cutover remains unauthorized.",
+    "The full-bulk gate separately requires eligible aggregate disposition, a full payload, ordered full-media mapping, and destination digest-and-size receipts."
+  ],
+  "bulkWritesPermitted": false
+}

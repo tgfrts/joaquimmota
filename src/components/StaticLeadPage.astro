@@ -27,11 +27,11 @@ const socialImage = 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb
         <p class="static-lead__description">{description}</p>
         <form class="static-lead__form" data-static-lead-form data-route={route} data-form-type={formType}>
           <div class="static-lead__name-fields">
-            <label><span class="static-lead__visually-hidden">Nome</span><input name="firstName" autocomplete="given-name" placeholder="Nome" required /></label>
-            <label><span class="static-lead__visually-hidden">Apelido</span><input name="lastName" autocomplete="family-name" placeholder="Apelido" required /></label>
+            <label><span class="static-lead__visually-hidden">Nome</span><input name="firstName" maxlength="256" autocomplete="given-name" placeholder="Nome" required /></label>
+            <label><span class="static-lead__visually-hidden">Apelido</span><input name="lastName" maxlength="256" autocomplete="family-name" placeholder="Apelido" required /></label>
           </div>
-          <label><span class="static-lead__visually-hidden">O seu email</span><input name="email" type="email" autocomplete="email" placeholder="O seu email" required /></label>
-          <label><span class="static-lead__visually-hidden">Telefone</span><input name="phone" type="tel" autocomplete="tel" placeholder="Telefone" required /></label>
+          <label><span class="static-lead__visually-hidden">O seu email</span><input name="email" type="email" maxlength="256" autocomplete="email" placeholder="O seu email" required /></label>
+          <label><span class="static-lead__visually-hidden">Telefone</span><input name="phone" type="tel" maxlength="256" autocomplete="tel" placeholder="Telefone" required /></label>
           <label class="static-lead__consent">
             <input name="consent" type="checkbox" required checked />
             <span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span>
@@ -51,10 +51,11 @@ const socialImage = 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb
   document.querySelectorAll<HTMLFormElement>('[data-static-lead-form]').forEach((form) => {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      if (!form.reportValidity()) return;
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (!button || button.disabled) return;
+      if (!form.reportValidity()) return;
       const status = form.querySelector<HTMLElement>('[data-form-status]');
-      if (!button || !status) return;
+      if (!status) return;
       button.disabled = true;
       status.hidden = false;
       status.textContent = '';

@@ -1,0 +1,237 @@
+{
+  "status": "static-contract-fixes-implemented-focused-checks-passed-build-pending",
+  "scope": "Offline source HTML captures compared with current Astro dist and authored source for static-route title/meta/OG fields, active form control contracts, redirects, and href/target pairs. Source drafts and individual CMS item routes excluded. No forms submitted; Webflow only read.",
+  "evidence": {
+    "sourceCaptureDirectory": "/private/tmp/jrmota-static-public-html",
+    "sourceCapturesFound": 35,
+    "expectedStaticRoutes": 35,
+    "target": "sites/jrmota/dist (117 HTML routes)",
+    "excludedExistingAuditOverlap": "Nine sample routes already covered by sample-route-contract-parity.json; this report focuses on uncovered static contract gaps and does not recertify those sample routes.",
+    "primarySourceCaptureDirectoryCount": 34,
+    "additionalStaticCapture": {
+      "path": "/private/tmp/jrmota-recon-admin.html",
+      "route": "/admin/dashboard",
+      "comparison": "The source title, og:title, twitter:title, and password maxlength match target; authentication flow remains outside this static form audit."
+    },
+    "verification": {
+      "focusedTests": "node --test tests/migration/static-contract-fixes.test.mjs: 5/5 passed. The actual PublicCampaignPage handler was executed with mocked transport/navigation: one fetch during pending duplicate, button remains disabled, error/status stays clear, form stays visible, failure re-enables retry, and only status 202 redirects.",
+      "sharedFormRegressionTests": "node --test tests/forms/forms.test.mjs tests/forms/forms-client.test.mjs tests/forms/cms-form-feedback-runtime.test.mjs tests/migration/static-contract-fixes.test.mjs: 23/23 passed.",
+      "astroCheck": "npm run check: 101 files, 0 errors, 0 warnings, 0 hints.",
+      "build": "Not run; root is consolidating the build.",
+      "pendingSubmitFollowup": "node --test tests/forms/cms-form-feedback-runtime.test.mjs tests/migration/static-contract-fixes.test.mjs: 7/7 passed. The shared guard assertion includes root-owned CmsPropertyInquiry; existing actual-handler rejection/202 tests also pass. The duplicate-pending runtime assertions exercise PublicCampaignPage only."
+    }
+  },
+  "findings": [
+    {
+      "id": "campaign-redirect-dropped",
+      "severity": "material",
+      "routes": [
+        "/lp/cabaz-de-natal",
+        "/lp/oferta-selecao"
+      ],
+      "source": {
+        "capture": "/private/tmp/jrmota-static-public-html/lp__cabaz-de-natal.html and lp__oferta-selecao.html",
+        "contract": "Both active source forms have data-redirect=https://www.joaquimmota.pt/lp/obrigado-oferta."
+      },
+      "target": {
+        "file": "sites/jrmota/src/components/PublicCampaignPage.astro:26",
+        "contract": "The target form declares an inline success message; its submit handler hides the form and displays that message without navigating. No success redirect is present."
+      },
+      "impact": "Successful submissions no longer reach the published thank-you URL /lp/obrigado-oferta.",
+      "status": "implemented-awaiting-build-output",
+      "resolutionEvidence": {
+        "tests": "tests/migration/static-contract-fixes.test.mjs (5/5); shared form regression suite (23/23).",
+        "check": "npm run check: 101 files, 0 errors, 0 warnings, 0 hints.",
+        "limit": "Astro build not run in this bounded turn; parent is consolidating build output.",
+        "implementation": "PublicCampaignPage redirects to /lp/obrigado-oferta after submitFormAccepted resolves; runtime tests verify non-202 responses do not redirect, pending duplicate keeps feedback clear and button disabled, and only 202 redirects."
+      }
+    },
+    {
+      "id": "native-maxlength-omitted",
+      "severity": "contract-delta",
+      "routes": "Across captured static routes with active standard forms, including newsletter and lead forms",
+      "source": {
+        "capture": "Examples: /private/tmp/jrmota-static-public-html/contacto.html, estudo-de-mercado.html, lp__cabaz-de-natal.html",
+        "contract": "Visible text, email, and telephone inputs specify maxlength=256; DOOP report inputs retain this limit in the target."
+      },
+      "target": {
+        "files": [
+          "sites/jrmota/src/components/CmsNewsletter.astro:9",
+          "sites/jrmota/src/components/StaticLeadPage.astro:31",
+          "sites/jrmota/src/components/CampaignLeadForm.astro:6",
+          "sites/jrmota/src/components/PublicCampaignPage.astro:27"
+        ],
+        "contract": "These target controls omit maxlength, so browser-side input limits differ from the active source controls."
+      },
+      "impact": "Users can enter longer values in the browser before submission; server-side limits do not preserve the source native form contract.",
+      "status": "implemented-awaiting-build-output",
+      "resolutionEvidence": {
+        "tests": "tests/migration/static-contract-fixes.test.mjs (5/5); shared form regression suite (23/23).",
+        "check": "npm run check: 101 files, 0 errors, 0 warnings, 0 hints.",
+        "limit": "Astro build not run in this bounded turn; parent is consolidating build output.",
+        "implementation": "Restored maxlength=256 to visible input fields in CmsNewsletter, Footer, StaticLeadPage, CampaignLeadForm, PublicCampaignPage, and the protected flyer form. Focused test confirms DOM native maxLength=256. Root independently applied the same four-input correction to CmsPropertyInquiry after a read-only public property source GET confirmed its source values."
+      }
+    },
+    {
+      "id": "required-select-default-changed",
+      "severity": "contract-delta",
+      "routes": [
+        "/lp/guia-de-ferias",
+        "/lp/cabaz-de-natal",
+        "/lp/oferta-selecao"
+      ],
+      "source": {
+        "captures": [
+          "/private/tmp/jrmota-static-public-html/lp__guia-de-ferias.html",
+          "/private/tmp/jrmota-static-public-html/lp__cabaz-de-natal.html",
+          "/private/tmp/jrmota-static-public-html/lp__oferta-selecao.html"
+        ],
+        "contract": "Required select controls begin with the visible prompt option carrying value=\"null\"."
+      },
+      "target": {
+        "file": "sites/jrmota/src/components/CampaignLeadForm.astro:9-10 and sites/jrmota/src/components/PublicCampaignPage.astro:30-31",
+        "contract": "Required selects begin with an empty-value prompt."
+      },
+      "impact": "The target blocks submission until a real choice is made, while the captured source default value is non-empty and passes native required validation.",
+      "status": "implemented-awaiting-build-output",
+      "resolutionEvidence": {
+        "tests": "tests/migration/static-contract-fixes.test.mjs (5/5); shared form regression suite (23/23).",
+        "check": "npm run check: 101 files, 0 errors, 0 warnings, 0 hints.",
+        "limit": "Astro build not run in this bounded turn; parent is consolidating build output.",
+        "implementation": "Campaign required prompts now use value=\"null\". Focused test confirms source-style non-empty defaults satisfy native required validation."
+      }
+    },
+    {
+      "id": "campaign-social-meta-omitted",
+      "severity": "SEO-delta",
+      "routes": [
+        "/lp/guia-de-ferias",
+        "/lp/cabaz-de-natal",
+        "/lp/oferta-selecao"
+      ],
+      "source": {
+        "captures": [
+          "/private/tmp/jrmota-static-public-html/lp__guia-de-ferias.html",
+          "/private/tmp/jrmota-static-public-html/lp__cabaz-de-natal.html",
+          "/private/tmp/jrmota-static-public-html/lp__oferta-selecao.html"
+        ],
+        "contract": "Source includes og:type=website and twitter:card=summary_large_image."
+      },
+      "target": {
+        "file": "sites/jrmota/src/layouts/BaseLayout.astro:17,35-36",
+        "contract": "richSocial defaults false and these pages do not enable it, so both source tags are omitted."
+      },
+      "impact": "Social preview metadata is incomplete compared with the published source.",
+      "status": "implemented-awaiting-build-output",
+      "resolutionEvidence": {
+        "tests": "tests/migration/static-contract-fixes.test.mjs (5/5); shared form regression suite (23/23).",
+        "check": "npm run check: 101 files, 0 errors, 0 warnings, 0 hints.",
+        "limit": "Astro build not run in this bounded turn; parent is consolidating build output.",
+        "implementation": "Enabled richSocial only for the three audited campaign pages; BaseLayout retains richSocial=false default elsewhere."
+      }
+    },
+    {
+      "id": "doop-social-title-meta-omitted",
+      "severity": "SEO-delta",
+      "routes": [
+        "/doop/relatorios-de-atividades",
+        "/doop/relatorios-de-visita"
+      ],
+      "source": {
+        "captures": [
+          "/private/tmp/jrmota-static-public-html/doop__relatorios-de-atividades.html",
+          "/private/tmp/jrmota-static-public-html/doop__relatorios-de-visita.html"
+        ],
+        "contract": "Each source includes matching og:title and twitter:title."
+      },
+      "target": {
+        "files": [
+          "sites/jrmota/src/pages/doop/relatorios-de-atividades.astro:11",
+          "sites/jrmota/src/pages/doop/relatorios-de-visita.astro:11"
+        ],
+        "contract": "Each target has its HTML title but omits both social title tags."
+      },
+      "impact": "Social previews lose the page-specific title.",
+      "status": "implemented-awaiting-build-output",
+      "resolutionEvidence": {
+        "tests": "tests/migration/static-contract-fixes.test.mjs (5/5); shared form regression suite (23/23).",
+        "check": "npm run check: 101 files, 0 errors, 0 warnings, 0 hints.",
+        "limit": "Astro build not run in this bounded turn; parent is consolidating build output.",
+        "implementation": "Restored exact source og:title and twitter:title in both DOOP page heads; form/runtime/date picker code was not changed."
+      }
+    },
+    {
+      "id": "protected-flyer-privacy-link-omitted",
+      "severity": "link-delta",
+      "routes": [
+        "/lp-flyer-uma-venda-com-sucesso"
+      ],
+      "source": {
+        "capture": "/private/tmp/jrmota-static-public-html/lp-flyer-uma-venda-com-sucesso.html",
+        "contract": "Visible ‘Política de Privacidade’ anchor points to https://www.kwportugal.pt/politica-de-privacidade and opens a new tab. The route is a flyer/QR landing page."
+      },
+      "target": {
+        "file": "sites/jrmota/src/pages/lp-flyer-uma-venda-com-sucesso.astro",
+        "contract": "No equivalent privacy-policy anchor is present in the built page."
+      },
+      "impact": "The published page link is missing from a campaign route with long-lived flyer/QR use.",
+      "status": "implemented-awaiting-build-output",
+      "resolutionEvidence": {
+        "tests": "tests/migration/static-contract-fixes.test.mjs (5/5); shared form regression suite (23/23).",
+        "check": "npm run check: 101 files, 0 errors, 0 warnings, 0 hints.",
+        "limit": "Astro build not run in this bounded turn; parent is consolidating build output.",
+        "implementation": "Restored source privacy link in a small page-local footer, with original href and new-tab behavior."
+      }
+    },
+    {
+      "id": "marketing-external-link-target-changed",
+      "severity": "behavior-delta",
+      "routes": [
+        "/marketing"
+      ],
+      "source": {
+        "capture": "/private/tmp/jrmota-static-public-html/marketing.html",
+        "contract": "The Facebook reviews link uses target=\"_blank\"."
+      },
+      "target": {
+        "file": "sites/jrmota/src/pages/marketing.astro:19",
+        "contract": "The same external href has no target attribute."
+      },
+      "impact": "The link now navigates away in the same tab.",
+      "status": "implemented-awaiting-build-output",
+      "resolutionEvidence": {
+        "tests": "tests/migration/static-contract-fixes.test.mjs (5/5); shared form regression suite (23/23).",
+        "check": "npm run check: 101 files, 0 errors, 0 warnings, 0 hints.",
+        "limit": "Astro build not run in this bounded turn; parent is consolidating build output.",
+        "implementation": "Restored target=\"_blank\" and added rel=\"noopener noreferrer\" to the same external review href."
+      }
+    },
+    {
+      "id": "duplicate-pending-submit-feedback-race",
+      "severity": "behavioral-correctness",
+      "routes": "Static routes using shared newsletter, lead, or campaign forms; property inquiry template is related but owned separately by root.",
+      "source": {
+        "contract": "While a submission is pending, do not expose a failure state or make a second attempt appear available until the original request resolves."
+      },
+      "target": {
+        "contract": "The shared helper rejects a concurrent call; handlers must short-circuit on their disabled submit control before changing feedback state."
+      },
+      "status": "resolved-in-owned-consumers-focused-checked-build-pending",
+      "resolutionEvidence": {
+        "implemented": "Added early disabled-button guards to CmsNewsletter, Footer, StaticLeadPage, CampaignLeadForm, and PublicCampaignPage. Footer and CampaignLeadForm now disable their submit controls during their existing request and restore them after ordinary error responses.",
+        "runtime": "PublicCampaignPage actual handler test verifies one pending fetch; duplicate submission leaves the button disabled, form visible, feedback empty and redirect absent until the first response. A 503 exposes the existing error and allows retry; only the later 202 redirects.",
+        "parentOwnedConsumer": "Root added an early `if (!button || button.disabled) return` in CmsPropertyInquiry immediately after preventDefault and before validation, feedback changes, or payload construction. The static guard assertion now covers it; the actual-handler feedback runtime test still covers its rejection and 202 paths. A duplicate-pending runtime case is asserted for PublicCampaignPage, not CmsPropertyInquiry.",
+        "tests": "node --test tests/forms/cms-form-feedback-runtime.test.mjs tests/migration/static-contract-fixes.test.mjs: 7/7 passed. The earlier shared form regression suite passed 23/23 before this root-owned one-line guard.",
+        "limit": "Build output pending root consolidation; no form/provider requests were sent."
+      }
+    }
+  ],
+  "notes": [
+    "Preview robots noindex/nofollow differences are authorized and excluded.",
+    "Changed OG image URLs pointing to /assets/og-jrm.jpg were previously verified byte-identical in sample-route-contract-parity.json and are not reported.",
+    "Source field-2 textarea controls were not treated as active where capture evidence did not establish visibility; permanent hidden/residual elements were excluded.",
+    "All 35 static routes now have offline source evidence: 34 files in the primary capture directory plus jrmota-recon-admin.html for /admin/dashboard. No source GET was needed to close the capture-count question.",
+    "The authentication flow on /admin/dashboard remains explicitly outside this bounded audit and is not claimed as migrated.",
+    "Pending-submit race closure: all five assigned shared consumers and root-owned CmsPropertyInquiry now short-circuit before feedback changes when the submit button is disabled. Duplicate-pending behavior is runtime-asserted in PublicCampaignPage; CmsPropertyInquiry has source guard coverage plus existing rejection/202 runtime coverage."
+  ]
+}

@@ -37,3 +37,11 @@ export function bindInteriorHero(image: HTMLImageElement, overlay?: HTMLElement 
     if (overlay) { overlay.style.opacity = reduced ? '0' : String(interpolate(progress, [[0, 1], [.65, .25], [1, 0]])); overlay.style.filter = reduced ? 'none' : 'blur(100px)'; }
   });
 }
+
+// Source a-59: opacity .25/1/1/.25 at 0/25/50/100%; the exit segment uses outQuad.
+export function bindTestimonialMotion(element: HTMLElement) {
+  bindSourceScrollMotion(element, (progress, reduced) => {
+    const eased = progress <= .5 ? progress : .5 + .5 * (1 - (1 - (progress - .5) * 2) ** 2);
+    element.style.opacity = reduced ? '1' : String(interpolate(eased, [[0, .25], [.25, 1], [.5, 1], [1, .25]]));
+  });
+}

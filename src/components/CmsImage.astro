@@ -8,6 +8,9 @@ const sanityUrl = typeof ref === 'string' && ref.startsWith('image-')
   : undefined;
 const src = typeof value === 'string' ? value : asset?.url ?? asset?.src ?? value?.url ?? sanityUrl;
 const sourceAlt = value?.alt ?? asset?.alt ?? '';
+const refDimensions = typeof ref === 'string' ? ref.match(/-(\d+)x(\d+)-[a-z0-9]+$/) : null;
+const width = value?.dimensions?.width ?? (refDimensions ? Number(refDimensions[1]) : undefined);
+const height = value?.dimensions?.height ?? (refDimensions ? Number(refDimensions[2]) : undefined);
 ---
 
-{src && <img src={src} alt={sourceAlt} class={className} loading={loading} />}
+{src && <img src={src} width={width} height={height} alt={sourceAlt} class={className} loading={loading} />}

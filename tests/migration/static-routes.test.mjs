@@ -21,6 +21,25 @@ function withBuild(files, run) {
 
 const htmlFileFor = (route) => route === '/' ? 'index.html' : `${route.slice(1)}/index.html`;
 
+test('file-format output preserves nested extensionless routes and draft exclusions', () => {
+  const inventory = { pages: [
+    { path: '/', draft: false },
+    { path: '/lp/public', draft: false },
+    { path: '/lp/draft', draft: true },
+    { path: '/imoveis', draft: false, collectionId: 'properties' },
+  ] };
+  const eligibility = { collections: [{ collection: { id: 'properties' }, eligible: [{ sourceSlug: 'original-slug' }] }] };
+  withBuild(['index.html', 'lp/public.html', 'imoveis/original-slug.html'], (dist) => {
+    const report = buildStaticRouteGate(inventory, eligibility, dist);
+    assert.equal(report.status, 'pass');
+    assert.deepEqual(report.missingPublishedPaths, []);
+    assert.deepEqual(report.generatedDraftPaths, []);
+  });
+  withBuild(['index.html', 'lp/public.html', 'lp/draft.html', 'imoveis/original-slug.html'], (dist) => {
+    assert.deepEqual(buildStaticRouteGate(inventory, eligibility, dist).generatedDraftPaths, ['/lp/draft']);
+  });
+});
+
 test('real inventory separates 35 static pages, 9 drafts, and 10 CMS templates; /imoveis base remains excluded', () => {
   const inventory = JSON.parse(fs.readFileSync(new URL('../../docs/migration/source-url-inventory.json', import.meta.url), 'utf8'));
   const templates = inventory.pages.filter((page) => page.collectionId && page.draft === false);

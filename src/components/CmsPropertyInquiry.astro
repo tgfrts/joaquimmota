@@ -1,16 +1,21 @@
+---
+import CmsFormFeedback from './CmsFormFeedback.astro';
+---
 <aside class="property-inquiry">
   <div class="property-inquiry__agent"><a href="#"><img src="/assets/joaquim-profile.png" alt="" /></a><div><a class="property-inquiry__name" href="#">Joaquim Mota</a><div class="property-inquiry__links"><a href="tel:+351914257870" aria-label="Telefone"><img src="/assets/property-phone.svg" alt="" /></a><a href="mailto:jrmota@kwportugal.pt" aria-label="Email"><img src="/assets/property-email.svg" alt="" /></a></div></div></div>
   <hr />
   <h2>Gostaria de visitar este imóvel?</h2>
+  <div class="cms-form-wrapper">
   <form data-form-type="contact" novalidate>
-    <input name="firstName" placeholder="Nome" aria-label="Nome" required />
-    <input name="lastName" placeholder="Apelido" aria-label="Apelido" required />
-    <input name="email" type="email" placeholder="O seu email" aria-label="O seu email" required />
-    <input name="phone" type="tel" placeholder="Telefone" aria-label="Telefone" required />
+    <input name="firstName" maxlength="256" placeholder="Nome" aria-label="Nome" required />
+    <input name="lastName" maxlength="256" placeholder="Apelido" aria-label="Apelido" required />
+    <input name="email" maxlength="256" type="email" placeholder="O seu email" aria-label="O seu email" required />
+    <input name="phone" maxlength="256" type="tel" placeholder="Telefone" aria-label="Telefone" required />
     <label><input name="marketingConsent" type="checkbox" checked required /> <span>Aceito receber informações comerciais enviadas por PS Real Estate Team.</span></label>
     <button class="button button--dark" type="submit">Mais informações</button>
-    <p class="property-inquiry__status" aria-live="polite"></p>
   </form>
+  <CmsFormFeedback />
+  </div>
 </aside>
 
 <script>
@@ -18,17 +23,28 @@
   document.querySelectorAll<HTMLFormElement>('form[data-form-type="contact"]').forEach((form) => {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      const status = form.querySelector<HTMLElement>('.property-inquiry__status');
-      const fields = new FormData(form);
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-      if (status) status.textContent = 'A enviar…';
-      if (button) button.disabled = true;
+      if (!button || button.disabled) return;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const success = form.parentElement?.querySelector<HTMLElement>('[data-form-success]');
+      const error = form.parentElement?.querySelector<HTMLElement>('[data-form-error]');
+      const fields = new FormData(form);
+      const buttonText = button?.textContent;
+      if (error) error.hidden = true;
+      if (button) { button.disabled = true; button.textContent = 'Please wait...'; }
       try {
         await submitFormAccepted(form, { formType: 'contact', route: window.location.pathname, fields: { name: `${fields.get('firstName') ?? ''} ${fields.get('lastName') ?? ''}`.trim(), email: fields.get('email'), phone: fields.get('phone'), message: '' } });
-        if (status) status.textContent = 'Enviado com sucesso!'; form.classList.add('property-inquiry__form--accepted');
-      } catch { if (status) status.textContent = 'Oops! Alguma coisa correu mal.'; }
-      finally { if (button) button.disabled = false; }
+        form.hidden = true; if (success) success.hidden = false;
+      } catch { if (error) error.hidden = false; }
+      finally { if (button) { button.disabled = false; button.textContent = buttonText ?? ''; } }
     });
   });
 </script>
+
+<style>
+  .cms-form-wrapper{margin-bottom:16px;}
+  /* The source zero-height embed occupies a final grid row and its gap. */
+  .property-inquiry form{margin-bottom:0!important;padding-bottom:16px;}
+  @media(max-width:767px){.property-inquiry form{padding-bottom:12px;}}
+  form[hidden]{display:none!important;}
+</style>

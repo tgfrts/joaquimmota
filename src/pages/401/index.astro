@@ -13,17 +13,27 @@ import '../../styles/utility-pages.css';
     <meta property="og:title" content="Protected page" />
     <meta name="twitter:title" content="Protected page" />
   </head>
-  <body class="utility-page">
+  <body class="utility-page utility-page--protected">
     <main class="utility-component" aria-labelledby="protected-title">
       <section class="utility-card">
-        <img class="utility-image" src="https://cdn.prod.website-files.com/static/utility-lock.ae54711958.svg" alt="" />
-        <h1 id="protected-title">Protected Page</h1>
+        <img class="utility-image" src="/assets/utility-lock.svg" alt="" />
+        <div class="utility-heading"><h3 id="protected-title">Protected Page</h3></div>
         <form class="utility-form" aria-label="Password protected page">
           <label class="visually-hidden" for="password">Enter your password</label>
-          <input id="password" name="pass" type="password" placeholder="Enter your password" autocomplete="current-password" />
+          <input id="password" name="pass" type="password" placeholder="Enter your password" autocomplete="current-password" maxlength="256" autofocus />
           <button type="button">Submit</button>
+          <div class="utility-form-error" data-password-error role="alert" hidden>Incorrect password. Please try again.</div>
         </form>
       </section>
     </main>
   </body>
 </html>
+
+<script>
+  // Public preview only: private authentication is outside this candidate.
+  document.querySelectorAll<HTMLFormElement>('.utility-form').forEach(form => form.addEventListener('submit', event => event.preventDefault()));
+  if (/[?&]e=1(&|$)/.test(location.search)) {
+    const error = document.querySelector<HTMLElement>('[data-password-error]');
+    if (error) error.hidden = false;
+  }
+</script>

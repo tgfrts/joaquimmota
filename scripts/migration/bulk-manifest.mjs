@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildPayload } from './sample-payloads.mjs';
+import { assetRef, buildPayload } from './sample-payloads.mjs';
 
 const REQUIRED = [
   { type: 'property', sourceName: 'Imóveis', slug: 'imoveis' },
@@ -27,6 +27,14 @@ const SELL_HIDDEN_EVIDENCE = {
   source: 'Owner verified all seven Vender steps permanently hidden on desktop and mobile',
 };
 const IMAGE_TYPES = new Set(['Image', 'MultiImage']);
+const IMAGE_FIELD_TARGETS = {
+  property: { 'fotografia-de-destaque': 'featuredImage', 'outras-fotografias': 'gallery' },
+  article: { 'imagem-principal': 'mainImage', 'imagem-miniatura': 'thumbnailImage', 'opengraph-image': 'openGraphImage', galeria: 'gallery' },
+  testimonial: { 'foto-de-perfil': 'portrait' },
+  offer: { imagem: 'image' },
+  preListing: { 'hero-image-2': 'heroImage' },
+  processStep: { image: 'image', thumbnail: 'thumbnail' },
+};
 const RESIDUAL_DISPOSITIONS = [
   {
     sourceCollection: 'Open Houses',
@@ -171,7 +179,99 @@ function resolveResidualDispositions(source, blankRoutes) {
   return { resolved, unresolved };
 }
 
-export function buildBulkManifest(source, eligibilityReport, samplePayload, blankRoutes, sampleGate = null) {
+function expectedBulkIdentity(type, item) {
+  const slug = item.fieldData.slug;
+  return `${type}\u0000${item.id}\u0000${item.cmsLocaleId}\u0000${slug}`;
+}
+
+function validSha1(value) {
+  return typeof value === 'string' && /^[a-f0-9]{40}$/i.test(value);
+}
+
+function fullPayloadCheck(source, cmsCollections, payload, assetMap, assetEvidence) {
+  if (!Array.isArray(payload?.documents) || !assetMap || !assetEvidence?.sourceByFileId || !assetEvidence?.destinationByRef) {
+    return { passed: false, reason: 'full 190-document payload, complete asset map, and source/destination asset metadata are required', documents: payload?.documents?.length ?? 0, expectedDocuments: 190, expectedVisibleAssetSlots: 1447, mappedVisibleAssetSlots: 0, uniqueVisibleSourceAssets: 0, expectedUniqueVisibleSourceAssets: 1342, assetMetadataChecks: 0 };
+  }
+  const expected = new Map();
+  const docByIdentity = new Map();
+  for (const { type, sourceName } of REQUIRED) {
+    const c = collection(source, sourceName);
+    const items = c.staged.items.filter((item) => isEligible(item, c)
+      && (type !== 'processStep' || [BUY_PAGE_ID, HOME_PAGE_ID].includes(item.fieldData?.page)));
+    for (const item of items) expected.set(expectedBulkIdentity(type, item), { type, item, c });
+  }
+  let invalidIdentity = false;
+  for (const doc of payload.documents) {
+    const identityKey = `${doc?._type}\u0000${doc?.legacyId}\u0000${doc?.locale}\u0000${doc?.sourceSlug}`;
+    if (doc?.slug?.current !== doc?.sourceSlug || !expected.has(identityKey) || docByIdentity.has(identityKey)) invalidIdentity = true;
+    docByIdentity.set(identityKey, doc);
+  }
+  if (docByIdentity.size !== expected.size || [...expected.keys()].some((key) => !docByIdentity.has(key))) invalidIdentity = true;
+  let slots = 0;
+  const uniqueIds = new Set();
+  let assetMismatch = false;
+  let assetMetadataChecks = 0;
+  for (const [key, entry] of expected) {
+    const doc = docByIdentity.get(key);
+    if (!doc) continue;
+    const excluded = entry.type === 'preListing' ? new Set(PRELISTING_IMAGE_EXCLUSIONS.map((field) => field.slug)) : new Set();
+    for (const field of (entry.c.schema?.fields ?? []).filter((candidate) => IMAGE_TYPES.has(candidate.type) && !excluded.has(candidate.slug))) {
+      const raw = entry.item.fieldData?.[field.slug];
+      const sourceAssets = raw == null ? [] : (Array.isArray(raw) ? raw : [raw]).filter(Boolean);
+      const targetField = IMAGE_FIELD_TARGETS[entry.type]?.[field.slug];
+      if (!targetField) { if (sourceAssets.length) assetMismatch = true; continue; }
+      slots += sourceAssets.length;
+      sourceAssets.forEach((asset) => { if (asset?.fileId) uniqueIds.add(asset.fileId); });
+      let expectedRefs;
+      try {
+        expectedRefs = sourceAssets.map((asset, index) => assetRef(assetMap, asset, `${entry.type} image ${index}`)?.asset?._ref);
+      } catch {
+        assetMismatch = true;
+        continue;
+      }
+      sourceAssets.forEach((sourceAsset, index) => {
+        const fileId = sourceAsset?.fileId;
+        const sourceMeta = assetEvidence.sourceByFileId[fileId];
+        const destinationMeta = assetEvidence.destinationByRef[expectedRefs[index]];
+        const sourceSha1 = sourceMeta?.sourceSHA1;
+        const destinationSha1 = destinationMeta?.sha1;
+        const sourceBytes = sourceMeta?.sourceBytes;
+        const destinationBytes = destinationMeta?.size;
+        assetMetadataChecks += 1;
+        if (sourceMeta?.url !== sourceAsset?.url || !validSha1(sourceSha1)
+          || !Number.isSafeInteger(sourceBytes) || sourceBytes <= 0
+          || !validSha1(destinationSha1) || destinationSha1.toLowerCase() !== sourceSha1.toLowerCase()
+          || destinationBytes !== sourceBytes) assetMismatch = true;
+      });
+      const targetValue = doc[targetField];
+      const actualRefs = field.type === 'MultiImage'
+        ? (Array.isArray(targetValue) ? targetValue.map((image) => image?.asset?._ref) : [])
+        : (targetValue?.asset?._ref ? [targetValue.asset._ref] : []);
+      if (JSON.stringify(expectedRefs) !== JSON.stringify(actualRefs)) assetMismatch = true;
+    }
+  }
+  const required = cmsCollections.reduce((sum, entry) => sum + entry.sourcePhotoSlots, 0);
+  const passed = !invalidIdentity && !assetMismatch && docByIdentity.size === 190
+    && slots === 1447 && required === 1447 && uniqueIds.size === 1342;
+  return {
+    passed,
+    reason: passed ? 'all eligible identities and ordered visible image references match the complete source inventory' : invalidIdentity
+      ? 'full payload identities, locales, slugs, or document count do not exactly match the eligible source inventory'
+      : assetMismatch || slots !== 1447 || required !== 1447 || uniqueIds.size !== 1342
+        ? 'full payload visible asset coverage/order or source/destination digest-and-size receipts differ from the 1,447-slot, 1,342-unique source inventory'
+        : 'full payload does not contain the required 190 eligible documents',
+    documents: docByIdentity.size,
+    expectedDocuments: 190,
+    expectedVisibleAssetSlots: 1447,
+    mappedVisibleAssetSlots: slots,
+    uniqueVisibleSourceAssets: uniqueIds.size,
+    expectedUniqueVisibleSourceAssets: 1342,
+    assetMetadataChecks,
+    expectedAssetMetadataChecks: 1447,
+  };
+}
+
+export function buildBulkManifest(source, eligibilityReport, samplePayload, blankRoutes, sampleGate = null, fullPayload = null, fullAssetMap = null, fullAssetEvidence = null) {
   if (!Array.isArray(samplePayload?.documents) || !Array.isArray(eligibilityReport?.collections)) {
     throw new Error('Sample payload and eligibility report are required.');
   }
@@ -241,7 +341,7 @@ export function buildBulkManifest(source, eligibilityReport, samplePayload, blan
     const sourceReportIds = [...sourceReport.map((item) => item.sourceId)].sort();
     const currentEligibleIds = [...stagedEligible.map((item) => item.id)].sort();
     if (JSON.stringify(currentEligibleIds) !== JSON.stringify(sourceReportIds)) {
-      throw new Error(`Eligibility report identities differ from the complete staged source for ${slug}.`);
+      throw new Error(`Eligibility report identities differ from the complete staged source for ${slug} (${sourceReportIds.length} reported, ${currentEligibleIds.length} eligible).`);
     }
     const reportedSlots = sourceReport.reduce((sum, item) => sum + (item.photoReferences ?? 0), 0);
     const reportedGallerySlots = sourceReport.reduce((sum, item) => sum + (item.gallerySlots ?? 0), 0);
@@ -283,12 +383,14 @@ export function buildBulkManifest(source, eligibilityReport, samplePayload, blan
   // snapshot still contains source-eligible records whose public disposition
   // is unknown. Keep the manifest preparatory until those cases are resolved.
   const sampleGatePassed = exactGate(sampleGate, sampleIdsBySlug);
-  const bulkReady = sampleGatePassed && unresolved.length === 0;
+  const fullCheck = fullPayloadCheck(source, cmsCollections, fullPayload, fullAssetMap, fullAssetEvidence);
+  const bulkReady = sampleGatePassed && unresolved.length === 0 && fullCheck.passed;
   const bulkReason = !sampleGatePassed
     ? 'recorded 100% content/image/order/layout/responsive/URL/SEO/behavior sample evidence is absent or incomplete'
     : unresolved.length > 0
       ? 'source-eligible records have unresolved public visibility or template disposition'
-      : 'all required collection samples have recorded complete parity evidence and no source-eligible visibility cases remain unresolved';
+      : !fullCheck.passed ? fullCheck.reason
+        : 'all required collection samples have recorded complete parity evidence, no source-eligible visibility cases remain unresolved, and full payload/media coverage is exact';
   return {
     generatedAt: new Date().toISOString(),
     mode: 'read-only-preparation',
@@ -307,19 +409,23 @@ export function buildBulkManifest(source, eligibilityReport, samplePayload, blan
       status: bulkReady ? 'passed' : 'blocked',
       reason: bulkReason,
       bulkWritesPermitted: bulkReady,
+      fullPayload: fullCheck,
     },
     safety: { sourceCmsWrites: false, destinationCmsWrites: false, sourcePayloadOrPersonalContentIncluded: false },
   };
 }
 
 function usage() {
-  console.error('Usage: node scripts/migration/bulk-manifest.mjs <source.json> <eligibility-report.json> <asset-map.json> <blank-routes.json> <output.json> [--sample-gate gate.json] [--require-bulk-ready]');
+  console.error('Usage: node scripts/migration/bulk-manifest.mjs <source.json> <eligibility-report.json> <sample-asset-map.json> <blank-routes.json> <output.json> [--sample-gate gate.json] [--full-payload payload.json --full-asset-map asset-map.json --full-asset-evidence evidence.json] [--require-bulk-ready]');
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
   const [sourcePath, reportPath, assetMapPath, blankRoutesPath, outputPath] = args;
   const gateIndex = args.indexOf('--sample-gate');
+  const fullPayloadIndex = args.indexOf('--full-payload');
+  const fullAssetMapIndex = args.indexOf('--full-asset-map');
+  const fullAssetEvidenceIndex = args.indexOf('--full-asset-evidence');
   const requireReady = args.includes('--require-bulk-ready');
   if (!sourcePath || !reportPath || !assetMapPath || !blankRoutesPath || !outputPath) {
     usage();
@@ -331,7 +437,14 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const blankRoutes = readJson(blankRoutesPath);
     const samplePayload = buildPayload(source, assets);
     const gate = gateIndex >= 0 ? readJson(args[gateIndex + 1]) : null;
-    const manifest = buildBulkManifest(source, report, samplePayload, blankRoutes, gate);
+    const fullPayload = fullPayloadIndex >= 0 ? readJson(args[fullPayloadIndex + 1]) : null;
+    const fullAssetMap = fullAssetMapIndex >= 0 ? readJson(args[fullAssetMapIndex + 1]) : null;
+    const fullAssetEvidence = fullAssetEvidenceIndex >= 0 ? readJson(args[fullAssetEvidenceIndex + 1]) : null;
+    if ((fullPayloadIndex >= 0 || fullAssetMapIndex >= 0 || fullAssetEvidenceIndex >= 0)
+      && (fullPayloadIndex < 0 || fullAssetMapIndex < 0 || fullAssetEvidenceIndex < 0)) {
+      throw new Error('--full-payload, --full-asset-map, and --full-asset-evidence are required together.');
+    }
+    const manifest = buildBulkManifest(source, report, samplePayload, blankRoutes, gate, fullPayload, fullAssetMap, fullAssetEvidence);
     if (requireReady && !manifest.bulkGate.bulkWritesPermitted) {
       throw new Error(`Bulk gate ${manifest.bulkGate.status}: ${manifest.bulkGate.reason}`);
     }

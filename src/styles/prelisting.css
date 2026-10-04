@@ -78,7 +78,7 @@
  .prelisting-section--intro{padding:80px 5vw 48px}
  .prelisting-reasons{grid-template-columns:1fr}
  .prelisting-sold{padding:10vw 5vw 5vw}
- .prelisting-sold__heading{margin-bottom:5vw}
+ .prelisting-sold__heading{margin-bottom:max(5vw,20px)}
  .prelisting-sold__heading p{margin-bottom:12px!important}
  .prelisting-sold__rail{gap:5vw;animation-name:prelisting-rail-mobile;animation-duration:20s}
  .prelisting-sold__rail article{width:75vw}
@@ -128,3 +128,7 @@
 .prelisting-contact__portrait img{margin-top:-5vw}
 }
 @media(min-width:768px) and (max-width:991px){.prelisting-contact__title{row-gap:0}.prelisting-contact__portrait{width:49vw}}
+
+/* Public rail uses distinct location variants across responsive layouts. */
+.prelisting-sold__locations{display:flex;flex-direction:column}.prelisting-sold__municipality--clone-hidden{display:none}
+@media(max-width:767px){.prelisting-sold__parish{order:-1}.prelisting-sold__municipality--mobile-hidden{display:none}}

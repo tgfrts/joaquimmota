@@ -1,0 +1,11 @@
+# DOOP native form submission candidate
+
+The public activity and visit report forms keep the original names, required fields, maxlength values and select values. The source uses custom Make actions with ordinary POST navigation; its Webflow inline success/error panels remain dormant. The target therefore uses native same-origin POST to `/api/doop/activities` and `/api/doop/visits`, without invented preview notices or inline confirmation.
+
+The backend accepts only same-origin URL-encoded POST, rejects duplicate/unknown fields, enforces required values and the source enum choices, and limits the request to 64 KiB. Source field evidence was inspected from the private read-only captures of `/doop/relatorios-de-atividades` (7 named controls) and `/doop/relatorios-de-visita` (18 named controls). The `null` placeholder options remain in the markup; the backend rejects them as unselected enum values.
+
+`DOOP_ACTIVITY_WEBHOOK_URL` and `DOOP_VISIT_WEBHOOK_URL` are deliberately empty in `.env.example`. Only explicitly configured, own Joaquim Mota HTTPS destinations on `hook.eu1.make.com` are accepted, without URL credentials, query strings, fragments or arbitrary user-supplied destinations. No original hook was copied, no PM account was reused, and no hook was called during this work.
+
+The server forwards only the validated form fields, with a 15-second transport deadline and manual redirect handling. It returns successful upstream text as a native plaintext response, bounded to 8 KiB, with `nosniff` and `no-store`; it does not reflect upstream headers, execute HTML, follow redirects, or claim acceptance for failures. Missing configuration returns 503. There is no PII logging, content storage, Sanity mutation or email delivery in this integration.
+
+Validation: nine isolated tests exercise real page controls, validation, no-forward cases, unconfigured/unsafe URLs, successful plaintext responses, redirect/error/oversized-response rejection and mocked transport failure. All upstream transport in those tests is mocked. Final source Make response content and production acceptance remain unknown because no real source submission is authorized. Configuration and an explicitly authorized own-destination end-to-end check remain outstanding. The date-picker work is a separate candidate.
