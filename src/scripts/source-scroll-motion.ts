@@ -29,7 +29,7 @@ export function bindSourceScrollMotion(element: HTMLElement, render: (progress: 
   element.querySelectorAll('img').forEach(image => image.addEventListener('load', schedule, { once: true }));
   schedule();
 }
-export function bindInteriorHero(image: HTMLImageElement, overlay?: HTMLElement | null) {
+export function bindInteriorHero(image: HTMLImageElement | HTMLVideoElement, overlay?: HTMLElement | null) {
   bindSourceScrollMotion(image, (progress, reduced) => {
     image.style.transform = reduced ? 'none' : `translateY(${interpolate(progress, [[0, 10], [.75, 0]])}vh) scale(${interpolate(progress, [[0, 1], [.35, 1.25], [.65, 1.25], [1, 1]])})`;
     image.style.filter = reduced ? 'none' : `blur(${interpolate(progress, [[0, 500], [.35, 0]])}px)`;

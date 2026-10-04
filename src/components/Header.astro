@@ -136,6 +136,7 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
     .site-header:not(:is(.site-header--light, .site-header--blue)).is-open nav {top:64px;}
   }
   @media(max-width:767px){.site-header.site-header--light{height:64px}}
+  .site-header.site-header--light .contact-link{background:#20457f;border-color:#20457f;color:#f4f4f4}
   @media(max-width:991px){
     html:has([data-header].is-open),body:has([data-header].is-open){overflow:hidden}
     .interior-hero:has([data-header].is-open){z-index:100;overflow:visible}

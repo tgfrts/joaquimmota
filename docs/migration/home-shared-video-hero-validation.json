@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-04",
+  "finalOwnerCorrection": "Home is exactly shared InteriorHero with two CTAs and video replacing the image, including same blur motion; no full-page video background variant.",
+  "component": "src/components/InteriorHero.astro",
+  "home": {
+    "video": "/assets/hero.mp4",
+    "poster": "/assets/hero-poster.jpg",
+    "mediaAspect": "16/9",
+    "motion": "bindInteriorHero shared image/video algorithm",
+    "headingColor": "#20457f",
+    "primary": "#db1430",
+    "secondary": {
+      "border": "#db1430",
+      "background": "rgba(0, 0, 0, 0)",
+      "shadow": "none"
+    },
+    "actions": [
+      "/vender",
+      "/comprar"
+    ]
+  },
+  "browser": {
+    "desktop1280x720": {
+      "scroll": 0,
+      "copyCenter": 360,
+      "viewportCenter": 360
+    },
+    "mobile390x844": {
+      "copyCenter": 422,
+      "viewportCenter": 422
+    },
+    "scrollVideo": {
+      "filter": "blur(0px)",
+      "opacity": "1",
+      "playing": true
+    }
+  },
+  "navbar": {
+    "topButton": "#20457f",
+    "lowerButton": "#e4e2df"
+  },
+  "validation": {
+    "check": "106files zero diagnostics",
+    "buildPages": 250,
+    "testsPassed": 127,
+    "independentAudit": "PASS shared-video refactor"
+  },
+  "screenshots": [
+    "/private/tmp/jrmota-home-final-hero-buttons.jpg",
+    "/private/tmp/jrmota-home-video-blur-scroll.jpg"
+  ]
+}
