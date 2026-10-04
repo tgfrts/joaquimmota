@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-04",
+  "component": "src/components/ClosingCta.astro",
+  "consumers": 10,
+  "generatedCtaRoutes": 132,
+  "copyAndActionHrefComparison": "132/132 exact before/after",
+  "portrait": "/assets/closing-jm.png",
+  "imageFit": "contain",
+  "overheading": "uppercase",
+  "button": {
+    "case": "normal",
+    "color": "#20457f",
+    "background": "#f4f4f4"
+  },
+  "measuredHomeCardHeight": {
+    "1280": 448,
+    "834": 395.65625,
+    "390": 443.296875
+  },
+  "measuredHomeSectionHeight": {
+    "1280": 576,
+    "834": 520.734375,
+    "390": 501.796875
+  },
+  "geometry": "Approved Home card/copy measurements preserved; contained image framing intentionally changed by Owner",
+  "independentAudit": "passed",
+  "verification": {
+    "tests": 127,
+    "astroCheck": "zero diagnostics",
+    "buildPages": 250,
+    "browser": "Home and Comprar verified; desktop/tablet/mobile Home measured"
+  }
+}

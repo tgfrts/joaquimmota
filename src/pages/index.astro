@@ -7,6 +7,7 @@ import '../styles/home-fidelity.css';
 import content from '../data/sample-content.json';
 import homeSource from '../data/home-process-source.json';
 import CmsImage from '../components/CmsImage.astro';
+import ClosingCta from '../components/ClosingCta.astro';
 import { ownRecordByLegacyId, recordsFromContent, selectRecentSoldProperties } from '../data/cms-content';
 const homeIds = ['64d73faf12672d652ab57816', '64d73faf12672d652ab57825', '64d73faf12672d652ab57821'];
 const records = recordsFromContent(content);
@@ -47,7 +48,7 @@ const testimonials = testimonialFallback.map(([legacyId, quote, clientName]) => 
     <section class="sold shell"><p class="eyebrow dark">OS NOSSOS RESULTADOS</p><h2>Últimos imóveis vendidos</h2><div class="property-rail" aria-label="Últimos imóveis vendidos"><div class="property-track">{soldLoop.map((property, index) => <article class="property-card" aria-hidden={index >= sold.length ? 'true' : undefined}><div class="property-image">{property.featuredImage && <CmsImage value={property.featuredImage} alt="" loading="lazy" />}<span class="property-image-overlay"></span><span class="property-sold-banner">VENDIDO</span></div><div class="property-copy"><h3>{property.title}</h3><span class="property-divider"></span><p class="place"><span>{property.parish}</span>{property.municipality && <span class="property-municipality">{property.municipality}</span>}</p></div></article>)}</div></div></section>
     </div>
     <section class="testimonials"><div class="shell testimonial-heading"><div><p class="eyebrow">O QUE DIZEM OS NOSSOS CLIENTES</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a href="/reviews" class="text-link">Leia as nossas avaliações</a></div><div class="testimonial-rail shell">{testimonials.map((testimonial) => <article class="testimonial-card"><div aria-label="5 estrelas" class="stars">{Array.from({ length: 5 }, () => <img src="/assets/prelisting-star.svg" alt="" loading="lazy" />)}</div><blockquote>{testimonial.quote}</blockquote><figcaption>{testimonial.clientName}</figcaption></article>)}</div></section>
-    <section class="closing"><div class="closing-card"><div class="closing-copy"><p class="eyebrow">Vamos Conversar</p><h2>Ainda à procura de uma solução para a sua casa?</h2><p>Tenha uma equipa de sucesso ao seu lado.</p><a class="button button--light" href="/vamos-comecar">Vamos Começar</a></div><div class="closing-image-wrap"><img class="closing-photo" src="/assets/article-cta-jm.png" alt="" loading="lazy" /></div></div></section>
+    <ClosingCta heading="Ainda à procura de uma solução para a sua casa?" body="Tenha uma equipa de sucesso ao seu lado." href="/vamos-comecar" />
   </main>
   <Footer /><WhatsAppWidget />
 </BaseLayout>

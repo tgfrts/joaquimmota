@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CmsGallery from '../../components/CmsGallery.astro';
+import ClosingCta from '../../components/ClosingCta.astro';
 import Footer from '../../components/Footer.astro';
 import CmsImage from '../../components/CmsImage.astro';
 import CmsNewsletter from '../../components/CmsNewsletter.astro';
@@ -31,15 +32,7 @@ const socialImage = typeof imageRef === 'string' ? (() => { const [, id, dimensi
       <article class="cms-article__body"><CmsRichContent blocks={record.body} />{record.videoUrl && <iframe class="cms-media" title="Vídeo" src={record.videoUrl} allowfullscreen />}<CmsGallery images={record.gallery} label="Galeria" /></article>
       <CmsNewsletter />
     </div>
-    {record.cta?.heading && <section class="cms-article__cta-wrap"><div class="cms-article__cta" data-article-cta><div class="cms-article__cta-content"><p class="cms-article__cta-eyebrow">{record.cta.eyebrow}</p><h2>{record.cta.heading}</h2><p>{record.cta.copy}</p>{record.cta.label && <a class="button button--light" href={record.cta.href ?? '/vamos-comecar'}>{record.cta.label}</a>}</div><div class="cms-article__cta-portrait-wrap"><img class="cms-article__cta-portrait" src="/assets/article-cta-jm.png" alt="" loading="lazy" /></div></div></section>}
+    {record.cta?.heading && <ClosingCta eyebrow={record.cta.eyebrow} heading={record.cta.heading} body={record.cta.copy} label={record.cta.label} href={record.cta.href ?? '/vamos-comecar'} showButton={Boolean(record.cta.label)} />}
   </main>
   <Footer />
 </BaseLayout>
-
-<script>
-  import { bindSourceScrollMotion, interpolate } from '../../scripts/source-scroll-motion';
-  document.querySelectorAll<HTMLElement>('[data-article-cta]').forEach((element) => bindSourceScrollMotion(element, (progress, reduced) => {
-    element.style.transform = reduced ? 'none' : `scale(${interpolate(progress, [[0, 1.25], [.35, 1]])})`;
-    element.style.opacity = reduced ? '1' : String(interpolate(progress, [[0, 0], [.35, 1]]));
-  }));
-</script>

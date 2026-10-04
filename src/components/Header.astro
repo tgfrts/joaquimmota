@@ -55,6 +55,7 @@ const navigationId = `site-navigation-${crypto.randomUUID()}`;
 
 <style is:global>
   .nav-mobile-contact { display:none; }
+  .interior-secondary-header { position:sticky; top:0; z-index:10; background:linear-gradient(45deg,#20457f,#162b4e); box-shadow:6px 0 20px rgba(0,0,0,.25); }
   /* Owner-approved reduction applies to every navbar variant, including mobile. */
   .site-header .brand img { transform:scale(.9);transform-origin:left center; }
   .site-header:not(:is(.site-header--light, .site-header--blue)) .contact-link {min-height:42px;padding:8px 24px;font:500 16px/24px Roboto,sans-serif;}

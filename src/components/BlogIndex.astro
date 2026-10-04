@@ -2,6 +2,7 @@
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import CmsImage from './CmsImage.astro';
+import ClosingCta from './ClosingCta.astro';
 import sampleContent from '../data/sample-content.json';
 import '../styles/blog-index.css';
 
@@ -53,7 +54,7 @@ const sourcePageSize = 6;
     </nav>
   </section>
 
-  <section class="blog-index__closing"><div class="blog-index__closing-card"><div><p class="blog-index__eyebrow">Vamos Conversar</p><h2>Ainda à procura de uma solução para a sua casa?</h2><p>Tenha uma equipa de sucesso ao seu lado.</p><a href="/vamos-comecar">Vamos Começar</a></div><div class="blog-index__closing-portrait"><img src="/assets/closing-jm.png" alt="" loading="lazy" /></div></div></section>
+  <ClosingCta heading="Ainda à procura de uma solução para a sua casa?" body="Tenha uma equipa de sucesso ao seu lado." href="/vamos-comecar" />
 </main>
 <Footer />
 

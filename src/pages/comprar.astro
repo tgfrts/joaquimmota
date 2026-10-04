@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppWidget from '../components/WhatsAppWidget.astro';
 import CmsImage from '../components/CmsImage.astro';
+import ClosingCta from '../components/ClosingCta.astro';
 import data from '../data/sample-content.json';
 import buySource from '../data/buy-process-source.json';
 import sourceProperties from '../data/buy-properties-source.json';
@@ -46,12 +47,12 @@ const buySteps = buySource.map(source => records.find(record => record._type ===
   <Header variant="light" pageNavigation />
   <main class="buy-page">
     <section class="buy-hero"><div class="buy-hero__heading"><span class="buy-hero__eyebrow">Compradores</span><h1>Todos queremos ter uma casa de sonho</h1><p>Simplificamos o processo para que possa encontrar e comprar a sua casa de uma forma tranquila.</p><a class="button" href="#imoveis">Conheça os nosso imóveis</a></div><div class="buy-hero__image-wrap"><img src="/assets/buy-kitchen.jpg" alt="" class="buy-hero__image" loading="eager" /><div class="buy-hero__image-overlay"></div></div></section>
-    <div class="home-secondary-header"><Header variant="light" pageNavigation contactHref="/vamos-comecar" contactLabel="Vamos começar" showBlog={false} /></div>
+    <div class="interior-secondary-header"><Header variant="blue" pageNavigation showBlog={false} contactHref="/vamos-comecar" contactLabel="Vamos começar" /></div>
     <section class="home-process shell"><div class="home-process__intro"><p class="eyebrow">Uma compra tranquila</p><h2>Como funciona</h2><p>Sabemos que encontrar e comprar a casa ideal pode ser complicado.<br /><br />Estamos aqui para tornar esse processo o mais simples possível para si.</p></div><div class="home-process__steps">{buySteps.map(step => <article data-source-id={step.legacyId} data-buy-step-motion><h3>{step.title}</h3><p>{step.body}</p>{step.ctaLabel && step.ctaUrl && <a href={step.ctaUrl}>{step.ctaLabel}</a>}</article>)}</div></section>
     <section id="imoveis" class="buy-properties"><div class="shell"><p class="buy-kicker">Imóveis</p><h2>Descubra aqui a sua casa de sonho</h2><div class="buy-properties__grid">{properties.map(property => <a class="buy-property" data-source-id={property.legacyId} href={`/imoveis/${property.slug}`}><div class="buy-property__image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} width={property.imageWidth} height={property.imageHeight} alt="" loading="lazy" />}<span>{property.label}</span></div><div class="buy-property__copy"><h3>{property.title}</h3>{property.priceOnRequest ? <p class="buy-property__price">Preço sob consulta</p> : <p class="buy-property__price"><b>€</b>{property.price}</p>}<p class="buy-property__place"><img src="/assets/property-address.svg" alt="" /><span>{property.municipality}</span><span>{property.parish}</span></p><p class="buy-property__reference">{property.reference}</p><hr /><div class="buy-property__facts"><span><img src="/assets/property-bed.svg" alt="" />{property.beds}</span><span><img src="/assets/property-bath.svg" alt="" />{property.baths}</span><span><img src="/assets/property-garage.svg" alt="" />{property.parking}</span><span class="buy-property__area"><img src="/assets/property-area.svg" alt="" />{property.area} m2 - Área Bruta</span></div></div></a>)}</div></div></section>
     <section class="buy-guide"><div class="shell buy-guide__card" data-buy-guide-progress><div><p>Guia</p><h2>Precisa se vender antes de comprar?</h2><p>Obtenha um guia prático para mudar de casa sem stress e sem complicações.</p><a class="button" href="/guia-vender-para-comprar">QUERO OBTER O GUIA</a></div></div></section>
     <section id="testemunhos" class="buy-testimonials"><div class="shell"><header><div><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a class="button" href="/reviews">Leia as nossas avaliações</a></header><div class="buy-testimonials__grid">{testimonials.map(testimonial => <figure><div aria-label="5 estrelas" class="buy-stars">★★★★★</div><blockquote>{testimonial.quote}</blockquote><figcaption>{testimonial.clientName}</figcaption></figure>)}</div></div></section>
-    <section class="buy-closing"><div class="shell buy-closing__card" data-buy-cta-motion><div><p>Vamos Conversar</p><h2>Quer comprar a sua casa com sucesso?</h2><p>Mais de 100 famílias compraram a sua casa connosco.</p><a class="button" href="/vamos-comecar">Vamos Começar</a></div><div class="buy-closing__portrait"><img src="/assets/closing-jm.png" alt="" loading="lazy" /></div></div></section>
+    <ClosingCta heading="Quer comprar a sua casa com sucesso?" body="Mais de 100 famílias compraram a sua casa connosco." href="/vamos-comecar" />
   </main>
   <Footer />
   <WhatsAppWidget />
@@ -67,16 +68,5 @@ const buySteps = buySource.map(source => records.find(record => record._type ===
     });
   });
 
-  const closing = document.querySelector<HTMLElement>('[data-buy-cta-motion]');
-  const renderClosing = (progress: number, reduced: boolean) => {
-    if (!closing) return;
-    closing.style.opacity = reduced ? '1' : String(interpolate(progress, [[0, 0], [.35, 1], [1, 1]]));
-    closing.style.transform = reduced ? 'none' : `scale(${interpolate(progress, [[0, 1.25], [.35, 1], [1, 1]])})`;
-  };
-  // Source e-388/a-110 is attached to the guide but targets the closing CTA globally.
-  // Bind the closing first so the guide's published global-target motion takes precedence.
-  if (closing) bindSourceScrollMotion(closing, renderClosing);
-  const guide = document.querySelector<HTMLElement>('[data-buy-guide-progress]');
-  if (guide) bindSourceScrollMotion(guide, renderClosing);
   document.querySelectorAll<HTMLElement>('.buy-testimonials figure').forEach(bindTestimonialMotion);
 </script>

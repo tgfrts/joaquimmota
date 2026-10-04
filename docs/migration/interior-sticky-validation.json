@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-04",
+  "desktop": [
+    {
+      "background": "linear-gradient(45deg, rgb(32, 69, 127), rgb(22, 43, 78))",
+      "button": {
+        "background": "rgb(228, 226, 223)",
+        "color": "rgb(32, 69, 127)",
+        "href": "/vamos-comecar"
+      },
+      "ctaFont": "40px",
+      "height": 72,
+      "initialLogo": "/assets/logo-color.svg",
+      "links": [
+        "In\u00edcio",
+        "Vender",
+        "Comprar",
+        "Sobre n\u00f3s"
+      ],
+      "logo": "/assets/logo-white.svg",
+      "route": "/vender",
+      "sticky": "sticky"
+    },
+    {
+      "background": "linear-gradient(45deg, rgb(32, 69, 127), rgb(22, 43, 78))",
+      "button": {
+        "background": "rgb(228, 226, 223)",
+        "color": "rgb(32, 69, 127)",
+        "href": "/vamos-comecar"
+      },
+      "ctaFont": "40px",
+      "height": 72,
+      "initialLogo": "/assets/logo-color.svg",
+      "links": [
+        "In\u00edcio",
+        "Vender",
+        "Comprar",
+        "Sobre n\u00f3s"
+      ],
+      "logo": "/assets/logo-white.svg",
+      "route": "/comprar",
+      "sticky": "sticky"
+    },
+    {
+      "background": "linear-gradient(45deg, rgb(32, 69, 127), rgb(22, 43, 78))",
+      "button": {
+        "background": "rgb(228, 226, 223)",
+        "color": "rgb(32, 69, 127)",
+        "href": "/vamos-comecar"
+      },
+      "ctaFont": "40px",
+      "height": 72,
+      "initialLogo": "/assets/logo-color.svg",
+      "links": [
+        "In\u00edcio",
+        "Vender",
+        "Comprar",
+        "Sobre n\u00f3s"
+      ],
+      "logo": "/assets/logo-white.svg",
+      "route": "/sobre",
+      "sticky": "sticky"
+    },
+    {
+      "background": "linear-gradient(45deg, rgb(32, 69, 127), rgb(22, 43, 78))",
+      "button": {
+        "background": "rgb(228, 226, 223)",
+        "color": "rgb(32, 69, 127)",
+        "href": "/vamos-comecar"
+      },
+      "ctaFont": "40px",
+      "height": 72,
+      "initialLogo": "/assets/logo-color.svg",
+      "links": [
+        "In\u00edcio",
+        "Vender",
+        "Comprar",
+        "Sobre n\u00f3s"
+      ],
+      "logo": "/assets/logo-white.svg",
+      "route": "/marketing",
+      "sticky": "sticky"
+    },
+    {
+      "background": "linear-gradient(45deg, rgb(32, 69, 127), rgb(22, 43, 78))",
+      "button": {
+        "background": "rgb(228, 226, 223)",
+        "color": "rgb(32, 69, 127)",
+        "href": "/vamos-comecar"
+      },
+      "ctaFont": "40px",
+      "height": 72,
+      "initialLogo": "/assets/logo-color.svg",
+      "links": [
+        "In\u00edcio",
+        "Vender",
+        "Comprar",
+        "Sobre n\u00f3s"
+      ],
+      "logo": "/assets/logo-white.svg",
+      "route": "/reviews",
+      "sticky": "sticky"
+    }
+  ],
+  "scroll": {
+    "route": "/reviews",
+    "stickyTop": 0
+  },
+  "mobile": {
+    "width": 390,
+    "height": 64,
+    "menuOpen": true,
+    "escapeCloses": true
+  }
+}
