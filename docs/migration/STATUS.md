@@ -1,15 +1,17 @@
 # Status
 
-## Estado atual
+## Estado atual — 2026-10-04
 
-- Projeto independente e contas próprias confirmadas; PM sem alterações tracked.
-- 11 amostras em drafts Sanity, 52 assets; dados das amostras conferidos. Bulk ainda dependente da aceitação visual/comportamental completa.
-- Check: 77 ficheiros sem diagnósticos; testes: 48/48; build: 117 páginas. Gate: 137 rotas CMS exigidas ausentes, zero rotas proibidas.
-- Reports DOOP e dashboard têm UI de preview; reports não enviam dados. HTTP 401 e integração real dos reports continuam pendentes.
-- Artigos/pre-listings corrigidos em tablet e galerias conferidas em interações básicas. Conversão estrita dos 59 artigos preserva H5 e links em nova janela; estruturas não suportadas falham antes da importação.
-- Home e Reviews: geometria principal comparada em desktop/tablet/mobile; menu tablet e fecho por Escape conferidos. Comprar/Vender/Marketing receberam secções públicas em falta e continuam em validação visual; os heros Vender/Marketing ainda precisam de fidelidade.
-- 22 resíduos CMS têm disposição explícita de não importação com preservação das rotas vazias. O gate continua bloqueado pela paridade completa das amostras.
-- Produção, DNS e cutover continuam sem autorização.
+- Checkout independente `tgfrts/joaquimmota`; PM sem alterações tracked.
+- Gates de amostras e payload completo passaram com revisão independente. Importação concluída:190 drafts próprios, zero publicados,1447 posições de imagem/1342 originais referenciados;1343 assets incluem um extra não referenciado de validação. Nenhum draft de origem importado.
+- Build254 páginas; Astro check111 ficheiros sem diagnósticos;136/136 testes. Gate de rotas sem caminhos necessários ausentes ou proibidos gerados;264/264 GET no runtime Cloudflare local passaram, incluindo drafts404/admin401.
+- Comparações documentadas de famílias estáticas, dois exemplos por CMS onde aplicável, interações e desktop/mobile/tablet. Blog completo e flyer fechados nos dois viewports principais; esta evidência é delimitada e não certifica todos os possíveis tamanhos de ecrã.
+- Preview local `http://127.0.0.1:8789`, com conteúdo do Sanity próprio; cache de190 documentos ignorada pelo Git. Sem Studio alojado; schema MCP próprio disponível.
+- Formulários têm validação, idempotência, feedback e adapters testados com respostas simuladas. Entrega real depende das credenciais próprias Resend, destinatário e URLs próprias DOOP. Estes valores continuam por configurar; nenhum email ou formulário real submetido.
+- Dashboard mantém a experiência pública protegida/401; painel privado e autenticação interna não foram migrados sem acesso ao conteúdo privado.
+- Revisão do preview pelo Owner e ativação de SEO de produção permanecem pendentes. Publicação Sanity, produção, DNS e cutover não autorizados.
+
+As entradas seguintes são um registo histórico; contagens e pendências antigas são substituídas pelo estado atual e pelos relatórios formais mais recentes.
 
 ## Registo de evolução
 
@@ -113,3 +115,17 @@ Verificação consolidada deste candidato: build117 páginas, 121/121 testes e A
 Blog: header, featured, newsletter e primeiro cartão têm dimensões desktop exatas; em mobile as diferenças medidas são de arredondamento inferior a0.04px. CTA517px desktop/501.796875 mobile, retrato ativo preservado. Dois artigos de amostra; altura total do índice e paginação serão conferidas após59 artigos elegíveis. Revisão independente sem problemas materiais nas alterações semânticas e contratos de feedback;9 testes focados passaram. Não houve submissão real.
 
 2026-10-04 — páginas Vamos começar, Dossier, Guia, certificado energético e as duas campanhas de venda conferidas em desktop/mobile. Fonte e target coincidem nos retângulos medidos; certificado432px/648px de copy, campanha Uma venda treze headings/campos/controles coincidem. Recuperados defaults Apartamento/1, label de localização e linhas completas de código postal/concelho; legal permanentemente oculto dessa campanha excluído. Duas imagens públicas originais adicionais estão locais com hash de evidência. Mensagem de sucesso Seller foi movida para fora do form oculto;123/123 testes passaram, incluindo2 runtime com CSS real e respostas simuladas. Astro check104 ficheiros sem diagnósticos; build117 rotas. Media1.078/1.342 originais confirmados (1.027 novos e51 reutilizados). Importação de documentos bulk continua condicionada aos recibos completos; sem publicação/envio/cutover.
+
+2026-10-04 — continuação das campanhas: Parcerias/PT, Partnerships/EN e Partenariats/FR têm títulos, copy, campos, consentimento, botão e nota legal conferidos em desktop/mobile; os retângulos medidos coincidem. Atualização de informação coincide em desktop/mobile após preservar o letter-spacing original do H5. Guia de férias mobile coincide nos campos e botão. Cabaz e Seleção têm campos/botões conferidos e legais permanentemente ocultos excluídos; corrigido gap residual entre Nome/Apelido desktop. Obrigado e LP/Obrigado coincidem nos retângulos medidos, incluindo o clipping mobile do original. Media de agradecimento e campanhas está local, com hashes em evidência privada.
+
+Consumidores Home/Comprar/Reviews/Pre-listings/rail passam a preferir os campos e imagens do Sanity próprio pela identidade exata de origem. Revisão independente confirmou seleção e ordem elegíveis, sem drafts; Comprar preserva os rótulos Novidade/Novo Preço/Open House/Reservado e Preço sob consulta. O flyer recupera métricas e dez testemunhos; os quatro blocos derivados de VS em rascunho foram removidos. Geometria completa desse flyer ainda em ajuste e imagens/edição CMS em fecho.
+
+Suite consolidada atual:136/136 testes passaram, incluindo runtime simulado de campanhas e validação dos lotes idempotentes. Media:1.193/1.342 originais já reconciliados; os restantes estão em upload/reconciliação. Contadores do checkpoint de planeamento não constituem recibos: o total confirmado deriva dos estados completed/reused-sample. Conteúdo continua11 drafts; criação dos179 adicionais aguarda o gate real completo. Webflow continua read-only; tentativa documentada de refrescar coleções foi rejeitada pela validação do conector antes da execução, sem mutação nem inferência de falta de autorização. Sem envio real, produção, DNS ou alteração PM.
+
+2026-10-04 — importação bulk concluída no Sanity Joaquim Mota:12 pedidos criaram179 drafts sem falhas; somados às11 amostras,190 drafts e zero documentos publicados. Gate e hashes dos ficheiros/pedidos foram revistos independentemente antes da escrita. Depois da importação, comparação agregada por coleção passou: imóveis65/1262 posições de imagem, artigos59/177, testemunhos38/1, ofertas1/1, pre-listings19/6, destaques ativos8/0. Total1447 posições e1342 originais distintos;1343 assets no destino inclui um extra não referenciado das amostras. Sem revisão manual documento a documento; preservado o gate de1–2 amostras por coleção.
+
+Snapshot próprio validado e aplicado ao preview local. Build254 rotas; gate de URLs:35 estáticas,9 drafts estáticos excluídos,10 templates, zero rotas necessárias ausentes e zero proibidas geradas. Runtime Cloudflare local:264/264 GET passaram, incluindo254 rotas,9 drafts404 e uma inexistente404; admin401/no-store, sem redirects de barra final. Suite136/136 testes; check110 ficheiros sem diagnósticos antes do último componente do rail. Evidência formal em bulk-import-validation.json, bulk-import-independent-audit.json e full-local-pages-route-evidence.json.
+
+Flyer agora usa o conteúdo próprio por IDs exatos, rail específico com movimento e ordenação responsive, dez testemunhos, resultados e footer/prémios. Hero, secção vendidos, métricas, testemunhos e CTA/form têm dimensões medidas exatas em1280×720 e390×844; quatro blocos Marketing em rascunho permanecem excluídos. Revisão independente de contrato/código/runtime passou. Blog completo59 preserva featured/ordem/página de seis: geometria desktop coincide, dez páginas no total e última com cinco cartões. Continuação visual e integrações reais em curso. Produção/DNS/cutover/envios reais não executados; PM tracked sem alterações.
+
+2026-10-04 — candidato consolidado:136/136 testes, Astro check111 ficheiros/zero diagnósticos, build254 e264/264 GET locais após as últimas correções. Blog mobile feed2702.75px/newsletter481.28125px coincidem com a fonte; navegação nativa para página2 mostra seis cartões e os dois controlos. Flyer logótipo hero não interativo revisto independentemente; footer lazy mobile498.78125px exato, desktop505.609375 vs fonte505.53125 (<0.08px, original raster). README e estado atual reconciliados com a importação efetiva. Preview Cloudflare home aberto e conferido; sem entrega real, publicação ou cutover.

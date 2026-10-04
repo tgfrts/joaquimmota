@@ -6,34 +6,41 @@ import Footer from '../components/Footer.astro';
 import '../styles/home-fidelity.css';
 import content from '../data/sample-content.json';
 import homeSource from '../data/home-process-source.json';
+import CmsImage from '../components/CmsImage.astro';
+import { ownRecordByLegacyId, recordsFromContent } from '../data/cms-content';
 const homeIds = ['64d73faf12672d652ab57816', '64d73faf12672d652ab57825', '64d73faf12672d652ab57821'];
-const records: any[] = Array.isArray(content) ? content : (content as any).documents ?? [];
+const records = recordsFromContent(content);
 const ownHome = records.filter(record => record._type === 'processStep' && record.placement === 'home');
 // Verified source copy keeps the preview intact until the approved bulk snapshot is materialized.
 const homeSteps = homeIds.map(id => ownHome.find(record => record.legacyId === id) ?? homeSource.find(record => record.legacyId === id));
 if (homeSteps.some(step => !step)) throw new Error('Missing Home process content.');
 
-const sold = [
-  { image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', municipality: 'Torre de Moncorvo', location: 'Carviçais' },
-  { image: '/assets/sold-pacos.webp', title: 'Armazém à venda em Paços de Brandão', municipality: 'Santa Maria a Feira', location: 'Paços de Brandão' },
-  { image: '/assets/sold-pedroso.webp', title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', municipality: '', location: 'Pedroso' },
-  { image: '/assets/sold-vilar.webp', title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', municipality: '', location: 'Vilar do Paraíso' },
-  { image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', municipality: '', location: 'Serzedo' },
+const soldFallback = [
+  { legacyId: '6960e9aaf84806ee59710ab1', image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', municipality: 'Torre de Moncorvo', location: 'Carviçais' },
+  { legacyId: '6937eca300c97af63c25ced9', image: '/assets/sold-pacos.webp', title: 'Armazém à venda em Paços de Brandão', municipality: 'Santa Maria a Feira', location: 'Paços de Brandão' },
+  { legacyId: '6937fdc31a1cdb29a1f2f2b3', image: '/assets/sold-pedroso.webp', title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', municipality: '', location: 'Pedroso' },
+  { legacyId: '697889f130b6d852b1f52055', image: '/assets/sold-vilar.webp', title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', municipality: '', location: 'Vilar do Paraíso' },
+  { legacyId: '695d35b09f5de4973299416b', image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', municipality: '', location: 'Serzedo' },
 ];
+const sold = soldFallback.map((fallback) => {
+  const own = ownRecordByLegacyId(records, 'property', fallback.legacyId);
+  return own ? { ...fallback, cms: own, title: own.title, municipality: own.municipality ?? '', location: own.parish ?? '' } : { ...fallback, cms: undefined };
+});
 const soldLoop = [...sold, ...sold];
-const joao = records.find(record => record._type === 'testimonial' && record.legacyId === '67b454c5e23698381d4b5a8b');
-const testimonials = [
-  ['Consultor de confiança, ajudou bastante no nosso processo e ficamos super satisfeitos.', 'Bruno Santos'],
-  ['Gostaríamos de agradecer, a todos os intervenientes na compra do nosso imóvel, em especial ao Sr. Joaquim Mota e à D. Carla , que sempre nos aconselharam e tiverem imensa paciência durante todo o processo.\nHoje temos o nosso imóvel e apesar de muitas adversidades que ocorreram durante o processo, foram todos muito eficientes e profissionais connosco. O nosso muito obrigada!', 'Juliana Ramalho'],
-  ['Muito bom resultados 100%. Excelente.', 'Joaquim Ferreira'],
-  ['Uma excelente pessoa. Um excelente vendedor. Felicidades.', 'Paulo Pereira'],
-  ['Conseguiu rapidamente resolver a venda e compra da minha nova casa. Obrigada e felicidades.', 'Cristina Pinto'],
-  ['Recomendado. Profissionais merecedores de 5 estrelas.', 'Carla Rocha'],
-  [joao?.quote ?? 'Excelente profissional.', joao?.clientName ?? 'João Carlos de Almeida'],
-  ['O Sr. Joaquim foi super prestativo. Ajudou-nos completamente em todo o processo, foi super tranquilo. Graças à sua estratégia, a casa foi vendida em menos de uma semana. Muito obrigado.', 'Vera Silva'],
-  ['Vender e comprar casa ao mesmo tempo não é de todo fácil, mas com a ajuda do Sr. Joaquim Mota tornou-se possível. Sem dúvida um profissional de excelência. Dedicado e sempre pronto a ajudar. Sem a ajuda do sr. Joaquim nunca teria sido possível a nossa mudança de casa. Muito obrigada por tudo.', 'Susana Loureiro'],
-  ['Desde já agradeço ao Sr. Joaquim Mota pela atenção dispensada e sempre que foi preciso a sua disponibilidade em dar, resposta as minhas necessidades! Continue sempre assim, um excelente profissional. Já não é o primeiro negócio que já realizamos. Acima de tudo muito honesto no que vê e no que prevê! Parabéns mais uma vez, obrigado por tudo. Assim haja muitos Srs. Joaquim.', 'João'],
-];
+const testimonialFallback = [
+  ['67b454c242cd3da4d37b19e1', 'Consultor de confiança, ajudou bastante no nosso processo e ficamos super satisfeitos.', 'Bruno Santos'],
+  ['652f959cc8e4c50b1b987165', 'Gostaríamos de agradecer, a todos os intervenientes na compra do nosso imóvel, em especial ao Sr. Joaquim Mota e à D. Carla , que sempre nos aconselharam e tiverem imensa paciência durante todo o processo.\nHoje temos o nosso imóvel e apesar de muitas adversidades que ocorreram durante o processo, foram todos muito eficientes e profissionais connosco. O nosso muito obrigada!', 'Juliana Ramalho'],
+  ['67b454c4b3a8ed624a80ab95', 'Muito bom resultados 100%. Excelente.', 'Joaquim Ferreira'],
+  ['67b454c4445a686a6fdc2d56', 'Uma excelente pessoa. Um excelente vendedor. Felicidades.', 'Paulo Pereira'],
+  ['67b454c31c58cf1ccb931413', 'Conseguiu rapidamente resolver a venda e compra da minha nova casa. Obrigada e felicidades.', 'Cristina Pinto'],
+  ['67b454c4ba76a8566c116ae4', 'Recomendado. Profissionais merecedores de 5 estrelas.', 'Carla Rocha'],
+  ['67b454c5e23698381d4b5a8b', 'Excelente profissional.', 'João Carlos de Almeida'],
+  ['64d73faf12672d652ab5784a', 'O Sr. Joaquim foi super prestativo. Ajudou-nos completamente em todo o processo, foi super tranquilo. Graças à sua estratégia, a casa foi vendida em menos de uma semana. Muito obrigado.', 'Vera Silva'],
+  ['652f95ea488ed3e20371204e', 'Vender e comprar casa ao mesmo tempo não é de todo fácil, mas com a ajuda do Sr. Joaquim Mota tornou-se possível. Sem dúvida um profissional de excelência. Dedicado e sempre pronto a ajudar. Sem a ajuda do sr. Joaquim nunca teria sido possível a nossa mudança de casa. Muito obrigada por tudo.', 'Susana Loureiro'],
+  ['652f964e99e5a384fac6f29e', 'Desde já agradeço ao Sr. Joaquim Mota pela atenção dispensada e sempre que foi preciso a sua disponibilidade em dar, resposta as minhas necessidades! Continue sempre assim, um excelente profissional. Já não é o primeiro negócio que já realizamos. Acima de tudo muito honesto no que vê e no que prevê! Parabéns mais uma vez, obrigado por tudo. Assim haja muitos Srs. Joaquim.', 'João'],
+] as const;
+const testimonials = testimonialFallback.map(([legacyId, quote, clientName]) => ownRecordByLegacyId(records, 'testimonial', legacyId) ?? { legacyId, quote, clientName });
+
 ---
 
 <BaseLayout description="Uma venda com sucesso" richSocial>
@@ -46,8 +53,8 @@ const testimonials = [
     <div class="home-secondary-header"><Header variant="light" pageNavigation contactHref="/vamos-comecar" contactLabel="Vamos começar" showBlog={false} /></div>
     <section class="home-process shell"><div class="home-process__intro"><p class="eyebrow">Como o fazemos</p><h2>Espere mais do seu consultor</h2><p>Sabemos que vender e comprar uma casa pode ser complicado.<br />Estamos aqui para tornar esse processo o mais simples possível para si.</p></div><div class="home-process__steps">{homeSteps.map(step => <article data-source-id={step!.legacyId}><h3>{step!.title}</h3><p>{step!.body}</p></article>)}</div></section>
     <section class="results"><div class="shell section-grid"><div><p class="eyebrow">OS NOSSOS RESULTADOS</p><h2>Comercializamos a sua casa com excelência.</h2></div><div><p>A nossa estratégia de marketing é dinamicamente construída para obter os resultados que procura.<br />A nossa abordagem abrangente inclui anúncios direcionados no Facebook, email marketing, marketing de conteúdos e fotografias e videos profissionais. Criamos ainda uma página exclusiva no nosso site para a sua casa.</p></div></div><dl class="metrics shell"><div><dt>85%</dt><dd>Angariações vendidas</dd></div><div><dt>60 dias</dt><dd>Tempo médio de venda</dd></div><div><dt>-4%</dt><dd>Taxa média de desconto</dd></div></dl></section>
-    <section class="sold shell"><p class="eyebrow dark">OS NOSSOS RESULTADOS</p><h2>Últimos imóveis vendidos</h2><div class="property-rail" aria-label="Últimos imóveis vendidos"><div class="property-track">{soldLoop.map((property, index) => <article class="property-card" aria-hidden={index >= sold.length ? 'true' : undefined}><div class="property-image"><img src={property.image} alt="" loading="lazy" /><span class="property-image-overlay"></span><span class="property-sold-banner">VENDIDO</span></div><div class="property-copy"><h3>{property.title}</h3><span class="property-divider"></span><p class="place"><span>{property.location}</span>{property.municipality && <span class="property-municipality">{property.municipality}</span>}</p></div></article>)}</div></div></section>
-    <section class="testimonials"><div class="shell testimonial-heading"><div><p class="eyebrow">O QUE DIZEM OS NOSSOS CLIENTES</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a href="/reviews" class="text-link">Leia as nossas avaliações</a></div><div class="testimonial-rail shell">{testimonials.map(([quote, name]) => <article class="testimonial-card"><div aria-label="5 estrelas" class="stars">{Array.from({ length: 5 }, () => <img src="/assets/prelisting-star.svg" alt="" loading="lazy" />)}</div><blockquote>{quote}</blockquote><figcaption>{name}</figcaption></article>)}</div></section>
+    <section class="sold shell"><p class="eyebrow dark">OS NOSSOS RESULTADOS</p><h2>Últimos imóveis vendidos</h2><div class="property-rail" aria-label="Últimos imóveis vendidos"><div class="property-track">{soldLoop.map((property, index) => <article class="property-card" aria-hidden={index >= sold.length ? 'true' : undefined}><div class="property-image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} alt="" loading="lazy" />}<span class="property-image-overlay"></span><span class="property-sold-banner">VENDIDO</span></div><div class="property-copy"><h3>{property.title}</h3><span class="property-divider"></span><p class="place"><span>{property.location}</span>{property.municipality && <span class="property-municipality">{property.municipality}</span>}</p></div></article>)}</div></div></section>
+    <section class="testimonials"><div class="shell testimonial-heading"><div><p class="eyebrow">O QUE DIZEM OS NOSSOS CLIENTES</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a href="/reviews" class="text-link">Leia as nossas avaliações</a></div><div class="testimonial-rail shell">{testimonials.map((testimonial) => <article class="testimonial-card"><div aria-label="5 estrelas" class="stars">{Array.from({ length: 5 }, () => <img src="/assets/prelisting-star.svg" alt="" loading="lazy" />)}</div><blockquote>{testimonial.quote}</blockquote><figcaption>{testimonial.clientName}</figcaption></article>)}</div></section>
     <section class="closing"><div class="closing-card"><div class="closing-copy"><p class="eyebrow">Vamos Conversar</p><h2>Ainda à procura de uma solução para a sua casa?</h2><p>Tenha uma equipa de sucesso ao seu lado.</p><a class="button button--light" href="/vamos-comecar">Vamos Começar</a></div><div class="closing-image-wrap"><img class="closing-photo" src="/assets/article-cta-jm.png" alt="" loading="lazy" /></div></div></section>
   </main>
   <Footer /><WhatsAppWidget />

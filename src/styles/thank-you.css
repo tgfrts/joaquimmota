@@ -28,19 +28,19 @@
 }
 
 .thank-you__image--default {
-  background-image: url('https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg');
+  background-image: url('/assets/thank-you-placeholder.svg');
 }
 
 .thank-you__image--mota {
-  background-image: url('https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6363b57795d5a577af21a4ba_DSCF0045.png');
+  background-image: url('/assets/campaign-vamos.png');
 }
 
 .thank-you__image--wallow {
-  background-image: url('https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/672e900e8db5ce87646cefd6_Facebook%20Image.jpg');
+  background-image: url('/assets/thank-you-wallow.jpg');
 }
 
 .thank-you__image--smilling {
-  background-image: url('https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/67f4fbc9eb92ea877163a92d_Dentista%20Adobe%20Stock-2.webp');
+  background-image: url('/assets/smilling-hero.webp');
 }
 
 .thank-you__overlay {
@@ -137,3 +137,10 @@
     margin-top: 2rem;
   }
 }
+
+/* Public source spacing, including the mobile clipped centered wrapper. */
+.thank-you__content{width:max-content;max-width:80vw;font:300 16px/24px Roboto,sans-serif}
+.thank-you__content h1{max-width:calc(100% - 64px);margin:32px}
+.thank-you__content p{font-weight:300;line-height:24px}
+.thank-you__home{height:50px;min-height:0;margin:48px;padding:12px 24px;border-color:#e4e2df;background:#e4e2df;color:#20457f;font:500 16px/24px Roboto,sans-serif;box-shadow:4px 4px 20px #0004;white-space:nowrap}
+@media(max-width:767px){.thank-you__content h1{max-width:calc(100% - 48px);margin:24px}.thank-you__home{margin:32px}}

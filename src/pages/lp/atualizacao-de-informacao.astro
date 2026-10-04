@@ -1,5 +1,5 @@
 ---
-import '../../styles/public-campaigns.css';
+import '../../styles/information-update.css';
 ---
 <!doctype html>
 <html lang="pt-PT">
@@ -12,21 +12,22 @@ import '../../styles/public-campaigns.css';
     <title>Atualização de Informação</title>
   </head>
   <body>
-    <main class="public-campaign public-campaign--update">
-      <div class="public-campaign__image" style="--campaign-bg:url('https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6363b57795d5a577af21a4ba_DSCF0045.png')" aria-hidden="true"></div>
-      <section class="public-campaign__panel">
-        <a class="public-campaign__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
+    <main class="information-update">
+      <div class="information-update__image" aria-hidden="true"></div>
+      <section class="information-update__panel">
+        <a class="information-update__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
         <h5>Para atualizar as suas informações, preencha o formulário.</h5>
         <form data-information-update data-route="/lp/atualizacao-de-informacao">
-          <div class="public-campaign__names"><input name="firstName" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" autocomplete="family-name" placeholder="Apelido" required /></div>
-          <input name="email" type="email" autocomplete="email" placeholder="O seu email" required />
-          <input name="phone" type="tel" autocomplete="tel" placeholder="Telefone" required />
-          <input name="street" autocomplete="street-address" placeholder="Avenida / Rua / Travessa" required />
-          <div class="public-campaign__names"><input name="postalCode" autocomplete="postal-code" placeholder="Código Postal" required /><input name="county" autocomplete="address-level2" placeholder="Concelho" required /></div>
-          <label class="public-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
-          <button type="submit">Enviar</button><p class="public-campaign__status" data-information-status role="status" aria-live="polite" hidden></p>
+          <div class="information-update__names"><input name="firstName" maxlength="256" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" maxlength="256" autocomplete="family-name" placeholder="Apelido" required /></div>
+          <input name="email" type="email" maxlength="256" autocomplete="email" placeholder="O seu email" required />
+          <input name="phone" type="tel" maxlength="256" autocomplete="tel" placeholder="Telefone" required />
+          <input name="street" maxlength="256" autocomplete="street-address" placeholder="A sua morada" required />
+          <input name="postalCode" maxlength="256" autocomplete="postal-code" placeholder="Código Postal" required />
+          <input name="county" maxlength="256" autocomplete="address-level2" placeholder="Concelho" required />
+          <label class="information-update__consent"><input name="consent" type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
+          <button type="submit" data-wait="Por favor aguarde...">Enviar</button>
         </form>
-        <p class="public-campaign__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+        <p class="information-update__status" data-information-status role="status" aria-live="polite" hidden></p>
       </section>
     </main>
   </body>
@@ -34,14 +35,25 @@ import '../../styles/public-campaigns.css';
 <script>
   import { submitFormAccepted } from '../../scripts/forms-client';
   document.querySelectorAll<HTMLFormElement>('[data-information-update]').forEach((form) => form.addEventListener('submit', async (event) => {
-    event.preventDefault(); if (!form.reportValidity()) return;
-    const data = new FormData(form); const button = form.querySelector<HTMLButtonElement>('button'); const status = form.querySelector<HTMLElement>('[data-information-status]'); if (!button || !status) return;
-    button.disabled = true; status.hidden = false;
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const status = form.parentElement?.querySelector<HTMLElement>('[data-information-status]');
+    if (!button || !status || button.disabled) return;
+    button.disabled = true;
+    button.textContent = button.dataset.wait ?? button.textContent;
+    status.hidden = false;
+    status.textContent = '';
     const message = [`A sua morada: ${data.get('street')}`, `Código Postal: ${data.get('postalCode')}`, `Concelho: ${data.get('county')}`].join('\n');
     try {
       await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } });
-      form.hidden = true; status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
-    } catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
+      form.hidden = true;
+      status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
+    } catch {
+      status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.';
+      button.disabled = false;
+      button.textContent = 'Enviar';
+    }
   }));
-  const year = document.querySelector<HTMLElement>('[data-current-year]'); if (year) year.textContent = String(new Date().getFullYear());
 </script>

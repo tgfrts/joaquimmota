@@ -1,0 +1,79 @@
+{
+  "verifiedAt": "2026-10-04T04:37:18.075Z",
+  "target": {
+    "projectId": "kaq1vd9b",
+    "dataset": "production",
+    "account": "Joaquim Mota"
+  },
+  "batchRequests": 12,
+  "newDraftsCreated": 179,
+  "existingValidatedSamples": 11,
+  "failedCreates": 0,
+  "published": 0,
+  "totals": {
+    "documents": 190,
+    "imageSlots": 1447,
+    "uniqueAssets": 1342
+  },
+  "collections": [
+    {
+      "type": "property",
+      "expectedItems": 65,
+      "actualItems": 65,
+      "expectedImageSlots": 1262,
+      "actualImageSlots": 1262,
+      "passed": true
+    },
+    {
+      "type": "article",
+      "expectedItems": 59,
+      "actualItems": 59,
+      "expectedImageSlots": 177,
+      "actualImageSlots": 177,
+      "passed": true
+    },
+    {
+      "type": "testimonial",
+      "expectedItems": 38,
+      "actualItems": 38,
+      "expectedImageSlots": 1,
+      "actualImageSlots": 1,
+      "passed": true
+    },
+    {
+      "type": "offer",
+      "expectedItems": 1,
+      "actualItems": 1,
+      "expectedImageSlots": 1,
+      "actualImageSlots": 1,
+      "passed": true
+    },
+    {
+      "type": "preListing",
+      "expectedItems": 19,
+      "actualItems": 19,
+      "expectedImageSlots": 6,
+      "actualImageSlots": 6,
+      "passed": true
+    },
+    {
+      "type": "processStep",
+      "expectedItems": 8,
+      "actualItems": 8,
+      "expectedImageSlots": 0,
+      "actualImageSlots": 0,
+      "passed": true
+    }
+  ],
+  "sourcePayloadSHA256": "a9dd970a36ba0148295c5a1f746332a046ab1b421d512c6f4a60d279249d3383",
+  "targetSnapshotSHA256": "05b36eb52b5b0632f16893d58a95b347272ecec8fffc6b93a4175a85803cef22",
+  "method": "Full own-target snapshot, paginated for connector size limit; aggregate item and visible-image counts per collection after the accepted 1–2 sample parity gate. No manual per-item CMS inspection.",
+  "scope": "Target content is draft-only. Not a production or full-site visual acceptance.",
+  "safety": {
+    "sourceWrites": false,
+    "pmChanges": false,
+    "emailsSent": false,
+    "published": false,
+    "dnsChanges": false
+  }
+}

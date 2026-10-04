@@ -1,0 +1,23 @@
+body { margin: 0; }
+.information-update { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; background: #f4f4f4; color: #333; font-family: Roboto, Arial, sans-serif; }
+.information-update__image { min-height: 100vh; background: url('/assets/campaign-vamos.png') 50% / cover no-repeat; mix-blend-mode: multiply; }
+.information-update__panel { box-sizing: border-box; width: 50vw; min-height: 100vh; padding: 5vw; }
+.information-update__logo { display: block; width: 100px; margin: 0 0 15px; }
+.information-update__logo img { display: block; width: 100px; height: auto; }
+.information-update h5 { width: 100%; margin: 0; color: #333; font: 500 20px/28px Roboto, Arial, sans-serif; letter-spacing: -.4px; }
+.information-update form { padding-top: 20px; }
+.information-update__names { display: flex; width: 100%; }
+.information-update__names input { width: 50%; }
+.information-update input:not([type='checkbox']) { box-sizing: border-box; display: block; width: 100%; height: 44px; margin: 0 0 15px; padding: 10px 0; border: 0; border-bottom: 1px solid #ccc; border-radius: 0; background: transparent; color: #333; font: 300 16px/24px Roboto, Arial, sans-serif; }
+.information-update input::placeholder { color: #999; opacity: 1; }
+.information-update input:not([type='checkbox']):hover { border-color: #636363; }
+.information-update__consent { position: relative; display: block; width: 100%; margin: 0; padding-left: 20px; color: #333; font: 300 12px/18px Roboto, Arial, sans-serif; }
+.information-update__consent input { position: absolute; top: 4px; left: 0; width: 13px; height: 13px; margin: 0; accent-color: initial; }
+.information-update__consent span { display: inline-block; margin-bottom: 15px; }
+.information-update button { min-width: 0; min-height: 50px; padding: 12px 24px; border: 1px solid #db1430; border-radius: 0; background: #db1430; color: #e4e2df; font: 500 16px/24px Roboto, Arial, sans-serif; box-shadow: 4px 4px 20px #00000040; cursor: pointer; }
+.information-update button:hover { border-color: #7b001d; background: #7b001d; }
+.information-update button:disabled { cursor: wait; }
+.information-update__status { margin: 15px 0 0; font: 300 16px/24px Roboto, Arial, sans-serif; }
+@media (max-width: 991px) { .information-update { display: block; } .information-update__image { width: 100%; min-height: 50vh; } .information-update__panel { width: 100%; min-height: 100vh; } .information-update__names { display: block; } .information-update__names input { width: 100%; } }
+@media (max-width: 767px) { .information-update__image { min-height: 33vh; } }
+@media (max-width: 479px) { .information-update__image { min-height: 25vh; height: 25vh; background-image: none; } .information-update__panel { padding: 5vw; } }

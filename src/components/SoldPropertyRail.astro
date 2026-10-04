@@ -1,14 +1,22 @@
 ---
-const properties = [
-  { image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', municipality: 'Torre de Moncorvo', parish: 'Carviçais', mobileMunicipality: 'Torre de Moncorvo' },
-  { image: '/assets/sold-pacos.webp', title: 'Armazém à venda em Paços de Brandão', municipality: 'Santa Maria a Feira', parish: 'Paços de Brandão', mobileMunicipality: 'Santa Maria a Feira' },
-  { image: '/assets/sold-pedroso.webp', title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', municipality: 'Vila Nova de Gaia', parish: 'Pedroso', mobileMunicipality: '' },
-  { image: '/assets/sold-vilar.webp', title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', municipality: 'Vila Nova de Gaia', parish: 'Vilar do Paraíso', mobileMunicipality: '' },
-  { image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', municipality: 'Vila Nova de Gaia', parish: 'Serzedo', mobileMunicipality: '' },
+import content from '../data/sample-content.json';
+import CmsImage from './CmsImage.astro';
+import { ownRecordByLegacyId, recordsFromContent } from '../data/cms-content';
+const records = recordsFromContent(content);
+const propertyFallback = [
+  { legacyId: '6960e9aaf84806ee59710ab1', image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', municipality: 'Torre de Moncorvo', parish: 'Carviçais', mobileMunicipality: 'Torre de Moncorvo' },
+  { legacyId: '6937eca300c97af63c25ced9', image: '/assets/sold-pacos.webp', title: 'Armazém à venda em Paços de Brandão', municipality: 'Santa Maria a Feira', parish: 'Paços de Brandão', mobileMunicipality: 'Santa Maria a Feira' },
+  { legacyId: '6937fdc31a1cdb29a1f2f2b3', image: '/assets/sold-pedroso.webp', title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', municipality: 'Vila Nova de Gaia', parish: 'Pedroso', mobileMunicipality: '' },
+  { legacyId: '697889f130b6d852b1f52055', image: '/assets/sold-vilar.webp', title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', municipality: 'Vila Nova de Gaia', parish: 'Vilar do Paraíso', mobileMunicipality: '' },
+  { legacyId: '695d35b09f5de4973299416b', image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', municipality: 'Vila Nova de Gaia', parish: 'Serzedo', mobileMunicipality: '' },
 ];
+const properties = propertyFallback.map((fallback) => {
+  const own = ownRecordByLegacyId(records, 'property', fallback.legacyId);
+  return own ? { ...fallback, cms: own, title: own.title, municipality: own.municipality ?? '', parish: own.parish ?? '', mobileMunicipality: own.municipality ?? '' } : { ...fallback, cms: undefined };
+});
 ---
-<div class="sold-rail sold-rail--desktop" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h4>{property.title}</h4><div class="sold-rail__locations"><h6>{property.municipality}</h6><h6>{property.parish}</h6></div></article>)}</div></div>
-<div class="sold-rail sold-rail--mobile" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h4>{property.title}</h4><div class="sold-rail__locations"><h6>{property.parish}</h6>{property.mobileMunicipality && <h6>{property.mobileMunicipality}</h6>}</div></article>)}</div></div>
+<div class="sold-rail sold-rail--desktop" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} alt="" loading="lazy" />}<img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h4>{property.title}</h4><div class="sold-rail__locations"><h6>{property.municipality}</h6><h6>{property.parish}</h6></div></article>)}</div></div>
+<div class="sold-rail sold-rail--mobile" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} alt="" loading="lazy" />}<img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h4>{property.title}</h4><div class="sold-rail__locations"><h6>{property.parish}</h6>{property.mobileMunicipality && <h6>{property.mobileMunicipality}</h6>}</div></article>)}</div></div>
 <style>
   .sold-rail { width: 100%; overflow: hidden; }
   .sold-rail--mobile { display: none; }

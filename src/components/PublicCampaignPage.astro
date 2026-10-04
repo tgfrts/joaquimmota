@@ -14,27 +14,26 @@ const description = isCabaz
   : 'O Euro 2024 está a chegar  e queremos que apoie e celebre os jogos da seleção em grande estilo! Para tornar este evento ainda mais especial, vamos oferecer 4 cachecóis exclusivos da nossa seleção! Clique para participar.';
 const heading = isCabaz ? 'Um Natal ainda mais mágico?' : 'Preencha o formulário e habilite-se a um dos 4 cachecóis que temos para oferecer.';
 const image = isCabaz
-  ? 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69148e8ba28d33842a7cb66a_cabaz-natal.webp'
-  : 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6660c70d634094bb55f82e7a_Euro_Squad_PORTUGAL.webp';
+  ? '/assets/campaign-cabaz-natal.webp'
+  : '/assets/campaign-oferta-selecao.webp';
 ---
-<BaseLayout title={title} description={description} socialImage={isCabaz ? 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/69148e9dbd965d99f992dad0_cn-og.webp' : 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6660c70d634094bb55f82e7a_Euro_Squad_PORTUGAL.webp'} richSocial>
+<BaseLayout title={title} description={description} socialImage={isCabaz ? 'https://joaquimmota.pt/assets/campaign-cabaz-og.webp' : 'https://joaquimmota.pt/assets/campaign-oferta-selecao.webp'} richSocial>
   <main class:list={['public-campaign', `public-campaign--${campaign}`]}>
     <div class="public-campaign__image" style={`--campaign-bg:url("${image}")`} aria-hidden="true"></div>
     <section class="public-campaign__panel">
       <a class="public-campaign__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
-      <h5>{heading}{isCabaz && <><br />Participe no sorteio do nosso cabaz natalício. Para se habilitar preencha o formulário.</>}</h5>
+      {isCabaz ? <h5><strong>Um Natal ainda mais mágico?<br />Participe no sorteio do nosso cabaz natalício</strong><strong>. Para se habilitar preencha o formulário.</strong></h5> : <h5>{heading}</h5>}
       <form data-public-campaign data-route={route} data-redirect="/lp/obrigado-oferta" data-success={isCabaz ? 'Obrigado! A sua participação foi registada com sucesso.' : 'Obrigado! O seu formulário foi enviado com sucesso.'}>
         <div class="public-campaign__names"><input name="firstName" maxlength="256" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" maxlength="256" autocomplete="family-name" placeholder="Apelido" required /></div>
         <input name="email" type="email" maxlength="256" autocomplete="email" placeholder="O seu email" required />
         <input name="phone" type="tel" maxlength="256" autocomplete="tel" placeholder="Telefone" required />
-        <label>Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="null">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label>
-        <label>Está a pensar vender ou a comprar casa?<select name="intent" required><option value="null">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label>
-        {isCabaz && <><input name="street" maxlength="256" autocomplete="street-address" placeholder="Morada" required /><div class="public-campaign__names"><input name="postalCode" maxlength="256" autocomplete="postal-code" placeholder="Código Postal" required /><input name="county" maxlength="256" autocomplete="address-level2" placeholder="Concelho" required /></div></>}
+        <label>Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="null">Selecione uma opção</option><option value="Não">Não</option><option value="Sim, a comprar">Sim, a comprar</option><option value="Sim, a vender">Sim, a vender</option></select></label>
+        <label>Está a pensar vender ou a comprar casa?<select name="intent" required><option value="null">Selecione uma opção</option><option value="Não">Não</option><option value="Sim, a comprar">Sim, a comprar</option><option value="Sim, a vender">Sim, a vender</option></select></label>
+        {isCabaz && <><label class="public-campaign__address-label">Localização do imóvel:</label><input name="street" maxlength="256" autocomplete="street-address" placeholder="Morada" required /><input name="postalCode" maxlength="256" autocomplete="postal-code" placeholder="Código Postal" required /><input name="county" maxlength="256" autocomplete="address-level2" placeholder="Concelho" required /></>}
         <label class="public-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
         <button type="submit">{isCabaz ? 'Participar' : 'Enviar'}</button>
         <p class="public-campaign__status" data-campaign-status role="status" aria-live="polite" hidden></p>
       </form>
-      <p class="public-campaign__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
     </section>
   </main>
 </BaseLayout>

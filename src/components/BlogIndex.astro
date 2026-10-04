@@ -64,10 +64,10 @@ const sourcePageSize = 6;
   if (root) {
     const params = new URLSearchParams(location.search);
     const rawPage = params.get('51fb55cf_page');
-    const requestedPage = rawPage === null ? 1 : Number.parseInt(rawPage, 10);
+    const requestedPage = rawPage === null ? 1 : /^\d+$/.test(rawPage) ? Number(rawPage) : NaN;
     const totalPages = Math.max(1, Math.ceil(Number(root.dataset.articleCount ?? '0') / Number(root.dataset.pageSize ?? '6')));
     const page = Number.isFinite(requestedPage) ? Math.min(Math.max(requestedPage, 1), totalPages) : 1;
-    if (rawPage !== null && requestedPage !== page) {
+    if (rawPage !== null && rawPage !== String(page)) {
       params.set('51fb55cf_page', String(page));
       const query = params.toString();
       history.replaceState(history.state, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);

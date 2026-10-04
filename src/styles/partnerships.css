@@ -1,270 +1,55 @@
 .partnership-page {
   display: flex;
   min-height: 100vh;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   background: #f4f4f4;
   color: #161616;
+  font-family: Roboto, Arial, sans-serif;
 }
-
-.partnership-page__image {
-  position: relative;
-  width: 50vw;
-  height: 100vh;
-  margin-right: auto;
-  overflow: hidden;
-  background-image: linear-gradient(359deg, #00093400, #f4f4f4);
-}
-
-.partnership-page__photo {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background-image: url('https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6363b57795d5a577af21a4ba_DSCF0045.png');
-  background-position: 50%;
-  background-size: cover;
-  mix-blend-mode: multiply;
-}
-
-.partnership-page__panel {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  width: 50vw;
-  height: 100vh;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin-left: auto;
-  padding: 5vw;
-  overflow: auto;
-  background: #f4f4f4;
-}
-
-.partnership-page__languages {
-  display: inline-flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.partnership-page__languages a {
-  color: #161616;
-  font-size: .875rem;
-  text-decoration: none;
-}
-
-.partnership-page__languages a:hover {
-  text-decoration: underline;
-  text-underline-offset: .2em;
-}
-
-.partnership-page__content {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.partnership-page__logo {
-  display: block;
-  width: 100px;
-  margin-bottom: 1.5rem;
-}
-
-.partnership-page__logo img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.partnership-page__content h5 {
-  margin: 0 0 1.25rem;
-  color: #161616;
-  font-size: 1.25rem;
-  font-weight: 400;
-  line-height: 1.35;
-}
-
-.partnership-page__content h5 strong {
-  display: block;
-  font-weight: 700;
-}
-
-.partnership-page__description {
-  width: min(50ch, 100%);
-  margin: 0 0 1.25rem;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.partnership-form {
-  width: 100%;
-  padding-top: 20px;
-}
-
-.partnership-form input:not([type='checkbox']),
-.partnership-form select {
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  height: 44px;
-  margin: 0 0 15px;
-  padding: 10px 0;
-  border: 0;
-  border-bottom: 1px solid #ccc;
-  border-radius: 0;
-  background: transparent;
-  color: #161616;
-  font: inherit;
-  line-height: 1.5;
-}
-
-.partnership-form input::placeholder {
-  color: #888;
-  opacity: 1;
-}
-
-.partnership-form select {
-  padding-right: 1.75rem;
-}
-
-.partnership-form__client-type {
-  display: block;
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.partnership-form__client-type span {
-  display: block;
-}
-
-.partnership-form__name-fields {
-  display: flex;
-  width: 100%;
-}
-
-.partnership-form__name-fields input {
-  width: 50%;
-}
-
-.partnership-form__consent {
-  display: flex;
-  min-width: 50ch;
-  align-items: flex-start;
-  gap: .5rem;
-  margin-bottom: 15px;
-  font-size: .75rem;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-.partnership-form__consent input {
-  flex: 0 0 auto;
-  width: 1rem;
-  height: 1rem;
-  margin: .2rem 0 0;
-  border-radius: 0;
-}
-
-.partnership-form button {
-  min-height: 48px;
-  padding: .75rem 1.5rem;
-  border: 1px solid #db1430;
-  background: #db1430;
-  color: #f4f4f4;
-  font: inherit;
-  font-weight: 500;
-  box-shadow: 4px 4px 20px #0006;
-  cursor: pointer;
-}
-
-.partnership-form button:hover {
-  border-color: #7b001d;
-  background: #7b001d;
-  color: #fff;
-}
-
-.partnership-form__status {
-  margin: 0;
-  font-size: .875rem;
-}
-
-.partnership-page__legal {
-  min-width: 50ch;
-  margin: 20px 0 0;
-  padding-top: 20px;
-  font-size: 10px;
-  line-height: 15px;
-}
-
-.partnership-page__success,
-.partnership-page__error {
-  margin-top: 1rem;
-  font-size: .875rem;
-}
-
+.partnership-page__image { flex: 0 0 50vw; width: 50vw; min-height: 100vh; background: linear-gradient(359deg, #00093400, #f4f4f4); }
+.partnership-page__photo { width: 100%; height: 100vh; background: url('/assets/campaign-vamos.png') 50% / cover no-repeat; mix-blend-mode: multiply; }
+.partnership-page__panel { box-sizing: border-box; width: 50vw; min-height: 100vh; padding: 5vw; }
+.partnership-page__languages { display: inline-flex; gap: 16px; margin: 0 0 24px; }
+.partnership-page__languages a { color: #161616; font: 300 16px/24px Roboto, Arial, sans-serif; text-decoration: none; }
+.partnership-page__languages a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.partnership-page__content { width: 100%; }
+.partnership-page__logo { display: block; width: 100px; margin: 0 0 15px; }
+.partnership-page__logo img { display: block; width: 100%; height: auto; }
+.partnership-page__content h5 { width: 100%; margin: 0; color: #161616; font: 500 20px/28px Roboto, Arial, sans-serif; }
+.partnership-page__content h5 strong { font-weight: 700; }
+.partnership-page__description { width: 50ch; margin: 0; font: 300 16px/24px Roboto, Arial, sans-serif; }
+.partnership-form { padding-top: 20px; }
+.partnership-form input:not([type='checkbox']), .partnership-form select { box-sizing: border-box; display: block; width: 100%; height: 44px; margin: 0 0 15px; padding: 10px 0; border: 0; border-bottom: 1px solid #ccc; border-radius: 0; background: transparent; color: #333; font: 300 16px/24px Roboto, Arial, sans-serif; }
+.partnership-form input::placeholder { color: #999; opacity: 1; }
+.partnership-form input:hover, .partnership-form select:hover { border-color: #636363; }
+.partnership-form__name-fields { display: flex; width: 100%; }
+.partnership-form__name-fields input { width: 50% !important; }
+.partnership-form__client-type { display: block; margin: 0; color: #333; font: 300 16px/24px Roboto, Arial, sans-serif; }
+.partnership-form__client-type > span { display: block; }
+.partnership-form__client-type select { appearance: auto; }
+.partnership-form__consent { position: relative; display: block; min-width: 50ch; margin: 0 0 5px; padding-left: 20px; color: #333; font: 300 12px/18px Roboto, Arial, sans-serif; }
+.partnership-form__consent input { position: absolute; top: 4px; left: 0; width: 13px; height: 13px; margin: 0; accent-color: initial; }
+.partnership-form__consent span { display: inline-block; margin-bottom: 15px; }
+.partnership-form button { min-height: 50px; padding: 12px 24px; border: 1px solid #db1430; border-radius: 0; background: #db1430; color: #e4e2df; font: 500 16px/24px Roboto, Arial, sans-serif; box-shadow: 4px 4px 20px #00000040; cursor: pointer; }
+.partnership-form button:hover { border-color: #7b001d; background: #7b001d; color: #fff; }
+.partnership-form button:disabled { cursor: wait; }
+.partnership-page__legal { width: 100%; margin: 0; padding-top: 20px; color: #333; font: 300 10px/15px Roboto, Arial, sans-serif; }
+.partnership-page__success, .partnership-page__error { margin: 15px 0 0; padding: 20px; font: 300 16px/24px Roboto, Arial, sans-serif; text-align: center; }
+.partnership-page__success { background: #ddd; }
+.partnership-page__error { background: #ffdede; }
 @media (max-width: 991px) {
-  .partnership-page {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .partnership-page__image {
-    width: 100vw;
-    height: 50vh;
-  }
-
-  .partnership-page__panel {
-    width: 100vw;
-    height: auto;
-    min-height: 100vh;
-    margin: 0;
-    overflow: visible;
-  }
-
-  .partnership-form__name-fields input {
-    width: 100%;
-  }
-
-  .partnership-form__name-fields {
-    display: block;
-  }
-
-  .partnership-form__consent,
-  .partnership-page__legal {
-    min-width: 75%;
-  }
-
-  .partnership-page__description {
-    width: 75%;
-  }
+  .partnership-page { display: block; }
+  .partnership-page__image { width: 100%; min-height: 50vh; }
+  .partnership-page__photo { height: 50vh; }
+  .partnership-page__panel { width: 100%; min-height: 100vh; }
+  .partnership-form__name-fields { display: block; }
+  .partnership-form__name-fields input { width: 100% !important; }
+  .partnership-page__description, .partnership-form__consent { width: 75%; min-width: 0; }
 }
-
-@media (max-width: 767px) {
-  .partnership-page__image {
-    height: 33vh;
-  }
-}
-
+@media (max-width: 767px) { .partnership-page__image, .partnership-page__photo { min-height: 33vh; height: 33vh; } }
 @media (max-width: 479px) {
-  .partnership-page__image {
-    height: 25vh;
-  }
-
-  .partnership-page__photo {
-    display: none;
-  }
-
-  .partnership-page__panel {
-    padding: 5vw;
-  }
-
-  .partnership-form__consent,
-  .partnership-page__legal,
-  .partnership-page__description {
-    min-width: 0;
-    width: 100%;
-  }
+  .partnership-page__image { min-height: 25vh; height: 25vh; }
+  .partnership-page__photo { display: none; }
+  .partnership-page__panel { padding: 5vw; }
+  .partnership-page__description { width: 75%; }
+  .partnership-form__consent, .partnership-page__legal { width: 100%; }
 }

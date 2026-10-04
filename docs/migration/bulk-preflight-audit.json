@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-04",
+  "scope": "metadata-only preflight for the authorized Sanity draft bulk of remaining eligible CMS documents",
+  "providerMutationsByThisAudit": false,
+  "productionPublication": false,
+  "inputs": [
+    {
+      "role": "full source-derived payload",
+      "path": "/private/tmp/jrmota-bulk-payload-190.json",
+      "sha256": "a9dd970a36ba0148295c5a1f746332a046ab1b421d512c6f4a60d279249d3383",
+      "documents": 190
+    },
+    {
+      "role": "full bulk manifest",
+      "path": "/private/tmp/jrmota-bulk-manifest-190.json",
+      "sha256": "2d6f0b04536b48a6410d15d8c68cbbc0de15c46fe555f582614b85e7f4747441",
+      "status": "passed"
+    },
+    {
+      "role": "full uploaded asset map",
+      "path": "/private/tmp/jrmota-bulk-full-asset-map.json",
+      "sha256": "08662d4967013ef6095cde70f003b02f50c58fb277c0106a16cf75a90b5bb607",
+      "uniqueAssets": 1342
+    },
+    {
+      "role": "full source/destination asset evidence",
+      "path": "/private/tmp/jrmota-bulk-full-asset-evidence.json",
+      "sha256": "5ca44d9123bb4bdb183eb6ef40e1d424714c0b69df44f1414334084f0969b350",
+      "sourceMetadataRecords": 1342,
+      "destinationMetadataRecords": 1342
+    },
+    {
+      "role": "sample data parity evidence",
+      "path": "docs/migration/sample-data-parity.json",
+      "sha256": "628c1f1d09636aa85bb1bba832616abd4a770132c04e3e31bd9ae2ed8ed4036d",
+      "payloadSamples": 11,
+      "targetSamples": 11,
+      "identityMatches": 11,
+      "structuredMismatches": 0
+    }
+  ],
+  "fullGate": {
+    "documents": 190,
+    "visiblePhotoSlots": 1447,
+    "mappedVisiblePhotoSlots": 1447,
+    "sourceUniqueAssets": 1342,
+    "assetMetadataChecks": 1447,
+    "unresolvedVisibilityCases": 0,
+    "collections": [
+      { "type": "property", "eligibleItems": 65, "photoSlots": 1262, "validatedSamples": 2 },
+      { "type": "article", "eligibleItems": 59, "photoSlots": 177, "validatedSamples": 2 },
+      { "type": "testimonial", "eligibleItems": 38, "photoSlots": 1, "validatedSamples": 2 },
+      { "type": "offer", "eligibleItems": 1, "photoSlots": 1, "validatedSamples": 1 },
+      { "type": "preListing", "eligibleItems": 19, "photoSlots": 6, "validatedSamples": 2 },
+      { "type": "processStep", "eligibleItems": 8, "photoSlots": 0, "validatedSamples": 2 }
+    ]
+  },
+  "preparedBatches": {
+    "directory": "/private/tmp/jrmota-bulk-create-179",
+    "target": {
+      "projectId": "kaq1vd9b",
+      "dataset": "production",
+      "linkId": "link_6ac104868dc881919babf0aac7618ecb"
+    },
+    "documents": 179,
+    "excludedValidatedSampleIdentities": 11,
+    "perType": {
+      "property": 63,
+      "article": 57,
+      "testimonial": 36,
+      "preListing": 17,
+      "processStep": 6,
+      "offer": 0
+    },
+    "batchCount": 12,
+    "requestLimitBytes": 92160,
+    "largestRequestBytes": 91712,
+    "requestArgsSha256": [
+      "ed4d780b38a901e4a71b67aae63a84393d905e43af0ba0adcb781f244060966c",
+      "94e7f8a1d06ed726e9286296d43341a5f725897af5feb9b8583b8b2c48fa5523",
+      "b52068a9c9e66d53ac67755b34462ba155d3597ffa156cedc24ac319e306effc",
+      "79bf86dbb24f921403f0dcf6e914cc9d4d5d156195813bbebb5f4f360a6604c0",
+      "fed551bcda8495ce9f7c4738ccbd0d2dd3fb8f61282d6b0d3043a02f62687913",
+      "0db6b92f7a950829bdbe04ff749140a796ca8a3e8e4af069aa93e52bd8a880b1",
+      "a4f72bd7818f7b64629e6cbab04c04e876e3c18258a22900b9346101535c25a3",
+      "5f7301d8efcc0d2c492a246af82e557da682f08ebb72dd4a217e4a2a0c98fdc2",
+      "1aefc7cb65b0f958f746ae02612218771178031b97dd9d171b999bba8f6d94b2",
+      "fec77c231098d512510f6479be0c14a033622cedb89b21573c1d97b2a60e0ec6",
+      "51fb97801ccc471cc3bda867f223c0e2f56195b513f50b87c4c7c3b7231f6a18",
+      "5e472433c79a62fe63123c51d5571c1bd1be28cd4c83be29b81e71d11398d0fc"
+    ]
+  },
+  "independentReview": {
+    "manifestRebuiltFromPinnedInputs": true,
+    "rebuiltManifestMatchesSavedExceptGeneratedAt": true,
+    "mechanicalReview": "all pinned artifact hashes and canonical 12-batch rebuild matched; 179 documents; maximum request 91712 bytes",
+    "providerWritePerformed": false
+  },
+  "evidenceLimitations": [
+    "This record proves source eligibility/media gates and prepared-request metadata; it does not assert that any bulk request has been sent or accepted.",
+    "The private payload, media artifacts and request batches are identified by path and SHA-256; their raw content is intentionally not committed."
+  ]
+}

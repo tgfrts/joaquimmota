@@ -11,10 +11,8 @@ const content = {
   pt: {
     title: 'Parcerias',
     switches: [{ label: 'Français', href: '/partenariats' }, { label: 'English', href: '/partnerships' }],
-    question: 'Tens um Cliente no Norte de Portugal?',
-    offer: 'Ganha 50% da Comissão!',
-    introduction: 'Tens um comprador ou vendedor interessado no Norte de Portugal, mas não atendes essa zona?',
-    explanation: 'Envia a referência e recebe 50% da comissão assim que o negócio fechar – sem complicações!',
+    heading: 'Tens um Cliente no Norte de Portugal?',
+    headingContinuation: 'Ganha 50% da Comissão!',
     clientTypeQuestion: 'Qual é o tipo de cliente que estás a referenciar?',
     seller: 'Vendedor',
     buyer: 'Comprador',
@@ -27,10 +25,8 @@ const content = {
   en: {
     title: 'Partnerships',
     switches: [{ label: 'Français', href: '/partenariats' }, { label: 'Português', href: '/parcerias' }],
-    question: 'Do You Have a Client in Northern Portugal?',
-    offer: 'Earn 50% Commission!',
-    introduction: 'Do you know a buyer or seller interested in Northern Portugal?',
-    explanation: 'Send the referral and receive 50% commission once the deal is closed – hassle-free!',
+    heading: 'Do You Have a Client in Northern Portugal?',
+    headingContinuation: 'Earn 50% Commission!',
     clientTypeQuestion: 'What type of client are you referring?',
     seller: 'Seller',
     buyer: 'Buyer',
@@ -43,10 +39,8 @@ const content = {
   fr: {
     title: 'Partenariats',
     switches: [{ label: 'English', href: '/partnerships' }, { label: 'Português', href: '/parcerias' }],
-    question: 'Vous Avez un Client dans le Nord du Portugal?',
-    offer: 'Gagnez 50% de commission!',
-    introduction: 'Vous connaissez un acheteur ou un vendeur intéressé par le nord du Portugal?',
-    explanation: 'Envoyez la recommandation et recevez 50% de commission dès que la transaction est conclue – sans complications !',
+    heading: 'Vous Avez un Client dans le Nord du Portugal? Gagnez 50% de commission!',
+    headingContinuation: '',
     clientTypeQuestion: 'Quel type de client recommandes-tu?',
     seller: 'Vendeur',
     buyer: 'Acheteur',
@@ -61,7 +55,7 @@ const page = content[locale];
 const route = { pt: '/parcerias', en: '/partnerships', fr: '/partenariats' }[locale];
 ---
 
-<BaseLayout title={page.title} socialImage="https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63bab76bb73c8b76d10e4ff9_og-jrm_1.jpg">
+<BaseLayout title={page.title} socialImage="https://joaquimmota.pt/assets/og-jrm.jpg">
   <main class="partnership-page">
     <div class="partnership-page__image" aria-hidden="true">
       <div class="partnership-page__photo"></div>
@@ -74,33 +68,29 @@ const route = { pt: '/parcerias', en: '/partnerships', fr: '/partenariats' }[loc
         <a class="partnership-page__logo" href="/" aria-label="Joaquim Mota Consultores — página inicial">
           <img src="/assets/logo-color.svg" alt="" width="100" />
         </a>
-        <h5><strong>{page.question}</strong><strong>{page.offer}</strong></h5>
-        <p class="partnership-page__description">{page.introduction}<br />{page.explanation}</p>
+        <h5><strong>{page.heading}{page.headingContinuation && <><br />{page.headingContinuation}</>}</strong></h5>
+        <div class="partnership-page__description">
+          {locale === 'pt' && <>Tens um comprador ou vendedor interessado no Norte de Portugal, mas não atendes essa zona?<br /><br />{'\u200d'}<strong>Envia a referência e recebe 50% da comissão</strong> assim que o negócio fechar – sem complicações!</>}
+          {locale === 'en' && <>Do you know a buyer or seller interested in Northern Portugal?<br />{'\u200d'}<br />Send the referral and receive <strong>50% commission</strong> once the deal is closed – hassle-free!</>}
+          {locale === 'fr' && <>Vous connaissez un acheteur ou un vendeur intéressé par le nord du Portugal?<br />{'\u200d'}<br />{'\u200d'}<strong>Envoyez la recommandation et recevez 50% de commission dès que la transaction est conclue – sans complications !</strong></>}
+        </div>
 
-        <form class="partnership-form" data-partnership-form data-route={route}>
-          <div class="partnership-form__name-fields">
-            <input name="firstName" type="text" placeholder={page.firstName} required />
-            <input name="lastName" type="text" placeholder={page.lastName} required />
-          </div>
-          <input name="email" type="email" placeholder={page.email} required />
-          <input name="phone" type="tel" placeholder={page.phone} required />
-          <label class="partnership-form__client-type">
-            <span>{page.clientTypeQuestion}</span>
-            <select name="clientType" required>
-              <option value="vendedor">{page.seller}</option>
-              <option value="comprador">{page.buyer}</option>
-            </select>
-          </label>
-          <label class="partnership-form__consent">
-            <input name="consent" type="checkbox" required checked />
-            <span>{page.consent}</span>
-          </label>
-          <button type="submit">Enviar</button>
-          <p class="partnership-form__status" aria-live="polite"></p>
-        </form>
-        <p class="partnership-page__legal">©<span data-current-year></span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
-        <div class="partnership-page__success" hidden role="status">Obrigado! O seu formulário foi enviado com sucesso.</div>
-        <p class="partnership-page__error" hidden role="alert">Oops! Aconteceu algo de errado enquanto submetia o seu formulário.</p>
+        <div class="partnership-form-shell">
+          <form class="partnership-form" data-partnership-form data-route={route}>
+            <div class="partnership-form__name-fields">
+              <input name="firstName" type="text" placeholder={page.firstName} required />
+              <input name="lastName" type="text" placeholder={page.lastName} required />
+            </div>
+            <input name="email" type="email" placeholder={page.email} required />
+            <input name="phone" type="tel" placeholder={page.phone} required />
+            <label class="partnership-form__client-type"><span>{page.clientTypeQuestion}</span><select name="clientType" required><option value="vendedor">{page.seller}</option><option value="comprador">{page.buyer}</option></select></label>
+            <label class="partnership-form__consent"><input name="consent" type="checkbox" required checked /><span>{page.consent}</span></label>
+            <button type="submit" data-wait="Por favor aguarde...">Enviar</button>
+          </form>
+          <p class="partnership-page__legal">©<span data-current-year></span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+          <div class="partnership-page__success" hidden role="status">Obrigado! O seu formulário foi enviado com sucesso.</div>
+          <p class="partnership-page__error" hidden role="alert">Oops! Aconteceu algo de errado enquanto submetia o seu formulário.</p>
+        </div>
       </div>
     </section>
   </main>
@@ -115,10 +105,16 @@ const route = { pt: '/parcerias', en: '/partnerships', fr: '/partenariats' }[loc
       const data = new FormData(form);
       const firstName = String(data.get('firstName') ?? '').trim();
       const lastName = String(data.get('lastName') ?? '').trim();
-      const status = form.querySelector<HTMLElement>('.partnership-form__status');
-      const success = form.parentElement?.querySelector<HTMLElement>('.partnership-page__success');
-      const error = form.parentElement?.querySelector<HTMLElement>('.partnership-page__error');
-      if (status) status.textContent = '';
+      const shell = form.parentElement;
+      const success = shell?.querySelector<HTMLElement>('.partnership-page__success');
+      const error = shell?.querySelector<HTMLElement>('.partnership-page__error');
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (form.dataset.pending === 'true') return;
+      form.dataset.pending = 'true';
+      if (button) {
+        button.disabled = true;
+        button.textContent = button.dataset.wait ?? button.textContent;
+      }
       if (error) error.hidden = true;
       try {
         await submitFormAccepted(form, {
@@ -135,6 +131,12 @@ const route = { pt: '/parcerias', en: '/partnerships', fr: '/partenariats' }[loc
         if (success) success.hidden = false;
       } catch {
         if (error) error.hidden = false;
+        if (button) {
+          button.disabled = false;
+          button.textContent = 'Enviar';
+        }
+      } finally {
+        delete form.dataset.pending;
       }
     });
   });

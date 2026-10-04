@@ -1,6 +1,6 @@
 {
   "observedAt": "2026-10-03T23:33:34.913854+00:00",
-  "status": "partial; full sample acceptance remains pending",
+  "status": "bounded visual evidence recorded; sample and bulk gates passed; real integrations and Owner preview acceptance pending",
   "sourceReadOnly": true,
   "noFormSubmissions": true,
   "homeResponsiveFollowup": {
@@ -194,11 +194,9 @@
     }
   },
   "remaining": [
-    "whole-page visual and responsive certification of every sample template",
-    "representative static-family browser comparison",
-    "protected and DOOP route behavior",
-    "actual own form delivery configuration/test",
-    "bulk only after full sample acceptance"
+    "Own Resend server configuration and intended recipient",
+    "Own DOOP activity/visit destinations",
+    "Owner review of the preview; production SEO activation and cutover require separate authorization"
   ],
   "property": {
     "samples": [
@@ -1505,5 +1503,67 @@
         "sha256": "55929497453deb4386c3f7ba30542a7f8c937d092e2141cf09c52ac6e870ce97"
       }
     ]
-  }
+  },
+  "flyerFullContentFollowup": {
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "sourceCurrentDraftMarketingBlocksExcluded": 4,
+    "geometry": "Measured hero, sold rail section, results, all ten testimonial card heights and CTA/form match exactly at both viewports after full CMS cache. Marketing retains the active static left-column copy; total page height intentionally excludes the four source-current drafts.",
+    "desktop": {
+      "hero": 604,
+      "sold": 760,
+      "activeMarketing": 518,
+      "results": 467.59375,
+      "testimonials": 1448,
+      "cta": 723,
+      "firstFieldRelativeY": 311,
+      "submitRelativeY": 530
+    },
+    "mobile": {
+      "hero": 672,
+      "sold": 639.625,
+      "activeMarketing": 380.875,
+      "results": 691.4375,
+      "testimonials": 3130.0625,
+      "cta": 761.25,
+      "firstFieldRelativeY": 347.25,
+      "submitRelativeY": 657.25
+    },
+    "footer": {
+      "desktopSource": 505.53125,
+      "desktopTarget": 505.609375,
+      "mobileSource": 498.78125,
+      "mobileTarget": 498.78125,
+      "lazyLoaded": true,
+      "note": "Desktop difference below0.08px comes from exact original raster dimensions."
+    },
+    "scope": "Bounded browser metrics and independent source/code/runtime audit; no real submission or global acceptance.",
+    "heroLogo": "Non-interactive image, matching captured public source; independently reviewed."
+  },
+  "blogFullContentFollowup": {
+    "eligibleArticles": 59,
+    "cardsPerPage": 6,
+    "pages": 10,
+    "lastPageItems": 5,
+    "desktop": "Featured H1, newsletter H3, first three card heading rects, article-feed 1445.25px and closing 517px match exactly after the 59-article cache.",
+    "query": "51fb55cf_page",
+    "scope": "First-page desktop/mobile geometry, native page2 navigation and aggregate order/pagination contract; no real subscriptions.",
+    "mobile": {
+      "featuredHeight": 711.5,
+      "subscribeSourceAndTarget": 481.28125,
+      "feedSourceAndTarget": 2702.75,
+      "closingSource": 501.765625,
+      "closingTarget": 501.796875,
+      "pagination": "Native next-link navigation reached page2 with six visible cards and both controls visible."
+    }
+  },
+  "evidenceHistory": "Earlier partial observations below are historical. Later follow-ups and sample-gate.json supersede their pending sample/bulk statements; no assertion of pixel parity at every possible viewport."
 }

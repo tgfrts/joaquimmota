@@ -1,0 +1,53 @@
+{
+  "review": "independent bounded Flyer audit",
+  "reviewedAt": "2026-10-04",
+  "scope": [
+    "src/pages/lp-flyer-uma-venda-com-sucesso.astro",
+    "src/components/FlyerSoldRail.astro",
+    "src/styles/seller-campaign.css"
+  ],
+  "sourceEvidence": "/private/tmp/jrmota-static-public-html/lp-flyer-uma-venda-com-sucesso.html",
+  "findings": {
+    "sourceDraftExclusion": {
+      "status": "pass",
+      "detail": "The four current staged Marketing VS draft identities are absent; their public historical rendering is not imported."
+    },
+    "visibleStaticContent": {
+      "status": "pass",
+      "detail": "The active heading, marketing introduction, metrics, anchors, form labels, consent copy, feedback copy and footer privacy link match the captured public surface."
+    },
+    "testimonials": {
+      "status": "pass",
+      "detail": "Ten pinned visible testimonials resolve by legacy identity, prefer matching target CMS records, and retain source fallback copy. No hidden property facts are rendered in the sold rail."
+    },
+    "soldRail": {
+      "status": "pass",
+      "detail": "The five visible sold-property fallback identities are the recorded current eligible properties; target CMS title, municipality, parish and featuredImage replace only an exact matching property identity."
+    },
+    "formRuntime": {
+      "status": "pass",
+      "detail": "Actual compiled-handler tests cover the 202 success path, 503 retry, and pending-submit guard; no live submission was made."
+    },
+    "styleIsolation": {
+      "status": "pass",
+      "detail": "The refactored selectors are rooted at .seller-campaign or FlyerSoldRail classes; no generic heading selector was introduced."
+    },
+    "heroLogoInteraction": {
+      "status": "pass",
+      "detail": "Final independent source check confirms the public hero logo is a non-interactive image. The target now uses a div containing the image, with no href."
+    }
+  },
+  "validation": {
+    "command": "node --test tests/forms/flyer-campaign-runtime.test.mjs tests/migration/static-contract-fixes.test.mjs",
+    "result": "7 passing, 0 failing",
+    "diffCheck": "pass",
+    "finalFollowup": {
+      "status": "pass",
+      "detail": "Source-confirmed logo correction is present. Root native browser measurement reports Flyer footer 498.78125px mobile matching source and 505.609375px desktop versus 505.53125px source; the latter is a sub-0.08px raster-ratio delta."
+    }
+  },
+  "limitations": [
+    "This review confirmed the final logo interaction in source and code; browser geometry figures are recorded from the root native measurement, not independently repeated in this follow-up.",
+    "It does not certify unrelated routes, full bulk import, or production cutover."
+  ]
+}

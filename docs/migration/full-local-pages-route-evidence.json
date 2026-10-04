@@ -1,0 +1,2123 @@
+{
+  "verifiedAt": "2026-10-04T05:06:19.097855+00:00",
+  "runtime": "local Cloudflare Pages at 127.0.0.1:8789",
+  "builtRoutes": 254,
+  "checks": 264,
+  "passed": 264,
+  "failures": [],
+  "routes": [
+    {
+      "path": "/",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/401",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/404",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/__jrmota_unknown_route_probe__",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/admin/dashboard",
+      "expected": 401,
+      "status": 401,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/blog",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/blog-categories/compradores",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/blog-categories/dicas",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/blog-categories/mercado",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/blog-categories/vendedores",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/comprar",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/consultores/paulo-soares",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/contacto",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/credito-habitacao",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/doop/relatorios-de-atividades",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/doop/relatorios-de-visita",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/dossier",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/estudo-de-mercado",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/estudo-de-mercadob",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/faq/do-i-need-to-be-pre-approved-if-so-how-do-i-get-pre-approved",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/how-can-i-be-the-first-to-see-new-homes-for-sale",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/how-do-i-get-my-home-ready-to-sell",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/how-do-i-write-an-offer-that-will-get-accepted",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/how-do-you-calculate-my-homes-value",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/how-fast-will-my-home-sell",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/how-is-your-calculation-different-from-zillow",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/how-long-does-the-buying-process-typically-take",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/how-much-is-my-home-worth",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/referenciar-algum-cliente",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/faq/ser-cliente-da-ps-real-estate-team",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/guia-vender-para-comprar",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-1933",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2093",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2268",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2283",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2406",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2471",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2472",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2711",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2863",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2864",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2904",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2909",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-2991",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3060",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3220",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3222",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3243",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3274",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3280",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3313",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3315",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3348",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3382",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3404",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/1202-3467",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt002034",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt003071",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt003096",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt004101",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt005146",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt005347",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt005471",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt005472",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt007079",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt007991",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt009202",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt009872",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt009968",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt013603",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt013751",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt014629",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt014647",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt015500",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt016039",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt016210",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt016225",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt017699",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt018563",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt018853",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt019807",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt020688",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt021050",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt021094",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt023708",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt025253",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt025265",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt026377",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt026427",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt026529",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt027057",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt029212",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt029949",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt032055",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt032072",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/imoveis/kwpt036155",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/lp-flyer-uma-venda-com-sucesso",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/lp/atualizacao-de-informacao",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/lp/cabaz-de-natal",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/lp/cabaz-pascoa",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/lp/evento-smillingstreet",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/lp/guia-de-ferias",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/lp/obrigado",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/lp/obrigado-barbara-tinoco",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/lp/obrigado-evento",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/lp/obrigado-oferta",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/lp/oferta-barbara-tinoco",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/lp/oferta-cruzeiro-pontes",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/lp/oferta-selecao",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/lp/smillingstreet",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/marketing",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/obrigado",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/oferta-certificado-energetico",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/ofertas/vinho-e-fado",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/open-house/1202-2299",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/open-house/1202-2325",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/open-house/1202-3313",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/parcerias",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/partenariats",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/partnerships",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/3-dicas-essenciais-para-mudar-de-casa-em-2025",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/3-dicas-para-comprar-uma-casa-durante-as-festas-de-natal-e-ano-novo",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/4-coisas-a-ponderar-ao-contratar-um-consultor-imobiliario",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/4-novas-dicas-de-home-staging-para-2023",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/4-passos-para-mudar-de-casa-neste-verao",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/4-tendencias-de-design-de-interiores-para-2025",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/5-dicas-essenciais-para-uma-venda-de-casa-bem-sucedida-neste-verao",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/5-novas-regras-para-vender-a-sua-casa-em-2023",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/5-solucoes-sustentaveis-para-proprietarios-ecologicos",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/6-coisas-a-fazer-se-nao-consegue-vender-a-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/6-razoes-pelas-quais-o-investimento-em-imoveis-e-uma-opcao-inteligente",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/7-coisas-que-deve-saber-antes-de-contratar-um-consultor-imobiliario",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/7-dicas-para-umas-ferias-relaxadas",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/8-dicas-para-aproveitar-melhor-os-espacos-exteriores-da-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/8-dicas-para-simplificar-a-sua-mudanca-de-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/8-dicas-quentinhas-para-vender-a-sua-casa-neste-inverno",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/a-divisao-do-atual-mercado-imobiliario",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/a-importancia-de-receber-qualquer-proposta-na-venda-da-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/a-primavera-e-a-melhor-altura-para-vender-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/a-sua-proposta-foi-rejeitada-4-dicas-para-chegar-a-bom-porto",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/a-verdade-por-tras-de-5-mitos-comuns-na-negociacao-de-uma-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/ano-novo-casa-nova-3-dicas-para-mudar-de-casa-em-2024",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/as-3-caracteristicas-a-ter-em-conta-na-hora-de-comprar-a-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/as-5-melhores-renovacoes-para-aumentar-o-valor-da-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/aumente-os-seus-rendimentos-com-o-apoio-financeiro-para-senhorios",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/casa-nova-ou-usada-descubra-qual-e-a-melhor-opcao-para-si",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/como-definir-o-preco-ideal-da-sua-casa-na-primavera-de-2025",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/como-descobrir-o-valor-atual-de-uma-casa-de-maneira-eficaz",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/como-garantir-uma-mudanca-de-casa-rapida-neste-verao-2024",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/como-maximizar-o-seu-orcamento-e-comprar-a-casa-dos-seus-sonhos",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/como-melhorar-os-espacos-exteriores-da-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/comprar-casa-durante-as-festas",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/de-uma-venda-assombrada-a-uma-venda-com-sucesso",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/deve-comprar-ou-arrendar-em-2026",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/devo-comprar-e-vender-a-minha-casa-ao-mesmo-tempo",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/espirito-festivo-em-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/estrategia-de-preco-a-importancia-do-preco-certo-para-um-venda-bem-sucedida",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/estrategias-de-preco-inteligentes",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/evite-este-erro-para-uma-negociacao-bem-sucedida",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/maximize-a-sua-mudanca-para-uma-casa-maior-com-estas-5-dicas",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/novas-tendencias-para-decorar-a-sua-casa-em-2023",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/o-lado-emocional-de-vender-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/oliveira-do-douro",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/os-segredos-que-as-casas-nao-contam-2",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/outono-inspirador",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/pos-e-contras-de-vender-a-sua-casa-nestas-festas",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/potencie-a-sua-casa-e-o-seu-estilo-de-vida-em-2024",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/primavera-venda-a-sua-casa-com-sucesso",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/primeira-vez-a-vender-casa-evite-estes-erros",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/qual-a-melhor-altura-do-ano-para-se-vender-uma-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/reduza-o-risco-e-aumente-o-valor-de-venda-da-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/renovar-ou-mudar-de-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/sera-a-comissao-o-fator-mais-importante",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/simplifique-a-sua-mudanca-de-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/torne-a-sua-casa-mais-eficiente-energeticamente",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/tudo-o-que-precisa-saber-para-vender-a-sua-casa-nesta-primavera",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/vender-a-sua-casa-no-outono",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/post/virtual-staging-a-estrategia-que-pode-acelerar-a-venda-da-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/quanto-vale-a-sua-casa-hoje",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/reviews",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/sessao-gratuita",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/sobre",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/somos-credito",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/style-guide",
+      "expected": 404,
+      "status": 404,
+      "location": null,
+      "cache": "no-store",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/adelino-samorinha",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/antonio-marques",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/bruna-augusto",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/bruno-oliveira",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/bruno-santos",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/bruno-vanessa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/carla-rocha",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/carlos-dourado",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/celia-silva",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/cristina-pinto",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/fernando-gc",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/gisela-almeida",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/graca",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/isabel-costa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/isidro-guedes",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/ivo-duraes",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/ivone-baldaia",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/joana-teixeira",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/joao",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/joao-carlos-de-almeida",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/joao-carlos-de-almeida-55c95",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/joaquim-ferreira",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/jorge-mendes",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/jose-silva",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/juliana-ramalho",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/lurdes-santos",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/maria-fernanda",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/maria-helena-vieira",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/maria-nogueira",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/nuno-teixeira",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/paula-fernandes",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/paulinhodefontes-youtube",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/paulo-pereira",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/rosa-vieira",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/samuel-castro",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/sonia-teixeira",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/susana-loureiro",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/testemunhos/vera-silva",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/uma-venda-com-sucesso",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vamos-comecar",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vender",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/da-t3-santa-marinha-20260709",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/fc-t3-canidelo-20260516-1089a",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/mb-t3-crestuma-20260709-472cf",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/mb-t3-crestuma-20260709-56749",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/mb-t3-crestuma-20260709-d57ce",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/mc-t4-sao-felix-20260516",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/mm-t3-canidelo-20260428",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/sc-t2-pedroso-20260516-bf70c",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/sc-t4-arcozelo-20260416",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/si-t2-oliveira-do-douro-20260709",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/te-t2-gulpilhares-20260916",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/te-t2-gulpilhares-20260916-10d24",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/te-t2-gulpilhares-20260916-39528",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/te-t2-gulpilhares-20260916-3e97c",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/te-t2-gulpilhares-20260916-4f56b",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/te-t2-gulpilhares-20260916-ee8f2",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/te-t2-gulpilhares-20260916-f3061",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/te-t2-gulpilhares-20260916-fec87",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vouvender/te-t2-gulpilhares-20260916-ff2b3",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/01-acesso-a-eventos-exclusivos",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/01-obtenha-a-pre-aprovacao",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/01-os-seus-objetivos",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/01-simples-e-facil",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/02-consultoria",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/02-estrategia-de-preco",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/02-inicie-a-pesquisa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/02-ofertas-exclusivas",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/03-outras-vantagens-exclusivas",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/03-suporte",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/03-visitas",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/04-faca-uma-oferta",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/06-hora-de-festejar",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/estrategia-de-marketing",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/hora-de-festejar",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/mostre-a-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/negocie-o-melhor-valor",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    },
+    {
+      "path": "/vs-destaques/prepare-a-sua-casa",
+      "expected": 200,
+      "status": 200,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate",
+      "passed": true
+    }
+  ],
+  "scope": "Read-only GET; no form submissions, deployment, provider mutations or production requests."
+}

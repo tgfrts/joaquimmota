@@ -6,11 +6,12 @@ import sampleContent from '../../data/sample-content.json';
 import testimonialOrder from '../../data/prelisting-testimonial-order.json';
 import testimonialSource from '../../data/prelisting-testimonial-source.json';
 import '../../styles/prelisting.css';
-export function getStaticPaths() { const sampleRecords: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? []; return sampleRecords.filter((record) => record._type === 'preListing').map((record) => ({ params: { slug: record.slug?.current ?? record.sourceSlug }, props: { record } })); }
+import { ownRecordByLegacyId, recordsFromContent } from '../../data/cms-content';
+export function getStaticPaths() { const sampleRecords = recordsFromContent(sampleContent); return sampleRecords.filter((record) => record._type === 'preListing').map((record) => ({ params: { slug: record.slug?.current ?? record.sourceSlug }, props: { record } })); }
 const { record } = Astro.props;
 const heroImageRef = record.heroImage?.asset?._ref;
 const heroSocialImage = typeof heroImageRef === 'string' ? (() => { const [, id, dimensions, format] = heroImageRef.match(/^image-(.+)-(\d+x\d+)-([a-z0-9]+)$/) ?? []; return id && dimensions && format ? `https://cdn.sanity.io/images/kaq1vd9b/production/${id}-${dimensions}.${format}` : undefined; })() : undefined;
-const sampleRecords: any[] = Array.isArray(sampleContent) ? sampleContent : (sampleContent as any).documents ?? [];
+const sampleRecords = recordsFromContent(sampleContent);
 const reasons = [
   ['/assets/prelisting-reason-1.svg', 'Conhecimento profundo do mercado local', 'Trabalho nesta zona há mais de 10 anos. Conheço bem o tipo de comprador que procura casa aqui e como posicionar o seu imóvel para gerar interesse e propostas.'],
   ['/assets/prelisting-reason-2.svg', 'Estratégia de preço baseada no mercado', 'Utilizo análises comparativas e dados de mercado para definir um posicionamento que maximize o interesse dos compradores sem comprometer o valor do imóvel.'],
@@ -24,20 +25,26 @@ const process = [
   ['Gestão de visitas e negociação', 'Organizo as visitas, qualifico os interessados e conduzo as negociações para garantir as melhores condições para si.'],
   ['Proposta aceite e escritura', 'Acompanho todo o processo até à escritura, tratando das etapas necessárias para que a venda decorra com segurança e tranquilidade.'],
 ];
-const sold = [
-  ['/assets/sold-carvicais.webp', 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', 'Carviçais', 'Torre de Moncorvo'],
-  ['/assets/sold-pacos.webp', 'Armazém à venda em Paços de Brandão', 'Paços de Brandão', 'Santa Maria a Feira'],
-  ['/assets/sold-pedroso.webp', 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', 'Pedroso', 'Vila Nova de Gaia'],
-  ['/assets/sold-vilar.webp', 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', 'Vilar do Paraíso', 'Vila Nova de Gaia'],
-  ['/assets/sold-serzedo.webp', 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', 'Serzedo', 'Vila Nova de Gaia'],
+const soldFallback = [
+  { legacyId: '6960e9aaf84806ee59710ab1', image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', city: 'Carviçais', parish: 'Torre de Moncorvo' },
+  { legacyId: '6937eca300c97af63c25ced9', image: '/assets/sold-pacos.webp', title: 'Armazém à venda em Paços de Brandão', city: 'Paços de Brandão', parish: 'Santa Maria a Feira' },
+  { legacyId: '6937fdc31a1cdb29a1f2f2b3', image: '/assets/sold-pedroso.webp', title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', city: 'Pedroso', parish: 'Vila Nova de Gaia' },
+  { legacyId: '697889f130b6d852b1f52055', image: '/assets/sold-vilar.webp', title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', city: 'Vilar do Paraíso', parish: 'Vila Nova de Gaia' },
+  { legacyId: '695d35b09f5de4973299416b', image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', city: 'Serzedo', parish: 'Vila Nova de Gaia' },
 ];
+const sold = soldFallback.map((fallback) => {
+  const own = ownRecordByLegacyId(sampleRecords, 'property', fallback.legacyId);
+  return own ? { ...fallback, cms: own, title: own.title, city: own.parish ?? '', parish: own.municipality ?? '' } : { ...fallback, cms: undefined };
+});
 const orderedTestimonials = testimonialOrder.routes.find(route => route.preListingLegacyId === record.legacyId)?.testimonials;
 if (!orderedTestimonials) throw new Error('Missing verified public pre-listing testimonial order.');
-const testimonials = orderedTestimonials.map(entry => {
-  const own = sampleRecords.find(item => item._type === 'testimonial' && entry.candidateLegacyIds.includes(item.legacyId));
+const testimonials: any[] = orderedTestimonials.map(entry => {
+  const own = entry.candidateLegacyIds.map((legacyId) => ownRecordByLegacyId(sampleRecords, 'testimonial', legacyId)).find(Boolean);
   const fallback = testimonialSource.testimonials.find(item => entry.candidateLegacyIds.includes(item.legacyId));
   if (!own && !fallback) throw new Error('Missing eligible pre-listing testimonial content.');
-  return own ?? fallback;
+  if (own) return own;
+  if (fallback) return fallback;
+  throw new Error('Missing eligible pre-listing testimonial content.');
 });
 ---
 
@@ -52,7 +59,7 @@ const testimonials = orderedTestimonials.map(entry => {
       <div class="prelisting-hero__scroll">DESLIZE PARA BAIXO<span></span></div>
     </section>
     <section class="prelisting-section prelisting-section--intro"><div class="prelisting-person"><img src="/assets/prelisting-profile.png" alt="" /><p>Porquê comigo</p></div><h2>Vender o seu imóvel merece a dedicação certa.</h2><div class="prelisting-reasons">{reasons.map(([icon, title, copy]) => <article><img class="prelisting-icon" src={icon} alt="" /><h4>{title}</h4><p>{copy}</p></article>)}</div></section>
-    <section class="prelisting-sold"><div class="prelisting-sold__heading"><p>Os meus resultados</p><h2>Últimos imóveis vendidos</h2></div><div class="prelisting-sold__rail">{[...sold, ...sold].map(([image, title, city, parish], index) => <article aria-hidden={index >= sold.length ? 'true' : undefined}><div><img src={image} alt="" /><span class="prelisting-sold__shade"></span><img class="prelisting-sold__banner" src="/assets/prelisting-sold-banner.webp" alt="" /><div class="prelisting-sold__copy"><h4>{title}</h4><span class="prelisting-sold__divider"></span><div class="prelisting-sold__locations">{parish && <h6 class:list={['prelisting-sold__municipality', {'prelisting-sold__municipality--mobile-hidden': index % sold.length >= 2, 'prelisting-sold__municipality--clone-hidden': index >= sold.length && index % sold.length >= 2}]}>{parish}</h6>}<h6 class="prelisting-sold__parish">{city}</h6></div></div></div></article>)}</div></section>
+    <section class="prelisting-sold"><div class="prelisting-sold__heading"><p>Os meus resultados</p><h2>Últimos imóveis vendidos</h2></div><div class="prelisting-sold__rail">{[...sold, ...sold].map((property, index) => <article aria-hidden={index >= sold.length ? 'true' : undefined}><div>{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" /> : <img src={property.image} alt="" />}<span class="prelisting-sold__shade"></span><img class="prelisting-sold__banner" src="/assets/prelisting-sold-banner.webp" alt="" /><div class="prelisting-sold__copy"><h4>{property.title}</h4><span class="prelisting-sold__divider"></span><div class="prelisting-sold__locations">{property.parish && <h6 class:list={['prelisting-sold__municipality', {'prelisting-sold__municipality--mobile-hidden': index % sold.length >= 2, 'prelisting-sold__municipality--clone-hidden': index >= sold.length && index % sold.length >= 2}]}>{property.parish}</h6>}<h6 class="prelisting-sold__parish">{property.city}</h6></div></div></div></article>)}</div></section>
     <section class="prelisting-section prelisting-section--process"><p class="prelisting-kicker">O processo</p><h2>Simples, claro e orientado para um objetivo: vender bem o seu imóvel.</h2><ol>{process.map(([title, copy], index) => <li><span class="prelisting-process__icon"><img src={`/assets/prelisting-process-${index + 1}.svg`} alt="" /></span><div><h4>{title}</h4><p>{copy}</p></div></li>)}</ol></section>
     <section class="prelisting-stats"><p class="prelisting-stats__kicker">Os nossos resultados</p><h2>Vendemos a sua casa com sucesso.</h2><div><p>+ Valor<strong>96%</strong><span>Valor Inicial de Oferta</span></p><p>+ Rápido<strong>60 dias</strong><span>Tempo médio de venda</span></p><p>+ Tranquilidade<strong>85%</strong><span>Angariações Vendidas</span></p></div></section>
     <section class="prelisting-testimonials" id="testemunhos"><header><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2><a href="/reviews">Leia as nossas avaliações</a></header><div>{testimonials.map(testimonial => <figure><div class="prelisting-stars" aria-label="5 estrelas">{Array.from({length:5},()=> <img src="/assets/prelisting-star.svg" alt="" />)}</div><blockquote>{testimonial.quote}</blockquote><figcaption><span class="prelisting-testimonial__avatar">{testimonial.portrait ? <CmsImage value={testimonial.portrait} alt="" /> : testimonial.portraitURL && <img src={testimonial.legacyId === '64d73faf12672d652ab57849' ? '/assets/testimonial-ivo.webp' : testimonial.portraitURL} alt="" />}</span><span>{testimonial.clientName}</span></figcaption></figure>)}</div></section>

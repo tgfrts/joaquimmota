@@ -1,6 +1,6 @@
 # Joaquim Mota Consultores
 
-Independent Astro foundation for the read-only migration of `joaquimmota.pt`.
+Independent Astro preview for the read-only migration of `joaquimmota.pt`.
 
 ## Local commands
 
@@ -11,15 +11,15 @@ npm run check
 npm run build
 ```
 
-This branch is an incomplete migration preview. It includes the homepage, CMS sample templates, several static routes and source-empty CMS paths. It is not approved for deployment. All pages carry `noindex, nofollow` during this preview phase; original production SEO must be restored and verified before cutover.
+The current preview builds 254 original paths, including eligible static pages, CMS templates and source-empty CMS paths. Source drafts are excluded. It is not approved for production deployment. Pages carry `noindex, nofollow` during this preview phase; original production SEO must be restored and verified before cutover.
 
-Eleven eligible source samples are stored as drafts in the site's own Sanity project `kaq1vd9b`, dataset `production`. `src/data/sample-content.json` is an ignored local preview cache, never a committed source of content. A clean checkout requires a read-only snapshot of those target drafts before building:
+The site's own Sanity project `kaq1vd9b`, dataset `production`, holds 190 eligible documents as target drafts. The sample gate passed before the remaining179 were imported. Aggregate verification confirms1447 visible image positions referencing1342 distinct originals. `src/data/sample-content.json` is an ignored local preview cache, never a committed source of content. A clean checkout requires a read-only snapshot of the target drafts and the approved private migration inputs before building:
 
 ```sh
-node scripts/migration/prepare-preview.mjs /absolute/path/target-sample-snapshot.json
+node scripts/migration/prepare-preview.mjs /absolute/path/target-bulk-snapshot.json --bulk --source /absolute/path/staged-cms-source.json --manifest /absolute/path/bulk-manifest.json --full-payload /absolute/path/bulk-payload.json
 ```
 
-The snapshot shape is `{ "documents": [...], "routes": [...] }`. Read the 11 draft samples with the Joaquim Mota Sanity connection, using the identities in `docs/migration/sample-data-parity.json`. The preparer rejects missing/extra records, duplicate identities, changed slugs and non-draft targets. It performs no provider writes. Do not substitute another site's dataset or commit raw snapshots.
+The snapshot shape is `{ "documents": [...] }`. Read the190 drafts with the Joaquim Mota Sanity connection, in small paginated responses to respect the connector response limit. The preparer verifies the approved bulk gate, eligible identities, original slugs, draft state and per-collection item/photo counts. It performs no provider writes. Do not substitute another site's dataset or commit raw snapshots. Sample-only preparation remains available without `--bulk` for the original11-sample snapshot.
 
 For the built-site local preview with Pages Functions, use the already installed Wrangler runtime:
 

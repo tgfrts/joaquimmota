@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "audit": "Independent aggregate post-import check; no per-document content review",
+  "evidence": {
+    "approvedPayloadSha256": "a9dd970a36ba0148295c5a1f746332a046ab1b421d512c6f4a60d279249d3383",
+    "targetSnapshot": {
+      "path": "/private/tmp/jrmota-target-bulk-snapshot-190.json",
+      "sha256": "05b36eb52b5b0632f16893d58a95b347272ecec8fffc6b93a4175a85803cef22",
+      "bytes": 1103777
+    },
+    "liveSanityRead": {
+      "queryPerspective": "raw",
+      "queryType": "aggregate GROQ counts by draft/published state and document type",
+      "projectId": "kaq1vd9b",
+      "dataset": "production"
+    },
+    "batchReceipts": {
+      "batches": 12,
+      "created": 179,
+      "alreadyPresent": 11,
+      "failed": 0,
+      "provenance": "execution receipts reported by migration coordinator"
+    }
+  },
+  "expected": {
+    "documents": 190,
+    "byType": {
+      "property": 65,
+      "article": 59,
+      "testimonial": 38,
+      "offer": 1,
+      "preListing": 19,
+      "processStep": 8
+    },
+    "mediaSlots": 1447,
+    "uniqueMediaReferences": 1342,
+    "drafts": 190,
+    "published": 0
+  },
+  "observed": {
+    "targetSnapshot": {
+      "documents": 190,
+      "byType": {
+        "property": 65,
+        "article": 59,
+        "testimonial": 38,
+        "offer": 1,
+        "preListing": 19,
+        "processStep": 8
+      },
+      "mediaSlotsByType": {
+        "property": 1262,
+        "article": 177,
+        "testimonial": 1,
+        "offer": 1,
+        "preListing": 6,
+        "processStep": 0
+      },
+      "mediaSlots": 1447,
+      "uniqueMediaReferences": 1342,
+      "drafts": 190,
+      "published": 0
+    },
+    "liveSanity": {
+      "documents": 190,
+      "byType": {
+        "property": 65,
+        "article": 59,
+        "testimonial": 38,
+        "offer": 1,
+        "preListing": 19,
+        "processStep": 8
+      },
+      "drafts": 190,
+      "published": 0
+    }
+  },
+  "result": "PASS",
+  "limits": [
+    "The live Sanity check verified aggregate document counts and draft/published state only.",
+    "Media-slot and unique-reference totals were counted from the pinned target snapshot; they do not constitute a post-import per-document or asset-resolution inspection.",
+    "No individual imported document content was reviewed.",
+    "Build and route acceptance were outside this audit."
+  ]
+}

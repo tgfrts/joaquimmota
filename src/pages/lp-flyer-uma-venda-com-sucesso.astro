@@ -1,69 +1,33 @@
 ---
 import '../styles/seller-campaign.css';
-const listings = [
-  { title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', image: 'https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6960e8ba115d5ac4273eb5bc_IMG_9932.webp', rooms: '3', baths: '1', parking: '0', municipality: 'Torre de Moncorvo', area: 'Carviçais' },
-  { title: 'Armazém à venda em Paços de Brandão', image: 'https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6937ec0ba021ce3a67ac1136_IMG_3518.webp', rooms: '—', baths: '1', parking: '—', municipality: 'Santa Maria a Feira', area: 'Paços de Brandão' },
-  { title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', image: 'https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/6937fd4daad1c0058bae50ad_IMG_3590b-2.webp', rooms: '2', baths: '1', parking: '—', municipality: 'Vila Nova de Gaia', area: 'Pedroso' },
-  { title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', image: 'https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/697888d8f13c9a5652cbde98_IMG_3741.psd%2C.webp', rooms: '1', baths: '1', parking: '1', municipality: 'Vila Nova de Gaia', area: 'Vilar do Paraíso' },
-  { title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', image: 'https://cdn.prod.website-files.com/63638f133928eb56dba4ed2d/695d467a6080d3423acb384d_Foto%20JMMS%202%20c%20-%20Moradia%20em%20Serzedo.webp', rooms: '3', baths: '2', parking: '0', municipality: 'Vila Nova de Gaia', area: 'Serzedo' },
+import fallback from '../data/prelisting-testimonial-source.json';
+import sampleContent from '../data/sample-content.json';
+import FlyerSoldRail from '../components/FlyerSoldRail.astro';
+import { ownRecordByLegacyId, recordsFromContent } from '../data/cms-content';
+const records = recordsFromContent(sampleContent);
+const sourceTestimonials = new Map(fallback.testimonials.map((item) => [item.legacyId, item]));
+const testimonialPins = [
+  '652f9559355b22cce2bb32f4', '67b454c300eea974a3ec3f4b', '652f95ea488ed3e20371204e', '67b454c4b3a8ed624a80ab95', '652f96102bab7444d6e36fe0',
+  '64d73faf12672d652ab5784c', '64d73faf12672d652ab5784b', '652f967923bd5beb1289a007', '67b454c3e4e0b333d8cfef31', '67b454c4ba76a8566c116ae4',
 ];
-const strategies = [
-  ['01. Fotografia Profissional', 'A nossa equipa sabe o quanto é importante ter fotos profissionais. Antes de colocar a sua casa no mercado, vamos preparar e fotografar profissionalmente a sua casa. Ter fotografias que impressionam são a chave para fazer com que a sua casa brilhe online.'],
-  ['02. Uma base de dados com clientes compradores qualificados', 'Usamos o e-mail marketing para nos conectarmos pessoalmente com as leads de compradores. Criamos entusiasmo e interesse por meio de uma série de e-mails direcionados para uma lista de clientes qualificados na nossa base de dados.'],
-  ['04. Marketing nas Redes Sociais', 'Usamos o Facebook para anunciar sua casa para mais de 100.000 pessoas no mercado do grande Porto e destacar os melhores recursos de sua casa. O Instagram permite-nos mostrar as fotos profissionais da sua casa e envolver visualmente os potenciais compradores.'],
-  ['05. Video e Matterport', 'Os nossos vídeos do YouTube variam de videos pormenorizados de visitas a imóveis residenciais, a videos mais curtos que despertam emoções e criam ligações com quem os visualiza. Utilizamos também a tecnologia de matterport para que o seu imóvel possa receber visitas virtuais de potenciais compradores.'],
-];
+const testimonials: any[] = testimonialPins.map<any>((legacyId) => {
+  const cms = ownRecordByLegacyId(records, 'testimonial', legacyId);
+  const source = sourceTestimonials.get(legacyId) ?? (legacyId === '67b454c4ba76a8566c116ae4' ? { legacyId, clientName: 'Carla Rocha', quote: 'Recomendado. Profissionais merecedores de 5 estrelas.', portraitURL: null } : undefined);
+  return cms ? { ...source, ...cms, cms } : { ...source, cms: undefined };
+}).filter((item) => item.clientName && item.quote);
+const testimonialColumns = [testimonials.slice(0, 3), testimonials.slice(3, 7), testimonials.slice(7, 10)];
 ---
-<!doctype html>
-<html lang="pt-PT">
-  <head>
-    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta property="og:title" content="LP Flyer - Uma venda com sucesso" /><meta name="twitter:title" content="LP Flyer - Uma venda com sucesso" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <title>LP Flyer - Uma venda com sucesso</title>
-  </head>
-  <body>
-    <main class="seller-campaign">
-      <section class="seller-campaign__hero">
-        <a class="seller-campaign__logo" href="/"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
-        <div class="seller-campaign__hero-copy"><h1>Faltam 3 meses para o final do ano.</h1><p>Não fique parado à espera do momento ideal.<br />Ainda vai tempo de mudar de casa este ano.</p><a class="seller-campaign__button" href="#form">QUERO VENDER A MINHA CASA</a></div>
-      </section>
-      <section class="seller-campaign__results" aria-labelledby="results-title">
-        <h2 id="results-title">Últimos imóveis vendidos</h2>
-        <div class="seller-campaign__listings">{listings.map((item) => <article class="seller-campaign__listing"><img src={item.image} alt="" loading="lazy" /><div class="seller-campaign__listing-body"><span class="seller-campaign__sold">Vendido</span><h3>{item.title}</h3><div class="seller-campaign__facts"><span>{item.rooms} quartos</span><span>{item.baths} casas de banho</span><span>{item.parking} estacionamento</span></div><p>{item.municipality}<br />{item.area}</p></div></article>)}</div>
-      </section>
-      <section class="seller-campaign__marketing">
-        <div class="seller-campaign__section-intro"><h2>A sua casa merece a melhor divulgação</h2><p>Uma boa estratégia de marketing faz com que a sua casa se destaque das outras casas no mercado. O meu objetivo é fornecer estratégias inovadoras de marketing digital para garantir que a sua casa brilhe, para que os compradores certos a encontrem e a venham visitar.</p></div>
-        <div class="seller-campaign__strategies">{strategies.map(([heading, text]) => <article><h3>{heading}</h3><p>{text}</p></article>)}</div>
-      </section>
-      <section class="seller-campaign__process"><h2>Vendo a sua casa com sucesso.</h2><a href="#form" class="seller-campaign__button">QUERO VENDER A MINHA CASA</a></section>
-      <section class="seller-campaign__clients"><h2>Os nossos clientes são os nossos maiores fãs.</h2><div>{['Jose Silva', 'Isabel Costa', 'Susana Loureiro', 'Joaquim Ferreira', 'Bruna Augusto', 'Bruno Oliveira', 'Isidro Guedes', 'Jorge Mendes', 'Ivone Baldaia', 'Carla Rocha'].map((name) => <span>{name}</span>)}</div></section>
-      <section class="seller-campaign__form-section" id="form"><h2>ESTÁ NA HORA DE VENDER A SUA CASA COM SUCESSO.</h2><p>Preencha o formulário.</p>
-        <form data-campaign-valuation data-route="/lp-flyer-uma-venda-com-sucesso">
-          <div class="seller-campaign__name-fields"><input name="firstName" maxlength="256" placeholder="Nome" required /><input name="lastName" maxlength="256" placeholder="Apelido" required /></div>
-          <input name="email" type="email" maxlength="256" placeholder="O seu email" required /><input name="phone" type="tel" maxlength="256" placeholder="Telefone" required />
-          <label class="seller-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
-          <button type="submit">QUERO VENDER A MINHA CASA</button><p data-campaign-status role="status" aria-live="polite" hidden></p>
-        </form>
-      </section>
-    </main>
-    <footer class="seller-campaign__footer"><span>Joaquim Mota Consultores © {new Date().getFullYear()}</span><a href="https://www.kwportugal.pt/politica-de-privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a></footer>
-  </body>
-</html>
+<!doctype html><html lang="pt-PT"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex, nofollow" /><meta property="og:title" content="LP Flyer - Uma venda com sucesso" /><meta name="twitter:title" content="LP Flyer - Uma venda com sucesso" /><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" /><title>LP Flyer - Uma venda com sucesso</title></head><body>
+<main class="seller-campaign">
+  <header class="seller-campaign__hero"><div class="seller-campaign__logo"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></div><div class="seller-campaign__hero-copy"><h1><strong>Faltam 3 meses para o final do ano.</strong></h1><p>Não fique parado à espera do momento ideal.<br />Ainda vai tempo de mudar de casa este ano.</p><a class="seller-campaign__button" href="#form">QUERO VENDER A MINHA CASA</a></div></header>
+  <section class="seller-campaign__sold-section"><div class="seller-campaign__section-heading"><p>Os Meus resultados</p><h2>Últimos imóveis vendidos</h2></div><FlyerSoldRail /></section>
+  <section class="seller-campaign__marketing"><div class="seller-campaign__section-intro"><h2>A sua casa merece a melhor divulgação</h2><p><br />Uma boa estratégia de marketing faz com que a sua casa se destaque das outras casas no mercado.<br /><br />O meu objetivo é fornecer estratégias inovadoras de marketing digital para garantir que a sua casa brilhe, para que os compradores certos a encontrem e a venham visitar.</p></div></section>
+  <section class="seller-campaign__metrics"><div class="seller-campaign__metrics-heading"><p>Os Meus resultados</p><h2>Vendo a sua casa com sucesso.</h2></div><div class="seller-campaign__metric-list"><div><p>+ Valor</p><strong>96%</strong><p>Valor Inicial de Oferta</p></div><div><p>+ Rápido</p><strong>60 dias</strong><p>Tempo médio de venda</p></div><div><p>+ Tranquilidade</p><strong>85%</strong><p>Angariações Vendidas</p></div></div></section>
+  <section class="seller-campaign__clients" id="testemunhos"><header><div><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a class="seller-campaign__button" href="#form">QUERO VENDER A MINHA CASA</a></header><div class="seller-campaign__testimonials">{testimonialColumns.map((column) => <div class="seller-campaign__testimonial-column">{column.map((item) => <figure><div class="seller-campaign__stars" aria-label="5 estrelas">{Array.from({ length: 5 }, () => <img src="/assets/prelisting-star.svg" alt="" loading="lazy" />)}</div><blockquote>{item?.quote}</blockquote><figcaption>{item?.clientName}</figcaption></figure>)}</div>)}</div></section>
+  <section class="seller-campaign__form-section" id="form"><div class="seller-campaign__form-card"><p>Uma venda bem sucedida</p><h2>ESTÁ NA HORA DE VENDER A SUA CASA COM SUCESSO.</h2><p>Preencha o formulário.</p><form data-campaign-valuation data-route="/lp-flyer-uma-venda-com-sucesso"><div class="seller-campaign__name-fields"><input name="firstName" maxlength="256" placeholder="Nome" required /><input name="lastName" maxlength="256" placeholder="Apelido" required /></div><input name="email" type="email" maxlength="256" placeholder="O seu email" required /><input name="phone" type="tel" maxlength="256" placeholder="Telefone" required /><label class="seller-campaign__consent"><input name="consent" type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label><button type="submit" data-wait="Por favor aguarde...">QUERO VENDER A MINHA CASA</button></form><p data-campaign-status role="status" aria-live="polite" hidden></p></div></section>
+</main>
+<footer class="seller-campaign__footer"><div class="seller-campaign__footer-top"><a href="#"><img src="/assets/logo-white.svg" alt="" width="100" height="50" /></a><div class="seller-campaign__awards"><p><strong>Um consultor premiado</strong></p><img src="/assets/premios-2025.webp" alt="" loading="lazy" /></div></div><div class="seller-campaign__footer-rule"></div><div class="seller-campaign__footer-bottom"><div><p><strong>Joaquim Mota Consultores © </strong>{new Date().getFullYear()}</p><a href="https://www.kwportugal.pt/politica-de-privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a></div><div><p>Somos Real Estate Med. Imo. Lda. AMI 11829</p><p>Made by doop.pt</p></div></div></footer></body></html>
 <script>
-  import { submitFormAccepted } from '../scripts/forms-client';
-  document.querySelectorAll<HTMLFormElement>('[data-campaign-valuation]').forEach((form) => form.addEventListener('submit', async (event) => {
-    event.preventDefault(); if (!form.reportValidity()) return;
-    const data = new FormData(form); const button = form.querySelector<HTMLButtonElement>('button'); const status = form.querySelector<HTMLElement>('[data-campaign-status]'); if (!button || !status) return;
-    button.disabled = true; status.hidden = false;
-    try { await submitFormAccepted(form, { formType: 'valuation', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone') } }); form.hidden = true; status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.'; }
-    catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
-  }));
+import { submitFormAccepted } from '../scripts/forms-client';
+document.querySelectorAll<HTMLFormElement>('[data-campaign-valuation]').forEach((form) => form.addEventListener('submit', async (event) => { event.preventDefault(); if (!form.reportValidity()) return; const button = form.querySelector<HTMLButtonElement>('button[type="submit"]'); const status = form.parentElement?.querySelector<HTMLElement>('[data-campaign-status]'); if (!button || !status || button.disabled) return; const data = new FormData(form); button.disabled = true; button.textContent = button.dataset.wait ?? button.textContent; status.hidden = false; status.textContent = ''; try { await submitFormAccepted(form, { formType: 'valuation', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone') } }); form.hidden = true; status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.'; } catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; button.textContent = 'QUERO VENDER A MINHA CASA'; } }));
 </script>
-<style>
-  .seller-campaign__footer{display:flex;justify-content:space-between;gap:16px;padding:20px max(24px,7vw);font-size:12px}
-  .seller-campaign__footer a{color:inherit}
-  @media(max-width:767px){.seller-campaign__footer{padding:16px 22px}}
-</style>

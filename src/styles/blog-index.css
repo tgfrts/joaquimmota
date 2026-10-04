@@ -67,7 +67,7 @@ body:has(.blog-index) .site-header--light{width:90vw;height:72px;}
  .blog-index__featured-image{aspect-ratio:1;}
  .blog-index__subscribe{padding:5vw 5vw 0;}
  .blog-index__subscribe-card{padding:5vw;grid-template-columns:1fr;gap:32px;}
- .blog-index__subscribe h3{font-size:32px;line-height:38.4px;margin-bottom:12px;}
+ .blog-index__subscribe h3{font-size:32px;line-height:1.2;margin-bottom:12px;}
  .blog-index__subscribe-card>div>p:last-child{font-size:16px;line-height:24px;}
  .blog-index__newsletter-intro{margin-bottom:12px;}
  .blog-index__subscribe-controls{grid-template-columns:1fr;gap:12px;}
@@ -76,8 +76,8 @@ body:has(.blog-index) .site-header--light{width:90vw;height:72px;}
  .blog-index__grid{grid-template-columns:1fr;gap:5vw;}
  .blog-index__card-copy{padding:5vw;}
  .blog-index__card h3{font-size:20px;line-height:28px;}
- .blog-index__card h6{font-size:18px;line-height:25.2px;}
- .blog-index__pagination{margin-top:64px;}
+ .blog-index__card h6{font-size:18px;line-height:1.4;}
+ .blog-index__pagination{margin-top:5vw;}
 }
 
 .blog-index__closing{min-height:517px;margin:0 0 -128px;padding:64px 5vw;overflow:hidden;color:#e4e2df;}

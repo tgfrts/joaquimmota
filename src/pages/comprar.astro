@@ -11,8 +11,35 @@ import buyTestimonials from '../data/buy-testimonials-source.json';
 import '../styles/buy-sell-marketing.css';
 import '../styles/home-fidelity.css';
 import '../styles/buy-fidelity.css';
-const records: any[] = Array.isArray(data) ? data : (data as any).documents ?? [];
-const properties = sourceProperties.map(source => ({ ...source, cms: records.find(record => record._type === 'property' && record.legacyId === source.legacyId) }));
+import { ownRecordByLegacyId, recordsFromContent } from '../data/cms-content';
+const records = recordsFromContent(data);
+// The enum values and public labels are pinned in the source payload contract.
+const marketBannerLabels: Record<string, string> = { new: 'Novidade', newPrice: 'Novo Preço', openHouse: 'Open House', reserved: 'Reservado' };
+const properties = sourceProperties.map((fallback) => {
+  const own = ownRecordByLegacyId(records, 'property', fallback.legacyId);
+  if (!own) return { ...fallback, cms: undefined, priceOnRequest: false };
+  return {
+    ...fallback,
+    cms: own,
+    title: own.title,
+    price: String(own.price ?? ''),
+    priceOnRequest: own.priceOnRequest === true,
+    municipality: own.municipality ?? '',
+    parish: own.parish ?? '',
+    reference: own.referenceCode ?? '',
+    beds: own.bedrooms,
+    baths: own.bathrooms,
+    parking: own.parkingSpaces,
+    area: own.grossArea,
+    label: own.marketBanner ? (marketBannerLabels[own.marketBanner] ?? own.marketBanner) : '',
+  };
+});
+const buyTestimonialLegacyIds = [
+  '67b454c48728d3d81a387c44', '67b454c242cd3da4d37b19e1', '67b454c40e6191ab38dd93b4',
+  '67b454c3a547aac135cb03bb', '67b454c5e23698381d4b5a8b', '67b454c3d756ec6ee51b9d5f',
+  '652f96cb684575bd79cc55e6', '67b454c3d756ec6ee51b9d20', '652f959cc8e4c50b1b987165', '652f95c499e5a384fac63080',
+] as const;
+const testimonials = buyTestimonials.map((fallback, index) => ownRecordByLegacyId(records, 'testimonial', buyTestimonialLegacyIds[index]) ?? fallback);
 const buySteps = buySource.map(source => records.find(record => record._type === 'processStep' && record.placement === 'buy' && record.legacyId === source.legacyId) ?? source);
 ---
 <BaseLayout title="Comprar">
@@ -21,9 +48,9 @@ const buySteps = buySource.map(source => records.find(record => record._type ===
     <section class="buy-hero"><div class="buy-hero__heading"><span class="buy-hero__eyebrow">Compradores</span><h1>Todos queremos ter uma casa de sonho</h1><p>Simplificamos o processo para que possa encontrar e comprar a sua casa de uma forma tranquila.</p><a class="button" href="#imoveis">Conheça os nosso imóveis</a></div><div class="buy-hero__image-wrap"><img src="/assets/buy-kitchen.jpg" alt="" class="buy-hero__image" loading="eager" /><div class="buy-hero__image-overlay"></div></div></section>
     <div class="home-secondary-header"><Header variant="light" pageNavigation contactHref="/vamos-comecar" contactLabel="Vamos começar" showBlog={false} /></div>
     <section class="home-process shell"><div class="home-process__intro"><p class="eyebrow">Uma compra tranquila</p><h2>Como funciona</h2><p>Sabemos que encontrar e comprar a casa ideal pode ser complicado.<br /><br />Estamos aqui para tornar esse processo o mais simples possível para si.</p></div><div class="home-process__steps">{buySteps.map(step => <article data-source-id={step.legacyId} data-buy-step-motion><h3>{step.title}</h3><p>{step.body}</p>{step.ctaLabel && step.ctaUrl && <a href={step.ctaUrl}>{step.ctaLabel}</a>}</article>)}</div></section>
-    <section id="imoveis" class="buy-properties"><div class="shell"><p class="buy-kicker">Imóveis</p><h2>Descubra aqui a sua casa de sonho</h2><div class="buy-properties__grid">{properties.map(property => <a class="buy-property" data-source-id={property.legacyId} href={`/imoveis/${property.slug}`}><div class="buy-property__image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} width={property.imageWidth} height={property.imageHeight} alt="" loading="lazy" />}<span>{property.label}</span></div><div class="buy-property__copy"><h3>{property.title}</h3><p class="buy-property__price"><b>€</b>{property.price}</p><p class="buy-property__place"><img src="/assets/property-address.svg" alt="" /><span>{property.municipality}</span><span>{property.parish}</span></p><p class="buy-property__reference">{property.reference}</p><hr /><div class="buy-property__facts"><span><img src="/assets/property-bed.svg" alt="" />{property.beds}</span><span><img src="/assets/property-bath.svg" alt="" />{property.baths}</span><span><img src="/assets/property-garage.svg" alt="" />{property.parking}</span><span class="buy-property__area"><img src="/assets/property-area.svg" alt="" />{property.area} m2 - Área Bruta</span></div></div></a>)}</div></div></section>
+    <section id="imoveis" class="buy-properties"><div class="shell"><p class="buy-kicker">Imóveis</p><h2>Descubra aqui a sua casa de sonho</h2><div class="buy-properties__grid">{properties.map(property => <a class="buy-property" data-source-id={property.legacyId} href={`/imoveis/${property.slug}`}><div class="buy-property__image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} width={property.imageWidth} height={property.imageHeight} alt="" loading="lazy" />}<span>{property.label}</span></div><div class="buy-property__copy"><h3>{property.title}</h3>{property.priceOnRequest ? <p class="buy-property__price">Preço sob consulta</p> : <p class="buy-property__price"><b>€</b>{property.price}</p>}<p class="buy-property__place"><img src="/assets/property-address.svg" alt="" /><span>{property.municipality}</span><span>{property.parish}</span></p><p class="buy-property__reference">{property.reference}</p><hr /><div class="buy-property__facts"><span><img src="/assets/property-bed.svg" alt="" />{property.beds}</span><span><img src="/assets/property-bath.svg" alt="" />{property.baths}</span><span><img src="/assets/property-garage.svg" alt="" />{property.parking}</span><span class="buy-property__area"><img src="/assets/property-area.svg" alt="" />{property.area} m2 - Área Bruta</span></div></div></a>)}</div></div></section>
     <section class="buy-guide"><div class="shell buy-guide__card" data-buy-guide-progress><div><p>Guia</p><h2>Precisa se vender antes de comprar?</h2><p>Obtenha um guia prático para mudar de casa sem stress e sem complicações.</p><a class="button" href="/guia-vender-para-comprar">QUERO OBTER O GUIA</a></div></div></section>
-    <section id="testemunhos" class="buy-testimonials"><div class="shell"><header><div><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a class="button" href="/reviews">Leia as nossas avaliações</a></header><div class="buy-testimonials__grid">{buyTestimonials.map(testimonial => <figure><div aria-label="5 estrelas" class="buy-stars">★★★★★</div><blockquote>{testimonial.quote}</blockquote><figcaption>{testimonial.clientName}</figcaption></figure>)}</div></div></section>
+    <section id="testemunhos" class="buy-testimonials"><div class="shell"><header><div><p>O que dizem os nossos clientes</p><h2>Os nossos clientes são os nossos maiores fãs.</h2></div><a class="button" href="/reviews">Leia as nossas avaliações</a></header><div class="buy-testimonials__grid">{testimonials.map(testimonial => <figure><div aria-label="5 estrelas" class="buy-stars">★★★★★</div><blockquote>{testimonial.quote}</blockquote><figcaption>{testimonial.clientName}</figcaption></figure>)}</div></div></section>
     <section class="buy-closing"><div class="shell buy-closing__card" data-buy-cta-motion><div><p>Vamos Conversar</p><h2>Quer comprar a sua casa com sucesso?</h2><p>Mais de 100 famílias compraram a sua casa connosco.</p><a class="button" href="/vamos-comecar">Vamos Começar</a></div><div class="buy-closing__portrait"><img src="/assets/closing-jm.png" alt="" loading="lazy" /></div></div></section>
   </main>
   <Footer />

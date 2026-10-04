@@ -1,0 +1,80 @@
+---
+import content from '../data/sample-content.json';
+import CmsImage from './CmsImage.astro';
+import { ownRecordByLegacyId, recordsFromContent } from '../data/cms-content';
+
+const records = recordsFromContent(content);
+const fallback = [
+  { legacyId: '6960e9aaf84806ee59710ab1', image: '/assets/sold-carvicais.webp', title: 'Moradia T3 térrea, Isolada com 331m2 de terreno em Carviçais', municipality: 'Torre de Moncorvo', parish: 'Carviçais', mobileMunicipality: 'Torre de Moncorvo' },
+  { legacyId: '6937eca300c97af63c25ced9', image: '/assets/sold-pacos.webp', title: 'Armazém à venda em Paços de Brandão', municipality: 'Santa Maria a Feira', parish: 'Paços de Brandão', mobileMunicipality: 'Santa Maria a Feira' },
+  { legacyId: '6937fdc31a1cdb29a1f2f2b3', image: '/assets/sold-pedroso.webp', title: 'Moradia T2 para Recuperar em Pedroso e terreno 1.072 m² com viabilidade construtiva', municipality: 'Vila Nova de Gaia', parish: 'Pedroso', mobileMunicipality: '' },
+  { legacyId: '697889f130b6d852b1f52055', image: '/assets/sold-vilar.webp', title: 'Apartamento T1+1 com elevador e garagem em Vilar do Paraíso', municipality: 'Vila Nova de Gaia', parish: 'Vilar do Paraíso', mobileMunicipality: '' },
+  { legacyId: '695d35b09f5de4973299416b', image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', municipality: 'Vila Nova de Gaia', parish: 'Serzedo', mobileMunicipality: '' },
+];
+const properties = fallback.map((item) => {
+  const cms = ownRecordByLegacyId(records, 'property', item.legacyId);
+  return { ...item, cms, title: cms?.title ?? item.title, municipality: cms?.municipality ?? item.municipality, parish: cms?.parish ?? item.parish, mobileMunicipality: item.mobileMunicipality ? (cms?.municipality ?? item.mobileMunicipality) : '' };
+});
+const loop = [...properties, ...properties];
+---
+
+<div class="flyer-sold-rail" aria-label="Últimos imóveis vendidos">
+  <div class="flyer-sold-rail__track">
+    {loop.map((property, index) => (
+      <article class="flyer-sold-rail__card" aria-hidden={index >= properties.length ? 'true' : undefined}>
+        <div class="flyer-sold-rail__image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} alt="" loading="lazy" />}</div><div class="flyer-sold-rail__overlay"></div>
+        <div class="flyer-sold-rail__content">
+          <h3>Vendido</h3>
+          <h4>{property.title}</h4>
+          <div class="flyer-sold-rail__rule"></div>
+          <div class="flyer-sold-rail__locations flyer-sold-rail__locations--desktop"><h6>{property.municipality}</h6><h6>{property.parish}</h6></div>
+          <div class="flyer-sold-rail__locations flyer-sold-rail__locations--mobile"><h6>{property.parish}</h6>{property.mobileMunicipality && <h6>{property.mobileMunicipality}</h6>}</div>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>
+
+<style>
+  .flyer-sold-rail { width:100%; overflow:hidden; }
+  .flyer-sold-rail__track { display:flex; width:max-content; animation:flyer-sold-loop-desktop 25s linear infinite; animation-play-state:paused; }
+  .flyer-sold-rail__track.is-running { animation-play-state:running; }
+  .flyer-sold-rail__card { position:relative; flex:0 0 25vw; width:25vw; height:37.5vw; margin-right:5vw; overflow:hidden; color:#fff; }
+  .flyer-sold-rail__image, .flyer-sold-rail__image :global(img) { width:100%; height:100%; }
+  .flyer-sold-rail__image { position:absolute; inset:0; }
+  .flyer-sold-rail__image :global(img) { display:block; object-fit:cover; }
+  .flyer-sold-rail__overlay { position:absolute; inset:0; background:rgba(0,9,52,.15); }
+  .flyer-sold-rail__content { position:absolute; inset:0; z-index:1; display:flex; flex-direction:column; justify-content:flex-end; padding:2vw; }
+  .flyer-sold-rail h3, .flyer-sold-rail h4, .flyer-sold-rail h6 { margin:0; color:inherit; }
+  .flyer-sold-rail h3 { font:500 40px/48px Roboto,Arial,sans-serif; text-align:center; }
+  .flyer-sold-rail h4 { font:500 24px/31.2px Roboto,Arial,sans-serif; }
+  .flyer-sold-rail__rule { height:1px; background:currentColor; }
+  .flyer-sold-rail__locations h6 { font:500 17.6px/24.64px Roboto,Arial,sans-serif; letter-spacing:normal; }
+  .flyer-sold-rail__locations--mobile { display:none; }
+  @keyframes flyer-sold-loop-desktop { from { transform:translateX(0); } to { transform:translateX(-150vw); } }
+  @media (prefers-reduced-motion: reduce) { .flyer-sold-rail { overflow-x:auto; } .flyer-sold-rail__track { animation:none; } }
+  @media (max-width:767px) {
+    .flyer-sold-rail__track { animation-name:flyer-sold-loop-mobile; animation-duration:20s; }
+    .flyer-sold-rail__card { flex-basis:75vw; width:75vw; height:112.5vw; margin-right:5vw; }
+    .flyer-sold-rail__content { padding:5vw; }
+    .flyer-sold-rail h3 { font-size:32px; line-height:38.4px; }
+    .flyer-sold-rail h4 { font-size:24px; line-height:33.6px; }
+    .flyer-sold-rail__locations--desktop { display:none; }
+    .flyer-sold-rail__locations--mobile { display:block; }
+    .flyer-sold-rail__locations h6 { font-size:18px; line-height:25.2px; }
+  }
+  @keyframes flyer-sold-loop-mobile { from { transform:translateX(0); } to { transform:translateX(-400vw); } }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.flyer-sold-rail').forEach((rail) => {
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.querySelector('.flyer-sold-rail__track')?.classList.add('is-running');
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: 0 });
+    observer.observe(rail);
+  });
+</script>
