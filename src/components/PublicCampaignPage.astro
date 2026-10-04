@@ -22,7 +22,7 @@ const image = isCabaz
     <div class="public-campaign__image" style={`--campaign-bg:url("${image}")`} aria-hidden="true"></div>
     <section class="public-campaign__panel">
       <a class="public-campaign__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
-      <h1>{heading}{isCabaz && <><br />Participe no sorteio do nosso cabaz natalício. Para se habilitar preencha o formulário.</>}</h1>
+      <h5>{heading}{isCabaz && <><br />Participe no sorteio do nosso cabaz natalício. Para se habilitar preencha o formulário.</>}</h5>
       <form data-public-campaign data-route={route} data-redirect="/lp/obrigado-oferta" data-success={isCabaz ? 'Obrigado! A sua participação foi registada com sucesso.' : 'Obrigado! O seu formulário foi enviado com sucesso.'}>
         <div class="public-campaign__names"><input name="firstName" maxlength="256" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" maxlength="256" autocomplete="family-name" placeholder="Apelido" required /></div>
         <input name="email" type="email" maxlength="256" autocomplete="email" placeholder="O seu email" required />

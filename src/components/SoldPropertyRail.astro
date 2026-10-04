@@ -7,8 +7,8 @@ const properties = [
   { image: '/assets/sold-serzedo.webp', title: 'Moradia Térrea T2 em Serzedo com Potencial de ser T3 e Anexo T1 Independente', municipality: 'Vila Nova de Gaia', parish: 'Serzedo', mobileMunicipality: '' },
 ];
 ---
-<div class="sold-rail sold-rail--desktop" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h3>{property.title}</h3><p>{property.municipality}<br />{property.parish}</p></article>)}</div></div>
-<div class="sold-rail sold-rail--mobile" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h3>{property.title}</h3><p>{property.parish}{property.mobileMunicipality && <><br />{property.mobileMunicipality}</>}</p></article>)}</div></div>
+<div class="sold-rail sold-rail--desktop" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h4>{property.title}</h4><div class="sold-rail__locations"><h6>{property.municipality}</h6><h6>{property.parish}</h6></div></article>)}</div></div>
+<div class="sold-rail sold-rail--mobile" aria-label="Últimos imóveis vendidos"><div class="sold-rail__track">{[...properties,...properties].map((property,index)=><article class="sold-rail__card" aria-hidden={index>=properties.length?'true':undefined}><div class="sold-rail__image"><img src={property.image} alt="" loading="lazy" /><img class="sold-rail__banner" src="/assets/prelisting-sold-banner.webp" alt="" /></div><h4>{property.title}</h4><div class="sold-rail__locations"><h6>{property.parish}</h6>{property.mobileMunicipality && <h6>{property.mobileMunicipality}</h6>}</div></article>)}</div></div>
 <style>
   .sold-rail { width: 100%; overflow: hidden; }
   .sold-rail--mobile { display: none; }
@@ -19,9 +19,10 @@ const properties = [
   .sold-rail__image { position: absolute; inset: 0; overflow: hidden; }
   .sold-rail__image > img { display: block; object-fit: cover; }
   .sold-rail__image .sold-rail__banner { position: absolute; inset: 0; object-fit: cover; }
-  .sold-rail__card h3, .sold-rail__card p { position: absolute; z-index: 2; left: 2vw; right: 2vw; margin: 0; color: inherit; }
-  .sold-rail__card h3 { bottom: 5.75vw; font-size: 24px; font-weight: 500; line-height: 31.2px; }
-  .sold-rail__card p { bottom: 2vw; font-size: 17.6px; font-weight: 500; line-height: 24.64px; }
+  .sold-rail__card h4, .sold-rail__locations { position: absolute; z-index: 2; left: 2vw; right: 2vw; margin: 0; color: inherit; }
+  .sold-rail__card h4 { bottom: 5.75vw; font-size: 24px; font-weight: 500; line-height: 31.2px; }
+  .sold-rail__locations { bottom: 2vw; font-size: 17.6px; font-weight: 500; line-height: 24.64px; }
+  .sold-rail__locations h6{margin:0;font:inherit;color:inherit;letter-spacing:normal}
   @keyframes sold-loop-desktop { from { transform: translateX(0); } to { transform: translateX(-150vw); } }
   @media (prefers-reduced-motion: reduce) { .sold-rail__track { animation: none; } .sold-rail { overflow-x: auto; } }
   @media (max-width: 767px) {
@@ -29,9 +30,9 @@ const properties = [
     .sold-rail--mobile { display: block; }
     .sold-rail__track { animation-name: sold-loop-mobile; animation-duration: 20s; }
     .sold-rail__card { flex-basis: 75vw; width: 75vw; height: 112.5vw; margin-right: 5vw; }
-    .sold-rail__card h3, .sold-rail__card p { left: 5vw; right: 5vw; }
-    .sold-rail__card h3 { bottom: 12vw; font-size: 24px; line-height: 33.6px; }
-    .sold-rail__card p { bottom: 5vw; font-size: 18px; line-height: 25.2px; }
+    .sold-rail__card h4, .sold-rail__locations { left: 5vw; right: 5vw; }
+    .sold-rail__card h4 { bottom: 12vw; font-size: 24px; line-height: 33.6px; }
+    .sold-rail__locations { bottom: 5vw; font-size: 18px; line-height: 25.2px; }
   }
   @keyframes sold-loop-mobile { from { transform: translateX(0); } to { transform: translateX(-400vw); } }
 </style>

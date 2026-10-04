@@ -35,8 +35,8 @@ const { title, heading, description, route, background, propertyDetails = false,
       <section class="seller-lead__panel">
         <div class="seller-lead__content">
           <a class="seller-lead__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
-          <h1>{heading}</h1>
-          <p class="seller-lead__description">{description}</p>
+          <h5>{heading}</h5>
+          {route === '/uma-venda-com-sucesso' ? <h5 class="seller-lead__description">{description}</h5> : <p class="seller-lead__description">{description}</p>}
           <form class="seller-lead__form" data-seller-lead-form data-route={route} data-property-details={propertyDetails ? 'true' : 'false'}>
             <div class="seller-lead__names">
               <label><span>Nome</span><input name="firstName" autocomplete="given-name" placeholder="Nome" required /></label>

@@ -1374,5 +1374,98 @@
       "targetCTAHeight": 501.796875
     },
     "scopeLimit": "Bounded page measurements and source-derived authored motion, not global site acceptance; no real form submissions."
+  },
+  "staticLeadFollowup": {
+    "date": "2026-10-04",
+    "routes": [
+      "/estudo-de-mercado",
+      "/sessao-gratuita",
+      "/credito-habitacao"
+    ],
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "measuredElements": [
+      "heading",
+      "description",
+      "firstField",
+      "submitButton",
+      "legalNote",
+      "form"
+    ],
+    "geometry": "All six source/target element rectangles match for all three routes in both viewports. Source heading H5 preserved, including credit heading strong weight. Mobile empty 25vh photo container preserved on session/credit.",
+    "originalMedia": [
+      {
+        "file": "market-report-source.jpg",
+        "source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/637633a5235a735e1eafce47_jrm_relatorio_mockup.jpg",
+        "bytes": 144325,
+        "sha256": "2d96c35e0d5f8668db73a89eabab216c9eb875b4a80e2087d9dab09dd36285e1"
+      },
+      {
+        "file": "session-source.jpg",
+        "source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63638f133928eb6520a4edb4_sessao_low.jpg",
+        "bytes": 498038,
+        "sha256": "c7216c586fb7d82fb84ec83867876fe7d9f1ca18b3445f4027b280ef1408260f"
+      },
+      {
+        "file": "mortgage-source.jpg",
+        "source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/679b741a4b721c781716218a_Conceito%20Empre%CC%81stimo%20Imobilia%CC%81rio%202025-2.jpg",
+        "bytes": 736965,
+        "sha256": "bc208291c070a82937e0b9705f0a3d6da1262df0aec6721b6bc2bceb5cc823fa"
+      }
+    ],
+    "feedback": "Actual handler/helper and authored CSS tested with mocked accepted/error responses; accepted202 hides form and displays sibling feedback; failure preserves retry. No source form submission or real email.",
+    "sourceMarkupLimitation": "Public browser source has a malformed hidden input embed that places legal note/feedback inside form; no source provider behavior certification inferred from markup."
+  },
+  "blogIndexFollowup": {
+    "date": "2026-10-04",
+    "route": "/blog",
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "desktop": {
+      "headerHeight": 72,
+      "featuredSectionHeight": 736,
+      "featuredCard": [
+        1152,
+        608
+      ],
+      "subscribeSectionHeight": 276.390625,
+      "newsletterBlockHeight": 142,
+      "firstArticleCard": [
+        341.328125,
+        590.921875
+      ],
+      "closingHeight": 517,
+      "comparison": "All listed desktop dimensions equal the public source."
+    },
+    "mobile": {
+      "headerHeight": 64,
+      "featuredSectionHeight": 711.5,
+      "featuredCardWidth": 351,
+      "subscribeSourceHeight": 481.28125,
+      "subscribeTargetHeight": 481.3125,
+      "firstCardSourceHeight": 440.03125,
+      "firstCardTargetHeight": 440.0625,
+      "closingSourceHeight": 501.765625,
+      "closingTargetHeight": 501.796875,
+      "comparison": "Only subpixel font/image rounding in listed dimensions."
+    },
+    "content": "Two validated article samples only; full index height and pagination await all59 eligible articles. Source featured/title/subtitle/card link semantics retained; source newsletter copy restored.",
+    "runtime": "Accepted202 success/error/retry/duplicate guards tested using real handler/helper and CSS with mocks; no real subscription/email."
   }
 }

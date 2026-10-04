@@ -23,7 +23,7 @@ const socialImage = 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb
         <a class="static-lead__logo" href="/" aria-label="Joaquim Mota — página inicial">
           <img src="/assets/logo-color.svg" alt="" width="100" height="49" />
         </a>
-        <h1>{heading}</h1>
+        <h5 class="static-lead__heading">{background === 'mortgage' ? <strong>{heading}</strong> : heading}</h5>
         <p class="static-lead__description">{description}</p>
         <form class="static-lead__form" data-static-lead-form data-route={route} data-form-type={formType}>
           <div class="static-lead__name-fields">
@@ -37,9 +37,9 @@ const socialImage = 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb
             <span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span>
           </label>
           <button type="submit">Enviar</button>
-          <p class="static-lead__status" data-form-status role="status" aria-live="polite" hidden></p>
+          <p class="static-lead__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
         </form>
-        <p class="static-lead__copyright">©<span data-current-year>2026</span> - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p>
+        <p class="static-lead__status" data-form-status role="status" aria-live="polite" hidden></p>
       </div>
     </section>
   </main>
@@ -54,7 +54,8 @@ const socialImage = 'https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
       if (!button || button.disabled) return;
       if (!form.reportValidity()) return;
-      const status = form.querySelector<HTMLElement>('[data-form-status]');
+      const wrapper = form.closest<HTMLElement>('[data-static-lead-page]');
+      const status = wrapper?.querySelector<HTMLElement>('[data-form-status]');
       if (!status) return;
       button.disabled = true;
       status.hidden = false;

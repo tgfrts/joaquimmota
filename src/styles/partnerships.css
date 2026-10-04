@@ -78,7 +78,7 @@
   height: auto;
 }
 
-.partnership-page__content h1 {
+.partnership-page__content h5 {
   margin: 0 0 1.25rem;
   color: #161616;
   font-size: 1.25rem;
@@ -86,7 +86,7 @@
   line-height: 1.35;
 }
 
-.partnership-page__content h1 strong {
+.partnership-page__content h5 strong {
   display: block;
   font-weight: 700;
 }
