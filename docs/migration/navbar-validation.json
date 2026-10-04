@@ -42,5 +42,17 @@
     "diagnostics": 0,
     "testsPassed": 124,
     "independentReview": "foundation_audit: no material regression; home-specific blue variant"
+  },
+  "sharedDesktopTypography": {
+    "fontFamily": "Roboto, sans-serif",
+    "weight": 500,
+    "sizePx": 16,
+    "lineHeightPx": 24,
+    "browserVerified": [
+      "home hero",
+      "home secondary blue",
+      "comprar interior"
+    ],
+    "ownerRequested": "match the corrected hero link size"
   }
 }
