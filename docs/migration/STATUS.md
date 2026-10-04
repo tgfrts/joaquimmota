@@ -205,3 +205,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Top navbar comum inclui Início mobile-only href/ acima de Vender. Desktop preservado. Build249 e HTML gerado Home/Vender/Comprar/Sobre/Blog confirmam ordem/classe/href;diffchecklimpo.
 
 2026-10-04 — Comprar apenas: botão vermelho Vamos começar após06.Hora de festejar, href/vamos-comecar, visível sómobile<=767px. Owner retirou pedido para Vender; ficheiroVender inalterado. Build249 e HTML gerado confirmam posição/destino/umaocorrência;diffchecklimpo.
+
+2026-10-04 — Owner repôs vermelho#db1430 nas3ações de vídeo Vender (Agende/Conheça/Descarregue), desktop e mobile, texto claro; posição/copy/href preservados e Marketing excluído. Build249/diffcheckpassaram.
