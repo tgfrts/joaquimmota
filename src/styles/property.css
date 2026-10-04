@@ -132,3 +132,9 @@
 }
 
 .property-page__certificate-label--desktop,.property-page__certificate-label--mobile{margin-right:6px}
+
+/* Keep the summary divider above the indicators on mobile too. */
+@media(max-width:767px){
+  .property-page__facts{position:relative;margin-top:24px}
+  .property-page__facts:before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:#e4e2df}
+}
