@@ -24,7 +24,7 @@ const sourcePageSize = 6;
 <main class="blog-index" data-blog-index data-page-size={sourcePageSize} data-article-count={articles.length}>
   {featured && <section class="blog-index__featured" aria-labelledby="blog-featured-title">
     <div class="blog-index__featured-card">
-    <div class="blog-index__featured-copy"><p class="blog-index__eyebrow">O nosso último artigo</p><h1 id="blog-featured-title">{featured.title}</h1>{featured.subtitle && <p class="blog-index__featured-subtitle">{featured.subtitle}</p>}{featuredExcerpt && <p class="blog-index__featured-excerpt">{featuredExcerpt}</p>}<a href={`/post/${featured.sourceSlug}`}>Ler mais</a></div>
+    <div class="blog-index__featured-copy"><p class="blog-index__eyebrow">Artigo mais recente</p><h1 id="blog-featured-title">{featured.title}</h1>{featured.subtitle && <p class="blog-index__featured-subtitle">{featured.subtitle}</p>}{featuredExcerpt && <p class="blog-index__featured-excerpt">{featuredExcerpt}</p>}<a href={`/post/${featured.sourceSlug}`}>Ler mais</a></div>
     <div class="blog-index__featured-image">
       <CmsImage value={featured.thumbnailImage} alt="" loading="eager" />
     </div>
