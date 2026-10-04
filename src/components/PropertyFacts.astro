@@ -1,6 +1,7 @@
 ---
+import SiteIcon from './SiteIcon.astro';
 import { hasPropertyCharacteristic } from '../lib/property-characteristics';
 interface Props { beds?: number | string; baths?: number | string; parking?: number | string; area?: number | string; }
 const { beds, baths, parking, area } = Astro.props;
 ---
-<div class="buy-property__facts">{hasPropertyCharacteristic(beds) && <span><img src="/assets/property-bed.svg" alt="" />{beds}</span>}{hasPropertyCharacteristic(baths) && <span><img src="/assets/property-bath.svg" alt="" />{baths}</span>}{hasPropertyCharacteristic(parking) && <span><img src="/assets/property-garage.svg" alt="" />{parking}</span>}{hasPropertyCharacteristic(area) && <span class="buy-property__area"><img src="/assets/property-area.svg" alt="" />{area} m²</span>}</div>
+<div class="buy-property__facts">{hasPropertyCharacteristic(beds) && <span><SiteIcon name="bed" size={17} />{beds}</span>}{hasPropertyCharacteristic(baths) && <span><SiteIcon name="bath" size={17} />{baths}</span>}{hasPropertyCharacteristic(parking) && <span><SiteIcon name="garage" size={17} />{parking}</span>}{hasPropertyCharacteristic(area) && <span class="buy-property__area"><SiteIcon name="area" size={17} />{area} m²</span>}</div>

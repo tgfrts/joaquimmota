@@ -1,0 +1,9 @@
+---
+import CmsImage from './CmsImage.astro';
+import PropertyFacts from './PropertyFacts.astro';
+import { formatPropertyPrice } from '../lib/format-property-price';
+import { availableProperties } from '../data/available-properties';
+interface Props { property: typeof availableProperties[number]; badge?: string; headingTag?: 'h1' | 'h3'; }
+const { property, badge, headingTag: Heading = 'h3' } = Astro.props;
+---
+<a class="buy-property" data-source-id={property.legacyId} href={`/imoveis/${property.slug}`}><div class="buy-property__image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} width={property.imageWidth} height={property.imageHeight} alt="" loading="lazy" />}<span class:list={{'buy-property__badge--reserved': !badge && property.label === 'Reservado', 'buy-property__badge--new-price': !badge && property.label === 'Novo Preço'}}>{badge ?? property.label}</span></div><div class="buy-property__copy"><Heading>{property.title}</Heading>{property.priceOnRequest ? <p class="buy-property__price">Preço sob consulta</p> : <p class="buy-property__price">{formatPropertyPrice(property.price)}</p>}<p class="buy-property__place"><span>{property.municipality}</span><span>{property.parish}</span></p><p class="buy-property__reference">{property.reference}</p><hr /><PropertyFacts beds={property.beds} baths={property.baths} parking={property.parking} area={property.area} /></div></a>

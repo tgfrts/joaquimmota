@@ -19,12 +19,12 @@ test('built cards and detail headers omit the entire indicator for missing or ze
   const detail=new JSDOM(fs.readFileSync(new URL(`dist/imoveis/${slug}.html`,root),'utf8')).window.document;
   for(const [field,icon] of [['bedrooms','bed'],['bathrooms','bath'],['parkingSpaces','garage']]){
    const expected=hasPropertyCharacteristic(record[field]);
-   assert.equal(Boolean(card.querySelector(`.buy-property__facts img[src="/assets/property-${icon}.svg"]`)),expected,`${slug} card ${field}`);
-   assert.equal(Boolean(detail.querySelector(`.property-page__facts img[src="/assets/property-${icon}.svg"]`)),expected,`${slug} detail ${field}`);
+   assert.equal(Boolean(card.querySelector(`.buy-property__facts svg[data-icon="${icon}"]`)),expected,`${slug} card ${field}`);
+   assert.equal(Boolean(detail.querySelector(`.property-page__facts svg[data-icon="${icon}"]`)),expected,`${slug} detail ${field}`);
    expected?present++:absent++;
   }
   assert.equal(card.querySelectorAll('.buy-property__area').length,hasPropertyCharacteristic(record.grossArea)?1:0);
-  assert.equal(detail.querySelectorAll('.property-page__facts img[src="/assets/property-area.svg"]').length,[record.usableArea,record.grossArea].filter(hasPropertyCharacteristic).length);
+  assert.equal(detail.querySelectorAll('.property-page__facts svg[data-icon="area"], .property-page__facts svg[data-icon="area-useful"]').length,[record.usableArea,record.grossArea].filter(hasPropertyCharacteristic).length);
  }
  assert.ok(absent>0);assert.ok(present>0);
 });

@@ -1,6 +1,6 @@
 import data from './sample-content.json';
 import sourceProperties from './buy-properties-source.json';
-import { recordsFromContent, selectAvailableProperties, selectFeaturedProperty, type CmsRecord } from './cms-content';
+import { recordsFromContent, selectAvailableProperties, selectFeaturedProperties, type CmsRecord } from './cms-content';
 const records = recordsFromContent(data);
 // The enum values and public labels are pinned in the source payload contract.
 const marketBannerLabels: Record<string, string> = { new: 'Novidade', newPrice: 'Novo Preço', openHouse: 'Open House', reserved: 'Reservado' };
@@ -28,7 +28,5 @@ function cardFromRecord(own: CmsRecord, fallback?: typeof sourceProperties[numbe
 }
 export const availableProperties = selectAvailableProperties(records).map(record =>
   cardFromRecord(record, sourceProperties.find(item => item.legacyId === record.legacyId)));
-const featuredRecord = selectFeaturedProperty(records);
-export const featuredProperty = featuredRecord
-  ? cardFromRecord(featuredRecord, sourceProperties.find(item => item.legacyId === featuredRecord.legacyId))
-  : undefined;
+export const featuredProperties = selectFeaturedProperties(records).map(record =>
+  cardFromRecord(record, sourceProperties.find(item => item.legacyId === record.legacyId)));

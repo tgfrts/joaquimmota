@@ -25,6 +25,7 @@
 /* The source cta1 portrait crops inside a negative-margin wrapper at 390px. */
 .contact-cta__portrait{justify-self:end;width:115px;margin:-64px}.contact-cta__portrait img{display:block;width:115px;margin:0}
 @media(max-width:479px){.contact-cta__portrait{width:43vw;height:calc(43vw - 5vw);margin:-5vw}.contact-cta__portrait img{width:43vw;height:43vw;margin-top:-5vw}}
+.contact-detail-icon.site-icon{color:#20457f;stroke:currentColor}
 
 /* Contact details and map share the navigation's 90vw outer width. */
 .contact-grid,.contact-map{max-width:none}

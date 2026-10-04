@@ -1,10 +1,8 @@
 ---
-import CmsImage from './CmsImage.astro';
-import PropertyFacts from './PropertyFacts.astro';
-import { formatPropertyPrice } from '../lib/format-property-price';
+import PropertyCard from './PropertyCard.astro';
 import { availableProperties } from '../data/available-properties';
-interface Props { limit?: number; }
-const { limit } = Astro.props;
-const properties = limit ? availableProperties.slice(0, limit) : availableProperties;
+interface Props { limit?: number; offset?: number; }
+const { limit, offset = 0 } = Astro.props;
+const properties = availableProperties.slice(offset, limit === undefined ? undefined : offset + limit);
 ---
-<div class="buy-properties__grid">{properties.map(property => <a class="buy-property" data-source-id={property.legacyId} href={`/imoveis/${property.slug}`}><div class="buy-property__image">{property.cms?.featuredImage ? <CmsImage value={property.cms.featuredImage} alt="" loading="lazy" /> : <img src={property.image} width={property.imageWidth} height={property.imageHeight} alt="" loading="lazy" />}<span class:list={{'buy-property__badge--reserved': property.label === 'Reservado', 'buy-property__badge--new-price': property.label === 'Novo Preço'}}>{property.label}</span></div><div class="buy-property__copy"><h3>{property.title}</h3>{property.priceOnRequest ? <p class="buy-property__price">Preço sob consulta</p> : <p class="buy-property__price">{formatPropertyPrice(property.price)}</p>}<p class="buy-property__place"><span>{property.municipality}</span><span>{property.parish}</span></p><p class="buy-property__reference">{property.reference}</p><hr /><PropertyFacts beds={property.beds} baths={property.baths} parking={property.parking} area={property.area} /></div></a>)}</div>
+<div class="buy-properties__grid">{properties.map(property => <PropertyCard property={property} />)}</div>

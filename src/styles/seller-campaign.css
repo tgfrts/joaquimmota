@@ -31,6 +31,7 @@ body { margin: 0; }
 .seller-campaign__testimonials figure { box-sizing: border-box; width: 100%; margin: 0 0 32px; padding: 32px; background: #fff; box-shadow: 4px 4px 20px #00000040; }
 .seller-campaign__stars { display: flex; gap: 4px; height: 20px; margin-bottom: 24px; }
 .seller-campaign__stars img { width: 20px; height: 20px; }
+.seller-campaign__stars .site-icon { width: 20px; height: 20px; color: #db1430; }
 .seller-campaign__testimonials blockquote { color: #161616; white-space: normal; font: 300 18px/27px Roboto, Arial, sans-serif; margin-bottom: 8px; }
 .seller-campaign__testimonials figcaption { padding-top: 16px; color: #20457f; font: 600 16px/24px Roboto, Arial, sans-serif; text-transform: uppercase; }
 .seller-campaign__form-section { padding: 5vw max(5vw, calc((100vw - 1280px) / 2)); background: #00125b; }

@@ -38,6 +38,10 @@ export function selectAvailableProperties(records: CmsRecord[]): CmsRecord[] {
 }
 
 /** Featured listing follows the latest available edit, excluding reservations. */
+export function selectFeaturedProperties(records: CmsRecord[], limit = 3): CmsRecord[] {
+  return selectAvailableProperties(records).filter(record => record.marketBanner !== 'reserved').slice(0, limit);
+}
+
 export function selectFeaturedProperty(records: CmsRecord[]): CmsRecord | undefined {
-  return selectAvailableProperties(records).find(record => record.marketBanner !== 'reserved');
+  return selectFeaturedProperties(records, 1)[0];
 }

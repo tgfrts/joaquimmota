@@ -132,3 +132,6 @@
 /* Public rail uses distinct location variants across responsive layouts. */
 .prelisting-sold__locations{display:flex;flex-direction:column}.prelisting-sold__municipality--clone-hidden{display:none}
 @media(max-width:767px){.prelisting-sold__parish{order:-1}.prelisting-sold__municipality--mobile-hidden{display:none}}
+.prelisting-process__icon .site-icon{width:15px;height:15px;stroke:currentColor}
+.prelisting-icon.site-icon{color:#1e3b6a}
+.prelisting-stars .site-icon{width:20px;height:20px;margin-right:4px;color:#db1430}

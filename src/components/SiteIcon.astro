@@ -1,0 +1,9 @@
+---
+import { BedDouble, Bath, Warehouse, Scan, ScanSquare, Check, Star, Mail, Phone, MapPin, CirclePlay, X, Menu, ChevronLeft, ChevronRight, ChartNoAxesCombined, Camera, MessagesSquare, House, FileSearch, Users, Handshake, KeyRound, ArrowDown, LockKeyhole, SearchX, DoorOpen, Trees, WavesLadder, Fence, ArrowDownUp, PanelsTopLeft } from '@lucide/astro';
+interface Props { name: string; size?: number; class?: string; filled?: boolean; }
+const { name, size = 24, class: className = '', filled = false } = Astro.props;
+const icons = { bed: BedDouble, bath: Bath, garage: Warehouse, area: Scan, 'area-useful': ScanSquare, check: Check, star: Star, mail: Mail, phone: Phone, pin: MapPin, play: CirclePlay, close: X, menu: Menu, 'chevron-left': ChevronLeft, 'chevron-right': ChevronRight, chart: ChartNoAxesCombined, camera: Camera, messages: MessagesSquare, home: House, 'file-search': FileSearch, users: Users, handshake: Handshake, key: KeyRound, 'arrow-down': ArrowDown, lock: LockKeyhole, search: SearchX, warehouse: Warehouse, door: DoorOpen, trees: Trees, waves: WavesLadder, fence: Fence, lift: ArrowDownUp, balcony: PanelsTopLeft };
+const Component = icons[name as keyof typeof icons];
+if (!Component) throw new Error(`Unknown site icon: ${name}`);
+---
+<Component size={size} class={`site-icon ${className}`} data-icon={name} aria-hidden="true" focusable="false" fill={filled ? 'currentColor' : 'none'} />

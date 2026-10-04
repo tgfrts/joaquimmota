@@ -1,5 +1,6 @@
 ---
 import CmsImage from './CmsImage.astro';
+import SiteIcon from './SiteIcon.astro';
 import '../styles/section-type.css';
 
 interface Props {
@@ -17,7 +18,7 @@ const { items, id = 'testemunhos' } = Astro.props;
   </header>
   <div class="testimonials-section__grid">
     {items.map(item => <figure class="testimonials-section__card">
-      <div class="testimonials-section__stars" aria-label="5 estrelas">{Array.from({ length: 5 }, () => <img src="/assets/prelisting-star.svg" alt="" loading="lazy" />)}</div>
+      <div class="testimonials-section__stars" aria-label="5 estrelas">{Array.from({ length: 5 }, () => <SiteIcon name="star" size={20} filled class="site-icon" />)}</div>
       <blockquote>{item.quote}</blockquote>
       <figcaption>{item.portrait && <CmsImage value={item.portrait} alt="" class="testimonials-section__portrait" loading="lazy" />}<span>{item.clientName}</span></figcaption>
     </figure>)}
@@ -47,7 +48,7 @@ const { items, id = 'testemunhos' } = Astro.props;
   .testimonials-section__more[hidden]{display:none}
   .testimonials-section__more:focus-visible{outline:2px solid #20457f;outline-offset:4px}
   .testimonials-section__stars{display:flex;gap:4px;height:20px;margin-bottom:24px}
-  .testimonials-section__stars img{display:block;width:20px;height:20px}
+  .testimonials-section__stars .site-icon{display:block;width:20px;height:20px}
   .testimonials-section__card blockquote{margin:0 0 24px;padding:0;border:0;font:300 18px/27px Roboto,sans-serif}
   .testimonials-section__card figcaption{color:#20457f;display:flex;align-items:center;gap:16px;min-height:24px;font:600 16px/24px Roboto,sans-serif}
   .testimonials-section__card :global(.testimonials-section__portrait){display:block;flex:none;width:48px;height:48px;border-radius:50%;object-fit:cover}

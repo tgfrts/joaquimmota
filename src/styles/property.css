@@ -112,3 +112,23 @@
 .property-page__reserved{background:#20457f;color:#fff}
 
 .property-page__reference{font-size:12px;line-height:18px;font-weight:400}
+
+/* Inline Lucide icons replace former raster interface icons. */
+.property-page__facts>span>.site-icon,.property-page__characteristics li>.site-icon{display:block;flex:none;width:17px;height:17px;color:#20457f;stroke:currentColor}
+.property-page__facts>span>.site-icon{margin-right:6px}
+.property-page__facts>span{color:#161616}
+.property-page__characteristics li{color:#161616}
+.property-page__certificate-label--desktop{display:inline}
+.property-page__certificate-label--mobile{display:none}
+.property-page__certificate-label--desktop,.property-page__certificate-label--mobile{color:#20457f}
+@media(max-width:767px){
+  .property-page__header h1,.property-page--reserved .property-page__header h1{font-size:28px;line-height:33.6px}
+  .property-page__facts,.property-page--reserved .property-page__facts{column-gap:12px}
+  .property-page__characteristics ul{gap:12px}
+  .property-page__facts>span{color:#161616}
+  .property-page__facts>span>.site-icon,.property-page__characteristics li>.site-icon{color:#20457f}
+  .property-page__certificate-label--desktop{display:none}
+  .property-page__certificate-label--mobile{display:inline}
+}
+
+.property-page__certificate-label--desktop,.property-page__certificate-label--mobile{margin-right:6px}

@@ -1,4 +1,5 @@
 ---
+import SiteIcon from './SiteIcon.astro';
 import CmsImage from './CmsImage.astro';
 interface Props { images?: any[]; label: string; }
 const { images = [], label } = Astro.props;
@@ -18,10 +19,10 @@ const usable = images.filter((image) => Boolean(imageUrl(image)));
       {usable.map((image, index) => <button type="button" data-gallery-index={index} aria-label={`Ver imagem ${index + 1} de ${usable.length}`}><CmsImage value={image} alt="" loading={index < 3 ? 'eager' : 'lazy'} /></button>)}
     </div>
     <dialog class="cms-gallery__dialog" aria-label={`${label}: visualização ampliada`}>
-      <button type="button" class="cms-gallery__close" aria-label="Fechar galeria">×</button>
+      <button type="button" class="cms-gallery__close" aria-label="Fechar galeria"><SiteIcon name="close" /></button>
       <div class="cms-gallery__view" role="tabpanel" id={`${galleryId}-panel`}><img class="cms-gallery__full-image" alt={label} />
-        <button type="button" data-gallery-previous aria-label="Imagem anterior"><span></span></button>
-        <button type="button" data-gallery-next aria-label="Imagem seguinte"><span></span></button>
+        <button type="button" data-gallery-previous aria-label="Imagem anterior"><SiteIcon name="chevron-left" /></button>
+        <button type="button" data-gallery-next aria-label="Imagem seguinte"><SiteIcon name="chevron-right" /></button>
       </div>
       <div class="cms-gallery__strip" role="tablist" aria-label="Imagens da galeria">{usable.map((image, index) => <button type="button" role="tab" aria-label={`Mostrar imagem ${index + 1} de ${usable.length}`} aria-selected="false" aria-controls={`${galleryId}-panel`} id={`${galleryId}-tab-${index}`} tabindex="-1" data-gallery-thumbnail={index}><CmsImage value={image} alt="" loading="lazy" /></button>)}</div>
     </dialog>
