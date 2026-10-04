@@ -4,7 +4,7 @@
 
 - Checkout independente `tgfrts/joaquimmota`; PM sem alterações tracked.
 - Gates de amostras e payload completo passaram com revisão independente. Importação concluída:190 drafts próprios, zero publicados,1447 posições de imagem/1342 originais referenciados;1343 assets incluem um extra não referenciado de validação. Nenhum draft de origem importado.
-- Build250 páginas; Astro check101 ficheiros sem diagnósticos;124/124 testes. Gate de rotas sem caminhos necessários ausentes ou proibidos gerados;264/264 GET locais passaram, incluindo9 drafts404,4 exclusões Owner404 e admin401.
+- Build250 páginas; Astro check102 ficheiros sem diagnósticos;124/124 testes no candidato D1; ícones posteriores verificados por build/HTML/runtime. Gate de rotas sem caminhos necessários ausentes ou proibidos gerados;264/264 GET locais passaram, incluindo9 drafts404,4 exclusões Owner404 e admin401.
 - Comparações documentadas de famílias estáticas, dois exemplos por CMS onde aplicável, interações e desktop/mobile/tablet. Blog completo e flyer fechados nos dois viewports principais; esta evidência é delimitada e não certifica todos os possíveis tamanhos de ecrã.
 - Preview local `http://127.0.0.1:8789`, com conteúdo do Sanity próprio; cache de190 documentos ignorada pelo Git. Sem Studio alojado; schema MCP próprio disponível.
 - Owner removeu por completo `/lp/oferta-selecao`, `/ofertas/vinho-e-fado` e os dois relatórios DOOP, incluindo forms/handlers/assets exclusivos. URLs devolvem404; inventário histórico/Webflow/Sanity não alterados.
@@ -137,3 +137,5 @@ Flyer agora usa o conteúdo próprio por IDs exatos, rail específico com movime
 Validação Resend final:137/137 testes com mocks, check111/zero diagnósticos e auditoria independente passou. Link iPhone mantém o preview; POST de formulários exige a origem local exata e continua dirigido só a t@doop.pt. Retry da rede local202 com a mesma chave; nenhum segredo em ficheiros tracked ou dist.
 
 2026-10-04 — alteração Owner e D1: quatro páginas e todos os relatórios DOOP/forms/handlers removidos. Bases próprias produção/preview criadas em EU, migration aplicada e schema remoto conferido; ambas permanecem vazias. D1 local valida gravação antes de Resend, retry sem duplicação, conflito409 e receipts. Testes124/124, check101/zero diagnósticos, build250,264/264 GET. Auditoria independente passou. Email adicional de teste entregue só a t@doop.pt; nenhum DNS/cutover/deployment, alteração PM, escrita Webflow ou exclusão Sanity.
+
+2026-10-04 — ícones Webflow: favicon PNG32×32 e webclip PNG256×256 copiados byte a byte dos links publicados originais; links presentes nas250 páginas, incluindo layouts de campanhas/utilidades. Build250 e check102/zero diagnósticos. Preview atualizado; nenhuma escrita Webflow ou publicação. Evidência: site-icons-validation.json.

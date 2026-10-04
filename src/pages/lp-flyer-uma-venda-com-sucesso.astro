@@ -1,4 +1,5 @@
 ---
+import SiteIcons from '../components/SiteIcons.astro';
 import '../styles/seller-campaign.css';
 import fallback from '../data/prelisting-testimonial-source.json';
 import sampleContent from '../data/sample-content.json';
@@ -17,7 +18,7 @@ const testimonials: any[] = testimonialPins.map<any>((legacyId) => {
 }).filter((item) => item.clientName && item.quote);
 const testimonialColumns = [testimonials.slice(0, 3), testimonials.slice(3, 7), testimonials.slice(7, 10)];
 ---
-<!doctype html><html lang="pt-PT"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex, nofollow" /><meta property="og:title" content="LP Flyer - Uma venda com sucesso" /><meta name="twitter:title" content="LP Flyer - Uma venda com sucesso" /><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" /><title>LP Flyer - Uma venda com sucesso</title></head><body>
+<!doctype html><html lang="pt-PT"><head><SiteIcons /><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex, nofollow" /><meta property="og:title" content="LP Flyer - Uma venda com sucesso" /><meta name="twitter:title" content="LP Flyer - Uma venda com sucesso" /><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" /><title>LP Flyer - Uma venda com sucesso</title></head><body>
 <main class="seller-campaign">
   <header class="seller-campaign__hero"><div class="seller-campaign__logo"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></div><div class="seller-campaign__hero-copy"><h1><strong>Faltam 3 meses para o final do ano.</strong></h1><p>Não fique parado à espera do momento ideal.<br />Ainda vai tempo de mudar de casa este ano.</p><a class="seller-campaign__button" href="#form">QUERO VENDER A MINHA CASA</a></div></header>
   <section class="seller-campaign__sold-section"><div class="seller-campaign__section-heading"><p>Os Meus resultados</p><h2>Últimos imóveis vendidos</h2></div><FlyerSoldRail /></section>

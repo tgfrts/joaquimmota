@@ -1,0 +1,25 @@
+{
+  "verifiedAt": "2026-10-04T10:32:04.611044+00:00",
+  "sourceReadOnly": true,
+  "sourcePage": "https://joaquimmota.pt/",
+  "assets": [
+    {
+      "file": "public/favicon.png",
+      "source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/6363906939de97941167a66c_favicon.png",
+      "bytes": 1981,
+      "width": 32,
+      "height": 32,
+      "sha256": "0745a2588db091840c4716a9437b53690a97d24d7264c39fe99b702204301c20"
+    },
+    {
+      "file": "public/apple-touch-icon.png",
+      "source": "https://cdn.prod.website-files.com/63638f133928eb2761a4ecfb/63639071769fbf31ed357a46_webclip.png",
+      "bytes": 10650,
+      "width": 256,
+      "height": 256,
+      "sha256": "b99d3d4d8204dcc4c7322f1e2fafc8394c2f54ca8d49172bcadfaaafd7458110"
+    }
+  ],
+  "builtPagesWithBothIcons": 250,
+  "assetBytesPreserved": true
+}

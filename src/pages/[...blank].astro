@@ -1,4 +1,5 @@
 ---
+import SiteIcons from '../components/SiteIcons.astro';
 import inventory from '../../docs/migration/blank-template-routes.json';
 export function getStaticPaths() {
   return inventory.routes.map(route => ({ params: { blank: route.path }, props: { title: route.title } }));
@@ -6,4 +7,4 @@ export function getStaticPaths() {
 const { title } = Astro.props;
 ---
 <!doctype html>
-<html lang="pt-PT"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex, nofollow" /><title>{title}</title></head><body></body></html>
+<html lang="pt-PT"><head><SiteIcons /><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex, nofollow" /><title>{title}</title></head><body></body></html>
