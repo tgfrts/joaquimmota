@@ -223,3 +223,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Preços nos cards e ficha usam formato português com espaços nosmilhares/vírguladecimal e€final (300 000 €), Preço sobconsulta preservado. Card área mostra apenas valor+m², detalhe mantém ÁreaBruta/Útil. NovoPreço agora branco/textovermelho#db1430 porcorreçãoOwner;Reservadobranco/azul preservado. Build250, assertionspreçosPT/HTMLcard/detalhe e diffcheckpassaram.
 
 2026-10-04 — CorreçãofinalOwner: Reservado fundoazul#20457f/textobranco. NovoPreço mantém branco/vermelho. Build250/diffcheckpassaram.
+
+2026-10-04 — Indicadores dos cards PropertyGrid ficam numa linha única (quartos/banhos/garagem/área). Removidos padding/margens dos antigosbadges e min-width173px da área; gap6px/space-between, semfill. Build250/diffcheckpassaram.
