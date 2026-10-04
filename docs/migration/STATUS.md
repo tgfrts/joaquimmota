@@ -297,3 +297,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Owner: destaque Blog desktop regressa a duas colunas 50/50, conteúdo à esquerda centrado verticalmente e imagem à direita; sem sobreposição. Mobile mantém imagem 3:2 e composição atual.
 
 2026-10-04 — Detalhe de artigo: removido o ancestral de scroll criado por overflow:hidden (substituído por clip) para a newsletter sticky acompanhar o viewport no desktop e terminar na grelha do artigo. Mobile/tablet mantêm posição estática.
+
+2026-10-04 — Contacto do imóvel desktop em coluna lateral desde o header até antes do CTA, sticky com top 80px e gap inferior 64px. Entrada sincronizada com a opacidade do header. Newsletter do artigo e contacto do imóvel usam o gradiente azul da navbar. Mobile mantém formulário após conteúdo.

@@ -151,3 +151,12 @@
 
 .property-page__cover-trigger{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
 .property-page__cover-trigger:focus-visible{outline:3px solid #20457f;outline-offset:-3px}
+
+.property-page__inquiry .property-inquiry{background:linear-gradient(45deg,#20457f,#162b4e)}
+@media(min-width:992px){
+ .property-page__layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);column-gap:80px;width:90vw;margin:-256px auto 64px;align-items:start}
+ .property-page__layout>.property-page__header{grid-column:1;grid-row:1;width:100%;margin:0}
+ .property-page__layout>.property-page__body{grid-column:1;grid-row:2;width:100%;padding-bottom:0}
+ .property-page__layout>.property-page__inquiry{grid-column:2;grid-row:1 / span 2;align-self:stretch;width:100%;margin:0;padding:0;min-width:0;opacity:1}
+ .property-page__inquiry .property-inquiry{position:sticky;top:80px}
+}
