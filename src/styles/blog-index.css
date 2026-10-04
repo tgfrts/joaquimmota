@@ -138,3 +138,5 @@ body:has(.blog-index) .site-header--light{width:90vw;height:72px;}
 @media(min-width:768px) and (max-width:991px){[data-blog-index] .blog-index__featured-excerpt{-webkit-line-clamp:3;line-clamp:3}}
 
 [data-blog-index] .blog-index__featured-copy>.blog-index__eyebrow{text-transform:uppercase}
+
+@media(min-width:768px){[data-blog-index] .blog-index__featured-card{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}}
