@@ -225,3 +225,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — CorreçãofinalOwner: Reservado fundoazul#20457f/textobranco. NovoPreço mantém branco/vermelho. Build250/diffcheckpassaram.
 
 2026-10-04 — Indicadores dos cards PropertyGrid ficam numa linha única (quartos/banhos/garagem/área). Removidos padding/margens dos antigosbadges e min-width173px da área; gap6px/space-between, semfill. Build250/diffcheckpassaram.
+
+2026-10-04 — ID imóvel/reference noscards e detalhe reduzido12px/18px,peso400 semnegrito. Visibilidade/copy preservados. Build250/diffcheckpassaram.
