@@ -151,4 +151,4 @@ body:has(.blog-index) .site-header--light{width:90vw;height:72px;}
 
 @media(max-width:767px){[data-blog-index] .blog-index__featured-image{aspect-ratio:3/2}}
 
-[data-blog-index] .blog-index__featured-card{box-shadow:7px 7px 20px #0004}
+[data-blog-index] .blog-index__featured-card,.property-directory .blog-index__featured-card{box-shadow:7px 7px 20px #0004}
