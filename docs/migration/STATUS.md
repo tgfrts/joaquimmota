@@ -221,3 +221,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — PropertyGrid comum: removido ícone de localização antes do concelho por instrução Owner; concelho/freguesia/copy preservados em Comprar e /imoveis. Build250 e testesproperty-directory2/2passaram;diffchecklimpo.
 
 2026-10-04 — Preços nos cards e ficha usam formato português com espaços nosmilhares/vírguladecimal e€final (300 000 €), Preço sobconsulta preservado. Card área mostra apenas valor+m², detalhe mantém ÁreaBruta/Útil. NovoPreço agora branco/textovermelho#db1430 porcorreçãoOwner;Reservadobranco/azul preservado. Build250, assertionspreçosPT/HTMLcard/detalhe e diffcheckpassaram.
+
+2026-10-04 — CorreçãofinalOwner: Reservado fundoazul#20457f/textobranco. NovoPreço mantém branco/vermelho. Build250/diffcheckpassaram.

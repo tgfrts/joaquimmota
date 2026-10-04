@@ -70,5 +70,5 @@ body:has(.buy-hero){overflow-x:hidden}.buy-hero__heading{padding:128px 5vw 64px;
 .buy-property__image{aspect-ratio:3 / 2}
 .buy-property__image img{width:100%;height:100%;object-fit:cover}
 
-.buy-property__image .buy-property__badge--reserved{background:#fff;color:#20457f}
+.buy-property__image .buy-property__badge--reserved{background:#20457f;color:#fff}
 .buy-property__image .buy-property__badge--new-price{background:#fff;color:#db1430}
