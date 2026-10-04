@@ -68,3 +68,5 @@ Owner shared type/components2026-10-04: use the same section-eyebrow and section
 Owner final reviews removal2026-10-04: remove the testimonial action button everywhere and remove /reviews entirely. No redirect/new page is requested. Keep historical source inventory, but exclude this route from target gates and form allowlists. Hero review actions target the local #testemunhos section. Source Webflow remains untouched.
 
 Owner final top navigation2026-10-04: every light/top Header uses the same Home link set. Desktop shows Imóveis(/comprar#imoveis), testimonials(/#testemunhos),Blog,Sobre nós; Vender/Comprar are hidden. At the hamburger breakpoint<=991px show Vender,Comprar,Imóveis,Blog,Sobre nós, hiding testimonials. Preserve the existing contact action. Lower blue navigation retains its page links. Every fullscreen mobile menu uses the blue navbar gradient, white links and white close control, with existing focus/scroll-lock/close behavior.
+
+Owner Home mobile process action2026-10-04: add a red/light-text "Vamos começar" button after03.Suporte, targeting/vamos-comecar. Only visible<=767px onHome; processcopy/order and desktoplayout remain.

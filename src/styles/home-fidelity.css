@@ -246,3 +246,5 @@
 .home-page .sold > .eyebrow { letter-spacing:0; }
 @media(max-width:991px) { .home-page .home-results-background { margin-top:-5vw; } }
 @media(max-width:767px){.home-page .home-results-background{background:linear-gradient(45deg,#20457f,#162b4e)}}
+.home-page .home-process__mobile-action{display:none}
+@media(max-width:767px){.home-page .home-process__mobile-action{display:inline-flex;align-items:center;justify-content:center;justify-self:start;min-height:50px;padding:12px 24px;border:1px solid #db1430;background:#db1430;color:#f4f4f4;box-shadow:4px 4px 20px #0004;font:500 16px/24px Roboto,sans-serif}}
