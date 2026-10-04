@@ -1,0 +1,6 @@
+---
+import { hasPropertyCharacteristic } from '../lib/property-characteristics';
+interface Props { beds?: number | string; baths?: number | string; parking?: number | string; area?: number | string; }
+const { beds, baths, parking, area } = Astro.props;
+---
+<div class="buy-property__facts">{hasPropertyCharacteristic(beds) && <span><img src="/assets/property-bed.svg" alt="" />{beds}</span>}{hasPropertyCharacteristic(baths) && <span><img src="/assets/property-bath.svg" alt="" />{baths}</span>}{hasPropertyCharacteristic(parking) && <span><img src="/assets/property-garage.svg" alt="" />{parking}</span>}{hasPropertyCharacteristic(area) && <span class="buy-property__area"><img src="/assets/property-area.svg" alt="" />{area} m²</span>}</div>

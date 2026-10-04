@@ -231,3 +231,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Indicadores numéricos de cards e cabeçalhodetalhe só renderizam com valor finito>0; vazio/null/zero/stringzero semicon/bloco. Helpercomum; check118 zero diagnósticos,build250,4testesfocados verificam vazio/zero/positivo e HTMLcard/detalhe. Cards alinhadosàesquerda gap12px emvezspace-between, mantendo linhaúnica porcorreçãoOwner.
 
 2026-10-04 — Gap entre indicadores doscards aumentado12→20px porOwner; alinhamentoesquerda/linhaúnica preservados. Build250/diffcheckpassaram.
+
+2026-10-04 — Destaque maisrecente /imoveis: título reduzido40pxdesktop/32pxmobile, divider apósbotão seguidoindicadores. PropertyFacts comum extraído/reusado peloscards e destaque, mantém gap20/ícone-número6 e omitezeros. Check120 semdiagnósticos,build250,4testesfocados e HTMLsequênciabotão-divider-indicadores passaram;diffchecklimpo.
