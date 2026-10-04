@@ -229,3 +229,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — ID imóvel/reference noscards e detalhe reduzido12px/18px,peso400 semnegrito. Visibilidade/copy preservados. Build250/diffcheckpassaram.
 
 2026-10-04 — Indicadores numéricos de cards e cabeçalhodetalhe só renderizam com valor finito>0; vazio/null/zero/stringzero semicon/bloco. Helpercomum; check118 zero diagnósticos,build250,4testesfocados verificam vazio/zero/positivo e HTMLcard/detalhe. Cards alinhadosàesquerda gap12px emvezspace-between, mantendo linhaúnica porcorreçãoOwner.
+
+2026-10-04 — Gap entre indicadores doscards aumentado12→20px porOwner; alinhamentoesquerda/linhaúnica preservados. Build250/diffcheckpassaram.
