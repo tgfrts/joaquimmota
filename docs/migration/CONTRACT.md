@@ -34,3 +34,5 @@ Owner hero/navbar/menu changes2026-10-04: center hero copy relative the full vie
 Final Owner Home correction2026-10-04 supersedes the full-viewport video background: Home uses precisely the same InteriorHero content/media layout as Vender, with two actions and video instead of image, including the same blur/scroll effect. Heading blue, primary red, secondary red outline with transparent fill/no shadow. Top navbar action is blue; lower navbar action stays white.
 
 Final Owner common-hero effect change2026-10-04: remove overlay on both video and image media in InteriorHero. Keep only blur; opacity stays1 and no animated scale/translation. Applies to Home/Vender/Comprar/Sobre and overrides the prior shared overlay/motion contract.
+
+Owner common hero width2026-10-04: text/actions container is66% of hero width, centered; actions may wrap to stay inside this container on narrow screens.
