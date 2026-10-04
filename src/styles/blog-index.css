@@ -124,7 +124,7 @@ body:has(.blog-index) .site-header--light{width:90vw;height:72px;}
  [data-blog-index] .blog-index__featured-copy{aspect-ratio:1;display:flex;flex-direction:column;overflow:hidden}
  [data-blog-index] .blog-index__featured-copy>*{flex-shrink:0}
  [data-blog-index] .blog-index__featured-excerpt{display:-webkit-box;flex:0 1 auto;min-height:0;-webkit-line-clamp:3;line-clamp:3}
- [data-blog-index] .blog-index__featured-copy>a{align-self:flex-start;margin-top:auto}
+ [data-blog-index] .blog-index__featured-copy>a{align-self:flex-start;margin-top:32px}
 }
 @media(max-width:767px){.blog-index__card-excerpt{display:none}}
 
