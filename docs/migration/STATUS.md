@@ -207,3 +207,5 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Comprar apenas: botão vermelho Vamos começar após06.Hora de festejar, href/vamos-comecar, visível sómobile<=767px. Owner retirou pedido para Vender; ficheiroVender inalterado. Build249 e HTML gerado confirmam posição/destino/umaocorrência;diffchecklimpo.
 
 2026-10-04 — Owner repôs vermelho#db1430 nas3ações de vídeo Vender (Agende/Conheça/Descarregue), desktop e mobile, texto claro; posição/copy/href preservados e Marketing excluído. Build249/diffcheckpassaram.
+
+2026-10-04 — TestimonialsSection Ver mais agora outline azul#20457f, fundo transparente/texto azul/sem sombra, em todosconsumidores. Lotes/shuffle/visibilidade/interação preservados. Build249 e diffcheckpassaram.
