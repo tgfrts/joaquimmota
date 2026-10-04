@@ -32,6 +32,7 @@ test('detail media sections follow filled CMS sources and amenities use correspo
 });
 test('gallery thumbnails crop to 3:2 while lightbox keeps the original proportion',()=>{
  const css=fs.readFileSync(new URL('src/styles/cms.css',root),'utf8');
- assert.match(css,/\.cms-gallery__grid img\{[^}]*aspect-ratio:3\/2;object-fit:cover/);
+ assert.match(css,/\.cms-gallery__grid button\{[^}]*aspect-ratio:3\/2;overflow:hidden/);
+ assert.match(css,/\.cms-gallery__grid img\{[^}]*width:100%;height:100%;object-fit:cover/);
  assert.match(css,/\.cms-gallery__dialog \.cms-gallery__full-image\{[^}]*width:auto;height:auto;object-fit:contain/);
 });

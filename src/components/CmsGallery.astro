@@ -1,30 +1,34 @@
 ---
 import SiteIcon from './SiteIcon.astro';
 import CmsImage from './CmsImage.astro';
-interface Props { images?: any[]; label: string; }
-const { images = [], label } = Astro.props;
+interface Props { images?: any[]; label: string; id?: string; openingImage?: any; }
+const { images = [], label, id, openingImage } = Astro.props;
 const imageUrl = (image: any) => {
   const asset = image?.asset ?? image;
   const ref = asset?._ref;
   const sanityUrl = typeof ref === 'string' && ref.startsWith('image-') ? (() => { const [, id, dimensions, format] = ref.match(/^image-(.+)-(\d+x\d+)-([a-z0-9]+)$/) ?? []; return id && dimensions && format ? `https://cdn.sanity.io/images/kaq1vd9b/production/${id}-${dimensions}.${format}` : undefined; })() : undefined;
   return typeof image === 'string' ? image : asset?.url ?? asset?.src ?? image?.url ?? sanityUrl;
 };
-const galleryId = `gallery-${crypto.randomUUID()}`;
+const galleryId = id ?? `gallery-${crypto.randomUUID()}`;
 const usable = images.filter((image) => Boolean(imageUrl(image)));
+const openingSource = imageUrl(openingImage);
+const coverWasPrepended = Boolean(openingSource && !usable.some(image => imageUrl(image) === openingSource));
+const lightboxImages = coverWasPrepended ? [openingImage, ...usable] : usable;
+const openingIndex = Math.max(0, lightboxImages.findIndex(image => imageUrl(image) === openingSource));
 ---
 
-{usable.length > 0 && (
-  <section class="cms-gallery" data-cms-gallery aria-label={label}>
+{lightboxImages.length > 0 && (
+  <section class="cms-gallery" id={galleryId} data-cms-gallery data-opening-index={openingIndex} aria-label={label}>
     <div class="cms-gallery__grid">
-      {usable.map((image, index) => <button type="button" data-gallery-index={index} aria-label={`Ver imagem ${index + 1} de ${usable.length}`}><CmsImage value={image} alt="" loading={index < 3 ? 'eager' : 'lazy'} /></button>)}
+      {usable.map((image, index) => <button type="button" data-gallery-index={index + (coverWasPrepended ? 1 : 0)} aria-label={`Ver imagem ${index + 1} de ${usable.length}`}><CmsImage value={image} alt="" loading={index < 3 ? 'eager' : 'lazy'} /></button>)}
     </div>
-    <dialog class="cms-gallery__dialog" aria-label={`${label}: visualização ampliada`}>
+    <dialog id={`${galleryId}-dialog`} class="cms-gallery__dialog" aria-label={`${label}: visualização ampliada`}>
       <button type="button" class="cms-gallery__close" aria-label="Fechar galeria"><SiteIcon name="close" /></button>
       <div class="cms-gallery__view" role="tabpanel" id={`${galleryId}-panel`}><img class="cms-gallery__full-image" alt={label} />
         <button type="button" data-gallery-previous aria-label="Imagem anterior"><SiteIcon name="chevron-left" /></button>
         <button type="button" data-gallery-next aria-label="Imagem seguinte"><SiteIcon name="chevron-right" /></button>
       </div>
-      <div class="cms-gallery__strip" role="tablist" aria-label="Imagens da galeria">{usable.map((image, index) => <button type="button" role="tab" aria-label={`Mostrar imagem ${index + 1} de ${usable.length}`} aria-selected="false" aria-controls={`${galleryId}-panel`} id={`${galleryId}-tab-${index}`} tabindex="-1" data-gallery-thumbnail={index}><CmsImage value={image} alt="" loading="lazy" /></button>)}</div>
+      <div class="cms-gallery__strip" role="tablist" aria-label="Imagens da galeria">{lightboxImages.map((image, index) => <button type="button" role="tab" aria-label={`Mostrar imagem ${index + 1} de ${lightboxImages.length}`} aria-selected="false" aria-controls={`${galleryId}-panel`} id={`${galleryId}-tab-${index}`} tabindex="-1" data-gallery-thumbnail={index}><CmsImage value={image} alt="" loading="lazy" /></button>)}</div>
     </dialog>
     <script>
       document.querySelectorAll<HTMLElement>('[data-cms-gallery]').forEach((gallery) => {
@@ -48,10 +52,14 @@ const usable = images.filter((image) => Boolean(imageUrl(image)));
           if (strip && thumb) strip.scrollTo({ left: Math.max(0, thumb.offsetLeft - (strip.clientWidth - thumb.clientWidth) / 2), behavior: 'smooth' });
         };
         const move = (delta: number) => { current = Math.max(0, Math.min(sources.length - 1, current + delta)); render(); };
-        gallery.querySelectorAll<HTMLElement>('[data-gallery-index]').forEach((button) => button.addEventListener('click', () => {
-          current = Number(button.getAttribute('data-gallery-index')); returnFocus = button;
+        const open = (button: HTMLElement, index: number) => {
+          current = Math.max(0, Math.min(sources.length - 1, index)); returnFocus = button;
           dialog?.showModal(); document.documentElement.style.overflow = 'hidden'; render();
-        }));
+        };
+        gallery.querySelectorAll<HTMLElement>('[data-gallery-index]').forEach((button) => button.addEventListener('click', () => open(button, Number(button.dataset.galleryIndex))));
+        document.querySelectorAll<HTMLElement>('[data-gallery-open]').forEach((button) => {
+          if (button.dataset.galleryOpen === gallery.id) button.addEventListener('click', () => open(button, Number(gallery.dataset.openingIndex ?? 0)));
+        });
         thumbs.forEach((thumb, index) => thumb.addEventListener('click', () => { current = index; render(); }));
         dialog?.querySelector('.cms-gallery__close')?.addEventListener('click', () => dialog.close());
         previous?.addEventListener('click', () => move(-1));

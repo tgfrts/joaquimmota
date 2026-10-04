@@ -257,3 +257,7 @@ Validação final deste candidato:127/127 testes, Astro check sem diagnósticos 
 2026-10-04 — Indicadores no cabeçalho mobile da ficha: removido padding residual dos antigos badges; gap entre características 20px, igual ao card comum. Intervalo ícone/valor de 6px preservado.
 
 2026-10-04 — Cabeçalho mobile da ficha: padding inferior reduzido de calc(64px + 5vw) para 5vw, alinhado às restantes margens interiores.
+
+2026-10-04 — Owner: título mobile da ficha 24px/28.8px; capa abre a galeria partilhada no desktop e mobile, selecionando a própria capa no lightbox (sem duplicar se já existe). Navegação/fecho/restauro de foco preservados. Indicadores nos cards usam peso 300, igual ao header, sem negrito.
+
+2026-10-04 — Corrigida formatação efetiva da galeria: frame do botão 3:2 com overflow hidden; img absoluto 100% largura/altura e cover, sobrepondo altura intrínseca dos atributos HTML. Removidas proporções legadas 100/66 e padding inferior 6.5px. Lightbox mantém contain/proporção original. Índices das miniaturas são posicionais, preservando ocorrências repetidas.

@@ -73,7 +73,7 @@ body:has(.buy-hero){overflow-x:hidden}.buy-hero__heading{padding:128px 5vw 64px;
 .buy-property__image .buy-property__badge--reserved{background:#20457f;color:#fff}
 .buy-property__image .buy-property__badge--new-price{background:#fff;color:#db1430}
 
-.buy-property__facts{flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:20px;margin:0}
+.buy-property__facts{font-weight:300;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:20px;margin:0}
 .buy-property__facts span{flex:none;gap:6px;margin:0;padding:0;white-space:nowrap}
 .buy-property__facts .buy-property__area{min-width:0}
 
