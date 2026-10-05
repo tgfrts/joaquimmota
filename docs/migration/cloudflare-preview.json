@@ -17,10 +17,10 @@
     "RESEND_SEND_API_KEY"
   ],
   "deployment": {
-    "id": "c8b10963-d174-4d5b-b097-6c9bf19c0259",
-    "url": "https://c8b10963.joaquimmota.pages.dev",
+    "url": "https://057048c3.joaquimmota.pages.dev",
     "environment": "preview",
-    "status": "success"
+    "status": "success",
+    "workflowRunId": 37326985248
   },
   "customerRecipient": "submitted email",
   "mortgageAdditionalRecipient": "da@somoscredito.pt",
@@ -30,8 +30,10 @@
     "perspective": "published",
     "documents": 189,
     "workflow": "sanity-preview.yml",
-    "automationStatus": "awaiting dedicated GitHub webhook token and GitHub CLOUDFLARE_API_TOKEN",
-    "trigger": "Sanity published-content webhook → GitHub workflow_dispatch",
-    "webhookId": "dSQ8Q448Ax6cSVaF"
+    "automationStatus": "active; webhook event and preview deployment verified",
+    "trigger": "Sanity published-content webhook \u2192 GitHub workflow_dispatch",
+    "webhookId": "dSQ8Q448Ax6cSVaF",
+    "webhookEnabled": true,
+    "verifiedWorkflowRunId": 37326985248
   }
 }
