@@ -1,0 +1,90 @@
+{
+  "candidate": "e68328830a8e357ed62a61fcc488c551f915e426",
+  "productionRun": 37337047118,
+  "previewRun": 37337005674,
+  "checks": [
+    {
+      "host": "joaquimmota.pages.dev",
+      "path": "/",
+      "status": 200,
+      "noindexHeader": [
+        "noindex, nofollow"
+      ],
+      "robotsMeta": [
+        "index, follow"
+      ],
+      "canonical": [
+        "https://joaquimmota.pt/"
+      ]
+    },
+    {
+      "host": "joaquimmota.pages.dev",
+      "path": "/blog",
+      "status": 200,
+      "noindexHeader": [
+        "noindex, nofollow"
+      ],
+      "robotsMeta": [
+        "index, follow"
+      ],
+      "canonical": [
+        "https://joaquimmota.pt/blog"
+      ]
+    },
+    {
+      "host": "joaquimmota.pages.dev",
+      "path": "/imoveis/kwpt026529",
+      "status": 200,
+      "noindexHeader": [
+        "noindex, nofollow"
+      ]
+    },
+    {
+      "host": "joaquimmota.pages.dev",
+      "path": "/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+      "status": 200,
+      "noindexHeader": [
+        "noindex, nofollow"
+      ]
+    },
+    {
+      "host": "joaquimmota.pages.dev",
+      "path": "/robots.txt",
+      "status": 200,
+      "noindexHeader": [
+        "noindex, nofollow"
+      ],
+      "body": "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nDisallow: /doop/\nSitemap: https://joaquimmota.pt/sitemap.xml\n"
+    },
+    {
+      "host": "joaquimmota.pages.dev",
+      "path": "/sitemap.xml",
+      "status": 200,
+      "noindexHeader": [
+        "noindex, nofollow"
+      ],
+      "sitemapUrls": 167
+    },
+    {
+      "host": "migration-preview.joaquimmota.pages.dev",
+      "path": "/",
+      "status": 200,
+      "noindexHeader": [
+        "noindex, nofollow"
+      ],
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "canonical": [
+        "https://joaquimmota.pt/"
+      ]
+    }
+  ],
+  "productionDatabase": "18572d19-56cc-44aa-9a72-18f5acd67737",
+  "formsMode": "live",
+  "consultantRecipient": "jrmota@kwportugal.pt",
+  "mortgageAdditionalRecipient": "da@somoscredito.pt",
+  "customerRecipient": "submitted email",
+  "realEmailsSent": false,
+  "dnsChanged": false
+}
