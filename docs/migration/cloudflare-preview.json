@@ -1,0 +1,37 @@
+{
+  "project": "joaquimmota",
+  "productionBranch": "main",
+  "sourceConnected": false,
+  "domains": [
+    "joaquimmota.pages.dev"
+  ],
+  "previewDatabase": {
+    "LEADS_DB": {
+      "id": "c63b0ebb-80bd-495a-b34e-068626208b26"
+    }
+  },
+  "previewMode": "live",
+  "previewRecipient": "jrmota@kwportugal.pt",
+  "previewSecretNames": [
+    "RESEND_CONTACTS_API_KEY",
+    "RESEND_SEND_API_KEY"
+  ],
+  "deployment": {
+    "id": "c8b10963-d174-4d5b-b097-6c9bf19c0259",
+    "url": "https://c8b10963.joaquimmota.pages.dev",
+    "environment": "preview",
+    "status": "success"
+  },
+  "customerRecipient": "submitted email",
+  "mortgageAdditionalRecipient": "da@somoscredito.pt",
+  "cms": {
+    "projectId": "kaq1vd9b",
+    "dataset": "production",
+    "perspective": "published",
+    "documents": 189,
+    "workflow": "sanity-preview.yml",
+    "automationStatus": "awaiting dedicated GitHub webhook token and GitHub CLOUDFLARE_API_TOKEN",
+    "trigger": "Sanity published-content webhook → GitHub workflow_dispatch",
+    "webhookId": "dSQ8Q448Ax6cSVaF"
+  }
+}

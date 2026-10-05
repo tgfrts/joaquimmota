@@ -98,3 +98,11 @@ Owner Home mobile process action2026-10-04: add a red/light-text "Vamos começar
 2026-10-04 — Links YouTube normais guardados no Sanity são convertidos apenas na apresentação para URLs /embed; watch, youtu.be, shorts e live suportados, timestamps preservados. Matterport permanece inalterado mesmo com erro remoto. Fotografias fica depois de Descrição; CE/Certificado Energético com peso 500.
 
 Owner change 2026-10-05: remove the Contacto page; replace active /contacto links with /vamos-comecar and redirect the retired path with HTTP301. Home mobile hero uses the former Contacto image /assets/contact-hero.png; desktop video and other heroes remain unchanged.
+
+Owner 2026-10-05 authorized a new own Cloudflare project. joaquimmota Pages created and deployed only to migration-preview branch using own preview D1. This authorizes public pages.dev preview, not custom-domain cutover/DNS or live email recipients.
+
+Owner 2026-10-05 explicitly authorized final email routing: consultant jrmota@kwportugal.pt; mortgage additionally da@somoscredito.pt; customer entered email. Cloudflare preview/production env configuration uses live recipients; local base remains test-only. DNS/cutover still require separate authorization.
+
+Owner 2026-10-05 authorized connecting Sanity to the site. Build now consumes public published content from own kaq1vd9b/production, excluding destination drafts/releases. Publish only the 189 validated migration documents, excluding removed vinho-e-fado offer. New published properties/articles may create new routes without migration identity; preserve existing sourceSlug URLs. Static Astro retained; automated preview builds poll published content, requiring dedicated Cloudflare deployment credential. No DNS/custom-domain cutover authorized.
+
+Owner 2026-10-05 selects SSG + authenticated Sanity webhook triggering GitHub Actions build/deploy, replacing the prepared polling schedule. Preview only; credentials must be dedicated and limited to own resources. Imported and subsequently deployed property/article URLs protected through sourceSlug and public route history. No CMS webhook worker or SSR introduced.

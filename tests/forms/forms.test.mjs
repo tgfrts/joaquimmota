@@ -272,3 +272,16 @@ test('successful batch persists both receipts and identical retry does not send 
   assert.equal((await handler({ request: request(leadPayload), env })).status, 202);
   assert.equal(sends, 1);
 });
+
+test('only same-origin HTTPS deployments of the own Pages project may submit', async () => {
+  for (const [host, origin, status] of [
+    ['joaquimmota.pages.dev', 'https://joaquimmota.pages.dev', 202],
+    ['migration-preview.joaquimmota.pages.dev', 'https://migration-preview.joaquimmota.pages.dev', 202],
+    ['migration-preview.joaquimmota.pages.dev', 'https://attacker.pages.dev', 403],
+    ['pmrealestate.pages.dev', 'https://pmrealestate.pages.dev', 403],
+    ['joaquimmota.pages.dev.attacker.test', 'https://joaquimmota.pages.dev.attacker.test', 403],
+  ]) {
+    const req = new Request(`https://${host}/api/forms`, { method: 'POST', headers: { origin, 'content-type': 'application/json', 'idempotency-key': key }, body: JSON.stringify(leadPayload) });
+    assert.equal((await createFormHandler(mockAdapter())({ request: req, env: formEnv() })).status, status, host);
+  }
+});

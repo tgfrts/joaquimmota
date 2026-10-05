@@ -22,3 +22,9 @@ test('random pool is only the three latest eligible edits, after sold and reserv
  const records=[listing('old','active','2026-01-01'),listing('third','active','2026-02-01'),listing('second','active','2026-03-01'),listing('first','active','2026-04-01'),listing('reserved','active','2026-05-01','reserved'),listing('sold','sold','2026-06-01')];
  assert.deepEqual(selectFeaturedProperties(records).map(x=>x._id),['first','second','third']);assert.equal(selectFeaturedProperties([]).length,0);
 });
+
+test('Sanity reserved status remains in directory but never featured',()=>{
+ const records=[listing('reserved-status','reserved','2026-05-01'),listing('new','active','2026-04-01')];
+ assert.deepEqual(selectAvailableProperties(records).map(x=>x._id),['reserved-status','new']);
+ assert.deepEqual(selectFeaturedProperties(records).map(x=>x._id),['new']);
+});

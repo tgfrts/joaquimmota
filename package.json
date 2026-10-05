@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/forms/property-email-details.mjs && astro build",
+    "cms:fetch": "node scripts/cms/fetch-published.mjs",
+    "build": "npm run cms:fetch && node scripts/forms/property-email-details.mjs && astro build",
     "check": "astro check",
     "preview": "astro preview"
   },

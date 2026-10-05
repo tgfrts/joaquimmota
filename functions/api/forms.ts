@@ -60,6 +60,9 @@ function isAllowedOrigin(request: Request) {
   const origin = request.headers.get('origin') ?? '';
   if (ORIGINS.has(origin)) return true;
   const url = new URL(request.url);
+  // Only this project's HTTPS Pages deployment, strictly same-origin.
+  const ownPagesHost = url.hostname === 'joaquimmota.pages.dev' || /^[a-z0-9-]+\.joaquimmota\.pages\.dev$/u.test(url.hostname);
+  if (ownPagesHost && url.protocol === 'https:' && origin === url.origin) return true;
   // Same-origin HTTP requests only on loopback or a private LAN preview host.
   const localHost = url.hostname === 'localhost' || url.hostname === '127.0.0.1'
     || /^192\.168\.\d{1,3}\.\d{1,3}$/u.test(url.hostname)

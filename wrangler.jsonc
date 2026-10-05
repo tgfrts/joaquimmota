@@ -1,6 +1,5 @@
 {
   "name": "joaquimmota",
-  "account_id": "e23a1ecc3719f496e47f56f20e6da716",
   "pages_build_output_dir": "./dist",
   "compatibility_date": "2026-09-15",
   "d1_databases": [
@@ -31,8 +30,8 @@
       "vars": {
         "RESEND_FROM": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
         "RESEND_REPLY_TO": "jrmota@kwportugal.pt",
-        "FORMS_RECIPIENT": "t@doop.pt",
-        "FORMS_DELIVERY_MODE": "test",
+        "FORMS_RECIPIENT": "jrmota@kwportugal.pt",
+        "FORMS_DELIVERY_MODE": "live",
         "FORMS_TEST_RECIPIENT": "t@doop.pt"
       }
     },
@@ -48,8 +47,8 @@
       "vars": {
         "RESEND_FROM": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
         "RESEND_REPLY_TO": "jrmota@kwportugal.pt",
-        "FORMS_RECIPIENT": "t@doop.pt",
-        "FORMS_DELIVERY_MODE": "test",
+        "FORMS_RECIPIENT": "jrmota@kwportugal.pt",
+        "FORMS_DELIVERY_MODE": "live",
         "FORMS_TEST_RECIPIENT": "t@doop.pt"
       }
     }

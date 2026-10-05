@@ -18,7 +18,7 @@ name: 'property',
 type: 'document',
 fields: [
 {name: 'sourceUpdatedAt', type: 'datetime', readOnly: true, description: 'Original Webflow lastUpdated; Home orders by native Sanity _updatedAt.'},
-{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true},
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', options: {source: 'referenceCode'}, description: 'Preencha o endereço ou use Gerar apenas para um novo conteúdo. Não altere depois de publicar. Os endereços originais da migração são protegidos no build.'},
 {name: 'title', type: 'string'}, {name: 'referenceCode', type: 'string'}, {name: 'summary', type: 'text', rows: 4}, {name: 'description', type: 'array', of: [{type: 'block', marks: {annotations: [{type: 'link'}]}}]},
 {name: 'listingStatus', type: 'string', options: {list: ['active', 'sold', 'reserved', 'expiredCancelled']}}, {name: 'marketBanner', type: 'string', options: {list: ['new', 'newPrice', 'openHouse', 'reserved']}}, {name: 'price', type: 'number'}, {name: 'priceOnRequest', type: 'boolean'}, {name: 'propertyType', type: 'string', options: {list: ['apartment', 'house', 'building', 'other']}},
 {name: 'municipality', type: 'string'}, {name: 'parish', type: 'string'}, {name: 'bedrooms', type: 'number'}, {name: 'bathrooms', type: 'number'}, {name: 'parkingSpaces', type: 'number'}, {name: 'usableArea', type: 'number'}, {name: 'grossArea', type: 'number'}, {name: 'energyCertificate', type: 'string', options: {list: ['A+', 'A', 'B', 'B-', 'C', 'D', 'E', 'F', 'G', 'Exempt']}}, {name: 'amenities', type: 'propertyAmenities'},
@@ -29,7 +29,7 @@ fields: [
 name: 'article',
 type: 'document',
 fields: [
-{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true},
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', options: {source: 'title'}, description: 'Preencha o endereço ou use Gerar apenas para um novo conteúdo. Não altere depois de publicar. Os endereços originais da migração são protegidos no build.'},
 {name: 'title', type: 'string'}, {name: 'subtitle', type: 'string'}, {name: 'summary', type: 'text', rows: 4}, {name: 'body', type: 'array', of: [{type: 'block', marks: {annotations: [{type: 'link'}]}}]}, {name: 'publishedAt', type: 'datetime'}, {name: 'readingMinutes', type: 'number'}, {name: 'cta', type: 'articleCta'}, {name: 'mainImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'thumbnailImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'openGraphImage', type: 'image', fields: [{name: 'alt', type: 'string'}]}, {name: 'videoUrl', type: 'url'}, {name: 'gallery', type: 'array', of: [{type: 'image', fields: [{name: 'alt', type: 'string'}]}]},
 ],
 }

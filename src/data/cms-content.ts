@@ -1,6 +1,6 @@
 /**
- * Consumer-side selection for the local migration snapshot.
- * A record may replace a public fallback only when its Webflow identity matches.
+ * Consumer-side selection for the published Sanity snapshot.
+ * Legacy identity only locates optional migration media fallbacks.
  */
 export type CmsRecord = { _type?: string; legacyId?: string; [key: string]: any };
 
@@ -28,10 +28,10 @@ export function selectRecentSoldProperties(records: CmsRecord[], limit = 5): Cms
     .slice(0, limit);
 }
 
-/** Public-source eligible snapshot; target Sanity drafts remain available in migration preview. */
+/** Public listings include reservations, but never sold or cancelled listings. */
 export function selectAvailableProperties(records: CmsRecord[]): CmsRecord[] {
   return records
-    .filter(record => record._type === 'property' && record.listingStatus === 'active')
+    .filter(record => record._type === 'property' && ['active', 'reserved'].includes(record.listingStatus))
     .slice()
     .sort((left, right) => String(right._updatedAt ?? '').localeCompare(String(left._updatedAt ?? ''))
       || String(left._id ?? '').localeCompare(String(right._id ?? '')));
@@ -39,7 +39,7 @@ export function selectAvailableProperties(records: CmsRecord[]): CmsRecord[] {
 
 /** Featured listing follows the latest available edit, excluding reservations. */
 export function selectFeaturedProperties(records: CmsRecord[], limit = 3): CmsRecord[] {
-  return selectAvailableProperties(records).filter(record => record.marketBanner !== 'reserved').slice(0, limit);
+  return selectAvailableProperties(records).filter(record => record.listingStatus === 'active' && record.marketBanner !== 'reserved').slice(0, limit);
 }
 
 export function selectFeaturedProperty(records: CmsRecord[]): CmsRecord | undefined {

@@ -19,7 +19,7 @@ Todas as notificações internas começam por “Olá Mota, tens uma nova lead d
 
 ## Destinatários e estado
 
-Base, preview e configuração production mantêm `FORMS_DELIVERY_MODE=test`, `FORMS_TEST_RECIPIENT=t@doop.pt`: AMBOS os emails seguem exclusivamente para esse destino, incluindo crédito. Não foi ativado envio para clientes, consultor ou Somos Crédito em produção. Futuro live exige alteração explícita de configuração e FORMS_RECIPIENT=jrmota@kwportugal.pt; não é ativado automaticamente por nome de ambiente.
+Owner autorizou os destinatários finais em 2026-10-05: preview e configuração production usam `FORMS_DELIVERY_MODE=live`, `FORMS_RECIPIENT=jrmota@kwportugal.pt`; cliente recebe no email preenchido e crédito notifica também da@somoscredito.pt. Base/local permanece test-only para t@doop.pt. Esta autorização de emails não autoriza DNS/cutover.
 
 ## Entrega
 

@@ -23,7 +23,7 @@ function cardFromRecord(own: CmsRecord, fallback?: typeof sourceProperties[numbe
     baths: own.bathrooms,
     parking: own.parkingSpaces,
     area: own.grossArea,
-    label: own.marketBanner ? (marketBannerLabels[own.marketBanner] ?? own.marketBanner) : '',
+    label: own.listingStatus === 'reserved' ? 'Reservado' : own.marketBanner ? (marketBannerLabels[own.marketBanner] ?? own.marketBanner) : '',
   };
 }
 export const availableProperties = selectAvailableProperties(records).map(record =>
