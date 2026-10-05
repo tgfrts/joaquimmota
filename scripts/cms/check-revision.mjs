@@ -35,7 +35,6 @@ async function readDeployedRevision(fetchImpl) {
   const url = new URL('/cms-revision.json', PREVIEW_URL);
   url.searchParams.set('check', Date.now().toString());
   const response = await fetchImpl(url, { cache: 'no-store', signal: AbortSignal.timeout(20_000), headers: { 'Cache-Control': 'no-cache' } });
-  if (response.status === 404) return undefined; // Explicit bootstrap only.
   if (!response.ok) throw new Error(`Cannot verify published URL baseline (HTTP ${response.status}).`);
   const deployed = await response.json();
   if (!deployed || typeof deployed.hash !== 'string' || !/^[a-f0-9]{64}$/.test(deployed.hash)

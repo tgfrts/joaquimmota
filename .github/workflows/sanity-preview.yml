@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   refresh-preview:
+    if: github.ref == 'refs/heads/codex/migration-foundation'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:

@@ -43,12 +43,11 @@ test('identical deployed content is identified using uncached metadata', async (
   } }), false);
 });
 
-test('changed valid metadata or an explicit missing baseline triggers deployment', async () => {
+test('changed valid metadata triggers deployment', async () => {
   const revision = contentRevision({ documents: [{ _id: 'a' }] });
   for (const fetchImpl of [
     async () => ({ ok: true, json: async () => ({ ...revision, hash: 'b'.repeat(64) }) }),
     async () => ({ ok: true, json: async () => ({ ...revision, documentCount: 9 }) }),
-    async () => ({ ok: false, status: 404 }),
   ]) assert.equal(await hasContentChanged(revision, { fetchImpl }), true);
   assert.equal(await hasContentChanged(revision, { fetchImpl: async () => ({ ok: true, json: async () => ({ hash: revision.hash, documentCount: revision.documentCount }) }) }), false, 'Valid hash-only metadata may bootstrap the routes baseline.');
 });
@@ -58,6 +57,7 @@ test('baseline network, HTTP and malformed metadata failures stop deployment', a
   for (const fetchImpl of [
     async () => { throw new Error('Network failed'); },
     async () => ({ ok: false, status: 503 }),
+    async () => ({ ok: false, status: 404 }),
     async () => ({ ok: false, status: 403 }),
     async () => ({ ok: true, json: async () => { throw new Error('Invalid JSON'); } }),
     ...[null, {}, { ...revision, hash: 'bad' }, { ...revision, documentCount: -1 }, { ...revision, documentCount: 1.5 }, { ...revision, routes: null }, { ...revision, routes: [] }, { ...revision, routes: { a: '/wrong/route' } }].map(value => async () => ({ ok: true, json: async () => value })),
@@ -72,6 +72,7 @@ test('workflow credential preflight skips pushes but fails webhook/manual dispat
     assert.doesNotMatch(workflow, /\bschedule:|\bcron:/);
     assert.match(workflow, /workflow_dispatch:/);
     assert.match(workflow, /branches: \[codex\/migration-foundation\]/);
+    assert.match(workflow, /if: github\.ref == 'refs\/heads\/codex\/migration-foundation'/);
     for (const [event, token, expected] of [['push', '', 0], ['workflow_dispatch', '', 1], ['workflow_dispatch', 'fixture-token', 0]]) {
       const output = join(directory, `${event}-${expected}-${token ? 'present' : 'missing'}`);
       const result = spawnSync('bash', ['-e', '-c', command], { encoding: 'utf8', env: { ...process.env, GITHUB_OUTPUT: output, GITHUB_EVENT_NAME: event, CLOUDFLARE_API_TOKEN: token } });
