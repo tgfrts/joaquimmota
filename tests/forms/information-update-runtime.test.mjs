@@ -40,11 +40,11 @@ test('actual information-update handler hides only the form and leaves its sibli
   assert.equal(r.calls.length, 1);
   assert.deepEqual(JSON.parse(r.calls[0].body), {
     formType: 'leadMagnet', route: '/lp/atualizacao-de-informacao',
-    fields: { name: 'Ana Costa', email: 'ana@example.test', phone: '+351900000000', message: 'A sua morada: Rua do Sol\nCódigo Postal: 4000-001\nConcelho: Porto', consent: true },
+    fields: { name: 'Ana Costa', email: 'ana@example.test', phone: '+351900000000', message: 'A sua morada: Rua do Sol\nCódigo Postal: 4000-001\nConcelho: Porto', firstName: 'Ana', lastName: 'Costa', consent: true },
   });
   assert.equal(r.form.hidden, true);
   assert.equal(r.status.hidden, false);
-  assert.equal(r.status.textContent, 'Obrigado! O seu formulário foi enviado com sucesso.');
+  assert.equal(r.status.textContent, 'Obrigado, Ana! Recebemos a atualização dos seus dados.');
 });
 
 test('actual information-update handler recovers from 503 and ignores duplicate pending requests', async (t) => {

@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import test from 'node:test';
+import { build } from 'esbuild';
+import { JSDOM } from 'jsdom';
+const path = fileURLToPath(new URL('../../src/pages/lp/smillingstreet.astro', import.meta.url));
+const source = await readFile(path, 'utf8');
+const script = source.match(/<script>([\s\S]*?)<\/script>/)[1];
+const css = source.match(/<style>([\s\S]*?)<\/style>/)[1];
+const built = await build({stdin:{contents:script,resolveDir:dirname(path),loader:'ts'},bundle:true,format:'iife',platform:'browser',write:false});
+const flush=()=>new Promise(resolve=>setImmediate(resolve));
+test('Smilling accepted submit replaces the grid form with visible same-page personalized feedback',async t=>{
+  const dom=new JSDOM(`<style>${css}</style><section class="smilling-campaign__form-section"><form data-smilling-form data-route="/lp/smillingstreet"><input name="firstName" value="Ana" required><input name="lastName" value="Costa" required><input name="email" type="email" value="ana@example.test" required><input name="phone" value="900000000" required><select name="referral"><option>Não</option></select><select name="intent"><option>Sim, a comprar</option></select><input type="checkbox" required checked><button>Enviar</button><p data-smilling-status hidden></p></form><p data-smilling-success hidden></p></section>`,{runScripts:'outside-only',url:'https://joaquimmota.pt/lp/smillingstreet'});
+  t.after(()=>dom.window.close());Object.defineProperty(dom.window,'crypto',{value:{randomUUID:()=> 'smilling-key'}});
+  const responses=[503,202];dom.window.fetch=async()=>({status:responses.shift()});dom.window.eval(built.outputFiles[0].text);
+  const form=dom.window.document.querySelector('form'),status=dom.window.document.querySelector('[data-smilling-success]');
+  const submit=()=>form.dispatchEvent(new dom.window.Event('submit',{bubbles:true,cancelable:true}));
+  submit();await flush();assert.equal(form.hidden,false);assert.equal(status.hidden,true);assert.equal(form.querySelector('button').disabled,false);
+  submit();await flush();assert.equal(form.hidden,true);assert.equal(dom.window.getComputedStyle(form).display,'none');assert.equal(status.hidden,false);assert.equal(status.textContent,'Obrigado, Ana! Recebemos a sua inscrição. Entraremos em contacto consigo para explicar como usufruir do desconto.');assert.equal(dom.window.location.pathname,'/lp/smillingstreet');
+});

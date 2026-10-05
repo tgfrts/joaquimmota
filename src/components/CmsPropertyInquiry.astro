@@ -21,6 +21,7 @@ import SiteIcon from './SiteIcon.astro';
 
 <script>
   import { submitFormAccepted } from '../scripts/forms-client';
+  import { formSuccessMessage } from '../scripts/form-feedback';
   document.querySelectorAll<HTMLFormElement>('form[data-form-type="contact"]').forEach((form) => {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -35,7 +36,7 @@ import SiteIcon from './SiteIcon.astro';
       if (button) { button.disabled = true; button.textContent = 'Please wait...'; }
       try {
         await submitFormAccepted(form, { formType: 'contact', route: window.location.pathname, fields: { name: `${fields.get('firstName') ?? ''} ${fields.get('lastName') ?? ''}`.trim(), email: fields.get('email'), phone: fields.get('phone'), message: '' } });
-        form.hidden = true; if (success) success.hidden = false;
+        form.hidden = true; if (success) { success.textContent = formSuccessMessage(window.location.pathname, String(fields.get('firstName') ?? '')); success.hidden = false; }
       } catch { if (error) error.hidden = false; }
       finally { if (button) { button.disabled = false; button.textContent = buttonText ?? ''; } }
     });

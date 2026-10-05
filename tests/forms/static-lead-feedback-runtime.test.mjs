@@ -66,7 +66,7 @@ test('StaticLeadPage keeps sibling feedback visible on 202 and preserves the for
   assert.equal(form.hidden, true, 'Only accepted response hides the form.');
   assert.equal(dom.window.getComputedStyle(form).display, 'none', 'Real static-leads.css hides the form after acceptance.');
   assert.equal(status.hidden, false, 'Success feedback remains visible after the form is hidden.');
-  assert.equal(status.textContent, 'Obrigado! O seu formulário foi enviado com sucesso.');
+  assert.equal(status.textContent, 'Obrigado, Ana! Recebemos o seu pedido de avaliação. Entraremos em contacto consigo para confirmar os detalhes do imóvel.');
   assert.equal(copyright.closest('form').hidden, true, 'Legal copy shares the source form content state.');
 });
 

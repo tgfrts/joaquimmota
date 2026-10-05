@@ -13,7 +13,7 @@ const image = '/assets/campaign-cabaz-natal.webp';
     <section class="public-campaign__panel">
       <a class="public-campaign__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
       <h5><strong>Um Natal ainda mais mágico?<br />Participe no sorteio do nosso cabaz natalício</strong><strong>. Para se habilitar preencha o formulário.</strong></h5>
-      <form data-public-campaign data-route={route} data-redirect="/lp/obrigado-oferta" data-success="Obrigado! A sua participação foi registada com sucesso.">
+      <form data-public-campaign data-route={route}>
         <div class="public-campaign__names"><input name="firstName" maxlength="256" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" maxlength="256" autocomplete="family-name" placeholder="Apelido" required /></div>
         <input name="email" type="email" maxlength="256" autocomplete="email" placeholder="O seu email" required />
         <input name="phone" type="tel" maxlength="256" autocomplete="tel" placeholder="Telefone" required />
@@ -22,8 +22,8 @@ const image = '/assets/campaign-cabaz-natal.webp';
         <label class="public-campaign__address-label">Localização do imóvel:</label><input name="street" maxlength="256" autocomplete="street-address" placeholder="Morada" required /><input name="postalCode" maxlength="256" autocomplete="postal-code" placeholder="Código Postal" required /><input name="county" maxlength="256" autocomplete="address-level2" placeholder="Concelho" required />
         <label class="public-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
         <button type="submit">Participar</button>
-        <p class="public-campaign__status" data-campaign-status role="status" aria-live="polite" hidden></p>
       </form>
+      <p class="public-campaign__status" data-campaign-status role="status" aria-live="polite" hidden></p>
     </section>
   </main>
 </BaseLayout>
@@ -33,14 +33,14 @@ const image = '/assets/campaign-cabaz-natal.webp';
     event.preventDefault();
     const button = form.querySelector<HTMLButtonElement>('button'); if (!button || button.disabled) return;
     if (!form.reportValidity()) return;
-    const status = form.querySelector<HTMLElement>('[data-campaign-status]'); if (!status) return;
+    const status = form.parentElement?.querySelector<HTMLElement>('[data-campaign-status]'); if (!status) return;
     button.disabled = true; status.hidden = false; status.textContent = '';
     const data = new FormData(form);
     const message = [`Conhece alguém que esteja a vender ou a comprar casa?: ${data.get('referral')}`, `Está a pensar vender ou a comprar casa?: ${data.get('intent')}`, `Morada: ${data.get('street')}`, `Código Postal: ${data.get('postalCode')}`, `Concelho: ${data.get('county')}`].join('\n');
     try {
       await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } });
-      if (form.dataset.redirect) location.assign(form.dataset.redirect);
-      else { form.hidden = true; status.textContent = form.dataset.success ?? 'Obrigado! O seu formulário foi enviado com sucesso.'; }
+      form.hidden = true;
+      status.textContent = `Obrigado, ${String(data.get('firstName') ?? '').trim()}! A sua participação no sorteio do cabaz de Natal foi registada com sucesso.`;
     } catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
   }));
   const year = document.querySelector<HTMLElement>('[data-current-year]'); if (year) year.textContent = String(new Date().getFullYear());

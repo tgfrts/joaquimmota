@@ -38,3 +38,15 @@ test('newsletter payloads do not acquire a consent field', async () => {
     assert.deepEqual(JSON.parse(requestBody), payload);
   } finally { globalThis.fetch = originalFetch; }
 });
+
+test('nonnewsletter submissions preserve given name, surname and structured subject for email routing', async () => {
+  const originalFetch = globalThis.fetch;
+  let requestBody;
+  globalThis.fetch = async (_url, options) => { requestBody = JSON.parse(options.body); return new Response('{}', { status: 202 }); };
+  try {
+    const values = { firstName: ' Ana ', lastName: ' Costa ', contactSubject: 'Vender' };
+    const form = { querySelector: (selector) => selector.includes('checkbox') ? { checked: true } : { value: values[selector.match(/name="(.*?)"/)[1]] } };
+    await submitFormAccepted(form, { formType: 'contact', route: '/vamos-comecar', fields: { name: 'Ana Costa', email: 'ana@example.test' } });
+    assert.deepEqual(requestBody.fields, { name: 'Ana Costa', email: 'ana@example.test', firstName: 'Ana', lastName: 'Costa', contactSubject: 'Vender', consent: true });
+  } finally { globalThis.fetch = originalFetch; }
+});

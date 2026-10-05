@@ -36,7 +36,7 @@ test('SellerLead actual handler preserves retry on rejection and displays siblin
   for (let i = 0; i < 2; i++) { submit(); await flush(); assert.equal(form.hidden, false); assert.equal(error.hidden, false); assert.equal(success.hidden, true); assert.equal(form.querySelector('button').disabled, false); }
   submit(); await flush();
   assert.equal(calls.length, 3); assert.equal(form.hidden, true); assert.equal(dom.window.getComputedStyle(form).display, 'none'); assert.equal(success.hidden, false); assert.notEqual(dom.window.getComputedStyle(success).display, 'none'); assert.equal(error.hidden, true);
-  assert.equal(success.textContent, 'Obrigado! O seu formulário foi enviado com sucesso.');
+  assert.equal(success.textContent, 'Obrigado, Ana! Recebemos o seu pedido de avaliação. Entraremos em contacto consigo para confirmar os detalhes do imóvel.');
   const body = JSON.parse(calls[0][1].body); assert.equal(body.fields.consent, true); assert.equal(body.fields.propertyType, 'apartamento'); assert.equal(body.fields.bedrooms, '1'); assert.equal(body.fields.location, 'Rua exemplo, 4000-000, Porto');
   assert.equal(calls[0][1].headers['idempotency-key'], calls[2][1].headers['idempotency-key']);
 });

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/forms/property-email-details.mjs && astro build",
     "check": "astro check",
     "preview": "astro preview"
   },

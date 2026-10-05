@@ -47,6 +47,7 @@ const socialImage = 'https://joaquimmota.pt/assets/og-jrm.jpg';
 
 <script>
   import { submitFormAccepted } from '../scripts/forms-client';
+  import { formSuccessMessage } from '../scripts/form-feedback';
 
   document.querySelectorAll<HTMLFormElement>('[data-static-lead-form]').forEach((form) => {
     form.addEventListener('submit', async (event) => {
@@ -73,7 +74,7 @@ const socialImage = 'https://joaquimmota.pt/assets/og-jrm.jpg';
           fields,
         });
         form.hidden = true;
-        status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
+        status.textContent = formSuccessMessage(form.dataset.route ?? '', String(data.get('firstName') ?? ''));
       } catch {
         status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.';
         button.disabled = false;

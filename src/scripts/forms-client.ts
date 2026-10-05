@@ -6,9 +6,16 @@ export async function submitFormAccepted(form: HTMLFormElement, payload: FormPay
   const requiredConsent = payload.formType === 'newsletter'
     ? undefined
     : form.querySelector<HTMLInputElement>('input[type="checkbox"][required]')?.checked === true;
+  const identityFields: Record<string, string> = {};
+  if (payload.formType !== 'newsletter') {
+    for (const key of ['firstName', 'lastName', 'contactSubject']) {
+      const field = form.querySelector<HTMLInputElement | HTMLSelectElement>(`[name="${key}"]`);
+      if (typeof field?.value === 'string') identityFields[key] = field.value.trim();
+    }
+  }
   const requestPayload = payload.formType === 'newsletter'
     ? payload
-    : { ...payload, fields: { ...payload.fields, consent: requiredConsent } };
+    : { ...payload, fields: { ...payload.fields, ...identityFields, consent: requiredConsent } };
   const serialized = JSON.stringify(requestPayload);
   const previous = attempts.get(form);
   if (previous?.pending) throw new Error('Submission already pending.');

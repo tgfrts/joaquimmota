@@ -1,5 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'; import CampaignLeadForm from '../components/CampaignLeadForm.astro'; import '../styles/lead-magnets.css';
-const download='https://drive.google.com/file/d/1_AqC5yAUDz8l3xWBaTYLC5OA3EfRF0kF/view?usp=drive_link';
+const download='https://drive.google.com/file/d/1_AqC5yAUDz8l3xWBaTYLC5OA3EfRF0kF/view?usp=sharing';
 ---
 <BaseLayout title="Guia Vender para comprar"><main class="lead-magnet"><div class="lead-magnet__image" style="background-image:url('/assets/campaign-guia.webp')"></div><section class="lead-magnet__panel"><a class="lead-magnet__logo" href="/"><img src="/assets/logo-color.svg" alt="Joaquim Mota Consultores" /></a><h5 class="lead-magnet__heading">Precisa se vender antes de comprar?</h5><p class="lead-magnet__intro">Obtenha um guia prático para mudar de casa sem stress e sem complicações.</p><CampaignLeadForm route="/guia-vender-para-comprar" submitLabel="Enviar" downloadUrl={download}><p class="lead-magnet__legal">©{new Date().getFullYear()} - Somos Real Estate, Med. Imo. Lda. AMI 11829. Cada Market Center da Keller Williams é de propriedade e gestão independente.</p></CampaignLeadForm></section></main></BaseLayout>

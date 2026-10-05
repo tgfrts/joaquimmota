@@ -98,6 +98,7 @@ const route = { pt: '/parcerias', en: '/partnerships', fr: '/partenariats' }[loc
 
 <script>
   import { submitFormAccepted } from '../scripts/forms-client';
+  import { formSuccessMessage } from '../scripts/form-feedback';
 
   document.querySelectorAll<HTMLFormElement>('[data-partnership-form]').forEach((form) => {
     form.addEventListener('submit', async (event) => {
@@ -128,7 +129,7 @@ const route = { pt: '/parcerias', en: '/partnerships', fr: '/partenariats' }[loc
           },
         });
         form.hidden = true;
-        if (success) success.hidden = false;
+        if (success) { success.textContent = formSuccessMessage(form.dataset.route ?? '', firstName); success.hidden = false; }
       } catch {
         if (error) error.hidden = false;
         if (button) {

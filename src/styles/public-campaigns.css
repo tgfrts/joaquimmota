@@ -94,3 +94,5 @@
 }
 @media (max-width: 479px) {.public-campaign--cabaz .public-campaign__image { min-height: 25vh; height: 25vh; background-image: none; }.public-campaign--cabaz .public-campaign__panel { padding: 5vw; }
 }
+
+.public-campaign form[hidden]{display:none!important}

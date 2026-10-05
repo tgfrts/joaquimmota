@@ -22,15 +22,14 @@ const flush = () => new Promise((resolve) => setImmediate(resolve));
 const errorCopy = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.';
 
 function html() {
-  return `<main><form data-public-campaign data-route="/lp/cabaz-de-natal" data-redirect="/lp/obrigado-oferta">
+  return `<main><form data-public-campaign data-route="/lp/cabaz-de-natal">
     <input name="firstName" required value="Ana"><input name="lastName" required value="Costa">
     <input name="email" type="email" required value="ana@example.test"><input name="phone" required value="+351900000000">
     <select name="referral" required><option value="Sim, a vender" selected>Sim, a vender</option></select>
     <select name="intent" required><option value="Não" selected>Não</option></select>
     <input name="street" required value="Rua do Sol"><input name="postalCode" required value="4000-001"><input name="county" required value="Porto">
     <input name="consent" type="checkbox" required checked><button type="submit">Participar</button>
-    <p data-campaign-status role="status" hidden></p>
-  </form></main>`;
+  </form><p data-campaign-status role="status" hidden></p></main>`;
 }
 
 function runtime(t, transport) {
@@ -42,13 +41,13 @@ function runtime(t, transport) {
   dom.window.fetch = async (url, options) => { calls.push({ url, ...options }); return transport(calls.length, options); };
   new dom.window.Function('location', handler)({ assign: (url) => redirects.push(url) });
   const form = dom.window.document.querySelector('form');
-  const status = form.querySelector('[data-campaign-status]');
+  const status = dom.window.document.querySelector('[data-campaign-status]');
   const button = form.querySelector('button');
   const submit = () => form.dispatchEvent(new dom.window.Event('submit', { bubbles: true, cancelable: true }));
   return { form, status, button, submit, calls, redirects };
 }
 
-test('Cabaz handler sends its source route and redirects only after 202', async (t) => {
+test('Cabaz handler shows a visible personalized confirmation on the same page after 202', async (t) => {
   const r = runtime(t, async () => ({ status: 202 }));
   r.submit(); await flush();
   assert.equal(r.calls.length, 1);
@@ -56,9 +55,13 @@ test('Cabaz handler sends its source route and redirects only after 202', async 
   assert.equal(r.calls[0].method, 'POST');
   assert.deepEqual(JSON.parse(r.calls[0].body), {
     formType: 'leadMagnet', route: '/lp/cabaz-de-natal',
-    fields: { name: 'Ana Costa', email: 'ana@example.test', phone: '+351900000000', message: 'Conhece alguém que esteja a vender ou a comprar casa?: Sim, a vender\nEstá a pensar vender ou a comprar casa?: Não\nMorada: Rua do Sol\nCódigo Postal: 4000-001\nConcelho: Porto', consent: true },
+    fields: { name: 'Ana Costa', email: 'ana@example.test', phone: '+351900000000', message: 'Conhece alguém que esteja a vender ou a comprar casa?: Sim, a vender\nEstá a pensar vender ou a comprar casa?: Não\nMorada: Rua do Sol\nCódigo Postal: 4000-001\nConcelho: Porto', firstName: 'Ana', lastName: 'Costa', consent: true },
   });
-  assert.deepEqual(r.redirects, ['/lp/obrigado-oferta']);
+  assert.deepEqual(r.redirects, []);
+  assert.equal(r.form.hidden, true);
+  assert.equal(r.status.hidden, false);
+  assert.equal(r.status.closest('form'), null);
+  assert.equal(r.status.textContent, 'Obrigado, Ana! A sua participação no sorteio do cabaz de Natal foi registada com sucesso.');
 });
 
 test('actual PublicCampaign handler shows 503 feedback and makes the same form retryable', async (t) => {
@@ -79,5 +82,9 @@ test('actual PublicCampaign handler ignores duplicate submits while its request 
   assert.equal(r.calls.length, 1);
   assert.equal(r.button.disabled, true);
   accept({ status: 202 }); await flush();
-  assert.deepEqual(r.redirects, ['/lp/obrigado-oferta']);
+  assert.deepEqual(r.redirects, []);
+  assert.equal(r.form.hidden, true);
+  assert.equal(r.status.hidden, false);
+  assert.equal(r.status.closest('form'), null);
+  assert.equal(r.status.textContent, 'Obrigado, Ana! A sua participação no sorteio do cabaz de Natal foi registada com sucesso.');
 });

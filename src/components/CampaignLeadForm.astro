@@ -17,6 +17,7 @@ const { route, submitLabel, downloadUrl = '', showSubject = false, showReferralQ
 <div class="campaign-form__success" hidden role="status">Obrigado! O seu formulário foi enviado com sucesso.</div>
 <script>
   import { submitFormAccepted } from '../scripts/forms-client';
+  import { formSuccessMessage } from '../scripts/form-feedback';
   document.querySelectorAll<HTMLFormElement>('[data-campaign-form]').forEach((form) => form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
@@ -29,9 +30,9 @@ const { route, submitLabel, downloadUrl = '', showSubject = false, showReferralQ
     const fields = { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), ...(message ? { message } : {}) };
     try {
       await submitFormAccepted(form, { formType: form.dataset.formType!, route: form.dataset.route!, fields });
-      status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
+      status.textContent = formSuccessMessage(form.dataset.route ?? '', String(data.get('firstName') ?? ''));
       if (form.dataset.download) window.location.assign(form.dataset.download);
-      else { form.hidden = true; const success = form.nextElementSibling as HTMLElement; success.hidden = false; }
+      else { form.hidden = true; const success = form.nextElementSibling as HTMLElement; success.textContent = formSuccessMessage(form.dataset.route ?? '', String(data.get('firstName') ?? '')); success.hidden = false; }
     } catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
   }));
 </script>

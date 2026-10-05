@@ -35,6 +35,7 @@ import '../../styles/information-update.css';
 </html>
 <script>
   import { submitFormAccepted } from '../../scripts/forms-client';
+  import { formSuccessMessage } from '../../scripts/form-feedback';
   document.querySelectorAll<HTMLFormElement>('[data-information-update]').forEach((form) => form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
@@ -50,7 +51,7 @@ import '../../styles/information-update.css';
     try {
       await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } });
       form.hidden = true;
-      status.textContent = 'Obrigado! O seu formulário foi enviado com sucesso.';
+      status.textContent = formSuccessMessage(form.dataset.route ?? '', String(data.get('firstName') ?? ''));
     } catch {
       status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.';
       button.disabled = false;

@@ -14,7 +14,9 @@
   "vars": {
     "RESEND_FROM": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
     "RESEND_REPLY_TO": "jrmota@kwportugal.pt",
-    "FORMS_RECIPIENT": "t@doop.pt"
+    "FORMS_RECIPIENT": "t@doop.pt",
+    "FORMS_DELIVERY_MODE": "test",
+    "FORMS_TEST_RECIPIENT": "t@doop.pt"
   },
   "env": {
     "production": {
@@ -29,7 +31,9 @@
       "vars": {
         "RESEND_FROM": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
         "RESEND_REPLY_TO": "jrmota@kwportugal.pt",
-        "FORMS_RECIPIENT": "t@doop.pt"
+        "FORMS_RECIPIENT": "t@doop.pt",
+        "FORMS_DELIVERY_MODE": "test",
+        "FORMS_TEST_RECIPIENT": "t@doop.pt"
       }
     },
     "preview": {
@@ -44,7 +48,9 @@
       "vars": {
         "RESEND_FROM": "Joaquim Mota Consultores <geral@mail.joaquimmota.pt>",
         "RESEND_REPLY_TO": "jrmota@kwportugal.pt",
-        "FORMS_RECIPIENT": "t@doop.pt"
+        "FORMS_RECIPIENT": "t@doop.pt",
+        "FORMS_DELIVERY_MODE": "test",
+        "FORMS_TEST_RECIPIENT": "t@doop.pt"
       }
     }
   }

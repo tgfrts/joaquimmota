@@ -180,7 +180,7 @@ test('the Resend adapter uses configured recipient only and escapes lead HTML', 
   const calls = [];
   const adapter = createResendAdapter(async (url, init) => {
     calls.push({ url, init });
-    return new Response('{"id":"mock-id"}', { status: 200 });
+    return new Response('{"data":[{"id":"mock-id"},{"id":"mock-client"}]}', { status: 200 });
   });
   const response = await createFormHandler(adapter)({
     request: request(leadPayload),
@@ -188,15 +188,18 @@ test('the Resend adapter uses configured recipient only and escapes lead HTML', 
       RESEND_SEND_API_KEY: 'send-key',
       RESEND_FROM: 'Joaquim Mota <noreply@mail.joaquimmota.pt>',
       FORMS_RECIPIENT: 'owner@example.test',
+      FORMS_DELIVERY_MODE: 'live',
     }),
   });
-  const body = JSON.parse(calls[0].init.body);
+  const batch = JSON.parse(calls[0].init.body);
+  const body = batch[0];
 
   assert.equal(response.status, 202);
-  assert.equal(calls[0].url, 'https://api.resend.com/emails');
+  assert.equal(calls[0].url, 'https://api.resend.com/emails/batch');
   assert.deepEqual(body.to, ['owner@example.test']);
-  assert.equal(body.reply_to, 'ana@example.test');
-  assert.match(body.html, /<th scope="row">consent<\/th><td>true<\/td>/u);
+  assert.equal(body.reply_to, 'jrmota@kwportugal.pt');
+  assert.deepEqual(batch[1].to, ['ana@example.test']);
+  assert.match(body.text, /Ana/u);
   assert.match(body.html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/u);
   assert.doesNotMatch(body.html, /<script>/u);
   assert.equal(calls[0].init.headers['idempotency-key'], key);
@@ -208,14 +211,16 @@ test('configured reply address and server-side test recipient override visitor r
   const calls = [];
   const handler = createFormHandler(createResendAdapter(async (url, init) => {
     calls.push({ url, init });
-    return new Response('{"id":"mock-email"}', { status: 200 });
+    return new Response('{"data":[{"id":"mock-email"},{"id":"mock-client"}]}', { status: 200 });
   }));
   const env = formEnv({ RESEND_SEND_API_KEY: 'test-key', RESEND_FROM: 'Joaquim Mota Consultores <geral@mail.joaquimmota.pt>', RESEND_REPLY_TO: 'jrmota@kwportugal.pt', FORMS_RECIPIENT: 't@doop.pt' });
   assert.equal((await handler({ request: request(leadPayload), env })).status, 202);
-  const body = JSON.parse(calls[0].init.body);
+  const batch = JSON.parse(calls[0].init.body);
+  const body = batch[0];
   assert.equal(body.from, env.RESEND_FROM);
   assert.deepEqual(body.to, ['t@doop.pt']);
   assert.equal(body.reply_to, 'jrmota@kwportugal.pt');
+  assert.deepEqual(batch[1].to, ['t@doop.pt']);
   assert.equal((await handler({ request: request(leadPayload, { 'idempotency-key': 'submission-20261003-002' }), env: formEnv({ ...env, RESEND_REPLY_TO: 'bad\r\nheader' }) })).status, 503);
   assert.equal(calls.length, 1);
 });
@@ -251,4 +256,19 @@ test('does not accept arbitrary same-origin public hosts as preview origins', as
   const adapter = mockAdapter();
   const request = new Request('http://unknown.example/api/forms', { method: 'POST', headers: { origin: 'http://unknown.example', 'content-type': 'application/json', 'idempotency-key': key }, body: JSON.stringify(leadPayload) });
   assert.equal((await createFormHandler(adapter)({ request, env: formEnv() })).status, 403);
+});
+
+test('successful batch persists both receipts and identical retry does not send again', async () => {
+  let sends = 0;
+  const handler = createFormHandler(createResendAdapter(async () => {
+    sends++;
+    return new Response(JSON.stringify({ data: [{ id: 'consultant-receipt' }, { id: 'customer-receipt' }] }), { status: 200 });
+  }));
+  const env = formEnv({ RESEND_SEND_API_KEY: 'test-key', RESEND_FROM: 'Joaquim Mota <geral@mail.joaquimmota.pt>', FORMS_DELIVERY_MODE: 'test' });
+  assert.equal((await handler({ request: request(leadPayload), env })).status, 202);
+  const row = await env.LEADS_DB.prepare('SELECT provider_id, delivery_status FROM leads WHERE idempotency_key = ?').bind(key).first();
+  assert.equal(row.provider_id, 'consultant-receipt,customer-receipt');
+  assert.equal(row.delivery_status, 'accepted');
+  assert.equal((await handler({ request: request(leadPayload), env })).status, 202);
+  assert.equal(sends, 1);
 });

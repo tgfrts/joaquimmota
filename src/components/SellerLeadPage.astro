@@ -68,6 +68,7 @@ const { title, heading, description, route, background, propertyDetails = false,
 
 <script>
   import { submitFormAccepted } from '../scripts/forms-client';
+  import { formSuccessMessage } from '../scripts/form-feedback';
   document.querySelectorAll<HTMLFormElement>('[data-seller-lead-form]').forEach((form) => form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (form.dataset.pending === 'true' || form.hidden || !form.reportValidity()) return;
@@ -90,7 +91,7 @@ const { title, heading, description, route, background, propertyDetails = false,
     }
     try {
       await submitFormAccepted(form, { formType: 'valuation', route: form.dataset.route ?? '', fields });
-      form.hidden = true; success.hidden = false;
+      form.hidden = true; success.textContent = formSuccessMessage(form.dataset.route ?? '', String(data.get('firstName') ?? '')); success.hidden = false;
     } catch { error.hidden = false; }
     finally { form.dataset.pending = 'false'; button.disabled = false; button.textContent = label; }
   }));

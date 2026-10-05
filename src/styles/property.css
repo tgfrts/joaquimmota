@@ -162,3 +162,5 @@
  .property-page--reserved .property-page__layout>.property-page__inquiry{padding-top:16px}
  .property-page__inquiry .property-inquiry{position:sticky;top:80px}
 }
+
+.property-inquiry form[hidden]{display:none!important}

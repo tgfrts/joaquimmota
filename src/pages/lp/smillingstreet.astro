@@ -37,17 +37,19 @@ const socialImage = new URL('/assets/smilling-hero.webp', Astro.site).toString()
         <button type="submit">Enviar</button>
         <p class="smilling-campaign__status" data-smilling-status role="status" aria-live="polite" hidden></p>
       </form>
+      <p class="smilling-campaign__success" data-smilling-success role="status" hidden></p>
     </section>
   </main>
 </BaseLayout>
 <script>
   import { submitFormAccepted } from '../../scripts/forms-client';
+  import { formSuccessMessage } from '../../scripts/form-feedback';
   document.querySelectorAll<HTMLFormElement>('[data-smilling-form]').forEach((form) => form.addEventListener('submit', async (event) => {
     event.preventDefault(); if (!form.reportValidity()) return;
-    const data = new FormData(form); const button = form.querySelector<HTMLButtonElement>('button'); const status = form.querySelector<HTMLElement>('[data-smilling-status]'); if (!button || !status) return;
+    const data = new FormData(form); const button = form.querySelector<HTMLButtonElement>('button'); const status = form.querySelector<HTMLElement>('[data-smilling-status]'); if (!button || !status || button.disabled || form.hidden) return;
     button.disabled = true; status.hidden = false;
     const message = `Conhece alguém que esteja a vender ou a comprar casa?: ${data.get('referral')}\nEstá a pensar vender ou a comprar casa?: ${data.get('intent')}`;
-    try { await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } }); window.location.assign('/lp/obrigado-evento'); }
+    try { await submitFormAccepted(form, { formType: 'leadMagnet', route: form.dataset.route ?? '', fields: { name: `${data.get('firstName')} ${data.get('lastName')}`.trim(), email: data.get('email'), phone: data.get('phone'), message } }); form.hidden = true; const success = form.parentElement?.querySelector<HTMLElement>('[data-smilling-success]'); if (success) { success.textContent = formSuccessMessage(form.dataset.route ?? '', String(data.get('firstName') ?? '')); success.hidden = false; } }
     catch { status.textContent = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.'; button.disabled = false; }
   }));
 </script>
@@ -243,6 +245,7 @@ const socialImage = new URL('/assets/smilling-hero.webp', Astro.site).toString()
 
   .smilling-campaign__form-section button { justify-self: start; }
   .smilling-campaign__status { margin: 12px 0 0; }
+  .smilling-campaign__form-section form[hidden]{display:none!important;}
 
   @media (max-width: 767px) {
     .smilling-campaign__hero,

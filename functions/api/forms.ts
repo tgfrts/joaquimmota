@@ -1,3 +1,5 @@
+import { buildLeadEmails } from './email-copy.ts';
+import propertyEmailDetails from './property-email-details.json' with { type: 'json' };
 import allowedSourceRoutes from './allowed-source-routes.json' with { type: 'json' };
 import { LeadIdempotencyConflict, LeadStore, type LeadsDatabase, type ValidatedLead } from './leads.ts';
 
@@ -9,6 +11,8 @@ type Env = {
   RESEND_FROM?: string;
   RESEND_REPLY_TO?: string;
   FORMS_RECIPIENT?: string;
+  FORMS_DELIVERY_MODE?: string;
+  FORMS_TEST_RECIPIENT?: string;
   LEADS_DB?: LeadsDatabase;
 };
 
@@ -32,11 +36,11 @@ const ROUTES: Record<FormType, ReadonlySet<string>> = {
 
 const FIELDS: Record<FormType, ReadonlySet<string>> = {
   newsletter: new Set(['email', 'firstName', 'lastName']),
-  contact: new Set(['name', 'email', 'phone', 'message', 'consent']),
-  valuation: new Set(['name', 'email', 'phone', 'propertyType', 'bedrooms', 'location', 'message', 'consent']),
-  mortgage: new Set(['name', 'email', 'phone', 'message', 'consent']),
-  partnership: new Set(['name', 'email', 'phone', 'clientType', 'message', 'consent']),
-  leadMagnet: new Set(['name', 'email', 'phone', 'message', 'consent']),
+  contact: new Set(['firstName', 'lastName', 'name', 'email', 'phone', 'contactSubject', 'message', 'consent']),
+  valuation: new Set(['firstName', 'lastName', 'name', 'email', 'phone', 'propertyType', 'bedrooms', 'location', 'message', 'consent']),
+  mortgage: new Set(['firstName', 'lastName', 'name', 'email', 'phone', 'message', 'consent']),
+  partnership: new Set(['firstName', 'lastName', 'name', 'email', 'phone', 'clientType', 'message', 'consent']),
+  leadMagnet: new Set(['firstName', 'lastName', 'name', 'email', 'phone', 'message', 'consent']),
 };
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/u;
@@ -93,10 +97,6 @@ function optionalText(value: unknown, field: string, limit = 2_000) {
   return requiredString(value, field, limit, field === 'message');
 }
 
-function escapeHtml(value: string) {
-  return value.replace(/[&<>'"]/gu, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character] ?? character));
-}
-
 function formType(value: unknown): FormType {
   if (typeof value !== 'string' || !Object.hasOwn(ROUTES, value)) throw new FormError(404, 'Unknown form.');
   return value as FormType;
@@ -124,6 +124,7 @@ function parseSubmission(payload: unknown, idempotencyKey: string): Submission {
     const value = optionalText(fields[field], field, field === 'message' ? 4_000 : 500);
     if (value !== undefined) normalized[field] = value;
   }
+  if (normalized.contactSubject && !['Comprar', 'Vender', 'Outro'].includes(String(normalized.contactSubject))) throw new FormError(422, 'Invalid contact subject.');
   return { formType: type, route, fields: normalized, idempotencyKey };
 }
 
@@ -141,18 +142,11 @@ function configuredEmail(env: Env, key: 'FORMS_RECIPIENT' | 'RESEND_REPLY_TO') {
   return value;
 }
 
-function leadEmailHtml(submission: Submission) {
-  const rows = Object.entries(submission.fields)
-    .map(([key, value]) => `<tr><th scope="row">${escapeHtml(key)}</th><td>${escapeHtml(String(value))}</td></tr>`)
-    .join('');
-  return `<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><title>Novo contacto</title></head><body><h1>Novo contacto</h1><p>Formulário: ${escapeHtml(submission.formType)}</p><p>Rota: ${escapeHtml(submission.route)}</p><table>${rows}</table></body></html>`;
-}
-
 function retryable(status: number) {
   return status === 429 || status >= 500;
 }
 
-async function resendRequest(fetcher: typeof fetch, path: string, apiKey: string, idempotencyKey: string, body: Record<string, unknown>): Promise<Delivery> {
+async function resendRequest(fetcher: typeof fetch, path: string, apiKey: string, idempotencyKey: string, body: Record<string, unknown> | Record<string, unknown>[]): Promise<Delivery> {
   const controller = new AbortController();
   const deadline = setTimeout(() => controller.abort(), 20_000);
   try {
@@ -164,7 +158,11 @@ async function resendRequest(fetcher: typeof fetch, path: string, apiKey: string
     });
     const retryAfter = Number(result.headers.get('retry-after'));
     if (!result.ok) throw new FormError(retryable(result.status) ? 503 : 422, 'Form delivery failed.', retryable(result.status) ? (Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : 30) : undefined);
-    const payload = await result.json().catch(() => undefined) as { id?: unknown } | undefined;
+    const payload = await result.json().catch(() => undefined) as { id?: unknown; data?: { id?: unknown }[] } | undefined;
+    if (Array.isArray(body)) {
+      if (!Array.isArray(payload?.data) || payload.data.length !== body.length || payload.data.some(item => typeof item?.id !== 'string' || !item.id.trim())) throw new FormError(503, 'Incomplete email receipt.', 30);
+      return { providerId: payload.data.map(item => item.id).join(',') };
+    }
     return typeof payload?.id === 'string' ? { providerId: payload.id } : {};
   } catch (error) {
     if (error instanceof FormError) throw error;
@@ -214,13 +212,22 @@ export function createResendAdapter(fetcher: typeof fetch): FormAdapter {
     },
     async notifyLead(submission, env) {
       const email = requiredString(submission.fields.email, 'email', 320);
-      return resendRequest(fetcher, '/emails', requiredConfig(env, 'RESEND_SEND_API_KEY'), submission.idempotencyKey, {
-        from: requiredConfig(env, 'RESEND_FROM'),
-        to: [configuredEmail(env, 'FORMS_RECIPIENT')],
-        reply_to: env.RESEND_REPLY_TO ? configuredEmail(env, 'RESEND_REPLY_TO') : email,
-        subject: `Novo contacto — ${submission.formType}`,
-        html: leadEmailHtml(submission),
-      });
+      // Live routing requires explicit configuration; default and all preview configs stay test-only.
+      const testMode = env.FORMS_DELIVERY_MODE !== 'live';
+      const testRecipient = (env.FORMS_TEST_RECIPIENT ?? 't@doop.pt').trim().toLowerCase();
+      if (testMode && !EMAIL.test(testRecipient)) throw new FormError(503, 'Invalid test recipient.');
+      const consultantTo = testMode ? [testRecipient] : [configuredEmail(env, 'FORMS_RECIPIENT')];
+      if (!testMode && submission.formType === 'mortgage') consultantTo.push('da@somoscredito.pt');
+      const propertySlug = submission.route.startsWith('/imoveis/') ? submission.route.slice('/imoveis/'.length) : '';
+      const property = propertySlug ? (propertyEmailDetails as Record<string, { title: string; reference: string }>)[propertySlug] : undefined;
+      if (propertySlug && !property) throw new FormError(503, 'Property email details unavailable.');
+      const messages = buildLeadEmails(submission, property);
+      const from = requiredConfig(env, 'RESEND_FROM');
+      const reply_to = env.RESEND_REPLY_TO ? configuredEmail(env, 'RESEND_REPLY_TO') : 'jrmota@kwportugal.pt';
+      return resendRequest(fetcher, '/emails/batch', requiredConfig(env, 'RESEND_SEND_API_KEY'), submission.idempotencyKey, [
+        { from, to: consultantTo, reply_to, ...messages.consultant },
+        { from, to: testMode ? [testRecipient] : [email], reply_to, ...messages.customer },
+      ]);
     },
   };
 }
