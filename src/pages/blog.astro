@@ -1,4 +1,5 @@
 ---
+import SeoMetadata from '../components/SeoMetadata.astro';
 import SiteIcons from '../components/SiteIcons.astro';
 import BlogIndex from '../components/BlogIndex.astro';
 import '../styles/global.css';
@@ -7,7 +8,7 @@ import '../styles/global.css';
 <html lang="pt-PT">
   <head><SiteIcons />
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex, nofollow" />
+    <SeoMetadata />
     <meta property="og:title" content="Blog" /><meta name="twitter:title" content="Blog" />
     <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />

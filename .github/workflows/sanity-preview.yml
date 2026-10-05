@@ -21,6 +21,7 @@ jobs:
     timeout-minutes: 20
     env:
       CLOUDFLARE_ACCOUNT_ID: e23a1ecc3719f496e47f56f20e6da716
+      SITE_ENV: preview
     steps:
       - name: Check deployment credential availability
         id: credential
@@ -59,6 +60,9 @@ jobs:
       - name: Build current published content
         if: steps.credential.outputs.configured == 'true'
         run: npm run build
+      - name: Validate preview SEO protections
+        if: steps.credential.outputs.configured == 'true'
+        run: node --test tests/seo/*.test.mjs
       - name: Recheck published URLs and write public revision metadata
         if: steps.credential.outputs.configured == 'true'
         run: node scripts/cms/check-revision.mjs --write

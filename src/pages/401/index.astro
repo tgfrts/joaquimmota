@@ -1,4 +1,5 @@
 ---
+import SeoMetadata from '../../components/SeoMetadata.astro';
 import SiteIcons from '../../components/SiteIcons.astro';
 import '../../styles/global.css';
 import '../../styles/utility-pages.css';
@@ -9,7 +10,7 @@ import '../../styles/utility-pages.css';
   <head><SiteIcons />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex, nofollow" />
+    <SeoMetadata noindex />
     <title>Protected page</title>
     <meta property="og:title" content="Protected page" />
     <meta name="twitter:title" content="Protected page" />

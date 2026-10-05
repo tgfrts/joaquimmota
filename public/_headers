@@ -1,0 +1,6 @@
+# Keep Pages deployment URLs out of search even for production builds.
+https://joaquimmota.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+https://:version.joaquimmota.pages.dev/*
+  X-Robots-Tag: noindex, nofollow

@@ -23,3 +23,7 @@ Public `cms-revision.json` records the content revision, document count and publ
 ## Verification
 
 The first connected build generated 249 pages from 189 published documents. All 124 property/article detail paths were independently verified in the build output. The five existing sold selections were preserved. Public Home, property directory, property detail, article detail and revision metadata returned HTTP 200 after deployment. No email or real form submission was sent during this integration.
+
+## Production preparation
+
+A separate manual `.github/workflows/production.yml` builds with `SITE_ENV=production`, validates the same CMS/form gates plus generated SEO, and deploys to Pages production branch `main`. The Sanity webhook still triggers the preview workflow only until the domain cutover step. Production pages have apex canonicals and a167URL sitemap; Pages deployment hostnames receive noindex response headers. DNS, custom-domain association and Webflow shutdown are deferred.

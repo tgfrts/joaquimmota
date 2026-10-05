@@ -1,0 +1,43 @@
+name: Production release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: joaquimmota-production
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/codex/migration-foundation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CLOUDFLARE_ACCOUNT_ID: e23a1ecc3719f496e47f56f20e6da716
+      SITE_ENV: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run cms:fetch
+      - name: Protect existing published URLs
+        run: node scripts/cms/check-revision.mjs
+      - name: Test CMS and forms
+        run: node --test scripts/cms/*.test.mjs tests/forms/*.test.mjs
+      - run: npm run check
+      - run: npm run build
+      - name: Validate production SEO
+        run: node --test tests/seo/*.test.mjs
+      - run: node scripts/cms/check-revision.mjs --write
+      - name: Deploy production assets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo 'Missing Cloudflare deployment credential.'; exit 1; }
+          npx --yes wrangler@4.130.0 pages deploy dist --project-name joaquimmota --branch main --commit-hash "$GITHUB_SHA" --commit-dirty=true

@@ -1,4 +1,5 @@
 ---
+import SeoMetadata from './SeoMetadata.astro';
 import SiteIcons from './SiteIcons.astro';
 import '../styles/seller-leads.css';
 
@@ -20,7 +21,7 @@ const { title, heading, description, route, background, propertyDetails = false,
   <head><SiteIcons />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex, nofollow" />
+    <SeoMetadata />
     <meta property="og:title" content={title} />
     {socialImage && <meta property="og:image" content={socialImage} />}
     <meta name="twitter:title" content={title} />

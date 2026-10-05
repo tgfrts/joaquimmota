@@ -1,0 +1,8 @@
+---
+import { canonicalUrl, robotsForPath } from '../lib/seo';
+interface Props { noindex?: boolean }
+const { noindex = false } = Astro.props;
+const robots = robotsForPath(Astro.url.pathname, import.meta.env.SITE_ENV, noindex);
+---
+<meta name="robots" content={robots} />
+<link rel="canonical" href={canonicalUrl(Astro.url.pathname)} />
