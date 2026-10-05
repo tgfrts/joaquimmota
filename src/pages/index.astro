@@ -38,7 +38,7 @@ const testimonials = testimonialFallback.map(([legacyId, quote, clientName]) => 
 <BaseLayout description="Uma venda com sucesso" richSocial>
   <Header />
   <main class="home-page">
-    <InteriorHero eyebrow="JOAQUIM MOTA CONSULTORES" heading="Uma experiência imobiliária bem sucedida" body="Quer esteja a pensar vender ou comprar, estamos aqui para lhe guiar numa experiência bem sucedida." video="/assets/hero.mp4" poster="/assets/hero-poster.jpg" mobileImage="/assets/reviews-hero.png" label="Vou vender" href="/vender" secondaryLabel="Vou comprar" secondaryHref="/comprar" />
+    <InteriorHero eyebrow="JOAQUIM MOTA CONSULTORES" heading="Uma experiência imobiliária bem sucedida" body="Quer esteja a pensar vender ou comprar, estamos aqui para lhe guiar numa experiência bem sucedida." video="/assets/hero.mp4" poster="/assets/hero-poster.jpg" mobileImage="/assets/contact-hero.png" label="Vou vender" href="/vender" secondaryLabel="Vou comprar" secondaryHref="/comprar" />
 
     <div class="home-secondary-header"><Header variant="blue" pageNavigation contactHref="/vamos-comecar" contactLabel="Vamos começar" showBlog={false} /></div>
     <section class="home-process shell"><div class="home-process__intro"><p class="section-eyebrow">Como o fazemos</p><h2 class="section-heading">Espere mais do seu consultor</h2><p>Sabemos que vender e comprar uma casa pode ser complicado.<br />Estamos aqui para tornar esse processo o mais simples possível para si.</p></div><div class="home-process__steps">{homeSteps.map(step => <article data-source-id={step!.legacyId}><h3>{step!.title}</h3><p>{step!.body}</p></article>)}<a class="home-process__mobile-action" href="/vamos-comecar">Vamos começar</a></div></section>

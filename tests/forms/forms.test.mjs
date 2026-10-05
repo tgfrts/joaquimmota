@@ -20,7 +20,7 @@ function formEnv(overrides = {}) {
 }
 const leadPayload = {
   formType: 'contact',
-  route: '/contacto',
+  route: '/vamos-comecar',
   fields: { name: 'Ana', email: 'ANA@example.test', message: 'Olá\n<script>alert(1)</script>', consent: true },
 };
 

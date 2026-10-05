@@ -57,14 +57,14 @@ test('real inventory separates 35 static pages, 9 drafts, and 10 CMS templates; 
     assert.equal(report.status, 'pass');
     assert.equal(report.inventoryPageRecords, 54);
     assert.equal(report.sourceStaticPublishedPageRecords, 35);
-    assert.equal(report.staticPublishedPageRecords, 31);
+    assert.equal(report.staticPublishedPageRecords, 30);
     assert.equal(report.excludedStaticDraftPageRecords, 9);
     assert.equal(report.cmsTemplateRecords, 10);
     assert.equal(report.staticPublishedPaths.includes('/imoveis'), false);
     assert.ok(report.forbiddenStaticDraftPaths.includes('/imoveis'));
     assert.ok(report.expandedCmsPaths.some((route) => route.startsWith('/imoveis/eligible-')));
     assert.deepEqual(report.ownerExcludedSourceRoutes, [
-      '/doop/relatorios-de-atividades', '/doop/relatorios-de-visita', '/lp/oferta-selecao', '/ofertas/vinho-e-fado', '/reviews',
+      '/doop/relatorios-de-atividades', '/doop/relatorios-de-visita', '/lp/oferta-selecao', '/ofertas/vinho-e-fado', '/reviews', '/contacto',
     ]);
     assert.deepEqual(report.generatedOwnerExcludedPaths, []);
     assert.deepEqual(report.missingPublishedPaths, []);
@@ -87,7 +87,7 @@ test('Owner-excluded source URLs remain in historical inventory but must not be 
     assert.deepEqual(report.staticPublishedPaths, []);
     assert.deepEqual(report.expandedCmsPaths, []);
     assert.deepEqual(report.ownerExcludedSourceRoutes, [
-      '/doop/relatorios-de-atividades', '/doop/relatorios-de-visita', '/lp/oferta-selecao', '/ofertas/vinho-e-fado', '/reviews',
+      '/doop/relatorios-de-atividades', '/doop/relatorios-de-visita', '/lp/oferta-selecao', '/ofertas/vinho-e-fado', '/reviews', '/contacto',
     ]);
   });
   withBuild([

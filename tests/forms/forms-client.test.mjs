@@ -11,7 +11,7 @@ test('unchanged retries reuse the key, changed submissions use a new key, and on
   };
   try {
     const form = { querySelector: () => ({ checked: true }) };
-    const payload = { formType: 'contact', route: '/contacto', fields: { name: 'Ana', email: 'ana@example.test' } };
+    const payload = { formType: 'contact', route: '/vamos-comecar', fields: { name: 'Ana', email: 'ana@example.test' } };
     await assert.rejects(submitFormAccepted(form, payload));
     await assert.rejects(submitFormAccepted(form, payload));
     await submitFormAccepted(form, payload);

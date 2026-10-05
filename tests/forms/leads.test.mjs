@@ -7,7 +7,7 @@ import { LeadStore } from '../../functions/api/leads.ts';
 
 const migration = await readFile(new URL('../../migrations/0001_create_leads.sql', import.meta.url), 'utf8');
 const key = 'lead-d1-test-key-20261004';
-const payload = { formType: 'contact', route: '/contacto', fields: { name: 'Ana', email: 'ana@doop.test', message: 'Olá', consent: true } };
+const payload = { formType: 'contact', route: '/vamos-comecar', fields: { name: 'Ana', email: 'ana@doop.test', message: 'Olá', consent: true } };
 
 function sqliteD1() {
   const sqlite = new DatabaseSync(':memory:');
@@ -50,7 +50,7 @@ test('D1-compatible leads schema persists every validated field before delivery 
   assert.equal((await handler({ request: request(), env })).status, 202);
   assert.equal(calls.length, 1);
   const lead = sqlite.prepare('SELECT form_type, route, property_reference, name, email, message, consent, delivery_status, provider_id, safe_error FROM leads').get();
-  assert.deepEqual({ ...lead }, { form_type: 'contact', route: '/contacto', property_reference: null, name: 'Ana', email: 'ana@doop.test', message: 'Olá', consent: 1, delivery_status: 'accepted', provider_id: 'email-1', safe_error: null });
+  assert.deepEqual({ ...lead }, { form_type: 'contact', route: '/vamos-comecar', property_reference: null, name: 'Ana', email: 'ana@doop.test', message: 'Olá', consent: 1, delivery_status: 'accepted', provider_id: 'email-1', safe_error: null });
 });
 
 test('a validated property route is persisted as its source-stable property reference', async () => {
@@ -110,7 +110,7 @@ test('a stale lease under 23 hours can recover, while an older ambiguous attempt
   assert.equal(manual.calls.length, 1);
 
   const oldPending = setup();
-  oldPending.sqlite.prepare("INSERT INTO leads (idempotency_key, payload_hash, form_type, route, email, consent, fields_json, created_at, updated_at) VALUES (?, ?, 'contact', '/contacto', 'ana@doop.test', 1, ?, datetime('now', '-23 hours', '-1 second'), datetime('now', '-23 hours', '-1 second'))").run('lead-d1-test-key-20261004', (await (async () => { const bytes = new TextEncoder().encode(JSON.stringify({ formType: 'contact', route: '/contacto', fields: { email: 'ana@doop.test', consent: true, name: 'Ana', message: 'Olá' } })); const d = await crypto.subtle.digest('SHA-256', bytes); return Array.from(new Uint8Array(d), b => b.toString(16).padStart(2, '0')).join(''); })()), JSON.stringify({ formType: 'contact', route: '/contacto', fields: { email: 'ana@doop.test', consent: true, name: 'Ana', message: 'Olá' } }));
+  oldPending.sqlite.prepare("INSERT INTO leads (idempotency_key, payload_hash, form_type, route, email, consent, fields_json, created_at, updated_at) VALUES (?, ?, 'contact', '/vamos-comecar', 'ana@doop.test', 1, ?, datetime('now', '-23 hours', '-1 second'), datetime('now', '-23 hours', '-1 second'))").run('lead-d1-test-key-20261004', (await (async () => { const bytes = new TextEncoder().encode(JSON.stringify({ formType: 'contact', route: '/vamos-comecar', fields: { email: 'ana@doop.test', consent: true, name: 'Ana', message: 'Olá' } })); const d = await crypto.subtle.digest('SHA-256', bytes); return Array.from(new Uint8Array(d), b => b.toString(16).padStart(2, '0')).join(''); })()), JSON.stringify({ formType: 'contact', route: '/vamos-comecar', fields: { email: 'ana@doop.test', consent: true, name: 'Ana', message: 'Olá' } }));
   assert.equal((await oldPending.handler({ request: request(), env: oldPending.env })).status, 503);
   assert.equal(oldPending.calls.length, 0);
 });
