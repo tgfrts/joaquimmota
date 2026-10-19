@@ -1,7 +1,7 @@
-name: Sanity content preview
+name: Sanity content publishing
 
 on:
-  # Sanity's authenticated webhook dispatches this workflow on codex/migration-foundation.
+  # Keep the existing authenticated Sanity webhook URL; dispatches now release production.
   # Public content remains generated at build time; no polling or public runtime CMS token.
   workflow_dispatch:
   push:
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   refresh-preview:
-    if: github.ref == 'refs/heads/codex/migration-foundation'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/codex/migration-foundation'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -73,3 +73,8 @@ jobs:
         run: |
           test -n "$CLOUDFLARE_API_TOKEN" || { echo 'Missing Cloudflare deployment credential.'; exit 1; }
           npx --yes wrangler@4.130.0 pages deploy dist --project-name joaquimmota --branch migration-preview --commit-hash "$GITHUB_SHA" --commit-dirty=true
+
+  refresh-production:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/codex/migration-foundation'
+    uses: ./.github/workflows/production.yml
+    secrets: inherit

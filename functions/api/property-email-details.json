@@ -1,4 +1,16 @@
 {
+  "kwpt039444": {
+    "title": "Moradia ou Prédio T3 com dependência T1 e terraço ao intermarche de Arcozelo",
+    "reference": "KWPT039444"
+  },
+  "kwpt030872": {
+    "title": "Moradia T3+2 ao centro de Sta. Marinha do Zêzere com Espaço Comercial + Terreno",
+    "reference": "KWPT030872"
+  },
+  "kwpt037996": {
+    "title": "Moradia reabilitada t0 como espaço amplo de 2 pisos e terraço em Pimeirô Cinfães",
+    "reference": "KWPT037996"
+  },
   "kwpt036155": {
     "title": "Apartamento T2 com Suite e Garagem junto ao Metro da Campainha em Rio Tinto",
     "reference": "KWPT036155"
@@ -6,6 +18,14 @@
   "kwpt032055": {
     "title": "T1+1 com renovação e Garagem em Vilar do Paraíso",
     "reference": "KWPT032055 - Reservado"
+  },
+  "kwpt037992": {
+    "title": "Moradia T1 totalmente renovada, muito bonita, Pimeirô , Cinfães",
+    "reference": "KWPT037992"
+  },
+  "jrm001": {
+    "title": "Conjunto de duas moradias renovadas T1 e T0 em Pimeirô, Cinfães",
+    "reference": "JRM001"
   },
   "1202-2406": {
     "title": "Apartamento T3 Renovado próximo ao Metro da Levada",

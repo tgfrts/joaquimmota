@@ -1,48 +1,53 @@
 # Joaquim Mota Consultores
 
-Independent Astro preview for the read-only migration of `joaquimmota.pt`.
+Independent Astro site for `joaquimmota.pt`, migrated from Webflow. Astro owns presentation and static page generation; this site's Sanity project `kaq1vd9b`, dataset `production`, owns structured editable content. Webflow remains strictly read-only.
 
 ## Local commands
 
 ```sh
-npm install
+npm ci
 npm run dev
 npm run check
 npm run build
+node --test scripts/cms/*.test.mjs tests/forms/*.test.mjs
 ```
 
-The current preview builds 250 paths, including eligible static pages, CMS templates and source-empty CMS paths. Source drafts and the four routes explicitly removed by the Owner on 2026-10-04 are excluded. It is not approved for production deployment. Pages carry `noindex, nofollow` during this preview phase; original production SEO must be restored and verified before cutover.
+`npm run build` fetches current published Sanity content, generates property email metadata and builds Astro. For development before the first build, run `npm run cms:fetch`. The ignored `src/data/sample-content.json` is a generated local cache, not a committed source of content. Fetching is paginated and uncached; empty or invalid content fails the build. Destination drafts and releases are excluded. Historical migration preparation scripts are not the routine publishing workflow.
 
-The site's own Sanity project `kaq1vd9b`, dataset `production`, holds 190 eligible documents as target drafts. The sample gate passed before the remaining179 were imported. Aggregate verification confirms1447 visible image positions referencing1342 distinct originals. `src/data/sample-content.json` is an ignored local preview cache, never a committed source of content. A clean checkout requires a read-only snapshot of the target drafts and the approved private migration inputs before building:
+Property and article pages use published slugs. Imported `sourceSlug` values and deployed CMS route history protect existing URLs, including documents temporarily unpublished. Source drafts remain excluded from migration. Newly published properties, including KWPT039444, KWPT030872, KWPT037992, KWPT037996 and JRM001, use the same content/build flow; no template edits are required for each listing.
 
-```sh
-node scripts/migration/prepare-preview.mjs /absolute/path/target-bulk-snapshot.json --bulk --source /absolute/path/staged-cms-source.json --manifest /absolute/path/bulk-manifest.json --full-payload /absolute/path/bulk-payload.json
-```
+## Preview and production publishing
 
-The snapshot shape is `{ "documents": [...] }`. Read the190 drafts with the Joaquim Mota Sanity connection, in small paginated responses to respect the connector response limit. The preparer verifies the approved bulk gate, eligible identities, original slugs, draft state and per-collection item/photo counts. It performs no provider writes. Do not substitute another site's dataset or commit raw snapshots. Sample-only preparation remains available without `--bulk` for the original11-sample snapshot.
+`.github/workflows/sanity-preview.yml` checks, tests, builds and deploys the `migration-preview` branch of the own Cloudflare Pages project `joaquimmota`. Code pushes on the trusted `codex/migration-foundation` branch run its preview job. Its existing manual/authenticated webhook dispatch entry point now calls the reusable production workflow, preserving the Sanity webhook URL and authentication. Historical automatic preview delivery was certified; the new production event path still requires end-to-end verification.
 
-For the built-site local preview with Pages Functions, use the already installed Wrangler runtime:
+`.github/workflows/production.yml` accepts direct manual dispatch and reusable calls from the Sanity entry point on that same trusted branch, serializes production releases and deploys Pages branch `main`. It validates production SEO and checks the combined production/preview URL histories before writing revision metadata. Missing, malformed or conflicting production URL history stops deployment. Both flows read published Sanity content at build time; neither needs a public runtime CMS token.
+
+The Owner authorized immediate association of `joaquimmota.pt` and `www.joaquimmota.pt`, DNS cutover and retargeting the Sanity webhook to production on 2026-10-19. This authorization does not establish completion: consult `docs/migration/STATUS.md` for execution evidence and outstanding verification. Existing email DNS must be preserved. Webflow must remain available as reference/rollback; no additional decommission action is authorized.
+
+Production eligible pages use apex canonicals and the generated sitemap. Preview and Pages deployment hostnames remain `noindex, nofollow`; private, utility, blank and thank-you pages are excluded from indexing and the sitemap. Final domain behavior requires post-cutover checks.
+
+## Local Pages Functions and lead delivery
+
+For a built-site local preview with Pages Functions:
 
 ```sh
 npm run build
-wrangler d1 migrations apply joaquimmota-leads-preview --local --persist-to /private/tmp/jrmota-pages-local-state
-wrangler pages dev dist --ip 127.0.0.1 --port 8789 --persist-to /private/tmp/jrmota-pages-local-state
+npx --yes wrangler@4.130.0 d1 migrations apply joaquimmota-leads-preview --local --persist-to /private/tmp/jrmota-pages-local-state
+npx --yes wrangler@4.130.0 pages dev dist --ip 127.0.0.1 --port 8789 --persist-to /private/tmp/jrmota-pages-local-state
 ```
 
-The migration validation used Wrangler `4.130.0`. This runs locally and performs no Cloudflare deployment. Original extensionless paths are preserved through Astro file-format output. The public dashboard route serves the locked view with HTTP 401; the unknown route serves HTTP 404.
+This uses local emulated storage and does not deploy. Astro development alone does not execute Pages Functions. Original extensionless paths use Astro file-format output; the locked dashboard returns HTTP 401 and unknown routes return HTTP 404.
 
-Forms persist validated leads in the own `LEADS_DB` D1 binding before the server-side Resend call. Production and preview databases are independent: `joaquimmota-leads-production` and `joaquimmota-leads-preview`, created in the EU jurisdiction. `wrangler.jsonc` configures these bindings; migrations live in `migrations/`. Same-key retries reuse the stored result; a different payload under the same key returns409. The stored `accepted` status confirms provider acceptance, not delivery to an inbox.
+Forms persist validated leads in the own `LEADS_DB` D1 binding before calling Resend server-side. Production and preview use separate EU databases, `joaquimmota-leads-production` and `joaquimmota-leads-preview`. Bindings are in `wrangler.jsonc`; schema migrations are in `migrations/`. Same-key retries reuse the stored result, while a changed payload with the same key returns HTTP 409. Provider acceptance does not prove inbox delivery. See `docs/migration/D1-LEADS.md` and `EMAILS.md` for details.
 
-Own credentials are configured locally in private ignored `.dev.vars`; Astro development does not execute Pages Functions. Local Pages uses an emulated local D1 database; remote bindings take effect when deployed. No production deployment is authorized. All test notifications still route to `t@doop.pt`; sender is `geral@mail.joaquimmota.pt` and Reply-To is `jrmota@kwportugal.pt`. Hosting secrets and production recipient activation remain pending. See `docs/migration/D1-LEADS.md` for persistence and validation.
+Base/local configuration routes test notifications exclusively to `t@doop.pt`. Deployed preview and production configuration uses Owner-approved live routing: consultant `jrmota@kwportugal.pt`, customer at the submitted address, and mortgage requests additionally to `da@somoscredito.pt`. Sender is `geral@mail.joaquimmota.pt`, with Reply-To `jrmota@kwportugal.pt`. Real test submissions/emails require authorization.
 
-The Owner removed `/lp/oferta-selecao`, `/ofertas/vinho-e-fado`, `/doop/relatorios-de-atividades` and `/doop/relatorios-de-visita`, including their forms and report handlers. These URLs return404 in the target. The Webflow source and historical source inventory remain untouched.
+Keep private local credentials in ignored `.dev.vars`, runtime secrets in Cloudflare and deployment credentials in GitHub Actions secrets. Secrets remain server-side and outside Git; do not substitute another site's accounts or datasets.
 
-## Dependency audit
+## Migration evidence and dependencies
 
-Astro is pinned to `7.3.5`. On 2026-10-03, `npm audit` reported two high findings for the single transitive dependency `http-cache-semantics@4.2.0` through Astro. The advisory range includes version `4.2.0`, which is also the latest version published by npm; no compatible patched release is available. The audit's suggested Astro `2.10.9` downgrade is not applied.
+Read `docs/migration/CONTRACT.md`, `ACCEPTANCE.md` and `STATUS.md` before migration or cutover work. Historical source inventories remain evidence; Owner-authorized removals and presentation changes are recorded in the contract. Removed routes must retain their approved HTTP 404/redirect behavior.
 
-## Source evidence
+Home sold properties come from the published snapshot: sold status, newest native Sanity `_updatedAt` first, deterministic `_id` tie-break, maximum five. CMS edits change this selection after the next successful build/deployment; `sourceUpdatedAt` is not used for ordering.
 
-The implementation was inspected against the live public homepage on 2026-10-03. Its active visual hero uses the source video poster, and all local files in `public/assets/` are public source copies fetched from the Webflow CDN. The source's zero-sized alternate hero DOM block is intentionally excluded; see the migration contract's rule against residual hidden variants.
-
-Home sold properties are selected from this site's own CMS snapshot: `property`, `listingStatus === 'sold'`, newest native Sanity `_updatedAt` first, deterministic `_id` tie-break, maximum five. Changing a property's status or editing it changes this selection after refreshing the CMS snapshot and rebuilding. The current migration preview does not yet have an automatic CMS publication/build trigger. Original source `sourceUpdatedAt` is optional migration metadata and is not used for ordering.
+Astro is pinned to `7.3.5`. Commit `bebd161` updated the locked transitive `http-cache-semantics` dependency from `4.2.0` to `4.3.0` on 2026-10-19. The former README's unresolved-vulnerability statement is obsolete; run a fresh dependency audit when assessing current advisory status.

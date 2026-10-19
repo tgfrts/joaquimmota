@@ -1,7 +1,13 @@
 name: Production release
 
 on:
+  # The existing Sanity dispatch workflow calls this same production pipeline.
+  # Manual releases and webhook refreshes share the production concurrency group below.
   workflow_dispatch:
+  workflow_call:
+    secrets:
+      CLOUDFLARE_API_TOKEN:
+        required: true
 
 permissions:
   contents: read

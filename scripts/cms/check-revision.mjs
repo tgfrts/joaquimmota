@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const PREVIEW_URL = 'https://migration-preview.joaquimmota.pages.dev';
+export const PRODUCTION_URL = 'https://joaquimmota.pages.dev';
 
 function stable(value) {
   if (Array.isArray(value)) return value.map(stable);
@@ -31,8 +32,8 @@ export function assertPublishedRoutesUnchanged(revision, deployed) {
   }
 }
 
-async function readDeployedRevision(fetchImpl) {
-  const url = new URL('/cms-revision.json', PREVIEW_URL);
+async function readDeployedRevision(fetchImpl, origin) {
+  const url = new URL('/cms-revision.json', origin);
   url.searchParams.set('check', Date.now().toString());
   const response = await fetchImpl(url, { cache: 'no-store', signal: AbortSignal.timeout(20_000), headers: { 'Cache-Control': 'no-cache' } });
   if (!response.ok) throw new Error(`Cannot verify published URL baseline (HTTP ${response.status}).`);
@@ -48,8 +49,29 @@ async function readDeployedRevision(fetchImpl) {
   return deployed;
 }
 
-export async function hasContentChanged(revision, { fetchImpl = fetch } = {}) {
-  const deployed = await readDeployedRevision(fetchImpl);
+async function readDeploymentBaseline({ fetchImpl = fetch, siteEnv = 'preview' } = {}) {
+  const origins = siteEnv === 'production' ? [PRODUCTION_URL, PREVIEW_URL] : [PREVIEW_URL];
+  const baselines = await Promise.all(origins.map(origin => readDeployedRevision(fetchImpl, origin)));
+  if (siteEnv === 'production' && baselines.some(baseline => !Object.hasOwn(baseline, 'routes'))) {
+    throw new Error('Production requires deployed CMS URL history in both production and preview metadata.');
+  }
+  const routes = {};
+  for (const baseline of baselines) {
+    assertPublishedRoutesUnchanged(baseline, { routes });
+    Object.assign(routes, baseline.routes);
+  }
+  return { ...baselines[0], routes };
+}
+
+export async function deploymentRevision(revision, options = {}) {
+  const deployed = await readDeploymentBaseline(options);
+  assertPublishedRoutesUnchanged(revision, deployed);
+  // Retain public URL history across unpublish/re-publish, without preventing removal.
+  return { ...revision, routes: { ...deployed.routes, ...revision.routes } };
+}
+
+export async function hasContentChanged(revision, options = {}) {
+  const deployed = await readDeploymentBaseline(options);
   // A failed baseline read must stop deployment rather than erase URL history.
   assertPublishedRoutesUnchanged(revision, deployed);
   return !deployed || deployed.hash !== revision.hash || deployed.documentCount !== revision.documentCount;
@@ -59,16 +81,13 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const snapshot = JSON.parse(await readFile(new URL('../../src/data/sample-content.json', import.meta.url), 'utf8'));
   const revision = contentRevision(snapshot);
   if (process.argv.includes('--write')) {
-    const deployed = await readDeployedRevision(fetch);
-    assertPublishedRoutesUnchanged(revision, deployed);
-    // Retain public URL history across unpublish/re-publish, without preventing removal.
-    revision.routes = { ...deployed?.routes, ...revision.routes };
+    const protectedRevision = await deploymentRevision(revision, { siteEnv: process.env.SITE_ENV });
     const output = new URL('../../dist/cms-revision.json', import.meta.url);
     await mkdir(new URL('.', output), { recursive: true });
-    await writeFile(output, JSON.stringify({ ...revision, generatedAt: new Date().toISOString() }) + '\n');
+    await writeFile(output, JSON.stringify({ ...protectedRevision, generatedAt: new Date().toISOString() }) + '\n');
     console.log(`Published CMS revision: ${revision.hash} (${revision.documentCount} documents)`);
   } else {
-    const changed = await hasContentChanged(revision);
+    const changed = await hasContentChanged(revision, { siteEnv: process.env.SITE_ENV });
     if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
     console.log(`CMS content changed: ${changed}`);
   }
