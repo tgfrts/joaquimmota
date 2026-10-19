@@ -1,0 +1,530 @@
+[
+  {
+    "checkedAt": "2026-10-19T11:50:57.391607+00:00",
+    "wwwRedirectChecks": [
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/imoveis/jrm001?utm_source=estabilidade&teste=1",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=estabilidade&teste=1"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/.well-known/acme-challenge/redirect-check",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/acme-challenge/redirect-check"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/imoveis/teste%20espaco?x=a%2Fb",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/teste%20espaco?x=a%2Fb"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/",
+        "status": [
+          "HTTP/2 200 "
+        ],
+        "location": [],
+        "tlsAndRequestExit": 0,
+        "pass": false
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/imoveis/jrm001?utm_source=estabilidade&teste=1",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=estabilidade&teste=1"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/.well-known/acme-challenge/redirect-check",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/acme-challenge/redirect-check"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/imoveis/teste%20espaco?x=a%2Fb",
+        "status": [
+          "HTTP/2 404 "
+        ],
+        "location": [],
+        "tlsAndRequestExit": 0,
+        "pass": false
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/imoveis/jrm001?utm_source=estabilidade&teste=1",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=estabilidade&teste=1"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/.well-known/acme-challenge/redirect-check",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/acme-challenge/redirect-check"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/imoveis/teste%20espaco?x=a%2Fb",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/teste%20espaco?x=a%2Fb"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/imoveis/jrm001?utm_source=estabilidade&teste=1",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=estabilidade&teste=1"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/.well-known/acme-challenge/redirect-check",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/acme-challenge/redirect-check"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/imoveis/teste%20espaco?x=a%2Fb",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/teste%20espaco?x=a%2Fb"
+        ],
+        "tlsAndRequestExit": 0,
+        "pass": true
+      }
+    ],
+    "allPassed": false
+  },
+  {
+    "checkedAt": "2026-10-19T11:52:26.787983+00:00",
+    "wwwRedirectChecks": [
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/imoveis/jrm001",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/imoveis/jrm001?utm_source=estabilidade&teste=1",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=estabilidade&teste=1"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/.well-known/acme-challenge/redirect-check",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/acme-challenge/redirect-check"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/.well-known/cf-custom-hostname-challenge/redirect-check",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/redirect-check"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "http",
+        "path": "/imoveis/teste%20espaco?x=a%2Fb",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/teste%20espaco?x=a%2Fb"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/imoveis/jrm001",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/imoveis/jrm001?utm_source=estabilidade&teste=1",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=estabilidade&teste=1"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/.well-known/acme-challenge/redirect-check",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/acme-challenge/redirect-check"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/.well-known/cf-custom-hostname-challenge/redirect-check",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/redirect-check"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "104.21.84.107",
+        "scheme": "https",
+        "path": "/imoveis/teste%20espaco?x=a%2Fb",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/teste%20espaco?x=a%2Fb"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/imoveis/jrm001",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/imoveis/jrm001?utm_source=estabilidade&teste=1",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=estabilidade&teste=1"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/.well-known/acme-challenge/redirect-check",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/acme-challenge/redirect-check"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/.well-known/cf-custom-hostname-challenge/redirect-check",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/redirect-check"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "http",
+        "path": "/imoveis/teste%20espaco?x=a%2Fb",
+        "status": [
+          "HTTP/1.1 301 Moved Permanently"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/teste%20espaco?x=a%2Fb"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/imoveis/jrm001",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/imoveis/jrm001?utm_source=estabilidade&teste=1",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=estabilidade&teste=1"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/.well-known/acme-challenge/redirect-check",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/acme-challenge/redirect-check"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/.well-known/cf-custom-hostname-challenge/redirect-check",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/redirect-check"
+        ],
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "ip": "172.67.191.97",
+        "scheme": "https",
+        "path": "/imoveis/teste%20espaco?x=a%2Fb",
+        "status": [
+          "HTTP/2 301 "
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/teste%20espaco?x=a%2Fb"
+        ],
+        "exit": 0,
+        "pass": true
+      }
+    ],
+    "allPassed": true
+  }
+]

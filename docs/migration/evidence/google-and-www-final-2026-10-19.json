@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-19T11:51:55.925576+00:00",
+  "googleSearchConsole": {
+    "property": "sc-domain:joaquimmota.pt",
+    "ownerAccount": "tiago.freitas1987@gmail.com",
+    "verification": "success",
+    "method": "DNS TXT",
+    "sitemap": "https://joaquimmota.pt/sitemap.xml",
+    "submission": "success",
+    "processingStatus": "Sucesso",
+    "discoveredPages": 172,
+    "discoveredVideos": 0,
+    "submittedDate": "2026-10-19",
+    "lastReadDate": "2026-10-19"
+  },
+  "wwwConfiguration": {
+    "explicitOwnerAuthorization": true,
+    "dns": {
+      "type": "A",
+      "name": "www",
+      "content": "192.0.2.1",
+      "proxied": true
+    },
+    "redirectExpression": "(http.host eq \"www.joaquimmota.pt\")",
+    "targetExpression": "concat(\"https://joaquimmota.pt\", http.request.uri.path)",
+    "statusCode": 301,
+    "preserveQueryString": true,
+    "validationPathExclusions": [],
+    "pagesAssociationRemoved": true,
+    "postRemovalDnsConfirmedInDashboard": true,
+    "zoneUniversalSsl": {
+      "status": "active",
+      "hosts": [
+        "*.joaquimmota.pt",
+        "joaquimmota.pt"
+      ],
+      "expiresOn": "2027-01-15",
+      "backupStatus": "issued"
+    }
+  },
+  "stability": {
+    "status": "current final checks passed",
+    "rootChecks": 24,
+    "rootCheckedAt": "2026-10-19T11:52:26.787983+00:00",
+    "independentChecks": 24,
+    "independentCheckedAt": "2026-10-19T11:52:30Z",
+    "publicApexRoutesChecked": 137,
+    "apexRoutesCheckedAt": "2026-10-19T11:51:22.714731+00:00",
+    "limitations": "Transient responses during propagation retained in evidence; current bounded observations do not guarantee uninterrupted future availability."
+  }
+}

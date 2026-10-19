@@ -1,0 +1,83 @@
+{
+  "checkedAt": "2026-10-19T11:52:38.743883+00:00",
+  "resolvers": {
+    "1.1.1.1": {
+      "joaquimmota.pt TXT": {
+        "exit": 0,
+        "answers": [
+          "\"'facebook-domain-verification=70y7lqkgqmuq0t1387bde6e4rhr97g'\"",
+          "\"google-site-verification=U2TZnIydt3Hk1UtVFhmaCV-Fxaw8bpafEXO5UPkCIng\"",
+          "\"mailerlite-domain-verification=3d377f9e3efad41315717aa4575b8a863efbde2a\"",
+          "\"v=spf1 include:_spf.mx.cloudflare.net a mx include:_spf.mlsend.com ~all\""
+        ]
+      },
+      "joaquimmota.pt MX": {
+        "exit": 0,
+        "answers": [
+          "55 route2.mx.cloudflare.net.",
+          "65 route1.mx.cloudflare.net.",
+          "87 route3.mx.cloudflare.net."
+        ]
+      },
+      "joaquimmota.pt NS": {
+        "exit": 0,
+        "answers": [
+          "diana.ns.cloudflare.com.",
+          "donald.ns.cloudflare.com."
+        ]
+      },
+      "www.joaquimmota.pt A": {
+        "exit": 0,
+        "answers": [
+          "172.67.191.97",
+          "104.21.84.107"
+        ]
+      },
+      "ggfb7zsvdtth.joaquimmota.pt CNAME": {
+        "exit": 0,
+        "answers": [
+          "gv-ikzcaeulf4jcqk.dv.googlehosted.com."
+        ]
+      }
+    },
+    "8.8.8.8": {
+      "joaquimmota.pt TXT": {
+        "exit": 0,
+        "answers": [
+          "\"mailerlite-domain-verification=3d377f9e3efad41315717aa4575b8a863efbde2a\"",
+          "\"'facebook-domain-verification=70y7lqkgqmuq0t1387bde6e4rhr97g'\"",
+          "\"google-site-verification=U2TZnIydt3Hk1UtVFhmaCV-Fxaw8bpafEXO5UPkCIng\"",
+          "\"v=spf1 include:_spf.mx.cloudflare.net a mx include:_spf.mlsend.com ~all\""
+        ]
+      },
+      "joaquimmota.pt MX": {
+        "exit": 0,
+        "answers": [
+          "87 route3.mx.cloudflare.net.",
+          "55 route2.mx.cloudflare.net.",
+          "65 route1.mx.cloudflare.net."
+        ]
+      },
+      "joaquimmota.pt NS": {
+        "exit": 0,
+        "answers": [
+          "diana.ns.cloudflare.com.",
+          "donald.ns.cloudflare.com."
+        ]
+      },
+      "www.joaquimmota.pt A": {
+        "exit": 0,
+        "answers": [
+          "172.67.191.97",
+          "104.21.84.107"
+        ]
+      },
+      "ggfb7zsvdtth.joaquimmota.pt CNAME": {
+        "exit": 0,
+        "answers": [
+          "gv-ikzcaeulf4jcqk.dv.googlehosted.com."
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-10-19T11:53:54.009168+00:00",
+  "publicDnsTlsChecks": [
+    {
+      "host": "www.joaquimmota.pt",
+      "path": "/",
+      "statuses": [
+        "HTTP/2 301 "
+      ],
+      "locations": [
+        "https://joaquimmota.pt/"
+      ],
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "host": "www.joaquimmota.pt",
+      "path": "/imoveis/jrm001",
+      "statuses": [
+        "HTTP/2 301 "
+      ],
+      "locations": [
+        "https://joaquimmota.pt/imoveis/jrm001"
+      ],
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "host": "www.joaquimmota.pt",
+      "path": "/imoveis/teste%20espaco?x=a%2Fb",
+      "statuses": [
+        "HTTP/2 301 "
+      ],
+      "locations": [
+        "https://joaquimmota.pt/imoveis/teste%20espaco?x=a%2Fb"
+      ],
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "host": "joaquimmota.pt",
+      "path": "/imoveis/jrm001",
+      "statuses": [
+        "HTTP/2 103 ",
+        "HTTP/2 200 "
+      ],
+      "locations": [],
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "host": "joaquimmota.pt",
+      "path": "/sitemap.xml",
+      "statuses": [
+        "HTTP/2 200 "
+      ],
+      "locations": [],
+      "exit": 0,
+      "pass": true
+    }
+  ],
+  "allPassed": true
+}

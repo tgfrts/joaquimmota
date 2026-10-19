@@ -4,8 +4,7 @@
   "sourceConnected": false,
   "domains": [
     "joaquimmota.pages.dev",
-    "joaquimmota.pt",
-    "www.joaquimmota.pt"
+    "joaquimmota.pt"
   ],
   "previewDatabase": {
     "LEADS_DB": {
@@ -48,7 +47,42 @@
     "deliveryMode": "live",
     "customDomainAssociated": true,
     "dnsChanged": true,
-    "domainStability": "recovering after deactivation; repeat checks required",
-    "searchConsole": "verification pending public DNS propagation"
+    "domainStability": "Final root and independent HTTP/HTTPS checks passed after dedicated www redirect configuration; historical transition retained in evidence",
+    "searchConsole": {
+      "domainOwnership": "verified by DNS TXT; confirmed in Google UI",
+      "sitemap": "https://joaquimmota.pt/sitemap.xml",
+      "sitemapStatus": "Success",
+      "discoveredPages": 172
+    },
+    "apexDomainStatus": "active; sole custom domain associated with Pages after www removal",
+    "wwwRedirect": {
+      "ownerExplicitlyAuthorized": true,
+      "appliedAt": "2026-10-19T11:50Z",
+      "hostname": "www.joaquimmota.pt",
+      "pagesAssociation": false,
+      "dns": {
+        "type": "A",
+        "content": "192.0.2.1",
+        "proxied": true
+      },
+      "rule": {
+        "match": "http.host eq \"www.joaquimmota.pt\"",
+        "targetOrigin": "https://joaquimmota.pt",
+        "statusCode": 301,
+        "preservePath": true,
+        "preserveQuery": true,
+        "validationPathExceptions": false
+      },
+      "tls": {
+        "source": "zone Universal SSL",
+        "status": "active",
+        "covers": [
+          "joaquimmota.pt",
+          "*.joaquimmota.pt"
+        ],
+        "expiresOn": "2027-01-15"
+      },
+      "validationStatus": "24 root and 24 independent checks passed after Pages www association removal"
+    }
   }
 }

@@ -1,16 +1,15 @@
 # Status
 
-## Estado atual — 2026-10-19, cutover em validação
+## Estado atual — 2026-10-19, validação final
 
-- Owner autorizou a mudança imediata do domínio e DNS, mantendo Webflow disponível e estritamente read-only.
-- Conteúdo publicado: 194 documentos; build254 páginas, histórico protegido129 URLs. Novos anúncios KWPT039444/KWPT030872/KWPT037992/KWPT037996/JRM001 e preço KWPT029949 a280.000 € verificados no domínio final. KWPT033660 ignorado por indicação do Owner.
-- Produção Pages `2b1035e8`, commit `4a0c932`, run39242320315. Certificados isentos apresentados como «Isento». Check145 sem diagnósticos, 99 testes CMS/forms e6 SEO passaram na preparação do release.
-- Webhook Sanity→GitHub→produção certificado com republicação sem alteração de conteúdo do JRM001, expressamente autorizada; delivery HTTP200 e run39241016006 success. Ver SANITY.md.
-- Apex/www associados ao Pages; DNS web CNAME `joaquimmota.pages.dev`, proxied. Regra www→apex301 preserva caminho/query e exclui os percursos técnicos ACME/custom-hostname de validação. Registos de email preservados.
-- Regressão observada: ambos os domínios chegaram a ficar inativos e a devolver Webflow. Reativação efetuada; auditoria Cloudflare mostra eventos de sistema `active to moved`, sem causa conclusiva. Não foi encontrada operação de remoção de domínios no deploy. Às11:20 UTC auditor independente confirmou ambos active, TLS válido e JRM001200 nos dois IPs; às11:21:33 passaram137 GET no domínio final. Auditoria independente às11:24 UTC confirmou apex200, redirecionamentos HTTP/www301 e exceções dos desafios404 sem redirect, nos dois IPs. A recuperação pontual não certifica estabilidade prolongada.
-- Teste real de formulário JRM001 autorizado pelo Owner: lead aceite na D1 de produção, notificação ao consultor e confirmação ao cliente entregues pelo Resend; Owner confirmou receção. Nenhum envio adicional necessário.
-- Search Console: Owner autorizou validar domínio na conta Google atual. TXT existente corrigido para retirar apóstrofos literais; como os DNS públicos ainda devolvem o valor antigo, adicionado o CNAME alternativo indicado pelo Google, DNS only. Verificação e submissão de sitemap continuam pendentes de resolução DNS pública. Não se declara propriedade Google validada.
-- Evidências e estado final serão atualizados após a última verificação; Webflow não foi alterado nem desativado.
+- Owner autorizou a migração imediata e, posteriormente, o redirecionamento dedicado www com A192.0.2.1 proxied e remoção da associação www ao Pages. Webflow permanece disponível e estritamente read-only; sem alterações a email DNS.
+- Produção Pages `2b1035e8`, commit `4a0c932`, run39242320315:194 documentos publicados,254 páginas,129 URLs históricas protegidas. Check145 sem diagnósticos,99 testes CMS/forms e6 SEO passaram na preparação do release; nenhum código alterado no fecho DNS/Google.
+- Verificação do domínio final às11:51:22 UTC:137 GET sem falhas, incluindo os cinco novos anúncios, fotografias/mapas, canonicals/indexação e KWPT029949 a280.000 €. KWPT033660 continua ignorado por indicação do Owner.
+- Webhook Sanity→GitHub→produção certificado por evento real JRM001 com conteúdo idêntico expressamente autorizado, HTTP200 e run39241016006 success. Teste real de formulário na D1 de produção e dois emails delivered, com receção confirmada pelo Owner. Ver SANITY.md e recibos de operações.
+- DNS de validação Google propagado em1.1.1.1 e8.8.8.8. Propriedade de domínio `sc-domain:joaquimmota.pt` validada por DNS na conta Google autorizada. Sitemap `https://joaquimmota.pt/sitemap.xml` enviado e lido em19/10/2026, estado **Sucesso**,172 páginas descobertas/0 vídeos. Descoberta não significa indexação imediata.
+- Apex é a única associação personalizada Pages e está active, com verification/validation active. www tem A192.0.2.1 proxied e regra hostname-only301 para HTTPS apex, preservando caminho/query, sem exceções. Universal SSL da zona ativo para apex e wildcard, validade até2027-01-15 e backup emitido. DNS www confirmado no painel depois da remoção da associação redundante.
+- Houve regressões de associação e respostas transitórias mistas durante as mudanças; evidência histórica preservada. Após a configuração final,24/24 testes root às11:52:26 UTC e24/24 independentes às11:52:30 passaram em HTTP/HTTPS nos dois IPs, incluindo raiz, JRM001 sem/com query, caminho codificado e desafios fictícios. TLS válido e sem headers Webflow; domínio principal200 e revisão CMS correta. Estas verificações confirmam o funcionamento atual, sem alegar disponibilidade futura ininterrupta.
+- Revisão automática bloqueou inicialmente a alteração www/removal por falta de autorização específica; o Owner aprovou ambas explicitamente antes da aplicação. Nenhuma ação permanece bloqueada. Não houve novo envio de formulário/email nem alterações ao Webflow neste fecho.
 
 ## Estado atual — 2026-10-04
 

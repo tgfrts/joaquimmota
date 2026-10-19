@@ -399,7 +399,7 @@
     "fullZoneBackupVerified": false,
     "DMARCmatches": true
   },
-  "pending": "GSC DNS propagation remains outside this HTTP audit; final redirect/challenge checks recorded, previous regressions retained.",
+  "pending": "Bounded final redirect-only WWW checks recorded; WWW absence from Pages is intentional. Historical regressions retained.",
   "finalRedirectChecks": [
     {
       "host": "www.joaquimmota.pt",
@@ -919,6 +919,946 @@
       ],
       "finalStatus": "HTTP/2 200 ",
       "webflow": false
+    }
+  ],
+  "stabilityRechecks": [
+    {
+      "http": [
+        {
+          "host": "joaquimmota.pt",
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001?audit_stability=1143&keep=1",
+          "exit": 0,
+          "status": "HTTP/2 200 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001?audit_stability=1143&keep=1",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?audit_stability=1143&keep=1"
+          ],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001?audit_stability=1143&keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?audit_stability=1143&keep=1"
+          ],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "joaquimmota.pt",
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001?audit_stability=1143&keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?audit_stability=1143&keep=1"
+          ],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/acme-challenge/stability-fake",
+          "exit": 0,
+          "status": "HTTP/2 404 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/cf-custom-hostname-challenge/stability-fake",
+          "exit": 0,
+          "status": "HTTP/2 404 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "joaquimmota.pt",
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001?audit_stability=1143&keep=1",
+          "exit": 0,
+          "status": "HTTP/2 200 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001?audit_stability=1143&keep=1",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?audit_stability=1143&keep=1"
+          ],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001?audit_stability=1143&keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?audit_stability=1143&keep=1"
+          ],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "joaquimmota.pt",
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001?audit_stability=1143&keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?audit_stability=1143&keep=1"
+          ],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/acme-challenge/stability-fake",
+          "exit": 0,
+          "status": "HTTP/2 404 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [],
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/cf-custom-hostname-challenge/stability-fake",
+          "exit": 0,
+          "status": "HTTP/2 404 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:44:31 GMT"
+          ],
+          "location": [],
+          "webflow": false,
+          "error": ""
+        }
+      ],
+      "domains": {
+        "result": [
+          {
+            "id": "d44ab05e-0085-4753-9123-6797299fe457",
+            "domain_id": "d44ab05e-0085-4753-9123-6797299fe457",
+            "name": "joaquimmota.pt",
+            "status": "active",
+            "verification_data": {
+              "status": "active"
+            },
+            "validation_data": {
+              "status": "active",
+              "method": "http"
+            },
+            "certificate_authority": "google",
+            "zone_tag": "33511b79dd3be073b5432312b795e8f9",
+            "created_on": "2026-10-19T10:50:46.930885Z"
+          },
+          {
+            "id": "b6c392a9-3920-4f08-9a7b-09cc2582c261",
+            "domain_id": "b6c392a9-3920-4f08-9a7b-09cc2582c261",
+            "name": "www.joaquimmota.pt",
+            "status": "deactivated",
+            "verification_data": {
+              "status": "active"
+            },
+            "validation_data": {
+              "status": "deactivated",
+              "method": "http"
+            },
+            "certificate_authority": "google",
+            "zone_tag": "33511b79dd3be073b5432312b795e8f9",
+            "created_on": "2026-10-19T10:50:48.458443Z"
+          }
+        ],
+        "success": true,
+        "errors": [],
+        "messages": [],
+        "result_info": {
+          "page": 1,
+          "per_page": 20,
+          "count": 2,
+          "total_count": 2,
+          "total_pages": 1
+        }
+      }
+    }
+  ],
+  "finalWwwRedirectOnlyChecks": [
+    {
+      "checkedAt": "2026-10-19T11:51:26.271076+00:00",
+      "http": [
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001?utm_source=final&keep=a%20b",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://www.joaquimmota.pt/imoveis/jrm001?utm_source=final&keep=a%20b"
+          ],
+          "redirectPreservesExactPathQuery": false,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/teste%20espaco?encoded=%2F%3F&keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/teste%20espaco?encoded=%2F%3F&keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/acme-challenge/final-fake?keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/acme-challenge/final-fake?keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/cf-custom-hostname-challenge/final-fake?keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/final-fake?keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001?utm_source=final&keep=a%20b",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?utm_source=final&keep=a%20b"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/teste%20espaco?encoded=%2F%3F&keep=1",
+          "exit": 0,
+          "status": "HTTP/2 404 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [],
+          "redirectPreservesExactPathQuery": false,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/acme-challenge/final-fake?keep=1",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/acme-challenge/final-fake?keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/cf-custom-hostname-challenge/final-fake?keep=1",
+          "exit": 0,
+          "status": "HTTP/2 404 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [],
+          "redirectPreservesExactPathQuery": false,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "joaquimmota.pt",
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001?final_independent=1",
+          "exit": 0,
+          "status": "HTTP/2 200 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [],
+          "redirectPreservesExactPathQuery": null,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001?utm_source=final&keep=a%20b",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?utm_source=final&keep=a%20b"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/teste%20espaco?encoded=%2F%3F&keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/teste%20espaco?encoded=%2F%3F&keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/acme-challenge/final-fake?keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/acme-challenge/final-fake?keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/cf-custom-hostname-challenge/final-fake?keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/final-fake?keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001?utm_source=final&keep=a%20b",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?utm_source=final&keep=a%20b"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/teste%20espaco?encoded=%2F%3F&keep=1",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/teste%20espaco?encoded=%2F%3F&keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/acme-challenge/final-fake?keep=1",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/acme-challenge/final-fake?keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "www.joaquimmota.pt",
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/cf-custom-hostname-challenge/final-fake?keep=1",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/final-fake?keep=1"
+          ],
+          "redirectPreservesExactPathQuery": true,
+          "webflow": false,
+          "error": ""
+        },
+        {
+          "host": "joaquimmota.pt",
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001?final_independent=1",
+          "exit": 0,
+          "status": "HTTP/2 200 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:51:24 GMT"
+          ],
+          "location": [],
+          "redirectPreservesExactPathQuery": null,
+          "webflow": false,
+          "error": ""
+        }
+      ],
+      "domains": {
+        "result": [
+          {
+            "id": "d44ab05e-0085-4753-9123-6797299fe457",
+            "domain_id": "d44ab05e-0085-4753-9123-6797299fe457",
+            "name": "joaquimmota.pt",
+            "status": "active",
+            "verification_data": {
+              "status": "active"
+            },
+            "validation_data": {
+              "status": "active",
+              "method": "http"
+            },
+            "certificate_authority": "google",
+            "zone_tag": "33511b79dd3be073b5432312b795e8f9",
+            "created_on": "2026-10-19T10:50:46.930885Z"
+          }
+        ],
+        "success": true,
+        "errors": [],
+        "messages": [],
+        "result_info": {
+          "page": 1,
+          "per_page": 20,
+          "count": 1,
+          "total_count": 1,
+          "total_pages": 1
+        }
+      },
+      "metadata": {
+        "hash": "323ff891f0273fbc457da9fe3859b87233fc910f2703c2301c71c39f7690fe90",
+        "documentCount": 194,
+        "generatedAt": "2026-10-19T11:08:01.168Z"
+      },
+      "routeHistoryCount": 129
+    }
+  ],
+  "finalWwwDelayedChecks": [
+    {
+      "checkedAt": "2026-10-19T11:52:30.773206+00:00",
+      "checks": [
+        {
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001?utm_source=final&keep=a%20b",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?utm_source=final&keep=a%20b"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/teste%20espaco?encoded=%2F%3F&keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/teste%20espaco?encoded=%2F%3F&keep=1"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/acme-challenge/final-fake",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/acme-challenge/final-fake"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/cf-custom-hostname-challenge/final-fake",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/final-fake"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/jrm001?utm_source=final&keep=a%20b",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?utm_source=final&keep=a%20b"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/imoveis/teste%20espaco?encoded=%2F%3F&keep=1",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/teste%20espaco?encoded=%2F%3F&keep=1"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/acme-challenge/final-fake",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/acme-challenge/final-fake"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "104.21.84.107",
+          "path": "/.well-known/cf-custom-hostname-challenge/final-fake",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/final-fake"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001?utm_source=final&keep=a%20b",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?utm_source=final&keep=a%20b"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/teste%20espaco?encoded=%2F%3F&keep=1",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/teste%20espaco?encoded=%2F%3F&keep=1"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/acme-challenge/final-fake",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/acme-challenge/final-fake"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 80,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/cf-custom-hostname-challenge/final-fake",
+          "exit": 0,
+          "status": "HTTP/1.1 301 Moved Permanently",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/final-fake"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/jrm001?utm_source=final&keep=a%20b",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/jrm001?utm_source=final&keep=a%20b"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/imoveis/teste%20espaco?encoded=%2F%3F&keep=1",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/imoveis/teste%20espaco?encoded=%2F%3F&keep=1"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/acme-challenge/final-fake",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/acme-challenge/final-fake"
+          ],
+          "passed": true,
+          "webflow": false
+        },
+        {
+          "port": 443,
+          "ip": "172.67.191.97",
+          "path": "/.well-known/cf-custom-hostname-challenge/final-fake",
+          "exit": 0,
+          "status": "HTTP/2 301 ",
+          "date": [
+            "Mon, 19 Oct 2026 11:52:30 GMT"
+          ],
+          "location": [
+            "https://joaquimmota.pt/.well-known/cf-custom-hostname-challenge/final-fake"
+          ],
+          "passed": true,
+          "webflow": false
+        }
+      ]
     }
   ]
 }
