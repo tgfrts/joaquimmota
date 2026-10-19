@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-19T11:21:33.928489+00:00",
+  "origin": "https://joaquimmota.pt",
+  "documentCount": 194,
+  "protectedRoutes": 129,
+  "checkedRoutes": 137,
+  "failures": [],
+  "newProperties": [
+    {
+      "ref": "kwpt039444",
+      "status": 200,
+      "photos": 27,
+      "expectedPhotos": 27,
+      "map": true,
+      "canonical": true,
+      "indexMeta": true
+    },
+    {
+      "ref": "kwpt030872",
+      "status": 200,
+      "photos": 22,
+      "expectedPhotos": 22,
+      "map": true,
+      "canonical": true,
+      "indexMeta": true
+    },
+    {
+      "ref": "kwpt037992",
+      "status": 200,
+      "photos": 13,
+      "expectedPhotos": 13,
+      "map": true,
+      "canonical": true,
+      "indexMeta": true
+    },
+    {
+      "ref": "kwpt037996",
+      "status": 200,
+      "photos": 8,
+      "expectedPhotos": 8,
+      "map": true,
+      "canonical": true,
+      "indexMeta": true
+    },
+    {
+      "ref": "jrm001",
+      "status": 200,
+      "photos": 21,
+      "expectedPhotos": 21,
+      "map": true,
+      "canonical": true,
+      "indexMeta": true
+    }
+  ],
+  "updatedPrice": true
+}

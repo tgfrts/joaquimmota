@@ -1,0 +1,102 @@
+{
+  "scope": "Own Joaquim Mota site only; Webflow strictly read-only",
+  "ownerAuthorization": {
+    "cutover": "Immediate DNS/domain change approved",
+    "sameContentSanityRepublish": true,
+    "formTest": true,
+    "googleDomainVerification": true
+  },
+  "production": {
+    "commit": "4a0c932",
+    "workflowRunId": 39242320315,
+    "deployment": "https://2b1035e8.joaquimmota.pages.dev",
+    "documents": 194,
+    "protectedRoutes": 129
+  },
+  "sanityWebhook": {
+    "documentReference": "JRM001",
+    "sameContent": true,
+    "deliveredAt": "2026-10-19T10:56:15.492Z",
+    "delivery": "success",
+    "httpStatus": 200,
+    "workflowRunId": 39241016006,
+    "productionJob": "success",
+    "previewJob": "skipped",
+    "contentHash": "323ff891f0273fbc457da9fe3859b87233fc910f2703c2301c71c39f7690fe90"
+  },
+  "authorizedFormTest": {
+    "route": "/imoveis/jrm001",
+    "submittedAt": "2026-10-19T11:04:30Z",
+    "productionD1LeadId": 1,
+    "deliveryStatus": "accepted",
+    "consultantNotification": "delivered",
+    "customerConfirmation": "delivered",
+    "providerDeliveredAt": "2026-10-19T11:04:31Z",
+    "consultantMessageId": "01a153d5-9e4b-767a-ad29-71279e1a2ea6",
+    "customerMessageId": "01a153d5-9e4b-75f3-919c-04524e3265f8",
+    "ownerConfirmedReceipt": true,
+    "payloadOmitted": true
+  },
+  "dns": {
+    "zoneId": "33511b79dd3be073b5432312b795e8f9",
+    "websiteRecords": {
+      "joaquimmota.pt": {
+        "type": "CNAME",
+        "target": "joaquimmota.pages.dev",
+        "proxied": true
+      },
+      "www.joaquimmota.pt": {
+        "type": "CNAME",
+        "target": "joaquimmota.pages.dev",
+        "proxied": true
+      }
+    },
+    "previousWebsiteRecords": {
+      "joaquimmota.pt": {
+        "type": "A",
+        "target": "198.202.211.1",
+        "proxied": false,
+        "ttl": 3600
+      },
+      "www.joaquimmota.pt": {
+        "type": "CNAME",
+        "target": "cdn.webflow.com",
+        "proxied": false,
+        "ttl": 3600
+      }
+    },
+    "emailRecordsChanged": false,
+    "regressionObserved": true,
+    "auditLogSystemTransitions": "active to moved",
+    "cause": "undetermined; deployment does not mutate domain associations"
+  },
+  "wwwRedirect": {
+    "enabled": true,
+    "status": 301,
+    "preservePath": true,
+    "preserveQuery": true,
+    "excludedValidationPaths": [
+      "/.well-known/acme-challenge/",
+      "/.well-known/cf-custom-hostname-challenge/"
+    ],
+    "observedAt": "2026-10-19T11:22:59Z",
+    "testQueryPreserved": true,
+    "fakeChallengeStatus": 404,
+    "fakeChallengeRedirected": false
+  },
+  "googleSearchConsole": {
+    "status": "pending public DNS propagation",
+    "existingTxtFormattingCorrected": true,
+    "alternateCnameAdded": {
+      "name": "ggfb7zsvdtth.joaquimmota.pt",
+      "target": "gv-ikzcaeulf4jcqk.dv.googlehosted.com",
+      "proxied": false
+    },
+    "sitemapSubmitted": false
+  },
+  "limitations": [
+    "Domain deactivation/regression occurred earlier; successful current checks do not prove long-term stability.",
+    "Public DNS still returns old quoted Google TXT and does not resolve the newly added verification CNAME.",
+    "No Webflow decommissioning authorized or performed."
+  ]
+}

@@ -3,7 +3,9 @@
   "productionBranch": "main",
   "sourceConnected": false,
   "domains": [
-    "joaquimmota.pages.dev"
+    "joaquimmota.pages.dev",
+    "joaquimmota.pt",
+    "www.joaquimmota.pt"
   ],
   "previewDatabase": {
     "LEADS_DB": {
@@ -28,23 +30,25 @@
     "projectId": "kaq1vd9b",
     "dataset": "production",
     "perspective": "published",
-    "documents": 189,
+    "documents": 194,
     "workflow": "sanity-preview.yml",
-    "automationStatus": "active; webhook event and preview deployment verified",
-    "trigger": "Sanity published-content webhook → GitHub workflow_dispatch",
+    "automationStatus": "active; authorized published-content webhook verified through production workflow",
+    "trigger": "Sanity published-content webhook \u2192 GitHub workflow_dispatch",
     "webhookId": "dSQ8Q448Ax6cSVaF",
     "webhookEnabled": true,
-    "verifiedWorkflowRunId": 37326985248
+    "verifiedWorkflowRunId": 39241016006
   },
   "productionPreparation": {
-    "deploymentUrl": "https://c5395338.joaquimmota.pages.dev",
+    "deploymentUrl": "https://2b1035e8.joaquimmota.pages.dev",
     "status": "success",
-    "workflowRunId": 37337047118,
+    "workflowRunId": 39242320315,
     "workflow": "production.yml",
-    "trigger": "manual",
+    "trigger": "Sanity webhook / reusable workflow; manual dispatch also supported",
     "databaseId": "18572d19-56cc-44aa-9a72-18f5acd67737",
     "deliveryMode": "live",
-    "customDomainAssociated": false,
-    "dnsChanged": false
+    "customDomainAssociated": true,
+    "dnsChanged": true,
+    "domainStability": "recovering after deactivation; repeat checks required",
+    "searchConsole": "verification pending public DNS propagation"
   }
 }

@@ -1,5 +1,17 @@
 # Status
 
+## Estado atual — 2026-10-19, cutover em validação
+
+- Owner autorizou a mudança imediata do domínio e DNS, mantendo Webflow disponível e estritamente read-only.
+- Conteúdo publicado: 194 documentos; build254 páginas, histórico protegido129 URLs. Novos anúncios KWPT039444/KWPT030872/KWPT037992/KWPT037996/JRM001 e preço KWPT029949 a280.000 € verificados no domínio final. KWPT033660 ignorado por indicação do Owner.
+- Produção Pages `2b1035e8`, commit `4a0c932`, run39242320315. Certificados isentos apresentados como «Isento». Check145 sem diagnósticos, 99 testes CMS/forms e6 SEO passaram na preparação do release.
+- Webhook Sanity→GitHub→produção certificado com republicação sem alteração de conteúdo do JRM001, expressamente autorizada; delivery HTTP200 e run39241016006 success. Ver SANITY.md.
+- Apex/www associados ao Pages; DNS web CNAME `joaquimmota.pages.dev`, proxied. Regra www→apex301 preserva caminho/query e exclui os percursos técnicos ACME/custom-hostname de validação. Registos de email preservados.
+- Regressão observada: ambos os domínios chegaram a ficar inativos e a devolver Webflow. Reativação efetuada; auditoria Cloudflare mostra eventos de sistema `active to moved`, sem causa conclusiva. Não foi encontrada operação de remoção de domínios no deploy. Às11:20 UTC auditor independente confirmou ambos active, TLS válido e JRM001200 nos dois IPs; às11:21:33 passaram137 GET no domínio final. Auditoria independente às11:24 UTC confirmou apex200, redirecionamentos HTTP/www301 e exceções dos desafios404 sem redirect, nos dois IPs. A recuperação pontual não certifica estabilidade prolongada.
+- Teste real de formulário JRM001 autorizado pelo Owner: lead aceite na D1 de produção, notificação ao consultor e confirmação ao cliente entregues pelo Resend; Owner confirmou receção. Nenhum envio adicional necessário.
+- Search Console: Owner autorizou validar domínio na conta Google atual. TXT existente corrigido para retirar apóstrofos literais; como os DNS públicos ainda devolvem o valor antigo, adicionado o CNAME alternativo indicado pelo Google, DNS only. Verificação e submissão de sitemap continuam pendentes de resolução DNS pública. Não se declara propriedade Google validada.
+- Evidências e estado final serão atualizados após a última verificação; Webflow não foi alterado nem desativado.
+
 ## Estado atual — 2026-10-04
 
 - Checkout independente `tgfrts/joaquimmota`; PM sem alterações tracked.

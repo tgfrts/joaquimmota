@@ -1,0 +1,924 @@
+{
+  "httpChecks": [
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [
+        "index, follow"
+      ],
+      "bodyLength": 77081,
+      "mapIframe": false,
+      "sanityImageCount": 10,
+      "price280000": false
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/imoveis/kwpt037992",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [
+        "index, follow"
+      ],
+      "bodyLength": 32329,
+      "mapIframe": true,
+      "sanityImageCount": 29,
+      "price280000": false
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/imoveis/kwpt037996",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [
+        "index, follow"
+      ],
+      "bodyLength": 29010,
+      "mapIframe": true,
+      "sanityImageCount": 19,
+      "price280000": false
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/imoveis/jrm001",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [
+        "index, follow"
+      ],
+      "bodyLength": 36798,
+      "mapIframe": true,
+      "sanityImageCount": 45,
+      "price280000": false
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/imoveis/kwpt039444",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [
+        "index, follow"
+      ],
+      "bodyLength": 39901,
+      "mapIframe": true,
+      "sanityImageCount": 57,
+      "price280000": false
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/imoveis/kwpt030872",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [
+        "index, follow"
+      ],
+      "bodyLength": 37242,
+      "mapIframe": true,
+      "sanityImageCount": 47,
+      "price280000": false
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/imoveis/kwpt029949",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [
+        "index, follow"
+      ],
+      "bodyLength": 41532,
+      "mapIframe": false,
+      "sanityImageCount": 54,
+      "price280000": true
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/robots.txt",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [],
+      "bodyLength": 118,
+      "body": "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nDisallow: /doop/\nSitemap: https://joaquimmota.pt/sitemap.xml\n"
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/sitemap.xml",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [],
+      "bodyLength": 19702,
+      "sitemapURLCount": 172,
+      "hasNewRoutes": true
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 443,
+      "path": "/cms-revision.json",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [],
+      "bodyLength": 13031,
+      "metadata": {
+        "hash": "323ff891f0273fbc457da9fe3859b87233fc910f2703c2301c71c39f7690fe90",
+        "documentCount": 194,
+        "routes": {
+          "762f83f2-c35d-4cca-be38-2d485126c408": "/imoveis/kwpt036155",
+          "7bc241c3-e914-4de6-8757-24a5d3d9b041": "/imoveis/kwpt032055",
+          "9dca125c-ca5b-4ba1-aba1-b417ca505c39": "/post/os-segredos-que-as-casas-nao-contam-2",
+          "b4942aca-98ef-4991-a125-debf9097b59e": "/post/a-proposta-mais-alta-pode-nao-ser-a-melhor",
+          "jm-article-64d73faf12672d652ab5784e-64d73fb112672d652ab57ff5": "/post/8-dicas-para-simplificar-a-sua-mudanca-de-casa",
+          "jm-article-64d73faf12672d652ab5784f-64d73fb112672d652ab57ff5": "/post/3-dicas-para-comprar-uma-casa-durante-as-festas-de-natal-e-ano-novo",
+          "jm-article-64d73faf12672d652ab57850-64d73fb112672d652ab57ff5": "/post/novas-tendencias-para-decorar-a-sua-casa-em-2023",
+          "jm-article-64d73faf12672d652ab57851-64d73fb112672d652ab57ff5": "/post/5-novas-regras-para-vender-a-sua-casa-em-2023",
+          "jm-article-64d73faf12672d652ab57852-64d73fb112672d652ab57ff5": "/post/as-5-melhores-renovacoes-para-aumentar-o-valor-da-sua-casa",
+          "jm-article-64d73faf12672d652ab57853-64d73fb112672d652ab57ff5": "/post/devo-comprar-e-vender-a-minha-casa-ao-mesmo-tempo",
+          "jm-article-64d73faf12672d652ab57854-64d73fb112672d652ab57ff5": "/post/6-razoes-pelas-quais-o-investimento-em-imoveis-e-uma-opcao-inteligente",
+          "jm-article-64d73faf12672d652ab57855-64d73fb112672d652ab57ff5": "/post/maximize-a-sua-mudanca-para-uma-casa-maior-com-estas-5-dicas",
+          "jm-article-64d73faf12672d652ab57856-64d73fb112672d652ab57ff5": "/post/tudo-o-que-precisa-saber-para-vender-a-sua-casa-nesta-primavera",
+          "jm-article-64d73faf12672d652ab57857-64d73fb112672d652ab57ff5": "/post/como-melhorar-os-espacos-exteriores-da-sua-casa",
+          "jm-article-64d73faf12672d652ab5785a-64d73fb112672d652ab57ff5": "/post/a-sua-proposta-foi-rejeitada-4-dicas-para-chegar-a-bom-porto",
+          "jm-article-64d73faf12672d652ab5785b-64d73fb112672d652ab57ff5": "/post/4-novas-dicas-de-home-staging-para-2023",
+          "jm-article-64d73faf12672d652ab5785d-64d73fb112672d652ab57ff5": "/post/qual-a-melhor-altura-do-ano-para-se-vender-uma-casa",
+          "jm-article-64d73faf12672d652ab5785e-64d73fb112672d652ab57ff5": "/post/7-coisas-que-deve-saber-antes-de-contratar-um-consultor-imobiliario",
+          "jm-article-64d73faf12672d652ab5785f-64d73fb112672d652ab57ff5": "/post/casa-nova-ou-usada-descubra-qual-e-a-melhor-opcao-para-si",
+          "jm-article-64d73faf12672d652ab57860-64d73fb112672d652ab57ff5": "/post/a-importancia-de-receber-qualquer-proposta-na-venda-da-sua-casa",
+          "jm-article-64d73faf12672d652ab57864-64d73fb112672d652ab57ff5": "/post/7-dicas-para-umas-ferias-relaxadas",
+          "jm-article-64e067450838e40e67002d4a-64d73fb112672d652ab57ff5": "/post/como-descobrir-o-valor-atual-de-uma-casa-de-maneira-eficaz",
+          "jm-article-64f34384468c25972ddf661c-64d73fb112672d652ab57ff5": "/post/sera-a-comissao-o-fator-mais-importante",
+          "jm-article-650556e225ec0563bd569d6b-64d73fb112672d652ab57ff5": "/post/outono-inspirador",
+          "jm-article-65172b682bc4e80617b5a630-64d73fb112672d652ab57ff5": "/post/a-verdade-por-tras-de-5-mitos-comuns-na-negociacao-de-uma-casa",
+          "jm-article-652a39b9722f7ce55d56bf7b-64d73fb112672d652ab57ff5": "/post/as-3-caracteristicas-a-ter-em-conta-na-hora-de-comprar-a-sua-casa",
+          "jm-article-653c2267f98ed53697865c87-64d73fb112672d652ab57ff5": "/post/de-uma-venda-assombrada-a-uma-venda-com-sucesso",
+          "jm-article-654f367ac3bb2ee66548dd19-64d73fb112672d652ab57ff5": "/post/a-divisao-do-atual-mercado-imobiliario",
+          "jm-article-6561d07eb0669b030cf17d26-64d73fb112672d652ab57ff5": "/post/pos-e-contras-de-vender-a-sua-casa-nestas-festas",
+          "jm-article-6574430260cc6ee0a2aa4b3c-64d73fb112672d652ab57ff5": "/post/evite-este-erro-para-uma-negociacao-bem-sucedida",
+          "jm-article-658b209094967e35ebdef7f0-64d73fb112672d652ab57ff5": "/post/potencie-a-sua-casa-e-o-seu-estilo-de-vida-em-2024",
+          "jm-article-659688c718c9fd0e67418a4c-64d73fb112672d652ab57ff5": "/post/8-dicas-quentinhas-para-vender-a-sua-casa-neste-inverno",
+          "jm-article-65b01ba5a8acc6f3282ebd4c-64d73fb112672d652ab57ff5": "/post/ano-novo-casa-nova-3-dicas-para-mudar-de-casa-em-2024",
+          "jm-article-65be054a1b61394c612e96c5-64d73fb112672d652ab57ff5": "/post/estrategia-de-preco-a-importancia-do-preco-certo-para-um-venda-bem-sucedida",
+          "jm-article-65d08aa4366f5933de0cbc15-64d73fb112672d652ab57ff5": "/post/torne-a-sua-casa-mais-eficiente-energeticamente",
+          "jm-article-65e23abcd1c6e252eda0ea5c-64d73fb112672d652ab57ff5": "/post/8-dicas-para-aproveitar-melhor-os-espacos-exteriores-da-sua-casa",
+          "jm-article-65f89d1b47b8f01593214fc8-64d73fb112672d652ab57ff5": "/post/primavera-venda-a-sua-casa-com-sucesso",
+          "jm-article-66102df9b60e07f43eb33b7d-64d73fb112672d652ab57ff5": "/post/estrategias-de-preco-inteligentes",
+          "jm-article-662cbd80d0e9217e80a585cc-64d73fb112672d652ab57ff5": "/post/simplifique-a-sua-mudanca-de-casa",
+          "jm-article-66485c1dee467eb1375b511f-64d73fb112672d652ab57ff5": "/post/5-solucoes-sustentaveis-para-proprietarios-ecologicos",
+          "jm-article-665ae1edc00d7fc80697fc68-64d73fb112672d652ab57ff5": "/post/reduza-o-risco-e-aumente-o-valor-de-venda-da-sua-casa",
+          "jm-article-66746b57c4ecc97c2f348435-64d73fb112672d652ab57ff5": "/post/5-dicas-essenciais-para-uma-venda-de-casa-bem-sucedida-neste-verao",
+          "jm-article-668902b9a1ca47575759491f-64d73fb112672d652ab57ff5": "/post/como-garantir-uma-mudanca-de-casa-rapida-neste-verao-2024",
+          "jm-article-669fcbbd48e4342b445c61db-64d73fb112672d652ab57ff5": "/post/primeira-vez-a-vender-casa-evite-estes-erros",
+          "jm-article-66b0e471a51f637eb02927fe-64d73fb112672d652ab57ff5": "/post/4-coisas-a-ponderar-ao-contratar-um-consultor-imobiliario",
+          "jm-article-66b70b9df45a1b42aab1206b-64d73fb112672d652ab57ff5": "/post/aumente-os-seus-rendimentos-com-o-apoio-financeiro-para-senhorios",
+          "jm-article-66c354b1bf68d92a8b99b40d-64d73fb112672d652ab57ff5": "/post/renovar-ou-mudar-de-casa",
+          "jm-article-66dc13c089b1d6020419e763-64d73fb112672d652ab57ff5": "/post/6-coisas-a-fazer-se-nao-consegue-vender-a-sua-casa",
+          "jm-article-67097eef9fb586347f087d95-64d73fb112672d652ab57ff5": "/post/vender-a-sua-casa-no-outono",
+          "jm-article-6723d94d5fff3c9d24b39c14-64d73fb112672d652ab57ff5": "/post/como-maximizar-o-seu-orcamento-e-comprar-a-casa-dos-seus-sonhos",
+          "jm-article-6748cca91c9fd6dab3ef60d9-64d73fb112672d652ab57ff5": "/post/comprar-casa-durante-as-festas",
+          "jm-article-675d50a49f940c0315cb7e14-64d73fb112672d652ab57ff5": "/post/espirito-festivo-em-casa",
+          "jm-article-6785698289f192422cecd64e-64d73fb112672d652ab57ff5": "/post/3-dicas-essenciais-para-mudar-de-casa-em-2025",
+          "jm-article-679df6675b7f77a3f18f0c8d-64d73fb112672d652ab57ff5": "/post/oliveira-do-douro",
+          "jm-article-67b060587a6c805c960a3239-64d73fb112672d652ab57ff5": "/post/4-tendencias-de-design-de-interiores-para-2025",
+          "jm-article-67c2d72bca537c92e1165fa7-64d73fb112672d652ab57ff5": "/post/virtual-staging-a-estrategia-que-pode-acelerar-a-venda-da-sua-casa",
+          "jm-article-67ddbdbe2791d09749ba3a0f-64d73fb112672d652ab57ff5": "/post/a-primavera-e-a-melhor-altura-para-vender-casa",
+          "jm-article-680c7e7d769837151099a3be-64d73fb112672d652ab57ff5": "/post/como-definir-o-preco-ideal-da-sua-casa-na-primavera-de-2025",
+          "jm-article-68441252e1b2d0967e958cde-64d73fb112672d652ab57ff5": "/post/o-lado-emocional-de-vender-casa",
+          "jm-article-687b424c81155d44aebb00e3-64d73fb112672d652ab57ff5": "/post/4-passos-para-mudar-de-casa-neste-verao",
+          "jm-article-6973a8382c9f58da6611b23a-64d73fb112672d652ab57ff5": "/post/deve-comprar-ou-arrendar-em-2026",
+          "jm-property-64d73faf12672d652ab57844-64d73fb112672d652ab57ff5": "/imoveis/1202-2406",
+          "jm-property-64d73faf12672d652ab57845-64d73fb112672d652ab57ff5": "/imoveis/1202-2283",
+          "jm-property-64d73faf12672d652ab57846-64d73fb112672d652ab57ff5": "/imoveis/1202-2268",
+          "jm-property-64d73faf12672d652ab57847-64d73fb112672d652ab57ff5": "/imoveis/1202-2093",
+          "jm-property-64d73faf12672d652ab57848-64d73fb112672d652ab57ff5": "/imoveis/1202-1933",
+          "jm-property-64d73faf12672d652ab57858-64d73fb112672d652ab57ff5": "/imoveis/1202-2711",
+          "jm-property-6503fda0fa7df4bd0cc5f80d-64d73fb112672d652ab57ff5": "/imoveis/1202-2864",
+          "jm-property-650ad8d07f71b90111310836-64d73fb112672d652ab57ff5": "/imoveis/1202-2991",
+          "jm-property-650adb79c989bfa554aa266d-64d73fb112672d652ab57ff5": "/imoveis/1202-2909",
+          "jm-property-650adb87585f82f314b74670-64d73fb112672d652ab57ff5": "/imoveis/1202-2863",
+          "jm-property-652f8c41856c2e4b30621165-64d73fb112672d652ab57ff5": "/imoveis/1202-2904",
+          "jm-property-652f8d181fcddfc32c847a95-64d73fb112672d652ab57ff5": "/imoveis/1202-2472",
+          "jm-property-652f8dd51186e500259c99fb-64d73fb112672d652ab57ff5": "/imoveis/1202-2471",
+          "jm-property-6542285ffdc03c4eaa8ed4e3-64d73fb112672d652ab57ff5": "/imoveis/1202-3060",
+          "jm-property-65afa25c7b8493e8d999f99e-64d73fb112672d652ab57ff5": "/imoveis/1202-3220",
+          "jm-property-65c0f9620838c9d43e5a05bd-64d73fb112672d652ab57ff5": "/imoveis/1202-3222",
+          "jm-property-65f01992db518103ca1e041d-64d73fb112672d652ab57ff5": "/imoveis/1202-3313",
+          "jm-property-660fbc60ca6741eb7f147701-64d73fb112672d652ab57ff5": "/imoveis/1202-3348",
+          "jm-property-661642337ac97d436bb85af9-64d73fb112672d652ab57ff5": "/imoveis/1202-3382",
+          "jm-property-663090c2d3fa071768077c7a-64d73fb112672d652ab57ff5": "/imoveis/1202-3467",
+          "jm-property-663b1c7f3f6563d7d8a02fc3-64d73fb112672d652ab57ff5": "/imoveis/1202-3315",
+          "jm-property-66434b10530826c8ac86dafc-64d73fb112672d652ab57ff5": "/imoveis/1202-3243",
+          "jm-property-66434b3f6aefaa02b2047361-64d73fb112672d652ab57ff5": "/imoveis/1202-3280",
+          "jm-property-66434b5ea6521fc52b039da3-64d73fb112672d652ab57ff5": "/imoveis/1202-3274",
+          "jm-property-665d76d962690e5776dfddd6-64d73fb112672d652ab57ff5": "/imoveis/1202-3404",
+          "jm-property-668d5903fd6f43b50a3e2a1b-64d73fb112672d652ab57ff5": "/imoveis/kwpt002034",
+          "jm-property-6696866f91160dea280058a5-64d73fb112672d652ab57ff5": "/imoveis/kwpt003071",
+          "jm-property-6699295330d72163c6b0c498-64d73fb112672d652ab57ff5": "/imoveis/kwpt003096",
+          "jm-property-66ce13894853157bdf674226-64d73fb112672d652ab57ff5": "/imoveis/kwpt004101",
+          "jm-property-66d9c7f2b400808377a5e502-64d73fb112672d652ab57ff5": "/imoveis/kwpt005146",
+          "jm-property-66e2fb6a94b92a9d52edf565-64d73fb112672d652ab57ff5": "/imoveis/kwpt005347",
+          "jm-property-66e9ac6be8aa7c7190395ba3-64d73fb112672d652ab57ff5": "/imoveis/kwpt005471",
+          "jm-property-6707f6d4914c7b1e818d94e2-64d73fb112672d652ab57ff5": "/imoveis/kwpt005472",
+          "jm-property-6716521b7c524460a1e59fe3-64d73fb112672d652ab57ff5": "/imoveis/kwpt007079",
+          "jm-property-6733630b99345ef1fe1fafaa-64d73fb112672d652ab57ff5": "/imoveis/kwpt007991",
+          "jm-property-6753249084519a41568f4532-64d73fb112672d652ab57ff5": "/imoveis/kwpt009202",
+          "jm-property-6776738c6bba83fee2ec3c78-64d73fb112672d652ab57ff5": "/imoveis/kwpt009872",
+          "jm-property-6786b32b4e25b4ae93fd1c94-64d73fb112672d652ab57ff5": "/imoveis/kwpt009968",
+          "jm-property-67e6d33f5b891f9ac2eda4fc-64d73fb112672d652ab57ff5": "/imoveis/kwpt013603",
+          "jm-property-67effaa61c15e5aad1a7e9bc-64d73fb112672d652ab57ff5": "/imoveis/kwpt013751",
+          "jm-property-680687133f041ff177f0edac-64d73fb112672d652ab57ff5": "/imoveis/kwpt014629",
+          "jm-property-68090d299d296cdc67011bf4-64d73fb112672d652ab57ff5": "/imoveis/kwpt014647",
+          "jm-property-682c4b9c6ce8e0bf4bd33b22-64d73fb112672d652ab57ff5": "/imoveis/kwpt015500",
+          "jm-property-682df3f5d8091721611b42e9-64d73fb112672d652ab57ff5": "/imoveis/kwpt016039",
+          "jm-property-6839bbcb25137e35648d947b-64d73fb112672d652ab57ff5": "/imoveis/kwpt016210",
+          "jm-property-685043180aabf4b0120419ea-64d73fb112672d652ab57ff5": "/imoveis/kwpt016225",
+          "jm-property-686567559e73d74febbf2495-64d73fb112672d652ab57ff5": "/imoveis/kwpt017699",
+          "jm-property-687918df0ca5b739bc3123e9-64d73fb112672d652ab57ff5": "/imoveis/kwpt018563",
+          "jm-property-687e331ff1181a91058b7b53-64d73fb112672d652ab57ff5": "/imoveis/kwpt018853",
+          "jm-property-6893665b07dc3f0295ca6da6-64d73fb112672d652ab57ff5": "/imoveis/kwpt019807",
+          "jm-property-68af150b82da3342de7a05ce-64d73fb112672d652ab57ff5": "/imoveis/kwpt020688",
+          "jm-property-68b82bd761fa085a9fda2bd9-64d73fb112672d652ab57ff5": "/imoveis/kwpt021050",
+          "jm-property-68bb24b837fda8b288f288a4-64d73fb112672d652ab57ff5": "/imoveis/kwpt021094",
+          "jm-property-690391c0d3220f7e2038c27f-64d73fb112672d652ab57ff5": "/imoveis/kwpt023708",
+          "jm-property-6937eca300c97af63c25ced9-64d73fb112672d652ab57ff5": "/imoveis/kwpt025253",
+          "jm-property-6937fdc31a1cdb29a1f2f2b3-64d73fb112672d652ab57ff5": "/imoveis/kwpt025265",
+          "jm-property-695d35b09f5de4973299416b-64d73fb112672d652ab57ff5": "/imoveis/kwpt026377",
+          "jm-property-6960e9aaf84806ee59710ab1-64d73fb112672d652ab57ff5": "/imoveis/kwpt026427",
+          "jm-property-6964d41dcd4c29cf4a934f07-64d73fb112672d652ab57ff5": "/imoveis/kwpt026529",
+          "jm-property-697889f130b6d852b1f52055-64d73fb112672d652ab57ff5": "/imoveis/kwpt027057",
+          "jm-property-69af0b38cdc286f1d80acdbe-64d73fb112672d652ab57ff5": "/imoveis/kwpt029212",
+          "jm-property-69ca79014b79e52d8d0efd0e-64d73fb112672d652ab57ff5": "/imoveis/kwpt029949",
+          "jm-property-69f3362d997f2b0e23600e81-64d73fb112672d652ab57ff5": "/imoveis/kwpt032072",
+          "2e08c0bc-f55c-4bf6-bf17-fdb5e39d2527": "/imoveis/kwpt039444",
+          "5cf2e034-6e80-4dcf-b39f-7213d56c6f2b": "/imoveis/kwpt030872",
+          "73fa07a7-635e-4afc-b133-af461e4f5b8c": "/imoveis/kwpt037996",
+          "88bdccd0-1f55-41e8-8d64-c90543da99e8": "/imoveis/kwpt037992",
+          "a2146877-a3d1-4ca0-af1e-a0f99dca0a20": "/imoveis/jrm001"
+        },
+        "generatedAt": "2026-10-19T10:56:59.424Z"
+      }
+    },
+    {
+      "host": "www.joaquimmota.pt",
+      "port": 443,
+      "path": "/imoveis/jrm001?utm_source=qr&test=1",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 404 ",
+      "location": [],
+      "xRobots": [],
+      "xWebflow": true,
+      "metaRobots": [],
+      "bodyLength": 5204,
+      "mapIframe": false,
+      "sanityImageCount": 0,
+      "price280000": false
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 80,
+      "path": "/imoveis/jrm001?utm_source=qr&test=1",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/1.1 301 Moved Permanently",
+      "location": [
+        "https://joaquimmota.pt/imoveis/jrm001?utm_source=qr&test=1"
+      ],
+      "xRobots": [],
+      "xWebflow": false,
+      "metaRobots": [],
+      "bodyLength": 160,
+      "mapIframe": false,
+      "sanityImageCount": 0,
+      "price280000": false
+    },
+    {
+      "host": "www.joaquimmota.pt",
+      "port": 80,
+      "path": "/imoveis/jrm001?utm_source=qr&test=1",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/1.1 301 Moved Permanently",
+      "location": [
+        "https://www.joaquimmota.pt/imoveis/jrm001?utm_source=qr&test=1"
+      ],
+      "xRobots": [],
+      "xWebflow": true,
+      "metaRobots": [],
+      "bodyLength": 159,
+      "mapIframe": false,
+      "sanityImageCount": 0,
+      "price280000": false
+    },
+    {
+      "host": "joaquimmota.pages.dev",
+      "port": 443,
+      "path": "/",
+      "exit": 0,
+      "error": "",
+      "status": "HTTP/2 200 ",
+      "location": [],
+      "xRobots": [
+        "noindex, nofollow"
+      ],
+      "xWebflow": false,
+      "metaRobots": [
+        "index, follow"
+      ],
+      "bodyLength": 76494,
+      "mapIframe": false,
+      "sanityImageCount": 10,
+      "price280000": false
+    }
+  ],
+  "githubRun": {
+    "id": 39241016006,
+    "event": "workflow_dispatch",
+    "createdAt": "2026-10-19T10:56:16Z",
+    "conclusion": "success",
+    "productionJob": "success",
+    "previewJob": "skipped"
+  },
+  "photoCounts": {
+    "kwpt037992": 13,
+    "kwpt037996": 8,
+    "jrm001": 21,
+    "kwpt039444": 27,
+    "kwpt030872": 22
+  },
+  "dnsComparison": {
+    "baselineSource": "Parent supplied pre-cutover public DNS observations",
+    "MXmatches": true,
+    "apexTXTmatches": true,
+    "fullZoneBackupVerified": false,
+    "DMARCmatches": true
+  },
+  "pending": "GSC DNS propagation remains outside this HTTP audit; final redirect/challenge checks recorded, previous regressions retained.",
+  "finalRedirectChecks": [
+    {
+      "host": "www.joaquimmota.pt",
+      "port": 443,
+      "exit": 0,
+      "status": "HTTP/2 301 ",
+      "location": [
+        "https://joaquimmota.pt/imoveis/jrm001?utm_source=qr&test=4"
+      ],
+      "webflowHeaders": false
+    },
+    {
+      "host": "www.joaquimmota.pt",
+      "port": 80,
+      "exit": 0,
+      "status": "HTTP/1.1 301 Moved Permanently",
+      "location": [
+        "https://joaquimmota.pt/imoveis/jrm001?utm_source=qr&test=4"
+      ],
+      "webflowHeaders": false
+    },
+    {
+      "host": "joaquimmota.pt",
+      "port": 80,
+      "exit": 0,
+      "status": "HTTP/1.1 301 Moved Permanently",
+      "location": [
+        "https://joaquimmota.pt/imoveis/jrm001?utm_source=qr&test=4"
+      ],
+      "webflowHeaders": false
+    }
+  ],
+  "regressionRecheck": [
+    {
+      "host": "joaquimmota.pt",
+      "ip": "104.21.84.107",
+      "url": "https://joaquimmota.pt/imoveis/jrm001?independent_audit=1792408185172303000",
+      "exit": 0,
+      "status": "HTTP/2 404 ",
+      "date": [
+        "Mon, 19 Oct 2026 11:09:46 GMT"
+      ],
+      "location": [],
+      "webflow": true,
+      "headers": "HTTP/2 404 \ndate: Mon, 19 Oct 2026 11:09:46 GMT\ncontent-type: text/html; charset=utf-8\nset-cookie: _cfuvid=9VWFUSCF4btNfRRa7NyLC7nnjs9fmbcRzlmny4CwPhw-1792408185.2687056-1.0.1.1-cgcgXCimSoxwH9J2pMFPcFGFfE800HdUnMYEAtJKPDc; HttpOnly; SameSite=None; Secure; Path=/; Domain=joaquimmota.pt\ncf-ray: a4cf5515ec5fc941-CWB\ncf-cache-status: MISS\ncache-control: max-age=43200\nx-wf-region: us-east-1\netag: W/\"7d6c10c42e3560ec9c9ce96d1097485e\"\nlast-modified: Sat, 16 May 2026 11:50:40 GMT\nserver: cloudflare\nstrict-transport-security: max-age=31536000\nvary: accept-encoding\ncontent-security-policy: frame-ancestors 'self'\nsurrogate-control: max-age=432000\nsurrogate-key: joaquimmota.pt 63638f133928eb2761a4ecfb pageId:64d73faf12672d652ab576d6 64d73faf12672d652ab57736 404req\nx-frame-options: SAMEORIGIN\nalt-svc: h3=\":443\"; ma=86400\n\n",
+      "error": ""
+    },
+    {
+      "host": "joaquimmota.pt",
+      "ip": "172.67.191.97",
+      "url": "https://joaquimmota.pt/imoveis/jrm001?independent_audit=1792408185172625000",
+      "exit": 0,
+      "status": "HTTP/2 404 ",
+      "date": [
+        "Mon, 19 Oct 2026 11:09:45 GMT"
+      ],
+      "location": [],
+      "webflow": true,
+      "headers": "HTTP/2 404 \ndate: Mon, 19 Oct 2026 11:09:45 GMT\ncontent-type: text/html; charset=utf-8\nset-cookie: _cfuvid=RVuwiDOqqGVVmwj3i_gWBDBa4T66CJecMzfIZMlKHcU-1792408185.2676322-1.0.1.1-EKPTdQR6ZrupeyS6rW5frBOrGVw3tSuxRYOGdncI2ys; HttpOnly; SameSite=None; Secure; Path=/; Domain=joaquimmota.pt\ncf-ray: a4cf5515ec89c9fb-CWB\ncf-cache-status: MISS\ncache-control: max-age=43200\nx-wf-region: us-east-1\netag: W/\"7d6c10c42e3560ec9c9ce96d1097485e\"\nlast-modified: Sat, 16 May 2026 11:50:40 GMT\nserver: cloudflare\nstrict-transport-security: max-age=31536000\nvary: accept-encoding\ncontent-security-policy: frame-ancestors 'self'\nsurrogate-control: max-age=432000\nsurrogate-key: joaquimmota.pt 63638f133928eb2761a4ecfb pageId:64d73faf12672d652ab576d6 64d73faf12672d652ab57736 404req\nx-frame-options: SAMEORIGIN\nalt-svc: h3=\":443\"; ma=86400\n\n",
+      "error": ""
+    },
+    {
+      "host": "www.joaquimmota.pt",
+      "ip": "104.21.84.107",
+      "url": "https://www.joaquimmota.pt/imoveis/jrm001?independent_audit=1792408185172780000",
+      "exit": 0,
+      "status": "HTTP/2 404 ",
+      "date": [
+        "Mon, 19 Oct 2026 11:09:45 GMT"
+      ],
+      "location": [],
+      "webflow": true,
+      "headers": "HTTP/2 404 \ndate: Mon, 19 Oct 2026 11:09:45 GMT\ncontent-type: text/html; charset=utf-8\nset-cookie: _cfuvid=7ZlImswFeCwaqqG_jEK9CZAm8UAsL.moGclEq365REA-1792408185.280074-1.0.1.1-R24_f3Y1264f0aY5JmDs7_ad5GCBnvNm5hh2CX5gR10; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.joaquimmota.pt\ncf-ray: a4cf5515f93d8ea4-CWB\ncf-cache-status: MISS\ncache-control: max-age=43200\nx-wf-region: us-east-1\netag: W/\"0f04d04e74948b3ffd93f5f78fdaff42\"\nlast-modified: Sat, 16 May 2026 11:50:40 GMT\nserver: cloudflare\nstrict-transport-security: max-age=31536000\nvary: accept-encoding\ncontent-security-policy: frame-ancestors 'self'\nsurrogate-control: max-age=432000\nsurrogate-key: www.joaquimmota.pt 63638f133928eb2761a4ecfb pageId:64d73faf12672d652ab576d6 64d73faf12672d652ab57736 404req\nx-frame-options: SAMEORIGIN\nalt-svc: h3=\":443\"; ma=86400\n\n",
+      "error": ""
+    },
+    {
+      "host": "www.joaquimmota.pt",
+      "ip": "172.67.191.97",
+      "url": "https://www.joaquimmota.pt/imoveis/jrm001?independent_audit=1792408185173899000",
+      "exit": 0,
+      "status": "HTTP/2 404 ",
+      "date": [
+        "Mon, 19 Oct 2026 11:09:45 GMT"
+      ],
+      "location": [],
+      "webflow": true,
+      "headers": "HTTP/2 404 \ndate: Mon, 19 Oct 2026 11:09:45 GMT\ncontent-type: text/html; charset=utf-8\nset-cookie: _cfuvid=HrPetktOZAWBn0qK01kMz74KolNyXIDevCbirACygxE-1792408185.2803133-1.0.1.1-aNz5ZVeBtLsolnWb7UrsO9YksjjlLG1tSwfdUHJP4Xg; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.joaquimmota.pt\ncf-ray: a4cf5515fe772bd0-CWB\ncf-cache-status: MISS\ncache-control: max-age=43200\nx-wf-region: us-east-1\netag: W/\"0f04d04e74948b3ffd93f5f78fdaff42\"\nlast-modified: Sat, 16 May 2026 11:50:40 GMT\nserver: cloudflare\nstrict-transport-security: max-age=31536000\nvary: accept-encoding\ncontent-security-policy: frame-ancestors 'self'\nsurrogate-control: max-age=432000\nsurrogate-key: www.joaquimmota.pt 63638f133928eb2761a4ecfb pageId:64d73faf12672d652ab576d6 64d73faf12672d652ab57736 404req\nx-frame-options: SAMEORIGIN\nalt-svc: h3=\":443\"; ma=86400\n\n",
+      "error": ""
+    }
+  ],
+  "regressionExtra": [
+    {
+      "host": "joaquimmota.pt",
+      "path": "/",
+      "ip": "104.21.84.107",
+      "exit": 0,
+      "status": "HTTP/2 200 ",
+      "date": [
+        "Mon, 19 Oct 2026 11:10:09 GMT"
+      ],
+      "location": [],
+      "webflow": true
+    },
+    {
+      "host": "www.joaquimmota.pt",
+      "path": "/",
+      "ip": "172.67.191.97",
+      "exit": 0,
+      "status": "HTTP/2 200 ",
+      "date": [
+        "Mon, 19 Oct 2026 11:10:11 GMT"
+      ],
+      "location": [],
+      "webflow": true
+    },
+    {
+      "host": "joaquimmota.pages.dev",
+      "path": "/cms-revision.json",
+      "ip": null,
+      "exit": 0,
+      "status": "HTTP/2 200 ",
+      "date": [
+        "Mon, 19 Oct 2026 11:10:12 GMT"
+      ],
+      "location": [],
+      "webflow": false,
+      "metadata": {
+        "hash": "323ff891f0273fbc457da9fe3859b87233fc910f2703c2301c71c39f7690fe90",
+        "documentCount": 194,
+        "generatedAt": "2026-10-19T11:08:01.168Z"
+      }
+    }
+  ],
+  "regressionFinalLimitedSample": [
+    {
+      "host": "joaquimmota.pt",
+      "ip": "172.67.191.97",
+      "status": "HTTP/2 404 ",
+      "date": [
+        "Mon, 19 Oct 2026 11:10:26 GMT"
+      ],
+      "webflow": true,
+      "cacheStatus": [
+        "MISS"
+      ]
+    },
+    {
+      "host": "www.joaquimmota.pt",
+      "ip": "104.21.84.107",
+      "status": "HTTP/2 404 ",
+      "date": [
+        "Mon, 19 Oct 2026 11:10:26 GMT"
+      ],
+      "webflow": true,
+      "cacheStatus": [
+        "MISS"
+      ]
+    }
+  ],
+  "revalidationHistory": [
+    [
+      {
+        "host": "joaquimmota.pt",
+        "ip": "104.21.84.107",
+        "exit": 0,
+        "status": "HTTP/2 200 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:20:01 GMT"
+        ],
+        "webflow": false,
+        "location": [],
+        "Isento": true,
+        "hasGoogleMap": true,
+        "photoAssets": 21,
+        "error": ""
+      },
+      {
+        "host": "joaquimmota.pt",
+        "ip": "172.67.191.97",
+        "exit": 0,
+        "status": "HTTP/2 200 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:20:01 GMT"
+        ],
+        "webflow": false,
+        "location": [],
+        "Isento": true,
+        "hasGoogleMap": true,
+        "photoAssets": 21,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "ip": "104.21.84.107",
+        "exit": 0,
+        "status": "HTTP/2 200 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:20:01 GMT"
+        ],
+        "webflow": false,
+        "location": [],
+        "Isento": true,
+        "hasGoogleMap": true,
+        "photoAssets": 21,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "ip": "172.67.191.97",
+        "exit": 0,
+        "status": "HTTP/2 200 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:20:01 GMT"
+        ],
+        "webflow": false,
+        "location": [],
+        "Isento": true,
+        "hasGoogleMap": true,
+        "photoAssets": 21,
+        "error": ""
+      }
+    ]
+  ],
+  "domainApiStatusHistory": [
+    {
+      "result": [
+        {
+          "id": "d44ab05e-0085-4753-9123-6797299fe457",
+          "domain_id": "d44ab05e-0085-4753-9123-6797299fe457",
+          "name": "joaquimmota.pt",
+          "status": "active",
+          "verification_data": {
+            "status": "active"
+          },
+          "validation_data": {
+            "status": "active",
+            "method": "http"
+          },
+          "certificate_authority": "google",
+          "zone_tag": "33511b79dd3be073b5432312b795e8f9",
+          "created_on": "2026-10-19T10:50:46.930885Z"
+        },
+        {
+          "id": "b6c392a9-3920-4f08-9a7b-09cc2582c261",
+          "domain_id": "b6c392a9-3920-4f08-9a7b-09cc2582c261",
+          "name": "www.joaquimmota.pt",
+          "status": "active",
+          "verification_data": {
+            "status": "active"
+          },
+          "validation_data": {
+            "status": "active",
+            "method": "http"
+          },
+          "certificate_authority": "google",
+          "zone_tag": "33511b79dd3be073b5432312b795e8f9",
+          "created_on": "2026-10-19T10:50:48.458443Z"
+        }
+      ],
+      "success": true,
+      "errors": [],
+      "messages": [],
+      "result_info": {
+        "page": 1,
+        "per_page": 20,
+        "count": 2,
+        "total_count": 2,
+        "total_pages": 1
+      }
+    },
+    {
+      "result": [
+        {
+          "id": "d44ab05e-0085-4753-9123-6797299fe457",
+          "domain_id": "d44ab05e-0085-4753-9123-6797299fe457",
+          "name": "joaquimmota.pt",
+          "status": "active",
+          "verification_data": {
+            "status": "active"
+          },
+          "validation_data": {
+            "status": "active",
+            "method": "http"
+          },
+          "certificate_authority": "google",
+          "zone_tag": "33511b79dd3be073b5432312b795e8f9",
+          "created_on": "2026-10-19T10:50:46.930885Z"
+        },
+        {
+          "id": "b6c392a9-3920-4f08-9a7b-09cc2582c261",
+          "domain_id": "b6c392a9-3920-4f08-9a7b-09cc2582c261",
+          "name": "www.joaquimmota.pt",
+          "status": "active",
+          "verification_data": {
+            "status": "active"
+          },
+          "validation_data": {
+            "status": "active",
+            "method": "http"
+          },
+          "certificate_authority": "google",
+          "zone_tag": "33511b79dd3be073b5432312b795e8f9",
+          "created_on": "2026-10-19T10:50:48.458443Z"
+        }
+      ],
+      "success": true,
+      "errors": [],
+      "messages": [],
+      "result_info": {
+        "page": 1,
+        "per_page": 20,
+        "count": 2,
+        "total_count": 2,
+        "total_pages": 1
+      }
+    }
+  ],
+  "finalConfigRechecks": [
+    [
+      {
+        "host": "joaquimmota.pt",
+        "port": 443,
+        "ip": "104.21.84.107",
+        "path": "/imoveis/jrm001?utm_source=independent&test=final",
+        "exit": 0,
+        "status": "HTTP/2 103 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "port": 443,
+        "ip": "104.21.84.107",
+        "path": "/imoveis/jrm001?utm_source=independent&test=final",
+        "exit": 0,
+        "status": "HTTP/2 301 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=independent&test=final"
+        ],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "port": 80,
+        "ip": "104.21.84.107",
+        "path": "/imoveis/jrm001?utm_source=independent&test=final",
+        "exit": 0,
+        "status": "HTTP/1.1 301 Moved Permanently",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=independent&test=final"
+        ],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "joaquimmota.pt",
+        "port": 80,
+        "ip": "104.21.84.107",
+        "path": "/imoveis/jrm001?utm_source=independent&test=final",
+        "exit": 0,
+        "status": "HTTP/1.1 301 Moved Permanently",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=independent&test=final"
+        ],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "port": 443,
+        "ip": "104.21.84.107",
+        "path": "/.well-known/acme-challenge/independent-fake",
+        "exit": 0,
+        "status": "HTTP/2 404 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "port": 443,
+        "ip": "104.21.84.107",
+        "path": "/.well-known/cf-custom-hostname-challenge/independent-fake",
+        "exit": 0,
+        "status": "HTTP/2 404 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "joaquimmota.pt",
+        "port": 443,
+        "ip": "172.67.191.97",
+        "path": "/imoveis/jrm001?utm_source=independent&test=final",
+        "exit": 0,
+        "status": "HTTP/2 103 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "port": 443,
+        "ip": "172.67.191.97",
+        "path": "/imoveis/jrm001?utm_source=independent&test=final",
+        "exit": 0,
+        "status": "HTTP/2 301 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=independent&test=final"
+        ],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "port": 80,
+        "ip": "172.67.191.97",
+        "path": "/imoveis/jrm001?utm_source=independent&test=final",
+        "exit": 0,
+        "status": "HTTP/1.1 301 Moved Permanently",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=independent&test=final"
+        ],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "joaquimmota.pt",
+        "port": 80,
+        "ip": "172.67.191.97",
+        "path": "/imoveis/jrm001?utm_source=independent&test=final",
+        "exit": 0,
+        "status": "HTTP/1.1 301 Moved Permanently",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [
+          "https://joaquimmota.pt/imoveis/jrm001?utm_source=independent&test=final"
+        ],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "port": 443,
+        "ip": "172.67.191.97",
+        "path": "/.well-known/acme-challenge/independent-fake",
+        "exit": 0,
+        "status": "HTTP/2 404 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [],
+        "webflow": false,
+        "error": ""
+      },
+      {
+        "host": "www.joaquimmota.pt",
+        "port": 443,
+        "ip": "172.67.191.97",
+        "path": "/.well-known/cf-custom-hostname-challenge/independent-fake",
+        "exit": 0,
+        "status": "HTTP/2 404 ",
+        "date": [
+          "Mon, 19 Oct 2026 11:24:33 GMT"
+        ],
+        "location": [],
+        "webflow": false,
+        "error": ""
+      }
+    ]
+  ],
+  "finalApexStatusAfterEarlyHints": [
+    {
+      "ip": "104.21.84.107",
+      "allStatusLines": [
+        "HTTP/2 103 ",
+        "HTTP/2 200 "
+      ],
+      "finalStatus": "HTTP/2 200 ",
+      "webflow": false
+    },
+    {
+      "ip": "172.67.191.97",
+      "allStatusLines": [
+        "HTTP/2 103 ",
+        "HTTP/2 200 "
+      ],
+      "finalStatus": "HTTP/2 200 ",
+      "webflow": false
+    }
+  ]
+}
