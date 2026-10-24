@@ -1,0 +1,620 @@
+{
+  "home": [
+    {
+      "containers": [
+        {
+          "selector": "site-header site-header--light",
+          "width": 351,
+          "x": 20
+        },
+        {
+          "selector": "interior-hero__content",
+          "width": 351,
+          "x": 20
+        },
+        {
+          "selector": "site-header site-header--blue",
+          "width": 351,
+          "x": 20
+        },
+        {
+          "selector": "home-process shell",
+          "width": 351,
+          "x": 20
+        },
+        {
+          "selector": "shell section-grid",
+          "width": 351,
+          "x": 20
+        },
+        {
+          "selector": "metrics shell",
+          "width": 351,
+          "x": 20
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 0
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 312
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 624
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 936
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 1248
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 1560
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 1872
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 2184
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 2496
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 293,
+          "x": 2808
+        },
+        {
+          "selector": "testimonials-section__header",
+          "width": 351,
+          "x": 20
+        },
+        {
+          "selector": "closing-cta__card",
+          "width": 351,
+          "x": 20
+        }
+      ],
+      "overflow": false,
+      "viewport": 390
+    },
+    {
+      "containers": [
+        {
+          "selector": "site-header site-header--light",
+          "width": 1296,
+          "x": 72
+        },
+        {
+          "selector": "interior-hero__content",
+          "width": 950,
+          "x": 245
+        },
+        {
+          "selector": "site-header site-header--blue",
+          "width": 1296,
+          "x": 72
+        },
+        {
+          "selector": "home-process shell",
+          "width": 1296,
+          "x": 72
+        },
+        {
+          "selector": "shell section-grid",
+          "width": 1296,
+          "x": 72
+        },
+        {
+          "selector": "metrics shell",
+          "width": 1296,
+          "x": 72
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 0
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 432
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 864
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 1296
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 1728
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 2160
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 2592
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 3024
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 3456
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 360,
+          "x": 3888
+        },
+        {
+          "selector": "testimonials-section__header",
+          "width": 1296,
+          "x": 72
+        },
+        {
+          "selector": "closing-cta__card",
+          "width": 1296,
+          "x": 72
+        }
+      ],
+      "overflow": false,
+      "viewport": 1440
+    },
+    {
+      "containers": [
+        {
+          "selector": "site-header site-header--light",
+          "width": 1600,
+          "x": 480
+        },
+        {
+          "selector": "interior-hero__content",
+          "width": 1173,
+          "x": 693
+        },
+        {
+          "selector": "site-header site-header--blue",
+          "width": 1600,
+          "x": 480
+        },
+        {
+          "selector": "home-process shell",
+          "width": 1600,
+          "x": 480
+        },
+        {
+          "selector": "shell section-grid",
+          "width": 1600,
+          "x": 480
+        },
+        {
+          "selector": "metrics shell",
+          "width": 1600,
+          "x": 480
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 0
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 533
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 1067
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 1600
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 2133
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 2667
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 3200
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 3733
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 4267
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 4800
+        },
+        {
+          "selector": "testimonials-section__header",
+          "width": 1600,
+          "x": 480
+        },
+        {
+          "selector": "closing-cta__card",
+          "width": 1600,
+          "x": 480
+        }
+      ],
+      "overflow": false,
+      "viewport": 2560
+    },
+    {
+      "containers": [
+        {
+          "selector": "site-header site-header--light",
+          "width": 1600,
+          "x": 920
+        },
+        {
+          "selector": "interior-hero__content",
+          "width": 1173,
+          "x": 1133
+        },
+        {
+          "selector": "site-header site-header--blue",
+          "width": 1600,
+          "x": 920
+        },
+        {
+          "selector": "home-process shell",
+          "width": 1600,
+          "x": 920
+        },
+        {
+          "selector": "shell section-grid",
+          "width": 1600,
+          "x": 920
+        },
+        {
+          "selector": "metrics shell",
+          "width": 1600,
+          "x": 920
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 0
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 533
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 1067
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 1600
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 2133
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 2667
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 3200
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 3733
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 4267
+        },
+        {
+          "selector": "sold-properties__card",
+          "width": 444,
+          "x": 4800
+        },
+        {
+          "selector": "testimonials-section__header",
+          "width": 1600,
+          "x": 920
+        },
+        {
+          "selector": "closing-cta__card",
+          "width": 1600,
+          "x": 920
+        }
+      ],
+      "overflow": false,
+      "viewport": 3440
+    }
+  ],
+  "pages": [
+    {
+      "boxes": [
+        {
+          "content": 1600,
+          "selector": "seller-copy seller-copy--media",
+          "width": 3440
+        },
+        {
+          "content": 1600,
+          "selector": "seller-copy seller-copy--marketing seller-copy--media",
+          "width": 3440
+        },
+        {
+          "content": 1600,
+          "selector": "seller-results__inner",
+          "width": 1600
+        },
+        {
+          "content": 1600,
+          "selector": "seller-copy seller-copy--media",
+          "width": 3440
+        },
+        {
+          "content": 1472,
+          "selector": "seller-guide__card",
+          "width": 1600
+        }
+      ],
+      "overflow": false,
+      "path": "/vender"
+    },
+    {
+      "boxes": [
+        {
+          "content": 1600,
+          "selector": "shell",
+          "width": 1600
+        }
+      ],
+      "overflow": false,
+      "path": "/comprar"
+    },
+    {
+      "boxes": [
+        {
+          "content": 1472,
+          "selector": "about-profile__card",
+          "width": 1600
+        },
+        {
+          "content": 1472,
+          "selector": "about-profile-cta__card",
+          "width": 1600
+        },
+        {
+          "content": 1472,
+          "selector": "about-profile__card",
+          "width": 1600
+        }
+      ],
+      "overflow": false,
+      "path": "/sobre"
+    },
+    {
+      "boxes": [
+        {
+          "content": 1600,
+          "selector": "blog-index__featured",
+          "width": 3440
+        },
+        {
+          "content": 1472,
+          "selector": "blog-index__featured-card",
+          "width": 1600
+        },
+        {
+          "content": 1600,
+          "selector": "blog-index__subscribe",
+          "width": 3440
+        },
+        {
+          "content": 1600,
+          "selector": "blog-index__articles",
+          "width": 3440
+        }
+      ],
+      "overflow": false,
+      "path": "/blog"
+    },
+    {
+      "boxes": [
+        {
+          "content": 1600,
+          "selector": "blog-index__featured",
+          "width": 3440
+        },
+        {
+          "content": -128,
+          "selector": "blog-index__featured-card",
+          "width": 0
+        },
+        {
+          "content": 1472,
+          "selector": "blog-index__featured-card",
+          "width": 1600
+        },
+        {
+          "content": -128,
+          "selector": "blog-index__featured-card",
+          "width": 0
+        },
+        {
+          "content": 1600,
+          "selector": "blog-index__subscribe",
+          "width": 3440
+        },
+        {
+          "content": 1600,
+          "selector": "shell",
+          "width": 1600
+        },
+        {
+          "content": 1600,
+          "selector": "shell",
+          "width": 1600
+        }
+      ],
+      "overflow": false,
+      "path": "/imoveis"
+    },
+    {
+      "boxes": [
+        {
+          "content": 1600,
+          "selector": "property-page__layout",
+          "width": 1600
+        }
+      ],
+      "overflow": false,
+      "path": "/imoveis/kwpt026529"
+    },
+    {
+      "boxes": [
+        {
+          "content": 1600,
+          "selector": "cms-article__header",
+          "width": 1600
+        },
+        {
+          "content": 1600,
+          "selector": "cms-article__hero",
+          "width": 1600
+        },
+        {
+          "content": 1600,
+          "selector": "cms-article__content",
+          "width": 1600
+        }
+      ],
+      "overflow": false,
+      "path": "/post/a-proposta-mais-alta-pode-nao-ser-a-melhor"
+    }
+  ],
+  "responsive": [
+    {
+      "footerWidth": 351,
+      "headerWidth": 351,
+      "overflow": false,
+      "path": "/vender",
+      "viewport": 390
+    },
+    {
+      "footerWidth": 351,
+      "headerWidth": 351,
+      "overflow": false,
+      "path": "/blog",
+      "viewport": 390
+    },
+    {
+      "footerWidth": 351,
+      "headerWidth": 351,
+      "overflow": false,
+      "path": "/imoveis",
+      "viewport": 390
+    },
+    {
+      "footerWidth": 351,
+      "headerWidth": 351,
+      "overflow": false,
+      "path": "/imoveis/kwpt026529",
+      "viewport": 390
+    },
+    {
+      "footerWidth": 1296,
+      "headerWidth": 1296,
+      "overflow": false,
+      "path": "/vender",
+      "viewport": 1440
+    },
+    {
+      "footerWidth": 1296,
+      "headerWidth": 1296,
+      "overflow": false,
+      "path": "/blog",
+      "viewport": 1440
+    },
+    {
+      "footerWidth": 1296,
+      "headerWidth": 1296,
+      "overflow": false,
+      "path": "/imoveis",
+      "viewport": 1440
+    },
+    {
+      "footerWidth": 1296,
+      "headerWidth": 1296,
+      "overflow": false,
+      "path": "/imoveis/kwpt026529",
+      "viewport": 1440
+    }
+  ],
+  "rail": {
+    "noGapAtLoop": true,
+    "railWidth": 1778,
+    "remainingAfterLoop": 2577,
+    "repeatDistance": 2667,
+    "trackWidth": 5244,
+    "viewport": 3440
+  },
+  "contentMax": 1600,
+  "verification": "Local browser render; prior Home widths compared at390 and1440; all selected routes have no horizontal overflow."
+}

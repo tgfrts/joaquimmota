@@ -37,13 +37,13 @@ const { items, id = 'testemunhos' } = Astro.props;
 </script>
 <style>
   .testimonials-section{padding:64px 0 0;background:var(--paper);color:#161616}
-  .testimonials-section__header,.testimonials-section__grid{width:90vw;margin-inline:auto}
+  .testimonials-section__header,.testimonials-section__grid{width:var(--content-width);margin-inline:auto}
   .testimonials-section__header{margin-bottom:64px}
   .testimonials-section__header h2{margin:0;max-width:none}
   .testimonials-section__grid{column-count:3;column-gap:32px}
   .testimonials-section__card{display:inline-block;vertical-align:top;width:100%;margin:0 0 32px;padding:32px;background:#fff;box-shadow:4px 4px 20px #0004;break-inside:avoid}
   .testimonials-section__card[hidden],.testimonials-section__grid:not(.is-ready) .testimonials-section__card:nth-child(n+7){display:none}
-  .testimonials-section__actions{width:90vw;margin:0 auto}
+  .testimonials-section__actions{width:var(--content-width);margin:0 auto}
   .testimonials-section__more{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 24px;border:1px solid #20457f;background:transparent;color:#20457f;font:500 16px/24px Roboto,sans-serif;cursor:pointer}
   .testimonials-section__more[hidden]{display:none}
   .testimonials-section__more:focus-visible{outline:2px solid #20457f;outline-offset:4px}

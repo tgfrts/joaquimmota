@@ -49,7 +49,7 @@ const { eyebrow, heading, body, image, label, href, video, poster, mobileImage, 
 </script>
 <style>
   .interior-hero{position:relative;min-height:0;padding:0;overflow:hidden;color:#161616;background:#f4f4f4;text-align:center;isolation:isolate}
-  .interior-hero__content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100svh - 144px);width:66%;margin-inline:auto;padding:64px 0}
+  .interior-hero__content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100svh - 144px);width:min(66%,calc(var(--content-max) * 66 / 90));margin-inline:auto;padding:64px 0}
   .interior-hero__eyebrow{margin:0 0 16px;color:#20457f;font-size:16px;font-weight:300;line-height:24px}
   .interior-hero h1{margin:0;color:#20457f;font-size:56px;font-weight:500;line-height:67.2px;letter-spacing:-1.12px;text-transform:uppercase}
   .interior-hero__body{max-width:1152px;margin:24px auto 0;font-size:18px;font-weight:300;line-height:27px}
@@ -61,6 +61,6 @@ const { eyebrow, heading, body, image, label, href, video, poster, mobileImage, 
   .interior-hero__mobile-media{display:none;position:absolute;inset:0}
   @media(max-width:767px){.interior-hero__image .interior-hero__desktop-video{display:none}.interior-hero__mobile-media{display:block}}
   .interior-hero__overlay{position:absolute;z-index:1;inset:0;background:linear-gradient(to right,#162b4e,#20457f);filter:blur(100px)}
-  @media(min-width:768px) and (max-width:991px){.interior-hero__content{width:90vw;min-height:calc(100svh - 144px);padding:32px 0}.interior-hero h1{font-size:52px;line-height:62.4px;letter-spacing:-1.04px}.interior-hero__image{aspect-ratio:1080/608;margin-top:0}}
-  @media(max-width:767px){.interior-hero__content{width:90vw;min-height:calc(100svh - 128px);padding:32px 0}.interior-hero__eyebrow{margin:0 0 12px}.interior-hero h1{margin-bottom:20px;font-size:40px;line-height:48px;letter-spacing:-.8px}.interior-hero__body{margin:0;font-size:16px;line-height:24px}.interior-hero__image{margin-top:0}}
+  @media(min-width:768px) and (max-width:991px){.interior-hero__content{width:var(--content-width);min-height:calc(100svh - 144px);padding:32px 0}.interior-hero h1{font-size:52px;line-height:62.4px;letter-spacing:-1.04px}.interior-hero__image{aspect-ratio:1080/608;margin-top:0}}
+  @media(max-width:767px){.interior-hero__content{width:var(--content-width);min-height:calc(100svh - 128px);padding:32px 0}.interior-hero__eyebrow{margin:0 0 12px}.interior-hero h1{margin-bottom:20px;font-size:40px;line-height:48px;letter-spacing:-.8px}.interior-hero__body{margin:0;font-size:16px;line-height:24px}.interior-hero__image{margin-top:0}}
 </style>

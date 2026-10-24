@@ -22,16 +22,16 @@ const properties = propertyFallback.map((fallback) => {
   .sold-rail--mobile { display: none; }
   .sold-rail__track { display: flex; width: max-content; animation: sold-loop-desktop 25s linear infinite; animation-play-state: paused; }
   .sold-rail__track.is-running { animation-play-state: running; }
-  .sold-rail__card { position: relative; flex: 0 0 25vw; width: 25vw; height: 37.5vw; margin-right: 5vw; color: #fff; overflow: hidden; }
+  .sold-rail__card { position: relative; flex: 0 0 calc(var(--layout-viewport) * .25); width: calc(var(--layout-viewport) * .25); height: calc(var(--layout-viewport) * .375); margin-right: calc(var(--layout-viewport) * .05); color: #fff; overflow: hidden; }
   .sold-rail__image, .sold-rail__image > img { width: 100%; height: 100%; }
   .sold-rail__image { position: absolute; inset: 0; overflow: hidden; }
   .sold-rail__image > img { display: block; object-fit: cover; }
   .sold-rail__image .sold-rail__banner { position: absolute; inset: 0; object-fit: cover; }
-  .sold-rail__card h4, .sold-rail__locations { position: absolute; z-index: 2; left: 2vw; right: 2vw; margin: 0; color: inherit; }
-  .sold-rail__card h4 { bottom: 5.75vw; font-size: 24px; font-weight: 500; line-height: 31.2px; }
-  .sold-rail__locations { bottom: 2vw; font-size: 17.6px; font-weight: 500; line-height: 24.64px; }
+  .sold-rail__card h4, .sold-rail__locations { position: absolute; z-index: 2; left: calc(var(--layout-viewport) * .02); right: calc(var(--layout-viewport) * .02); margin: 0; color: inherit; }
+  .sold-rail__card h4 { bottom: calc(var(--layout-viewport) * .0575); font-size: 24px; font-weight: 500; line-height: 31.2px; }
+  .sold-rail__locations { bottom: calc(var(--layout-viewport) * .02); font-size: 17.6px; font-weight: 500; line-height: 24.64px; }
   .sold-rail__locations h6{margin:0;font:inherit;color:inherit;letter-spacing:normal}
-  @keyframes sold-loop-desktop { from { transform: translateX(0); } to { transform: translateX(-150vw); } }
+  @keyframes sold-loop-desktop { from { transform: translateX(0); } to { transform: translateX(calc(var(--layout-viewport) * -1.5)); } }
   @media (prefers-reduced-motion: reduce) { .sold-rail__track { animation: none; } .sold-rail { overflow-x: auto; } }
   @media (max-width: 767px) {
     .sold-rail--desktop { display: none; }
