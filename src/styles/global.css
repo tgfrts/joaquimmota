@@ -1,7 +1,7 @@
 /* Preserve the existing 90vw alignment, capped on very wide viewports.
    The proportional viewport unit also bounds continuously looping sold cards. */
 :root {
-  --content-max: 1600px;
+  --content-max: 1440px;
   --content-width: min(90vw, var(--content-max));
   --content-gutter: max(5vw, calc((100% - var(--content-max)) / 2));
   --layout-viewport: min(100vw, calc(var(--content-max) / .9));
