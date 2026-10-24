@@ -375,3 +375,5 @@ Corrigido bloqueio de origem LAN: apenas HTTP loopback/RFC1918, estritamente mes
 The1440px experiment lives on isolated branch codex/preview-width-1440; codex/migration-foundation remains0a634f0 so Sanity-triggered production builds continue using1600px until approval.
 
 2026-10-24 — Owner accepts the1440px preview and authorizes production publication. Integrated isolated branch codex/preview-width-1440 into codex/migration-foundation by fast-forward; shared content maximum is now1440px in the production source. Full-width sold slider and existing mobile behavior preserved.
+
+2026-10-24 — Production workflow40090599837 succeeded at code commitd940057 after Owner approval of1440px. Browser on joaquimmota.pt at1920px confirmed header/process/footer1440px, sold rail1920px and no horizontal overflow; Blog featured card1440px confirmed. CMS-triggered production releases now use the accepted1440px source on codex/migration-foundation. No CMS, email, DNS or Webflow changes.
