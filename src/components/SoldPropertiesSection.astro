@@ -10,7 +10,7 @@ const loop = [...sold, ...sold];
 <section class="sold-properties">
   <p class="sold-properties__eyebrow">UMA VENDA COM SUCESSO</p>
   <h2>Últimos imóveis vendidos</h2>
-  <div class="sold-properties__rail" aria-label="Últimos imóveis vendidos">
+  <div class="sold-properties__rail" data-sold-count={sold.length} style={`--sold-count:${sold.length}`} aria-label="Últimos imóveis vendidos">
     <div class="sold-properties__track">
       {loop.map((property, index) => <article class="sold-properties__card" aria-hidden={index >= sold.length ? 'true' : undefined}>
         <div class="sold-properties__image">
@@ -29,22 +29,8 @@ const loop = [...sold, ...sold];
 </section>
 
 <script>
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  document.querySelectorAll<HTMLElement>('.sold-properties__rail').forEach((rail) => {
-    if (reduced.matches) return;
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) rail.classList.add('is-visible');
-    });
-    observer.observe(rail);
-    reduced.addEventListener('change', () => {
-      if (reduced.matches) {
-        rail.classList.remove('is-visible');
-        return;
-      }
-      const rect = rail.getBoundingClientRect();
-      if (rect.top < innerHeight && rect.bottom > 0) rail.classList.add('is-visible');
-    });
-  });
+  import { bindSoldPropertiesRail } from '../scripts/sold-properties-rail';
+  document.querySelectorAll<HTMLElement>('.sold-properties__rail').forEach(bindSoldPropertiesRail);
 </script>
 
 <style>
@@ -52,7 +38,7 @@ const loop = [...sold, ...sold];
   .sold-properties > :is(.sold-properties__eyebrow, h2) { width:var(--content-width); margin-left:auto; margin-right:auto; color:#fff; }
   .sold-properties__eyebrow { margin-top:0; margin-bottom:16px; font-size:16px; font-weight:400; line-height:24px; letter-spacing:0; }
   .sold-properties h2 { margin-top:0; margin-bottom:64px; font-size:40px; font-weight:500; line-height:48px; text-align:left; }
-  .sold-properties__rail { width:var(--layout-viewport); margin-inline:auto; overflow:hidden; padding:0; }
+  .sold-properties__rail { width:100%; overflow:hidden; padding:0; }
   .sold-properties__track { display:flex; gap:calc(var(--layout-viewport) * .05); width:max-content; animation:sold-properties-loop 48s linear infinite; animation-play-state:paused; }
   .sold-properties__rail.is-visible .sold-properties__track { animation-play-state:running; }
   .sold-properties__rail:hover .sold-properties__track, .sold-properties__rail:focus-within .sold-properties__track { animation-play-state:paused; }
@@ -65,8 +51,7 @@ const loop = [...sold, ...sold];
   .sold-properties__copy h3 { margin:0; font-size:24px; font-weight:500; line-height:31.2px; letter-spacing:-.48px; }
   .sold-properties__divider { display:block; width:100%; height:1px; margin:calc(var(--layout-viewport) * .01) 0; background:#e4e2df; }
   .sold-properties__place { display:flex; flex-direction:column; gap:0; margin:0; color:#fff; font-size:17.6px; font-weight:500; line-height:24.64px; letter-spacing:-.02em; }
-  @keyframes sold-properties-loop { to { transform:translateX(calc(var(--layout-viewport) * -1.5)); } }
-  @keyframes sold-properties-loop-mobile { to { transform:translateX(-400vw); } }
+  @keyframes sold-properties-loop { to { transform:translateX(calc(-1 * var(--sold-loop-distance, calc(var(--layout-viewport) * .3 * var(--sold-count))))); } }
   @media (min-width:768px) { .sold-properties__municipality { order:-1; } }
   @media (max-width:991px) {
     .sold-properties { padding:5vw 0; }
@@ -77,7 +62,7 @@ const loop = [...sold, ...sold];
     .sold-properties { padding:5vw 0; }
     .sold-properties__eyebrow { margin-bottom:12px; }
     .sold-properties h2 { margin-bottom:20px; font-size:36px; line-height:43.2px; }
-    .sold-properties__track { gap:5vw; animation-name:sold-properties-loop-mobile; animation-duration:20s; }
+    .sold-properties__track { --sold-loop-distance:calc(80vw * var(--sold-count)); gap:5vw; animation-duration:20s; }
     .sold-properties__card { flex-basis:75vw; width:75vw; }
     .sold-properties__copy { padding:5vw; }
     .sold-properties__copy h3 { font-size:24px; line-height:1.4; }
