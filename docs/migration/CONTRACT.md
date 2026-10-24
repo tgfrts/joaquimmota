@@ -122,3 +122,5 @@ This is authorization to execute, not a claim that cutover is complete. Webflow 
 Owner 2026-10-24 requests a maximum content width on very wide viewports. Use a site-local1600px content cap with centered margins, retaining90vw below the cap and current tablet/mobile geometry. Apply to shared navigation, sections, cards, footer and listing/detail layouts. Full-width backgrounds and hero media remain viewport-sized. Bound sold-rail viewport and linked dimensions together so repeated animation stays continuous.
 
 Owner correction 2026-10-24: the shared Últimos imóveis vendidos slider on Home and /vender must run edge to edge across the entire viewport. Exempt the rail viewport from the content cap; retain bounded card dimensions and the 1600px heading alignment. Repeat enough hidden copies for uninterrupted coverage through a full animation loop and viewport changes.
+
+Owner approval 2026-10-24: the 1440px preview experiment is accepted for production, replacing the earlier1600px content cap. The Home and Vender sold slider remains edge to edge; only its card dimensions follow the shared bounded scale.

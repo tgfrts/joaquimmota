@@ -373,3 +373,5 @@ Corrigido bloqueio de origem LAN: apenas HTTP loopback/RFC1918, estritamente mes
 
 2026-10-24 — Owner requests a preview experiment at1440px instead of1600px. Changed only shared --content-max token; full-width sold rail remains100%. Local browser confirms header/card/footer1440px at2560viewport, sold rail2560px, mobile header351px at390viewport and no horizontal overflow. Build254 and two rail runtime tests passed; independent token/cascade review has no blockers. Production remains at1600px pending Owner review.
 The1440px experiment lives on isolated branch codex/preview-width-1440; codex/migration-foundation remains0a634f0 so Sanity-triggered production builds continue using1600px until approval.
+
+2026-10-24 — Owner accepts the1440px preview and authorizes production publication. Integrated isolated branch codex/preview-width-1440 into codex/migration-foundation by fast-forward; shared content maximum is now1440px in the production source. Full-width sold slider and existing mobile behavior preserved.
