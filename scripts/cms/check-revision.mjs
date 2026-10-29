@@ -19,7 +19,7 @@ export function contentRevision(snapshot) {
   return {
     hash: createHash('sha256').update(JSON.stringify(stable(documents))).digest('hex'),
     documentCount: documents.length,
-    routes: Object.fromEntries(documents.filter(document => ['property', 'article'].includes(document._type)).map(document => [document._id, `/${document._type === 'property' ? 'imoveis' : 'post'}/${document.slug.current}`])),
+    routes: Object.fromEntries(documents.filter(document => ['property', 'article', 'preListing'].includes(document._type)).map(document => [document._id, `/${{ property: 'imoveis', article: 'post', preListing: 'vouvender' }[document._type]}/${document.slug.current}`])),
   };
 }
 
@@ -43,7 +43,7 @@ async function readDeployedRevision(fetchImpl, origin) {
     throw new Error('Invalid deployed CMS revision metadata.');
   }
   if (Object.hasOwn(deployed, 'routes') && (!deployed.routes || typeof deployed.routes !== 'object' || Array.isArray(deployed.routes)
-    || Object.entries(deployed.routes).some(([id, route]) => !id || typeof route !== 'string' || !/^\/(imoveis|post)\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(route)))) {
+    || Object.entries(deployed.routes).some(([id, route]) => !id || typeof route !== 'string' || !/^\/(imoveis|post|vouvender)\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(route)))) {
     throw new Error('Invalid deployed CMS URL baseline.');
   }
   return deployed;

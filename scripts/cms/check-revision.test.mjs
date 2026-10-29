@@ -120,6 +120,19 @@ test('preview metadata writes preserve historical routes without reading product
   assert.deepEqual(result.routes, { removed: '/imoveis/removed' });
 });
 
+test('pre-listing URL history bootstraps from old metadata and protects later edits and unpublish/re-publish', async () => {
+  const revision = contentRevision({ documents: [{ _id: 'presentation', _type: 'preListing', slug: { current: 'original-presentation' }, clientName: 'Not-in-public-metadata' }] });
+  assert.deepEqual(revision.routes, { presentation: '/vouvender/original-presentation' });
+  assert.equal(JSON.stringify(revision).includes('Not-in-public-metadata'), false);
+  const old = { ...revision, routes: { oldProperty: '/imoveis/protected-property' } };
+  const bootstrap = await deploymentRevision(revision, { fetchImpl: async () => ({ ok: true, json: async () => old }) });
+  assert.deepEqual(bootstrap.routes, { ...old.routes, ...revision.routes });
+  const current = { fetchImpl: async () => ({ ok: true, json: async () => bootstrap }) };
+  assert.deepEqual((await deploymentRevision({ ...revision, routes: {} }, current)).routes, bootstrap.routes);
+  await assert.rejects(deploymentRevision({ ...revision, routes: { presentation: '/vouvender/changed' } }, current), /Published CMS URL changed/);
+  assert.equal(await hasContentChanged(revision, current), false, 'The expanded baseline accepts protected vouvender routes.');
+});
+
 test('production webhook dispatch and manual release share serialization and URL guards', () => {
   const workflow = readFileSync(new URL('../../.github/workflows/production.yml', import.meta.url), 'utf8');
   assert.match(workflow, /workflow_dispatch:/);

@@ -36,7 +36,7 @@ export async function fetchPublishedContent({ fetchImpl = fetch, pageSize = 100 
   // An empty CMS is an activation/configuration failure for this populated site.
   if (documents.length === 0) throw new Error('Sanity has no published site content; refusing to build a stale or empty site.');
   const routes = new Set();
-  for (const document of documents.filter(document => ['property', 'article'].includes(document._type))) {
+  for (const document of documents.filter(document => ['property', 'article', 'preListing'].includes(document._type))) {
     const slug = document.slug?.current;
     if (typeof slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error(`Invalid public ${document._type} slug.`);
     if (document.sourceSlug && document.sourceSlug !== slug) throw new Error(`Published ${document._type} changed its protected source slug.`);

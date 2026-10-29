@@ -9,6 +9,7 @@ import testimonialOrder from '../../data/prelisting-testimonial-order.json';
 import testimonialSource from '../../data/prelisting-testimonial-source.json';
 import '../../styles/prelisting.css';
 import { ownRecordByLegacyId, recordsFromContent } from '../../data/cms-content';
+import { selectPreListingTestimonials } from '../../data/prelisting-testimonials';
 export function getStaticPaths() { const sampleRecords = recordsFromContent(sampleContent); return sampleRecords.filter((record) => record._type === 'preListing').map((record) => ({ params: { slug: record.slug?.current ?? record.sourceSlug }, props: { record } })); }
 const { record } = Astro.props;
 const heroImageRef = record.heroImage?.asset?._ref;
@@ -38,16 +39,7 @@ const sold = soldFallback.map((fallback) => {
   const own = ownRecordByLegacyId(sampleRecords, 'property', fallback.legacyId);
   return own ? { ...fallback, cms: own, title: own.title, city: own.parish ?? '', parish: own.municipality ?? '' } : { ...fallback, cms: undefined };
 });
-const orderedTestimonials = testimonialOrder.routes.find(route => route.preListingLegacyId === record.legacyId)?.testimonials;
-if (!orderedTestimonials) throw new Error('Missing verified public pre-listing testimonial order.');
-const testimonials: any[] = orderedTestimonials.map(entry => {
-  const own = entry.candidateLegacyIds.map((legacyId) => ownRecordByLegacyId(sampleRecords, 'testimonial', legacyId)).find(Boolean);
-  const fallback = testimonialSource.testimonials.find(item => entry.candidateLegacyIds.includes(item.legacyId));
-  if (!own && !fallback) throw new Error('Missing eligible pre-listing testimonial content.');
-  if (own) return own;
-  if (fallback) return fallback;
-  throw new Error('Missing eligible pre-listing testimonial content.');
-});
+const testimonials = selectPreListingTestimonials(sampleRecords, record, testimonialOrder.routes, testimonialSource.testimonials);
 ---
 
 <BaseLayout title={`Como vender a sua casa com sucesso ${record.clientName}`} socialImage={heroSocialImage ?? ''}>
@@ -71,7 +63,9 @@ const testimonials: any[] = orderedTestimonials.map(entry => {
 </BaseLayout>
 
 <script>
+  import { trackPrelistingView } from '../../scripts/prelisting-tracking';
   import { bindSourceScrollMotion, interpolate } from '../../scripts/source-scroll-motion';
+  trackPrelistingView(window.location);
   const soldRail = document.querySelector('.prelisting-sold__rail');
   if (soldRail) {
     const observer = new IntersectionObserver(entries => {

@@ -44,7 +44,8 @@ fields: [
 name: 'preListing',
 type: 'document',
 fields: [
-{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'clientName', type: 'string'}, {name: 'address', type: 'string'}, {name: 'parish', type: 'string'}, {name: 'municipality', type: 'string'}, {name: 'heroImage', type: 'image', fields: [{name: 'alt', type: 'string'}]},
+{name: 'propertyType', type: 'string', options: {list: ['apartamento', 'moradia', 'terreno', 'comercial', 'garagem', 'outro']}}, {name: 'typology', type: 'string'}, {name: 'referenceCode', type: 'string'}, {name: 'gallery', type: 'array', of: [{type: 'image', fields: [{name: 'alt', type: 'string'}]}]},
+{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', options: {source: 'clientName'}, description: 'Preencha o endereço ou use Gerar apenas para uma nova apresentação. Não altere depois de publicar. Os endereços originais da migração são protegidos no build.'}, {name: 'clientName', type: 'string'}, {name: 'address', type: 'string'}, {name: 'parish', type: 'string'}, {name: 'municipality', type: 'string'}, {name: 'heroImage', type: 'image', fields: [{name: 'alt', type: 'string'}]},
 ],
 }
 {

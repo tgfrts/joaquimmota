@@ -124,3 +124,9 @@ Owner 2026-10-24 requests a maximum content width on very wide viewports. Use a 
 Owner correction 2026-10-24: the shared Últimos imóveis vendidos slider on Home and /vender must run edge to edge across the entire viewport. Exempt the rail viewport from the content cap; retain bounded card dimensions and the 1600px heading alignment. Repeat enough hidden copies for uninterrupted coverage through a full animation loop and viewport changes.
 
 Owner approval 2026-10-24: the 1440px preview experiment is accepted for production, replacing the earlier1600px content cap. The Home and Vender sold slider remains edge to edge; only its card dimensions follow the shared bounded scale.
+
+
+2026-10-29 — Owner authorizes restoring the existing Doop Tools integration and adapting it from Webflow to own Sanity, using /Users/tiagofreitas/doop-tools (clean00246ab matches the existing Cloudflare production deployment). Keep the existing doop-tools project, D1 tracking history/tokens, authentication and Resend configuration. Webflow remains read-only. Restore the original published presentation tracking contract: nonempty query parameter t plus last pathname slug, POST JSON {slug,token} to https://doop-tools.pages.dev/api/track; do not track ordinary links. Native preListing documents must build without Webflow identity; preserve all19 migrated testimonial orders and existing URLs. Extend slug validation/history to presentations and keep CMS token server-side. Production publication requires separate explicit authorization under AGENTS.md.
+
+
+2026-10-29 — Owner explicitly approves publishing the Doop Tools restoration on both production applications. Verify actual404 responses use the existing error template and its Go Home action returns to/. No DNS changes or Webflow writes are part of this release.

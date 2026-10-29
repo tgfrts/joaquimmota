@@ -48,6 +48,18 @@ test('public routes require valid unique slugs and protect imported URLs', async
   assert.equal((await run([property, { ...property, _id: 'b', _type: 'article' }])).documents.length, 2, 'Separate route prefixes may share slugs.');
 });
 
+test('pre-listing URLs support native records and reject invalid, duplicate or changed source slugs', async () => {
+  const run = documents => fetchPublishedContent({ fetchImpl: async () => ({ ok: true, json: async () => ({ result: documents }) }) });
+  const preListing = { _id: 'a', _type: 'preListing', slug: { current: 'new-presentation' }, clientName: 'Client' };
+  assert.deepEqual((await run([preListing])).documents, [preListing]);
+  for (const slug of [undefined, '', 'Bad Slug', '../invalid', 'double--hyphen', '-leading']) {
+    await assert.rejects(run([{ ...preListing, slug: { current: slug } }]), /Invalid public preListing slug/);
+  }
+  await assert.rejects(run([{ ...preListing, sourceSlug: 'protected-presentation' }]), /protected source slug/);
+  await assert.rejects(run([preListing, { ...preListing, _id: 'b' }]), /Duplicate published preListing slug/);
+  assert.equal((await run([preListing, { ...preListing, _id: 'b', _type: 'article' }])).documents.length, 2);
+});
+
 test('failed or empty results cannot silently fall back to a previous snapshot', async () => {
   await assert.rejects(fetchPublishedContent({ fetchImpl: async () => ({ ok: false, status: 503 }) }), /HTTP 503/);
   await assert.rejects(fetchPublishedContent({ fetchImpl: async () => ({ ok: true, json: async () => ({ result: [] }) }) }), /no published/);
