@@ -16,14 +16,6 @@
   padding: 40px 5vw 100px;
 }
 .not-found-content { width: min(100%, 680px); text-align: center; }
-.not-found-code {
-  display: block;
-  color: #db1430;
-  font-size: clamp(72px, 10vw, 96px);
-  font-weight: 500;
-  line-height: 1;
-  margin-bottom: 28px;
-}
 .not-found h1 {
   color: var(--recovery-blue);
   font-size: clamp(30px, 4vw, 48px);
