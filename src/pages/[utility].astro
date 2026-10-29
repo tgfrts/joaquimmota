@@ -2,7 +2,7 @@
 import SeoMetadata from '../components/SeoMetadata.astro';
 import SiteIcons from '../components/SiteIcons.astro';
 import '../styles/global.css';
-import '../styles/utility-pages.css';
+import '../styles/not-found.css';
 
 export function getStaticPaths() {
   return [{ params: { utility: '404' } }];
@@ -15,18 +15,25 @@ export function getStaticPaths() {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <SeoMetadata noindex />
-    <title>Not Found</title>
-    <meta property="og:title" content="Not Found" />
-    <meta name="twitter:title" content="Not Found" />
+    <title>Página não encontrada | Joaquim Mota</title>
+    <meta property="og:title" content="Página não encontrada | Joaquim Mota" />
+    <meta name="twitter:title" content="Página não encontrada | Joaquim Mota" />
   </head>
-  <body class="utility-page">
-    <main class="utility-component" aria-labelledby="not-found-title">
-      <section class="utility-card">
-        <img class="utility-image" src="/assets/utility-page-not-found.svg" alt="" />
-        <h3 id="not-found-title">Page Not Found</h3>
-        <p>The page you are looking for doesn&#39;t exist or has been moved</p>
-        <a class="utility-button" href="/">Go Home</a>
-      </section>
+  <body class="not-found">
+    <header class="not-found-header">
+      <a href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" width="100" height="49" alt="" /></a>
+    </header>
+    <main class="not-found-main" aria-labelledby="not-found-title">
+      <div class="not-found-content">
+        <span class="not-found-code" aria-hidden="true">404</span>
+        <h1 id="not-found-title">Página não encontrada</h1>
+        <p>Não encontrámos a página que procura. Pode ter mudado de endereço ou já não estar disponível.</p>
+        <div class="not-found-actions">
+          <a class="not-found-button" href="/">Voltar ao início</a>
+          <a class="not-found-button not-found-button--outline" href="/imoveis">Ver imóveis</a>
+        </div>
+        <a class="not-found-contact" href="/vamos-comecar">Falar com Joaquim Mota</a>
+      </div>
     </main>
   </body>
 </html>
