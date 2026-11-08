@@ -62,7 +62,7 @@
 .prelisting-testimonials blockquote{margin:0 0 24px;font-size:18px;line-height:27px;font-weight:300}
 .prelisting-testimonials figcaption{text-transform:uppercase;font-size:16px;line-height:24px;font-weight:600;display:flex;align-items:center;gap:16px}
 .prelisting-testimonial__avatar img{display:block;width:48px;height:48px;border-radius:50%;object-fit:cover}
-.prelisting-contact{padding:64px 5vw;color:#e4e2df;background:#fff}
+.prelisting-contact{padding:64px 5vw;color:#e4e2df;background:#fff;overflow-x:clip}
 .prelisting-contact__card{display:grid;grid-template-columns:2fr 1fr;align-items:center;gap:64px;padding:64px;background:linear-gradient(45deg,#7b001d,#db1430);box-shadow:8px 8px 20px rgba(0,0,0,.25);min-height:384px}
 .prelisting-contact__kicker{text-transform:uppercase;margin-bottom:16px!important;font-weight:400;font-size:16px;line-height:24px}
 .prelisting-contact h2{color:#f4f4f4}
