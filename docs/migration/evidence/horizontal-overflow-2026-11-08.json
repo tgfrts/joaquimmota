@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-08",
+  "productionChecks": 632,
+  "coverage": [
+    {
+      "mode": "desktop",
+      "viewport": 1440,
+      "pages": 256
+    },
+    {
+      "mode": "mobile",
+      "viewport": 390,
+      "pages": 256
+    },
+    {
+      "mode": "desktop-1024",
+      "viewport": 1024,
+      "pages": 40
+    },
+    {
+      "mode": "tablet-768",
+      "viewport": 768,
+      "pages": 40
+    },
+    {
+      "mode": "mobile-360",
+      "viewport": 360,
+      "pages": 40
+    }
+  ],
+  "navigationErrors": 0,
+  "productionFindings": [
+    {
+      "route": "/marketing",
+      "viewport": 390,
+      "documentWidth": 410
+    },
+    {
+      "route": "/blog",
+      "viewport": 1024,
+      "documentWidth": 1180
+    },
+    {
+      "route": "/marketing",
+      "viewport": 360,
+      "documentWidth": 378
+    },
+    {
+      "route": "/lp/atualizacao-de-informacao",
+      "viewport": 360,
+      "documentWidth": 362
+    }
+  ],
+  "localFixChecks": [
+    {
+      "route": "/marketing",
+      "scrollWidth": 360,
+      "width": 360
+    },
+    {
+      "route": "/blog",
+      "scrollWidth": 360,
+      "width": 360
+    },
+    {
+      "route": "/lp/atualizacao-de-informacao",
+      "scrollWidth": 360,
+      "width": 360
+    },
+    {
+      "route": "/imoveis",
+      "scrollWidth": 360,
+      "width": 360
+    },
+    {
+      "route": "/marketing",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/blog",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/lp/atualizacao-de-informacao",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/imoveis",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/marketing",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "route": "/blog",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "route": "/lp/atualizacao-de-informacao",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "route": "/imoveis",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "route": "/marketing",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "route": "/blog",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "route": "/lp/atualizacao-de-informacao",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "route": "/imoveis",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "route": "/marketing",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "route": "/blog",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "route": "/lp/atualizacao-de-informacao",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "route": "/imoveis",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "route": "/marketing",
+      "scrollWidth": 1920,
+      "width": 1920
+    },
+    {
+      "route": "/blog",
+      "scrollWidth": 1920,
+      "width": 1920
+    },
+    {
+      "route": "/lp/atualizacao-de-informacao",
+      "scrollWidth": 1920,
+      "width": 1920
+    },
+    {
+      "route": "/imoveis",
+      "scrollWidth": 1920,
+      "width": 1920
+    }
+  ],
+  "localFixIssues": 0,
+  "status": "Local fixes only; not deployed",
+  "limitations": "Initial rendered page width, fonts loaded, no form submissions. All 256 built URLs tested at1440 and390; 40 routes/templates additionally at1024,768,360. Nested intentional horizontal rails are not counted as page overflow."
+}

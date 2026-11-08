@@ -20,7 +20,7 @@
 .marketing-page .seller-rail .seller-kicker,.marketing-page .seller-rail h2{color:#f4f4f4}.marketing-page .seller-rail h2{text-transform:none;letter-spacing:-.8px}
 @media(max-width:767px){.marketing-page .seller-rail h2{letter-spacing:-.72px}}
 .marketing-page .seller-rail{padding:64px var(--content-gutter)}.marketing-page .seller-rail h2{margin-bottom:64px}
-@media(max-width:767px){.marketing-page .seller-rail{padding:10vw 5vw 5vw}.marketing-page .seller-rail h2{margin-bottom:20px}.marketing-page .seller-rail .sold-rail{margin-left:0}}
+@media(max-width:767px){.marketing-page .seller-rail{padding:10vw 5vw 5vw}.marketing-page .seller-rail h2{margin-bottom:20px}.marketing-page .seller-rail .sold-rail{margin-left:-5vw}}
 
 /* Use the same outer gutters as the main navigation and sold sections. */
 .marketing-page .seller-hero__content,.marketing-services{width:var(--content-width)}
