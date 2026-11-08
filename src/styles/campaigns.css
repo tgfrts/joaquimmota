@@ -22,4 +22,4 @@
 .campaign-page--contact .campaign-page__image:after{content:"";position:absolute;inset:0;background:linear-gradient(359deg,rgba(0,9,52,0),#f4f4f4)}
 
 .campaign-form__other-message[hidden]{display:none!important}
-.campaign-form .campaign-form__other-message textarea{height:auto;min-height:96px;resize:vertical}
+.campaign-form .campaign-form__other-message textarea{height:44px;min-height:44px;max-height:137px;overflow-y:hidden;resize:none}

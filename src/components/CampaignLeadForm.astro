@@ -7,7 +7,7 @@ const { route, submitLabel, downloadUrl = '', showSubject = false, showReferralQ
   <input name="email" type="email" maxlength="256" placeholder="O seu email" required />
   <input name="phone" type="tel" maxlength="256" placeholder="Telefone" required />
   {contactSubject && <label class="campaign-form__question">Selecione o assunto do contacto:<select name="contactSubject" required><option>Comprar</option><option>Vender</option><option>Outro</option></select></label>}
-  {contactSubject && <label class="campaign-form__question campaign-form__other-message" data-other-message hidden>Mensagem (opcional)<textarea name="message" maxlength="4000" rows="4" placeholder="Como podemos ajudar?" disabled></textarea></label>}
+  {contactSubject && <label class="campaign-form__question campaign-form__other-message" data-other-message hidden>Mensagem (opcional)<textarea name="message" maxlength="4000" rows="1" placeholder="Como podemos ajudar?" disabled></textarea></label>}
   {showReferralQuestions && <><label class="campaign-form__question">Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="null">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label><label class="campaign-form__question">Está a pensar vender ou a comprar casa?<select name="intent" required><option value="null">Selecione uma opção</option><option>Não</option><option>Sim, a comprar</option><option>Sim, a vender</option></select></label></>}
   {showSubject && <textarea name="message" placeholder="Assunto"></textarea>}
   <label class="campaign-form__consent"><input type="checkbox" required checked /> <span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
@@ -23,11 +23,26 @@ const { route, submitLabel, downloadUrl = '', showSubject = false, showReferralQ
     const subject = form.querySelector<HTMLSelectElement>('[name="contactSubject"]');
     const messagePanel = form.querySelector<HTMLElement>('[data-other-message]');
     const messageField = messagePanel?.querySelector<HTMLTextAreaElement>('textarea');
+    const resizeMessage = () => {
+      if (!messageField || messagePanel?.hidden) return;
+      const style = getComputedStyle(messageField);
+      const lineHeight = Number.parseFloat(style.lineHeight) || 24;
+      const padding = (Number.parseFloat(style.paddingTop) || 0) + (Number.parseFloat(style.paddingBottom) || 0);
+      const border = (Number.parseFloat(style.borderTopWidth) || 0) + (Number.parseFloat(style.borderBottomWidth) || 0);
+      const maxHeight = 5 * lineHeight + padding + border;
+      messageField.style.height = 'auto';
+      messageField.style.height = `${Math.min(maxHeight, messageField.scrollHeight + border)}px`;
+      messageField.style.overflowY = messageField.scrollHeight + border > maxHeight ? 'auto' : 'hidden';
+      if (document.activeElement === messageField && messageField.selectionEnd === messageField.value.length) messageField.scrollTop = messageField.scrollHeight;
+    };
+    messageField?.addEventListener('input', resizeMessage);
+    if (messageField) window.addEventListener('resize', resizeMessage);
     const updateMessageVisibility = () => {
       if (!messagePanel || !messageField) return;
       const isOther = subject?.value === 'Outro';
       messagePanel.hidden = !isOther;
       messageField.disabled = !isOther;
+      if (isOther) resizeMessage();
     };
     subject?.addEventListener('change', updateMessageVisibility);
     form.addEventListener('reset', () => queueMicrotask(updateMessageVisibility));
