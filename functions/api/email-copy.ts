@@ -17,6 +17,24 @@ function string(value: unknown) { return typeof value === 'string' ? value.trim(
 function escape(value: string) {
   return value.replace(/[&<>"']/gu, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]!));
 }
+/** A bounded plain-text excerpt: do not send the hidden remainder in the HTML email. */
+function messageExcerpt(value: string): string {
+  const lines: string[] = [];
+  for (const paragraph of value.replace(/\r\n?/g, '\n').split('\n')) {
+    let remaining = Array.from(paragraph.trim());
+    do {
+      let end = Math.min(remaining.length, 78);
+      if (remaining.length > 78) {
+        const space = remaining.slice(0, 78).lastIndexOf(' ');
+        if (space > 0) end = space;
+      }
+      lines.push(remaining.slice(0, end).join(''));
+      remaining = Array.from(remaining.slice(end).join('').trimStart());
+      if (lines.length === 3) return `${lines[0]}\n${Array.from(lines[1]).slice(0, 77).join('').trimEnd()}…`;
+    } while (remaining.length);
+  }
+  return lines.join('\n');
+}
 function email(subject: string, text: string, lang = 'pt-PT', link?: { label: string; url: string }): LeadEmail {
   const paragraphs = text.split('\n\n').map((paragraph) => {
     if (link && paragraph === `${link.label}: ${link.url}`) return `<p><a href="${escape(link.url)}" style="display:inline-block;padding:14px 24px;background:#20457f;color:#fff;text-decoration:none">${escape(link.label)}</a></p>`;
@@ -137,7 +155,7 @@ export function buildLeadEmails(submission: ValidatedLead, property?: PropertyEm
     default: throw new Error('No approved lead email copy for this route.');
   }
 
-  const details = Object.entries(fields).map(([key, value]) => `${labels[key] || key}: ${typeof value === 'boolean' ? (value ? 'Sim' : 'Não') : String(value)}`);
+  const details = Object.entries(fields).map(([key, value]) => `${labels[key] || key}: ${typeof value === 'boolean' ? (value ? 'Sim' : 'Não') : key === 'message' && submission.route === '/vamos-comecar' ? messageExcerpt(String(value)) : String(value)}`);
   if (property) details.push(`Imóvel: ${property.title}`, `Referência: ${property.reference}`);
   details.push(`Página: https://joaquimmota.pt${submission.route}`);
   const consultantText = submission.route === '/credito-habitacao'

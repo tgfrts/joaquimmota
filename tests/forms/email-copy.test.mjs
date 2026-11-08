@@ -95,3 +95,20 @@ test('unknown and newsletter routes have no implicit lead email', () => {
   assert.throws(() => buildLeadEmails(lead('/blog')), /No approved/);
   assert.throws(() => buildLeadEmails(lead('/unknown')), /No approved/);
 });
+
+
+test('contact message emails send only a two-line excerpt while preserving the stored submission', () => {
+  const submission = lead('/vamos-comecar', { contactSubject: 'Outro', message: 'Primeira linha\nSegunda linha\nTerceira linha privada' });
+  const result = buildLeadEmails(submission);
+  assert.ok(result.consultant.text.includes('Primeira linha\nSegunda linha…'));
+  assert.ok(!result.consultant.text.includes('Terceira linha privada'));
+  assert.ok(!result.consultant.html.includes('Terceira linha privada'));
+  assert.equal(submission.fields.message, 'Primeira linha\nSegunda linha\nTerceira linha privada');
+});
+test('contact email excerpts bound a single long paragraph and preserve short text and escaping', () => {
+  const long = 'Esta é uma mensagem longa. '.repeat(40) + 'FIM PRIVADO';
+  const mail = buildLeadEmails(lead('/vamos-comecar', { message: long })).consultant;
+  assert.ok(!mail.text.includes('FIM PRIVADO')); assert.ok(!mail.html.includes('FIM PRIVADO')); assert.ok(mail.text.includes('…'));
+  const short = buildLeadEmails(lead('/vamos-comecar', { message: 'Olá <script>\nSegunda linha' })).consultant;
+  assert.ok(short.text.includes('Olá <script>\nSegunda linha')); assert.ok(short.html.includes('&lt;script&gt;'));
+});
