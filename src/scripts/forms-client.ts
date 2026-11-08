@@ -1,8 +1,18 @@
+import { isPlausiblePhone } from '../lib/phone-validation.ts';
 type FormPayload = { formType: string; route: string; fields: Record<string, unknown> };
 const attempts = new WeakMap<HTMLFormElement, { payload: string; key: string; pending: boolean }>();
 
 /** Keep the same provider idempotency key when a visitor retries an unchanged submission. */
 export async function submitFormAccepted(form: HTMLFormElement, payload: FormPayload) {
+  if (typeof payload.fields.phone === 'string' && payload.fields.phone.trim() && !isPlausiblePhone(payload.fields.phone)) {
+    const phone = form.querySelector<HTMLInputElement>('input[name="phone"]');
+    if (phone) {
+      phone.setCustomValidity('Introduza um número de telefone válido.');
+      phone.addEventListener('input', () => phone.setCustomValidity(''), { once: true });
+      phone.reportValidity();
+    }
+    throw new Error('Invalid phone number.');
+  }
   const requiredConsent = payload.formType === 'newsletter'
     ? undefined
     : form.querySelector<HTMLInputElement>('input[type="checkbox"][required]')?.checked === true;

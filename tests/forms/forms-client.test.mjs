@@ -50,3 +50,19 @@ test('nonnewsletter submissions preserve given name, surname and structured subj
     assert.deepEqual(requestBody.fields, { name: 'Ana Costa', email: 'ana@example.test', firstName: 'Ana', lastName: 'Costa', contactSubject: 'Vender', consent: true });
   } finally { globalThis.fetch = originalFetch; }
 });
+
+test('invalid phone shows actionable field feedback without sending and clears on editing', async () => {
+  const originalFetch = globalThis.fetch;
+  let calls = 0, validity = '', reported = false, onInput;
+  globalThis.fetch = async () => { calls++; return new Response('{}', { status: 202 }); };
+  const field = { setCustomValidity(value) { validity = value; }, reportValidity() { reported = true; }, addEventListener(event, callback) { assert.equal(event, 'input'); onInput = callback; } };
+  const form = { querySelector(selector) { return selector.includes('phone') ? field : { checked: true }; } };
+  try {
+    const payload = { formType: 'contact', route: '/vamos-comecar', fields: { name: 'Ana', email: 'ana@example.test', phone: '000000000' } };
+    await assert.rejects(submitFormAccepted(form, payload));
+    assert.equal(calls, 0); assert.equal(reported, true); assert.equal(validity, 'Introduza um número de telefone válido.');
+    onInput(); assert.equal(validity, '');
+    await submitFormAccepted(form, { ...payload, fields: { ...payload.fields, phone: '+351 912 345 678' } });
+    assert.equal(calls, 1);
+  } finally { globalThis.fetch = originalFetch; }
+});

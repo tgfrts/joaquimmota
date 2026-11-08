@@ -1,3 +1,4 @@
+import { isPlausiblePhone } from '../../src/lib/phone-validation.ts';
 import { buildLeadEmails } from './email-copy.ts';
 import propertyEmailDetails from './property-email-details.json' with { type: 'json' };
 import allowedSourceRoutes from './allowed-source-routes.json' with { type: 'json' };
@@ -127,6 +128,7 @@ function parseSubmission(payload: unknown, idempotencyKey: string): Submission {
     const value = optionalText(fields[field], field, field === 'message' ? 4_000 : 500);
     if (value !== undefined) normalized[field] = value;
   }
+  if (typeof normalized.phone === 'string' && !isPlausiblePhone(normalized.phone)) throw new FormError(422, 'Introduza um número de telefone válido.');
   if (normalized.contactSubject && !['Comprar', 'Vender', 'Outro'].includes(String(normalized.contactSubject))) throw new FormError(422, 'Invalid contact subject.');
   return { formType: type, route, fields: normalized, idempotencyKey };
 }

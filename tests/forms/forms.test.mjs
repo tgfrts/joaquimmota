@@ -285,3 +285,23 @@ test('only same-origin HTTPS deployments of the own Pages project may submit', a
     assert.equal((await createFormHandler(mockAdapter())({ request: req, env: formEnv() })).status, status, host);
   }
 });
+
+test('invalid phone placeholders are rejected before storage or delivery for every phone-enabled form type', async () => {
+  const routes = { contact: '/vamos-comecar', valuation: '/uma-venda-com-sucesso', mortgage: '/credito-habitacao', partnership: '/parcerias', leadMagnet: '/lp/cabaz-de-natal' };
+  for (const [formType, route] of Object.entries(routes)) {
+    for (const phone of ['000000000', '+351 111111111', '123456789']) {
+      const adapter = mockAdapter();
+      const response = await createFormHandler(adapter)({ request: request({ ...leadPayload, formType, route, fields: { ...leadPayload.fields, phone } }), env: { LEADS_DB: { prepare() { throw new Error('Invalid phone must never reach storage'); } } } });
+      assert.equal(response.status, 422, `${formType}: ${phone}`);
+      assert.equal(adapter.calls.length, 0);
+    }
+  }
+});
+
+test('valid international phone formatting is preserved when accepting a lead', async () => {
+  const adapter = mockAdapter();
+  const phone = '+44 20 7946 0958';
+  const response = await createFormHandler(adapter)({ request: request({ ...leadPayload, fields: { ...leadPayload.fields, phone } }), env: formEnv() });
+  assert.equal(response.status, 202);
+  assert.equal(adapter.calls[0][1].fields.phone, phone);
+});
