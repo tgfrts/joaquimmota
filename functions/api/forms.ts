@@ -2,6 +2,8 @@ import { isPlausiblePhone } from '../../src/lib/phone-validation.ts';
 import { buildLeadEmails } from './email-copy.ts';
 import propertyEmailDetails from './property-email-details.json' with { type: 'json' };
 import allowedSourceRoutes from './allowed-source-routes.json' with { type: 'json' };
+import publishedOffers from './published-offers.json' with { type: 'json' };
+import { offerWindowState, validOfferSlug } from '../../src/lib/offers.mjs';
 import { LeadIdempotencyConflict, LeadStore, type LeadsDatabase, type ValidatedLead } from './leads.ts';
 
 type FormType = 'newsletter' | 'contact' | 'valuation' | 'mortgage' | 'partnership' | 'leadMagnet';
@@ -18,6 +20,8 @@ type Env = {
 };
 
 type Submission = ValidatedLead;
+type OfferMetadata = { title: string; startDate: string; endDate: string; confirmationMessage: string };
+type OfferCatalog = Record<string, OfferMetadata>;
 
 type Delivery = { providerId?: string };
 
@@ -106,14 +110,17 @@ function formType(value: unknown): FormType {
   return value as FormType;
 }
 
-function parseSubmission(payload: unknown, idempotencyKey: string): Submission {
+function parseSubmission(payload: unknown, idempotencyKey: string, offers: OfferCatalog, now: Date): Submission {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) throw new FormError(400, 'Invalid request body.');
   const body = payload as Record<string, unknown>;
   const type = formType(body.formType);
   const route = requiredString(body.route, 'route', 200);
   const propertyRoute = route.startsWith('/imoveis/') && allowedSourceRoutes.propertySlugs.includes(route.slice('/imoveis/'.length));
   const articleRoute = route.startsWith('/post/') && allowedSourceRoutes.articleSlugs.includes(route.slice('/post/'.length));
-  if (!ROUTES[type].has(route) && !((type === 'contact' && propertyRoute) || (type === 'newsletter' && (propertyRoute || articleRoute)))) throw new FormError(403, 'Form is not allowed on this route.');
+  const offerSlug = route.startsWith('/lp/') ? route.slice('/lp/'.length) : '';
+  const offer = validOfferSlug(offerSlug) && Object.hasOwn(offers, offerSlug) ? offers[offerSlug] : undefined;
+  if (!ROUTES[type].has(route) && !((type === 'contact' && propertyRoute) || (type === 'newsletter' && (propertyRoute || articleRoute)) || (type === 'leadMagnet' && offer))) throw new FormError(403, 'Form is not allowed on this route.');
+  if (offer && offerWindowState(offer, now) !== 'active') throw new FormError(403, 'As participações nesta campanha não estão abertas.');
   if (!body.fields || typeof body.fields !== 'object' || Array.isArray(body.fields)) throw new FormError(422, 'Invalid fields.');
   const fields = body.fields as Record<string, unknown>;
   if (Object.keys(fields).some((key) => !FIELDS[type].has(key))) throw new FormError(422, 'Unsupported field.');
@@ -226,7 +233,9 @@ export function createResendAdapter(fetcher: typeof fetch): FormAdapter {
       const propertySlug = submission.route.startsWith('/imoveis/') ? submission.route.slice('/imoveis/'.length) : '';
       const property = propertySlug ? (propertyEmailDetails as Record<string, { title: string; reference: string }>)[propertySlug] : undefined;
       if (propertySlug && !property) throw new FormError(503, 'Property email details unavailable.');
-      const messages = buildLeadEmails(submission, property);
+      const offerSlug = submission.route.startsWith('/lp/') ? submission.route.slice('/lp/'.length) : '';
+      const offer = Object.hasOwn(publishedOffers, offerSlug) ? (publishedOffers as OfferCatalog)[offerSlug] : undefined;
+      const messages = buildLeadEmails(submission, property, offer);
       const from = requiredConfig(env, 'RESEND_FROM');
       const reply_to = env.RESEND_REPLY_TO ? configuredEmail(env, 'RESEND_REPLY_TO') : 'jrmota@kwportugal.pt';
       return resendRequest(fetcher, '/emails/batch', requiredConfig(env, 'RESEND_SEND_API_KEY'), submission.idempotencyKey, [
@@ -237,7 +246,7 @@ export function createResendAdapter(fetcher: typeof fetch): FormAdapter {
   };
 }
 
-export function createFormHandler(adapter: FormAdapter) {
+export function createFormHandler(adapter: FormAdapter, { offers = publishedOffers as OfferCatalog, now = () => new Date() }: { offers?: OfferCatalog; now?: () => Date } = {}) {
   return async ({ request, env }: { request: Request; env: Env }) => {
     try {
       if (request.method !== 'POST') return response(405, { error: 'Method not allowed.' });
@@ -245,7 +254,7 @@ export function createFormHandler(adapter: FormAdapter) {
       const idempotencyKey = request.headers.get('idempotency-key') ?? '';
       if (!IDEMPOTENCY.test(idempotencyKey)) throw new FormError(400, 'Missing or invalid idempotency key.');
       const payload: unknown = await readBoundedJson(request);
-      const submission = parseSubmission(payload, idempotencyKey);
+      const submission = parseSubmission(payload, idempotencyKey, offers, now());
       if (!env.LEADS_DB) throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
 
       const leads = new LeadStore(env.LEADS_DB);

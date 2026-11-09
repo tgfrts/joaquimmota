@@ -49,11 +49,90 @@ fields: [
 ],
 }
 {
-name: 'offer',
-type: 'document',
-fields: [
-{name: 'legacyId', type: 'string', readOnly: true}, {name: 'locale', type: 'string', readOnly: true}, {name: 'sourceSlug', type: 'string', readOnly: true}, {name: 'slug', type: 'slug', readOnly: true}, {name: 'title', type: 'string'}, {name: 'heading', type: 'string'}, {name: 'body', type: 'text', rows: 4}, {name: 'image', type: 'image', fields: [{name: 'alt', type: 'string'}]},
-],
+  "name": "offer",
+  "type": "document",
+  "fields": [
+    {
+      "name": "legacyId",
+      "type": "string",
+      "readOnly": true
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "readOnly": true
+    },
+    {
+      "name": "sourceSlug",
+      "type": "string",
+      "readOnly": true
+    },
+    {
+      "name": "slug",
+      "type": "slug",
+      "readOnly": true,
+      "description": "Endereço /lp/slug definido pelo Doop Tools para novas ofertas; imutável após publicação."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "Nome obrigatório da campanha; máximo 200 caracteres, sem quebras de linha."
+    },
+    {
+      "name": "heading",
+      "type": "string",
+      "description": "Texto principal obrigatório, simples e multiline; máximo 2000 caracteres."
+    },
+    {
+      "name": "body",
+      "type": "text",
+      "rows": 4
+    },
+    {
+      "name": "image",
+      "type": "image",
+      "options": {
+        "hotspot": true
+      },
+      "fields": [
+        {
+          "name": "alt",
+          "type": "string"
+        }
+      ],
+      "description": "Imagem obrigatória da página."
+    },
+    {
+      "name": "ogImage",
+      "type": "image",
+      "options": {
+        "hotspot": true
+      },
+      "fields": [
+        {
+          "name": "alt",
+          "type": "string"
+        }
+      ],
+      "description": "Imagem obrigatória de partilha."
+    },
+    {
+      "name": "startDate",
+      "type": "date",
+      "description": "Obrigatório. Primeiro dia de participações, inclusive, no fuso Europe/Lisbon."
+    },
+    {
+      "name": "endDate",
+      "type": "date",
+      "description": "Obrigatório. Último dia de participações, inclusive, no fuso Europe/Lisbon. Não pode anteceder startDate."
+    },
+    {
+      "name": "confirmationMessage",
+      "type": "text",
+      "rows": 5,
+      "description": "Conteúdo principal obrigatório do email ao participante; máximo 4000 caracteres. Mantém saudação, convite a responder e assinatura. Aceita [Nome] e [Campanha]. Não é a mensagem da página."
+    }
+  ]
 }
 {
 name: 'processStep',

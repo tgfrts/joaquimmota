@@ -2,6 +2,7 @@ import type { ValidatedLead } from './leads.ts';
 
 export type LeadEmail = { subject: string; text: string; html: string };
 export type PropertyEmailContext = { title: string; reference: string };
+export type OfferEmailContext = { title: string; confirmationMessage: string };
 
 const reply = 'Se quiser acrescentar alguma informação, basta responder a este email.';
 const signature = 'Até breve,\nJoaquim Mota\nConsultor Imobiliário';
@@ -43,7 +44,7 @@ function email(subject: string, text: string, lang = 'pt-PT', link?: { label: st
   return { subject, text, html: `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(subject)}</title></head><body style="margin:0;padding:24px;background:#fff;color:#222;font:16px/1.6 Arial,sans-serif"><main style="max-width:600px;margin:auto">${paragraphs}</main></body></html>` };
 }
 
-export function buildLeadEmails(submission: ValidatedLead, property?: PropertyEmailContext): { consultant: LeadEmail; customer: LeadEmail } {
+export function buildLeadEmails(submission: ValidatedLead, property?: PropertyEmailContext, offer?: OfferEmailContext): { consultant: LeadEmail; customer: LeadEmail } {
   const fields = submission.fields;
   const fullName = string(fields.name) || [string(fields.firstName), string(fields.lastName)].filter(Boolean).join(' ');
   const firstName = string(fields.firstName) || fullName.split(/\s+/u)[0] || 'Cliente';
@@ -57,7 +58,12 @@ export function buildLeadEmails(submission: ValidatedLead, property?: PropertyEm
   let customerSignature = signature;
   let link: { label: string; url: string } | undefined;
 
-  if (submission.route.startsWith('/imoveis/')) {
+  if (offer && submission.route.startsWith('/lp/')) {
+    consultantSubject = `Nova participação - ${offer.title}`;
+    customerSubject = `Recebemos a sua participação - ${offer.title}`;
+    // The server supplies published metadata; client payloads cannot choose campaign copy.
+    content = offer.confirmationMessage.replace(/\[(Nome|Campanha)\]/g, (_match, token) => token === 'Nome' ? firstName : offer.title);
+  } else if (submission.route.startsWith('/imoveis/')) {
     const reference = property?.reference || submission.route.slice('/imoveis/'.length).toUpperCase();
     const title = property?.title || reference;
     consultantSubject = `Novo contacto sobre imóvel - ${reference}`;

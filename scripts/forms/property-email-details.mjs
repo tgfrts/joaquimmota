@@ -1,11 +1,13 @@
 import fs from 'node:fs';
 import { pathToFileURL } from 'node:url';
+import { offerMetadata } from '../../src/lib/offers.mjs';
 
 // Server validation and email metadata use the same published CMS content as Astro.
 export function buildCmsFormRoutes(content, previous = {}) {
   const records = Array.isArray(content) ? content : content.documents ?? [];
   const properties = {};
-  const routes = { ...previous, propertySlugs: [], articleSlugs: [] };
+  const offers = offerMetadata(content);
+  const routes = { ...previous, propertySlugs: [], articleSlugs: [], offerSlugs: Object.keys(offers).sort() };
   for (const record of records) {
     if (!['property', 'article'].includes(record._type)) continue;
     const slug = record.slug?.current ?? record.sourceSlug;
@@ -19,13 +21,14 @@ export function buildCmsFormRoutes(content, previous = {}) {
   }
   routes.propertySlugs.sort();
   routes.articleSlugs.sort();
-  return { routes, properties };
+  return { routes, properties, offers };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const content = JSON.parse(fs.readFileSync('src/data/sample-content.json', 'utf8'));
   const previous = JSON.parse(fs.readFileSync('functions/api/allowed-source-routes.json', 'utf8'));
-  const { routes, properties } = buildCmsFormRoutes(content, previous);
+  const { routes, properties, offers } = buildCmsFormRoutes(content, previous);
   fs.writeFileSync('functions/api/allowed-source-routes.json', `${JSON.stringify(routes, null, 2)}\n`);
   fs.writeFileSync('functions/api/property-email-details.json', `${JSON.stringify(properties, null, 2)}\n`);
+  fs.writeFileSync('functions/api/published-offers.json', `${JSON.stringify(offers, null, 2)}\n`);
 }

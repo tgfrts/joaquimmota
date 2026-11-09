@@ -1,0 +1,10 @@
+---
+import content from '../../data/sample-content.json';
+import DynamicOfferPage from '../../components/DynamicOfferPage.astro';
+import { publishedOffers } from '../../lib/offers.mjs';
+export function getStaticPaths() {
+  return publishedOffers(content).map((offer: any) => ({ params: { slug: offer.slug.current }, props: { offer } }));
+}
+const { offer } = Astro.props;
+---
+<DynamicOfferPage offer={offer} />

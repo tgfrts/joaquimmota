@@ -23,6 +23,8 @@ export function canonicalUrl(input: string): string {
 }
 export function isIndexablePath(input: string): boolean {
   const path = normalizedPath(input);
+  // Native offer LPs stay noindex; only explicitly approved static LPs above
+  // are indexable. Do not broaden this to all /lp/ utility/thank-you routes.
   return PUBLIC_STATIC_PATHS.includes(path) || /^\/(?:imoveis|post|vouvender)\/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(path);
 }
 export function robotsForPath(input: string, environment?: string, noindex = false): string {
@@ -36,7 +38,7 @@ export function robotsText(environment?: string): string {
 export function sitemapEntries(records: any[], environment?: string): { url: string; lastmod?: string }[] {
   if (environment !== 'production') return [];
   const entries: {url: string; lastmod?: string}[] = PUBLIC_STATIC_PATHS.map(path => ({ url: canonicalUrl(path) }));
-  const prefixes: Record<string, string> = { property: 'imoveis', article: 'post', preListing: 'vouvender' };
+  const prefixes: Record<string, string> = { property: 'imoveis', article: 'post', preListing: 'vouvender' }; // Offers deliberately excluded.
   for (const record of records) {
     if (String(record._id ?? '').startsWith('drafts.') || String(record._id ?? '').startsWith('versions.')) continue;
     const prefix = prefixes[record._type];

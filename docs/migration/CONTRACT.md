@@ -130,3 +130,5 @@ Owner approval 2026-10-24: the 1440px preview experiment is accepted for product
 
 
 2026-10-29 — Owner explicitly approves publishing the Doop Tools restoration on both production applications. Verify actual404 responses use the existing error template and its Go Home action returns to/. No DNS changes or Webflow writes are part of this release.
+
+2026-11-09 — Owner requests native offers authored through Doop Tools and stored in own Sanity: campaign title, immutable /lp/slug, plain multiline heading, landing/OG images, required inclusive startDate/endDate in Europe/Lisbon, and editable participant-email main content (confirmationMessage). Keep the fixed current Cabaz form in Astro; preserve the existing hardcoded Cabaz experience and email copy without inventing legacy dates. Native drafts are private; new published offers generate static pages and trusted server metadata. Clients and API enforce the date window, including pages left open across midnight. New offers remain noindex/out of sitemap. Protected/reserved/removed URLs cannot be reused. Local preparation does not itself deploy schemas, change webhooks, publish content or release production.

@@ -1,6 +1,7 @@
 import { mkdir, writeFile, rename, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import { publishedOffers } from '../../src/lib/offers.mjs';
 
 export const CONTENT_TYPES = ['property', 'article', 'testimonial', 'offer', 'preListing', 'processStep'];
 export const PROJECT_ID = 'kaq1vd9b';
@@ -35,6 +36,8 @@ export async function fetchPublishedContent({ fetchImpl = fetch, pageSize = 100 
   }
   // An empty CMS is an activation/configuration failure for this populated site.
   if (documents.length === 0) throw new Error('Sanity has no published site content; refusing to build a stale or empty site.');
+  // Offers require their own authored content and dates; never revive migration fallbacks.
+  publishedOffers(documents);
   const routes = new Set();
   for (const document of documents.filter(document => ['property', 'article', 'preListing'].includes(document._type))) {
     const slug = document.slug?.current;

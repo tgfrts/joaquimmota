@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { offerImageUrl, offerHeading, offerWindowState } from '../lib/offers.mjs';
+import '../styles/public-campaigns.css';
+interface Props { offer: any }
+const { offer } = Astro.props;
+const route = `/lp/${offer.slug.current}`;
+const state = offerWindowState(offer);
+const image = offerImageUrl(offer.image);
+---
+<BaseLayout title={offer.title} socialImage={offerImageUrl(offer.ogImage, 1200)} richSocial>
+  <main class="public-campaign public-campaign--cabaz public-campaign--offer" data-dynamic-offer data-title={offer.title} data-heading={offer.heading} data-start-date={offer.startDate} data-end-date={offer.endDate}>
+    <div class="public-campaign__image" style={`--campaign-bg:url("${image}")`} aria-hidden="true"></div>
+    <section class="public-campaign__panel">
+      <a class="public-campaign__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
+      <h5 data-offer-heading>{offerHeading(offer, state)}</h5>
+      <p data-offer-thanks hidden={state !== 'ended'}>Obrigado pelo seu interesse nesta campanha.</p>
+      <form data-offer-form data-route={route} hidden>
+        <div class="public-campaign__names"><input name="firstName" maxlength="256" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" maxlength="256" autocomplete="family-name" placeholder="Apelido" required /></div>
+        <input name="email" type="email" maxlength="256" autocomplete="email" placeholder="O seu email" required />
+        <input name="phone" type="tel" maxlength="256" autocomplete="tel" placeholder="Telefone" required />
+        <label>Conhece alguém que esteja a vender ou a comprar casa?<select name="referral" required><option value="null">Selecione uma opção</option><option value="Não">Não</option><option value="Sim, a comprar">Sim, a comprar</option><option value="Sim, a vender">Sim, a vender</option></select></label>
+        <label>Está a pensar vender ou a comprar casa?<select name="intent" required><option value="null">Selecione uma opção</option><option value="Não">Não</option><option value="Sim, a comprar">Sim, a comprar</option><option value="Sim, a vender">Sim, a vender</option></select></label>
+        <label class="public-campaign__address-label">Localização do imóvel:</label><input name="street" maxlength="256" autocomplete="street-address" placeholder="Morada" required /><input name="postalCode" maxlength="256" autocomplete="postal-code" placeholder="Código Postal" required /><input name="county" maxlength="256" autocomplete="address-level2" placeholder="Concelho" required />
+        <label class="public-campaign__consent"><input type="checkbox" required checked /><span>Aceito que os meus dados sejam utilizados para envio de informações comerciais e marketing, por Joaquim Mota Consultores Imobiliários.</span></label>
+        <button type="submit">Participar</button>
+      </form>
+      <p class="public-campaign__status" data-campaign-status role="status" aria-live="polite" hidden></p>
+      <noscript><p>Ative o JavaScript para verificar se as participações estão abertas.</p></noscript>
+    </section>
+  </main>
+</BaseLayout>
+<script>
+  import '../scripts/dynamic-offer';
+</script>
+<style>
+  .public-campaign--offer [hidden] { display: none !important; }
+  .public-campaign--offer h5 { white-space: pre-line; }
+</style>
