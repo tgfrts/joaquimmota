@@ -1,11 +1,10 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
 import { DatabaseSync } from 'node:sqlite';
 import test from 'node:test';
 import { createFormHandler } from '../../functions/api/forms.ts';
 import { LeadStore } from '../../functions/api/leads.ts';
+import { leadSchemaSql as migration } from './lead-migrations.mjs';
 
-const migration = await readFile(new URL('../../migrations/0001_create_leads.sql', import.meta.url), 'utf8');
 const key = 'lead-d1-test-key-20261004';
 const payload = { formType: 'contact', route: '/vamos-comecar', fields: { name: 'Ana', email: 'ana@doop.test', message: 'Olá', consent: true } };
 

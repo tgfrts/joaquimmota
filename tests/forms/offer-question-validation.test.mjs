@@ -4,6 +4,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFile } from 'node:fs/promises';
 import { JSDOM } from 'jsdom';
 import { createFormHandler } from '../../functions/api/forms.ts';
+import { leadSchemaSql as migration } from './lead-migrations.mjs';
 
 const referral = 'Conhece alguém que esteja a vender ou a comprar casa?';
 const intent = 'Está a pensar vender ou a comprar casa?';
@@ -55,7 +56,6 @@ test('both offer routes reject missing, placeholder, invalid and duplicated answ
   }
 });
 test('all explicit No and positive choices retain their stored message and reach delivery once', async t => {
-  const migration = await readFile(new URL('../../migrations/0001_create_leads.sql', import.meta.url), 'utf8');
   for (const route of ['/lp/cabaz-de-natal', '/lp/oferta-perguntas']) {
     for (const first of ['Não', 'Sim, a comprar', 'Sim, a vender']) {
       for (const second of ['Não', 'Sim, a comprar', 'Sim, a vender']) {

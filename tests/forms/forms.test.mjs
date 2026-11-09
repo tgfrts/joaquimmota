@@ -1,11 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFile } from 'node:fs/promises';
 import { DatabaseSync } from 'node:sqlite';
 import { createFormHandler, createResendAdapter } from '../../functions/api/forms.ts';
+import { leadSchemaSql as migration } from './lead-migrations.mjs';
 
 const key = 'submission-20261003-001';
-const migration = await readFile(new URL('../../migrations/0001_create_leads.sql', import.meta.url), 'utf8');
 function formEnv(overrides = {}) {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec(migration);

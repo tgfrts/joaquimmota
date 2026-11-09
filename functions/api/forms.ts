@@ -4,7 +4,7 @@ import propertyEmailDetails from './property-email-details.json' with { type: 'j
 import allowedSourceRoutes from './allowed-source-routes.json' with { type: 'json' };
 import publishedOffers from './published-offers.json' with { type: 'json' };
 import { cabazHasEnded, offerWindowState, validOfferSlug } from '../../src/lib/offers.mjs';
-import { LeadIdempotencyConflict, LeadStore, type LeadsDatabase, type ValidatedLead } from './leads.ts';
+import { LeadIdempotencyConflict, LeadStore, type LeadNotificationPolicy, type LeadsDatabase, type ValidatedLead } from './leads.ts';
 
 type FormType = 'newsletter' | 'contact' | 'valuation' | 'mortgage' | 'partnership' | 'leadMagnet';
 
@@ -27,7 +27,7 @@ type Delivery = { providerId?: string };
 
 type FormAdapter = {
   captureNewsletter(submission: Submission, env: Env): Promise<Delivery | void>;
-  notifyLead(submission: Submission, env: Env): Promise<Delivery | void>;
+  notifyLead(submission: Submission, env: Env, notificationPolicy?: LeadNotificationPolicy): Promise<Delivery | void>;
 };
 
 const ROUTES: Record<FormType, ReadonlySet<string>> = {
@@ -118,6 +118,7 @@ function requireOfferQuestionAnswers(message: unknown) {
   const allowed = new Set(['Não', 'Sim, a comprar', 'Sim, a vender']);
   const normalizeQuestion = (value: string) => value.normalize('NFC').trim().replace(/\s+/gu, ' ').toLocaleLowerCase('pt');
   const lines = typeof message === 'string' ? message.split(/\r?\n/u) : [];
+  let qualified = false;
   for (const question of questions) {
     const answers = lines.flatMap(line => {
       const separator = line.indexOf(':');
@@ -127,7 +128,19 @@ function requireOfferQuestionAnswers(message: unknown) {
     // Variants count as duplicates, but only the canonical stored label is
     // accepted: downstream classification reads the existing exact questions.
     if (answers.length !== 1 || answers[0].label !== question || !allowed.has(answers[0].value)) throw new FormError(422, 'Responda às duas perguntas da campanha com uma opção válida.');
+    if (answers[0].value !== 'Não') qualified = true;
   }
+  return qualified;
+}
+
+function notificationPolicyFor(submission: Submission, offers: OfferCatalog): LeadNotificationPolicy {
+  const slug = submission.route.startsWith('/lp/') ? submission.route.slice('/lp/'.length) : '';
+  const offer = Object.hasOwn(offers, slug) ? offers[slug] : undefined;
+  if (submission.formType !== 'leadMagnet' || (submission.route !== '/lp/cabaz-de-natal' && !offer)) return { consultantNotificationMode: 'individual', offerCampaignTitle: null };
+  return {
+    consultantNotificationMode: requireOfferQuestionAnswers(submission.fields.message) ? 'immediate-and-daily' : 'daily',
+    offerCampaignTitle: submission.route === '/lp/cabaz-de-natal' ? 'Cabaz de Natal 2026' : offer!.title,
+  };
 }
 
 function parseSubmission(payload: unknown, idempotencyKey: string, offers: OfferCatalog, now: Date): Submission {
@@ -235,7 +248,7 @@ async function readBoundedJson(request: Request) {
   }
 }
 
-export function createResendAdapter(fetcher: typeof fetch): FormAdapter {
+export function createResendAdapter(fetcher: typeof fetch, { offers = publishedOffers as OfferCatalog }: { offers?: OfferCatalog } = {}): FormAdapter {
   return {
     async captureNewsletter(submission, env) {
       return resendRequest(fetcher, '/contacts', requiredConfig(env, 'RESEND_CONTACTS_API_KEY'), submission.idempotencyKey, {
@@ -244,24 +257,26 @@ export function createResendAdapter(fetcher: typeof fetch): FormAdapter {
         ...(submission.fields.lastName ? { last_name: submission.fields.lastName } : {}),
       });
     },
-    async notifyLead(submission, env) {
+    async notifyLead(submission, env, notificationPolicy = { consultantNotificationMode: 'individual', offerCampaignTitle: null }) {
       const email = requiredString(submission.fields.email, 'email', 320);
       // Live routing requires explicit configuration; default and all preview configs stay test-only.
       const testMode = env.FORMS_DELIVERY_MODE !== 'live';
       const testRecipient = (env.FORMS_TEST_RECIPIENT ?? 't@doop.pt').trim().toLowerCase();
       if (testMode && !EMAIL.test(testRecipient)) throw new FormError(503, 'Invalid test recipient.');
-      const consultantTo = testMode ? [testRecipient] : [configuredEmail(env, 'FORMS_RECIPIENT')];
+      const sendConsultant = notificationPolicy.consultantNotificationMode !== 'daily';
+      const consultantTo = sendConsultant ? (testMode ? [testRecipient] : [configuredEmail(env, 'FORMS_RECIPIENT')]) : [];
       if (!testMode && submission.formType === 'mortgage') consultantTo.push('da@somoscredito.pt');
       const propertySlug = submission.route.startsWith('/imoveis/') ? submission.route.slice('/imoveis/'.length) : '';
       const property = propertySlug ? (propertyEmailDetails as Record<string, { title: string; reference: string }>)[propertySlug] : undefined;
       if (propertySlug && !property) throw new FormError(503, 'Property email details unavailable.');
       const offerSlug = submission.route.startsWith('/lp/') ? submission.route.slice('/lp/'.length) : '';
-      const offer = Object.hasOwn(publishedOffers, offerSlug) ? (publishedOffers as OfferCatalog)[offerSlug] : undefined;
+      const currentOffer = Object.hasOwn(offers, offerSlug) ? offers[offerSlug] : undefined;
+      const offer = currentOffer ? { ...currentOffer, title: notificationPolicy.offerCampaignTitle ?? currentOffer.title } : undefined;
       const messages = buildLeadEmails(submission, property, offer);
       const from = requiredConfig(env, 'RESEND_FROM');
       const reply_to = env.RESEND_REPLY_TO ? configuredEmail(env, 'RESEND_REPLY_TO') : 'jrmota@kwportugal.pt';
       return resendRequest(fetcher, '/emails/batch', requiredConfig(env, 'RESEND_SEND_API_KEY'), submission.idempotencyKey, [
-        { from, to: consultantTo, reply_to, ...messages.consultant },
+        ...(sendConsultant ? [{ from, to: consultantTo, reply_to, ...messages.consultant }] : []),
         { from, to: testMode ? [testRecipient] : [email], reply_to, ...messages.customer },
       ]);
     },
@@ -280,14 +295,14 @@ export function createFormHandler(adapter: FormAdapter, { offers = publishedOffe
       if (!env.LEADS_DB) throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
 
       const leads = new LeadStore(env.LEADS_DB);
-      const reservation = await leads.reserveAndClaim(submission);
+      const reservation = await leads.reserveAndClaim(submission, notificationPolicyFor(submission, offers));
       if (reservation.kind === 'accepted') return response(202, { accepted: true });
       if (reservation.kind === 'sending' || reservation.kind === 'manual') throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
 
       try {
         const delivery = submission.formType === 'newsletter'
           ? await adapter.captureNewsletter(submission, env)
-          : await adapter.notifyLead(submission, env);
+          : await adapter.notifyLead(submission, env, reservation.notificationPolicy);
         const providerId = delivery?.providerId?.trim();
         if (!providerId || providerId.length > 200) throw new FormError(503, 'Form delivery is temporarily unavailable.', 30);
         await leads.markAccepted(submission.idempotencyKey, reservation.claimToken, providerId);

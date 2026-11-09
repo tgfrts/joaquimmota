@@ -7,6 +7,11 @@ export type ValidatedLead = {
   idempotencyKey: string;
 };
 
+export type LeadNotificationPolicy = {
+  consultantNotificationMode: 'individual' | 'daily' | 'immediate-and-daily';
+  offerCampaignTitle: string | null;
+};
+
 type D1RunResult = { meta?: { changes?: number } };
 type D1Statement = {
   bind(...values: unknown[]): D1Statement;
@@ -19,13 +24,15 @@ export type LeadsDatabase = { prepare(query: string): D1Statement };
 type LeadRow = {
   payload_hash: string;
   delivery_status: 'pending' | 'sending' | 'accepted' | 'failed';
+  consultant_notification_mode: LeadNotificationPolicy['consultantNotificationMode'];
+  offer_campaign_title: string | null;
 };
 
 export type LeadReservation =
   | { kind: 'accepted' }
   | { kind: 'sending' }
   | { kind: 'manual' }
-  | { kind: 'claimed'; claimToken: string };
+  | { kind: 'claimed'; claimToken: string; notificationPolicy: LeadNotificationPolicy };
 
 function canonicalPayload(submission: ValidatedLead) {
   return JSON.stringify({ formType: submission.formType, route: submission.route, fields: submission.fields });
@@ -53,24 +60,26 @@ export class LeadStore {
     this.db = db;
   }
 
-  async reserveAndClaim(submission: ValidatedLead): Promise<LeadReservation> {
+  async reserveAndClaim(submission: ValidatedLead, notificationPolicy: LeadNotificationPolicy = { consultantNotificationMode: 'individual', offerCampaignTitle: null }): Promise<LeadReservation> {
     const fieldsJson = canonicalPayload(submission);
     const hash = await payloadHash(fieldsJson);
     const fields = submission.fields;
     await this.db.prepare(`INSERT INTO leads (
       idempotency_key, payload_hash, form_type, route, property_reference, first_name, last_name, name, email, phone,
-      message, property_type, bedrooms, location, client_type, consent, fields_json
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      message, property_type, bedrooms, location, client_type, consent, fields_json,
+      consultant_notification_mode, offer_campaign_title
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT(idempotency_key) DO NOTHING`).bind(
       submission.idempotencyKey, hash, submission.formType, submission.route, propertyReference(submission.route),
       stringField(fields, 'firstName'), stringField(fields, 'lastName'), stringField(fields, 'name'),
       stringField(fields, 'email'), stringField(fields, 'phone'), stringField(fields, 'message'),
       stringField(fields, 'propertyType'), stringField(fields, 'bedrooms'), stringField(fields, 'location'),
       stringField(fields, 'clientType'), fields.consent === true ? 1 : 0, fieldsJson,
+      notificationPolicy.consultantNotificationMode, notificationPolicy.offerCampaignTitle,
     ).run();
 
     const existing = await this.db.prepare(
-      'SELECT payload_hash, delivery_status FROM leads WHERE idempotency_key = ?',
+      'SELECT payload_hash, delivery_status, consultant_notification_mode, offer_campaign_title FROM leads WHERE idempotency_key = ?',
     ).bind(submission.idempotencyKey).first<LeadRow>();
     if (!existing) throw new Error('Lead reservation was not persisted.');
     if (existing.payload_hash !== hash) throw new LeadIdempotencyConflict();
@@ -85,7 +94,10 @@ export class LeadStore {
     const claim = await this.db.prepare(`UPDATE leads
       SET delivery_status = 'sending', claim_token = ?, safe_error = NULL, updated_at = CURRENT_TIMESTAMP
       WHERE idempotency_key = ? AND ${claimable}`).bind(claimToken, submission.idempotencyKey).run();
-    if ((claim.meta?.changes ?? 0) === 1) return { kind: 'claimed', claimToken };
+    if ((claim.meta?.changes ?? 0) === 1) return { kind: 'claimed', claimToken, notificationPolicy: {
+      consultantNotificationMode: existing.consultant_notification_mode,
+      offerCampaignTitle: existing.offer_campaign_title,
+    } };
     return existing.delivery_status === 'sending' || existing.delivery_status === 'failed'
       ? { kind: 'sending' }
       : { kind: 'manual' };

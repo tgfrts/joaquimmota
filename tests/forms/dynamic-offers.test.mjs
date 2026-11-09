@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { build } from 'esbuild';
 import { JSDOM } from 'jsdom';
 import { DatabaseSync } from 'node:sqlite';
+import { leadSchemaSql } from './lead-migrations.mjs';
 import { validateOffer, publishedOffers, offerMetadata, offerImageUrl, offerWindowState, lisbonDay, validOfferDate } from '../../src/lib/offers.mjs';
 import { buildCmsFormRoutes } from '../../scripts/forms/property-email-details.mjs';
 import { fetchPublishedContent } from '../../scripts/cms/fetch-published.mjs';
@@ -94,7 +95,7 @@ test('offer emails use trusted metadata, interpolate plain text safely and leave
 test('active native offers persist unchanged form answers before delivery and retain idempotent retries', async t => {
   const sqlite = new DatabaseSync(':memory:');
   t.after(() => sqlite.close());
-  sqlite.exec(await readFile(new URL('../../migrations/0001_create_leads.sql', import.meta.url), 'utf8'));
+  sqlite.exec(leadSchemaSql);
   const env = { LEADS_DB: { prepare(sql) {
     let values = [];
     return { bind(...next) { values = next; return this; },
