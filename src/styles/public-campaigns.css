@@ -92,7 +92,7 @@
 }
 @media (max-width: 767px) {.public-campaign--cabaz .public-campaign__image { min-height: 33vh; }
 }
-@media (max-width: 479px) {.public-campaign--cabaz .public-campaign__image { min-height: 25vh; height: 25vh; background-image: none; }.public-campaign--cabaz .public-campaign__panel { padding: 5vw; }
+@media (max-width: 479px) {.public-campaign--cabaz .public-campaign__image { min-height: 0; height: auto; aspect-ratio: 1; }.public-campaign--cabaz .public-campaign__panel { padding: 5vw; }
 }
 
 .public-campaign form[hidden]{display:none!important}
