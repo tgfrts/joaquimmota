@@ -130,7 +130,7 @@ export function buildLeadEmails(submission: ValidatedLead, property?: PropertyEm
     case '/lp/cabaz-de-natal':
       consultantSubject = 'Nova participação - Cabaz de Natal';
       customerSubject = `A sua participação no sorteio do cabaz de Natal, ${firstName}`;
-      content = 'Recebemos a sua participação no sorteio do nosso cabaz de Natal. Boa sorte!';
+      content = 'Recebemos a sua participação no sorteio do nosso cabaz de Natal. Boa sorte!\n\nO vencedor será divulgado na nossa newsletter.';
       customerReply = 'Se tiver alguma questão, basta responder a este email.';
       customerSignature = 'Boas festas!\nJoaquim Mota\nConsultor Imobiliário';
       break;
