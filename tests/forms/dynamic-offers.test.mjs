@@ -78,7 +78,7 @@ test('server rejects unpublished, upcoming and expired submissions before any D1
   const handler = createFormHandler(adapter, { offers: offerMetadata([offer]), now: () => new Date('2026-12-16T23:59:59Z') });
   assert.equal((await handler({ request: request(), env: {} })).status, 503, 'Valid closing-day submission passes validation and reaches missing DB gate.');
   assert.equal((await handler({ request: request({ ...payload, fields: { ...payload.fields, title: 'Attacker title' } }), env: {} })).status, 422);
-  assert.equal((await createFormHandler(adapter, { now: () => new Date('2099-01-01') })({ request: request({ ...payload, route: '/lp/cabaz-de-natal' }), env: {} })).status, 503, 'Legacy Cabaz has no invented date limit.');
+  assert.equal((await createFormHandler(adapter, { now: () => new Date('2099-01-01') })({ request: request({ ...payload, route: '/lp/cabaz-de-natal' }), env: {} })).status, 403, 'Cabaz respects the Owner-defined 18 December 2026 deadline.');
 });
 test('offer emails use trusted metadata, interpolate plain text safely and leave legacy Cabaz unchanged', () => {
   const context = { ...offerMetadata([offer])['oferta-inverno'], title: '<Campanha & amigos>' };

@@ -1,3 +1,5 @@
+export const CABAZ_END_DATE = '2026-12-18';
+export function cabazHasEnded(now = new Date()) { return lisbonDay(now) > CABAZ_END_DATE; }
 // Site-local content contract shared by the static build, browser and form server.
 export const RESERVED_OFFER_SLUGS = new Set([
   'cabaz-de-natal', 'guia-de-ferias', 'smillingstreet', 'atualizacao-de-informacao',

@@ -4,7 +4,7 @@ import '../styles/public-campaigns.css';
 
 const route = '/lp/cabaz-de-natal';
 const title = 'Cabaz de Natal';
-const description = 'Torne o seu Natal ainda mais mágico. Participe no sorteio de 1 cabaz de Natal no dia 16 de Dezembro!';
+const description = 'Torne o seu Natal ainda mais mágico. Participe no sorteio de 1 cabaz de Natal com participações até 18 de dezembro de 2026!';
 const image = '/assets/cabaz-natal-jrm-2026.jpg';
 ---
 <BaseLayout title={title} description={description} socialImage="https://joaquimmota.pt/assets/cabaz-natal-jrm-2026-og.jpg" richSocial>
@@ -12,7 +12,7 @@ const image = '/assets/cabaz-natal-jrm-2026.jpg';
     <div class="public-campaign__image" style={`--campaign-bg:url("${image}")`} aria-hidden="true"></div>
     <section class="public-campaign__panel">
       <a class="public-campaign__logo" href="/" aria-label="Joaquim Mota — página inicial"><img src="/assets/logo-color.svg" alt="" width="100" height="49" /></a>
-      <h5><strong>Um Natal ainda mais mágico?<br />Participe no sorteio do nosso cabaz de Natal</strong><strong>. Para se habilitar preencha o formulário.</strong></h5>
+      <h5 data-campaign-heading><strong>Um Natal ainda mais mágico?<br />Participe no sorteio do nosso cabaz de Natal</strong><strong>. Para se habilitar preencha o formulário.</strong></h5>
       <form data-public-campaign data-route={route}>
         <div class="public-campaign__names"><input name="firstName" maxlength="256" autocomplete="given-name" placeholder="Nome" required /><input name="lastName" maxlength="256" autocomplete="family-name" placeholder="Apelido" required /></div>
         <input name="email" type="email" maxlength="256" autocomplete="email" placeholder="O seu email" required />
@@ -28,10 +28,28 @@ const image = '/assets/cabaz-natal-jrm-2026.jpg';
   </main>
 </BaseLayout>
 <script>
+  import { cabazHasEnded, OFFER_ENDED } from '../lib/offers.mjs';
+  function updateEndState() {
+    if (!cabazHasEnded()) return;
+    document.querySelectorAll<HTMLFormElement>('[data-public-campaign]').forEach(form => { form.hidden = true; });
+    const heading = document.querySelector<HTMLElement>('[data-campaign-heading]');
+    if (heading) heading.textContent = OFFER_ENDED;
+  }
+  updateEndState();
+  window.addEventListener('focus', updateEndState);
+  window.addEventListener('pageshow', updateEndState);
+  document.addEventListener('visibilitychange', updateEndState);
+  window.setInterval(updateEndState, 30_000);
   import { submitFormAccepted } from '../scripts/forms-client';
   document.querySelectorAll<HTMLFormElement>('[data-public-campaign]').forEach((form) => form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const button = form.querySelector<HTMLButtonElement>('button'); if (!button || button.disabled) return;
+    if (cabazHasEnded()) {
+      form.hidden = true;
+      const heading = document.querySelector<HTMLElement>('[data-campaign-heading]');
+      if (heading) heading.textContent = OFFER_ENDED;
+      return;
+    }
     if (!form.reportValidity()) return;
     const status = form.parentElement?.querySelector<HTMLElement>('[data-campaign-status]'); if (!status) return;
     button.disabled = true; status.hidden = false; status.textContent = '';

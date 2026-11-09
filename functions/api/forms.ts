@@ -3,7 +3,7 @@ import { buildLeadEmails } from './email-copy.ts';
 import propertyEmailDetails from './property-email-details.json' with { type: 'json' };
 import allowedSourceRoutes from './allowed-source-routes.json' with { type: 'json' };
 import publishedOffers from './published-offers.json' with { type: 'json' };
-import { offerWindowState, validOfferSlug } from '../../src/lib/offers.mjs';
+import { cabazHasEnded, offerWindowState, validOfferSlug } from '../../src/lib/offers.mjs';
 import { LeadIdempotencyConflict, LeadStore, type LeadsDatabase, type ValidatedLead } from './leads.ts';
 
 type FormType = 'newsletter' | 'contact' | 'valuation' | 'mortgage' | 'partnership' | 'leadMagnet';
@@ -140,6 +140,7 @@ function parseSubmission(payload: unknown, idempotencyKey: string, offers: Offer
   const offerSlug = route.startsWith('/lp/') ? route.slice('/lp/'.length) : '';
   const offer = validOfferSlug(offerSlug) && Object.hasOwn(offers, offerSlug) ? offers[offerSlug] : undefined;
   if (!ROUTES[type].has(route) && !((type === 'contact' && propertyRoute) || (type === 'newsletter' && (propertyRoute || articleRoute)) || (type === 'leadMagnet' && offer))) throw new FormError(403, 'Form is not allowed on this route.');
+  if (type === 'leadMagnet' && route === '/lp/cabaz-de-natal' && cabazHasEnded(now)) throw new FormError(403, 'As participações nesta campanha já terminaram.');
   if (offer && offerWindowState(offer, now) !== 'active') throw new FormError(403, 'As participações nesta campanha não estão abertas.');
   if (!body.fields || typeof body.fields !== 'object' || Array.isArray(body.fields)) throw new FormError(422, 'Invalid fields.');
   const fields = body.fields as Record<string, unknown>;

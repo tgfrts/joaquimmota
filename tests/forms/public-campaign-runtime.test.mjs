@@ -22,7 +22,7 @@ const flush = () => new Promise((resolve) => setImmediate(resolve));
 const errorCopy = 'Oops! Aconteceu algo de errado enquanto submetia o seu formulário.';
 
 function html() {
-  return `<main><form data-public-campaign data-route="/lp/cabaz-de-natal">
+  return `<main><h5 data-campaign-heading>Cabaz de Natal</h5><form data-public-campaign data-route="/lp/cabaz-de-natal">
     <input name="firstName" required value="Ana"><input name="lastName" required value="Costa">
     <input name="email" type="email" required value="ana@example.test"><input name="phone" required value="+351900000000">
     ${source.match(/<select name="referral"[\s\S]*?<\/select>/)[0]}
@@ -32,9 +32,11 @@ function html() {
   </form><p data-campaign-status role="status" hidden></p></main>`;
 }
 
-function runtime(t, transport) {
+function runtime(t, transport, now = '2026-11-09T12:00:00Z') {
   const dom = new JSDOM(html(), { runScripts: 'outside-only', url: 'https://joaquimmota.pt/lp/cabaz-de-natal' });
   t.after(() => dom.window.close());
+  const NativeDate = dom.window.Date;
+  dom.window.Date = class extends NativeDate { constructor(...args) { super(...(args.length ? args : [now])); } };
   Object.defineProperty(dom.window, 'crypto', { value: { randomUUID: () => 'campaign-idempotency-key' } });
   const calls = [];
   const redirects = [];
@@ -101,4 +103,12 @@ test('actual PublicCampaign handler ignores duplicate submits while its request 
   assert.equal(r.status.hidden, false);
   assert.equal(r.status.closest('form'), null);
   assert.equal(r.status.textContent, 'Obrigado, Ana! A sua participação no sorteio do cabaz de Natal foi registada com sucesso.');
+});
+
+ test('Cabaz browser hides an expired form with the closed message and never sends', async t => {
+  const r = runtime(t, async () => { assert.fail('Expired Cabaz must not send'); }, '2026-12-19T00:00:00Z');
+  assert.equal(r.form.hidden, true);
+  assert.equal(r.form.ownerDocument.querySelector('[data-campaign-heading]').textContent, 'As participações nesta campanha já terminaram.');
+  r.submit(); await flush();
+  assert.equal(r.calls.length, 0);
 });
