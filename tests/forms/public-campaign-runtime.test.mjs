@@ -25,8 +25,8 @@ function html() {
   return `<main><form data-public-campaign data-route="/lp/cabaz-de-natal">
     <input name="firstName" required value="Ana"><input name="lastName" required value="Costa">
     <input name="email" type="email" required value="ana@example.test"><input name="phone" required value="+351900000000">
-    <select name="referral" required><option value="Sim, a vender" selected>Sim, a vender</option></select>
-    <select name="intent" required><option value="Não" selected>Não</option></select>
+    ${source.match(/<select name="referral"[\s\S]*?<\/select>/)[0]}
+    ${source.match(/<select name="intent"[\s\S]*?<\/select>/)[0]}
     <input name="street" required value="Rua do Sol"><input name="postalCode" required value="4000-001"><input name="county" required value="Porto">
     <input name="consent" type="checkbox" required checked><button type="submit">Participar</button>
   </form><p data-campaign-status role="status" hidden></p></main>`;
@@ -41,6 +41,8 @@ function runtime(t, transport) {
   dom.window.fetch = async (url, options) => { calls.push({ url, ...options }); return transport(calls.length, options); };
   new dom.window.Function('location', handler)({ assign: (url) => redirects.push(url) });
   const form = dom.window.document.querySelector('form');
+  form.elements.namedItem('referral').value = 'Sim, a vender';
+  form.elements.namedItem('intent').value = 'Não';
   const status = dom.window.document.querySelector('[data-campaign-status]');
   const button = form.querySelector('button');
   const submit = () => form.dispatchEvent(new dom.window.Event('submit', { bubbles: true, cancelable: true }));
@@ -62,6 +64,18 @@ test('Cabaz handler shows a visible personalized confirmation on the same page a
   assert.equal(r.status.hidden, false);
   assert.equal(r.status.closest('form'), null);
   assert.equal(r.status.textContent, 'Obrigado, Ana! A sua participação no sorteio do cabaz de Natal foi registada com sucesso.');
+});
+
+test('actual Cabaz handler never submits a placeholder for either required question', async t => {
+  const r = runtime(t, async () => ({ status: 202 }));
+  for (const name of ['referral', 'intent']) {
+    const field = r.form.elements.namedItem(name);
+    const previous = field.value;
+    field.value = ''; r.submit(); await flush();
+    assert.equal(r.calls.length, 0); assert.equal(r.form.hidden, false);
+    assert.equal(field.validity.valueMissing, true);
+    field.value = previous;
+  }
 });
 
 test('actual PublicCampaign handler shows 503 feedback and makes the same form retryable', async (t) => {

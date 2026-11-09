@@ -150,3 +150,14 @@ test('fixed offer form sends the native payload and derives page success from ca
   assert.match(r.doc.querySelector('[data-campaign-status]').textContent, /Ana.*Oferta de inverno/);
   assert.equal(r.doc.querySelector('[data-campaign-status]').textContent.includes(offer.confirmationMessage), false);
 });
+test('active dynamic offer handler never sends either required question placeholder', async t => {
+  const r = await runtime(t, '2026-12-01T12:00:00Z');
+  for (const name of ['referral', 'intent']) {
+    const field = r.form.elements.namedItem(name);
+    const previous = field.value;
+    field.value = ''; await r.submit();
+    assert.equal(r.calls.length, 0); assert.equal(r.form.hidden, false);
+    assert.equal(field.validity.valueMissing, true);
+    field.value = previous;
+  }
+});

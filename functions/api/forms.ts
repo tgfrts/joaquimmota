@@ -110,6 +110,26 @@ function formType(value: unknown): FormType {
   return value as FormType;
 }
 
+function requireOfferQuestionAnswers(message: unknown) {
+  const questions = [
+    'Conhece alguém que esteja a vender ou a comprar casa?',
+    'Está a pensar vender ou a comprar casa?',
+  ];
+  const allowed = new Set(['Não', 'Sim, a comprar', 'Sim, a vender']);
+  const normalizeQuestion = (value: string) => value.normalize('NFC').trim().replace(/\s+/gu, ' ').toLocaleLowerCase('pt');
+  const lines = typeof message === 'string' ? message.split(/\r?\n/u) : [];
+  for (const question of questions) {
+    const answers = lines.flatMap(line => {
+      const separator = line.indexOf(':');
+      return separator >= 0 && normalizeQuestion(line.slice(0, separator)) === normalizeQuestion(question)
+        ? [{ label: line.slice(0, separator).trim(), value: line.slice(separator + 1).trim() }] : [];
+    });
+    // Variants count as duplicates, but only the canonical stored label is
+    // accepted: downstream classification reads the existing exact questions.
+    if (answers.length !== 1 || answers[0].label !== question || !allowed.has(answers[0].value)) throw new FormError(422, 'Responda às duas perguntas da campanha com uma opção válida.');
+  }
+}
+
 function parseSubmission(payload: unknown, idempotencyKey: string, offers: OfferCatalog, now: Date): Submission {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) throw new FormError(400, 'Invalid request body.');
   const body = payload as Record<string, unknown>;
@@ -137,6 +157,7 @@ function parseSubmission(payload: unknown, idempotencyKey: string, offers: Offer
   }
   if (typeof normalized.phone === 'string' && !isPlausiblePhone(normalized.phone)) throw new FormError(422, 'Introduza um número de telefone válido.');
   if (normalized.contactSubject && !['Comprar', 'Vender', 'Outro'].includes(String(normalized.contactSubject))) throw new FormError(422, 'Invalid contact subject.');
+  if (type === 'leadMagnet' && (route === '/lp/cabaz-de-natal' || offer)) requireOfferQuestionAnswers(normalized.message);
   return { formType: type, route, fields: normalized, idempotencyKey };
 }
 

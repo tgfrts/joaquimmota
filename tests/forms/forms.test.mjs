@@ -291,7 +291,8 @@ test('invalid phone placeholders are rejected before storage or delivery for eve
   for (const [formType, route] of Object.entries(routes)) {
     for (const phone of ['000000000', '+351 111111111', '123456789']) {
       const adapter = mockAdapter();
-      const response = await createFormHandler(adapter)({ request: request({ ...leadPayload, formType, route, fields: { ...leadPayload.fields, phone } }), env: { LEADS_DB: { prepare() { throw new Error('Invalid phone must never reach storage'); } } } });
+      const fields = { ...leadPayload.fields, phone, ...(formType === 'leadMagnet' ? { message: 'Conhece alguém que esteja a vender ou a comprar casa?: Não\nEstá a pensar vender ou a comprar casa?: Não' } : {}) };
+      const response = await createFormHandler(adapter)({ request: request({ ...leadPayload, formType, route, fields }), env: { LEADS_DB: { prepare() { throw new Error('Invalid phone must never reach storage'); } } } });
       assert.equal(response.status, 422, `${formType}: ${phone}`);
       assert.equal(adapter.calls.length, 0);
     }
